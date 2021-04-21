@@ -1,8 +1,8 @@
-#Github Manual
+# Github Manual
 
 Git repository is a virtual storage of your project and allows you to save versions of code.
 
-###Pushing Files to New Repository:
+### Pushing Files to New Repository:
 
 ```
 git init <project directory>    #cd /d C:\users\daronphang
