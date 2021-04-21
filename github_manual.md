@@ -1,8 +1,8 @@
-#Github Manual
+# Github Manual
 
 Git repository is a virtual storage of your project and allows you to save versions of code.
 
-###Pushing Files to New Repository:
+### Pushing Files to New Repository:
 
 ```
 git init <project directory>    #cd /d C:\users\daronphang
@@ -25,13 +25,13 @@ git push -u origin <new branch name>
 git remote -v                       #to verify remote repository URL
 git remote set-url origin <new repo URL>
 ```
-###Cloning Repository:
+### Cloning Repository:
 
 ```
 cd /d C:\users\daronphang
 git clone <repo URL>
 ```
-###Git Pull:
+### Git Pull:
 Pull command is used to fetch and download content from 
 remote repository and immediately update local repository to match
 that content i.e. combination of git.fetch and git.merge.
@@ -40,7 +40,7 @@ that content i.e. combination of git.fetch and git.merge.
 git pull <remote URL>
 git pull --no-commit <remote>
 ```
-###Gitignore:
+### Gitignore:
 Text file that tells git which files to ignore. Local .gitignore
 file is usually placed in the root directory.
 Can also create global .gitignore and any entries in that file
@@ -58,7 +58,7 @@ hello.*         #matches any file or folder beginning with hello
 !example.db     #negates a file that would be ignored
 !example!.txt
 ```
-###Clearing Cache for Gitignore:
+### Clearing Cache for Gitignore:
 ```
 #commit any outstanding code changes
 del .git\index.lock
