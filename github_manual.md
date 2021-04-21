@@ -8,7 +8,7 @@ Git repository is a virtual storage of your project and allows you to save versi
 git init <project directory>    #cd /d C:\users\daronphang
 git add <--all or example.txt>
 git status                      #to see changes committed
-git commit -m "description of changes"
+git commit -a -m "description of changes"
 git remote add origin <paste GIT URL> 
 git push -u origin master
 ```
