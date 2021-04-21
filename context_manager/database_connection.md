@@ -1,3 +1,12 @@
+# Database Connection:
+Function that executes query in database is decorated with database connector. 
+
+Cursor is used to execute statements to communicate with database and gives ability to have separate working environments
+through the same connection to the database.
+
+Cursor methods: info(), execute(), executemany(), fetchall(), fetchone(), fetchmany()
+
+```python
 import os
 import logging
 import psycopg2
@@ -40,4 +49,4 @@ def query_func(conn, username, password):
 
 
 example = query_func('admin', 'admin')
-
+```
