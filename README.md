@@ -1,1 +1,1 @@
-Manuals for important configurations.
+Supplementary information for reference.
