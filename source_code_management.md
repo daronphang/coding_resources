@@ -5,9 +5,9 @@ Git repository is a virtual storage of your project and allows you to save versi
 ### Pushing Files to New Repository:
 
 ```
-git init <project directory>    #cd /d C:\users\daronphang
+git init <project directory>                #cd /d C:\users\daronphang
 git add <--all or example.txt>
-git status                      #to see changes committed
+git status                                  #to see changes committed
 git commit -a -m "description of changes"
 git remote add origin <paste GIT URL> 
 git push -u origin master
@@ -15,14 +15,14 @@ git push -u origin master
 ### Editing Existing Files:
 
 ```
-git branch                          #check if branch is master
+git branch                                  #check if branch is master
 git checkout -b <new branch name>
 git add <--all or example.txt>
-git status                          #to see changes committed
+git status                                  #to see changes committed
 git commit -m "description of changes"
 git push -u origin <new branch name>
 
-git remote -v                       #to verify remote repository URL
+git remote -v                               #to verify remote repository URL
 git remote set-url origin <new repo URL>
 ```
 ### Cloning Repository:
@@ -51,7 +51,7 @@ git config --global core.excludesfile u/. <gitignore_global name>
 ```
 .log
 .idea/
-access?.log     matches any single character i.e. access1.log
+access?.log     #matches any single character i.e. access1.log
 hello.*         #matches any file or folder beginning with hello
 *.db            #matches any file ending with .db
 **/foo          #matches any file or directory with pattern "foo"
