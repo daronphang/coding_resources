@@ -8,5 +8,5 @@ Useful to prevent package clutter and version conflicts. Codes executed in cmd.
 cd /d C:\users\daronphang
 virtualenv venv
 venv\Scripts\activate
-deactivate    #venv\Scripts\deactivate
+deactivate                  #venv\Scripts\deactivate
 ```
