@@ -10,3 +10,9 @@ virtualenv venv
 venv\Scripts\activate
 deactivate                  #venv\Scripts\deactivate
 ```
+# Requirements.txt:
+A text file containing the venv packages and versions required to run the Python program. 
+```
+pip freeze > requirements.txt
+pip install -r requirements.txt 
+```
