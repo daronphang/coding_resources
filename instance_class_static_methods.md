@@ -3,15 +3,15 @@ Methods offered by Python to write object-oriented that communicates its intent 
 Help to communicate and enforce developer intent about class design.
 ```python
 class ClassTest:
-    def instance_method(self):  # need object to be created in order to call
+    def instance_method(self):      # need object to be created in order to call
         return f'called instance method of {self}'
 
-    @classmethod    #
-    def class_method(cls):  # cls refers to the class itself i.e. ClassTest
+    @classmethod    
+    def class_method(cls):          # cls refers to the class itself i.e. ClassTest
         return f'class method called'
 
-    @staticmethod   # a separate function that does not have any info about class/object
-    def static_method():    # unable to access or modify object/class state
+    @staticmethod                   # a separate function that does not have any info about class/object
+    def static_method():            # unable to access or modify object/class state
         return f'static method called'
 
 
