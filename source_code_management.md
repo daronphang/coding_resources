@@ -61,8 +61,8 @@ hello.*         #matches any file or folder beginning with hello
 ### Clearing Cache for Gitignore:
 ```
 #commit any outstanding code changes
-del .git\index.lock
-git rm -r --cached
+del .git\index.lock   #if cannot clear cache
+git rm -r --cached .
 git add . 
 git commit -m "cleared git cache"
 git push origin <branch name>
