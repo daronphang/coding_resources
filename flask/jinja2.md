@@ -20,3 +20,23 @@ Variables can be modified with filters with a pipe character as separator. Commm
 {{ name|capitalize }}
 {{ paragraph|safe }}  # if variable is '<h1>Hello</h1>, returns raw value without escaping i.e. &lt;h1&gt;Hello&lt;/h1&gt;'
 ```
+## Control Structures:
+```
+{% if user %}
+  Hello, {{ user }}
+{% else %}
+  Hello, stranger
+{% endif %}
+```
+```
+<ul>
+  {% for name in list %}
+    <li>{{ name }}</li>
+  {% endfor %}
+</ul>
+```
+## Template Inheritance:
+```
+{% extends "bootstrap/base.html" %}
+{% include "parent_base.html" %}
+```
