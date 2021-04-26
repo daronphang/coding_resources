@@ -1,12 +1,12 @@
 ### Common HTML Tags Reference:
 Link Reference: <https://www.w3schools.com/tags/default.asp>
 
-\<head>       
-\<style>
-\<base>       base URL and/or target for all relative URLs in current page
-\<link>       CSS external links
-\<meta>       metadata for webpage
-\<script>     client-side Javascript
+\<head>  
+\<style>  
+\<base>       base URL and/or target for all relative URLs in current page  
+\<link>       CSS external links  
+\<meta>       metadata for webpage  
+\<script>     client-side Javascript  
 \<noscript>
 
 \<a>          anchor tag to attach link i.e. \<a href="https://example.com">Input text\</a>  
