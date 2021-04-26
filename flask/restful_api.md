@@ -14,6 +14,7 @@ Each resource must have a unique identifier (URLs for HTTP).
 
 ### Request and Response Bodies:
 Resources are sent back and forth between client and server in the bodies of requests and responses in either JSON or XML.  
+
 Request: request.get_json()  
 Response: jsonify(response)  
 
