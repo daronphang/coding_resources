@@ -12,11 +12,17 @@ Each resource must have a unique identifier (URLs for HTTP).
 3) **PUT**: Modify an existing resource
 4) **DELETE**
 
-### Request and Response Bodies:
-Resources are sent back and forth between client and server in the bodies of requests and responses in either JSON or XML.  
+## Request and Response Bodies:
+Resources are sent back and forth between client and server in the bodies of requests and responses in either JSON or XML. Headeres and parameters are also important in HTTP request as the contain important identifier information as to the request's metadata, authorization, URI, caching, cookies etc.  
 
-Request: request.get_json()  
+Request: request.get_json(), request.headers.get('your header name')    
 Response: jsonify(response)  
 
+### Common Hedaers:
+1) Authorization: Base64(username:password)
+2) WWWW-Authenticate (sent by server)
+3) Accept-Charset
+4) Content-Type: application/json (response type sent to client by server)
+5) Cache-Control
 
 
