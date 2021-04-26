@@ -2,7 +2,7 @@
 Link Reference: <https://www.w3schools.com/tags/default.asp>
 ```
 <head>  
-<style>  
+<style>      internal styling
 <base>       base URL and/or target for all relative URLs in current page  
 <link>       CSS external links  
 <meta>       metadata for webpage  
@@ -15,5 +15,7 @@ Link Reference: <https://www.w3schools.com/tags/default.asp>
 <span>       similar to <div> but more for inline elements  
 <img>        defines an image i.e. <img src='C:\users\daronphang\image.png' class='img-thumbnail img-fluid'>  
 <ol>         ordered list  
-<ul>         unordered list  
+<ul>         unordered list
+
+<h1 style="font-size:40px;"> Check this out </h1>   #inline styling example
 ```
