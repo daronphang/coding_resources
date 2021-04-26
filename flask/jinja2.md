@@ -35,6 +35,9 @@ Variables can be modified with filters with a pipe character as separator. Commm
   {% endfor %}
 </ul>
 ```
+```
+{% block title %} Main Page {% endblock %}  #blocks defined in base template can be overridden by derived templates
+```
 ## Template Inheritance:
 ```
 {% extends "bootstrap/base.html" %}
