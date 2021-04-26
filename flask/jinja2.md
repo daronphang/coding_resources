@@ -22,7 +22,7 @@ Variables can be modified with filters with a pipe character as separator. Commm
 ```
 ## Control Structures:
 ```
-{% if user %}
+{% if user %}   #{% if user == 'John' %}
   Hello, {{ user }}
 {% else %}
   Hello, stranger
@@ -42,4 +42,31 @@ Variables can be modified with filters with a pipe character as separator. Commm
 ```
 {% extends "bootstrap/base.html" %}
 {% include "parent_base.html" %}
+{% block scripts %}
+{{ super() }}   #to add content to a block that already has some content
+<script type="text/javascript" src="my-script.js"></script>
+{% endblock %}
+```
+## Localization of Dates and Times:
+Server needs uniform time units that are indepedent of location of each user; however, may be confusing for users. There is an open source library written in Javascript
+that renders dates and times in browser called Moment.js. Use Flask extension that integrates Moment.js into Jinja2 templates.
+```python
+from flask_moment import Moment
+from datetime import datetime
+
+moment = Moment(app)
+
+@app.route('/')
+def index():
+return render_template('index.html',
+current_time=datetime.utcnow())
+```
+```
+{% block scripts %}
+{{ super() }}
+{{moment.include_moment() }}    # added in parent_base.html template
+{% endblock %}
+{% block content %} 
+  <p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+{% endblock %}
 ```
