@@ -1,7 +1,7 @@
 # Jinja2:
 A powerful templating language used to create HTML, XML or other markup formats that are returend to the user via HTTP request. Most important feature is Template Inheritance.
 
-### Placeholder Variable Delimiter:
+## Placeholder Variable Delimiter:
 Recognizes variables of any type including lists, dictionaries, and objects.  
 ```
 <p>Value from dictionary: {{ mydict['key'] }}</p>
