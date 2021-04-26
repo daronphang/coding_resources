@@ -58,8 +58,7 @@ moment = Moment(app)
 
 @app.route('/')
 def index():
-return render_template('index.html',
-current_time=datetime.utcnow())
+return render_template('index.html', current_time=datetime.utcnow())
 ```
 ```
 {% block scripts %}
