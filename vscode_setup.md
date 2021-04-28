@@ -1,4 +1,4 @@
-# Setting Up VSCode:
+## Setting Up VSCode:
 ### Extensions:
 1) AREPL for real-time evaluation
 2) Kite AutoComplete AI Code
