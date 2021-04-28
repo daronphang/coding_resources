@@ -17,17 +17,19 @@ All names in structure are three characters long as JWT is meant to be compact.
 ```python
 import jwt
 
-header = {
-    "alg": "HS256",
-    "typ": "JWT"
-}
+def jwt_token(username):
+    header = {
+        "alg": "HS256",
+        "typ": "JWT"
+    }
 
-payload = {
-    "iss": "Micron",
-    "jti": "username"
-}
+    payload = {
+        "iss": "Micron",
+        "jti": username
+    }
 
-jwt_token = jwt.encode(payload=payload, key='JWT_SECRET_KEY', algorithm=' HS256', headers=header)
-
+    jwt_token = jwt.encode(payload=payload, key='JWT_SECRET_KEY', algorithm=' HS256', headers=header)
+    return jsonify({'token' : jwt_token.decode('UTF-8')})
+    
 # Output is three Base64-URL strings separated by dots i.e. xxxxx.yyyyy.zzzzzzz
 ```
