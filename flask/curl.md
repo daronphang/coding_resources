@@ -19,3 +19,30 @@ crl.close()
 get_body = b_obj.getvalue()         # retrieve content stored in bytes object
 print('Output of GET request:\n%s' % get_body.decode('utf-8))
 ```
+```python
+# POST request
+from urllib.parse import urlencode
+import pycurl
+
+crl = pycurl.Curl()
+crl.setopt(crl.URL, 'https://www.code-learner.com/post/')
+data = {'field': 'value'}
+pf = urlencode(data)
+
+# Sets request method to POST,
+# Content-Type header to application/x-www-form-urlencoded
+# and data to send in request body.
+crl.setopt(crl.POSTFIELDS, pf)
+crl.perform()
+crl.close()
+```
+```python
+# Delete resource of target URL
+import pycurl
+
+crl = pycurl.Curl()
+crl.setopt(crl.URL, "http://api.example.com/user/148951")
+crl.setopt(crl.CUSTOMREQUEST, "DELETE")
+crl.perform()
+crl.close()
+```
