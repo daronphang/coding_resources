@@ -1,5 +1,5 @@
 # Python Curl:
-Curl is a tool for transferring data to and from a server and for making various types of data requests such as testing REST APIs, downloading files, etc.
+PycURL is a Python interface to libcurl, the multiprotocol file transfer library. A tool for transferring data to and from a server and for making various types of data requests such as testing REST APIs, downloading files, etc.
 Besides Postman, PycURL is another suitable option that supports protocols including FILE, FTPS, HTTPS, IMAP, POP3, SMTP, SCP, SMB, etc.
 
 ## HTTP Protocol:
