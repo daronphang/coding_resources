@@ -13,4 +13,11 @@ def login_required(f):
             return redirect(url_for('login', next=request.url))
         return f(*args, **kwargs)
     return decorated_function
+
+@app.route('secret_page')
+@login_required     # this decorator wraps original function secret_page(); to return original function, use @wraps
+def secret_page():
+    pass
 ```
+## Functools Wraps:
+Module is for higher-order functions; functions that act or return other functions. Updates the wrapper function to look like the wrapped function.
