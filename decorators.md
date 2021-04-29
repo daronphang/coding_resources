@@ -7,6 +7,14 @@ def mydecorator(f):  # f is the function passed to us from python
         print(f'{f} was called.')
         f()
     return wrapper
+    
+@mydecorator
+def hello():
+    print('hello')
+
+>>> hello()
+<function hello at 0x7f27738d7510> was called.
+hello
 ```
 ## Nested Decorators:
 Top decorator is passed the object from the former.
