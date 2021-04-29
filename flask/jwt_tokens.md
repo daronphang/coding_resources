@@ -12,13 +12,13 @@ JWT are useful for the following:
 3) Signature: takes the encoded header and payload and signed using the secret key. 
 
 ### Payload Parameters:
--iss: Issuer of token
--sub: Subject of token
--aud: Audience of token
-exp: Defines expiration in NumericDate value, must be after current date/time
-nbf: Defines time before which JWT must not be accepted before processing
-iat: Time the JWT was issued
-jti: Unique identifier for JWT
+- iss: Issuer of token
+- sub: Subject of token
+- aud: Audience of token
+- exp: Defines expiration in NumericDate value, must be after current date/time
+- nbf: Defines time before which JWT must not be accepted before processing
+- iat: Time the JWT was issued
+- jti: Unique identifier for JWT
 
 All names in structure are three characters long as JWT is meant to be compact.
 
