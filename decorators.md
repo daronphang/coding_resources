@@ -1,0 +1,21 @@
+# Decorators:
+Python decorators allow functions to be wrapped with another function i.e. a function that is passed a function, and returns a callable object.
+In most cases, the decorator should return an object to mimic the decorated function, which is performed through wrapper function.
+```python
+def mydecorator(f):  # f is the function passed to us from python
+    def wrapper():
+        print(f'{f} was called.')
+        f()
+    return wrapper
+```
+## Nested Decorators:
+Top decorator is passed the object from the former.
+```python
+@a
+@b
+@c
+def hello():
+    print('hello')
+    
+hello = a(b(c(hello)))
+```
