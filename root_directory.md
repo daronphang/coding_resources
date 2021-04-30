@@ -7,6 +7,6 @@ print(sys.executable)
 ```python
 import os
 
-file = os.path.abspath('example.txt)    # file is in top level of the project
-root_dir = os.path.dirname(file)
+basedir = os.path.abspath(os.path.dirname(__file__))    # __file__ must be in top level directory of the project
+print(basedir)
 ```
