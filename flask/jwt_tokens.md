@@ -111,7 +111,7 @@ class FlaskClientTestCase(unittest.TestCase):
         except jwt.InvalidTokenError:
             return {'message': 'invalid'}
             
-        def test_expired_token(self):
+    def test_expired_token(self):
         create_token = FlaskClientTestCase.get_api_headers(Config.JWT_SECRET_KEY, -60)
         token_value = create_token['Authorization'].split(' ')[1]
         response = FlaskClientTestCase.verify_token(token_value, Config.JWT_SECRET_KEY)
