@@ -3,7 +3,7 @@ Absolute import uses the full part from project's root folder to the desired mod
 Relative import uses the relative path (starting from the path of current module).
 
 Module is a single Python file.  
-Package is a directory of Python modules containing an additional __init__.py file.
+Package is a directory of Python modules containing an additional \__init__.py file.
 ```python
 └── project
     ├── package1
