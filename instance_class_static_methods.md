@@ -1,4 +1,4 @@
-# Instance, Class and Static Methods:
+## Instance, Class and Static Methods:
 Methods offered by Python to write object-oriented that communicates its intent more clearly and for easier maintenance. 
 Help to communicate and enforce developer intent about class design.
 ```python
