@@ -108,6 +108,10 @@ Best way to work with models is in Python shell.
 ... user_john, user_susan, user_david])
 
 >>> db.session.commit()
+
+>>> print(admin_role.id)
+
+>>> db.session.rollback()   # if previous session failed to commit
 ```
 ### Modifying Rows:
 Use the add() method.
