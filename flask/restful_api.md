@@ -1,7 +1,7 @@
 # RESTful API:
 An architectural style for an API that uses HTTP requests to access and process data. 
 
-### Criteria Conformation:
+## Criteria Conformation:
 1) Clear separation between client and server.
 2) Client request must contain all information that is necessary to carry it out.
 3) Stateless client-server communication, meaning no client information is stored between get requests.
@@ -14,7 +14,7 @@ Concept of resources is core to the REST architectural style. A resource is an i
 of blogging application.
 
 Each resource must have a unique identifier (URLs for HTTP). 
-### Request Commands:
+## Request Commands:
 1) **GET**: Obtain the resource
 2) **POST**: Create a new resource or add it to the collection. Server chooses URL of new resource and returns it in "Location" header
 3) **PUT**: Modify an existing resource
@@ -26,7 +26,7 @@ Resources are sent back and forth between client and server in the bodies of req
 Request: request.get_json(), request.headers.get('your header name')    
 Response: jsonify(response)  
 
-### Common Headers:
+## Common Headers:
 1) Authorization: Base64(username:password)
 2) WWWW-Authenticate (sent by server)
 3) Accept-Charset
