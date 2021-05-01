@@ -13,3 +13,20 @@ BEGIN
 END;
 $$
 ```
+### Counting Rows of Each Table in Database:
+```
+CREATE FUNCTION count_rows(schema TEXT, tablename TEXT)
+RETURNS INTEGER
+LANGUAGE plpsql
+AS
+$BODY$
+DECLARE 
+result INTEGER;
+query VARCHAR;
+BEGIN
+query := 'SELECT COUNT(*) FROM ' || schema || '.' || tablename;   i.e. SELECT COUNT(*) FROM schema.table1
+EXECUTE query INTO result
+RETURN result;
+END;
+$BODY$
+```
