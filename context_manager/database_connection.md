@@ -19,7 +19,7 @@ def context_manager_decorator(func):
     def wrapper(args, **kwargs):
         conn = psycopg2.connect(database=database,user=db_user, password=db_password, host=db_host)
         try:
-            rv = func(conn, args, **kwargs)
+            rv = func(conn, args, **kwargs)     # connection passed as an implicit value
         except psycopg2.Error:
             conn.rollback()
             logging.error("database connection error")
@@ -45,5 +45,5 @@ def query_func(conn, username, password):
     return result
 
 
-example = query_func('admin', 'admin')
+example = query_func('admin', 'admin')      # do not need to pass conn variable as it is implicit
 ```
