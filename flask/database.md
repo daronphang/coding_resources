@@ -133,7 +133,7 @@ Use the add() method.
 ```
 ### Common SQLAlchemy Query Filters:
 - filter()
-- filter_by(): Adds equality filter
+- filter_by()   Adds equality filter
 - limit()
 - offset()
 - order_by()
@@ -141,12 +141,12 @@ Use the add() method.
 
 ### Common SQLAlchemy Query Executors:
 - all()
-- first(): Returns first result of query, or 'None' of there are no results.
-- first_or_404(): Aborts if there are no results
+- first()           Returns first result of query, or 'None' of there are no results.
+- first_or_404()    Aborts if there are no results
 - get()
 - get_or_404()
 - count()
-- paginate(): Returns a Pagination object that contains the specified range of results.
+- paginate()        Returns a Pagination object that contains the specified range of results.
 
 
 
