@@ -85,7 +85,7 @@ Best way to work with models is in Python shell.
 ```
 (venv) $ flask shell
 >>> from hello import db
->>> db.create_all()
+>>> db.create_all()     # will not re-create a table if it already exists
 ```
 ### Inserting Rows:
 ```
