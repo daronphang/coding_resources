@@ -133,7 +133,7 @@ Use the add() method.
 ```
 ### Common SQLAlchemy Query Filters:
 - filter()
-- filter_by()   \Adds equality filter
+- filter_by()    Adds equality filter
 - limit()
 - offset()
 - order_by()
