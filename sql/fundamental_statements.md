@@ -2,6 +2,7 @@
 ### SELECT:
 ```
 SELECT col1,col2 FROM table
+SELECT * FROM infomration_schema.tables
 ```
 ### SELECT DISTINCT:
 ```
