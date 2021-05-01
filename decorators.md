@@ -16,7 +16,7 @@ def hello():
 <function hello at 0x7f27738d7510> was called.
 hello
 ```
-## Nested Decorators:
+## Nested:
 Top decorator is passed the object from the former.
 ```python
 @a
