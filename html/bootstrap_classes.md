@@ -1,4 +1,4 @@
-### Bootstrap Classes:
+## Bootstrap Classes:
 Link Reference: https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp
 ```
 .col:
