@@ -80,7 +80,7 @@ secondary       Specifies the name of association table to use in many-to-many r
 seondaryjoin    Specifies the secondary join condition for many-to-many relationships.
 ```
 ## Database Operations:
-Best way to work with models is in Python shell. To exit shell in command, key in 'Ctrl + Z + enter'.
+Best way to work with models is in Python shell. 
 ### Creating Tables:
 ```
 (venv) $ flask shell
