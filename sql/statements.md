@@ -47,8 +47,18 @@ SELECT * FROM table WHERE col1 IN ('red','blue')    # Red or Blue
 SELECT * FROM table WHERE col1 LIKE 'A%'  # all names that begin with A
 SELECT * FROM table WHERE col1 LIKE 'Mission Impossible _'
 ```
+### GROUP BY:
+```
+SELECT col1,col2,SUM(sales) FROM table GROUP BY col1,col2
 
-
+# To group by date, need remove timestamp using DATE().
+SELECT DATE(col1),SUM(sales) FROM table GROUP BY DATE(col1)
+```
+### HAVING:
+```
+# Clause that allows to filter aggregate results.
+SELECT col1,SUM(sales) FROM table WHERE col1 != 'Google' GROUP BY col1 HAVING SUM(sales) > 1000
+```
 
 
 
