@@ -135,7 +135,7 @@ Use the add() method.
 ```
 # Filters:
 filter()
-filter_by()   Adds equality filter
+filter_by()       Adds equality filter
 limit()
 offset()
 order_by()
