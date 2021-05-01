@@ -1,4 +1,4 @@
-# Repr and Str Method:
+## Repr and Str Method:
 Special method used to represent class' objects as a string; Pythonic way to control how objects are converted to strings.
 
 ```python
