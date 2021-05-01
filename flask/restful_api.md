@@ -27,10 +27,11 @@ Request: request.get_json(), request.headers.get('your header name')
 Response: jsonify(response)  
 
 ## Common Headers:
-1) Authorization: Base64(username:password)
-2) WWWW-Authenticate (sent by server)
-3) Accept-Charset
-4) Content-Type: application/json (response type sent to client by server)
-5) Cache-Control
-
+```
+Authorization       Base64(username:password)
+WWWW-Authenticate   Sent by server
+Accept-Charset
+Content-Type        application/json (response type sent to client by server)
+Cache-Control
+```
 
