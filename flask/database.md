@@ -79,7 +79,7 @@ class User(db.Model):
 - seondaryjoin: Specifies the secondary join condition for many-to-many relationships.
 
 ## Database Operations:
-Best way to work with models is in Python shell.
+Best way to work with models is in Python shell. To exit shell in command, key in 'Ctrl + Z + enter'.
 ### Creating Tables:
 ```
 (venv) $ flask shell
