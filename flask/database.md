@@ -131,22 +131,24 @@ Use the add() method.
 >>> User.query.filter_by(role=user_role).all()
 [<User 'susan'>, <User 'david'>]
 ```
-### Common SQLAlchemy Query Filters:
+### Common SQLAlchemy Query Filters and Executors:
+```
+# Filters:
 - filter()
-- filter_by()    Adds equality filter
+- filter_by()   Adds equality filter
 - limit()
 - offset()
 - order_by()
 - group_by()
 
-### Common SQLAlchemy Query Executors:
+# Executors:
 - all()
-- first()           \Returns first result of query, or 'None' of there are no results.
-- first_or_404()    \Aborts if there are no results
+- first()           Returns first result of query, or 'None' of there are no results.
+- first_or_404()    Aborts if there are no results
 - get()
 - get_or_404()
 - count()
-- paginate()        \Returns a Pagination object that contains the specified range of results.
-
+- paginate()        Returns a Pagination object that contains the specified range of results.
+```
 
 
