@@ -1,0 +1,1 @@
+## Retrieving Entries from Database:
