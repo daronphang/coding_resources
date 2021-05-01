@@ -62,7 +62,7 @@ SELECT col1,SUM(sales) FROM table WHERE col1 != 'Google' GROUP BY col1 HAVING SU
 ### AS:
 ```
 SELECT col1 AS name FROM table
-SELECT SUM(sales) AS total_revenue FROM table HAVING SUM(sales) > 1000    # agg functions need to use original name during filtering
+SELECT SUM(sales) AS total_revenue FROM table HAVING SUM(sales) > 1000    # agg functions need to use original name
 ```
 ### INNER JOIN:
 ```
