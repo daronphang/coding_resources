@@ -70,14 +70,15 @@ class User(db.Model):
 
 ````
 ### Common SQLAlchemy Relationship Options:
-- backref: Adds a back reference in the other model in the relationship.
-- priamryjoin: Specifies the join condition between two models explicitly, necessary for ambiguous relationships.
-- lazy: Specifies how items are to be loaded. Possible values are select, immediate, joined, subquery, noload, dynamic.
-- uselist: If set to False, use a scalar instead of a list i.e. 'many' side becomes 'one' side.
-- order_by: Specifies the ordering for the items in the relationship.
-- secondary: Specifies the name of association table to use in many-to-many relationships.
-- seondaryjoin: Specifies the secondary join condition for many-to-many relationships.
-
+```
+backref         Adds a back reference in the other model in the relationship.
+primaryjoin     Specifies the join condition between two models explicitly, necessary for ambiguous relationships.
+lazy            Specifies how items are to be loaded. Possible values are select, immediate, joined, subquery, noload, dynamic.
+uselist         If set to False, use a scalar instead of a list i.e. 'many' side becomes 'one' side.
+order_by        Specifies the ordering for the items in the relationship.
+secondary       Specifies the name of association table to use in many-to-many relationships.
+seondaryjoin    Specifies the secondary join condition for many-to-many relationships.
+```
 ## Database Operations:
 Best way to work with models is in Python shell. To exit shell in command, key in 'Ctrl + Z + enter'.
 ### Creating Tables:
