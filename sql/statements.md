@@ -59,9 +59,26 @@ SELECT DATE(col1),SUM(sales) FROM table GROUP BY DATE(col1)
 # Clause that allows to filter aggregate results.
 SELECT col1,SUM(sales) FROM table WHERE col1 != 'Google' GROUP BY col1 HAVING SUM(sales) > 1000
 ```
-
-
-
-
-
-
+### AS:
+```
+SELECT col1 AS name FROM table
+SELECT SUM(sales) AS total_revenue FROM table HAVING SUM(sales) > 1000    # agg functions need to use original name during filtering
+```
+### INNER JOIN:
+```
+# Order doesn't matter.
+# Output is set of record that match in both tables.
+SELECT * FROM table1 INNER JOIN table 2 ON table1.name = table2.name
+SELECT job,table1.name,salary FROM table1 INNER JOIN table2 ON table1.name = table2.name 
+```
+### FULL OUTER JOIN:
+```
+# Takes all columns from both tables, fills in data where there is a match, else NULL.
+# Order doesn't matter.
+SELECT * FROM table1 FULL OUTER JOIN table2 ON table1.name = table2.name
+```
+### LEFT/RIGHT OUTER JOIN:
+```
+# LEFT JOIN returns columns exclusive to table1 or can be found in both.
+SELECT * FROM table1 LEFT OUTER JOIN table2 ON table1.name = table2.name
+```
