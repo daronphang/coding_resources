@@ -1,4 +1,4 @@
-# Database Connection:
+## Database Connection:
 Function that executes query in database is decorated with database context manager. 
 
 Connection is passed to the query function as an implicit value. 
