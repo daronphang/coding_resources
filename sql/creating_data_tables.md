@@ -55,6 +55,44 @@ CREATE TABLE products(
   name TEXT,
   price NUMERIC CHECK(price > 0),
   discounted_price NUMERIC,
-  CHECK (discounted_price > 0 AND price > discounted_price))
+  CHECK(discounted_price > 0 AND price > discounted_price))
 
 ```
+### INSERT:
+SERIAL columns do not need to be provided a value. Inserted row values must match up for the table including constraints. 
+```
+INSERT INTO account(username, passwword, create_on)
+VALUES('Jose', '1234', CURRENT_TIMESTAMP),
+      ('John', '1234', CURRENT_TIMESTAMP)
+      
+INSERT INTO table(col1,col2) SELECT col1,col2 FROM table2
+```
+### UPDATE:
+```
+# Use UPDATE and SET
+UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = 'Jose'
+```
+### RETURNING:
+```
+UPDATE account SET last_login = CURRENT_TIMESTAMP RETURNING username, last_login
+```
+### DELETE:
+```
+DELETE FROM table WHERE row_id = 1
+```
+### ALTER:
+Allows for changes to an existing table structure:
+- Adding/dropping/renaming columns
+- Changing column's data type
+- setting default values for a column
+- Adding CHECK constraints
+```
+ALTER TABLE account ADD COLUMN job_role TEXT
+ALTER TABLE account DROP COLUMN job CASCADE     # CASCADE removes all dependencies
+ALTER TABLE account DROP COLUMN IF EXISTS col1
+```
+
+
+
+
+
