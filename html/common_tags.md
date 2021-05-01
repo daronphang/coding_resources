@@ -1,4 +1,4 @@
-### Common HTML Tags Reference:
+## Common HTML Tags Reference:
 Link Reference: <https://www.w3schools.com/tags/default.asp>
 ```
 <head>  
