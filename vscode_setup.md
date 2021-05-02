@@ -10,5 +10,8 @@ Stable version: January 2021, version 1.53.2
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
 
+### Kite:
+- Can disable codefinder
+
 ## Customizations:
 - Linespacing: search height in settings; value must be greater or equal to font size.
