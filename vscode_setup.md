@@ -10,9 +10,6 @@ Stable version: January 2021, version 1.53.2
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
 
-### Kite:
-- Can disable codefinder
-
 ### Customizations in settings.json:
 ```
 Python Path               "python.pythonPath": "venv\\Scripts\\python.exe"
@@ -24,4 +21,5 @@ Render Indent Guides      "editor.renderIndentGuides": true
 pep8                      "python.linting.pycodestyleEnabled": true
 flake8                    "python.linting.flake8Enabled": true
 Right Vertical            "editor.rulers": [80]
+Kite                      "kite.codefinder.enableLineDecoration": false
 ```
