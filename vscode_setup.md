@@ -15,9 +15,10 @@ Need to install pylint in virtual environment; activation depends on autosave fu
 
 ### Customizations in settings.json:
 ```
-Line Spacing             "editor.lineHeight": 20
-Letter Spacing           "editor.letterSpacing": -0.7
-Render Indent Guides     "editor.renderIndentGuides": true
-pep8                     "python.linting.pycodestyleEnabled": true
-flake8                   "python.linting.flake8Enabled": true,
+Line Spacing              "editor.lineHeight": 20
+Letter Spacing            "editor.letterSpacing": -0.7
+Render Indent Guides      "editor.renderIndentGuides": true
+pep8                      "python.linting.pycodestyleEnabled": true
+flake8                    "python.linting.flake8Enabled": true
+Right Vertical            "editor.rulers": [80]
 ```
