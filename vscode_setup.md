@@ -15,3 +15,4 @@ Need to install pylint in virtual environment; activation depends on autosave fu
 
 ## Customizations:
 - Linespacing: search height in settings; value must be greater or equal to font size.
+- Word wrap: controls maximum number of words per line (79 for pep8)
