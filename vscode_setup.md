@@ -10,7 +10,7 @@ Stable version: January 2021, version 1.53.2
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
 
-### Customizations in settings.json:
+### Customization in settings.json:
 ```
 Python Path               "python.pythonPath": "venv\\Scripts\\python.exe"
 Linting                   "python.linting.enabled": true
