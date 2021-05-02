@@ -13,6 +13,11 @@ Need to install pylint in virtual environment; activation depends on autosave fu
 ### Kite:
 - Can disable codefinder
 
-## Customizations:
-- Linespacing: search height in settings; value must be greater or equal to font size.
-- Word wrap: controls maximum number of words per line (79 for pep8)
+### Customizations in settings.json:
+```
+Line Spacing             "editor.lineHeight": 20
+Letter Spacing           "editor.letterSpacing": -0.7
+Render Indent Guides     "editor.renderIndentGuides": true
+pep8                     "python.linting.pycodestyleEnabled": true
+flake8                   "python.linting.flake8Enabled": true,
+```
