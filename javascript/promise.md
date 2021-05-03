@@ -1,5 +1,6 @@
 ## Promise Object:
-Contains both the producing code and calls to the consuming code. 
+Object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+Contains both the producing code and calls to the consuming code.
 ```javascript
 let myPromise = new Promise(function(myResolve, myReject) {
 // "Producing Code" (May take some time)
@@ -13,4 +14,14 @@ myPromise.then(
   function(value) { /* code if successful */ },
   function(error) { /* code if some error */ }
 );
+
+// When executing code obtains the result, it should call one of these callbacks:
+// Success      myResolve(result value)
+// Error        myReject(error object)
+```
+### Promise States:
+```
+pending:      Initial state, neither fulfilled nor rejected
+fulfilled:    Operation completed successfully
+rejected:     Operation failed
 ```
