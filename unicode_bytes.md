@@ -23,3 +23,11 @@ Can be used in applications that process pure ASCII instead of unicode text.
 >>> b'\xcf\x84o\xcf\x81\xce\xbdo\xcf\x82'.decode('utf-8')
 'τoρνoς'
 ```
+## Python 3:
+A string object is made up of Unicode characters. Each Unicode character is assigned a code point which can be expressed as a sequence of hex digits.
+```python
+stringobject = 'ant'    # unicode characters are a, n, t
+
+stringobject = '\u0061\u006E\u0074'   # Unicode codepoints
+stringobject
+```
