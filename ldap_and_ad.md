@@ -3,6 +3,9 @@ Lightweight-Directory Access Protocol used for accessing and managing a director
 of information on users, systems, networks, services, and applications. Allows individual users and applications to find and verify whatever information
 they need within their organization. Most common application of LDAP is authenticating users to an AD network i.e. LDAP stores usernames and passwords.
 
+It is not a server, database, authentication procedure, credentials repository and network service; it is a set of rules that must be followed to talk to an external
+server/database. Data managed via LDAP are key/value pairs grouped in a hierachical structure.
+
 ## AD:
 AD is Microsoft's proprietary database system that stores and manages domains, user information, credentials, computers, printers and other shared resources across an organizational network. Stores data as objects with unique distinguished name (DN) attribute.  
 Helps organizations to locate objects throughout their digital infrastructure and carefully regulate who has access to what resources.
