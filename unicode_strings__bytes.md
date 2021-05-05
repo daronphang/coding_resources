@@ -22,7 +22,7 @@ Dec	Hex	Binary    HTML	Char
 ```
 
 ## Unicode:
-Univerval character standard that assigns a codepoint to every character, number and symbol in every language in the world. Unicode characters can be referenced 
+Universal character standard that assigns a codepoint to every character, number and symbol in every language in the world. Unicode characters can be referenced 
 by their codepoint. Has backwards compatability with ASCII.
 i.e. Computer Hope is U+0043 U+006F U+006D U+0070 U+0075 U+0074 U+0065 U+0072 U+00A0 U+0048 U+006F U+0070 U+0065
 
