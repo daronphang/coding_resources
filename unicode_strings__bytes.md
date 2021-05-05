@@ -46,8 +46,9 @@ U+0045	69    E
 
 # Unicode uses hexadecimal base 
 
-Char Dec Unicode UTF-8             Binary 
+Char Dec Unicode UTF-8 Binary      Binary 
 ç    231 U+0347  11000011 10100111 00011100111 = 11100111
+ã    227 U+0343  11000011 10100011 00011100011 = 11100011
 ```
 
 ### Unicode Transformation Format:
