@@ -12,7 +12,7 @@ Without a directory:
 - IT admins would have to manually assign user to every application that needs to be accessed.
 - Updating credentials need to be performed across all applications.
 
-### LDAP vs AD:
+## LDAP vs AD:
 LDAP is an application protocol for querying and editing items in directory service providers like AD, which supports LDAP.
 Together, LDAP and AD make it possible for clients throughout businesses to access the information they need.
 
@@ -25,7 +25,7 @@ LDAP can be used to create secretive policy i.e. some users have acccess to view
 Structure of LDAP:
 ROOT -> Domain Component -> Organization Unit User/Group -> Common Name John
 
-### LDAP-Directory Organization Structure:
+## LDAP-Directory Organization Structure:
 ```
 Root 
   Countries
