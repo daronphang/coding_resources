@@ -4,7 +4,7 @@ i.e. Computer Hope is U+0043 U+006F U+006D U+0070 U+0075 U+0074 U+0065 U+0072 U+
 
 ### UTF Implementations:
 ```
-UTF-8       Each symbol represented by 1-to-4 byte code.
+UTF-8       Each symbol represented by 1-to-4 byte code. Stnadard encoding on web.
 UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
 ```
 
