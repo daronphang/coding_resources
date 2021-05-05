@@ -57,9 +57,9 @@ UTF-16      Fixed width encoding scheme in which each symbol is represented by t
 # Without UTF-8, the character 'A' would be:
 00000000 00000000 00000000 001000001
 
-# With UTF-8:
-A = 0010000001
-2-bytes: 110XXXXX 10XXXXXX              # UTF-8 extracts the X only, '10' in second byte represents continuation
+# With UTF-8:       
+1-byte:  0XXXXXXX                       # UTF-8 extracts the X only
+2-bytes: 110XXXXX 10XXXXXX              # '10' in second byte represents continuation
 3-bytes: 1110XXXX 10XXXXXX 10XXXXXX
 
 # Examples with UTF-8 above 128 decimal:
