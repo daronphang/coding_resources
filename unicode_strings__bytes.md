@@ -11,7 +11,8 @@ b        i        t        s
 The first character set of encoding standard between computers on the internet. 128 characters containing 0-9, A-Z in upper and lower case, and some special characters. Each character is represented by a number between 32-127. Each character requires 7 bits. Character sets used in modern computers and HTML are based on ASCII.
 ```
 Dec	Hex	Binary    HTML	Char
-48	30	00110000              &#48;	0	
+48	30	00110000  &#48;	0	
+
 49	31	00110001	&#49;	1
 50	32	00110010	&#50;	2	
 51	33	00110011	&#51;	3
