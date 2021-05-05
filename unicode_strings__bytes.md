@@ -13,7 +13,7 @@ The first character set of encoding standard between computers on the internet. 
 Dec	Hex	Binary    HTML	Char
 48	30	00110000  &#48;	0	
 
-49	31	00110001	&#49;	1
+49	31	00110001  &#49;	1
 50	32	00110010	&#50;	2	
 51	33	00110011	&#51;	3
 65	41	01000001	&#65;	A	 
