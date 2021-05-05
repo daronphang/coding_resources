@@ -31,11 +31,11 @@ U+0043 U+006F U+006D U+0070 U+0075 U+0074 U+0065 U+0072 U+00A0 U+0048 U+006F U+0
 
 # First 128 characters of Unicode are the same as ASCII characte set
 Unicode ASCII Char
-U+0041	65	  A
-U+0042	66	  B
-U+0043	67	  C
-U+0044	68	  D
-U+0045	69	  E
+U+0041	65    A
+U+0042	66    B
+U+0043	67    C
+U+0044	68    D
+U+0045	69    E
 ```
 
 ### Unicode Transformation Format:
