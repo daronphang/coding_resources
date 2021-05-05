@@ -36,6 +36,8 @@ U+0042	66    B
 U+0043	67    C
 U+0044	68    D
 U+0045	69    E
+
+# Unicode uses hexadecimal base 
 ```
 
 ### Unicode Transformation Format:
