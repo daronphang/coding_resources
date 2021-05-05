@@ -9,13 +9,12 @@ UTF-8       Each symbol represented by 1-to-4 byte code. Stnadard encoding on we
 UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
 ```
 
-## Unicode vs ASCII:
-ASCII is deisgned to represent basic English characters (128 characters). Uses one byte to represent each character.  
-Unicode designed to support characters from all languages across the world (1,000,000 characters). Supports up to four bytes per character.
-
+## ASCII:
+The first character set of encoding standard between computers on the internet. 7-bit character set containing 128 characters. Contains 0-9, A-Z in upper and lower case, and some special characters. Character sets used in modern computers and HTML 
+are based on ASCII.
 
 ## Bytes:
-Similar to strings (sequence of characters), byte is a sequence of bytes. Byte objects are machine readable, whereas Strings are human readable.
+Similar to strings (sequence of characters), byte is a sequence of bytes. Byte objects are machine readable and can be saved into memory, whereas Strings are human readable.
 Can be used in applications that process pure ASCII instead of unicode text.
 ```
 >>> b'\xcf\x84o\xcf\x81\xce\xbdo\xcf\x82'.decode('utf-16')
@@ -23,11 +22,22 @@ Can be used in applications that process pure ASCII instead of unicode text.
 >>> b'\xcf\x84o\xcf\x81\xce\xbdo\xcf\x82'.decode('utf-8')
 'τoρνoς'
 ```
+
+## Encoding & Decoding:
+```
+encode('utf-8')     convert str into bytes
+decode('utf-8')     convert bytes into str
+```
+
+## Unicode vs ASCII:
+ASCII is deisgned to represent basic English characters (128 characters). Uses one byte to represent each character.  
+Unicode designed to support characters from all languages across the world (1,000,000 characters). Supports up to four bytes per character.
+
 ## Python 3:
 A string object is made up of Unicode characters. Each Unicode character is assigned a code point which can be expressed as a sequence of hex digits.
 ```python
 stringobject = 'ant'    # unicode characters are a, n, t
 
-stringobject = '\u0061\u006E\u0074'   # Unicode codepoints
+stringobject = '\u0061\u006E\u0074'   # Unicode codepoints, a hexadecimal number 
 stringobject
 ```
