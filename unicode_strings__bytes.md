@@ -45,7 +45,9 @@ U+0044	68    D
 U+0045	69    E
 
 # Unicode uses hexadecimal base 
-U+0041 = 65 = 01000001 = A
+
+Char Dec Unicode UTF-8             Binary 
+ç    231 U+0347  11000011 10100111 00011100111 = 11100111
 ```
 
 ### Unicode Transformation Format:
