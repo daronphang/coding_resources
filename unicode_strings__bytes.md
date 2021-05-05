@@ -40,6 +40,7 @@ U+0044	68    D
 U+0045	69    E
 
 # Unicode uses hexadecimal base 
+U+0041 = 65 = 01000001 = A
 ```
 
 ### Unicode Transformation Format:
