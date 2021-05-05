@@ -49,7 +49,7 @@ ASCII is deisgned to represent basic English characters (128 characters). Uses o
 Unicode designed to support characters from all languages across the world (1,000,000 characters). Supports up to four bytes per character.
 
 ## Python 3:
-A string object is made up of Unicode characters that is only human readable. Each Unicode character is assigned a code point which can be expressed as a sequence of hex digits.
+A string object is made up of Unicode characters that is only human readable. Each Unicode character is assigned a code point which can be expressed as a sequence of hex digits.  
 A byte object is a sequence of bytes. Machine readable and can be saved into memory. Can be used in applications that process pure ASCII instead of unicode text.
 ```python
 stringobject = 'ant'    # unicode characters are a, n, t
