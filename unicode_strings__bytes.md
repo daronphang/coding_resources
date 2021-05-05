@@ -19,6 +19,11 @@ Dec	Hex	Binary    HTML	Char
 66	42	01000010  &#66;	B	 
 67	43	01000011  &#67;	C	 
 68	44	01000100  &#68;	D	
+
+# Example of 7 bits
+64 32 16 8 4 2 1 
+
+'B' = 66 = 64+2 = 1000010
 ```
 As ASCII characters utilize 7 bits, there are still 127 more combinations to be represented; this gave birth to extended ASCII. However, different organizations
 came up with their own variants; this led to conflicted character encodings, and each extended ASCII was platform dependent.
