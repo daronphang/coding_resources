@@ -62,7 +62,7 @@ UTF-16      Fixed width encoding scheme in which each symbol is represented by t
 2-bytes: 110XXXXX 10XXXXXX              # Above 128 ASCII character, '10' in second byte represents continuation
 3-bytes: 1110XXXX 10XXXXXX 10XXXXXX
 
-# Examples with UTF-8 above 128 decimal:
+# Examples:
 Char Dec Unicode UTF-8             Binary 
 ç    231 U+0347  11000011 10100111 00011100111 = 11100111
 ã    227 U+0343  11000011 10100011 00011100011 = 11100011
