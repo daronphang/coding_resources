@@ -44,8 +44,16 @@ U+0041 = 65 = 01000001 = A
 ```
 
 ### Unicode Transformation Format:
-To represent Unicode characters as binary data (raw 8-bit values).
+Problem with Unicode is that to represent 100,000 characters (or 100,000 numbers equivalent), need 32 bits per character. However, first 128 characters of ASCII
+need only 7 bits. To eliminate wastage, different UTF encodings were introduced. To represent Unicode characters as binary data (raw 8-bit values).
 ```
+# Without UTF-8, the character 'A' would be:
+00000000 00000000 00000000 001000001
+
+# With UTF-8:
+A = 0010000001
+2-byte characters: 110XXXXX 10XXXXXX -> UTF-8 extracts the X only
+
 UTF-8       Each symbol represented by 1-to-4 bytes code. Standard encoding on web.
 UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
 ```
