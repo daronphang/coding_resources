@@ -20,10 +20,12 @@ Dec	Hex	Binary    HTML	Char
 67	43	01000011  &#67;	C	 
 68	44	01000100  &#68;	D	
 ```
+As ASCII characters utilize 7 bits, there are still 127 more combinations to be represented; this gave birth to extended ASCII. However, different organizations
+came up with their own variants; this led to conflicted character encodings, and each extended ASCII was platform dependent.
 
 ## Unicode:
 Universal character standard that assigns a codepoint to every character, number and symbol in every language in the world. Unicode characters can be referenced 
-by their codepoint. Has backwards compatability with ASCII. 
+by their codepoint. Has backwards compatability with ASCII. Total of 143,859 characters.
 ```
 # U+<hex-code> from U+0000 to U+10FFFF
 Computer Hope
