@@ -45,16 +45,15 @@ U+0044	68    D
 U+0045	69    E
 
 # Unicode uses hexadecimal base 
-
-Char Dec Unicode UTF-8             Binary 
-ç    231 U+0347  11000011 10100111 00011100111 = 11100111
-ã    227 U+0343  11000011 10100011 00011100011 = 11100011
 ```
 
 ### Unicode Transformation Format:
 Problem with Unicode is that to represent 100,000 characters (or 100,000 numbers equivalent), need 32 bits per character. However, first 128 characters of ASCII
 need only 7 bits. To eliminate wastage, different UTF encodings were introduced. To represent Unicode characters as binary data (raw 8-bit values).
 ```
+UTF-8       Each symbol represented by 1-to-4 bytes code. Standard encoding on web.
+UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
+
 # Without UTF-8, the character 'A' would be:
 00000000 00000000 00000000 001000001
 
@@ -62,8 +61,10 @@ need only 7 bits. To eliminate wastage, different UTF encodings were introduced.
 A = 0010000001
 2-byte characters: 110XXXXX 10XXXXXX -> UTF-8 extracts the X only
 
-UTF-8       Each symbol represented by 1-to-4 bytes code. Standard encoding on web.
-UTF-16      Fixed width encoding scheme in which each symbol is represented by two-byte code.
+# Examples with UTF-8 above 128 decimal:
+Char Dec Unicode UTF-8             Binary 
+ç    231 U+0347  11000011 10100111 00011100111 = 11100111
+ã    227 U+0343  11000011 10100011 00011100011 = 11100011
 ```
 
 ### Unicode Encoding & Decoding:
