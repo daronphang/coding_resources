@@ -1,5 +1,5 @@
 ## History:
-Characters were represented with 8 bits (1 byte) of memory. A bit a single binary digit that can represent 0 or 1. 1 byte can have 255 different combinations of binary.
+Characters were represented with 8 bits (1 byte) of memory. A bit a single binary digit that can represent 0 or 1. 1 byte can have 255 different combinations of binary (255 different numbers).
 ```
 01100010 01101001 01110100 01110011
 b        i        t        s
