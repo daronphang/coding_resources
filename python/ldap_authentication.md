@@ -1,7 +1,6 @@
 ## LDAP Protocol:
 1) Attribute names and string values must be stored in unicode with UTF-8 byte encoding as interaction with LDAP server is in bytes.
 2) Attribute names must use only ASCII letters, numbers and hypen character.
-3) 
 
 ### Bind:
 Authentication operation that can be performed in three ways:
@@ -37,8 +36,8 @@ conn = Connection(server, user="Domain\\User", password="password", authenticati
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
 >>> print(conn)
-ldap://ipa.demo1.freeipa.org:389 - cleartext - user: None - bound - open - <local: 192.168.1.101:49813 - remote: 209.132.178.99:389> -
-tls not started - listening - SyncStrategy - internal decoder
+# ldap://ipa.demo1.freeipa.org:389 - cleartext - user: None - bound - open - <local: 192.168.1.101:49813 - remote: 209.132.178.99:389> -
+# tls not started - listening - SyncStrategy - internal decoder
 
 server.schema     # prints all information about server
 ```
