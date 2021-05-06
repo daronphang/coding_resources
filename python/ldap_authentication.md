@@ -63,8 +63,16 @@ def check_credentials(username, password):
 from ldap3 import Server, Connection, ALL, NTLM
 
 def ldap_auth(username, password):
-    server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
-    conn = Connection(server, user="Domain\\User", password="password", authentication=NTLM)
+    LDAP_SERVER = 'ldap://our-ldap.server'
+    LDAP_USERNAME = username
+    LDAP_PASSWORD = password
+    base_dn = 'dc=somedomain,dc=com'  
+    
+    server = Server(LDAP_SERVER,  get_info=ALL)
+    conn = Connection(server, 
+                      user=LDAP_USERNAME,
+                      password=LDAP_PASSWORD,
+                      authentication=NTLM)
   
     if not conn.bind():
         print(f'Cannot bind to server: {conn.last_error}')
