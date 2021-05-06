@@ -66,21 +66,33 @@ def ldap_auth(username, password):
     LDAP_SERVER = 'ldap://our-ldap.server'
     LDAP_USERNAME = username
     LDAP_PASSWORD = password
-    base_dn = 'dc=somedomain,dc=com'  
+    ldap_base_dn = 'dc=somedomain,dc=com' 
+    ldap_search_filter = '(&(objectclass=person)(uid=admin))'
+    ldap_attributes = ['sn','krbLastPwdChange', 'objectclass']
     
-    server = Server(LDAP_SERVER,  get_info=ALL)
-    conn = Connection(server, 
-                      user=LDAP_USERNAME,
-                      password=LDAP_PASSWORD,
-                      authentication=NTLM)
-  
-    if not conn.bind():
-        print(f'Cannot bind to server: {conn.last_error}')
-        ldap_msg = 'failed'
+    try:
+        server = Server(LDAP_SERVER, get_info=ALL)
+        conn = Connection(server, user=LDAP_USERNAME, password=LDAP_PASSWORD)
+    except ldap3.LDAPExceptionError:
+        ldap_msg = {
+            'message': 'failed',
+            'error': conn.last_error
+        }
     else:
-        print(f'Sucessful bind to ldap server')
-        ldap_msg = 'Success'
-    return ldap_msg
+        conn.bind()
+        # Retrieve hierarchy structure of user
+        conn.search(search_base=ldap_base_dn,
+                    search_filter=ldap_search_filter,
+                    attributes=ldap_attributes)
+        entry = conn.entries[0].entry_to_json()
+        
+        # Add success message to json output
+        msg = {'message': 'success'}
+        entry_json = json.loads(entry)
+        entry_json.update(msg)
+        ldap_msg = json.dumps(entry_json)
+    finally:
+        conn.unbind()
   
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
@@ -89,27 +101,7 @@ def ldap_auth(username, password):
 # tls not started - listening - SyncStrategy - internal decoder
 
 server.schema     # prints all information about server
-```
-### Connection object attributes:
-```
-result          Result of last operation returned by server
-response        Entries found if last operation is Search
-entries         Entries found exposed by ldap3 Abstraction layer if last operation is Search
-last_error      Error if occured in operation
-bound           True if connection is bound to server
-listening       True if socket is listening to server
-closed          True if socket is not open
-```
 
-### Connection Context Manager:
-```python
-with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123') as conn:
-        conn.search(search_base='dc=demo1,dc=freeipa,dc=org',
-                    search_filter='(&(objectclass=person)(uid=admin))', 
-                    attributes=['sn','krbLastPwdChange', 
-                    'objectclass'])
-        entry = conn.entries[0] 
-        
 # Mandatory search_filter example:
 # &, |, !
 # Search all users named John or Fred with an email ending with @example.org
@@ -120,4 +112,14 @@ with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=o
     )
     (mail=*@example.org)
 )
+```
+### Connection object attributes:
+```
+result          Result of last operation returned by server
+response        Entries found if last operation is Search
+entries         Entries found exposed by ldap3 Abstraction layer if last operation is Search
+last_error      Error if occured in operation
+bound           True if connection is bound to server
+listening       True if socket is listening to server
+closed          True if socket is not open
 ```
