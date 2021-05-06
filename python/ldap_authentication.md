@@ -25,18 +25,32 @@ get_response(message_id, timeout)   # Exception raised if response has not arriv
 ```python
 import ldap
 
-conn = ldap.initialize('ldap://our-ldap.server')
-conn.protocol_version = 3
-conn.set_option(ldap.OPT_REFERRALS, 0)
-conn.simple_bind_s('ldap_login', 'ldap_password')                       # _s means request will be executed sychronously
-result = connect.search_s('dc=somedomain,dc=com',                       # domain  
-                          ldap.SCOPE_SUBTREE,                           # search object and all its descendants    
-                          'userPrincipalName=user@somedomain.com',      
-                          ['memberOf'])                                 # attributes to receive 
-
+def check_credentials(username, password):
+  LDAP_SERVER = 'ldap://our-ldap.server'
+  LDAP_USERNAME = username
+  LDAP_PASSWORD = password
+  base_dn = 'dc=somedomain,dc=com'                            # domain  
+  ldap_filter = 'userPrincipalName=user@somedomain.com'
+  ldap_attr = ['memberOf']                                    # attributes to receive 
+  
+  try:
+    conn = ldap.initialize(LDAP_SERVER)
+    conn.set_option(ldap.OPT_REFERRALS, 0)    # perform sychronous bind
+    conn.simple_bind_s(LDAP_USERNAME, LDAP_PASSWORD)  # _s means request will be executed sychronously
+  except ldap.INVALID_CREDENTIALS:
+    conn.unbind()
+    return 'Wrong username or password'
+  except ldap.SERVER_DOWN:
+    return 'AD server not available'
+  
+  result = connect.search_s(base_dn,                     
+                          ldap.SCOPE_SUBTREE,   # search object and all its descendants    
+                          ldap_filter,      
+                          ldap_attr)           
+  conn.unbind()
+                         
 # result is a tuple
 # [(‘CN=user,OU=user_orgunit,OU=Users,OU=City,DC=somedomain,DC=com’, {‘memberOf’: [‘group1’, ‘group2’]})]
-
 ```
 ```python               
 from ldap3 import Server, Connection, ALL, NTLM
