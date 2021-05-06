@@ -40,4 +40,9 @@ conn = Connection(server, user="Domain\\User", password="password", authenticati
 # tls not started - listening - SyncStrategy - internal decoder
 
 server.schema     # prints all information about server
+
+# Connection context manager
+with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123') as conn:
+        conn.search('dc=demo1,dc=freeipa,dc=org', '(&(objectclass=person)(uid=admin))', attributes=['sn','krbLastPwdChange', 'objectclass'])
+        entry = conn.entries[0]
 ```
