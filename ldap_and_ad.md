@@ -36,6 +36,7 @@ Root
             Organizational Units
                   Individuals
 
+dc      domain component
 o       Organization name
 ou      Organization unit
 cn      Common name
