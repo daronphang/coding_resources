@@ -94,14 +94,15 @@ server.schema     # prints all information about server
 ```
 result          Result of last operation returned by server
 response        Entries found if last operation is Search
-entries         Entries found exposed by ldap3 Abstraction layer
+entries         Entries found exposed by ldap3 Abstraction layer if last operation is Search
 last_error      Error if occured in operation
 bound           True if connection is bound to server
 listening       True if socket is listening to server
 closed          True if socket is not open
 ```
+
+### Connection Context Manager:
 ```python
-# Connection context manager
 with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123') as conn:
         conn.search(search_base='dc=demo1,dc=freeipa,dc=org',
                     search_filter='(&(objectclass=person)(uid=admin))', 
