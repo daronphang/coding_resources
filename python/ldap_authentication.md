@@ -10,6 +10,7 @@ Simple Password Bind    Provide Distinguished Name (DN) and password to determin
 SASL                    Provides additional methods to identify a user i.e. external certificate, Kerberos ticket
 ```
 ### Client Strategy:
+Parameter of Connection object.
 ```
 # Synchronous, returns boolean if successful
 SYNC            
@@ -52,6 +53,9 @@ server.schema     # prints all information about server
 
 # Connection context manager
 with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123') as conn:
-        conn.search('dc=demo1,dc=freeipa,dc=org', '(&(objectclass=person)(uid=admin))', attributes=['sn','krbLastPwdChange', 'objectclass'])
+        conn.search('dc=demo1,dc=freeipa,dc=org',
+                    '(&(objectclass=person)(uid=admin))', 
+                    attributes=['sn','krbLastPwdChange', 
+                    'objectclass'])
         entry = conn.entries[0] 
 ```
