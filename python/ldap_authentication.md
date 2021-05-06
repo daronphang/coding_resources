@@ -89,8 +89,9 @@ def ldap_auth(username, password):
 # tls not started - listening - SyncStrategy - internal decoder
 
 server.schema     # prints all information about server
-
-# Connection object attributes:
+```
+### Connection object attributes:
+```
 result          Result of last operation returned by server
 response        Entries found if last operation is Search
 entries         Entries found exposed by ldap3 Abstraction layer
