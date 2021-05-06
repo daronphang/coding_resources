@@ -3,12 +3,42 @@
 2) Attribute names must use only ASCII letters, numbers and hypen character.
 3) 
 
+### Bind:
+Authentication operation that can be performed in three ways:
 ```
-import ldap3
+Anonymous Bind          Public access to LDAP server where no credentials are provided
+Simple Password Bind    Provide Distinguished Name (DN) and password to determine authorization level
+SASL                    Provides additional methods to identify a user i.e. external certificate, Kerberos ticket
+```
+### Client Strategy:
+```
+# Synchronous, returns boolean if successful
+SYNC            
+RESTARTABLE
+
+# Asynchronous, returns a number and message_id of request. Can send multiple requests without waiting for responses
+ASYNC
+REUSABLE
+
+get_response(message_id, timeout)   # Exception raised if response has not arrived after timeout (default is 10s)
+```
+```python
+import ldap
 
 conn = ldap.initialize('ldap://our-ldap.server')
 conn.protocol_version = 3
 conn.set_option(ldap.OPT_REFERRALS, 0)
+```
+```python
+from ldap3 import Server, Connection, ALL, NTLM
 
+server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
+conn = Connection(server, user="Domain\\User", password="password", authentication=NTLM)
+# conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
+>>> print(conn)
+ldap://ipa.demo1.freeipa.org:389 - cleartext - user: None - bound - open - <local: 192.168.1.101:49813 - remote: 209.132.178.99:389> -
+tls not started - listening - SyncStrategy - internal decoder
+
+server.schema     # prints all information about server
 ```
