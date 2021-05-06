@@ -30,7 +30,7 @@ ROOT -> Domain Component -> Organization Unit User/Group -> Common Name John
 
 ## LDAP-Directory Organization Structure:
 ```
-Root 
+Root (Domain Component)
   Countries
        Organizations
             Organizational Units
@@ -43,4 +43,7 @@ cn      Common name
 sn      Surname
 dn      Distinguish name
 User    User object
+
+DN for an entry can be known starting from entry in question and traversing up the tree until hit root
+i.e. uid=roger,ou=people,dc=example,dc=com
 ```
