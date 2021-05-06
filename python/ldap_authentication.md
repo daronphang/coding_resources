@@ -2,6 +2,13 @@
 1) Attribute names and string values must be stored in unicode with UTF-8 byte encoding as interaction with LDAP server is in bytes.
 2) Attribute names must use only ASCII letters, numbers and hypen character.
 
+## LDAP Protocol Sequence:
+1) Client opens connection
+2) Client authenticates (bind)
+3) Client sends operations (search)
+4) Server sends results
+5) Client unbinds and closes connection
+
 ### Bind:
 Authentication operation that can be performed in three ways:
 ```
@@ -55,8 +62,18 @@ def check_credentials(username, password):
 ```python               
 from ldap3 import Server, Connection, ALL, NTLM
 
-server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
-conn = Connection(server, user="Domain\\User", password="password", authentication=NTLM)
+def ldap_auth(username, password):
+  server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
+  conn = Connection(server, user="Domain\\User", password="password", authentication=NTLM)
+  
+  if not conn.bind():
+    print(f'Cannot bind to server: {conn.last_error}')
+    ldap_msg = 'failed'
+  else:
+    print(f'Sucessful bind to ldap server')
+    ldap_msg = 'Success'
+  return ldap_msg
+  
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
 >>> print(conn)
