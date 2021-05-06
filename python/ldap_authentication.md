@@ -90,6 +90,16 @@ def ldap_auth(username, password):
 
 server.schema     # prints all information about server
 
+# Connection object attributes:
+result          Result of last operation returned by server
+response        Entries found if last operation is Search
+entries         Entries found exposed by ldap3 Abstraction layer
+last_error      Error if occured in operation
+bound           True if connection is bound to server
+listening       True if socket is listening to server
+closed          True if socket is not open
+```
+```python
 # Connection context manager
 with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123') as conn:
         conn.search(search_base='dc=demo1,dc=freeipa,dc=org',
@@ -108,6 +118,4 @@ with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=o
     )
     (mail=*@example.org)
 )
-
-
 ```
