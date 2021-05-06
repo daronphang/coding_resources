@@ -33,28 +33,28 @@ get_response(message_id, timeout)   # Exception raised if response has not arriv
 import ldap
 
 def check_credentials(username, password):
-  LDAP_SERVER = 'ldap://our-ldap.server'
-  LDAP_USERNAME = username
-  LDAP_PASSWORD = password
-  base_dn = 'dc=somedomain,dc=com'                            # domain  
-  ldap_filter = 'userPrincipalName=user@somedomain.com'
-  ldap_attr = ['memberOf']                                    # attributes to receive 
+    LDAP_SERVER = 'ldap://our-ldap.server'
+    LDAP_USERNAME = username
+    LDAP_PASSWORD = password
+    base_dn = 'dc=somedomain,dc=com'                            # domain  
+    ldap_filter = 'userPrincipalName=user@somedomain.com'
+    ldap_attr = ['memberOf']                                    # attributes to receive 
+    
+    try:
+        conn = ldap.initialize(LDAP_SERVER)
+        conn.set_option(ldap.OPT_REFERRALS, 0)    # perform sychronous bind
+        conn.simple_bind_s(LDAP_USERNAME, LDAP_PASSWORD)  # _s means request will be executed sychronously
+    except ldap.INVALID_CREDENTIALS:
+        conn.unbind()
+        return 'Wrong username or password'
+    except ldap.SERVER_DOWN:
+        return 'AD server not available'
   
-  try:
-    conn = ldap.initialize(LDAP_SERVER)
-    conn.set_option(ldap.OPT_REFERRALS, 0)    # perform sychronous bind
-    conn.simple_bind_s(LDAP_USERNAME, LDAP_PASSWORD)  # _s means request will be executed sychronously
-  except ldap.INVALID_CREDENTIALS:
-    conn.unbind()
-    return 'Wrong username or password'
-  except ldap.SERVER_DOWN:
-    return 'AD server not available'
-  
-  result = connect.search_s(base_dn,                     
+    result = connect.search_s(base_dn,                     
                           ldap.SCOPE_SUBTREE,   # search object and all its descendants    
                           ldap_filter,      
                           ldap_attr)           
-  conn.unbind()
+    conn.unbind()
                          
 # result is a tuple
 # [(‘CN=user,OU=user_orgunit,OU=Users,OU=City,DC=somedomain,DC=com’, {‘memberOf’: [‘group1’, ‘group2’]})]
@@ -63,16 +63,16 @@ def check_credentials(username, password):
 from ldap3 import Server, Connection, ALL, NTLM
 
 def ldap_auth(username, password):
-  server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
-  conn = Connection(server, user="Domain\\User", password="password", authentication=NTLM)
+    server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
+    conn = Connection(server, user="Domain\\User", password="password", authentication=NTLM)
   
-  if not conn.bind():
-    print(f'Cannot bind to server: {conn.last_error}')
-    ldap_msg = 'failed'
-  else:
-    print(f'Sucessful bind to ldap server')
-    ldap_msg = 'Success'
-  return ldap_msg
+    if not conn.bind():
+        print(f'Cannot bind to server: {conn.last_error}')
+        ldap_msg = 'failed'
+    else:
+        print(f'Sucessful bind to ldap server')
+        ldap_msg = 'Success'
+    return ldap_msg
   
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
