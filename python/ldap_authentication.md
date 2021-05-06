@@ -93,6 +93,7 @@ def ldap_auth(username, password):
         ldap_msg = json.dumps(entry_json)
     finally:
         conn.unbind()
+        return ldap_msg
   
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
