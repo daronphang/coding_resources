@@ -27,8 +27,17 @@ import ldap
 conn = ldap.initialize('ldap://our-ldap.server')
 conn.protocol_version = 3
 conn.set_option(ldap.OPT_REFERRALS, 0)
+conn.simple_bind_s('ldap_login', 'ldap_password')                       # _s means request will be executed sychronously
+result = connect.search_s('dc=somedomain,dc=com',                       # domain  
+                          ldap.SCOPE_SUBTREE,                           # search object and all its descendants    
+                          'userPrincipalName=user@somedomain.com',      
+                          ['memberOf'])                                 # attributes to receive 
+
+# result is a tuple
+# [(‘CN=user,OU=user_orgunit,OU=Users,OU=City,DC=somedomain,DC=com’, {‘memberOf’: [‘group1’, ‘group2’]})]
+
 ```
-```python
+```python               
 from ldap3 import Server, Connection, ALL, NTLM
 
 server = Server('ipa.demo1.freeipa.org',  get_info=ALL)
@@ -44,5 +53,5 @@ server.schema     # prints all information about server
 # Connection context manager
 with Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123') as conn:
         conn.search('dc=demo1,dc=freeipa,dc=org', '(&(objectclass=person)(uid=admin))', attributes=['sn','krbLastPwdChange', 'objectclass'])
-        entry = conn.entries[0]
+        entry = conn.entries[0] 
 ```
