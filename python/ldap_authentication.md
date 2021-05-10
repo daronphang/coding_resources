@@ -86,7 +86,7 @@ def ldap_auth(username: str, password: str):
                     search_filter=ldap_search_filter,
                     attributes=ldap_attributes)
         response = conn.response[0]    # output is type <class 'list'>, selecting [0] takes first item which is dict
-        # if username/password is wrong, output is None
+        # if username/password is wrong, returns an empty list []
         
         # Add success message to json output
         response['message'] = 'success'
