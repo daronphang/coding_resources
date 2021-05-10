@@ -22,6 +22,7 @@ pep8                      "python.linting.pycodestyleEnabled": true
 flake8                    "python.linting.flake8Enabled": true
 Right Vertical            "editor.rulers": [80]
 Kite                      "kite.codefinder.enableLineDecoration": false
-Code Runner               "code-runner.clearPreviou"code-runner.executorMap": {
-                           "python": "C:\\directory\\python.exe",sOutput": true}
+Code Runner               "code-runner.clearPreviousOutput": true,
+                          "code-runner.clearPreviou"code-runner.executorMap": {
+                                  "python": "C:\\directory\\python.exe",sOutput": true}
 ```
