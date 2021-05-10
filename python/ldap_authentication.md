@@ -85,12 +85,24 @@ def ldap_auth(username: str, password: str):
         conn.search(search_base=ldap_base_dn,
                     search_filter=ldap_search_filter,
                     attributes=ldap_attributes)
-        response = conn.response[0]    # output is type <class 'list'>, selecting [0] takes first item which is dict
+                    
+        output = conn.response          # output is type <class 'list'
         # if username/password is wrong, returns an empty list []
         
-        # Add success message to json output
-        response['message'] = 'success'
-        ldap_msg = response
+        # checking credentials
+        if len(output) > 0:
+            response = output[0]    # response is of type dict
+            ldap_msg = {
+                'message': 'success',
+                'uid': response['raw_attributes']['uid'][0].decode('utf-8'),
+                'dept': response['raw_attributes']['businessCategory'][0].decode('utf-8')
+            }
+        else:
+             ldap_msg = {
+                'message': 'Login failed. Username or password is incorrect',
+                'status': 401
+             }
+      
     finally:
         conn.unbind()
         return ldap_msg
