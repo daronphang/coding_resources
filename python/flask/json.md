@@ -12,3 +12,9 @@ Payload refers to an integral part of each unit of data being transmitted.
   "data": "Hello, World!"
 }
 ```
+## Convert Python List to JSON:
+```python
+import json
+
+jsonString = json.dumps(list)   # dumps() takes list as argument and returns JSON string
+```
