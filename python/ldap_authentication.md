@@ -38,7 +38,7 @@ def check_credentials(username, password):
     LDAP_PASSWORD = password
     base_dn = 'dc=somedomain,dc=com'                            # domain  
     ldap_filter = 'userPrincipalName=user@somedomain.com'
-    ldap_attr = ['memberOf']                                    # attributes to receive 
+    ldap_attr = ['memberOf'] or ['*']                           # attributes to receive 
     
     try:
         conn = ldap.initialize(LDAP_SERVER)
