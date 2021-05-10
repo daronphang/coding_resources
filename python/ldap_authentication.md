@@ -59,21 +59,22 @@ def check_credentials(username, password):
 # result is a tuple
 # [(‘CN=user,OU=user_orgunit,OU=Users,OU=City,DC=somedomain,DC=com’, {‘memberOf’: [‘group1’, ‘group2’]})]
 ```
-```python               
+```python
+import ldap3
 from ldap3 import Server, Connection, ALL, NTLM
 
-def ldap_auth(username, password):
-    LDAP_SERVER = 'ldap://our-ldap.server'
+def ldap_auth(username: str, password: str):
+    LDAP_SERVER = 'ldap://ldap.testing.com'
     LDAP_USERNAME = username
     LDAP_PASSWORD = password
-    ldap_base_dn = 'dc=somedomain,dc=com' 
+    ldap_base_dn = 'dc=somedomain,dc=com'   # or 'ou=mtworkers,o=test.com' 
     ldap_search_filter = '(&(objectclass=person)(uid=admin))'
     ldap_attributes = ['sn','krbLastPwdChange', 'objectclass']
     
     try:
         server = Server(LDAP_SERVER, get_info=ALL)
         conn = Connection(server, user=LDAP_USERNAME, password=LDAP_PASSWORD)
-    except ldap3.LDAPExceptionError:
+    except ldap3.core.exceptions:
         ldap_msg = {
             'message': 'failed',
             'error': conn.last_error
@@ -84,13 +85,11 @@ def ldap_auth(username, password):
         conn.search(search_base=ldap_base_dn,
                     search_filter=ldap_search_filter,
                     attributes=ldap_attributes)
-        entry = conn.entries[0].entry_to_json()
+        response = conn.response[0]    # output is a list, selecting [0] takes first item which is dict
         
         # Add success message to json output
-        msg = {'message': 'success'}
-        entry_json = json.loads(entry)
-        entry_json.update(msg)
-        ldap_msg = json.dumps(entry_json)
+        response['message'] = 'success'
+        ldap_msg = response
     finally:
         conn.unbind()
         return ldap_msg
