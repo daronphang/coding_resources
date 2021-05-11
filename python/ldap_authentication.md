@@ -60,52 +60,73 @@ def check_credentials(username, password):
 # [(‘CN=user,OU=user_orgunit,OU=Users,OU=City,DC=somedomain,DC=com’, {‘memberOf’: [‘group1’, ‘group2’]})]
 ```
 ```python
-import ldap3
-from ldap3 import Server, Connection, ALL, NTLM
+from ldap3 import Server, Connection, ALL
+from ldap3.core.exceptions import LDAPExceptionError
 
-def ldap_auth(username: str, password: str):
-    LDAP_SERVER = 'ldap://ldap.testing.com'
-    LDAP_USERNAME = username
-    LDAP_PASSWORD = password
-    ldap_base_dn = 'dc=somedomain,dc=com'   # or 'ou=mtworkers,o=test.com' 
-    ldap_search_filter = '(&(objectclass=person)(uid=admin))'
-    ldap_attributes = ['sn','krbLastPwdChange', 'objectclass']
+
+def ldap_authentication(username: str, password: str):
+    """Takes username and password provided by client from frontend Form and
+    sends to LDAP server for authentication. Returns 'success' message if True,
+    else 'failed'.
+    """
+
+    ldap_config = dict()
+
+    ldap_config['LDAP_SERVER'] = 'ldap://test.micron.com'
+    ldap_config['LDAP_BASE_DN'] = 'ou=mtworkers,o=micron.com'       # 'ou=mtworkers,o=micron.com'  'dc=na,dc=micron,dc=com'
+    LDAP_ATTRIBUTES = ['*']
+    LDAP_SEARCH_FILTER = '(uid=' + username.split('@')[0] + ')'
+    ldap_msg = None
+    ldap_username = 'uid=' + username + ',' + ldap_config['LDAP_BASE_DN']
+
+    server = Server(ldap_config['LDAP_SERVER'], get_info=ALL)
+    conn = Connection(server, user=ldap_username, password=password)
     
     try:
-        server = Server(LDAP_SERVER, get_info=ALL)
-        conn = Connection(server, user=LDAP_USERNAME, password=LDAP_PASSWORD)
-    except ldap3.core.exceptions:
-        ldap_msg = {
-            'message': 'failed',
-            'error': conn.last_error
-        }
-    else:
         conn.bind()
-        # Retrieve hierarchy structure of user
-        conn.search(search_base=ldap_base_dn,
-                    search_filter=ldap_search_filter,
-                    attributes=ldap_attributes)
-                    
-        output = conn.response          # output is type <class 'list'
-        # if username/password is wrong, returns an empty list []
-        
-        # checking credentials
-        if len(output) > 0:
-            response = output[0]    # response is of type dict
+        result = conn.result
+
+        if result['result'] == 49 or result['result'] == 32:
             ldap_msg = {
-                'message': 'success',
+                'message': 'login failed',
+                'result code': result['result'],
+                'description': result['description']
+                }
+        
+        if result['result'] == 0:
+            # Retrieving user hierarchy
+            conn.search(search_base=ldap_config['LDAP_BASE_DN'],
+                        search_filter=LDAP_SEARCH_FILTER,
+                        attributes=LDAP_ATTRIBUTES)
+            output = conn.response
+            response = output[0]    # response is of type dict
+
+            # for x in response:
+            #     print(f'{x}: {response[x]}')
+            #     if isinstance(response[x], ldap3.utils.ciDict.CaseInsensitiveDict):
+            #         for y in response[x]:
+            #             print(f'{y}: {response[x][y]}')
+            # print('')
+
+            # Returning necessary info
+            ldap_msg = {
+                'message': result['description'],
                 'uid': response['raw_attributes']['uid'][0].decode('utf-8'),
-                'dept': response['raw_attributes']['businessCategory'][0].decode('utf-8')
+                'dept': response['raw_attributes']
+                ['businessCategory'][0].decode('utf-8')
             }
-        else:
-             ldap_msg = {
-                'message': 'Login failed. Username or password is incorrect',
-                'status': 401
-             }
-      
-    finally:
+    
+    except LDAPExceptionError as e:
+        ldap_msg = {
+            'message': 'connection failure',
+            'error': e
+        }
+    
+    else:
         conn.unbind()
+    finally:
         return ldap_msg
+                
   
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
