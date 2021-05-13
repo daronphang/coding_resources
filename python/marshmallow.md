@@ -9,12 +9,18 @@ database schemas to Python objects. Used primarily in commmunication between bac
 Introduces schema which can be used to apply rules to validate the data being deserialized or change the way they are serialized. A schema defines the rules that guides deserialization called load and serialization, called dump. 
 ```python 
 from marshmallow import Schema, fields
+
+class Person(self, name, age):
+    self.name = name
+    self.age = age
+    
 class PersonSchema(Schema):
     name = fields.Str()
     age = fields.Int()
 ```
 ### Validating Inputs (Deserialization):
 ```python
+# Converting payload data to app-level data structure
 data = {
     'name': 'bill',
     'age': 'nineteen'
@@ -22,13 +28,14 @@ data = {
 person = PersonSchema().load(data)
 # ValidationError: {'age': ['Not a valid integer.']}
 
-# Successful deserialziation output:
-{'name': 'bill', 'age': 19}
+# Successful deserialziation output which returns dictionary:
+# {'name': 'bill', 'age': 19}
 ```
 ### Serializing Objects:
 ```python
-person = Person(name='bill', age=19)
-serialized_value = PersonSchema().dump(person)
+# Converting app-level data to Python primitive data
+person = Person(name='bill', age=19)        # app-level object
+serialized_value = PersonSchema().dump(person)      # dumps() for returning JSON-encoded, dump() for dict
 # { 
 #    'name': 'bill',
 #    'age': 19,
@@ -92,7 +99,7 @@ class PersonSchema(Schema):
     age = fields.Int()
     
     @post_load
-    def make_person(self, data, **__):
+    def make_person(self, data, **kwargs):
         return Person(**data)
 
 # when deserialzing, output is directly an instance of class Person
