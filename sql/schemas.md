@@ -14,6 +14,8 @@ Database schema will include:
 - Unique keys for all entries and database objects
 - Each column in a table has a name and data type
 
+Schemas are important for designing database management systems (DBMS) or relational database management sysytems (RDBMS). Examples of DBMS include MySQL, Oracle, PostgreSQL, etc.
+
 ### Built-in Schemas:
 ```
 dbo                     # default schema for newly created database
@@ -21,8 +23,21 @@ guest
 sys
 INFORMATION_SCHEMA
 ```
+### Creating Schema:
 ```
 CREATE SCHEMA schema_name [AUTHORIZATION owner_name]
+```
+### Creating Objects:
+```
+# General syntax
+CREATE TABLE schemaname.tablename(
+ values... );
+ 
+CREATE TABLE geeks_sch.Geektab(
+G_id INT PRIMARY KEY IDENTITY, 
+Name VARCHAR(200), 
+DOJ DATETIME2 NOT NULL
+); 
 ```
 ### Query All Schema:
 ```
