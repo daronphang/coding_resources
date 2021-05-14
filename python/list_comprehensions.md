@@ -28,4 +28,8 @@ toppings = ['cheese', 'egg', 'bean', 'spam']
 meals = [(burger, topping) for burger in burgers for topping in toppings]
 # [('beef', 'cheese'), ('beef', 'egg'), ('beef', 'bean'), ('beef', 'spam'), ('chicken', 'cheese'), ('chicken', 'egg'), ('chicken', 'bean'), ('chicken', 'spam'), ('bean', 
 # 'cheese'), ('bean', 'egg'), ('bean', 'bean'), ('bean', 'spam')]
+
+meals = [[(burger, topping) for burger in burgers] for topping in toppings]
+# [[('beef', 'cheese'), ('chicken', 'cheese'), ('bean', 'cheese')], [('beef', 'egg'), ('chicken', 'egg'), ('bean', 'egg')], [('beef', 'bean'), ('chicken', 'bean'), ('bean', 
+# 'bean')], [('beef', 'spam'), ('chicken', 'spam'), ('bean', 'spam')]]
 ```
