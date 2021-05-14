@@ -16,3 +16,13 @@ def infinite_sequence():
         yield num
         num += 1
 ```
+
+### Methods:
+```
+.send()         # used to pass data
+.throw()        # throw an error 
+.close()        # stop a generator
+
+# pal_gen.throw(ValueError("We don't like large palindromes"))
+# pal_gen.close()
+```
