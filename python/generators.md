@@ -1,5 +1,5 @@
 ## Generators:
-Used to create lazy iterators that do not store contents in memory. common use of generators is to work with data streams or large files like CSV.  
+Used to create lazy iterators that do not store contents in memory. common use of generators is to work with large files like CSV.  
 Uses yield instead of return.
 ```python
 def csv_reader(file_name):
