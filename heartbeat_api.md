@@ -27,13 +27,27 @@ jQuery( document ).on( 'heartbeat-send', function ( event, data ) {
 //Override  (bool) Whether to over-ride existing data. If true, any data previously added with the provided handle is replaced.
 
 wp.heartbeat.enqueue(
-	'wptuts-plugin',
-	{
-		'foo': 'bar',
-		'wp': 'tuts',
-	},
+'wptuts-plugin',
+{
+	'foo': 'bar',
+	'wp': 'tuts',
+},
 	false
 );
+
+// use wp.heartbeat.isQueued() to check if particular handle already has data waiting in queue
+// adding data to queued data
+// Data to add
+var new_data = {
+	'version': '3.6'
+};
+
+if ( data = wp.heartbeat.isQueued( 'wptuts-plugin' ) ) {
+	// Data already exists - merge data with new data
+	new_data = jQuery.extend( data, new_data );
+}
+
+
 
 
 ```
