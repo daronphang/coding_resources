@@ -1,5 +1,6 @@
 ## Heartbeat API:
 Simple server polling API built in to WordPress, allowing near-real-time frontend updates. Allows for regular communication beteween browser and server.
+More for race condition.
 
 When the page loads, the client-side heartbeat code sets up an interval (called the “tick”) to run every 15-60 seconds. 
 When it runs, heartbeat gathers data to send via a jQuery event, then sends this to the server and waits for a response. 
