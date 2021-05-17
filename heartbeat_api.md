@@ -43,17 +43,46 @@ var new_data = {
 };
 
 if ( data = wp.heartbeat.isQueued( 'wptuts-plugin' ) ) {
-	// Data already exists - merge data with new data
-	new_data = jQuery.extend( data, new_data );
+new_data = jQuery.extend( data, new_data );
 }
 
-
-
-
+// Queue and over-ride existing data
+wp.heartbeat.enqueue(
+	'wptuts-plugin',
+	new_data,
+	true
+);
 ```
 
 ### Receiving and Responding on Server:
-```python
+```
+# hooks triggered from server
+heartbeat_received	Filters server's response to the browser and passes data received.
+heartbeat_send		Filters server's response to the browser. Does not pass received data.
+heartbeat_tick		Action triggered before response is set.
+
+# If current user logs out
+heartbeat_nopriv_received
+heartbeat_nopriv_send
+heartbeat_nopriv_tick
+
+function wptuts_respond_to_browser( $response, $data, $screen_id ) {
+	if ( isset( $data['wptuts-plugin'] ) ) {
+		// We have data with our handle! Lets respond with something...
+
+		// echo $data['wptuts-plugin']['foo']; //prints 'bar';
+		$response['wptuts-plugin'] = array(
+			'hello' => 'world'
+		);
+	}
+	return $response;
+}
+
+// Logged in users:
+add_filter( 'heartbeat_received', 'wptuts_respond_to_browser', 10, 3 );
+
+// Logged out users
+add_filter( 'heartbeat_nopriv_received', 'wptuts_respond_to_browser', 10, 3 );
 ```
 
 ### Processing Response on Frontend:
