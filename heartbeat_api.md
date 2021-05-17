@@ -1,5 +1,5 @@
 ## Heartbeat API:
-Simple server polling API built in to WordPress, allowing near-real-time frontend updates.
+Simple server polling API built in to WordPress, allowing near-real-time frontend updates. Allows for regular communication beteween browser and server.
 
 When the page loads, the client-side heartbeat code sets up an interval (called the “tick”) to run every 15-60 seconds. 
 When it runs, heartbeat gathers data to send via a jQuery event, then sends this to the server and waits for a response. 
@@ -19,6 +19,23 @@ jQuery( document ).on( 'heartbeat-send', function ( event, data ) {
     // Add additional data to Heartbeat data.
     data.myplugin_customfield = 'some_data';
 });
+
+// Using heartbeat.enqueue()
+// function takes 3 arguments:
+// Handle   (string) This is just a string identifier for your data. Make sure it's unique.
+// Data     (object) The data to send as an object.
+//Override  (bool) Whether to over-ride existing data. If true, any data previously added with the provided handle is replaced.
+
+wp.heartbeat.enqueue(
+	'wptuts-plugin',
+	{
+		'foo': 'bar',
+		'wp': 'tuts',
+	},
+	false
+);
+
+
 ```
 
 ### Receiving and Responding on Server:
