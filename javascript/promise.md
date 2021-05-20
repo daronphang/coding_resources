@@ -25,3 +25,10 @@ pending:      Initial state, neither fulfilled nor rejected
 fulfilled:    Operation completed successfully
 rejected:     Operation failed
 ```
+
+```javascript
+const getCountryData = function (country) {
+    fetch(`https://restcountries.eu/rest/${country}`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+```
