@@ -20,7 +20,7 @@ lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 // Similar to fetch method as it returns a promise 
 const wait = function(seconds) {
     return new Promise(function (resolve) {
-        setTimeout(resolve, seconds * 1000);
+        setTimeout(resolve, seconds * 1000);    // don't need to pass any value to resolve function
     });
 };
 
