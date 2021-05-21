@@ -16,6 +16,8 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 ```
 ```javascript
+// Promisifying setTimeout, real world example
+// Similar to fetch method as it returns a promise 
 const wait = function(seconds) {
     return new Promise(function (resolve) {
         setTimeout(resolve, seconds * 1000);
