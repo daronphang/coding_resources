@@ -15,7 +15,9 @@ const whereAmI = async function(country) {
     } catch(err) {
         console.error(err);
         throw err; // reject promise returned from async function
-    }
+    } finally {
+    console.log('finished execution')
+    };
 };
 
 ```
