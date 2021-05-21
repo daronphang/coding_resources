@@ -6,6 +6,7 @@ Stable version: January 2021, version 1.53.2
 2) Kite AutoComplete AI Code (need install Kite Engine)
 3) Monokai Dimmed
 4) Code Runner
+5) Jupyter (need pip install ipykernel)
 
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
