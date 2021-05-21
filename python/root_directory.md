@@ -2,6 +2,8 @@
 ```python
 import sys
 print(sys.executable)
+
+or type in cmd: where python
 ```
 ## Retrieve Path of Root Project Structure:
 ```python
