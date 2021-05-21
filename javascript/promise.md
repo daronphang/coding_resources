@@ -19,6 +19,22 @@ myPromise.then(
 // Success      myResolve(result value)
 // Error        myReject(error object)
 ```
+
+```javascript
+const lotteryPromise = new Promise(function (resolve, reject) {
+    console.log('Lottery draw is happening');
+    setTimeout(function() {
+        if (Math.random() >= 0.5) {
+            resolve('you win');
+        } else {
+            reject(new Error('you lost'));
+        }
+        }, 2000);
+    });
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+```
+
 ### Promise States:
 ```
 pending:      Initial state, neither fulfilled nor rejected
