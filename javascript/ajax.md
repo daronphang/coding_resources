@@ -38,7 +38,7 @@ request.addEventListener('load', function() {       // or data.addEventListener
     </article>`
 
     countriesContainer.insertAdjacentHTML('beforenend', html);
-    countriesContainer.style.opacity =1;
+    countriesContainer.style.opacity = 1;
 });
 ```
 
