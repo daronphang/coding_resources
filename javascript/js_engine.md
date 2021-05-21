@@ -3,3 +3,6 @@
 2) Callback functions attached to the asynchronous events through addEventListener are only placed in callback queue once completed.
 3) Callback functions in callback queue will wait for event loop to pick them up and put into callstack. 
 4) For promises, they have special callback queue known as microstasks queue which has priority over callback queue.
+
+## Event Loop:
+The activity of event loop taking a callback function from callback queue and execute in the callstack is known as event loop tick. Coordinates between callstack and callback functions in callback queue. 
