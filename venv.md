@@ -16,3 +16,5 @@ A text file containing the venv packages and versions required to run the Python
 pip freeze > requirements.txt
 pip install -r requirements.txt 
 ```
+## Common Mistakes:
+If need to rename directory folder, best is to create requirements.txt file and recreating virtualenv folder as the venv path will be broken.
