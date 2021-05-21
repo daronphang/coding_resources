@@ -3,6 +3,20 @@ Asynchronous Javascript and XML. Used to pass client-side request to server-side
 
 ```javascript
 // XMLHTTPRequest method
+const request = new XMLHttpRequest();
+
+// onreadystatechange defines a function to be called when its property changes
+request.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("demo").innerHTML = request.responseText;
+    }
+};
+request.open("GET", 'http://example.com');      // does not open connection but configures the request only
+request.send();
+
+
+
 const request = new XMLHTTPRequest();
 request.open('GET', 'http://example.com');
 request.send();
