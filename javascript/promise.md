@@ -27,7 +27,11 @@ wait(2).then(() => {
     return wait(1);
 }).then(() => console.log('1s waited'));
 ```
-
+```javascript
+// to resolve or reject promises immediately
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject('error').catch(x => console.error(x));
+```
 
 ### Promise States:
 ```
