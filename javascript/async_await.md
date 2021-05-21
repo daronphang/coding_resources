@@ -4,7 +4,7 @@ to ensure all promises returned in the async function are synchronized. Await bl
 ```javascript
 const whereAmI = async function(country) {
     try {
-        const response = await fetch(`https://example.com/${coutnry}`);
+        const response = await fetch(`https://example.com/${country}`);
         if (!response.ok) throw new Error('error fetching');
         const data = await response.json();
         console.log(data);
