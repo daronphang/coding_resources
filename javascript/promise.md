@@ -2,25 +2,6 @@
 Object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 Contains both the producing code and calls to the consuming code.
 ```javascript
-let myPromise = new Promise(function(myResolve, myReject) {
-// "Producing Code" (May take some time)
-
-  myResolve(); // when successful
-  myReject();  // when error
-});
-
-// "Consuming Code" (Must wait for a fulfilled Promise)
-myPromise.then(
-  function(value) { /* code if successful */ },
-  function(error) { /* code if some error */ }
-);
-
-// When executing code obtains the result, it should call one of these callbacks:
-// Success      myResolve(result value)
-// Error        myReject(error object)
-```
-
-```javascript
 const lotteryPromise = new Promise(function (resolve, reject) {
     console.log('Lottery draw is happening');
     setTimeout(function() {
@@ -34,6 +15,19 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 
 lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 ```
+```javascript
+const wait = function(seconds) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+
+wait(2).then(() => {
+    console.log('2s waited');
+    return wait(1);
+}).then(() => console.log('1s waited'));
+```
+
 
 ### Promise States:
 ```
