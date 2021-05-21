@@ -94,3 +94,6 @@ createImage('/img/img-1.jpg').then(img => {
     currentImg.style.display = 'none';
 });
 ```
+
+### Errors Not Rejected:
+HTTP errors such as 404 or 500 does not cause Fetch Promise to reject and hence, .catch() is never run. Rejection oly occurs if a request cannot be completed.
