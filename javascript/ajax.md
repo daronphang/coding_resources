@@ -12,23 +12,34 @@ request.onreadystatechange = function() {
        document.getElementById("demo").innerHTML = request.responseText;
     }
 };
-request.open("GET", 'http://example.com');      // does not open connection but configures the request only
+request.open("GET", 'http://example.com/singapore');      // does not open connection but configures the request only
 request.send();
-
-
-
-const request = new XMLHTTPRequest();
-request.open('GET', 'http://example.com');
-request.send();
-console.log(request.responseText);
-
 
 // fetch method
 const getCountry = function(country) {
     fetch('https://example.com/task')
     .then(response => response.json())
     .then(data => console.log(data))
+    .catch(err => console.error(err))
 };
+```
+```javascript
+// response data is normally used to configure HTML format
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
+
+request.addEventListener('load', function() {       // or data.addEventListener
+    const [data] = JSON.parse(this.responseText);
+    const html = 
+    `<article class="country">
+    <img class="country_img" src="${data.country}"/>
+    ...
+    </div>
+    </article>`
+
+    countriesContainer.insertAdjacentHTML('beforenend', html);
+    countriesContainer.style.opacity =1;
+});
 ```
 
 ## Fetch vs XMLHTTPRequest:
