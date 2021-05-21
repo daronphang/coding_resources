@@ -20,5 +20,5 @@ console.log('Test End');
 // Test End
 // resolved promise 1
 // resolved promise 2
-// 0 sec timer
+// 0 sec timer      Happens after microtasks queue is completed. Cannot do high precision tasks with Javascript timers.
 ```
