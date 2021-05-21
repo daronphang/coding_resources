@@ -10,10 +10,15 @@ The activity of event loop taking a callback function from callback queue and ex
 console.log('Test Start');
 setTimeout(() => console.log('0 sec timer'), 0);
 Promise.resolve('resolved promise 1').then(res => console.log(res));
+Promise.resolve('resolved promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++) {}
+  console.log(res);
+};
 console.log('Test End');
 
 // Test Start
 // Test End
 // resolved promise 1
+// resolved promise 2
 // 0 sec timer
 ```
