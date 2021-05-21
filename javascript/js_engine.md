@@ -6,3 +6,14 @@
 
 ## Event Loop:
 The activity of event loop taking a callback function from callback queue and execute in the callstack is known as event loop tick. Coordinates between callstack and callback functions in callback queue. 
+```javascript
+console.log('Test Start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('resolved promise 1').then(res => console.log(res));
+console.log('Test End');
+
+// Test Start
+// Test End
+// resolved promise 1
+// 0 sec timer
+```
