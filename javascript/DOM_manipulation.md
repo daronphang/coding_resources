@@ -2,7 +2,7 @@
 Document Object Model is the data representation of HTML documents. Allows Javascript to access and manipulate HTML/XML/CSS structure, styles and content.
 Examples of DOM include header, tables, elements, etc.
 
-### Common APIs in Web:
+## Common APIs in Web:
 ```
 document.querySelector(selector)
 document.querySelectorAll("p.intro")        Returns a list of all <p> elements with class="intro"
@@ -35,4 +35,17 @@ document.querySelector('.check').addEventListener('click', function() {
 });
 
 // document.removeEventListerner()
+```
+### Common Events:
+```
+click
+copy
+cut
+dblclick
+drag
+drop
+load
+mouseover
+search
+select
 ```
