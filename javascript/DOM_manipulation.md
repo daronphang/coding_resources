@@ -20,7 +20,7 @@ element.attribute = 'new value'
 element.style.property = 'new style'
 element.setAttribute(attribute, value)
 ```
-## Handling Click Events:
+## Handling Events:
 ```javascript
 // syntax
 document.addEventListener(event, function, useCapture)
