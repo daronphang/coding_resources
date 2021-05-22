@@ -47,4 +47,28 @@ const getCountry = function(country) {
 - Fetch won't send cookies unless credentials init option is set.
 - Fetch can perform no-CORS requests.
 
+### CORS:
+Cross-origin resource sharing. A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme
+or port. Same-origin policy can be very restrictive as many websites interact with sub-domains or third-party sites.
+
+However, provides potential for cross-domain based attacks such as cross-site request forgery (CSRF).
+```
+// CORS headers
+Access-Control-Allow-Origin: https://example.com or *       // fully qualified domain requires client to pass authentication headers if needed
+Access-Control-Allow-Credentials: true                      // header in response if server supports authentication via cookies
+Access-Control-Allow-Headers: x-authentication-token
+Access-Control-Allow-Methods: GET, POST
+
+
+// request
+GET /sensitive-victim-data HTTP/1.1
+Host: vulnerable-website.com
+Origin: https://malicious-website.com
+Cookie: sessionid=...
+
+// response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://malicious-website.com
+Access-Control-Allow-Credentials: true
+```
 
