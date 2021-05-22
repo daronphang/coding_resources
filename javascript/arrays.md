@@ -37,3 +37,22 @@ const newArr = [1, 2, 3, ...arr]    // [1, 2, 3, 4, 5, 6]
 // Rest pattern which is opposite of spread
 const [a, b, ...others] = [1, 2, 3, 4, 5];  // others = [3, 4, 5]
 ```
+## For-of and For-in Loops:
+For-of loops iterates over values of object. For-in iterates over enumerable property of an object.
+```javascript
+let list = [4, 5, 6];
+
+for (let i in list) {
+   console.log(i); // "0", "1", "2",
+}
+
+for (let i of list) {
+   console.log(i); // "4", "5", "6"
+}
+
+// Similar to python enumerable
+const menu = [...restaurant.menu];
+for (const item of menu.entries()) {
+    console.log(item);  // [0, 'Pizza], [1, 'Bread']
+};
+```
