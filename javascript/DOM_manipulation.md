@@ -19,6 +19,8 @@ element.innerHTML = 'new content'           Get or replace content of HTML eleme
 element.attribute = 'new value'
 element.style.property = 'new style'
 element.setAttribute(attribute, value)
+
+element.insertAdjacentHTML(order, html)     Manipulate HTML content
 ```
 ## Handling Events:
 ```javascript
