@@ -10,7 +10,7 @@
 .splice(number)   Deletes elements in original array
 ```
 ## Destructuring Arrays/Objects:
-```
+```javascript
 const restaurant = {
     name: 'Pizzerio',
     location: '23 West Virginia',
