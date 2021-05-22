@@ -48,7 +48,7 @@ const getCountry = function(country) {
 - Fetch can perform no-CORS requests.
 
 ### CORS:
-Cross-origin resource sharing. A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme
+Cross-Origin Resource Sharing. A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme
 or port. Same-origin policy can be very restrictive as many websites interact with sub-domains or third-party sites.
 
 However, provides potential for cross-domain based attacks such as cross-site request forgery (CSRF).
