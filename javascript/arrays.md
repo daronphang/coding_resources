@@ -8,8 +8,6 @@
 
 .slice(number)    Removes x number of elemenets at front
 .splice(number)   Deletes elements in original array
-
-
 ```
 ## Destructuring Arrays/Objects:
 ```
@@ -18,6 +16,11 @@ const restaurant = {
     location: '23 West Virginia',
     categories: ['Italian', 'Western', 'Chinese'],
     menu: ['Pizza', 'Bread', 'Steak', 'Noodles'],
+    openingHours: {
+    mon: {open: 12, close: 22},
+    tues: {open: 10, close: 23),
+    wed: {open: 15, close: 24),
+    },
 };
 
 // Destructuring arrays
@@ -27,10 +30,12 @@ const [first, , third] = restaurant.categories; // 'Italian', 'Chinese'
 // Destructuring objects
 const {name: resName, menu: resMenu, location: resLoc} = restaurant; // order doesn't matter
 
+// {} is for declaring key-value object
+// [] is for declaring array
 ```
 ## Spread Operator and Rest Pattern:
 ```javascript
-// Spread operator
+// Spread operator to unpack an array
 const arr = [4, 5, 6];
 const newArr = [1, 2, 3, ...arr]    // [1, 2, 3, 4, 5, 6]
 
@@ -55,4 +60,19 @@ const menu = [...restaurant.menu];
 for (const item of menu.entries()) {
     console.log(item);  // [0, 'Pizza], [1, 'Bread']
 };
+
+// Looping over keys and values
+const openingHours = {restaurant.openingHours};
+for (const day of Object.keys(openingHours) {
+console.log(day);
+
+for (const day of Object.values(openingHours) {
+console.log(day);
+}
+
+// Looping over entire object
+const entries = Object.entries(openingHours)    // creates an array of 3 arrays (mon, tues, wed)
+for (const [key, {open, close}] of entries) {
+    console.log(`on ${key} we open at ${open} and close at ${close}`);
+}
 ```
