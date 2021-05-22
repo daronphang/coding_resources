@@ -45,5 +45,6 @@ const getCountry = function(country) {
 - Fetch uses  Promises and avoids callback hell.
 - HTTP errors such as 404 or 500 does not cause Fetch Promise to reject and hence, .catch() is never run. Rejection only occurs if a request cannot be completed.
 - Fetch won't send cookies unless credentials init option is set.
+- Fetch can perform no-CORS requests.
 
 
