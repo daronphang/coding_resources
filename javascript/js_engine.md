@@ -1,6 +1,8 @@
 ## Call Stack:
 Manages execution contexts including Global Execution Context and Function Execution Contexts. Based on LIFO principle i.e. last-in-first-out. Primitives are stored in
-Global Execution Context.
+Global Execution Context (top level code that is not inside any function). Contains variable environment, scope chan and this keyword.
+
+Scope refers to the space or environment in which a certain variable is declared. Three types of scope: global, function and block.
 
 ## Heap:
 Much larger region for storing objects. Separation is useful to make execution safer from corruption and faster.
