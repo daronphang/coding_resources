@@ -23,9 +23,14 @@ const whereAmI = async function(country) {
 ## Running Promises in Parallel:
 Use constructor Promise.all() which takes an array of promises. However, short circuits when one promise rejects.
 ```javascript
-const data = await Promise.all([
-    getJSON(`https://example.com/${country1}`),
-    getJSON(`https://example.com/${country2}`),
-    getJSON(`https://example.com/${country3}`),
-]);
+const whereAmI = async function(country1, country2, country3) {
+    try {
+        const data = await Promise.all([
+            getJSON(`https://example.com/${country1}`),
+            getJSON(`https://example.com/${country2}`),
+            getJSON(`https://example.com/${country3}`),
+        ]);
+    };
+ });
+
 ```
