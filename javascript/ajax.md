@@ -3,7 +3,6 @@ Asynchronous Javascript and XML. Used to pass client-side request to server-side
 
 ```javascript
 // XMLHTTPRequest method
-
 const countriesContainer = document.querySelector('.countries');
 
 const request = new XMLHttpRequest();
