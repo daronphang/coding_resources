@@ -1,2 +1,0 @@
-## Overview:
-Asynchronous tasks run in the web API, not in call stack.
