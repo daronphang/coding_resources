@@ -3,32 +3,15 @@ Asynchronous Javascript and XML. Used to pass client-side request to server-side
 
 ```javascript
 // XMLHTTPRequest method
-const request = new XMLHttpRequest();
 
-// onreadystatechange defines a function to be called when its property changes
-request.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
-       document.getElementById("demo").innerHTML = request.responseText;
-    }
-};
-request.open("GET", 'http://example.com/singapore');      // does not open connection but configures the request only
-request.send();
-
-// fetch method
-const getCountry = function(country) {
-    fetch('https://example.com/task')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err))
-};
-```
-```javascript
-// response data is normally used to configure HTML format
-const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
-request.addEventListener('load', function() {       // or data.addEventListener
+const request = new XMLHttpRequest();
+request.open("GET", 'http://restcountries.eu/rest/v2/name/singapore');      // does not open connection but configures the request only
+request.send();
+
+// load the request data once it is received
+request.addEventListener('load', function() {       
     const [data] = JSON.parse(this.responseText);
     const html = 
     `<article class="country">
@@ -40,6 +23,23 @@ request.addEventListener('load', function() {       // or data.addEventListener
     countriesContainer.insertAdjacentHTML('beforenend', html);
     countriesContainer.style.opacity = 1;
 });
+
+// onreadystatechange is an event handler that defines a function to be called when its property changes
+request.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready
+       document.getElementById("demo").innerHTML = request.responseText;
+    }
+};
+
+
+// fetch method
+const getCountry = function(country) {
+    fetch('https://example.com/task')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err))
+};
 ```
 
 ## Fetch vs XMLHTTPRequest:
