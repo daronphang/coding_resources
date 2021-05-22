@@ -9,7 +9,7 @@ const request = new XMLHttpRequest();
 request.open("GET", 'http://restcountries.eu/singapore');      // does not open connection but configures the request only
 request.send();
 
-// load the request data once it is received
+// registering a callback function on request object on load event once request is completed
 request.addEventListener('load', function() {       
     const [data] = JSON.parse(this.responseText);
     const html = 
