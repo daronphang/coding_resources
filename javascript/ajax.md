@@ -53,12 +53,16 @@ or port. Same-origin policy can be very restrictive as many websites interact wi
 
 However, provides potential for cross-domain based attacks such as cross-site request forgery (CSRF).
 ```
-// CORS headers
-Access-Control-Allow-Origin: https://example.com or *       // fully qualified domain requires client to pass authentication headers if needed
-Access-Control-Allow-Credentials: true                      // header in response if server supports authentication via cookies
+// CORS headers in response
+Access-Control-Allow-Origin: https://example.com or *       // full domain requires client to pass authentication headers
+Access-Control-Allow-Credentials: true                      // if server supports authentication via cookies
 Access-Control-Allow-Headers: x-authentication-token
 Access-Control-Allow-Methods: GET, POST
 
+//CORS headers in request
+Origin: https://example.com     // client domain with scheme, host and port, unable to overwrite
+Access-Control-Request-Method: <method>
+Access-Control-Request-Headers: <header 1>, <header 2>
 
 // request
 GET /sensitive-victim-data HTTP/1.1
@@ -71,4 +75,34 @@ HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://malicious-website.com
 Access-Control-Allow-Credentials: true
 ```
+### Preflight Requests for Complex HTTP Calls:
+If web app needs to make a complex HTTP request, the browser adds a preflight request to the front of request chain. Creates OPTIONS request.
+CORS specification defines complex request as:
+- Uses other methods than GET, POST or HEAD.
+- Includes headers other than Accept, Accept-Language or Content-Language.
+- Has Content-Type header other than application/x-www-form-urlencoded, multipart/form-data or text/plain.
+```
+OPTIONS /doc HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Connection: keep-alive
+Origin: http://foo.example
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+
+HTTP/1.1 204 No Content
+Date: Mon, 01 Dec 2008 01:15:39 GMT
+Server: Apache/2
+Access-Control-Allow-Origin: https://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400
+Vary: Accept-Encoding, Origin
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+```
+
 
