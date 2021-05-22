@@ -21,8 +21,12 @@ const whereAmI = async function(country) {
 };
 ```
 ## Other Promise Combinators:
-### Promise.all():
-Constructor which takes an array of promises and runs them in parallel. However, short circuits when one promise rejects.
+```
+Promise.all()           Constructor which takes an array of promises and runs them in parallel. However, short circuits when one promise rejects.
+Promise.race()          First promise that settles wins. Doesn't matter if it is fulfilled or rejected.
+Promise.allSettled()    Returns all promises, doesn't matter if they are fulfilled or rejected. Same as Promise.all but doesn't short circuit.
+Promise.any()           Returns the first fulfilled promise and ignores rejected promises.
+```
 ```javascript
 const whereAmI = async function(country1, country2, country3) {
     try {
@@ -33,13 +37,4 @@ const whereAmI = async function(country1, country2, country3) {
         ]);
     };
  });
-
 ```
-### Promise.race():
-First promise that settles wins. Doesn't matter if it is fulfilled or rejected.
-
-### Promise.allSettled():
-Returns all promises, doesn't matter if they are fulfilled or rejected. Same as Promise.all but doesn't short circuit.
-
-### Promise.any():
-Returns the first fulfilled promise and ignores rejected promises.
