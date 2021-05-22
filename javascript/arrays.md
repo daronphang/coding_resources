@@ -60,6 +60,16 @@ const menu = [...restaurant.menu];
 for (const item of menu.entries()) {
     console.log(item);  // [0, 'Pizza], [1, 'Bread']
 };
+```
+## Looping Objects:
+```javascript
+let user = {
+  name: "John",
+  age: 30
+};
+Object.keys(user)       // ["name", "age"]
+Object.values(user)     // ["John", 30]
+Object.entries(user)    // [["name","John"], ["age",30]]
 
 // Looping over keys and values
 const openingHours = {restaurant.openingHours};
@@ -71,7 +81,8 @@ console.log(day);
 }
 
 // Looping over entire object
-const entries = Object.entries(openingHours)    // creates an array of 3 arrays (mon, tues, wed)
+// entries method returns an array of [key, value] pairs
+const entries = Object.entries(openingHours)
 for (const [key, {open, close}] of entries) {
     console.log(`on ${key} we open at ${open} and close at ${close}`);
 }
