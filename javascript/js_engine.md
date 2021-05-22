@@ -1,3 +1,10 @@
+## Call Stack:
+Manages execution contexts including Global Execution Context and Function Execution Contexts. Based on LIFO principle i.e. last-in-first-out. Primitives are stored in
+Global Execution Context.
+
+## Heap:
+Much larger region for storing objects. Separation is useful to make execution safer from corruption and faster.
+
 ## Asynchronous Tasks:
 1) Tasks such as setting image source attribute and timers are non-blocking as they take place in web APIs environment and not in callstack.
 2) Callback functions attached to the asynchronous events through addEventListener are only placed in callback queue once completed.
