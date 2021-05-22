@@ -44,6 +44,9 @@ cut
 dblclick
 drag
 drop
+keydown       When user is pressing a key
+keyup         When user releases a key
+keypress      When user presses a key
 load
 mouseover
 search
