@@ -50,7 +50,7 @@ let x, y, z=3;
 if (likeJavaScript === true)
 
 // Shorthand
-if (likeJavaScript) or if (!likeJavaScript) \\ latter for checking if false
+if (likeJavaScript) or if (!likeJavaScript) // latter for checking if false
 ```
 ### For Loop:
 ```javascript
