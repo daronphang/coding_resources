@@ -32,6 +32,7 @@ document.addEventListener("click", function(){
 
 document.querySelector('.check').addEventListener('click', function() {
   console.log();
+  this.classlist.add('hidden');
 });
 
 // document.removeEventListerner()
