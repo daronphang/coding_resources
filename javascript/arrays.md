@@ -6,4 +6,34 @@
 .unshift()        Same as pop() but removes first element
 .includes(x)      Boolean to check if element exists
 
+.slice(number)    Removes x number of elemenets at front
+.splice(number)   Deletes elements in original array
+
+
+```
+## Destructuring Arrays/Objects:
+```
+const restaurant = {
+    name: 'Pizzerio',
+    location: '23 West Virginia',
+    categories: ['Italian', 'Western', 'Chinese'],
+    menu: ['Pizza', 'Bread', 'Steak', 'Noodles'],
+};
+
+// Destructuring arrays
+const [first, second] = restaurant.categories;  // 'Italian', 'Western'
+const [first, , third] = restaurant.categories; // 'Italian', 'Chinese'
+
+// Destructuring objects
+const {name: resName, menu: resMenu, location: resLoc} = restaurant; // order doesn't matter
+
+```
+## Spread Operator and Rest Pattern:
+```javascript
+// Spread operator
+const arr = [4, 5, 6];
+const newArr = [1, 2, 3, ...arr]    // [1, 2, 3, 4, 5, 6]
+
+// Rest pattern which is opposite of spread
+const [a, b, ...others] = [1, 2, 3, 4, 5];  // others = [3, 4, 5]
 ```
