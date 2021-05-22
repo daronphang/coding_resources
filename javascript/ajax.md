@@ -6,7 +6,7 @@ Asynchronous Javascript and XML. Used to pass client-side request to server-side
 const countriesContainer = document.querySelector('.countries');
 
 const request = new XMLHttpRequest();
-request.open("GET", 'http://restcountries.eu/rest/v2/name/singapore');      // does not open connection but configures the request only
+request.open("GET", 'http://restcountries.eu/singapore');      // does not open connection but configures the request only
 request.send();
 
 // load the request data once it is received
