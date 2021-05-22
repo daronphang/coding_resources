@@ -1,5 +1,5 @@
 ## AJAX:
-Asynchronous Javascript and XML. Used to pass client-side request to server-side. Can either use XMLHTTPRequest or fetch() method.
+Asynchronous Javascript and XML. Used to pass client-side request to server-side. Can either use XMLHTTPRequest or fetch method.
 
 ```javascript
 // XMLHTTPRequest method
