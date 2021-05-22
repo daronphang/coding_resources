@@ -39,7 +39,7 @@ document.querySelector('.check').addEventListener('click', function() {
 
 // document.removeEventListerner()
 ```
-### Common Events:
+## Common Events:
 ```
 click
 copy
