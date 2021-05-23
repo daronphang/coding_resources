@@ -1,5 +1,5 @@
 ## Async/Await:
-akes asynchronous code look like synchronous code and hence, easier to understand. Async keyword before a function makes it return a promise.
+Async keyword before a function makes it return a promise.
 ```javascript
 async function myFunction() {
   return "Hello";
