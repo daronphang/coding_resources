@@ -24,7 +24,7 @@ Redis
 npm init                    # Creates package.json file in root directory of application
 npm install express         # installs in current directory
 npm install -g express      # g stands for globally
-npm install -g live-server 
+npm install -g live-server  # type live-server in terminal to run
 
 node -v                     # Check Node.js version
 ```
