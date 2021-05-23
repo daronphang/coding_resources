@@ -5,7 +5,9 @@
 .shift()            Same as push() but puts element at front
 .unshift()          Same as pop() but removes first element
 .includes(x)        Boolean to check if element exists
-.sort()             Sorts strings only
+.sort()             Sorts strings only, for integers need use function
+.flat(level)        Level refers to the number of nested arrays
+.flatMap(function)  Combines both map and flat
 
 .slice(number)      Removes x number of elements at front
 .splice(number)     Deletes elements in original array
@@ -13,7 +15,9 @@
 .map(function)      Creates new array containing results of applying function operation
 .filter(function)   Creates new array containing elements passing specified condition
 .reduce(function)   Boils down all elements to one single value
-.find(function)     same as filter but returns first element instead of new array
+.find(function)     Same as filter but returns first element instead of new array
+.some(function)     Same as .includes(), but function is a condition instead of equality
+.every(function)    Function is a boolean condition
 ```
 ```javascript
 const arr = [10, 20, -30];
@@ -21,6 +25,11 @@ const arr = [10, 20, -30];
 const movementsUSD = arr.map(mov => Math.abs(mov) * 1.1);
 const deposits = arr.filter(mov => mov > 0);    // boolean condition
 const balance = arr.reduce((acc, cur, i, arr) => acc + cur, 0);     // accumulator value set at end
+const sortArr = arr.sort((a,b) => a - b);   // ascending order
+
+const arr1 = [[[1, 2], 3], [4, 5, 6], 7, 8];
+console.log(arr1.flat(2))   // [1, 2, 3, 4, 5, 6, 7, 8]
+
 
 ```
 ## Destructuring Arrays/Objects:
