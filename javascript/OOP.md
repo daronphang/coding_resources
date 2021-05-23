@@ -44,7 +44,7 @@ let myCar = new Model("Ford", "Mustang");
 document.getElementById("demo").innerHTML = myCar.show();
 ```
 ## Getters and Setters:
-Getters are used to bind an object property to a function that is called when that property is looked up.
+Getters are used to bind an object property to a function that is called when that property is looked up. Setters are used to execute a function whenever a property is attempted to be changed.
 
 ```javascript
 let user = {
