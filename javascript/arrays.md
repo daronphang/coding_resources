@@ -1,13 +1,27 @@
 ## Array Operations:
 ```
-.push(x)          Adds element to array
-.pop()            Removes last element in array
-.shift()          Same as push() but puts element at front
-.unshift()        Same as pop() but removes first element
-.includes(x)      Boolean to check if element exists
+.push(x)            Adds element to array
+.pop()              Removes last element in array
+.shift()            Same as push() but puts element at front
+.unshift()          Same as pop() but removes first element
+.includes(x)        Boolean to check if element exists
+.sort()             Sorts strings only
 
-.slice(number)    Removes x number of elemenets at front
-.splice(number)   Deletes elements in original array
+.slice(number)      Removes x number of elements at front
+.splice(number)     Deletes elements in original array
+
+.map(function)      Creates new array containing results of applying function operation
+.filter(function)   Creates new array containing elements passing specified condition
+.reduce(function)   Boils down all elements to one single value
+.find(function)     same as filter but returns first element instead of new array
+```
+```javascript
+const arr = [10, 20, -30];
+
+const movementsUSD = arr.map(mov => Math.abs(mov) * 1.1);
+const deposits = arr.filter(mov => mov > 0);    // boolean condition
+const balance = arr.reduce((acc, cur, i, arr) => acc + cur, 0);     // accumulator value set at end
+
 ```
 ## Destructuring Arrays/Objects:
 ```javascript
