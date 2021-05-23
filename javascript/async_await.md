@@ -11,7 +11,7 @@ const function myFunction() {
 }
 ```
 
-Await keyword before a function makes it wait for a promise. Await blocks code execution (ensures the next line is executed when the promise resolves) and eliminates the use of callbacks in .then() and .catch() functions. There can be multiple await statements within a single async function. Try and catch are used to get rejection value of an async function.
+Await keyword before a function makes it wait for a promise until it returns a result (resolve or reject). Await blocks code execution (ensures the next line is executed when the promise resolves) and eliminates the use of callbacks in .then() and .catch() functions. There can be multiple await statements within a single async function. Try and catch are used to get rejection value of an async function.
 ```javascript
 const whereAmI = async function(country) {
     try {
