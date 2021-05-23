@@ -60,6 +60,10 @@ const menu = [...restaurant.menu];
 for (const item of menu.entries()) {
     console.log(item);  // [0, 'Pizza], [1, 'Bread']
 };
+
+// use .forEach() shortcut for looping arrays
+const arr = [200, 400, -5, 10];
+arr.forEach((element, index, array) => console.log(element));
 ```
 ## Looping Objects:
 ```javascript
