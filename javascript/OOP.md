@@ -19,6 +19,7 @@ console.log(jonas.hasOwnProperty('firstName'));     // true
 console.log(jonas.hasOwnProperty('language'));      // false
 ```
 ## Class Inheritance:
+Use extends and super.
 ```javascript
 class Car {
   constructor(brand) {
@@ -41,6 +42,26 @@ class Model extends Car {
 
 let myCar = new Model("Ford", "Mustang");
 document.getElementById("demo").innerHTML = myCar.show();
+```
+## Getters and Setters:
+Getters are used to bind an object property to a function that is called when that property is looked up.
+
+```javascript
+let user = {
+  name: "John",
+  surname: "Smith"
+  
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+  
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+};
+
+alert(user.fullName);
+user.fullName = "Alice Cooper";
 ```
 
 ## Call, Apply and Bind Methods:
