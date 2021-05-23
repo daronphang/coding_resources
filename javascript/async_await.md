@@ -73,7 +73,7 @@ const createImage = function (imgPath) {                  // returns a promise
 const loadAll = async function(imgArray) {
     try {
         const imgs = imgArray.map(async img => await createImage(img));  
-        console.log(imgs);                                                // array of promises
+        console.log(imgs);                                                // array of fulfilled promises
         const imgsEl = await Promise.all(imgs);
 
         imgsEl.forEach(img => img.classList.add("parallel"));
