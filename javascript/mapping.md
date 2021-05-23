@@ -19,12 +19,12 @@ let recipeMap = new Map([
   ['onion',    50]
 ]);
 
-// iterate over keys (vegetables)
+// iterate over keys
 for (let vegetable of recipeMap.keys()) {
   alert(vegetable);   // cucumber, tomatoes, onion
 }
 
-// iterate over values (amounts)
+// iterate over values 
 for (let amount of recipeMap.values()) {
   alert(amount);    // 500, 350, 50
 }
@@ -33,6 +33,12 @@ for (let amount of recipeMap.values()) {
 for (let entry of recipeMap) {          // the same as of recipeMap.entries()
   alert(entry);                         // cucumber,500 (and so on)
 }
+
+// use .forEach() method as shortcut for iterations 
+recipeMap.forEach( (value, key, map) => {
+  alert(`${key}: ${value}`); // cucumber: 500 etc
+});
+
 ``` 
 ``` 
 .set(key, value)
