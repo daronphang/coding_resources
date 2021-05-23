@@ -7,6 +7,7 @@ Stable version: January 2021, version 1.53.2
 3) Monokai Dimmed
 4) Code Runner
 5) Jupyter (need pip install ipykernel)
+6) Live Server for js
 
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
