@@ -1,3 +1,24 @@
+## ES6 Classes and Prototype:
+All objects inherit properties and methods from a prototype. Object.prototype is on top of the prototype inheritance chain. Prototype allows adding new properties or methods to objects constructors.
+```javascript
+class Person {
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+}
+
+Person.prototype.calcAge = function(){
+    console.log(2021 - this.birthYear);
+};
+
+Person.prototype.language = "English";
+
+const jonas = new Person('Jonas', 1993);
+console.log(jonas.hasOwnProperty('firstName'));     // true
+console.log(jonas.hasOwnProperty('language'));      // false
+```
+
 ## Call, Apply and Bind Methods:
 Used to set this keyword to the provided value. The call() takes arguments separately while apply() takes arguments as an array. Bind method creates a new function
 with an explicitly bound this; call and apply are one-time use methods.
