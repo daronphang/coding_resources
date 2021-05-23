@@ -7,8 +7,10 @@ contacts.set('1', 'str1')
   .set(1, 'num1');     
   .set(true, 'bool1'); 
 
-
-
+const object = {
+  name: "John",
+  age: 30
+};
 const objMap = new Map(Object.entries(object));
 ```
 ## Map Iterations:
