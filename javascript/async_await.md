@@ -61,10 +61,9 @@ const createImage = function (imgPath) {
 
 const loadAll = async function(imgArray) {
     try {
-        const imgs = imgArray.map(async img => await createImage(img));
-        console.log(imgs);
+        const imgs = imgArray.map(async img => await createImage(img));     // Each await returns fulfilled promise
+        console.log(imgs);      // array of fulfilled promises
         const imgsEl = await Promise.all(imgs);
-        console.log(imgsEl);
 
         imgsEl.forEach(img => img.classList.add("parallel"));
     } catch (err) {
@@ -73,4 +72,11 @@ const loadAll = async function(imgArray) {
     }};
     
 loadAll(imgArr);
+
+// html:
+<div class="images">
+    <img src="img/img-1.jpg" class="parallel">
+    <img src="img/img-2.jpg" class="parallel">
+    <img src="img/img-3.jpg" class="parallel">
+</div>
 ```
