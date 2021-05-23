@@ -1,5 +1,5 @@
 ## Bootstrap:
-Bootstrap is an open-source CSS framework used for developing responsive websites (CSS does not provide responsive websites). Has pre-design classes.
+Bootstrap is an open-source CSS framework used for developing responsive websites (CSS does not provide responsive websites). Based on grid system and able to add pre-defined classes into code without writing from scratch. Other CSS frameworks include Foundation, Bulma, UIkit and Susy.
 ```
 <!doctype html>
 <html lang="en">
