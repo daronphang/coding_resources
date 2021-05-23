@@ -1,6 +1,6 @@
 ## Async/Await:
 Await is synthetic sugar for promises. Makes asynchronous code look like synchronous code and hence, easier to understand. Await keyword is used in an async function
-to ensure all promises returned in the async function are synchronized. Await blocks code execution (ensures the next line is executed when the promise resolves) and eliminates the use of callbacks in .then() and .catch() functions. There can be multiple await statements within a single async function. Try and catch are used to get rejection value of an async function.
+to ensure all promises returned in the async function are synchronized. Await blocks code execution (ensures the next line is executed when the promise resolves) and eliminates the use of callbacks in .then() and .catch() functions. There can be multiple await statements within a single async function. Try and catch are used to get rejection value of an async function. Await returns the fulfilled/resolved promise.
 ```javascript
 const whereAmI = async function(country) {
     try {
