@@ -38,3 +38,39 @@ const whereAmI = async function(country1, country2, country3) {
     };
  });
 ```
+## Examples of Await/Async and Promises:
+```javascript
+const imgArr= ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg'];
+const imagesContainer = document.querySelector('.images');
+
+const createImage = function (imgPath) {
+    return new Promise(function (resolve, reject) {
+      const img = document.createElement('img');
+      img.src = imgPath;
+      
+      img.addEventListener('load', function () {
+        imagesContainer.append(img);
+        resolve(img);
+      });
+  
+      img.addEventListener('error', function () {
+        reject(new Error('Image not found'));
+      });
+    });
+  };
+
+const loadAll = async function(imgArray) {
+    try {
+        const imgs = imgArray.map(async img => await createImage(img));
+        console.log(imgs);
+        const imgsEl = await Promise.all(imgs);
+        console.log(imgsEl);
+
+        imgsEl.forEach(img => img.classList.add("parallel"));
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }};
+    
+loadAll(imgArr);
+```
