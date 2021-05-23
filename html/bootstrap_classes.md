@@ -1,4 +1,6 @@
 ## Bootstrap Classes:
+Bootstrap is an open-source CSS framework used for developing responsive websites (CSS does not provide responsive websites). Has pre-design classes.
+
 Link Reference: https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp
 ```
 .col:
