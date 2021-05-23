@@ -18,6 +18,30 @@ const jonas = new Person('Jonas', 1993);
 console.log(jonas.hasOwnProperty('firstName'));     // true
 console.log(jonas.hasOwnProperty('language'));      // false
 ```
+## Class Inheritance:
+```javascript
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return 'I have a ' + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+
+let myCar = new Model("Ford", "Mustang");
+document.getElementById("demo").innerHTML = myCar.show();
+```
 
 ## Call, Apply and Bind Methods:
 Used to set this keyword to the provided value. The call() takes arguments separately while apply() takes arguments as an array. Bind method creates a new function
