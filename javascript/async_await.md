@@ -54,7 +54,7 @@ const whereAmI = async function(country1, country2, country3) {
 const imgArr= ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg'];
 const imagesContainer = document.querySelector('.images');
 
-const createImage = function (imgPath) {
+const createImage = function (imgPath) {                  // returns a promise
     return new Promise(function (resolve, reject) {
       const img = document.createElement('img');
       img.src = imgPath;
@@ -72,7 +72,7 @@ const createImage = function (imgPath) {
 
 const loadAll = async function(imgArray) {
     try {
-        const imgs = imgArray.map(async img => await createImage(img));     // createImage returns a promise; need use await to consume
+        const imgs = imgArray.map(async img => await createImage(img));  
         console.log(imgs);      // array of fulfilled promises
         const imgsEl = await Promise.all(imgs);
 
