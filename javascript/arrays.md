@@ -46,8 +46,8 @@ const restaurant = {
     menu: ['Pizza', 'Bread', 'Steak', 'Noodles'],
     openingHours: {
     mon: {open: 12, close: 22},
-    tues: {open: 10, close: 23),
-    wed: {open: 15, close: 24),
+    tues: {open: 10, close: 23},
+    wed: {open: 15, close: 24},
     },
 };
 
