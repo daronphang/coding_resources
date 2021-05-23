@@ -61,7 +61,7 @@ const createImage = function (imgPath) {
 
 const loadAll = async function(imgArray) {
     try {
-        const imgs = imgArray.map(async img => await createImage(img));     // Each await returns fulfilled promise
+        const imgs = imgArray.map(async img => await createImage(img));     // createImage returns a promise; need use await or nothing will happen
         console.log(imgs);      // array of fulfilled promises
         const imgsEl = await Promise.all(imgs);
 
