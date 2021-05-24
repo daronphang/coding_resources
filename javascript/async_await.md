@@ -15,7 +15,7 @@ Await keyword before a function makes it wait for a promise until it returns a r
 ```javascript
 const whereAmI = async function(country) {
     try {
-        const response = await fetch(`https://example.com/${country}`);   // fetch() returns a promise, hence need use await
+        const response = await fetch(`https://example.com/${country}`);   // fetch() returns a response with headers
         if (!response.ok) throw new Error('error fetching');
         const data = await response.json();                               // need use .json() to read body of response
         console.log(data);
