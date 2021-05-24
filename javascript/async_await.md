@@ -17,7 +17,7 @@ const whereAmI = async function(country) {
     try {
         const response = await fetch(`https://example.com/${country}`);   // fetch() returns a promise, hence need use await
         if (!response.ok) throw new Error('error fetching');
-        const data = await response.json();
+        const data = await response.json();                               // need use .json() to read body of response
         console.log(data);
         // same as:
         // const res = fetch().then(res => {
