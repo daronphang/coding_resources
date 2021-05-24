@@ -35,7 +35,7 @@ const whereAmI = async function(country) {
 ```
 Promise.all()           Constructor which takes an array of promises and runs them in parallel. 
                         However, short circuits when one promise rejects.
-                        Return an array output containing values of resolved promises.
+                        Returns a single Promise that resolves to an array of results of input promises.
 Promise.race()          First promise that settles wins. Doesn't matter if it is fulfilled or rejected.
 Promise.allSettled()    Returns all promises, doesn't matter if they are fulfilled or rejected.
 Promise.any()           Returns the first fulfilled promise and ignores rejected promises.
