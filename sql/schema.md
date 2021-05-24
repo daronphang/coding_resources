@@ -4,7 +4,7 @@ the data forms will lead to the construction of database schema.
 
 ## Schema:
 Schema in SQL is a collection of database objects associated with a database including tables, fields, views, triggers, relationships, stored procedures, indexes, etc.
-It describes both the organization of data and relationships between tables in a database i.e. represents the framework and arrangement of the contents of an organization’s data.
+It describes both the organization of data and relationships between tables in a database i.e. represents the framework and arrangement of the contents of an organization’s data. Essentially a blueprint of how the database is constructed.
 
 Schema always belongs to one database, whereas a database may have multiple schemas. The user that owns the schema is known as schema owner. Useful mechanism to segregate database objects for different applications, access rights, and managing the security administration of databases.
 
