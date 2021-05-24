@@ -53,14 +53,15 @@ const whereAmI = async function(country1, country2, country3) {
 ```
 ## Examples of Await/Async and Promises:
 ```javascript
+const imgArr= ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg'];
+const imagesContainer = document.querySelector('.images');
+
 // result to be executed
 const imgs = imgArr.map(img => createImage(img));   // array of promises 
 imgs.forEach(img => img.then(res => console.log(res))); // res = <img src="eg.jpg">
 
-// using await/async
-const imgArr= ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg'];
-const imagesContainer = document.querySelector('.images');
 
+// using await and async
 const createImage = function (imgPath) {                  // returns a promise
     return new Promise(function (resolve, reject) {
       const img = document.createElement('img');
