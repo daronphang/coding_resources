@@ -22,7 +22,7 @@ Coffee-Script
 Redis
 
 npm init                      Creates package.json file in root directory of application.
-                              Functions similarly to requirements.txt where packages in dependencies will be installed.
+npm install                   Functions similarly to requirements.txt where packages in package.json dependencies will be installed.
 npm install express           Installs in current directory
 npm install -g express        g stands for globally
 npm install -g live-server    Type live-server in terminal to run
