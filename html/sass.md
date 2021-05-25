@@ -1,5 +1,5 @@
 ## Sass:
-Stands for Syntactically Awesome Style SHeets. CSS pre-processor (CSS extension) that reduces repitition of CSS. Adds special features such as variables, 
+Stands for Syntactically Awesome Style Sheets. CSS pre-processor (CSS extension) that reduces repitition of CSS. Adds special features such as variables, 
 nested rules and mixins into regular CSS. Need to have Ruby installed. Uses .scss file extension and is fully compliant with CSS syntax.
 ```html
 $font-stack:    Helvetica, sans-serif;
