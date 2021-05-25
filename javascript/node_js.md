@@ -21,12 +21,13 @@ Mongo/Mongoose
 Coffee-Script
 Redis
 
-npm init                    # Creates package.json file in root directory of application
-npm install express         # installs in current directory
-npm install -g express      # g stands for globally
-npm install -g live-server  # type live-server in terminal to run
+npm init                      Creates package.json file in root directory of application.
+                              Functions similarly to requirements.txt where packages in dependencies will be installed.
+npm install express           Installs in current directory
+npm install -g express        g stands for globally
+npm install -g live-server    Type live-server in terminal to run
 
-node -v                     # Check Node.js version
+node -v                       Check Node.js version
 ```
 ### Application Example:
 ```javascript
