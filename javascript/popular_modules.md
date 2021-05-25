@@ -2,12 +2,14 @@
 ```
 leaflet
 lodash-es                 Collection of functions for objects, dates, arrays, etc.
+core-js                   For polyfilling
 ```
 
 ## Parcel:
-```
--Module bundler.
--Creates 'dist' folder containing codes that will be sent to user for live production.
+Module bundler. Automatically uses Babel to transpile code with preset @babel/preset-env.
+```javascript
+
+// Creates 'dist' folder containing codes that will be sent to user for live production.
 
 // using parcel
 npx parcel index.html     Starts live-server with index.html as entry point
@@ -27,4 +29,16 @@ import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
 // parcel
 import cloneDeep from 'lodash-es';
+
+// parcel 2.0.0 
+// npm install parcel@next -D
+```
+## Polyfiling:
+```javascript
+import 'core-js/stable'; 
+// to import specific methods: import 'core-js/stable/array/find';
+
+import 'regenerator-runtime/runtime';    // for polyfilling async functions
+
+// for new methods like promise, .find(), etc.
 ```
