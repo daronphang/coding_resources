@@ -83,3 +83,4 @@ SELECT * FROM table1 FULL OUTER JOIN table2 ON table1.name = table2.name
 # LEFT JOIN returns columns exclusive to table1 or can be found in both.
 SELECT * FROM table1 LEFT OUTER JOIN table2 ON table1.name = table2.name
 ```
+### IS NULL/NOT NULL
