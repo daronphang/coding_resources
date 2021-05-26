@@ -2,7 +2,7 @@
 
 Advantages of JQuery over raw Javascript:
 - Cross-browser (don't have to worry about comptability).
-- Easier to use, simplifies and has rich AJAX support.
+- Easier to use, simplifies AJAX and DOM manipulation.
 - Extensible.
 - Has large development community and many plugins.
 ```javascript
