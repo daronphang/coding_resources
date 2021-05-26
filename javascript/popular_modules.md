@@ -32,6 +32,8 @@ import cloneDeep from 'lodash-es';
 
 // parcel 2.0.0 
 // npm install parcel@next -D
+
+// import images from 'url:../img/icons.svg'  // for importing images from local drive
 ```
 ## Polyfiling:
 ```javascript
