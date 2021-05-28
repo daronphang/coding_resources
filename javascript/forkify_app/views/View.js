@@ -1,4 +1,3 @@
-```javascript
 import icons from 'url:../../img/icons.svg'; // Parcel 2
 
 export default class View {
@@ -101,5 +100,3 @@ export default class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 }
-
-```
