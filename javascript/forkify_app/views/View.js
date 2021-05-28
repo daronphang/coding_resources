@@ -17,12 +17,10 @@ export default class View {
       return this.renderError();
 
     this._data = data;
-    const markup = this._generateMarkup();
-
+    const markup = this._generateMarkup();    // inherited from child class
     if (!render) return markup;
-
     this._clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);   // inherited from child class
   }
 
   update(data) {
