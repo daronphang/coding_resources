@@ -1,4 +1,3 @@
-```javascript
 import { async } from 'regenerator-runtime';
 import { API_URL, RES_PER_PAGE, KEY } from './config.js';
 // import { getJSON, sendJSON } from './helpers.js';
@@ -158,4 +157,3 @@ export const uploadRecipe = async function (newRecipe) {
     throw err;
   }
 };
-```
