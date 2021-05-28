@@ -6,10 +6,10 @@ class PaginationView extends View {
 
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--inline');
-      if (!btn) return;
+      const btn = e.target.closest('.btn--inline');   // searches from bottom-up, looks for parents, similar to querySelector
+      if (!btn) return;   // guard clause, if you click elsewhere
 
-      const goToPage = +btn.dataset.goto;
+      const goToPage = +btn.dataset.goto;   // + converts to number from string
       handler(goToPage);
     });
   }
@@ -23,9 +23,9 @@ class PaginationView extends View {
     // Page 1, and there are other pages
     if (curPage === 1 && numPages > 1) {
       return `
-        <button data-goto="${
+        <button data-goto="${   // data-goto is data attribute
           curPage + 1
-        }" class="btn--inline pagination__btn--next">
+        }" class="btn--inline pagination__btn--next">   
           <span>Page ${curPage + 1}</span>
           <svg class="search__icon">
             <use href="${icons}#icon-arrow-right"></use>
