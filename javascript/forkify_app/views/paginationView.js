@@ -6,7 +6,7 @@ class PaginationView extends View {
 
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--inline');   // searches from bottom-up, looks for parents, similar to querySelector
+      const btn = e.target.closest('.btn--inline');   // .closest is event delegation, similar to querySelector
       if (!btn) return;   // guard clause, if you click elsewhere
 
       const goToPage = +btn.dataset.goto;   // + converts to number from string
