@@ -1,4 +1,3 @@
-```javascript
 import { async } from 'regenerator-runtime';
 import { TIMEOUT_SEC } from './config.js';
 
@@ -66,5 +65,3 @@ export const sendJSON = async function (url, uploadData) {
   }
 };
 */
-
-```
