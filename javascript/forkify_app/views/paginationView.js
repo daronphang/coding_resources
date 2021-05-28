@@ -9,8 +9,8 @@ class PaginationView extends View {
       const btn = e.target.closest('.btn--inline');   // .closest is event delegation, similar to querySelector
       if (!btn) return;   // guard clause, if you click elsewhere
 
-      const goToPage = +btn.dataset.goto;   // + converts to number from string
-      handler(goToPage);
+      const goToPage = +btn.dataset.goto;     // dataset is called
+      handler(goToPage);                      // + converts to number from string
     });
   }
 
@@ -23,7 +23,7 @@ class PaginationView extends View {
     // Page 1, and there are other pages
     if (curPage === 1 && numPages > 1) {
       return `
-        <button data-goto="${   // data-goto is data attribute
+        <button data-goto="${   // goto is data attribute, useful for updating settings in view
           curPage + 1
         }" class="btn--inline pagination__btn--next">   
           <span>Page ${curPage + 1}</span>
