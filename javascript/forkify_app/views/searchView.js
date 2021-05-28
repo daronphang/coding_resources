@@ -13,7 +13,7 @@ class SearchView {
 
   addHandlerSearch(handler) {
     this._parentEl.addEventListener('submit', function (e) {
-      e.preventDefault();
+      e.preventDefault();   // prevent page from reloading
       handler();
     });
   }
