@@ -50,7 +50,7 @@ export default class View {
         curEl.textContent = newEl.textContent;
       }
 
-      // Update change DATA ATTRIBUES
+      // Update change DATA ATTRIBUTES
       if (!newEl.isEqualNode(curEl))
         Array.from(newEl.attributes).forEach(attr =>
           curEl.setAttribute(attr.name, attr.value)
