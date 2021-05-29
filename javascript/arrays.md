@@ -20,7 +20,7 @@
 .every(function)            Function is a boolean condition
 
 .fill(value,start,end)
-.from(object,function)      
+.from(object,function)      Creates array from array-like objects i.e. Array.from('foo') // ['f', 'o', 'o']
 ```
 ```javascript
 const arr = [10, 20, -30];
