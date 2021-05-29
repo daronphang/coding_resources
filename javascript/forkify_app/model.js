@@ -62,7 +62,7 @@ export const loadSearchResults = async function (query) {
         ...(rec.key && { key: rec.key }),
       };
     });
-    state.search.page = 1;
+    state.search.page = 1;    // set pagination page to 1 when displaying new results
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
     throw err;
