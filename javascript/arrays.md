@@ -10,7 +10,7 @@
 .flatMap(function)          Combines both map and flat
 
 .slice(number)              Removes x number of elements at front
-.splice(number)             Deletes elements in original array
+.splice(index, number)      Deletes elements in original array
 
 .map(function)              Creates new array containing results of applying function operation
 .filter(function)           Creates new array containing elements passing specified condition
