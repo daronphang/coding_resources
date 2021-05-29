@@ -22,11 +22,15 @@ export default class View {
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);   // inherited from child class
   }
-
+  
+  // DOM algorithm to update texts/attributes only instead of rendering entire HTML page
+  // Updates markup by comparing old and new HTML and changing text/attributes
   update(data) {
     this._data = data;
     const newMarkup = this._generateMarkup();
-
+    
+    // Convert markup string into DOM object living in memory
+    // newDOM is virtual DOM not living on browser but on memory
     const newDOM = document.createRange().createContextualFragment(newMarkup);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
     const curElements = Array.from(this._parentElement.querySelectorAll('*'));
