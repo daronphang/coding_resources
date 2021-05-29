@@ -55,3 +55,8 @@ mouseover
 search
 select
 ```
+## Common Attributes:
+```
+.firstChild?.nodeValue
+.setAttribute(name, value)
+```
