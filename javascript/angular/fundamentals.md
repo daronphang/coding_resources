@@ -1,10 +1,13 @@
 ## Background:
 Framework for building client applications in HTML, CSS, and Javascript/Typescript.
 ```
+// cli commands:
 npm install -g @angular/cli
 ng new hello-world
 cd hello-world
 ng serve
+
+ng generate component components/hedaer
 ```
 
 ## Angular Structure:
