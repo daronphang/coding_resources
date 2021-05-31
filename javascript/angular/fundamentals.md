@@ -9,6 +9,8 @@ ng serve
 
 ng generate component components/header
 ng generate component components/buttons
+
+ng generate service hero
 ```
 
 ## Angular Structure:
