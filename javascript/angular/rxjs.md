@@ -56,7 +56,7 @@ of(1, 2, 3)
 
 obs.pipe(op1(), op2(), op3(), op4());   // chain functions together using .pipe()
 ```
-Documentation for operators: [https://rxjs.dev/guide/operators]
+Documentation for operators: https://rxjs.dev/guide/operators
 
 
 ```javascript
