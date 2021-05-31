@@ -41,6 +41,7 @@ observable.subscribe(observer);
 ```
 ### Operators:
 Operators are functions. Allows complex asynchronous code to be easily composed. Two types of operators, pipeable and creation. Pipeable generates another Observable as output.
+Creation operators take a value as input and return an Observable as output.
 ```javascript
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
