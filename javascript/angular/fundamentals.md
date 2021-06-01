@@ -19,6 +19,16 @@ assets          Store images, files, icons, etc.
 environments    Store configuration settings for different environments
 karma           Test runner
 ```
+## Databinding:
+``` 
+{{ data }}              String Interpolation
+[disabled]="data"       Property Binding
+(event)="expression"    Event Binding (HTML to TypeScript, react to user events)
+[(ngModel]="data"       Two-way Binding
+``` 
+
+
+
 
 ### Hot Module Replacement:
 HMR exchanges, adds or removes modules while an application is running without a full reload. 
