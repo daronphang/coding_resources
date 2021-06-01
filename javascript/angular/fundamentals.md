@@ -31,7 +31,17 @@ karma           Test runner
 ``` 
 ## Directives:
 Instructions in the DOM. Components are directives with templates. Also have directives without templates.
+```
+*ngIf = "boolean condition"                     Structural directive that helps to add or remove elements from DOM (it is not hidden)
+[ngStyle]="{ backgroundColor: getColor() }"     Helps to dynamically update styles
+```
 
+```javascript
+<p>*ngIf="serverCreated; else noServer">Server was created</p>
+<ng-template #noServer>     // # is used to create a marker
+  <p>No server was created</p>
+</ng-template>
+```
 
 
 ### Hot Module Replacement:
