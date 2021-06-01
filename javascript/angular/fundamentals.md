@@ -34,6 +34,8 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 ```
 *ngIf = "boolean condition"                     Structural directive that helps to add or remove elements from DOM (it is not hidden)
 [ngStyle]="{ backgroundColor: getColor() }"     Helps to dynamically update styles
+[ngClass-="{ CSSclass: condition}"              Adds CSS class if condition is true
+*ngFor="let x of array"
 ```
 
 ```javascript
