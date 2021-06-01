@@ -25,6 +25,9 @@ karma           Test runner
 [disabled]="data"       Property Binding
 (event)="expression"    Event Binding (HTML to TypeScript, react to user events)
 [(ngModel]="data"       Two-way Binding
+
+(input)="onUpdateServerName($event)"
+// $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
 
 
