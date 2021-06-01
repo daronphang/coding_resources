@@ -29,7 +29,8 @@ karma           Test runner
 (input)="onUpdateServerName($event)"
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
-
+## Directives:
+Instructions in the DOM. Components are directives with templates. Also have directives without templates.
 
 
 
