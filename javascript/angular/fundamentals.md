@@ -89,7 +89,7 @@ export class UnlessDirective {
 <div *appUnless="boolean condition" type code here </div>
 ```
 
-### Binding Custom Properties:
+## Binding Custom Properties:
 To allow parent components (external) to bind a value to a property from another component, need add @Input. Exposes property to the world.
 ```javascript
 import { Component, OnInit, Input } from 'angular/core';
@@ -100,7 +100,7 @@ export class ExampleComponent implements OnInit {
 
 <app-example ['target.name.alias']="parent.component.property"></app-example>
 ``` 
-### Binding Custom Events:
+## Binding Custom Events:
 ```javascript
 // app.example.component:
 import { EventEmitter, Output } from 'angular/core';
