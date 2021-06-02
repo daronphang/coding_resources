@@ -28,7 +28,7 @@ Can bind HTML elements, directives or components.
 ### Property Binding:
 ``` 
 {{ data }}                                String Interpolation
-[property]="component property"           Property Binding such as 'disabled' 
+[property]="some value"                   Property Binding such as 'disabled' 
 (event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
 [(ngModel)]="data"                        Two-way Binding
 
