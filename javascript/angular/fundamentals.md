@@ -36,9 +36,9 @@ Can bind HTML elements, directives or components.
 ### Directives:
 Instructions in the DOM. Components are directives with templates. Also have directives without templates.
 ```
-*ngIf = "boolean condition"                     Structural directive that helps to add or remove elements from DOM (it is not hidden)
+*ngIf="boolean condition"                       Structural directive that helps to add or remove elements from DOM (it is not hidden)
 [ngStyle]="{ backgroundColor: getColor() }"     Helps to dynamically update styles
-[ngClass-="{ CSSclass: condition}"              Adds CSS class if condition is true
+[ngClass]="{ CSSclass: condition }"             Adds CSS class if condition is true
 *ngFor="let x of array"
 ```
 
