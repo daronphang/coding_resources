@@ -44,6 +44,12 @@ Instructions in the DOM. Components are directives with templates. Also have dir
   <p>No server was created</p>
 </ng-template>
 ```
+## Services:
+Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
+```javascript
+constructor(private loggingService: LoggingService) {   // private or public. Need perform this for both service and component.ts
+}
+```
 
 
 ### Hot Module Replacement:
