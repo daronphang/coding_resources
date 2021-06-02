@@ -159,7 +159,9 @@ ngAfterContentChecked
 ```
 ## Routing:
 ```javascript
-<a [routerLink]="['/users]">    // prevents page from reloading by default
+<div rounterLinkActive="active"       
+     [routerLinkActiveOptions]="{exact: true}">     // shows active tab, marked if full path is in router link
+     <a [routerLink]="['/users]"></div>    // prevents page from reloading by default
 ```
 
 
