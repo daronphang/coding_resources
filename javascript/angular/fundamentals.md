@@ -36,7 +36,7 @@ Can bind HTML elements, directives or components.
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
 ### Directives:
-Instructions in the DOM. Components are directives with templates. Also have directives without templates.
+Instructions in the DOM. Components are directives with templates. Also have directives without templates. * are structural directives.
 ```
 *ngIf="boolean condition"                       Structural directive that helps to add or remove elements from DOM (it is not hidden)
 *ngFor="let x of array"
@@ -44,14 +44,14 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 [ngClass]="{ CSSclass: condition }"             Adds CSS class if condition is true
 
 ```
-
 ```javascript
+// using ng-template:
 <p>*ngIf="serverCreated; else noServer">Server was created</p>
 <ng-template #noServer>     // # is used to create a marker
   <p>No server was created</p>
 </ng-template>
 ```
-## Attribute Directives:
+## Building Attribute Directives:
 Can change appearance or behavior of DOM elements and Angular components.
 ```javascript
 import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, Input } from '@angular/core';
@@ -83,6 +83,26 @@ export class BasicHighlightDirective implements OnInit {
 
 // html file:
 <p appBasicHighlight [defaultColor]="yellow">Highlight me!</p>
+```
+## Building Structural Directives:
+```javascript
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+
+@Directive({
+  selector: '[appUnless]'
+})
+
+export class UnlessDirective {
+  @Input() set appUnless(condition: boolean) {
+  if (!condition) {
+    this.viewRef.createEmbeddedView(this.templateRef);
+  } else {
+    this.viewRef.clear();
+  }
+  }
+  
+  constructor(private templateRef: TemplateRef<any>, private viewRef: ViewContainerRef) {}
+}
 ```
 
 ### Binding Custom Properties:
