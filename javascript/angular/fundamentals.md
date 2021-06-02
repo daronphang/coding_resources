@@ -54,7 +54,7 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 ## Attribute Directives:
 Can change appearance or behavior of DOM elements and Angular components.
 ```javascript
-import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding } from '@angular/core';
+import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, Input } from '@angular/core';
 
 @directive({
   selector: '[appBasicHighlight]'
@@ -63,16 +63,18 @@ import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding } f
 export class BasicHighlightDirective implements OnInit {
   constructor(private elRef: ElementRef, private renderer: Renderer2)
   }
+  @Input() defaultColor: string = 'transparent';
+  @Input() highlightColor: string = 'blue';
   
   ngOnInit() {
-  @HostBinding('style.backgroundColor') backgroundColor: string;  // shortcut for renderer
+  @HostBinding('style.backgroundColor') backgroundColor: string = this.defaultColor;  // shortcut for renderer
     
    
   @HostListener('mouseenter') mouseover(eventData: Event) {
      this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green', false, false);
      // same as this.elementRef.nativeElement.style.backgroundColor = 'green'; not good way of acccessing element directly
      
-     // this.backgroundColor = 'blue'; used with host binding
+     // this.backgroundColor = this.highlightColor; used with host binding
    }
   }
 }
