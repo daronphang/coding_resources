@@ -49,7 +49,7 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 </ng-template>
 ```
 ### Binding Custom Properties:
-To allow parent components (external) to bind to a property from another component, need add @Input. Exposes property to the world.
+To allow parent components (external) to bind a value to a property from another component, need add @Input. Exposes property to the world.
 ```javascript
 import { Component, OnInit, Input } from 'angular/core';
 
@@ -77,7 +77,45 @@ export class ExampleComponent implements OnInit {
 // app.component.html
 <app-example> (serverCreated)="onServerAdded($event)"</app-example>   // onServerAdded is a function in app.component
 ```
+## View Encapsulation:
+```javascript
+@component({
+  encapsulation: ViewEncapsulation.None     // CSS styles in main.component is applied
+  })
+```
+## Local References:
+Can only be used in HTML and not in TypeScript. Can add into any HTML tag. 
+```
+<input #serverNameInput> // logging results <input>
+```
+To use local reference in TypeScript, use ViewChild decorator.
+```javascript
+export class ExampleComponent implements OnInit {
+  @ViewChild('serverNameInput', {static: true}) serverNameInput: ElementRef;    // property
+  
+  // to access value:
+  onAddServer() {
+    serverName: this.serverNameInput.nativeElement.value;
+  }
+}
+```
+However, best way to use is ngContent hook to render contenet from another component.
+```
+example.component.html:
+<ng-content></ng-content>
 
+app.component.html:
+<app-example> Hi there </app-example>   // will display Hi there, and not get lost by default
+```
+## Lifecycle Hooks:
+```
+constructor
+ngOnInit
+ngOnChanges
+ngDoCheck
+ngAfterContentInit
+ngAfterContentChecked
+```
 
 ## Services:
 Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
