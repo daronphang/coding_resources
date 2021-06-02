@@ -26,14 +26,14 @@ Can bind HTML elements, Directives or components.
 ### Property Binding:
 ``` 
 {{ data }}                                String Interpolation
-[HTML property]="component property"      Property Binding such as 'disabled' 
+[property]="component property"      Property Binding such as 'disabled' 
 (event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
 [(ngModel)]="data"                        Two-way Binding
 
 (input)="onUpdateServerName($event)"
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
-## Directives:
+### Directives:
 Instructions in the DOM. Components are directives with templates. Also have directives without templates.
 ```
 *ngIf = "boolean condition"                     Structural directive that helps to add or remove elements from DOM (it is not hidden)
@@ -48,6 +48,17 @@ Instructions in the DOM. Components are directives with templates. Also have dir
   <p>No server was created</p>
 </ng-template>
 ```
+### Binding Custom Properties:
+To allow parent components (external) to bind to a property from another component, need add @Input. Exposes property to the world.
+```javascript
+import { Component, OnInit, Input } from 'angular/core';
+
+export class ExampleComponent implements OnInit {
+  @Input('target.name.alias') element: {type: string, name: string};
+  
+<app-example ['target.name.alias']="parent.component.property"></app-example>
+``` 
+
 ## Services:
 Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
 ```javascript
@@ -55,13 +66,11 @@ constructor(private loggingService: LoggingService) {   // private or public. Ne
 }
 ```
 
-
 ### Hot Module Replacement:
 HMR exchanges, adds or removes modules while an application is running without a full reload. 
 
 ### Webpack:
 Module bundler, to bundle Javascript files for usage in browser. Automatically adds script files to index.html.
-
 
 ## Constructor vs NgOnInit:
 Constructor is a default method that will always be executed when the class is instantiated. Used mainly for Dependency Injection. Common practice is to put as little logic as possible.
