@@ -11,6 +11,8 @@ ng generate component components/header
 ng generate component components/buttons
 
 ng generate service hero
+
+ng generate directive example
 ```
 
 ## Angular Structure:
@@ -49,6 +51,36 @@ Instructions in the DOM. Components are directives with templates. Also have dir
   <p>No server was created</p>
 </ng-template>
 ```
+## Attribute Directives:
+Can change appearance or behavior of DOM elements and Angular components.
+```javascript
+import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding } from '@angular/core';
+
+@directive({
+  selector: '[appBasicHighlight]'
+})
+
+export class BasicHighlightDirective implements OnInit {
+  constructor(private elRef: ElementRef, private renderer: Renderer2)
+  }
+  
+  ngOnInit() {
+  @HostBinding('style.backgroundColor') backgroundColor: string;  // shortcut for renderer
+    
+   
+  @HostListener('mouseenter') mouseover(eventData: Event) {
+     this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green', false, false);
+     // same as this.elementRef.nativeElement.style.backgroundColor = 'green'; not good way of acccessing element directly
+     
+     // this.backgroundColor = 'blue'; used with host binding
+   }
+  }
+}
+
+// html file:
+<p appBasicHighlight>Highlight me!</p>
+```
+
 ### Binding Custom Properties:
 To allow parent components (external) to bind a value to a property from another component, need add @Input. Exposes property to the world.
 ```javascript
@@ -117,6 +149,8 @@ ngDoCheck
 ngAfterContentInit
 ngAfterContentChecked
 ```
+
+
 
 ## Services:
 Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
