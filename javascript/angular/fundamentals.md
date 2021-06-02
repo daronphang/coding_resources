@@ -42,7 +42,6 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 *ngFor="let x of array"
 [ngStyle]="{ backgroundColor: condition }"      Helps to dynamically update styles
 [ngClass]="{ CSSclass: condition }"             Adds CSS class if condition is true
-
 ```
 ```javascript
 // using ng-template:
@@ -50,6 +49,12 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 <ng-template #noServer>     // # is used to create a marker
   <p>No server was created</p>
 </ng-template>
+
+// using ngSwitch:
+<div [ngSwitch]="value">
+  <p *ngSwitchCase="5"> Value is 5</p>
+  <p *ngSwitchCase="10"> Value is 10</p>
+</div>
 ```
 ## Building Attribute Directives:
 Can change appearance or behavior of DOM elements and Angular components.
