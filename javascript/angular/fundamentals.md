@@ -157,7 +157,10 @@ ngDoCheck
 ngAfterContentInit
 ngAfterContentChecked
 ```
-
+## Routing:
+```javascript
+<a [routerLink]="['/users]">    // prevents page from reloading by default
+```
 
 
 ## Services:
