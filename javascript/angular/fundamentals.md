@@ -65,11 +65,13 @@ export class BasicHighlightDirective implements OnInit {
   }
   @Input() defaultColor: string = 'transparent';
   @Input() highlightColor: string = 'blue';
+  @HostBinding('style.backgroundColor') backgroundColor: string;  // shortcut for renderer
   
   ngOnInit() {
-  @HostBinding('style.backgroundColor') backgroundColor: string = this.defaultColor;  // shortcut for renderer
+  
     
-   
+  this.backgroundColor = this.defaultColor;
+  
   @HostListener('mouseenter') mouseover(eventData: Event) {
      this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green', false, false);
      // same as this.elementRef.nativeElement.style.backgroundColor = 'green'; not good way of acccessing element directly
@@ -80,7 +82,7 @@ export class BasicHighlightDirective implements OnInit {
 }
 
 // html file:
-<p appBasicHighlight>Highlight me!</p>
+<p appBasicHighlight [defaultColor]="yellow">Highlight me!</p>
 ```
 
 ### Binding Custom Properties:
