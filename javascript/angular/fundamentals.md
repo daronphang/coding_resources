@@ -19,12 +19,16 @@ assets          Store images, files, icons, etc.
 environments    Store configuration settings for different environments
 karma           Test runner
 ```
-## Databinding:
+
+## Property and Event Binding:
+Can bind HTML elements, Directives or components.
+
+### Property Binding:
 ``` 
-{{ data }}              String Interpolation
-[disabled]="data"       Property Binding
-(event)="expression"    Event Binding (HTML to TypeScript, react to user events)
-[(ngModel]="data"       Two-way Binding
+{{ data }}                                String Interpolation
+[HTML property]="typescript property"     Property Binding such as 'disabled' 
+(event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
+[(ngModel)]="data"                        Two-way Binding
 
 (input)="onUpdateServerName($event)"
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
