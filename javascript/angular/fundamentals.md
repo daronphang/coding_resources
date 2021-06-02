@@ -55,9 +55,29 @@ import { Component, OnInit, Input } from 'angular/core';
 
 export class ExampleComponent implements OnInit {
   @Input('target.name.alias') element: {type: string, name: string};
-  
+}
+
 <app-example ['target.name.alias']="parent.component.property"></app-example>
 ``` 
+### Binding Custom Events:
+```javascript
+// app.example.component:
+import { EventEmitter, Output } from 'angular/core';
+
+export class ExampleComponent implements OnInit {
+  newServerName = '';
+  newServerContent = '';
+  
+  @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();   // custom event
+  
+  onAddServer() {
+  this.serverCreated.emit({serverName: this.newServerName, serverContent: this.newServerContent});
+} 
+
+// app.component.html
+<app-example> (serverCreated)="onServerAdded($event)"</app-example>   // onServerAdded is a function in app.component
+```
+
 
 ## Services:
 Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
