@@ -103,6 +103,9 @@ export class UnlessDirective {
   
   constructor(private templateRef: TemplateRef<any>, private viewRef: ViewContainerRef) {}
 }
+
+// html:
+<div *appUnless="boolean condition" type code here </div>
 ```
 
 ### Binding Custom Properties:
