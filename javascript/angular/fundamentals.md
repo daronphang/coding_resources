@@ -1,31 +1,7 @@
-## Background:
 Framework for building client applications in HTML, CSS, and Javascript/Typescript.
-```
-# cli commands:
-npm install -g @angular/cli
-ng new hello-world
-cd hello-world
-ng serve
 
-ng generate component components/header
-ng generate component components/buttons
-
-ng generate service hero
-
-ng generate directive example
-```
-
-## Angular Structure:
-```
-assets          Store images, files, icons, etc.
-environments    Store configuration settings for different environments
-karma           Test runner
-```
-
-## Property and Event Binding:
+## Property Binding:
 Can bind HTML elements, directives or components.
-
-### Property Binding:
 ``` 
 {{ data }}                                String Interpolation
 [property]="some value"                   Property Binding such as 'disabled' 
@@ -35,7 +11,7 @@ Can bind HTML elements, directives or components.
 (input)="onUpdateServerName($event)"
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
-### Directives:
+## Directives:
 Instructions in the DOM. Components are directives with templates. Also have directives without templates. * are structural directives.
 ```
 *ngIf="boolean condition"                       Structural directive that helps to add or remove elements from DOM (it is not hidden)
@@ -190,6 +166,31 @@ Shouldn't instantiate services on your own but instead use Dependency Injector i
 constructor(private loggingService: LoggingService) {   // private or public. Need perform this for both service and component.ts
 }
 ```
+
+## Cli:
+```
+# cli commands:
+npm install -g @angular/cli
+ng new hello-world
+cd hello-world
+ng serve
+
+ng generate component components/header
+ng generate component components/buttons
+
+ng generate service hero
+
+ng generate directive example
+```
+
+## Angular Structure:
+```
+assets          Store images, files, icons, etc.
+environments    Store configuration settings for different environments
+karma           Test runner
+```
+
+
 
 ### Hot Module Replacement:
 HMR exchanges, adds or removes modules while an application is running without a full reload. 
