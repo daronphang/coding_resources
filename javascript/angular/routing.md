@@ -52,3 +52,9 @@ ngOnDestroy() {
 }
 }
 ```
+## Nesting Routes:
+```javascript
+const appRoutes: Routes = [
+
+]
+```
