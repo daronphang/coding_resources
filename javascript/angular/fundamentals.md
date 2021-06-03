@@ -182,13 +182,6 @@ ngOnDestroy() {
 }
 ```
 
-## Services:
-Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
-```javascript
-constructor(private loggingService: LoggingService) {   // private or public. Need perform this for both service and component.ts
-}
-```
-
 ## Cli:
 ```
 # cli commands:
