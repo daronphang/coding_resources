@@ -12,11 +12,6 @@ export class ChildComponent {
 ## Output:
 For sharing data from child to parent.
 ```javascript
-// child.html
-<label for="item-input">Add an item:</label>
-<input type="text" id="item-input" #newItem>    // newItem is alias for input 
-<button (click)="addNewItem(newItem.value)">Add to parent's list</button>
-
 // child.ts
 export class ChildComponent {
   @Output() : newItemEvent = new EventEmitter<string>();   // output is string type
@@ -25,6 +20,11 @@ export class ChildComponent {
     this.newItemEvent.emit(value);
   }
 }
+
+// child.html
+<label for="item-input">Add an item:</label>
+<input type="text" id="item-input" #newItem>    // newItem is alias for input 
+<button (click)="addNewItem(newItem.value)">Add to parent's list</button>
 
 // parent.ts
 export class AppComponent {
