@@ -11,3 +11,13 @@ onSubmit(form: NgForm) {console.log('submitted!')}
 <form #Secret="ngForm" (ngSubmit)="onSubmit(Secret)">   // alias used to get access to form
 <input type="text" id="username" class="form-control" ngModel name="username">  // input is registered to "name"
 ```
+```javascript
+// Using ViewChild
+// component.ts:
+
+export class AppComponent {
+  @ViewChild('Secret') signupForm: NgForm;
+  
+  onSubmit() {console.log(this.signupForm};}
+}
+```
