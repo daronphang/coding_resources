@@ -71,3 +71,42 @@ const appRoutes: Routes = [
 // UserComponent.html
 <router-outlet></router-outlet>    // need add this
 ```
+## Guards:
+Implements a CanActivate function that checks whether the current user has permission to activate the requested route.
+```javascript
+// routing-service:
+const appRoutes: Routes = [
+  {path: 'users/:id/:name', canActivate: [AuthGuard], component: UserComponent},     // takes an array of all guard services
+]
+```
+```javascript
+// AuthGuard-service:
+export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+  
+  canActivate(route: ActivatedRouteSnapshot,      // can run async/sync
+              state: RouterStateSnapshot): Observable <boolean> | Promise <boolean> | boolean {
+        return this.authService.isAuthenticated().then((authenticated: boolean) => {
+          if (authenticated) { return authenticated}
+          else { this.router.navigate(['/']);}
+        }      
+        }
+};
+```
+```javascript
+// authService:
+export class AuthService {
+  loggedStatus = false;
+  
+  isAuthenticated() {
+     const promise = new Promise ((resolve, reject) => {
+          setTimeout(() => {resolve(this.loggedIn)}, 5000);
+     }
+  }
+  
+  login() {this.loggedStatus = true};
+}
+
+  logout() {this.loggedStatus = false};
+}
+```
