@@ -17,7 +17,7 @@ constructor(private router: Router, private route: ActivatedRoute) {}
 
 onLoadServers() {
   // perform some complex calculation
-  this.router.navigate(['/users'], {relativeTo: this.route});
+  this.router.navigate(['/users'], {relativeTo: this.route});    // relativeTo tells Angular what current route it is on
 }
 ```
 ## Fetching Route Parameters:
