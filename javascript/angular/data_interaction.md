@@ -25,7 +25,8 @@ export class ChildComponent {
 <label for="item-input">Add an item:</label>
 <input type="text" id="item-input" #newItem>    // newItem is alias for input 
 <button (click)="addNewItem(newItem.value)">Add to parent's list</button>
-
+```
+```javascript
 // parent.ts
 export class AppComponent {
   items = ['item1', 'item2', 'item3', 'item4'];
