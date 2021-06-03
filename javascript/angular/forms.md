@@ -7,9 +7,12 @@
 // component.ts:
 onSubmit(form: NgForm) {console.log('submitted!')}
 
+defaultQues = "What is your first pet?"; 
+
 // html:
 <form #Secret="ngForm" (ngSubmit)="onSubmit(Secret)">   // alias used to get access to form
-<input type="text" id="username" class="form-control" ngModel name="username">  // input is registered to "name"
+<input type="email" id="email" class="form-control" [ngModel]="defaultQues" name="email" required email #email="ngModel">  // input is registered to "name"
+<span class="help-block" *ngIf="!email.valid && email.touched"Please enter a valid email </span>
 ```
 ```javascript
 // Using ViewChild
