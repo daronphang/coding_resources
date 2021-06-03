@@ -54,7 +54,13 @@ ngOnDestroy() {
 ```
 ## Nesting Routes:
 ```javascript
+// routing.ts
 const appRoutes: Routes = [
-
+  {path: 'users', component: UserComponent, children: [
+     {path: 'id', component: UserComponent}
+  ]},
 ]
+
+// UserComponent.html
+<router-outlet></router-outlet>    // need add this
 ```
