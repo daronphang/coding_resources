@@ -45,7 +45,23 @@ Get instantiated once during lifetime of app. A class containing methods that ma
 Main objective is to organize and share business logic, models, data and functions between different components that may/may not be related.
 
 Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
+
+Useful for cross-component communication.
 ```javascript
+// accounts.service.ts
+
+statusUpdated = new EventEmitter<string>();
+
+// account.component.ts to emit
+someFunction() {
+  this.accountService.statusUpdated.emit(status);
+}
+
+// anotherComponent.ts to listen 
+someFunction() {
+  this.accountService.statusUpdated.subscribe(place some function);
+}
+
 constructor(private loggingService: LoggingService) {   // private or public. Need perform this for both service and component.ts
 }
 ```
