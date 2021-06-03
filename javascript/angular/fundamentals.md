@@ -200,6 +200,7 @@ ngOnInit() {
     name: this,route.snapshot.param['name']
   };
   
+  // also have queryParams.subscribe() and fragment.subscribe()
   this.paramSubscription = this.route.params.subscribe((params: Params) => {   // runs when user param changes
     this.user.id = params['id'];
     this.user.name = params['name'];
