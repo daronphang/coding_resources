@@ -3,11 +3,11 @@ For sharing data from parent to child.
 ```javascript
 // child.ts
 export class ChildComponent {
-  @Input() item: string = ''
+  @Input('target.name.alias') item: string = ''
 }
 
 //parent.html
-<app-child [item]="currentItem"></app-child>  // currentItem is from parent
+<app-child ['target.name.alias']="currentItem"></app-child>  // currentItem is from parent
 ```
 ## Output:
 For sharing data from child to parent.
