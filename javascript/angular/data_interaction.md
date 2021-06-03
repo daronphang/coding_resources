@@ -42,9 +42,7 @@ export class AppComponent {
 
 ## Services:
 Get instantiated once during lifetime of app. A class containing methods that maintain data throughout app life i.e. data does not get refreshed and available all the time. 
-Main objective is to organize and share business logic, models, data and functions between different components that may/may not be related.
-
-Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
+Main objective is to organize and share business logic, models, data and functions between different components that may/may not be related. Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
 
 Useful for cross-component communication.
 ```javascript
