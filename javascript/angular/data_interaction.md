@@ -43,3 +43,20 @@ export class AppComponent {
 ## Services:
 Get instantiated once during lifetime of app. A class containing methods that maintain data throughout app life i.e. data does not get refreshed and available all the time. 
 Main objective is to organize and share business logic, models, data and functions between different components that may/may not be related.
+
+Shouldn't instantiate services on your own but instead use Dependency Injector i.e. inject an instance of class service into component in constructor method.
+```javascript
+constructor(private loggingService: LoggingService) {   // private or public. Need perform this for both service and component.ts
+}
+```
+
+### Services in Other Services:
+If service A depends on service B, inject service B into service A's constructor method.
+```javascript
+// service A.service.ts
+constructor(private serviceB: ServiceB) {}
+
+someFunction() {
+  this.serviceB.log('');
+}
+```
