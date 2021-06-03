@@ -20,6 +20,7 @@ onLoadServers() {
   this.router.navigate(['/users'], {relativeTo: this.route});
 }
 ```
+## Fetching Route Parameters:
 ```javascript
 // Fetching route parameters i.e. home/users/1/john
 // route.ts:
@@ -50,6 +51,12 @@ ngOnInit() {
 ngOnDestroy() {
   this.paramSubscription.unsubscribe();   // good habit but not necessary
 }
+}
+```
+## Preserving Route Parameters:
+```javascript
+onEdit() {
+     this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
 }
 ```
 ## Nesting Routes:
