@@ -14,3 +14,14 @@ ngOnDestroy(){
   anObservable.unsubscribe();
 }
 ```
+## Subjects:
+Recommended way rather than using emit() and subscribe(). Used for active events rather than passive like HTTPrequests.
+```javascript
+// services:
+import { Subject } from 'rxjs';
+
+someEmitter = new Subject<boolean>();
+
+// component.ts to hear:
+this.services.someEmitter.subscribe()   // or next()
+```
