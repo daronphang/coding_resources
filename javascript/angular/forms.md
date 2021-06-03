@@ -8,11 +8,16 @@
 onSubmit(form: NgForm) {console.log('submitted!')}
 
 defaultQues = "What is your first pet?"; 
+genders = ['male', 'female'];
 
 // html:
 <form #Secret="ngForm" (ngSubmit)="onSubmit(Secret)">   // alias used to get access to form
+<div id="user-data" ngModelGroup="userData">    // ngModelGroup is to group data
 <input type="email" id="email" class="form-control" [ngModel]="defaultQues" name="email" required email #email="ngModel">  // input is registered to "name"
 <span class="help-block" *ngIf="!email.valid && email.touched"Please enter a valid email </span>
+<div class="radio" *ngFor="let gender of genders">
+  <label>
+    <input type="radio" name="gender" ngModel [value]="gender" {{ gender }}>
 ```
 ```javascript
 // Using ViewChild
