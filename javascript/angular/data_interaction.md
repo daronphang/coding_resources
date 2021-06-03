@@ -50,7 +50,7 @@ constructor(private loggingService: LoggingService) {   // private or public. Ne
 }
 ```
 
-### Services in Other Services:
+## Services in Other Services:
 If service A depends on service B, inject service B into service A's constructor method.
 ```javascript
 // service A.service.ts
