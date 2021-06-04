@@ -22,13 +22,13 @@ onGetResponse() {
   .pipe(map(responesData => {
     const postArray = [];
     for (const key in responseData) {
-      if (responseData.hasOwnProperty(key)) {
+      if (responseData.hasOwnProperty(key)) {   // to not ouput proto objects
         postArray.push({ ...resposeData[key], id: key })
       }
       return postArray
     }
   }))
-  .subscribe(posts => console.log(posts)
+  .subscribe(posts => console.log(posts)    {username: 'test', password: 'test', id: '12345'}
 }
   
 
