@@ -64,3 +64,25 @@ ngOnInit() {
   }
 }
 ```
+## Interceptors:
+To add headers/params to every request sent out.
+```javascript
+// app.module.ts:
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+@NgModule({
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}]
+})
+
+// auth-interceptor.service.ts
+Import { HttpInterceptor } from '@angular/common/http';
+
+export class AuthInterceptorService implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {   // next is a function that allows request to continue its journey
+    console.log('request is on its way');
+    return next.handle(req);
+  }
+}
+
+
+```
