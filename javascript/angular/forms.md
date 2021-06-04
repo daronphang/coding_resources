@@ -5,7 +5,17 @@
 ## Template-Driven:
 ```javascript
 // component.ts:
-onSubmit(form: NgForm) {console.log('submitted!')}
+onSubmit(form: NgForm) {
+  if (!form.valid) { return; }
+  
+  const email = form.value.email;
+  const password = form.value.password;
+  
+  this.authService.signIn(email, password).subscribe(resData => console.log(resData), error => console.log(error));
+  console.log('submitted!')
+  form.rest();
+
+}
 
 defaultQues = "What is your first pet?"; 
 genders = ['male', 'female'];
