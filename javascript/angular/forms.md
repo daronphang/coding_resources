@@ -37,7 +37,7 @@ export class AppComponent {
   suggestUserName() {
     const suggestedName = 'superuser';
     this.signupForm.form.patchValue({
-      userData: {username: suggestedName}
+      userData: {username: suggestedName}   // userData is alias for ngModelGroup, username is id from input
     });
   }
   
