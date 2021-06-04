@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/http';
 })
 
 //HttpService.service.ts:
+import ( map, catchError ) from 'rxjs/operators';
+import { Subject, throwError } from 'rxjs';
 
 constructor(private http: HttpClient) {}
 
@@ -27,7 +29,9 @@ getResponse() {
       }
       return postArray
     }
-  }))
+  })
+  catchError(errorRes => return throwError(errorRes));
+  )
 }
 
 //app-component.ts:
