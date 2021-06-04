@@ -36,7 +36,7 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = 'superuser';
-    this.signupForm.form.patchValue({
+    this.signupForm.form.patchValue({   // .setValue() to overwrite entire form
       userData: {username: suggestedName}   // userData is alias for ngModelGroup, username is id from input
     });
   }
