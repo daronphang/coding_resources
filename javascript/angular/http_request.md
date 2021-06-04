@@ -80,7 +80,9 @@ Import { HttpInterceptor } from '@angular/common/http';
 export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {   // next is a function that allows request to continue its journey
     console.log('request is on its way');
-    return next.handle(req);
+    const modifiedReq = req.clone({url: 'some new url', headers: 'some header'})
+   
+    return next.handle(modifiedReq);
   }
 }
 
