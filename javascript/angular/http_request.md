@@ -33,8 +33,12 @@ getResponse() {
 //app-component.ts:
 
 isFetching = false;
+error = null;
+private errorSub: Subscription;
 
 ngOnInit() {
+  this.errorSub = this.httpService.error.subscribe(errorMessage => this.error = errorMessage);  // subscription-based strategy
+
   onSubmit() {
       this.isFetching = true;
       this.httpService.getResponse().subscribe(posts => console.log(posts), // {username: 'test', password: 'test', id: '12345'}
