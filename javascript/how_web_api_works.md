@@ -7,7 +7,8 @@ Client:   https://restcountries.eu/rest/v2
 2) DNS matches the domain name to server's IP address.
 3) Browser establishes TCP/IP (protocols) socket connection with server.
 4) HTTP request is made to the server through GET/POST/PUT/DELETE.
-5) HTTP response sent back from server to browser.
+5) Two requests are made; first is to check if the server accepts request source, and the other is the request body.
+6) HTTP response sent back from server to browser.
 
 ```
 // Request
