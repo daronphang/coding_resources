@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/http';
   imports: [HttpClientModule]
 })
 
-//app.component.ts:
+//HttpService.service.ts:
 
 constructor(private http: HttpClient) {}
 
