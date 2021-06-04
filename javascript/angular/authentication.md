@@ -79,9 +79,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 ```
 ## Send Tokens On-Demand:
 ```javascript
-someFunction() {
+someFunction() {                                                   // exhaustMap() replaces user observable with new one
   return this.authService.user.pipe(take(1), exhaustMap(user => {  // take() takes first observable and auto unsubscribe
-    return this.http.get('https://', {params: newHttpParms().set('auth', user.token)})  // exhaustMap() replaces user observable with new one
+    return this.http.get('https://', {params: newHttpParms().set('auth', user.token)}) // adds ?auth=12345
   })
 }
 
