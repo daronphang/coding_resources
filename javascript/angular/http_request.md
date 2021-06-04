@@ -20,7 +20,18 @@ submitPost(submitData: (username: string, password: string)) {   // angular auto
  }
 
 getResponse() {
-  return this.http.get('https://api/here')
+  let headers: new HttpHeaders();
+  let searchParams: new HttpParams();
+  
+  headers = headers.append({'custom-header': 'hello'});
+  searchParams = searchParams.append('print', 'pretty');
+
+  return this.http.get('https://api/here',
+    {
+      headers: headers,
+      params: searchParams,
+    }
+  )
   .pipe(map(responesData => {
     const postArray = [];
     for (const key in responseData) {
