@@ -12,14 +12,13 @@ import { HttpClientModule } from '@angular/http';
 
 constructor(private http: HttpClient) {}
 
-on Submit(submitData: (username: string, password: string)) {   // angular auto converts form data to json
-  httpRequest = this.http.post('https://API/endpoint', submitData).subscribe(data => )  
-  
+submitPost(submitData: (username: string, password: string)) {   // angular auto converts form data to json
+  return httpRequest = this.http.post('https://API/endpoint', submitData) // subscribe in components  
   // for firebase, 'https://firebase/posts.json"
  }
 
-onGetResponse() {
-  this.http.get('https://api/here')
+getResponse() {
+  return this.http.get('https://api/here')
   .pipe(map(responesData => {
     const postArray = [];
     for (const key in responseData) {
@@ -29,9 +28,17 @@ onGetResponse() {
       return postArray
     }
   }))
-  .subscribe(posts => console.log(posts)    {username: 'test', password: 'test', id: '12345'}
 }
-  
 
+//app-component.ts:
 
+isFetching = false;
+
+ngOnInit() {
+  onSubmit() {
+      this.isFetching = true;
+      this.httpService.getResponse().subscribe(posts => console.log(posts)    {username: 'test', password: 'test', id: '12345'}
+      this.isFetching = false;
+  }
+}
 ```
