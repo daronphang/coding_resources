@@ -1,5 +1,5 @@
 ## HTTP Request:
-Created as a service.
+Created as a service. Components will subscribe the HTTPrequest.
 ```javascript
 // app.module.ts:
 
