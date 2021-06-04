@@ -1,4 +1,5 @@
 ## HTTP Request:
+Created as a service.
 ```javascript
 // app.module.ts:
 
