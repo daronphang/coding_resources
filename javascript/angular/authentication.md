@@ -53,5 +53,28 @@ private handleAuth(email, string, expiresIn) {
  this.user.next(loggedUser);
 }
 
-
 ```
+## Reflecting Auth State in UI:
+```javascript
+// header.component.ts
+
+export class HeaderComponent implements OnInit, OnDestroy {
+  isAuthenticated = false;
+  private userSub: Subscription;
+}
+
+
+  ngOnInit() {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false : true;
+    }
+  }
+ 
+ ngOnDestroy() {
+  this.userSub.unsubscribe();
+}
+
+// header.html:
+// add #ngIf="isAuthenticated"
+```
+
