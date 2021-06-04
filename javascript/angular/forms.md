@@ -29,3 +29,17 @@ export class AppComponent {
   onSubmit() {console.log(this.signupForm};}
 }
 ```
+### Setting Default Values:
+```javascript
+export class AppComponent {
+  @ViewChild('Secret') signupForm: NgForm;
+
+  suggestUserName() {
+    const suggestedName = 'superuser';
+    this.signupForm.form.patchValue({
+      userData: {username: suggestedName}
+    });
+  }
+  
+<button class='btn btn-primary' type='button' (click)="suggestUserName()">Suggest a name</button>
+```
