@@ -78,12 +78,31 @@ export class HeaderComponent implements OnInit, OnDestroy {
 // add #ngIf="isAuthenticated"
 ```
 ## Send Tokens On-Demand:
+Can use interceptor to add token to every outgoing requests.
 ```javascript
-someFunction() {                                                   // exhaustMap() replaces user observable with new one
-  return this.authService.user.pipe(take(1), exhaustMap(user => {  // take() takes first observable and auto unsubscribe
-    return this.http.get('https://', {params: newHttpParms().set('auth', user.token)}) // adds ?auth=12345
-  })
+// interceptor.service.ts:
+
+import { Injectable } from '@angular/core';
+import { HttpHandler, HttpRequest, HttpHandler, HttpParams, HttpInterceptor } from '@angular/common/http';
+import { AuthService } from './authservice';
+import { take, exhaustMap } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+}) 
+export class AuthInterceptorService implements HttpInterceptor {
+
+  constructor(authService: AuthService) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    return this.authService.user.pipe(
+      take(1),
+      exhaustMap(user => {
+        if (!user) {return next.handle(req);}
+        const modifiedReq = req.clone({params: new HttpParams().set('auth', user.token)})
+        return next.handle(modifiedReq);
+      })
+    )
+  }
 }
-
-
 ```
