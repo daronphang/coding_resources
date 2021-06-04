@@ -30,6 +30,8 @@ getResponse() {
     {
       headers: headers,
       params: searchParams,
+      observe: 'events',    // to output type of response; can be body, response, events
+      responseType: 'json',
     }
   )
   .pipe(map(responesData => {
