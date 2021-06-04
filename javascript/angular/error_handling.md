@@ -9,6 +9,10 @@ private handleError(errorRes: HTTPErrorResponse) {
   switch (errorRes.error.error.message) {
     case 'EMAIL_EXISTS':
       errorMsg = 'This email exists already';
+      break;
     }
+    case 'PASSWORD_INVALID':
+      errorMsg = 'Password is incorrect';
+      break;
 }
 ```
