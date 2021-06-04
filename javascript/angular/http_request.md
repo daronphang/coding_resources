@@ -37,7 +37,8 @@ isFetching = false;
 ngOnInit() {
   onSubmit() {
       this.isFetching = true;
-      this.httpService.getResponse().subscribe(posts => console.log(posts)    {username: 'test', password: 'test', id: '12345'}
+      this.httpService.getResponse().subscribe(posts => console.log(posts), // {username: 'test', password: 'test', id: '12345'}
+        error => this.error = error.message)    
       this.isFetching = false;
   }
 }
