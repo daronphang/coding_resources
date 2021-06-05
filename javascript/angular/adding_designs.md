@@ -1,7 +1,8 @@
-## Loading:
+## Loading Spinner:
 Create new component and CSS file for loading spinner. In HTML, add <app-loading-spinner>.
+
 ```javascript
-// add a property in component.ts:
+// app-component.ts:
 isFetching = false;
 
 onGetRequest() {
@@ -10,9 +11,9 @@ onGetRequest() {
   
   this.isFetching = false;
 }
-
-// in html:
+```
+```html
+// component.html:
 <p *ngIf="!isFetching">No data here</p>
-<p *ngIf="isFetching">Loading...</p>
-
+<div *ngIf="isFetching" class="lds-ring"><div></div><div></div><div></div><div></div></div>
 ```
