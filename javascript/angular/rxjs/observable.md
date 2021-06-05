@@ -25,3 +25,8 @@ someEmitter = new Subject<boolean>();
 // component.ts to hear:
 this.services.someEmitter.subscribe()   // or next()
 ```
+## Subscribe:
+Subscribe() can take 3 arguments as follows:
+1) onNext: Function to invoke for each element in observable sequence.
+2) onError: Function to invoke upon exceptional termination.
+3) onCompleted: Function to invoke upon graceful termination.
