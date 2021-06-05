@@ -43,4 +43,4 @@ Subscribe() can take 3 arguments as follows:
 3) onCompleted: Function to invoke upon graceful termination.
 
 ## Unsubscribe:
-When navigating somewhere else, Angular will destroy the component; need to unsubscribe to prevent memory leak.
+When navigating somewhere else, Angular will destroy the component; need to unsubscribe to prevent memory leak. Use pipe operators to auto-unsubscribe such as first() and take().
