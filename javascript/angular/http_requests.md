@@ -66,8 +66,10 @@ ngOnInit() {
 ```
 ## Modifying HTTP requests:
 ```javascript
-const params = new HttpParams().set('token', '123abc').set('name', ' john')   // example/?api=123abc&?name=john
-const headers = new HttpHeaders().set('Authorization', 'my-auth-token')
+const newParams = new HttpParams().set('token', '123abc').set('name', ' john')   // example/?api=123abc&?name=john
+const newHeaders = new HttpHeaders().set('Authorization', 'my-auth-token')
 
+(params: newParams}
+{headers: newHeaders}
 {setHeaders: {'Authentication': 'auth-token', 'Content-Type': 'application/json'}}
 ```
