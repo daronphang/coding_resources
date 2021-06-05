@@ -102,6 +102,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         else {
           const modifiedReq = req.clone({params: new HttpParams().set('auth', user.token)})
                           // {setHeaders: {Authorization: 'Bearer ${user.token}`}}
+                          // {headers: request.headers.set('Content-Type', 'application/json')}  
                           // can check if error.status === 401 and redirect if true
           return next.handle(modifiedReq);
         }
