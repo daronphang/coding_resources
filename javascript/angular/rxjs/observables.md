@@ -4,7 +4,7 @@
 
 Observable -> Connected to Observer -> Performs execution that delivers value to Observable -> Observable is subscribed to emit value.
 
-Can use of() method which returns an Observable and emits values in a sequence upon subscription.
+Can use of() method as mock API which returns an Observable and emits values in a sequence upon subscription.
 
 ```javascript
 let subscription = new Subscription;
