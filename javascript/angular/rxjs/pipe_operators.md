@@ -1,5 +1,6 @@
 ## Operators:
 ```
+catchError        Returns a new observable or throws an error.
 
 Mapping:
 All map operators help to map (return an Observable) and flatten it (subscribe). 4 flattening strategies available. 
