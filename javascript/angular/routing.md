@@ -27,7 +27,8 @@ onLoadServers() {
 const appRoutes: Routes = [
   {path: 'users/:id/:name', component: UserComponent},
 ]
-
+```
+```javascript
 // component.ts:
 import { Subscription } from './rxjs/Subscription';
 
