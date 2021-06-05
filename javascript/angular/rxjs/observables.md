@@ -1,7 +1,27 @@
-## Observable and Observer:
-An observable is a data source i.e. from user input events, HTTP requests, etc. Used for asynchronous tasks.
-An Observer is an interface used to feed an Observable source with next(), error() and complete(). Able to retrieve a stream of data non-stop until complete() is executed.
-Biggest advantage over promises is that observables have operators to transform data using pipe().
+## Definitions:
+- Observable: a data source i.e. from user input events, HTTP requests, etc. 
+- Observer: an interface that executes instructions when there is a new value or change in the Observable, and delivers values to the Observable using next(), error() or complete().
+
+Observable -> Connected to Observer -> Performs execution that delivers value to Observable -> Observable is subscribed to emit value
+
+```javascript
+let observable = Observable.create((observer:any) => {
+   observer.next('I am number 1')
+   observer.next('I am number 2')
+   observer.error('I am number 3')
+   observer.complete('I am number 4')
+   observer.next('I am number 5')
+})
+
+observable.subscribe(msg => console.log(msg));
+```
+
+
+## Advantages Over Promises:
+- An Observable pushes a stream of values whereas Promise pushes one resolved value.
+- Error handlers can be done inside Observables rather than a construct like Promises.
+- Data can be transformed using operators through pipe(). 
+
 ```javascript
 private anObservable: Subscription;
 
