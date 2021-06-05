@@ -127,3 +127,11 @@ import { TokenInterceptor } from './../auth/token.interceptor';
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}]
 })
 ```
+```javascript
+const newParams = new HttpParams().set('token', '123abc').set('name', ' john')   // example/?api=123abc&?name=john
+const newHeaders = new HttpHeaders().set('Authorization', 'my-auth-token')
+
+(params: newParams}
+{headers: newHeaders}
+{setHeaders: {'Authentication': 'auth-token', 'Content-Type': 'application/json'}}
+```
