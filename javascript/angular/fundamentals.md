@@ -20,8 +20,9 @@ Instructions in the DOM. Components are directives with templates. Also have dir
 [ngClass]="{ CSSclass: condition }"             Adds CSS class if condition is true
 ```
 ```javascript
-// using ng-template:
+// ng-template doesn't render anything by default 
 <p>*ngIf="serverCreated; else noServer">Server was created</p>
+
 <ng-template #noServer>     // # is used to create a marker
   <p>No server was created</p>
 </ng-template>
