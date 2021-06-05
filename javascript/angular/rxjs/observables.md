@@ -2,7 +2,9 @@
 - **Observable**: a data source i.e. from user input events, HTTP requests, etc. 
 - **Observer**: an interface that executes instructions when there is a new value or change in the Observable, and delivers values to the Observable using next(), error() or complete().
 
-Observable -> Connected to Observer -> Performs execution that delivers value to Observable -> Observable is subscribed to emit value
+Observable -> Connected to Observer -> Performs execution that delivers value to Observable -> Observable is subscribed to emit value.
+
+Can use of() method which returns an Observable and emits values in a sequence upon subscription.
 
 ```javascript
 let subscription = new Subscription;
