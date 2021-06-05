@@ -26,14 +26,14 @@ const behSubject = new BehaviorSubject('set initial value');
 behSubject.subcribe(value => console.log('value');
 ```
 
-Recommended way rather than using emit() and subscribe(). Used for active events rather than passive like HTTPrequests.
+Recommended way rather than using emit(). Used for active events rather than passive like HTTPrequests.
 ```javascript
 // services:
 import { Subject } from 'rxjs';
 
 someEmitter = new Subject<boolean>();
 
-// component.ts to hear:
+// component.ts to listen:
 this.services.someEmitter.subscribe()   // or next()
 ```
 ## Subscribe:
