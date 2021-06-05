@@ -89,5 +89,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 ## Modifying HTTP requests:
 ```javascript
 const params = new HttpParams().set('token', '123abc').set('name', ' john')   // example/?api=123abc&?name=john
-const headers = new HttpHeaders()
+const headers = new HttpHeaders().set('Authorization', 'my-auth-token')
+
+{setHeaders: {'Authentication': 'auth-token', 'Content-Type': 'application/json'}}
 ```
