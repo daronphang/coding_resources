@@ -30,7 +30,8 @@ export class User {
     return this._token;
   }
 }
-
+```
+```javascript
 // auth.service.ts:
 user = new Subject<User>();   // User is an interface imported
 
@@ -44,13 +45,27 @@ signIn(){
   );
 }
 
-private handleAuth(email, string, expiresIn) {
+private handleAuth(email, id, token, expirationDate) {
   const loggedUser = new User(
   email,
-  password,
-  idToken
+  id,
+  _token,
+  _tokenExpirationDate
  );
  this.user.next(loggedUser);
+ localStorage.setItem('userData', Json.stringify(loggedUser));    // store token in browser storage 
+}
+
+autoLogin() {       // call this function in ngOnInit from component.ts
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  if (!userData) {
+  return;
+  }
+  
+  const loadedUser = new User(userData.email, userData.id, userData._token, userData._tokenExpirationDate) 
+  if(loadedUser.token) (
+    this.user.next(loadedUser);
+  }
 }
 
 ```
