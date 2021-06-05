@@ -23,7 +23,7 @@ export class User {
     private _tokenExpirationDate: Date
   )  {}
   
-  get token() {
+  get token() {     // when accessing User._token, will auto call this getter method
     if(!_tokenExpirationDate || new Date() > this.tokenExpirationDate) {
       return null;
     }
