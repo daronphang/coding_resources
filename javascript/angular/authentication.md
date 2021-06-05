@@ -12,7 +12,7 @@ signIn() {
 }
 ```
 
-## Storing Users:
+## Storing Users for Auto Login/Logout:
 ```javascript
 // user.model.ts:
 export class User {
@@ -47,13 +47,31 @@ signIn(){
 
 private handleAuth(email, id, token, expirationDate) {
   const loggedUser = new User(
-  email,
-  id,
-  _token,
-  _tokenExpirationDate
+  email, string,
+  userId: string,
+  token: string,
+  expiresIn: number
  );
  this.user.next(loggedUser);
+ this.autoLogout(expiresIn * 1000)
  localStorage.setItem('userData', Json.stringify(loggedUser));    // store token in browser storage 
+}
+
+logout() {
+  this.user.next(null);
+  this.router.navigate(['/auth']);
+  localStorage.removeItem('userData');   // as opposed to localStorage.clear()
+  if (this.tokenExpirationTimer) {
+    clearTimeout(this.tokenExpirationTimer);
+  }
+  this.tokenExpirationTimer = null;
+}
+
+autoLogout(expirationDuration: number) {
+  this.tokenExpirationTimer = setTimeout(() =>{
+  this.logout();
+  }, expirationDuration);
+
 }
 
 autoLogin() {       // call this function in ngOnInit from component.ts
@@ -65,6 +83,8 @@ autoLogin() {       // call this function in ngOnInit from component.ts
   const loadedUser = new User(userData.email, userData.id, userData._token, userData._tokenExpirationDate) 
   if(loadedUser.token) (
     this.user.next(loadedUser);
+    const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime())
+    this.autoLogout(expirationDuration);
   }
 }
 
