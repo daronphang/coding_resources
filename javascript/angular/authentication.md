@@ -80,7 +80,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 ## Send Tokens On-Demand:
 Can use interceptor to attach authentication information such as tokens to requests.
 ```javascript
-// interceptor.service.ts:
+// app.module.ts:
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+@NgModule({
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}]
+})
+
+// auth-interceptor.service.ts:
 
 import { Injectable } from '@angular/core';
 import { HttpHandler, HttpRequest, HttpHandler, HttpParams, HttpInterceptor } from '@angular/common/http';
@@ -93,6 +100,8 @@ import { take, exhaustMap } from 'rxjs/operators';
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(authService: AuthService) {}
+  
+  const newParams = new HttpParams().set('auth', user.token);
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.authService.user.pipe(
@@ -100,13 +109,11 @@ export class AuthInterceptorService implements HttpInterceptor {
       exhaustMap(user => {
         if (!user) {return next.handle(req);}
         else {
-          const modifiedReq = req.clone({params: new HttpParams().set('auth', user.token)})
-                          // {setHeaders: {Authorization: 'Bearer ${user.token}`}}
-                          // {headers: request.headers.set('Content-Type', 'application/json')}  
-                          // can check if error.status === 401 and redirect if true
+          const modifiedReq = req.clone({params: newParams })
+          // can check if error.status === 401 and redirect if true
+          
           return next.handle(modifiedReq);
         }
-        
       })
     )
   }
