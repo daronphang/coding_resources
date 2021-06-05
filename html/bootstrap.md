@@ -49,3 +49,7 @@ Used to establish the width for the layout. Have default fixed widths that will 
     <div class=“col-sm-4”> Content </div>
 </div>
 ```
+## Styling:
+```
+<styles="position: "relative"; top: 50%">     Use position relative to change top property
+```
