@@ -170,3 +170,48 @@ const newHeaders = new HttpHeaders().set('Authorization', 'my-auth-token')
 {headers: newHeaders}
 {setHeaders: {'Authentication': 'auth-token', 'Content-Type': 'application/json'}}
 ```
+## Guards:
+Implements a CanActivate function that checks whether the current user has permission to activate the requested route.
+```javascript
+// routing-service:
+const appRoutes: Routes = [
+  {path: 'users/:id/:name', canActivate: [AuthGuard], component: UserComponent},     // takes an array of all guard services
+]
+```
+```javascript
+// AuthGuard-service:
+export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+  
+  canActivate(route: ActivatedRouteSnapshot,      // forced method canActivate
+              state: RouterStateSnapshot): Observable <boolean> | <UrlTree> | Promise <boolean> | boolean {     // can run async/sync
+        return this.authService.isAuthenticated().pipe(          // isAuthenticated is an Observable
+          take(1),
+          map(user => {
+               const isAuth = !!user;
+               if (isAuth) {
+                    return true;
+               }
+               return this.router.createUrlTree(['/auth']);
+          }))
+        }      
+        }
+};
+```
+```javascript
+// authService:
+export class AuthService {
+  loggedStatus = false;
+  
+  isAuthenticated() {
+     const promise = new Promise ((resolve, reject) => {
+          setTimeout(() => {resolve(this.loggedStatus)}, 5000);
+     }
+  }
+  
+  login() {this.loggedStatus = true};
+}
+
+  logout() {this.loggedStatus = false};
+}
+```
