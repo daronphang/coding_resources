@@ -90,12 +90,12 @@ import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewC
 export class AlertComponent {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
   
-  @ViewChild(PlaceHolderDirective, {static: false}) alertHost: PlaceHolderDirective;
+  @ViewChild(PlaceHolderDirective, {static: false}) alertHost: PlaceHolderDirective;  // finds the first occurence of this directive in DOM
 
   private closeSub?: Subscription;
 
   private showErrorAlert(message: string) {
-    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(Alertcomponent);
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear(); 
     const componentRef = hostviewContainerRef.createComponent(alertCmpFactory);
