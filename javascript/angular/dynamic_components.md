@@ -102,9 +102,9 @@ export class AlertComponent {
     const componentRef = hostviewContainerRef.createComponent(alertCmpFactory);
 
     componentRef.instance.message = message;
-    this.closeSub = componentRef.instance.close.subscribe(() => {
-      this.closeSub.unsubscribe();
-      hostViewContainerRef.clear();
+    this.closeSub = componentRef.instance.closeEvent.subscribe(() => {    // closeEvent and message are properties of AlertComponent
+    this.closeSub.unsubscribe();
+    hostViewContainerRef.clear();
     })
   }
   
