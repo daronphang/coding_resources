@@ -107,5 +107,8 @@ export class AlertComponent {
     })
   }
   
-  @ViewChild(HelperDirective, {static: false}) alertHost: HelperDirective;
+// app.module.ts
+@ngModule({
+  entryComponents: [AlertComponent]
+})
 ```
