@@ -9,8 +9,8 @@ Can bind HTML elements, directives or components.
 (input)="onUpdateServerName($event)"
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
-## Directives:
-Instructions in the DOM. Components are directives with templates. Also have directives without templates. * are structural directives.
+## Inbuilt Structural Directives:
+Responsible for manipulating, modifying and removing elements inside a component template.
 ```
 *ngIf="boolean condition"                       Structural directive that helps to add or remove elements from DOM (it is not hidden)
 *ngFor="let x of array"
@@ -64,7 +64,40 @@ export class BasicHighlightDirective implements OnInit {
 // html file:
 <p appBasicHighlight [defaultColor]="yellow">Highlight me!</p>
 ```
-## Building Structural Directives:
+## Building Custom Structural Directives:
+1) Use Directive decorator to define Custom Directive.
+2) Provide a selector which represents this Directive.
+3) Constructor receives TemplateRef and ViewContainerRef.
+
+TemplateRef refers to the content enclosed within the container.
+ViewContainerRef refers to the container to which directive is applied.
+```javascript
+import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
+@Directive({
+    selector: '[delayRendering]'
+})
+
+export class DelayRenderingDirective {
+    constructor(private template: TemplateRef<any>, private container: ViewContainerRef) {}
+
+    @Input() delayRendering?: number;
+
+    ngOnInit() {
+        setTimeout(() =>{
+            this.container.createEmbeddedView(this.template);
+        }, this.delayRendering );
+    }
+}
+```
+```html
+<div *delayRendering="1000">              // <div> referred by ViewContainerRef
+  <h1>This is the template area</h1>      // Content inside container (<h1>) referred by TemplateRef
+</div>
+```
+
+
+
+
 ```javascript
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
