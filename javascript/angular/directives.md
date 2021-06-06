@@ -31,6 +31,14 @@ Responsible for manipulating, modifying and removing elements inside a component
   <p *ngSwitchCase="10"> Value is 10</p>
 </div>
 ```
+```html
+// *ngIf is just syntactic sugar i.e. nicer syntax for something existing
+//both are the same
+<p *ngIf="isVisible"> This is visible </p?
+
+<ng-template [ngIf]="isVisible"><p>This is visible</p></ng-template>
+```
+
 ## Building Attribute Directives:
 Can change appearance or behavior of DOM elements and Angular components.
 ```javascript
@@ -72,33 +80,7 @@ export class BasicHighlightDirective implements OnInit {
 TemplateRef refers to the content enclosed within the container.
 ViewContainerRef refers to the container to which directive is applied.
 ```javascript
-import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
-@Directive({
-    selector: '[delayRendering]'
-})
-
-export class DelayRenderingDirective {
-    constructor(private template: TemplateRef<any>, private container: ViewContainerRef) {}
-
-    @Input() delayRendering?: number;
-
-    ngOnInit() {
-        setTimeout(() =>{
-            this.container.createEmbeddedView(this.template);
-        }, this.delayRendering );
-    }
-}
-```
-```html
-<div *delayRendering="1000">              // <div> referred by ViewContainerRef
-  <h1>This is the template area</h1>      // Content inside container (<h1>) referred by TemplateRef
-</div>
-```
-
-
-
-
-```javascript
+// unless.directive.ts:
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
@@ -106,20 +88,24 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 })
 
 export class UnlessDirective {
-  @Input() set appUnless(condition: boolean) {
-  if (!condition) {
-    this.viewRef.createEmbeddedView(this.templateRef);
-  } else {
-    this.viewRef.clear();
-  }
-  }
+  constructor(private template: TemplateRef<any>, private container: ViewContainerRef) {}
   
-  constructor(private templateRef: TemplateRef<any>, private viewRef: ViewContainerRef) {}
+  @Input() set appUnless(value: boolean) {
+  if (!condition) {
+    this.container.createEmbeddedView(this.template);
+  } else {
+    this.container.clear();
+  }
+  }
 }
-
-// html:
-<div *appUnless="boolean condition" type code here </div>
 ```
+```html
+// parent.component.html:
+<div *appUnless="isVisible">              // <div> referred by ViewContainerRef
+  <h1>This is the template area</h1>      // Content inside container (<h1>) referred by TemplateRef
+</div>
+```
+
 ## Local References:
 Can only be used in HTML and not in TypeScript. Can add into any HTML tag. 
 ```
