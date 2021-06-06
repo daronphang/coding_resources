@@ -78,7 +78,7 @@ export class BasicHighlightDirective implements OnInit {
 3) Constructor receives TemplateRef and ViewContainerRef.
 
 TemplateRef refers to the content enclosed within the container.
-ViewContainerRef refers to the container to which directive is applied.
+ViewContainerRef refers to the container to which directive is applied. They are injected to get access to them.
 ```javascript
 // unless.directive.ts:
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
