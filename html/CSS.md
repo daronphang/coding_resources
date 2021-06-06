@@ -30,6 +30,14 @@ p {
 
 <p style="color:red;">A red paragraph.</p>
 ```
+## Styling:
+```
+position: "relative";
+top: 50%";                  Use position property to change top property
+z-index: 50;                Positive stacks in front, negative stacks behind
+
+```
+
 ## Units:
 ```
 // Absolute length:
