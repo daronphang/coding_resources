@@ -88,7 +88,7 @@ import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewC
   templateUrl: './alert.component.html'
 })
 
-export class AlertComponent {
+export class AppComponent implements OnDestroy {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
   
   @ViewChild(PlaceHolderDirective, {static: false}) alertHost: PlaceHolderDirective;  // finds the first occurence of this directive in DOM
@@ -106,6 +106,12 @@ export class AlertComponent {
     this.closeSub.unsubscribe();
     hostViewContainerRef.clear();
     })
+  
+  ngOnDestroy() {         // in the event the component is closed 
+    if (this.closeSub) {
+      this.closeSub.unsubscribe();
+    }
+  }
   }
   
 // app.module.ts
