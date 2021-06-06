@@ -20,6 +20,7 @@ export class AlertComponent {
 }
 
 // parent.component:
+error?: string; 
 onHandleError(event) {
   this.error = null;
 }
@@ -32,7 +33,7 @@ onHandleError(event) {
         <button class="btn btn-primary" (click)="closeAlert()">Close</button>
 </div>
 
-
+// parent.html:
 <app-alert [message]="error" *ngIf="error" (closeEvent)="onHandleError($event)"></app-alert>
 ```
 ```css
