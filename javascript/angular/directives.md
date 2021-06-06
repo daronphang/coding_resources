@@ -49,15 +49,13 @@ import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, In
 })
 
 export class BasicHighlightDirective implements OnInit {
-  constructor(private elRef: ElementRef, private renderer: Renderer2)
-  }
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
+  
   @Input() defaultColor: string = 'transparent';
   @Input() highlightColor: string = 'blue';
   @HostBinding('style.backgroundColor') backgroundColor: string;  // shortcut for renderer
   
   ngOnInit() {
-  
-    
   this.backgroundColor = this.defaultColor;
   
   @HostListener('mouseenter') mouseover(eventData: Event) {
