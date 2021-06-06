@@ -1,4 +1,4 @@
-## Property Binding:
+## Attribute Directives:
 Can bind HTML elements, directives or components.
 ``` 
 {{ data }}                                String Interpolation
