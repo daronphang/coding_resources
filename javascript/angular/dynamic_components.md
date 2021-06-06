@@ -62,7 +62,7 @@ onHandleError(event) {
     text-align: right;
 }
 ```
-## Creating Programmatically:
+## Creating Components Programmatically:
 ```javascript
 // helper.directive.ts
 import { Directive, ViewContainerRef } from '@angular/core';
