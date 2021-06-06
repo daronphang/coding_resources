@@ -10,7 +10,7 @@ Can bind HTML elements, directives or components.
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
 ## Inbuilt Structural Directives:
-Responsible for manipulating, modifying and removing elements inside a component template.
+Responsible for manipulating, modifying and removing elements inside a component template. * character translate the attribute into a <ng-template> element.
 ```
 *ngIf="boolean condition"                       Structural directive that helps to add or remove elements from DOM (it is not hidden)
 *ngFor="let x of array"
@@ -32,8 +32,8 @@ Responsible for manipulating, modifying and removing elements inside a component
 </div>
 ```
 ```html
-// *ngIf is just syntactic sugar i.e. nicer syntax for something existing
-//both are the same
+<!-- *ngIf is just syntactic sugar i.e. nicer syntax for something existing -->
+<!-- both are the same -->
 <p *ngIf="isVisible"> This is visible </p?
 
 <ng-template [ngIf]="isVisible"><p>This is visible</p></ng-template>
