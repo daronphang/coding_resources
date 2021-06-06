@@ -63,7 +63,7 @@ onHandleError(event) {
 }
 ```
 ## Creating Components Programmatically:
-Components are eventually DOM elements.
+Components are eventually DOM elements. Will need a placeholder to add element into DOM.
 ```javascript
 // placeholder.directive.ts
 import { Directive, ViewContainerRef } from '@angular/core';
