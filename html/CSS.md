@@ -33,8 +33,8 @@ p {
 ## Styling:
 ```
 position: "relative";
-top: 50%";                  Use position property to change top property
-z-index: 50;                Positive stacks in front, negative stacks behind
+top: 50%";                  Use position property to change top property.
+z-index: 50;                Positive stacks in front, negative stacks behind. Changes transparency/
 
 ```
 
@@ -46,6 +46,6 @@ cm, mm, in, px
 // Relative length:
 rem     Relative to font-size of browser base font size and does not inherit from parent element
 vw      Relative to 1% of width of viewport; scales with sizing.
-vh      Relative to 1% of height of viewport
-%       Relative to parent element
+vh      Relative to 1% of height of viewport.
+%       Relative to parent element.
 ```
