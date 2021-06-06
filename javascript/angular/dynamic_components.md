@@ -63,6 +63,7 @@ onHandleError(event) {
 }
 ```
 ## Creating Components Programmatically:
+Components are eventually DOM elements.
 ```javascript
 // placeholder.directive.ts
 import { Directive, ViewContainerRef } from '@angular/core';
@@ -95,9 +96,9 @@ export class AlertComponent {
   private closeSub?: Subscription;
 
   private showErrorAlert(message: string) {
-    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);  resolveComponentFactory is an object that knows how to create a component
     const hostViewContainerRef = this.alertHost.viewContainerRef;
-    hostViewContainerRef.clear(); 
+    hostViewContainerRef.clear();     // removes the previous view; else it will append more components to the container
     const componentRef = hostviewContainerRef.createComponent(alertCmpFactory);
 
     componentRef.instance.message = message;
