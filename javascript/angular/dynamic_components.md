@@ -64,18 +64,18 @@ onHandleError(event) {
 ```
 ## Creating Components Programmatically:
 ```javascript
-// helper.directive.ts
+// placeholder.directive.ts
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-    selector: '[appHelper]'
+    selector: '[appPlaceHolder]'
 })
 
-export class HelperDirective {
+export class PlaceHolderDirective {
     constructor(public viewContainerRef: ViewContainerRef) {}
 ```
 ```html
-<ng-template appHelper></ng-template>   // to get access to this place in DOM
+<ng-template appPlaceHolder></ng-template>   // to get access to this place in DOM using directives
 ```
 ```javascript
 // app.component.ts:
