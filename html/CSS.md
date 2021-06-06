@@ -30,3 +30,14 @@ p {
 
 <p style="color:red;">A red paragraph.</p>
 ```
+## Units:
+```
+// Absolute length:
+cm, mm, in, px
+
+// Relative length:
+rem     Relative to font-size of browser base font size and does not inherit from parent element
+vw      Relative to 1% of width of viewport; scales with sizing.
+vh      Relative to 1% of height of viewport
+%       Relative to parent element
+```
