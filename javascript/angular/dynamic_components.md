@@ -95,7 +95,7 @@ export class AlertComponent {
 
   private closeSub?: Subscription;
 
-  private showErrorAlert(message: string) {
+  private showErrorAlert(message: string) {   // method called when an error occurs
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);  resolveComponentFactory is an object that knows how to create a component
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();     // removes the previous view; else it will append more components to the container
