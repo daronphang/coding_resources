@@ -87,3 +87,19 @@ export class UnlessDirective {
 // html:
 <div *appUnless="boolean condition" type code here </div>
 ```
+## Local References:
+Can only be used in HTML and not in TypeScript. Can add into any HTML tag. 
+```
+<input #serverNameInput> // logging results <input>
+```
+To use local reference in TypeScript, use ViewChild decorator.
+```javascript
+export class ExampleComponent implements OnInit {
+  @ViewChild('serverNameInput', {static: true}) serverNameInput: ElementRef;    // property
+  
+  // to access value:
+  onAddServer() {
+    serverName: this.serverNameInput.nativeElement.value;
+  }
+}
+```
