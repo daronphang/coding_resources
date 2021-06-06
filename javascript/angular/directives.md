@@ -1,4 +1,4 @@
-## Attribute Directives:
+## Inbuilt Attribute Directives:
 Can bind HTML elements, directives or components.
 ``` 
 {{ data }}                                String Interpolation
