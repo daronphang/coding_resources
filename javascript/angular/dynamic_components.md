@@ -74,6 +74,9 @@ import { Directive, ViewContainerRef } from '@angular/core';
 export class HelperDirective {
     constructor(public viewContainerRef: ViewContainerRef) {}
 ```
+```html
+<ng-template appHelper></ng-template>   // to get access to this place in DOM
+```
 ```javascript
 // app.component.ts:
 import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewChild, NgModule } from '@angular/core';
