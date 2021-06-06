@@ -89,6 +89,8 @@ import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewC
 
 export class AlertComponent {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  
+  @ViewChild(PlaceHolderDirective, {static: false}) alertHost: PlaceHolderDirective;
 
   private closeSub?: Subscription;
 
