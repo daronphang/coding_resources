@@ -62,3 +62,45 @@ onHandleError(event) {
     text-align: right;
 }
 ```
+## Creating Programatically:
+```javascript
+// helper.directive.ts
+import { Directive, ViewContainerRef } from '@angular/core';
+
+@Directive({
+    selector: '[appHelper]'
+})
+
+export class HelperDirective {
+    constructor(public viewContainerRef: ViewContainerRef) {}
+```
+```javascript
+// app.component.ts:
+import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewChild, NgModule } from '@angular/core';
+
+@Component({
+  selector: 'app-alert',
+  styleUrls: ['./alert.component.css'],
+  templateUrl: './alert.component.html'
+})
+
+export class AlertComponent {
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+
+  private closeSub?: Subscription;
+
+  private showErrorAlert(message: string) {
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(Alertcomponent);
+    const hostViewContainerRef = this.alertHost.viewContainerRef;
+    hostViewContainerRef.clear(); 
+    const componentRef = hostviewContainerRef.createComponent(alertCmpFactory);
+
+    componentRef.instance.message = message;
+    this.closeSub = componentRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      hostViewContainerRef.clear();
+    })
+  }
+  
+  @ViewChild(HelperDirective, {static: false}) alertHost: HelperDirective;
+```
