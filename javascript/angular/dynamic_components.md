@@ -1,4 +1,5 @@
-## Alert Box:
+## Creating Alert Component Using ngIf:
+Recommended way of approach as Angular does the heavy-lifting for us.
 ```javascript
 // child.component:
 import { Component, Input, Output, EventEmitter } from '@angular/core';
