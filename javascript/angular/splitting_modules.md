@@ -1,5 +1,5 @@
 ## Splitting Modules:
-Needed for performance improvement.
+Modules are standalone i.e. do not interact with each other. Needed for performance improvement.
 ```javascript
 // recipe.module.ts
 import { NgModule } from '@angular/core';
