@@ -1,7 +1,7 @@
 ## Operators:
 ```
 catchError        Returns a new observable or throws an error.
-tap
+tap               Function returns an identical Observable to the source, but runs the specified callback for each items (side effects).
 
 
 Mapping:
