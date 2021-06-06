@@ -90,7 +90,7 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 export class UnlessDirective {
   constructor(private template: TemplateRef<any>, private container: ViewContainerRef) {}
   
-  @Input() set appUnless(value: boolean) {
+  @Input() set appUnless(value: boolean) {    // bind value to property appUnless using setter method
   if (!condition) {
     this.container.createEmbeddedView(this.template);
   } else {
@@ -100,7 +100,7 @@ export class UnlessDirective {
 }
 ```
 ```html
-// parent.component.html:
+<!--parent.component.html-->
 <div *appUnless="isVisible">              // <div> referred by ViewContainerRef
   <h1>This is the template area</h1>      // Content inside container (<h1>) referred by TemplateRef
 </div>
