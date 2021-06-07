@@ -61,17 +61,20 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     users = db.relationship('User', backref='role')
+    
+    # users attribute will return the list of users associated with role (many side)
+    # role attribute is added when creating an instance of User model 
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-
 ````
+
 ### Common SQLAlchemy Relationship Options:
 ```
-backref         Adds a back reference in the other model in the relationship.
+backref         Adds a back reference in the other model in the relationship. 
 primaryjoin     Specifies the join condition between two models explicitly, necessary for ambiguous relationships.
 lazy            Specifies how items are to be loaded. Possible values are select, immediate, joined, subquery, noload, dynamic.
 uselist         If set to False, use a scalar instead of a list i.e. 'many' side becomes 'one' side.
