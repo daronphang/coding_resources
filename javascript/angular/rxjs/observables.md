@@ -6,6 +6,8 @@ Observable -> Connected to Observer -> Performs execution that delivers value to
 
 Can use of() method as mock API which returns an Observable and emits values in a sequence upon subscription.
 
+For infinite subscriptions, need call OnDestroy() to manually unsubscribe. For finite subscriptions like HTTP calls or take(1), no need to unsubscribe.
+
 ```javascript
 let subscription = new Subscription;
 let observable = Observable.create((observer:any) => {
@@ -25,7 +27,6 @@ ngOnDestroy() {
    this.subscription.unsubscribe();
 }
 ```
-
 
 ## Advantages Over Promises:
 - An Observable pushes a stream of values whereas Promise pushes one resolved value.
@@ -61,4 +62,6 @@ Subscribe() can take 3 arguments as follows:
 3) onCompleted: Function to invoke upon graceful termination.
 
 ## Unsubscribe:
-When navigating somewhere else, Angular will destroy the component; need to unsubscribe to prevent memory leak. Use pipe operators to auto-unsubscribe such as first() and take().
+When navigating somewhere else, Angular will destroy the component; need to unsubscribe to prevent memory leak. Use pipe operators to auto-unsubscribe such as first() and take(). For unsubscribing best practices:
+- Store all subscriptions in an array and using .forEach() in ngOnDestroy().
+- Using .takeUntil()
