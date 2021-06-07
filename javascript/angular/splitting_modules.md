@@ -19,6 +19,8 @@ export class RecipesModule
 
 // app.module.ts
 imports: [
-  RecipesModule, CommonModule, ReactiveFormsModule
+  RouterModule.forChild({path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard}),
+  CommonModule,
+  ReactiveFormsModule
 ]
 ```
