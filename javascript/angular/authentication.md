@@ -1,15 +1,88 @@
 ## Authentication:
 ```javascript
-// auth-component.ts:
+// auth.service.ts:
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { throwError, BehaviorSubject, of } from 'rxjs';
+import {catchError, tap, take, map } from 'rxjs/operators';
 
-let authObs: Observable<AuthResponseData>;    // AuthResponseData is an interface imported
+import { UserLoginRequest, AuthResponse } from '../interface';
+import { UserModel } from '../model';
+import { Router } from '@angular/router';
+// import { AuthComponent } from '../components/auth/auth.component';
 
-signIn() {
-  this.isLoading = true;
-  authObs = this.authService.login(email, password)
-  
-  authObs.subscribe(some function, error => console.error(error))
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AuthService {
+  constructor(private http: HttpClient, private router: Router) {}
+
+  isAuthenticated: boolean = false;   // property used across all components
+
+  searchValue: string = "no search was submitted";  // testing purposes
+
+  public userSub = new BehaviorSubject<any>(null);  // observable that is subscribed for all authentication requests
+
+  authenticateUser(email: string, password: string) {
+    let userLogin: UserLoginRequest = {email: email, password: password, returnSecureToken: true};
+    let authResponse = this.http.post<AuthResponse>(   // response of type AuthResponse
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB3yAo0iKig6zPAbmjXvOsiHu-NLaeN34Q',
+      userLogin
+      );
+
+    return authResponse.pipe(
+      catchError(error => this.handleError(error)),
+      tap(resData => {
+        if (resData.registered) {   // To modify based on auth response
+          this.isAuthenticated = true;
+          const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
+          const storedUser = new UserModel(resData.email, resData.idToken, expirationDate);   // user data stored for future requests
+          this.userSub.next(storedUser);  // if user is authenticated, will push storedUser that can be subscribed, else will be null
+          localStorage.setItem('userData', JSON.stringify(storedUser));   // to store userData in browser local storage
+        } 
+      })
+    )
+  }
+
+  private handleError(errorRes: HttpErrorResponse) {
+    let errorMsg = 'An unknown error occured';
+    if (!errorRes.error || !errorRes.error.error) {
+      return throwError(errorMsg);
+      }
+    switch (errorRes.error.error.message) {
+      case 'INVALID_EMAIL':
+        errorMsg = 'Email does not exist. Please try again.';
+        break;
+      case 'INVALID_PASSWORD':
+        errorMsg = 'Password is incorrect. Please try again.';
+        break;
+      case 'INVALID_IDP_RESPONSE':
+        errorMsg = 'Auth token is invalid. Please login again.'
+      }
+    return throwError(errorMsg);
+  }
+
+  onLogout(){
+    this.userSub.next(null);
+    localStorage.removeItem('userData')
+    this.router.navigate(['/auth']);
+  }
+
+  autoLogin() {   // if user refreshes page or closes browser; to be executed in ngOnInit() for all components
+    let checkUser = localStorage.getItem('userData');
+    if (!checkUser) {
+      this.userSub.next(null);
+    } else {
+      checkUser = JSON.parse(checkUser);
+      this.userSub.next(checkUser);
+    }
+  }
+
 }
+
+
+
 ```
 
 ## Storing Users for Auto Login/Logout:
