@@ -1,4 +1,82 @@
-## Authentication:
+## Authentication Example:
+```html
+<body class="auth">
+    <app-loading-spinner *ngIf="isAuthenticating"></app-loading-spinner>
+    <div class="container" style="width: 800px; position: relative; top: 100px; text-align: center">
+            <div *ngIf="error" class="alert alert-danger" role="alert"><h4>Login was unsuccessful. {{ errorMessage }}</h4></div>
+    </div>
+
+    <div *ngIf="!isAuthenticating" class="container">
+        <div class="login">
+            <div class="row">
+                <div class="wrapper">
+                    <h3 class="text-center">MyAssistant Login</h3>
+                    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+                        <div class="mt-4"><input id="email" type="email" class="form-control" placeholder="Your email" ngModel name="email" required></div>
+                        <div class="mt-2"><input id="password" type="password" class="form-control" placeholder="Your password" ngModel name="password" required></div>
+                        <button class="btn btn-primary mt-3 mx-auto d-block" type="submit" [disabled]="!authForm.valid">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+``` 
+```javascript
+// auth.component.ts:
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
+})
+
+export class AuthComponent implements OnInit {
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  isAuthenticating: boolean = false;
+  error: boolean = false;
+  errorMessage: string = '';
+  response = new Subject<any>();
+
+  private clear() {
+    this.error = false;
+    this.errorMessage = '';
+  }
+
+  onSubmit (form: NgForm) {
+    this.clear();
+    this.isAuthenticating = true;
+
+    let email = form.value.email;
+    let password = form.value.password;
+    
+    let response = this.authService.authenticateUser(email, password)
+    response.subscribe(resData => {
+      console.log(`User ${resData.email} has logged in`); 
+      this.isAuthenticating = false;
+      this.router.navigate(['/dashboard']);
+
+    }, errorMsg => {
+      console.log(errorMsg);
+      this.isAuthenticating = false;
+      this.error = true;
+      this.errorMessage = errorMsg;
+    });
+    form.reset();
+  }
+
+  ngOnInit(): void {
+  
+  }
+}
+``` 
 ```javascript
 // auth.service.ts:
 import { Injectable } from '@angular/core';
@@ -80,11 +158,72 @@ export class AuthService {
   }
 
 }
-
-
-
 ```
+```javascript
+// auth-guard.service.ts
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
+import { take, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
+@Injectable({
+    providedIn: 'root'
+  })
+
+export class AuthGuard implements CanActivate{
+    constructor(private authService: AuthService, private router: Router, private http: HttpClient) {}
+
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+        ): Observable<boolean | UrlTree> | boolean | UrlTree | Promise<boolean> {
+            this.authService.autoLogin();
+            
+            return this.authService.userSub.pipe(
+                take(1),
+                map(user => {
+                    if (user) {
+                        return true;
+                    } else {
+                        return this.router.createUrlTree(['/auth']);
+                    }
+                }))
+            }
+}
+``` 
+```javascript
+// auth-interceptor.service.ts
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
+import { take, exhaustMap } from 'rxjs/operators';
+
+@Injectable({
+    providedIn: 'root'
+  })
+
+export class AuthInterceptor implements HttpInterceptor {
+    constructor(private authService: AuthService) {}
+
+    intercept (request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+        return this.authService.userSub.pipe(
+            take(1),
+            exhaustMap(user => {
+                if (!user) {return next.handle(request)}
+                else {
+                    let params = new HttpParams().set('auth', user._token);
+                    const modifiedReq = request.clone({params: params})   //{setHeaders: {Authorization: `Bearer ${user._token}`}}
+                    return next.handle(modifiedReq);
+                }
+            })
+        )
+
+    }
+}
+```
 ## Storing Users for Auto Login/Logout:
 ```javascript
 // user.model.ts:
