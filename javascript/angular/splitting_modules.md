@@ -19,6 +19,6 @@ export class RecipesModule
 
 // app.module.ts
 imports: [
-  RecipesModule
+  RecipesModule, CommonModule, ReactiveFormsModule
 ]
 ```
