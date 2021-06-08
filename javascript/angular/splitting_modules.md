@@ -66,3 +66,22 @@ Used to store all services. However, recommended way is to provide services @Inj
   ]
 })
 ```
+## Lazy Loading:
+Pre-requisite is feature module. Only loads the modules needed for the route.
+```javascript
+// app-routing module:
+
+const appRoutes: Routes = [
+  {path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule'}    // entire module is parsed on demand
+                                // () => import('./recipes/recipes.module').then(m => m.RecipesModule)
+]
+
+// recipes-routing,module.ts
+const routes: Routes = [
+  {path: '', component: RecipesComponent, canActivate: [AuthGuard], children: []}
+  // importnat to declare path as '' 
+]
+
+// remember to remove RecipesModule in import from app.module.ts
+
+```
