@@ -44,7 +44,7 @@ import { NgModule } from '@angular/core';
   exports: [
     AlertComponent,
     LoadingSpinnercomponent,
-    CommonModule
+    CommonModule        // needed for ngIf, ngFor
   ], 
   imports: [
   CommonModule
