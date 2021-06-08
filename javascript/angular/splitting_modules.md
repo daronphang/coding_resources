@@ -16,7 +16,8 @@ import { NgModule } from '@angular/core';
   imports: [
   RouterModule.forChild({path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard}),
   SharedModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  CoreModule
   ]
 })
 
@@ -47,6 +48,21 @@ import { NgModule } from '@angular/core';
   ], 
   imports: [
   CommonModule
+  ]
+})
+```
+## Core Module:
+Used to store all services. However, recommended way is to provide services @Injectable at component level.
+```javascript
+@NgMoule({
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ]
 })
 ```
