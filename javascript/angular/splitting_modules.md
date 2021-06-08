@@ -67,7 +67,7 @@ Used to store all services. However, recommended way is to provide services @Inj
 })
 ```
 ## Lazy Loading:
-Pre-requisite is feature module. Only loads the modules needed for the route.
+Pre-requisite is feature module. Only loads the modules needed for the route. Not worth it for routes that are visited frequently.
 ```javascript
 // app-routing module:
 
