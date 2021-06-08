@@ -16,6 +16,12 @@ Anonymous Bind          Public access to LDAP server where no credentials are pr
 Simple Password Bind    Provide Distinguished Name (DN) and password to determine authorization level
 SASL                    Provides additional methods to identify a user i.e. external certificate, Kerberos ticket
 ```
+### LDAP3 Connection Response:
+```python
+# use conn.entries[0].entry_to_json() instead of conn.response
+
+```
+
 ### Client Strategy:
 Parameter of Connection object.
 ```
