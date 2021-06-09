@@ -1,5 +1,5 @@
 ## Testing:
-Unittests written in Jasmine with Karma as test runner. 
+Unittests written in Jasmine framework with Karma as test runner. 
 ```
 describe(string, function)    Function takes a title and function containing one or more specs
 it(string, function)          Function takes title and function containing one or more expectations
