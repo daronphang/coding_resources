@@ -29,27 +29,28 @@ imports: [
   SharedModule
 ]
 ```
-## Shared Modules:
+## Shared Module:
 Important key to take note is that Components can only be declared once but can be imported multiple times.
 ```javascript
 // shared.module.ts
 import { NgModule } from '@angular/core';
-
 
 @NgModule({
   declarations: [         // shared components
     AlertComponent,
     LoadingSpinnerComponent
   ],
+  imports: [
+    CommonModule
+    ],
   exports: [
     AlertComponent,
     LoadingSpinnercomponent,
     CommonModule        // needed for ngIf, ngFor
-  ], 
-  imports: [
-  CommonModule
-  ]
+  ] 
 })
+
+export class SharedModule {}
 ```
 ## Core Module:
 Used to store all services. However, recommended way is to provide services @Injectable at component level.
