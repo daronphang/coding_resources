@@ -1,4 +1,4 @@
-## Splitting Modules:
+## Feature Modules:
 Modules are standalone i.e. do not interact with each other. Needed for performance improvement.
 ```javascript
 // recipe.module.ts
