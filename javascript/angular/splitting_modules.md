@@ -88,7 +88,8 @@ const routes: Routes = [
 
 ```
 ## Preloading:
-A fast initial load and fast subsequent loads thereafter.
+A fast initial load and fast subsequent loads thereafter. When loading services in lazy-loaded modules, will get a separate instance 
+(Angular createa s child instance).
 ```javascript
 // app-routing.module.ts:
 imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}]
