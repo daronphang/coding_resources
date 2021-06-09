@@ -14,7 +14,7 @@ import { NgModule } from '@angular/core';
     RecipeListcomponent
   ], 
   imports: [
-  RouterModule.forChild({path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard}),
+  RouterModule.forChild([{path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard}]),
   SharedModule,
   ReactiveFormsModule,
   CoreModule
@@ -41,12 +41,13 @@ import { NgModule } from '@angular/core';
     LoadingSpinnerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, FormsModule
     ],
   exports: [
     AlertComponent,
     LoadingSpinnercomponent,
-    CommonModule        // needed for ngIf, ngFor
+    CommonModule,        // needed for ngIf, ngFor
+    FormsModule
   ] 
 })
 
@@ -85,4 +86,10 @@ const routes: Routes = [
 
 // remember to remove RecipesModule in import from app.module.ts
 
+```
+## Preloading:
+A fast initial load and fast subsequent loads thereafter.
+```javascript
+// app-routing.module.ts:
+imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}]
 ```
