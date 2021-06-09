@@ -96,3 +96,8 @@ A fast initial load and fast subsequent loads thereafter. When loading services 
 // app-routing.module.ts:
 imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}]
 ```
+## AoT vs JiT:
+Ahead-of-Time vs Just-in-Time.
+```
+ng build --prod   // uses AoT compilation
+```
