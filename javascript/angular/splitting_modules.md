@@ -56,6 +56,8 @@ export class SharedModule {}
 ## Core Module:
 Used to store all services. However, recommended way is to provide services @Injectable at component level.
 ```javascript
+@Injectable({providedIn: 'root'})   // same instance available to all modules
+
 @NgMoule({
   providers: [
     ShoppingListService,
