@@ -59,6 +59,21 @@ it('test @output', () => {
 });
 ```
 ## Testing Services:
+Use spies as injecting real services can be difficult to create/control.
 ```javascript
+it('#getValue should return stubbed value from a spy', () => {
+    const valueServiceSpy = jasmine.createSpyObj('ValueService', ['getValue']);
 
+    const stubValue = 'stub value';
+    valueServiceSpy.getValue.and.returnValue(stubValue);
+
+    masterService = new MasterService(valueServiceSpy);
+
+    expect(masterService.getValue())
+      .toBe(stubValue, 'service returned stub value');
+    expect(valueServiceSpy.getValue.calls.count())
+      .toBe(1, 'spy method was called once');
+    expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
+      .toBe(stubValue);
+  });
 ```
