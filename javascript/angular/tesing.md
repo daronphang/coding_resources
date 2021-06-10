@@ -15,6 +15,7 @@ ComponentFixture              Provides methods and proeprties that help test com
 ```javascript
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TitleComponent } from './title.component';
+import { UserService } from './users.service';
 
 describe('TitleComponent', () => {
   let component: TitleComponent;
@@ -22,7 +23,7 @@ describe('TitleComponent', () => {
   
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TitleComponent]
+      declarations: [TitleComponent]    // mocks: []UserService] converts to Jasmine spy automatically
     }).compileComponents();
   }));
   
@@ -59,12 +60,18 @@ it('test @output', () => {
 });
 ```
 ## Testing Services:
-Use spies as injecting real services can be difficult to create/control.
+Use spies as injecting real services can be difficult to create/control. Do not use done() for async functions as it may call success even if:
+- Observable emits 1000x times in a loop.
+- Observable errors after first emit.
+
+Use fakeAsync() instead to run codes synchronously. Can call flushMicrotasks() to run any pending micro tasks or tick() to execute asynchronous code within that timeframe. Can
+use both for promises.
 ```javascript
 let masterService: MasterService;
 let valueServiceSpy: jasmine.SpyObj<ValueService>;
 
 beforeEach(() => {
+
   const spy = jasmine.createSpyObj('ValueService', ['getValue']);
 
   TestBed.configureTestingModule({
@@ -90,31 +97,35 @@ it('#getValue should return stubbed value from a spy', () => {
     .toBe(stubValue);
 });
 ```
+For async functions like HTTP requests.
 ```javascript
 // testing HTTPclient
-httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
+let httpClientSpy: { get: jasmine.Spy };
+let authService: AuthService;
 
 beforeEach(() = {
-  httpClientSpy.get.and.returnValue(responseMsg);
+  httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
+  authService = new AuthService(httpClientSpy as any);
 });
 
-it('should return status 200' (done: DoneFn) => {
-  const successResponse = {
-    status: 200
+it('should return status 200' fakeAsync(() => {
+  const response = {
+    status: null
   };
   
-  httpClientSpy.get.and.returnValue(successResponse);
+  httpClientSpy.get.and.returnValue(response);
   
   authService.authenticateUser().subscribe(
     successRes => {
-      expect(sucessRes.status).toEqual(200);
-      done();
+      
     };
-    error => done.fail
+    error => 
   );
-});
+  
+  expect(sucessRes.status).toEqual(200);
+}));
 
-it('should return status 404' (done: DoneFn) => {
+it('should return status 404' (fakeAsync() => {
   const errorResponse = {
     status: 404
   };
@@ -131,3 +142,55 @@ it('should return status 404' (done: DoneFn) => {
 });
 
 ```
+Testing Observables.
+```javascript
+import { TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
+ 
+import { DataService, DataStream } from './data.service';
+import { Observable, from, of } from 'rxjs';
+ 
+describe('DataService', () => {
+  let service: DataService;
+  let mockStream: jasmine.SpyObj<DataStream>;
+ 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        DataService,
+        { provide: DataStream, useValue: jasmine.createSpyObj('DataStream', ['dataStream']) }
+      ]
+    });
+ 
+    service = TestBed.get(DataService);
+    mockStream = TestBed.get(DataStream);
+  });
+ 
+  it('#getData should return value that contains test', fakeAsync(() => {
+    const stream = of('testing value');
+ 
+    mockStream.dataStream.and.returnValue(stream);
+ 
+    let capturedValue: String = null;
+ 
+    service.getData().subscribe(value => {
+      capturedValue = value;
+    });
+ 
+    flushMicrotasks();
+ 
+    expect(capturedValue).toBe('testing value');
+  }));
+ 
+  it('#getData should filter out value that doesn\'t have test', fakeAsync(() => {
+    const stream = of('wrong value');
+ 
+    mockStream.dataStream.and.returnValue(stream);
+ 
+    let capturedValue: String = null;
+ 
+    service.getData().subscribe(value => {
+      capturedValue = value;
+    });
+ 
+``` 
+
