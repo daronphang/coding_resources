@@ -28,8 +28,8 @@ describe('TitleComponent', () => {
   
   beforeEach(() => {
     fixture = TestBed.createComponent(TitleComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = fixture.componentInstance;    // creates an instance of class TitleComponent
+    fixture.detectChanges();          // simulate running on browser environment
   });
   
   it('should create', () => {
@@ -41,7 +41,7 @@ describe('TitleComponent', () => {
 it('should correctly render the passed @input value', () => {
   component.message = 'New title';
   fixture.detectchanges();
-  const compiled = fixture.debugElement.nativeElement;
+  const compiled = fixture.debugElement.nativeElement;      // creates access to child element
   expect(compiled.querySelector('p').textContent).toBe('New title')';
 });
 
@@ -57,4 +57,8 @@ it('test @output', () => {
   
   expect(component.changeTitleEvent.emit().toHaveBeenCalledWith(inputText);
 });
+```
+## Testing Services:
+```javascript
+
 ```
