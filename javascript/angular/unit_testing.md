@@ -92,48 +92,47 @@ it('#getValue should return stubbed value from a spy', () => {
     .toBe(stubValue);
 });
 ```
-## HTTP Requests:
+### HTTP Requests:
 HTTPClientTestingModule mocks the http requests while testing the service. HttpTestingController is injected into tests that allows for mocking and flushing of requests. Verify() is called after each test to verify that there are no outstanding http calls.
 ```javascript
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { StudentsService } from './students.service';
+import { AuthService } from './auth.service';
 
-describe('StudentsService', () => {
-  let injector: TestBed;
-  let service: StudentsService;
+describe('AuthService', () => {
+  let service: AuthService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [StudentsService],
+      providers: [AuthService]
     });
 
-    injector = getTestBed();
-    service = injector.get(StudentsService);
-    httpMock = injector.get(HttpTestingController);
+    service = TestBed.inject(AuthService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
     httpMock.verify();
-  });  
+  })
 
-  const dummyUserListResponse = {
-    data: [
-      { id: 1, first_name: 'George', last_name: 'Bluth', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg' }
-    ],
-  };  
+  const authResponse = {status: 200}
 
-  it('getUserList() should return data', () => {
-      service.getUserList().subscribe((res) => {
-        expect(res).toEqual(dummyUserListResponse);
-      });
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
 
-      const req = httpMock.expectOne('https://reqres.in/api/users');
-      expect(req.request.method).toBe('GET');
-      req.flush(dummyUserListResponse);   // causes Observable to resolve and evaluate in async function
-    });
+  it('authenticateUser() should return status 200', () => {
+    service.authenticateUser('test', '12345').subscribe((res) => {
+      expect(res.status).toBe(200);
+    })
+
+    const request = httpMock.expectOne('http://127.0.0.1:5000/auth');
+    expect(request.request.method).toBe('GET');
+    request.flush(authResponse);
+  })
+
 });
 ```
 
