@@ -193,4 +193,12 @@ describe('DataService', () => {
     });
  
 ``` 
+### AuthGuard:
+```javascript
 
+// to mock ActivatedRouteSnapshot dependency
+// to mock RouterStateSnapshot dependency used to obtain a protected path
+
+// create a spy on navigate() to verify the correct work of redirection
+
+```
