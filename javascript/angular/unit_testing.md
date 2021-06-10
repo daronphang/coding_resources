@@ -11,6 +11,9 @@ beforeEach                    Global function in Jasmine that runs some setup co
 TestBed.createComponent()     Creates an instance of component; uses expect() and matcher()
 detectChanges()               Binds the data to component instance
 ComponentFixture              Provides methods and proeprties that help test component's functionality
+
+jasmine.createSpy('service')                        Used when there is no function to spy on
+jasmine.createSpyObj('service', ['method'])         Used to create a mock that will spy on one ore more methods
 ```
 ```javascript
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
