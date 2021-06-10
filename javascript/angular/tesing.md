@@ -61,6 +61,14 @@ it('test @output', () => {
 ## Testing Services:
 Use spies as injecting real services can be difficult to create/control.
 ```javascript
+let service: ValueService;
+
+beforeEach(() => {
+  TestBed.configureTestingModule({ providers: [ValueService] });
+  service = TestBed.inject(ValueService);
+});
+
+
 it('#getValue should return stubbed value from a spy', () => {
     const valueServiceSpy = jasmine.createSpyObj('ValueService', ['getValue']);
 
