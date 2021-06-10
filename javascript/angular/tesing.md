@@ -60,12 +60,7 @@ it('test @output', () => {
 });
 ```
 ## Testing Services:
-Use spies as injecting real services can be difficult to create/control. Do not use done() for async functions as it may call success even if:
-- Observable emits 1000x times in a loop.
-- Observable errors after first emit.
-
-Use fakeAsync() instead to run codes synchronously. Can call flushMicrotasks() to run any pending micro tasks or tick() to execute asynchronous code within that timeframe. Can
-use both for promises.
+Use spies as injecting real services can be difficult to create/control. 
 ```javascript
 let masterService: MasterService;
 let valueServiceSpy: jasmine.SpyObj<ValueService>;
@@ -97,52 +92,58 @@ it('#getValue should return stubbed value from a spy', () => {
     .toBe(stubValue);
 });
 ```
-For async functions like HTTP requests.
+## HTTP Requests:
+HTTPClientTestingModule mocks the http requests while testing the service. HttpTestingController is injected into tests that allows for mocking and flushing of requests. Verify() is called after each test to verify that there are no outstanding http calls.
 ```javascript
-// testing HTTPclient
-let httpClientSpy: { get: jasmine.Spy };
-let authService: AuthService;
+import { TestBed, getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { StudentsService } from './students.service';
 
-beforeEach(() = {
-  httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
-  authService = new AuthService(httpClientSpy as any);
+describe('StudentsService', () => {
+  let injector: TestBed;
+  let service: StudentsService;
+  let httpMock: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [StudentsService],
+    });
+
+    injector = getTestBed();
+    service = injector.get(StudentsService);
+    httpMock = injector.get(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
+  });  
+
+  const dummyUserListResponse = {
+    data: [
+      { id: 1, first_name: 'George', last_name: 'Bluth', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg' }
+    ],
+  };  
+
+  it('getUserList() should return data', () => {
+      service.getUserList().subscribe((res) => {
+        expect(res).toEqual(dummyUserListResponse);
+      });
+
+      const req = httpMock.expectOne('https://reqres.in/api/users');
+      expect(req.request.method).toBe('GET');
+      req.flush(dummyUserListResponse);   // causes Observable to resolve and evaluate in async function
+    });
 });
-
-it('should return status 200' fakeAsync(() => {
-  const response = {
-    status: null
-  };
-  
-  httpClientSpy.get.and.returnValue(response);
-  
-  authService.authenticateUser().subscribe(
-    successRes => {
-      
-    };
-    error => 
-  );
-  
-  expect(sucessRes.status).toEqual(200);
-}));
-
-it('should return status 404' (fakeAsync() => {
-  const errorResponse = {
-    status: 404
-  };
-  
-  httpClientSpy.get.and.returnValue(errorResponse);
-  
-  authService.authenticateUser().subscribe(
-    successRes => done.fail()
-    error => {
-      expect(error.status).toEqual(404);
-      done();
-    }
-  );
-});
-
 ```
-Testing Observables.
+
+### Testing Observables:
+Do not use done() for async functions as it may call success even if:
+- Observable emits 1000x times in a loop.
+- Observable errors after first emit.
+
+Use fakeAsync() instead to run codes synchronously. Can call flushMicrotasks() to run any pending micro tasks or tick() to execute asynchronous code within that timeframe. Can
+use both for promises.
 ```javascript
 import { TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
  
