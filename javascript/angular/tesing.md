@@ -89,5 +89,45 @@ it('#getValue should return stubbed value from a spy', () => {
   expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
     .toBe(stubValue);
 });
+```
+```javascript
+// testing HTTPclient
+httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
+
+beforeEach(() = {
+  httpClientSpy.get.and.returnValue(responseMsg);
+});
+
+it('should return status 200' (done: DoneFn) => {
+  const successResponse = {
+    status: 200
+  };
+  
+  httpClientSpy.get.and.returnValue(successResponse);
+  
+  authService.authenticateUser().subscribe(
+    successRes => {
+      expect(sucessRes.status).toEqual(200);
+      done();
+    };
+    error => done.fail
+  );
+});
+
+it('should return status 404' (done: DoneFn) => {
+  const errorResponse = {
+    status: 404
+  };
+  
+  httpClientSpy.get.and.returnValue(errorResponse);
+  
+  authService.authenticateUser().subscribe(
+    successRes => done.fail()
+    error => {
+      expect(error.status).toEqual(404);
+      done();
+    }
+  );
+});
 
 ```
