@@ -61,27 +61,33 @@ it('test @output', () => {
 ## Testing Services:
 Use spies as injecting real services can be difficult to create/control.
 ```javascript
-let service: ValueService;
+let masterService: MasterService;
+let valueServiceSpy: jasmine.SpyObj<ValueService>;
 
 beforeEach(() => {
-  TestBed.configureTestingModule({ providers: [ValueService] });
-  service = TestBed.inject(ValueService);
+  const spy = jasmine.createSpyObj('ValueService', ['getValue']);
+
+  TestBed.configureTestingModule({
+    providers: [
+      MasterService,
+      { provide: ValueService, useValue: spy }
+    ]
+  });
+  
+  masterService = TestBed.inject(MasterService);
+  valueServiceSpy = TestBed.inject(ValueService) as jasmine.SpyObj<ValueService>;
 });
 
-
 it('#getValue should return stubbed value from a spy', () => {
-    const valueServiceSpy = jasmine.createSpyObj('ValueService', ['getValue']);
+  const stubValue = 'stub value';
+  valueServiceSpy.getValue.and.returnValue(stubValue);
 
-    const stubValue = 'stub value';
-    valueServiceSpy.getValue.and.returnValue(stubValue);
+  expect(masterService.getValue())
+    .toBe(stubValue, 'service returned stub value');
+  expect(valueServiceSpy.getValue.calls.count())
+    .toBe(1, 'spy method was called once');
+  expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
+    .toBe(stubValue);
+});
 
-    masterService = new MasterService(valueServiceSpy);
-
-    expect(masterService.getValue())
-      .toBe(stubValue, 'service returned stub value');
-    expect(valueServiceSpy.getValue.calls.count())
-      .toBe(1, 'spy method was called once');
-    expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
-      .toBe(stubValue);
-  });
 ```
