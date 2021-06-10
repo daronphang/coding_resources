@@ -4,7 +4,7 @@ Unittests written in Jasmine framework with Karma as test runner.
 describe(string, function)    Function takes a title and function containing one or more specs
 it(string, function)          Function takes title and function containing one or more expectations
 expect(actual)                Takes a value and returns a boolean
-Matcher functions             toBeTruthy(), toEqual(), toContain(); chained alongside with an expect()
+Matcher functions             toBeTruthy(), toEqual(), toMatch(), toBe(), toContain(); chained alongside with an expect()
 
 TestBed                       Used to configure and initialize the environment unit tests
 beforeEach                    Global function in Jasmine that runs some setup code before each spec
