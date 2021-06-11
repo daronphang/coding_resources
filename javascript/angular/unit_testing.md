@@ -14,9 +14,6 @@ ComponentFixture              Provides methods and proeprties that help test com
 
 jasmine.createSpy('service')                        Used when there is no function to spy on
 jasmine.createSpyObj('service', ['method'])         Used to create a mock that will spy on one ore more methods
-
-imports
-providers
 ```
 ```javascript
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
