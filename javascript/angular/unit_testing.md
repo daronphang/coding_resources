@@ -79,7 +79,7 @@ toHaveBeenCalled()
 ```
 ```javascript
 // auth.mock.service.ts:
-class MockAuthService extends AuthService {   // need mock all methods, else will get error. Use extends to overwrite partial methods.
+class MockAuthService implements Partial<AuthService> {   // no need mock all methods; can also use extends
   isLoggedIn() {
     return false;
   }
