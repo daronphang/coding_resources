@@ -93,7 +93,7 @@ let service: AuthService;
 
 beforeEach(async(() => {
   TestBed.configureTestingModule({
-    providers: [{ provide: AuthService, useValue: MockAuthService }]
+    providers: [{ provide: AuthService, useClass: MockAuthService }]
   })
 }
 
