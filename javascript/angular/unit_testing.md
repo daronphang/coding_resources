@@ -136,7 +136,7 @@ it('#getValue should return stubbed value from a spy', () => {
 });
 ```
 ### HTTP Requests:
-HTTPClientTestingModule mocks the http requests while testing the service. HttpTestingController is injected into tests that allows for mocking and flushing of requests. Verify() is called after each test to verify that there are no outstanding http calls.
+HTTPClientTestingModule mocks the http requests while testing the service. HttpTestingController is injected into tests that allows for mocking and flushing of requests. Flush() is to provide dummy values as responses. Verify() is called after each test to verify that there are no outstanding http calls.
 ```javascript
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
