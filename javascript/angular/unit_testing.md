@@ -78,10 +78,20 @@ Chain with:
 and.callThrough()   Delegates to real implementation
 and.callFake(someFunction())      Pass some function to be called i..e throw error
 toHaveBeenCalled()
-
-MockService:
-providers: [{ provide: HomeService, useValue: MockHomeService }]
 ```
+```javascript
+class MockAuthService extends AuthService {
+  isLoggedIn() {
+    return false;
+  }
+}
+beforeEach(async(() => {
+  TestBed.configureTestingModule({
+    providers: [{ provide: AuthService, useValue: MockAuthService }]
+  })
+}
+```
+
 
 ```javascript
 let masterService: MasterService;
