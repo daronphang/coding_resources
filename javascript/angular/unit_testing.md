@@ -75,12 +75,13 @@ jasmine.createSpyObj('Object', ['method1', 'method2'])
 spyOn(service, 'method').and.returnValue()
 
 Chain with:
-and.callThrough()   Delegates to real implementation
+and.returnValue()                 Return any value you want as method is stubbed
+and.callThrough()                 Delegates to real implementation
 and.callFake(someFunction())      Pass some function to be called i..e throw error
 toHaveBeenCalled()
 ```
 ```javascript
-class MockAuthService extends AuthService {
+class MockAuthService extends AuthService {   // need mock all methods, else will get error. Use extends to overwrite partial methods.
   isLoggedIn() {
     return false;
   }
