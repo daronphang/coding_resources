@@ -189,30 +189,9 @@ use both for promises.
 ```javascript
 import { TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
  
-import { DataService, DataStream } from './data.service';
-import { Observable, from, of } from 'rxjs';
- 
-describe('DataService', () => {
-  let service: DataService;
-  let mockStream: jasmine.SpyObj<DataStream>;
- 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        DataService,
-        { provide: DataStream, useValue: jasmine.createSpyObj('DataStream', ['dataStream']) }
-      ]
-    });
- 
-    service = TestBed.get(DataService);
-    mockStream = TestBed.get(DataStream);
-  });
- 
-  it('#getData should return value that contains test', fakeAsync(() => {
+  it('getData should return value that contains test', fakeAsync(() => {
     const stream = of('testing value');
- 
     mockStream.dataStream.and.returnValue(stream);
- 
     let capturedValue: String = null;
  
     service.getData().subscribe(value => {
@@ -223,18 +202,6 @@ describe('DataService', () => {
  
     expect(capturedValue).toBe('testing value');
   }));
- 
-  it('#getData should filter out value that doesn\'t have test', fakeAsync(() => {
-    const stream = of('wrong value');
- 
-    mockStream.dataStream.and.returnValue(stream);
- 
-    let capturedValue: String = null;
- 
-    service.getData().subscribe(value => {
-      capturedValue = value;
-    });
- 
 ``` 
 ### AuthGuard:
 ```javascript
