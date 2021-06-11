@@ -63,7 +63,7 @@ it('test @output', () => {
 });
 ```
 ## Testing Services:
-Use spies for service-on-service as injecting real services can be difficult to create/control. For services with more complex logic, create mockService.
+Use spies for service-on-service as injecting real services can be difficult to create/control. For services with more complex logic, create mockService. Mocks are used for behavior verification (i.e. check if correct calls are made) whereas stubs are used for state verification (i.e. return boolean, number, string).
 
 Mock objects replace mocked class entirely (testing in isolation). Default behavior of methods is to do nothing when they are called i.e. returns null/void/default. 
 For spying, some methods of existing object are replaced/stubbed (partial mocking) i.e. spy real object and stub some methods. Method can return any value specified.
