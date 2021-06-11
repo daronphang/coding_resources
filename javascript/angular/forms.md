@@ -53,4 +53,35 @@ export class AppComponent {
   
 <button class='btn btn-primary' type='button' (click)="suggestUserName()">Suggest a name</button>
 ```
+## Reactive Forms:
+```html
+<body class="auth">
+    <app-loading-spinner *ngIf="isAuthenticating"></app-loading-spinner>
+    <div class="container" style="width: 800px; position: relative; top: 100px; text-align: center">
+            <div *ngIf="error" class="alert alert-danger" role="alert"><h4>Login was unsuccessful. {{ errorMessage }}</h4></div>
+    </div>
 
+    <div *ngIf="!isAuthenticating" class="container">
+        <div class="login">
+            <div class="row">
+                <div class="wrapper">
+                    <h3 class="text-center">MyAssistant Login</h3>
+                    <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+                        <div class="mt-4"><input id="username" type="text" class="form-control" placeholder="Your username" formControlName="username"></div>
+                        <div class="mt-2"><input id="password" type="password" class="form-control" placeholder="Your password" formControlName="password"></div>
+                        <button class="btn btn-primary mt-3 mx-auto d-block" type="submit" [disabled]="!credentialsForm.valid">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+```
+```javascript
+export class AuthComponent implements OnInit {
+  constructor(private fb: FormBuilder) {}
+
+  credentialsForm = this.fb.group({
+    username: ['', [Validators.required]], 
+    password: ['', [Validators.required, Validators.minLength(5)]]
+```
