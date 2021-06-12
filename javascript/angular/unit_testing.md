@@ -102,81 +102,10 @@ beforeEach(() => {
   isLoggedInSpy = SpyOn(service, 'isLoggedIn');
 })
 ```
-
-
-```javascript
-let masterService: MasterService;
-let valueServiceSpy: jasmine.SpyObj<ValueService>;
-
-beforeEach(() => {
-
-  const spy = jasmine.createSpyObj('ValueService', ['getValue']);
-
-  TestBed.configureTestingModule({
-    providers: [
-      MasterService,
-      { provide: ValueService, useValue: spy }
-    ]
-  });
-  
-  masterService = TestBed.inject(MasterService);
-  valueServiceSpy = TestBed.inject(ValueService) as jasmine.SpyObj<ValueService>;
-});
-
-it('#getValue should return stubbed value from a spy', () => {
-  const stubValue = 'stub value';
-  valueServiceSpy.getValue.and.returnValue(stubValue);
-
-  expect(masterService.getValue())
-    .toBe(stubValue, 'service returned stub value');
-  expect(valueServiceSpy.getValue.calls.count())
-    .toBe(1, 'spy method was called once');
-  expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
-    .toBe(stubValue);
-});
-```
 ### HTTP Requests:
 HTTPClientTestingModule mocks the http requests while testing the service. HttpTestingController is injected into tests that allows for mocking and flushing of requests. Flush() is to provide dummy values as responses. Verify() is called after each test to verify that there are no outstanding http calls.
 ```javascript
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { AuthService } from './auth.service';
 
-describe('AuthService', () => {
-  let service: AuthService;
-  let httpMock: HttpTestingController;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [AuthService]
-    });
-
-    service = TestBed.inject(AuthService);
-    httpMock = TestBed.inject(HttpTestingController);
-  });
-
-  afterEach(() => {
-    httpMock.verify();
-  })
-
-  const authResponse = {status: 200}
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
-  it('authenticateUser() should return status 200', () => {
-    service.authenticateUser('test', '12345').subscribe((res) => {
-      expect(res.status).toBe(200);
-    })
-
-    const request = httpMock.expectOne('http://127.0.0.1:5000/auth');
-    expect(request.request.method).toBe('GET');
-    request.flush(authResponse);
-  })
-
-});
 ```
 
 ### Testing Observables:
@@ -203,12 +132,3 @@ import { TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing
     expect(capturedValue).toBe('testing value');
   }));
 ``` 
-### AuthGuard:
-```javascript
-
-// to mock ActivatedRouteSnapshot dependency
-// to mock RouterStateSnapshot dependency used to obtain a protected path
-
-// create a spy on navigate() to verify the correct work of redirection
-
-```
