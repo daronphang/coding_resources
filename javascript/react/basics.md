@@ -13,9 +13,16 @@ npm start
 ```javascript
 // ExpenseItem.js
 import ExpenseDate from './ExpenseDate';
+import { useState } from 'react'; 
 
 function ExpenseItem(props) {   // props are key/value pairs
-  const clickHandler = () => console.log('clickeedd');
+  const [title, setTitle] = useState(props.title);  // state is needed if changes in data are reflected in UI
+  // useState hook always returns 2 variables: current state value and function for updating it
+      
+  const clickHandler = () => {
+    console.log('clickeedd');
+    setTitle('updated!');
+    };
   
   return (
     <Card className="expense-item">
