@@ -75,6 +75,7 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 ## Building Attribute Directives:
 Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements. Best practice is to use Renderer2 and HostListener.
 ```javascript
+// highlight.directive.ts
 import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, Input } from '@angular/core';
 
 @directive({
