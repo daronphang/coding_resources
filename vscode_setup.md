@@ -8,6 +8,7 @@ Stable version: January 2021, version 1.53.2
 4) Code Runner
 5) Jupyter (need pip install ipykernel)
 6) Live Server for js
+7) Prettier
 
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
