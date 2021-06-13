@@ -24,15 +24,6 @@ Help to change appearance of DOM element/component conditionally. Basically a cl
 <input [(ngModel)]="currentItem.name" id="example-ngModel">
 ```
 
-```
-{{ data }}                                String Interpolation
-[property]="some value"                   Property Binding such as 'disabled' 
-(event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
-[(ngModel)]="data"                        Two-way Binding
-
-(input)="onUpdateServerName($event)"
-// $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
-``` 
 ## Inbuilt Structural Directives:
 Responsible for HTML layout. Used for manipulating, modifying and removing elements inside a component template. * character translate the attribute into a <ng-template> element.
   
