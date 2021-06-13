@@ -6,3 +6,17 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+```javascript
+// ExpenseItem.js
+import './ExpenseItem.css';
+
+function ExpenseItem() {
+  return (
+    <div className="expense-item">
+      <div>March 28th 2021</div>
+    </div>
+  );
+}
+
+export default ExpenseItem;
+```
