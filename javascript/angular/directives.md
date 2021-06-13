@@ -1,6 +1,30 @@
+## Directives:
+Directives are elements that change the apperance or behavior of DOM element. Three types are Components, Structural and Attribute.
+
+## Components:
+Directives with template. 
+
 ## Inbuilt Attribute Directives:
-Can bind HTML elements, directives or components.
+Help to change appearance of DOM element/component conditionally. Basically a class with @Directive decorator. Can assign an object literal inline or by binding to a property.
 ``` 
+[ngStyle]       Add/remove CSS styles
+[ngClass]       Add/remove CSS classes. Can either pass an expression as a string/array/object
+[(ngModel)]     Adds two-way binding to HTML form element
+```
+```html
+[ngStyle]="{'color': Red,'font-weight': 'Bold','font-size':'35px','borderBottom': borderStyle}"
+[ngStyle]="{'font-size.px':24}"
+[ngStyle]="{'background-color':person.country === 'UK' ? 'green' : 'red' }
+[ngStyle]="appStyleGreen"
+
+[ngClass]="['btn', 'btn-primary']"
+[ngClass]="{ btn:true, 'btn-primary':true }"  
+<div [ngClass]="isSpecial ? 'specialClass' : ''">This div is special</div>
+
+<input [(ngModel)]="currentItem.name" id="example-ngModel">
+```
+
+```
 {{ data }}                                String Interpolation
 [property]="some value"                   Property Binding such as 'disabled' 
 (event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
@@ -10,13 +34,29 @@ Can bind HTML elements, directives or components.
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
 ## Inbuilt Structural Directives:
-Responsible for manipulating, modifying and removing elements inside a component template. * character translate the attribute into a <ng-template> element.
+Responsible for HTML layout. Used for manipulating, modifying and removing elements inside a component template. * character translate the attribute into a <ng-template> element.
+  
 ```
-*ngIf="boolean condition"                       Structural directive that helps to add or remove elements from DOM (it is not hidden)
-*ngFor="let x of array"
-[ngStyle]="{ backgroundColor: condition }"      Helps to dynamically update styles
-[ngClass]="{ CSSclass: condition }"             Adds CSS class if condition is true
+*ngIf="property"                        Conditionally add/remove elements from DOM (it is not hidden). Property must be boolean.
+*ngFor="let x of array"                 Makes each item available to HTML for each iteration
+[ngSwitch] & *ngSwitchCase/Default      Used when displaying an element tree containing many children
+
+<app-item-detail *ngFor="let item of items" [item]="item"></app-item-detail>
+<div *ngFor="let item of items; let i=index">{{i + 1}} - {{item.name}}</div>
+
+<ul *ngFor="let person of people" [ngSwitch]="person.country"> 
+  <li *ngSwitchCase="'UK'"
+      class="text-success">{{ person.name }} ({{ person.country }})
+  </li>
+  <li *ngSwitchCase="'USA'"
+      class="text-primary">{{ person.name }} ({{ person.country }})
+  </li>
+  <li *ngSwitchDefault      // displayed when no match is found
+      class="text-warning">{{ person.name }} ({{ person.country }})
+  </li>
+</ul>
 ```
+  
 ```javascript
 // ng-template doesn't render anything by default 
 <p>*ngIf="serverCreated; else noServer">Server was created</p>
@@ -40,7 +80,7 @@ Responsible for manipulating, modifying and removing elements inside a component
 ```
 
 ## Building Attribute Directives:
-Can change appearance or behavior of DOM elements and Angular components.
+Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements.
 ```javascript
 import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, Input } from '@angular/core';
 
