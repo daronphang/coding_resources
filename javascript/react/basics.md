@@ -12,20 +12,44 @@ npm start
 
 ```javascript
 // ExpenseItem.js
-import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
 
 function ExpenseItem(props) {   // props are key/value pairs
   return (
     <div className="expense-item">
-      <div>{ props.date.toISOString }</div>
+      <ExpenseDate>dateProxy={props.date}</ExpenseDate>   // or <ExpenseDate /> if there is no content
+      
       <h2>{ props.title }</h2>
     </div>
   );
 }
 
 export default ExpenseItem;
+```
 
+```javascript
+// ExpenseDate.js
+function ExpenseDate(props) {  
+
+const month = props.dateProxy.toLocaleString('en-US', {month: 'long'});
+const day = props.dateProxy.toLocaleString('en-US', {day: '2-digit'});
+const year = props.dateProxy.getFullYear();
+
+  return (
+  <div>
+      <div>{month}</div>
+      <div>{day}</div>
+      <div>{year}</div>
+  </div>
+  );
+}
+
+export default ExpenseDate;
+```
+
+```javascript
 // app.js:
+import './ExpenseItem.css';
 
 function() {
   const expenses = [
