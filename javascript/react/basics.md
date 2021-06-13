@@ -8,6 +8,10 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+
+## States:
+Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered.
+
 ## Template:
 
 ```javascript
@@ -16,7 +20,7 @@ import ExpenseDate from './ExpenseDate';
 import { useState } from 'react'; 
 
 function ExpenseItem(props) {   // props are key/value pairs
-  const [title, setTitle] = useState(props.title);  // state is needed if changes in data are reflected in UI
+  const [title, setTitle] = useState(props.title); 
   // useState hook always returns 2 variables: current state value and function for updating it
       
   const clickHandler = () => {
