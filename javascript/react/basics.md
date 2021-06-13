@@ -15,10 +15,13 @@ npm start
 import ExpenseDate from './ExpenseDate';
 
 function ExpenseItem(props) {   // props are key/value pairs
+  const clickHandler = () => console.log('clickeedd');
+  
   return (
     <Card className="expense-item">
       <ExpenseDate dateProxy={props.date}></ExpenseDate>   // or <ExpenseDate /> if there is no content
       <h2>{ props.title }</h2>
+      <button onClick={clickHandler}>Change title</button>
     </Card>
   );
 }
