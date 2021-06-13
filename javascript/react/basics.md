@@ -16,11 +16,10 @@ import ExpenseDate from './ExpenseDate';
 
 function ExpenseItem(props) {   // props are key/value pairs
   return (
-    <div className="expense-item">
-      <ExpenseDate>dateProxy={props.date}</ExpenseDate>   // or <ExpenseDate /> if there is no content
-      
+    <Card className="expense-item">
+      <ExpenseDate dateProxy={props.date}></ExpenseDate>   // or <ExpenseDate /> if there is no content
       <h2>{ props.title }</h2>
-    </div>
+    </Card>
   );
 }
 
@@ -45,6 +44,21 @@ const year = props.dateProxy.getFullYear();
 }
 
 export default ExpenseDate;
+```
+
+```javascript
+// card.js:
+// reusuable wrapper component
+import './card.css';
+
+function Card(props) {
+  const classes = 'card ' + props.className;  // anything received from outside as className is added
+  
+  return <div className={classes}>{props.children}</div>
+  // content between opening/closing of custom tags is represented by props.children
+}
+
+export default Card;
 ```
 
 ```javascript
