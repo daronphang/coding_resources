@@ -78,28 +78,29 @@ and.callFake(someFunction())      Pass some function to be called i..e throw err
 toHaveBeenCalled()
 ```
 ```javascript
-// auth.mock.service.ts:
+// dashboard.service.spec.ts:
+// this dashboard service has AuthService dependency
+
 class MockAuthService implements Partial<AuthService> {   // no need mock all methods; can also use extends
   isLoggedIn() {
     return false;
   }
 }
 
-// auth.service.spec.ts:
-import { MockAuthService } from '/directory/here';
+describe('DashboardService', () => {
+  let authService: AuthService;
+  let dashboardService: DashboardService;
+  let injector: TestBed;
 
-let isLoggedInSpy: jasmine.Spy;
-let service: AuthService;
-
-beforeEach(async(() => {
-  TestBed.configureTestingModule({
-    providers: [{ provide: AuthService, useClass: MockAuthService }]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [DashboardService, { provide: AuthService, useClass: MockAuthService }]
+    
+    injector = getTestBed();
+    dashboardService = injector.inject(DashboardService);
+    authService = injector.inject(AuthService);
+    
   })
-}
-
-beforeEach(() => {
-  service = TestBed.inject(AuthService);
-  isLoggedInSpy = SpyOn(service, 'isLoggedIn');
 })
 ```
 ### HTTP Requests:
