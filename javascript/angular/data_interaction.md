@@ -1,3 +1,13 @@
+## Summary:
+```
+{{ data }}                                String Interpolation
+[property]="some value"                   Property Binding such as 'disabled' 
+(event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
+
+(input)="onUpdateServerName($event)"
+// $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
+``` 
+
 ## Input:
 For sharing data from parent to child.
 ```javascript
