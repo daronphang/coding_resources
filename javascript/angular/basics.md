@@ -1,5 +1,5 @@
+##Basics:
 Framework for building client applications in HTML, CSS, and Javascript/Typescript.
-
 
 ## View Encapsulation:
 ```javascript
@@ -60,9 +60,3 @@ Module bundler, to bundle Javascript files for usage in browser. Automatically a
 
 ## Constructor vs NgOnInit:
 Constructor is a default method that will always be executed when the class is instantiated. Used mainly for Dependency Injection. Common practice is to put as little logic as possible.
-
-NgonInit is just a method on a class. When Angular calls, it has finished creating component DOM, injected all required dependencies and processed input bindings i.e. have all required information available and hence, make it a good place to perform initialization logic. 
-
-During compiliation Angular compiler checks whether a component has this method implemented
-
-is a lifecycle hook that is called by Angular after the constructor is called or when an event has happened. Mostly used for initialization/declaration of methods 
