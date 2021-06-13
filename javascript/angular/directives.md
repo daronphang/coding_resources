@@ -57,7 +57,7 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 </ul>
 ```
   
-```javascript
+```html
 // ng-template doesn't render anything by default 
 <p>*ngIf="serverCreated; else noServer">Server was created</p>
 
@@ -65,13 +65,6 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
   <p>No server was created</p>
 </ng-template>
 
-// using ngSwitch:
-<div [ngSwitch]="value">
-  <p *ngSwitchCase="5"> Value is 5</p>
-  <p *ngSwitchCase="10"> Value is 10</p>
-</div>
-```
-```html
 <!-- *ngIf is just syntactic sugar i.e. nicer syntax for something existing -->
 <!-- both are the same -->
 <p *ngIf="isVisible"> This is visible </p?
