@@ -1,4 +1,4 @@
-##Basics:
+## Basics:
 Framework for building client applications in HTML, CSS, and Javascript/Typescript.
 
 ## View Encapsulation:
