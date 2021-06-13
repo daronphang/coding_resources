@@ -11,18 +11,18 @@
 ## Input:
 For sharing data from parent to child.
 ```javascript
-// child.ts
+// child.component.ts
 export class ChildComponent {
   @Input('target.name.alias') item: string = ''
 }
 
-//parent.html
-<app-child ['target.name.alias']="currentItem"></app-child>  // currentItem is from parent
+//parent.component.html
+<app-child ['target.name.alias']="currentItem"></app-child>  // currentItem is property from parent
 ```
 ## Output:
 For sharing data from child to parent.
 ```javascript
-// child.ts
+// child.component.ts
 export class ChildComponent {
   @Output() : newItemEvent = new EventEmitter<string>();   // output is string type
   
@@ -31,13 +31,13 @@ export class ChildComponent {
   }
 }
 
-// child.html
+// child.component.html
 <label for="item-input">Add an item:</label>
 <input type="text" id="item-input" #newItem>    // newItem is alias for input 
 <button (click)="addNewItem(newItem.value)">Add to parent's list</button>
 ```
 ```javascript
-// parent.ts
+// parent.component.ts
 export class AppComponent {
   items = ['item1', 'item2', 'item3', 'item4'];
 
