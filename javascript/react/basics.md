@@ -1,7 +1,7 @@
 ## Basics:
 React is a JS library used for building user interfaces; focus is on components (reusuable building blocks) consisting mainly of JS and HTML. React is written in Declarative way y defining the desired end/target state, and let React figure out the actual DOM instructions. Though react can be used to control parts of HTML pages, more common is the Single-Page-Application (SPA) approach whereby it controls the entire frontned of a web application. Server only sends one HTML page, and React takes over and controls the UI.
 
-Data is passed via props or properties. 
+Data is passed from one component to another via props or properties. 
 
 ```
 npx create-react-app my-app
