@@ -22,9 +22,18 @@ const ExpenseForm = () => {
     setEnteredTitle(event.target.value);  // always return a string
   };
   
+  const submitHandler = (event) => {
+    event.preventDefault();   // prevent page from reloading
+    const expenseData = {
+      title: enteredTitle,    // points to states
+      date: new Date(enteredDate)
+    }
+    enteredTitle = ''; // clear submitted form
+  }
+  
   return (
-    <form>
-      <input type="text" onChange(titleChangeHandler) />
+    <form onSubmit={submitHandler}>
+      <input value={enteredTitle} type="text" onChange(titleChangeHandler) /> // value allows two-way binding
   )
 }
 
