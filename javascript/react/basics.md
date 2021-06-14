@@ -27,6 +27,19 @@ const ExpenseForm = () => {
       <input type="text" onChange(titleChangeHandler) />
   )
 }
+
+// for multiple states:
+const [userInput, setUserInput] = useState({
+    enteredTitle: '',                             // pass an object
+    enteredDate: '',
+    }) 
+
+const titleChangeHandler = (event) => {
+  setUserInput({
+    ...userInput,
+    enteredTitle: event.target.value,
+  })
+}
 ```
 
 ## Template:
