@@ -10,7 +10,7 @@ npm start
 ```
 
 ## States:
-Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered.
+Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis.
 
 ## Template:
 
