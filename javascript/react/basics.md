@@ -10,7 +10,24 @@ npm start
 ```
 
 ## States:
-Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis.
+Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis. Can be used to store values. Can have multiple states in single component. 
+
+## Listening to User Input:
+Use onChange().
+```javascript
+
+const ExpenseForm = () => {
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const titleChangeHandler = (event) => {
+    setEnteredTitle(event.target.value);  // always return a string
+  };
+  
+  return (
+    <form>
+      <input type="text" onChange(titleChangeHandler) />
+  )
+}
+```
 
 ## Template:
 
