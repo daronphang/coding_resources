@@ -10,7 +10,7 @@ npm start
 ```
 
 ## States:
-Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis. Can be used to store values. Can have multiple states in single component. 
+Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis. Can be used to store values. Can have multiple states in single component. For updating states that are dependent on previous states, pass a function into the state function.
 
 ## Listening to User Input:
 Use onChange().
@@ -35,10 +35,10 @@ const [userInput, setUserInput] = useState({
     }) 
 
 const titleChangeHandler = (event) => {
-  setUserInput({
-    ...userInput,
-    enteredTitle: event.target.value,   // overrides title and ensures others are not thrown away
-  })
+  setUserInput((prevState) => {
+    return {...prevState, enteredTitle: event.target.value}   // overrides title and ensures others are not thrown away
+  });
+  
 }
 ```
 
