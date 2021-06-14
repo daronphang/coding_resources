@@ -37,7 +37,7 @@ const [userInput, setUserInput] = useState({
 const titleChangeHandler = (event) => {
   setUserInput({
     ...userInput,
-    enteredTitle: event.target.value,
+    enteredTitle: event.target.value,   // overrides title and ensures others are not thrown away
   })
 }
 ```
