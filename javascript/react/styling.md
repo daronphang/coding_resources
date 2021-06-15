@@ -27,7 +27,7 @@ const Button = styled.button`
   padding: 0.5rem 1.5rem;
   color: white;
   
-  &:focus {   // special pseudo selector for this component only
+  & focus {   // special pseudo selector for this component only
     outline: none;
   }
 `; 
