@@ -25,11 +25,14 @@ import styled from 'styled-components'' ;
 const Button = styled.button`
   font: inherit;
   padding: 0.5rem 1.5rem;
-  color: white;
+  color: ${props => (props.invalid ? 'red' : white)}; // props are set in JSX styled component
   
   & focus {   // special pseudo selector for this component only
     outline: none;
   }
 `; 
 
+return (
+  <Button invalid={!isValid}>
+)
 ```
