@@ -47,7 +47,8 @@ import styles from './Button.module.css';
 
 const Button = props => {
   return (
-    <button className={styles.button}></button>
+    <button className={styles.button}></button>   // or styles['button-control']
+    <div className={`${styles['form-control']} ${!isValid && styles.invalid}`}  // js will return 2nd element if results to true
   )
 }
 ```
