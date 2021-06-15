@@ -18,17 +18,17 @@ Built-in React object used to manage data about the component. Needed if changes
 - Can have multiple states in single component, and separated by per component basis.
 - For updating states that are dependent on previous states, pass a function into the state function.
 
-useState always returns an array with two elements:
+### useState:
+Always returns an array with two elements:
 1) First is current value itself.
 2) Second is always a function which can be called to set a new value (re-evaluates component).
-
-Stateless/dumb components are those that do not have hold any states.
 
 ## Props:
 Immutable and are used to pass data between components (parent to child only). 
 
 
-## Controlled vs Uncontrolled Components:
+## Uncontrolled/Stateless:
+Stateless/dumb components are those that do not have hold any states.
 If the logic or data is handled in parent component, the child component is uncontrolled.
 
 ## Listening to User Input:
