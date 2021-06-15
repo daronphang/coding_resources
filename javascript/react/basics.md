@@ -69,4 +69,11 @@ const titleChangeHandler = (event) => {
   
 }
 ```
+## Wrapper Component:
+```javascript
+const Wrapper = props => {
+  return props.children;  // return content between <wrapper></wrapper>
+}
 
+export default Wrapper;
+```
