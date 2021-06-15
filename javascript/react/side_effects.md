@@ -25,6 +25,7 @@ function App() {
 ```javascript
 useEffect(() => {
   setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
-}, [setFormIsValid, enteredEmail, enteredPassword]);  // will execute again either one of them changes
+}, [enteredEmail, enteredPassword]);  // will execute again either one of them changes
+     // dont have to add state updating functions i.e. setFormIsValid
 
 ```
