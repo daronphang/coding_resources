@@ -12,6 +12,11 @@ npm start
 ## States:
 Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis. Can be used to store values. Can have multiple states in single component. For updating states that are dependent on previous states, pass a function into the state function.
 
+Stateless/dumb components are those that do not have hold any states.
+
+## Controlled vs Uncontrolled Components:
+If the logic or data is handled in parent component, the child component is uncontrolled.
+
 ## Listening to User Input:
 Use onChange().
 ```javascript
