@@ -5,7 +5,7 @@ import './Chart.css';
 
 const Chart = (props) => {
   const dataPointValues = props.dataPoints.map(dataPoint => dataPoint.value);
-  const totalMaximum = Math.max(...dataPointValues);
+  const totalMaximum = Math.max(...dataPointValues);  // Math takes a list, spread outputs 12 arguments individually
 
   return (
     <div className='chart'>
