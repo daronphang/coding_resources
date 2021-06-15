@@ -1,4 +1,3 @@
-```javascript
 // NewExpense.js
 import React from 'react';
 
@@ -23,9 +22,8 @@ const NewExpense = (props) => {
 
 export default NewExpense;
 
-```
+----------------------------------------------------------------------------
 
-```javascript
 // ExpenseForm.js
 import React, { useState } from 'react';
 
@@ -103,10 +101,9 @@ const ExpenseForm = (props) => {
 };
 
 export default ExpenseForm;
-```
 
+----------------------------------------------------------------------------
 
-```javascript
 // ExpenseDate.js
 import React from 'react';
 
@@ -128,10 +125,8 @@ const ExpenseDate = (props) => {
 
 export default ExpenseDate;
 
-```
+----------------------------------------------------------------------------
 
-
-```javascript
 // ExpenseItem.js
 import React from 'react';
 
@@ -153,10 +148,8 @@ const ExpenseItem = (props) => {
 
 export default ExpenseItem;
 
-```
+----------------------------------------------------------------------------
 
-
-```javascript
 // Expenses.js
 import React, { useState } from 'react';
 
@@ -194,11 +187,8 @@ const Expenses = (props) => {
 
 export default Expenses;
 
+----------------------------------------------------------------------------
 
-```
-
-
-```javascript
 // card.js:
 // reusuable wrapper component
 import './card.css';
@@ -211,9 +201,9 @@ function Card(props) {
 }
 
 export default Card;
-```
 
-```javascript
+----------------------------------------------------------------------------
+
 // app.js:
 import React, { useState } from 'react';
 
