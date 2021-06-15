@@ -41,7 +41,7 @@ return (
 )
 ```
 ## CSS Module:
-Simply use styles() method.
+Buiilt into React. Simply use styles() method.
 ```javascript
 import styles from './Button.module.css';
 
