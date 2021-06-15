@@ -71,7 +71,8 @@ const newArr = [1, 2, 3, ...arr]    // [1, 2, 3, 4, 5, 6]
 const [a, b, ...others] = [1, 2, 3, 4, 5];  // others = [3, 4, 5]
 ```
 ## For-of and For-in Loops:
-For-of loops iterates over values of object. For-in iterates over enumerable property of an object.
+For-in loop iterates over values of an object. For-of used for looping arrays.
+For-in iterates over enumerable property of an object.
 ```javascript
 let list = [4, 5, 6];
 
