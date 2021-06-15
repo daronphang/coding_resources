@@ -1,8 +1,6 @@
 ## Basics:
 React is a JS library used for building user interfaces; focus is on components (reusuable building blocks) consisting mainly of JS and HTML. React is written in Declarative way y defining the desired end/target state, and let React figure out the actual DOM instructions. Though react can be used to control parts of HTML pages, more common is the Single-Page-Application (SPA) approach whereby it controls the entire frontned of a web application. Server only sends one HTML page, and React takes over and controls the UI.
 
-Data is passed from one component to another via props or properties. 
-
 ```
 npx create-react-app my-app
 cd my-app
@@ -102,4 +100,30 @@ const ErrorModal = props => {
     </React.Fragment>
   )
 } 
+```
+## UseRef:
+Available in functional components only. don't have to log every keystroke like when using state.
+
+```javascript
+const Example = (props) => {
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+  
+  const addUserHandler = (event) => {
+    event.preventDefault();
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
+    
+    nameInputRef.current.value = ''   // to reset the form; though technically shouldnt manipulate DOM without using React
+    
+    <put some code here>
+    
+    
+  }
+  
+  return (
+    <input id="username" type="text" ref={nameInputRef}>
+  )
+  
+}
 ```
