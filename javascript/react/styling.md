@@ -15,7 +15,7 @@ return (
 )
 ```
 ## Testing:
-Use styled components library. Has methods for all HTML tags. Guarantees every className is unique so that it doesn't spill over to other components.
+When adding CSS files to components, they are added globally and not scoped only to the components they are added in; solution is to use styled components library. Has methods for all HTML tags. Guarantees every className is unique so that it doesn't spill over to other components.
 ```
 npm install --save styled-components
 ```
