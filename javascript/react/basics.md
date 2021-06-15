@@ -102,7 +102,7 @@ const ErrorModal = props => {
 } 
 ```
 ## UseRef:
-Available in functional components only. Alternative to state. Don't have to log every keystroke and uses less code.
+Available in functional components only. Alternative to state when accessing input value from forms. Don't have to log every keystroke and uses less code.
 
 ```javascript
 import React, { useRef } from 'react';
