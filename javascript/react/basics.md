@@ -105,6 +105,8 @@ const ErrorModal = props => {
 Available in functional components only. Alternative to state. Don't have to log every keystroke and uses less code.
 
 ```javascript
+import React, { useRef } from 'react';
+
 const Example = (props) => {
   const nameInputRef = useRef();
   const ageInputRef = useRef();
