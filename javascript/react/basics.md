@@ -85,7 +85,7 @@ Make HTML rendered semantically correct i.e. displaying alert/modal boxes.
 ```html
 <!--index.html-->
 
-<div id="overlay-root" </div> <!--instead of displaying Overlay in div-root-->
+<div id="overlay-root" </div> <!--instead of nesting in HTML code-->
 <div id="root"></div>
 ```
 ```javascript
