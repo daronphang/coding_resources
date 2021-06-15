@@ -10,11 +10,23 @@ npm start
 ```
 
 ## States:
-Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis. Can be used to store values. Can have multiple states in single component. For updating states that are dependent on previous states, pass a function into the state function.
+Built-in React object used to manage data about the component. Needed if changes in data are reflected in UI. Key features:
+- Changes in state is triggered by user action through event handlers and re-renders/evaluates the component.
+- State object is initialized in constructor and can store multiple properties.
+- setState() is used to change value of state object.
+- State data can be modified by its own component but not from outside (private).
+- Can have multiple states in single component, and separated by per component basis.
+- For updating states that are dependent on previous states, pass a function into the state function.
 
-useState always returns an array with two elements, and the second is always a function which can be called to set a new value. Calling that function will also trigger React to re-evaulate the component.
+useState always returns an array with two elements:
+1) First is current value itself.
+2) Second is always a function which can be called to set a new value (re-evaluates component).
 
 Stateless/dumb components are those that do not have hold any states.
+
+## Props:
+Immutable and are used to pass data between components (parent to child only). 
+
 
 ## Controlled vs Uncontrolled Components:
 If the logic or data is handled in parent component, the child component is uncontrolled.
