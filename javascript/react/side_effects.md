@@ -2,7 +2,7 @@
 Main job of React is to render UI and react to user input by evaluating JSX. Side effects are anything else including storing data in storage, sending HTTP requests,
 setting and managing timers, etc. These tasks must happen outside of normal component evaluation and lifecycle as they may block/delay rendering due to async nature.
 
-## useEffect:
+## useEffect Hook:
 Side effects are handled using useEffect() which is executed after every component evaluation if the specified dependencies change. If there is no dependency,
 it will only run once. Helps to deal with code that should be executed in response to something i.e. loading component, updating email etc.
 
@@ -38,4 +38,43 @@ useEffect(() => {
 }, [enteredEmail, enteredPassword]);  // will execute again either one of them changes
      // dont have to add state updating functions i.e. setFormIsValid
 
+```
+
+## useReducer Hook:
+More powerful state management for handling complex/multiple states, replacement for useState(). 
+```
+const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn)
+
+state         State snapshot used in component re-rendering
+dispatchFn    Function used to dispatch a new action i.e. trigger an update of state
+reducerFn     Triggered automatically once an action is dispatched; receives latest state and returns updated state
+```
+
+```javascript
+
+const emailReducer = (state, action) => {   // created outside of component function as it doesnt interact anything inside
+  if (action.type === 'USER_INPUT') {
+    return {value: action.val, isValid: action.val.includes('@')}
+  };
+    
+  if (action.type === 'INPUT_BLUR') {
+    return {value: state.value, isValid: state.value.includes('@')}
+  };
+  
+};  
+
+const Login = (props) => {
+  // const [enteredEmail, setEnteredEmail] = useState('');
+  // const [emailIsValid, setEmailIsValid] = useState();
+}
+
+  const [emailState, dispatchEmail] = useReducer(emailReducer, )
+  
+  const emailChangeHandler = (event) => {
+    dispatchEmail({type: 'USER_INPUT', val: event.target.value});
+  };
+  
+  const validateEmailHandler = () => {
+    dispatchEmail({type: 'INPUT_BLUR'})
+  };
 ```
