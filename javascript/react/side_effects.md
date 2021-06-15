@@ -77,4 +77,19 @@ const Login = (props) => {
   const validateEmailHandler = () => {
     dispatchEmail({type: 'INPUT_BLUR'})
   };
+  
+  // form validity
+  const { isValid: emailIsValid } = emailState;   // using alias
+  const { isValid: passwordIsValid } = passwordState;
+  
+  useEffect(() => {       // this effect will not rerun if the form is valid and user adds more keystrokes
+    const identifier = setTimeout(() => {
+      setFormIsValid(emailIsValid && passwordIsValid);
+    }; 500);
+  }
+  
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [emailIsValid, passwordIsValid]);
 ```
