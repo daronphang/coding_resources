@@ -210,7 +210,7 @@ import React, { useState } from 'react';
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 
-const DUMMY_EXPENSES = [
+const DUMMY_EXPENSES = [  // initialize list of expenses at start, new expenses will be added to this array
   {
     id: 'e1',
     title: 'Toilet Paper',
