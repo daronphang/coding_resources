@@ -12,6 +12,8 @@ npm start
 ## States:
 Needed if changes in data are reflected in UI. React will re-evaulate the component in which the state was registered. Separated on per component basis. Can be used to store values. Can have multiple states in single component. For updating states that are dependent on previous states, pass a function into the state function.
 
+useState always returns an array with two elements, and the second is always a function which can be called to set a new value. Calling that function will also trigger React to re-evaulate the component.
+
 Stateless/dumb components are those that do not have hold any states.
 
 ## Controlled vs Uncontrolled Components:
