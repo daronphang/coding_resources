@@ -59,71 +59,97 @@ const titleChangeHandler = (event) => {
 ```
 
 ## Template:
+```javascript
+// ExpenseDate.js
+import React from 'react';
+
+import './ExpenseDate.css';
+
+const ExpenseDate = (props) => {
+  const month = props.date.toLocaleString('en-US', { month: 'long' });
+  const day = props.date.toLocaleString('en-US', { day: '2-digit' });
+  const year = props.date.getFullYear();
+
+  return (
+    <div className='expense-date'>
+      <div className='expense-date__month'>{month}</div>
+      <div className='expense-date__year'>{year}</div>
+      <div className='expense-date__day'>{day}</div>
+    </div>
+  );
+};
+
+export default ExpenseDate;
+
+```
+
 
 ```javascript
 // ExpenseItem.js
-import ExpenseDate from './ExpenseDate';
-import { useState } from 'react'; 
+import React from 'react';
 
-function ExpenseItem(props) {   // props are key/value pairs
-  const [title, setTitle] = useState(props.title); 
-  // useState hook always returns 2 variables: current state value and function for updating it
-      
-  const clickHandler = () => {
-    console.log('clickeedd');
-    setTitle('updated!');
-    };
-  
+import ExpenseDate from './ExpenseDate';
+import Card from '../UI/Card';
+import './ExpenseItem.css';
+
+const ExpenseItem = (props) => {
   return (
-    <Card className="expense-item">
-      <ExpenseDate dateProxy={props.date}></ExpenseDate>   // or <ExpenseDate /> if there is no content
-      <h2>{ props.title }</h2>
-      <button onClick={clickHandler}>Change title</button>
+    <Card className='expense-item'>
+      <ExpenseDate date={props.date} />
+      <div className='expense-item__description'>
+        <h2>{props.title}</h2>
+        <div className='expense-item__price'>${props.amount}</div>
+      </div>
     </Card>
   );
 }
 
 export default ExpenseItem;
+
 ```
+
+
 ```javascript
 // Expenses.js
+import React, { useState } from 'react';
 
-return (
-  <div>
-    <Card className="expenses">
-      {props.items.map(expense => (
-        <ExpenseItem 
-          title={expense.title}
-          date={expense.date}
-        />
-      ))}
-    </Card>
-  </div>
-);
-  
+import ExpenseItem from './ExpenseItem';
+import Card from '../UI/Card';
+import ExpensesFilter from './ExpensesFilter';
+import './Expenses.css';
 
-```
+const Expenses = (props) => {
+  const [filteredYear, setFilteredYear] = useState('2020');
 
-
-```javascript
-// ExpenseDate.js
-function ExpenseDate(props) {  
-
-const month = props.dateProxy.toLocaleString('en-US', {month: 'long'});
-const day = props.dateProxy.toLocaleString('en-US', {day: '2-digit'});
-const year = props.dateProxy.getFullYear();
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
 
   return (
-  <div>
-      <div>{month}</div>
-      <div>{day}</div>
-      <div>{year}</div>
-  </div>
+    <div>
+      <Card className='expenses'>
+        <ExpensesFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
+        {props.items.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
+      </Card>
+    </div>
   );
-}
+};
 
-export default ExpenseDate;
+export default Expenses;
+
+
 ```
+
 
 ```javascript
 // card.js:
