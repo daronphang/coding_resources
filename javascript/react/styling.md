@@ -14,3 +14,22 @@ return (
   
 )
 ```
+## Testing:
+Use styled components library. Has methods for all HTML tags. Guarantees every className is unique so that it doesn't spill over to other components.
+```
+npm install --save styled-components
+```
+```javascript
+import styled from 'styled-components'' ;
+
+const Button = styled.button`
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  
+  &:focus {   // special pseudo selector for this component only
+    outline: none;
+  }
+`; 
+
+```
