@@ -150,6 +150,35 @@ export default ExpenseItem;
 
 ----------------------------------------------------------------------------
 
+// ExpensesFilter.js
+import React from 'react';
+
+import './ExpensesFilter.css';
+
+const ExpensesFilter = (props) => {
+  const dropdownChangeHandler = (event) => {
+    props.onChangeFilter(event.target.value);
+  };
+
+  return (
+    <div className='expenses-filter'>
+      <div className='expenses-filter__control'>
+        <label>Filter by year</label>
+        <select value={props.selected} onChange={dropdownChangeHandler}>
+          <option value='2022'>2022</option>
+          <option value='2021'>2021</option>
+          <option value='2020'>2020</option>
+          <option value='2019'>2019</option>
+        </select>
+      </div>
+    </div>
+  );
+};
+
+export default ExpensesFilter;
+
+----------------------------------------------------------------------------
+
 // Expenses.js
 import React, { useState } from 'react';
 
@@ -164,6 +193,10 @@ const Expenses = (props) => {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
+  
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
 
   return (
     <div>
@@ -172,12 +205,14 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {props.items.map((expense) => (
-          <ExpenseItem
-            key={expense.id}  // help React identify individual items for performance improvement
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
+        {filteredExpenses.length === 0 && <p>No expenses found</p>} // js will return 2nd value if condition is met
+        {filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}  // help React identify individual items for performance improvement
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
           />
         ))}
       </Card>
