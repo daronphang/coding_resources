@@ -71,6 +71,7 @@ const titleChangeHandler = (event) => {
 ```
 ## Wrapper Component:
 ```javascript
+// helper/wrapper.js
 const Wrapper = props => {
   return props.children;  // return content between <wrapper></wrapper>
 }
