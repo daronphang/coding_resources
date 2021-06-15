@@ -85,6 +85,25 @@ function ExpenseItem(props) {   // props are key/value pairs
 
 export default ExpenseItem;
 ```
+```javascript
+// Expenses.js
+
+return (
+  <div>
+    <Card className="expenses">
+      {props.items.map(expense => (
+        <ExpenseItem 
+          title={expense.title}
+          date={expense.date}
+        />
+      ))}
+    </Card>
+  </div>
+);
+  
+
+```
+
 
 ```javascript
 // ExpenseDate.js
