@@ -193,10 +193,23 @@ const Expenses = (props) => {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
-  
+ 
   const filteredExpenses = props.items.filter(expense => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
+  
+    // can store JSX in variables
+  let expensesContent = <p>No expenses found.</p>; 
+  if (filteredExpenses > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}  // help React identify individual items for performance improvement
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}  
+             />
+        ))
+  }
 
   return (
     <div>
@@ -205,16 +218,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.length === 0 && <p>No expenses found</p>} 
-        {filteredExpenses.length > 0 &&       // js will return 2nd value if condition is met  
-          filteredExpenses.map((expense) => (
-            <ExpenseItem
-              key={expense.id}  // help React identify individual items for performance improvement
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}  
-          />
-        ))}
+         {expensesContent)
       </Card>
     </div>
   );
