@@ -30,7 +30,7 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState(''); // enteredTitle is a state variable
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
 
@@ -50,13 +50,13 @@ const ExpenseForm = (props) => {
     event.preventDefault();
 
     const expenseData = {
-      title: enteredTitle,
+      title: enteredTitle,  // enteredTitle/Amount/Date point to state variables
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
 
-    props.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
+    props.onSaveExpenseData(expenseData); // pass data from child to parent
+    setEnteredTitle('');    // clear submitted form
     setEnteredAmount('');
     setEnteredDate('');
   };
@@ -68,8 +68,8 @@ const ExpenseForm = (props) => {
           <label>Title</label>
           <input
             type='text'
-            value={enteredTitle}
-            onChange={titleChangeHandler}
+            value={enteredTitle}    // allows two-way binding to reset form 
+            onChange={titleChangeHandler}   // pass a pointer to titleChangeHandler()
           />
         </div>
         <div className='new-expense__control'>
