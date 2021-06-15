@@ -102,7 +102,7 @@ const ErrorModal = props => {
 } 
 ```
 ## UseRef:
-Available in functional components only. don't have to log every keystroke like when using state.
+Available in functional components only. Alternative to state. Don't have to log every keystroke and uses less code.
 
 ```javascript
 const Example = (props) => {
