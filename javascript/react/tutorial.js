@@ -174,7 +174,7 @@ const Expenses = (props) => {
         />
         {props.items.map((expense) => (
           <ExpenseItem
-            key={expense.id}
+            key={expense.id}  // help React identify individual items for performance improvement
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
