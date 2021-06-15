@@ -79,3 +79,27 @@ const Wrapper = props => {
 
 export default Wrapper;
 ```
+
+## React Portals:
+Make HTML rendered semantically correct i.e. displaying alert/modal boxes.
+```html
+<!--index.html-->
+
+<div id="overlay-root" </div> <!--instead of displaying Overlay in div-root-->
+<div id="root"></div>
+```
+```javascript
+import ReactDOM from 'react-dom';
+
+const ModalOverlay = props => {
+  return <place HTML modal code here>
+}
+
+const ErrorModal = props => {
+  return (
+    <React.Fragment>
+      {ReactDOM.createPortal(<ModalOverlay onClick={props.onConfirm} />), document.getElementById('overlay-root'))}
+    </React.Fragment>
+  )
+} 
+```
