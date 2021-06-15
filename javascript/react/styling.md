@@ -1,5 +1,5 @@
 ## Styling:
-Use states to change styling for a HTML element.
+Use states to change styling for a HTML element or adding CSS classes dynamically.
 ```javascript
 [isValid, setIsValid] = useState(true);
 
@@ -9,6 +9,8 @@ if(enteredValue,trim().length === 0) {
 }
 
 return (
-  <label style={{ color: !isValid ? 'red' : 'black'}}
+  <div className={`form-control ${!isValid ? 'invalid' : ''}`}  // .form-control.invalid is a CSS class
+  <label style={{ color: !isValid ? 'red' : 'black'}}   // setting inline 
+  
 )
 ```
