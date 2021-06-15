@@ -70,6 +70,7 @@ const titleChangeHandler = (event) => {
 }
 ```
 ## Wrapper Component:
+Can create your own or use <React.Fragment> or <> (empty).
 ```javascript
 // helper/wrapper.js
 const Wrapper = props => {
