@@ -205,8 +205,8 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.length === 0 && <p>No expenses found</p>}   /// js will return 2nd value if condition is met  
-        {filteredExpenses.length > 0 && 
+        {filteredExpenses.length === 0 && <p>No expenses found</p>} 
+        {filteredExpenses.length > 0 &&       // js will return 2nd value if condition is met  
           filteredExpenses.map((expense) => (
             <ExpenseItem
               key={expense.id}  // help React identify individual items for performance improvement
