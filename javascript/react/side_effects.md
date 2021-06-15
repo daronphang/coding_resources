@@ -68,7 +68,7 @@ const Login = (props) => {
   // const [emailIsValid, setEmailIsValid] = useState();
 }
 
-  const [emailState, dispatchEmail] = useReducer(emailReducer, )
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: false});
   
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'USER_INPUT', val: event.target.value});
