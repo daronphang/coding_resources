@@ -21,3 +21,7 @@ print(os.getcwd())                  # prints absolute path 'H:/tech/SECURE/test'
 
 os.chdir(os.path.join(os.getcwd(), '\app')) # 'H:\tech\SECURE\test\app'
 ``` 
+## Run Python Script:
+``` 
+python file_name.py
+``` 
