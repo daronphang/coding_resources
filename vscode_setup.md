@@ -25,6 +25,7 @@ pep8                      "python.linting.pycodestyleEnabled": true
 flake8                    "python.linting.flake8Enabled": true
 Right Vertical            "editor.rulers": [80]
 Kite                      "kite.codefinder.enableLineDecoration": false
+Prettier                  "editor.defaultFormatter": "esbenp.prettier-vscode"
 Code Runner               "code-runner.clearPreviousOutput": true,
                           "code-runner.executorMap": {
                               "python": "C:\\financial_analysis\\venv\\Scripts\\python.exe"
