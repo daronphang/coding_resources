@@ -79,16 +79,33 @@ Applied to view transitions during a route change.
      <router-outlet #outlet="outlet"></router-outlet>
 </div>
 ```
-```javascript
-// animation-specific route:
-{ path: 'home', component: HomeComponent, data: {animation: 'HomePage'} }
-```
+
 ```css
 router-outlet ~ * {
   position: absolute;	/* to ensure the child components of router overlay one another*/
   height: 100%;
   width: 100%;
 }
+```
+### Multiple Animations:
+```javascript
+// animation-specific route:
+{ path: 'home', component: HomeComponent, data: {animation: 'HomePage'} }
+```
+
+```javascript
+prepareRoute(outlet: RouterOutlet) {
+    return (
+        outlet?.activatedRouteData &&
+        outlet.activatedRouteData['animation']
+	);
+}
+```
+```javascript
+trigger('routeAnimation', [
+    transition('home => post', []),
+	transition('post => home', []),
+]);
 ```
 
 ## Disabling Animation:
@@ -113,3 +130,18 @@ Trigger() emits callbacks when it starts and finishes.
     class="open-close-container">
 </div>
 ```
+
+## Animation with HostBinding:
+Attaching animation to HTML element of a component itself instead of an element in the component's template. 
+```javascript
+import { Component, HostBinding } from '@angular/core';
+
+@Component({
+...
+})
+export class ExampleComponent {
+  @HostBinding('@animateArc') get arcAnimation() {
+    return this.arc;
+  }
+}
+``` 
