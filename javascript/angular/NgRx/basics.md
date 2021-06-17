@@ -47,7 +47,8 @@ export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 
 export class AddIngredient implements Action {
   readonly type = ADD_INGREDIENT;
-  payload: Ingredient;
+  
+  constructor(public payload: Ingredient) {}
 }
 
 ```
@@ -63,6 +64,17 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
     this.ingredients = this.store.select('shoppingList')
   }
+}
+
+
+```
+
+```javascript
+// shopping-edit.component.ts:
+import * as ShoppingListActions from './shopping-list.actions'; 
+
+onSubmit(form: NgForm) {
+  this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));    // dispatch actions
 }
 
 
