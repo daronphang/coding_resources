@@ -8,6 +8,15 @@ custom        	Custom names to indicate a certain state of an element
 ```
 ## Queries:
 Can be used to target multiple elements i.e. look for elements that meet query parameters and apply animation trigger.
+```
+query(<html tags or classes>)
+query(':enter')				For newly inserted elements
+query(':leave')				For removed elements
+query(':animating')			For all currently animating elements
+query(':@triggerName')			For elements that contain animation trigger
+query('@*')				For all elements that contain an animation trigger 
+query(':self')
+```
 
 ## Animating Children Elements:
 ```html
