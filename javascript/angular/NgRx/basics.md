@@ -29,7 +29,10 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
       return {
         ...state,   // copying existing state
         ingredients: [...state.ingredients, action.payload]    // overwriting ingredients state
-      }
+      };
+      
+    default: 
+      return state;
   }
 }
 ```
@@ -63,4 +66,8 @@ export class ShoppingListComponent implements OnInit {
 }
 
 
+```
+
+```html
+<li *ngFor="let ingredient of (ingredients | async).ingredients" >
 ```
