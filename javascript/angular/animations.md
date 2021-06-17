@@ -3,7 +3,7 @@
 active => *   	Wildcard represents default/all states of the element. Change from active to anything else
 (void)        	State when element is created but not yet part of DOM, or when element is removed
 custom        	Custom names to indicate a certain state of an element
-:enter        	Alias for void => *
+:enter        	Alias for void => *, transition runs when any *ngIf or *ngFor is placed on view page
 :leave		Alias for * => void
 ```
 ## Queries:
