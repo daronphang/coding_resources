@@ -70,6 +70,11 @@ Applied to view transitions during a route change.
      <router-outlet #outlet="outlet"></router-outlet>
 </div>
 ```
+```javascript
+// animation-specific route:
+{ path: 'home', component: HomeComponent, data: {animation: 'HomePage'} }
+```
+
 
 ## Disabling Animation:
 ```html
