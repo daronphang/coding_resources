@@ -7,7 +7,7 @@ custom        	Custom names to indicate a certain state of an element
 :leave		Alias for * => void
 ```
 ## Queries:
-Can be used to target multiple elements i.e. look for elements that meet query parameters and apply animation trigger.
+Can be used to target multiple elements i.e. look for elements that meet query parameters and apply animation trigger. Queries will execute in order.
 ```
 query(<html tags or classes>)
 query(':enter')				For newly inserted elements
