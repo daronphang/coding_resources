@@ -5,22 +5,30 @@ Reducers which will reduce/combine state. State changes must always be immutable
 ```
 npm install --save @ngrx/store
 ```
+
+```javascript
+// app.module.ts:
+
+imports: [StoreModule.forRoot({shoppingList: shoppingListReducer})] // tells NgRx where to find reducer
+```
+
 ```javascript
 // shopping-list.reducer.ts
 // store both files in store folder
 import { Action } from '@ngrx/store';
 import { ADD_INGREDIENT } from './shopping-list.actions';
+import * as ShoppingListActions from './shopping-list.actions'; 
 
 const initialState = {
   ingredients: ['apples', 'oranges']
 }
 
-export function shoppingListReducer(state = initialState, action) {
+export function shoppingListReducer(state = initialState, action: ShoppingListActions.AddIngredient) {
   switch (action.type) {
-    case ADD_INGREDIENT:
+    case ShoppingListActions.ADD_INGREDIENT:
       return {
         ...state,   // copying existing state
-        ingredients: [...state.ingredients, action]    // overwriting ingredients state
+        ingredients: [...state.ingredients, action.payload]    // overwriting ingredients state
       }
   }
 }
@@ -31,7 +39,9 @@ export function shoppingListReducer(state = initialState, action) {
 import { Action } from '@ngrx/store';
 import { Ingredient } from './shared/ingredient.model';
 
+
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
+
 export class AddIngredient implements Action {
   readonly type = ADD_INGREDIENT;
   payload: Ingredient;
