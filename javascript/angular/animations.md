@@ -90,14 +90,14 @@ router-outlet ~ * {
 ### Multiple Animations:
 ```javascript
 // animation-specific route:
-{ path: 'home', component: HomeComponent, data: {animation: 'HomePage'} }
+{ path: 'home', component: HomeComponent, data: {animationState: 'One'} }
 ```
 
 ```javascript
 prepareRoute(outlet: RouterOutlet) {
     return (
         outlet?.activatedRouteData &&
-        outlet.activatedRouteData['animation']
+        outlet.activatedRouteData['animationState']
 	);
 }
 ```
@@ -106,6 +106,28 @@ trigger('routeAnimation', [
     transition('home => post', []),
 	transition('post => home', []),
 ]);
+```
+
+```javascript
+// animation.ts
+transition('Three => Two, Two => One', [
+  style({ position: 'relative' }),
+  query(':enter, :leave', [
+    style({
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%'
+    })
+  ]),
+  query(':enter', [style({ left: '-100%', opacity: 0 })]),
+  query(':leave', animateChild()),
+  group([
+    query(':leave', [animate('1s ease-out', style({ left: '100%', opacity: 0 }))]),
+    query(':enter', [animate('1s ease-out', style({ left: '0%', opacity: 1 }))])
+   ]),
+   query(':enter', animateChild())
+ ])
 ```
 
 ## Disabling Animation:
