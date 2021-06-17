@@ -83,7 +83,7 @@ Applied to view transitions during a route change.
 </div>
 ```
 ```javascript
-// disabling all animations
+// disabling all animations, place in topmost of component
 export class AppComponent {
   @HostBinding('@.disabled')
 }
