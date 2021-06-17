@@ -67,7 +67,7 @@ Applied to view transitions during a route change.
 ```html
 <!--  app-route.module.ts or modules with routing: -->
 <div [@routeAnimation]="prepareRoute(outlet)">
-	<router-outlet #outlet="outlet"></router-outlet>
+     <router-outlet #outlet="outlet"></router-outlet>
 </div>
 ```
 
@@ -75,5 +75,21 @@ Applied to view transitions during a route change.
 ```html
 <div [@.disabled]="isDisabled">
 	<p [@someAnimation]>Some element </p>
+</div>
+```
+```javascript
+// disabling all animations
+export class AppComponent {
+  @HostBinding('@.disabled')
+}
+```
+
+## Animation Callbacks:
+Trigger() emits callbacks when it starts and finishes.
+```html
+<div [@openClose]="isOpen ? 'open' : 'closed'"
+    (@openClose.start)="onAnimationEvent($event)"
+    (@openClose.done)="onAnimationEvent($event)"
+    class="open-close-container">
 </div>
 ```
