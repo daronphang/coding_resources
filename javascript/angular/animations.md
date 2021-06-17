@@ -70,3 +70,10 @@ Applied to view transitions during a route change.
 	<router-outlet #outlet="outlet"></router-outlet>
 </div>
 ```
+
+## Disabling Animation:
+```html
+<div [@.disabled]="isDisabled">
+	<p [@someAnimation]>Some element </p>
+</div>
+```
