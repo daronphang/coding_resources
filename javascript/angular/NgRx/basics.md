@@ -48,3 +48,19 @@ export class AddIngredient implements Action {
 }
 
 ```
+
+```javascript
+// shopping-list.component.ts:
+
+export class ShoppingListComponent implements OnInit {
+  constructor(private store: Store<shoppingList: {ingredients: Ingredient[]}}> ) {}  // type is key chosen in app-module
+  
+  ingredients: Observable<{ingredients: Ingredient[] }>
+  
+  ngOnInit() {
+    this.ingredients = this.store.select('shoppingList')
+  }
+}
+
+
+```
