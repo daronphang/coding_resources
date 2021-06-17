@@ -61,3 +61,12 @@ export const Container = [
 	]),
 ];
 ```
+
+## Route Animations:
+Applied to view transitions during a route change.
+```html
+<!--  app-route.module.ts or modules with routing: -->
+<div [@routeAnimation]="prepareRoute(outlet)">
+	<router-outlet #outlet="outlet"></router-outlet>
+</div>
+```
