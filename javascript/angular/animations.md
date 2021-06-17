@@ -1,10 +1,10 @@
 ## Animation States:
 ```
-active => *   Wildcard represents default/all states of the element. Change from active to anything else
-(void)        State when element is created but not yet part of DOM, or when element is removed
-custom        Custom names to indicate a certain state of an element
-:enter        Both provided by Angular
-:leave
+active => *   	Wildcard represents default/all states of the element. Change from active to anything else
+(void)        	State when element is created but not yet part of DOM, or when element is removed
+custom        	Custom names to indicate a certain state of an element
+:enter        	Alias for void => *
+:leave		Alias for * => void
 ```
 ## Queries:
 Can be used to target multiple elements i.e. look for elements that meet query parameters and apply animation trigger.
