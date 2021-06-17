@@ -83,7 +83,13 @@ Applied to view transitions during a route change.
 // animation-specific route:
 { path: 'home', component: HomeComponent, data: {animation: 'HomePage'} }
 ```
-
+```css
+router-outlet ~ * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+```
 
 ## Disabling Animation:
 ```html
