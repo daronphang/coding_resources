@@ -85,7 +85,7 @@ Applied to view transitions during a route change.
 ```
 ```css
 router-outlet ~ * {
-  position: absolute;
+  position: absolute;	/* to ensure the child components of router overlay one another*/
   height: 100%;
   width: 100%;
 }
