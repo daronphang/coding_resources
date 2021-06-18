@@ -23,10 +23,79 @@ If an Effect gets triggered by dispatching an Action, this means side effects ar
 NgRx provides select() to obtain slices of object tree from Store which accepts selector function as argument. It is a function that allows some logic to be applied to the slice before using the data in components.
 
 ### Store:
-An object that holds application state and brings Actions, Reducers and Selectors together i.e. when an action is dispatched, the store finds and executes the appropriate Reducer. Store folder contains Actions, Effects, Reducers, Selectors and State folders.
+Database of application comprising of different states that are immmutable and only altered by actions. An object that holds application state and brings Actions, Reducers and Selectors together i.e. when an action is dispatched, the store finds and executes the appropriate Reducer. Store folder contains Actions, Effects, Reducers, Selectors and State folders.
 
 
 ```
 npm install --save @ngrx/store @ngrx/core @ngrx/effects @ngrx/store-devtools @ngrx/router-store
 ```
+
+```javascript
+//store/reducer.ts
+import { CartActionTypes, CartActions } from './actions';
+
+export let initialState = [];
+
+export function Reducer(state = initialState, action: CartActions) {
+    switch (action.type) {
+        case CartActionTypes.ADD_PRODUCT:
+            return [...state, action.payload]
+        
+        case CartActionTypes.REMOVE_PRODUCT:
+            let product = action.payload;
+            return state.filter((el) => el.id != product.id)
+        
+        default:
+            return state
+    }
+}
+
+```
+
+```javascript
+// app.module.ts
+// initializing the store
+
+imports: [StoreModule.forRoot({cart: Reducer})]
+
+```javascript
+// app.component.ts
+// access states from store using select()
+
+export class AppComponent {
+  cart: Array<any>
+  
+  constructor(private store: Store<any>) {}
+
+  ngOnInit() {
+    this.store.select('cart').subscribe((state) => this.cart = state))
+  }
+}
+
+```
+
+```javascript
+// store/actions.ts
+
+import { Action } from '@ngrx/store';
+
+export enum CartActionTypes {
+    ADD_PRODUCT = 'ADD_PRODUCT',
+    REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+}
+
+export class AddProduct implements Action {
+    readonly type = CartActionTypes.ADD_PRODUCT
+    constructor(public payload: any) {}
+}
+
+export class RemoveProduct implements Action {
+    readonly type = CartActionTypes.REMOVE_PRODUCT
+    constructor(public payload: any) {}
+}
+
+export type CartActions = AddProduct | RemoveProduct
+
+```
+
 
