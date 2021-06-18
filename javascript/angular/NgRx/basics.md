@@ -9,7 +9,7 @@ Main purpose of redux pattern is to provide a predictable state container based 
 3) Changes are made with pure functions through Reducer function which returns a new state object.  
 
 ### Actions:
-Dispatched to Reducer from Components/Services. Actions reach out to all Reducers; hence, returning default case is necessary. Have two properties:
+Dispatched to Reducer from Components/Services. Actions reach out to all Reducers; need return DEFAULT case. Have two properties:
 1) type: read only string describing what the action stand for.
 2) payload: the data sent to the Reducer (not all actions need a payload).
 
