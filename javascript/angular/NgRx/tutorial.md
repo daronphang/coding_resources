@@ -94,3 +94,29 @@ export const appReducer: ActionReducerMap<AppState> = {
 };
 
 ```
+
+```javascript
+//auth.effects.ts:
+import { Actions, ofType, Effect } from '@ngrx/effects';
+import * as AuthActions from './auth/actions';
+
+export class AuthEffects {
+  @Effect()   // to turn class into an effect
+  authLogin = this.actions$.pipe(
+    ofType(AuthActions.LOGIN_START)  // to filter type of effects you want
+    switchMap((authData: AuthActions.LoginStart) => {
+      return this.http.post('http://example.com, {username: authData.payload.email, password: authData.payload.password})
+    }).pipe(
+      catchError(error => {
+        of();
+      }), 
+      map(
+        of()
+      ));
+    
+  );
+  constructor(private actions$: Actions, private http: HttpClient) {} // $ indicates observable
+}
+
+
+```
