@@ -19,7 +19,7 @@ Can prefix for larger applications as different components may have same action 
 Pure functions accepting two arguments, previous State and Action. When an Action is dispatched, NgRx goes through all reducers in the order the Reducers were created until it finds a case for that Action. 
 
 ### Effects:
-If an Effect gets triggered by dispatching an Action, this means side effects are going to happen before calling the Reducer i.e. http requests. Effects listen if any Action is dispatched and checks if it has a a case for Action type. After performing side effect, emits another Action referring to the result-state of side effect (success/error), and Reducer finally enters the scene.
+If an Effect gets triggered by dispatching an Action, this means side effects are going to happen before calling the Reducer i.e. http requests. Effects listen if any Action is dispatched and checks if it has a a case for Action type. After performing side effect, emits another Action referring to the result-state of side effect (success/error), and Reducer finally enters the scene. For Effects, it must always return a non-erronous Observable as the pipe operator cannot die; hence, use of(). 
 
 ### Selectors: 
 NgRx provides select() to obtain slices of object tree from Store which accepts selector function as argument. It is a function that allows some logic to be applied to the slice before using the data in components.
