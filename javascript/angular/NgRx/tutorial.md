@@ -1,7 +1,11 @@
 ```javascript
 // app.module.ts:
 
-imports: [StoreModule.forRoot({shoppingList: shoppingListReducer})] // tells NgRx where to find reducer
+// tells NgRx where to find reducer
+imports: [      
+  StoreModule.forRoot(fromApp.appReducer),
+  EffectsModule.forRoot([AuthEffects]);
+] 
 ```
 
 ```javascript
@@ -100,6 +104,8 @@ export const appReducer: ActionReducerMap<AppState> = {
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import * as AuthActions from './auth/actions';
 
+@Injectable() // to inject items into effect from constructor
+
 export class AuthEffects {
   @Effect()   // to turn class into an effect
   authLogin = this.actions$.pipe(
@@ -107,15 +113,29 @@ export class AuthEffects {
     switchMap((authData: AuthActions.LoginStart) => {
       return this.http.post('http://example.com, {username: authData.payload.email, password: authData.payload.password})
     }).pipe(
-      catchError(error => {
-        of();
-      }), 
-      map(
-        of()
-      ));
-    
+      map(resData => {
+        return new AuthActions.Login({username: resData.username, password: resData.password))
+      }
+      )),
+      catchError(errRes => {
+        let errorMsg = 'An unknown error occured';
+        if(!errorRes.error) || !errorRes.error.error) 
+        ...
+        
+        return of(new AuthActions.LoginFail(errorMessage));
+      });
   );
-  constructor(private actions$: Actions, private http: HttpClient) {} // $ indicates observable
+  
+  @Effect({dispatch: false})  // inform NgRx this effect will not yield a dispatchable action
+  authSuccess = this.actions$.pipe(
+    ofType(AuthActions.LOGIN),
+    tap(() => {
+      this.router.navigate(['/']); 
+    })
+  )
+  
+  
+  constructor(private actions$: Actions, private http: HttpClient, router: Router) {} // $ indicates observable
 }
 
 
