@@ -81,6 +81,10 @@ export class AppComponent {
   cart: Array<any>
   
   constructor(private store: Store<any>) {}
+  
+  onAddProduct() {
+    this.store.dispatch(new actions.AddProduct());
+  }
 
   ngOnInit() {
     this.store.select('cart').subscribe((state) => this.cart = state))
