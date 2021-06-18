@@ -117,5 +117,4 @@ export type CartActions = AddProduct | RemoveProduct
 
 ----------------------------------------------------------------------
 
-
-
+```
