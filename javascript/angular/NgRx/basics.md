@@ -13,6 +13,8 @@ Dispatched to Reducer from Components/Services. Actions reach out to all Reducer
 1) type: read only string describing what the action stand for.
 2) payload: the data sent to the Reducer (not all actions need a payload).
 
+Can prefix for larger applications as different components may have same action name i.e. "[SHOPPING LIST] Add Ingredients".
+
 ### Reducers:
 Pure functions accepting two arguments, previous State and Action. When an Action is dispatched, NgRx goes through all reducers in the order the Reducers were created until it finds a case for that Action. 
 
