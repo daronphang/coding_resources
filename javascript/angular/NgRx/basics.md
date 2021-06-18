@@ -50,15 +50,15 @@ export function Reducer(state = initialState, action: CartActions) {
     }
 }
 
-```
+----------------------------------------------------------------------
 
-```javascript
 // app.module.ts
 // initializing the store
 
 imports: [StoreModule.forRoot({cart: Reducer})]
 
-```javascript
+----------------------------------------------------------------------
+
 // app.component.ts
 // access states from store using select()
 
@@ -72,9 +72,8 @@ export class AppComponent {
   }
 }
 
-```
+----------------------------------------------------------------------
 
-```javascript
 // store/actions.ts
 
 import { Action } from '@ngrx/store';
