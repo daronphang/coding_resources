@@ -23,87 +23,10 @@ If an Effect gets triggered by dispatching an Action, this means side effects ar
 NgRx provides select() to obtain slices of object tree from Store which accepts selector function as argument. It is a function that allows some logic to be applied to the slice before using the data in components.
 
 ### Store:
-An object that holds application state and brings Actions, Reducers and Selectors together i.e. when an action is dispatched, the store finds and executes the appropriate Reducer.
+An object that holds application state and brings Actions, Reducers and Selectors together i.e. when an action is dispatched, the store finds and executes the appropriate Reducer. Store folder contains Actions, Effects, Reducers, Selectors and State folders.
 
 
 ```
 npm install --save @ngrx/store @ngrx/core @ngrx/effects @ngrx/store-devtools @ngrx/router-store
 ```
 
-```javascript
-// app.module.ts:
-
-imports: [StoreModule.forRoot({shoppingList: shoppingListReducer})] // tells NgRx where to find reducer
-```
-
-```javascript
-// shopping-list.reducer.ts
-// store both files in store folder
-import { Action } from '@ngrx/store';
-import { ADD_INGREDIENT } from './shopping-list.actions';
-import * as ShoppingListActions from './shopping-list.actions'; 
-
-const initialState = {
-  ingredients: ['apples', 'oranges']
-}
-
-export function shoppingListReducer(state = initialState, action: ShoppingListActions.AddIngredient) {
-  switch (action.type) {
-    case ShoppingListActions.ADD_INGREDIENT:
-      return {
-        ...state,   // copying existing state
-        ingredients: [...state.ingredients, action.payload]    // overwriting ingredients state
-      };
-      
-    default: 
-      return state;
-  }
-}
-```
-
-```javascript
-// shopping-list.actions.ts
-import { Action } from '@ngrx/store';
-import { Ingredient } from './shared/ingredient.model';
-
-
-export const ADD_INGREDIENT = 'ADD_INGREDIENT';
-
-export class AddIngredient implements Action {
-  readonly type = ADD_INGREDIENT;
-  
-  constructor(public payload: Ingredient) {}
-}
-
-```
-
-```javascript
-// shopping-list.component.ts:
-
-export class ShoppingListComponent implements OnInit {
-  constructor(private store: Store<shoppingList: {ingredients: Ingredient[]}}> ) {}  // type is key chosen in app-module
-  
-  ingredients: Observable<{ingredients: Ingredient[] }>
-  
-  ngOnInit() {
-    this.ingredients = this.store.select('shoppingList')
-  }
-}
-
-
-```
-
-```javascript
-// shopping-edit.component.ts:
-import * as ShoppingListActions from './shopping-list.actions'; 
-
-onSubmit(form: NgForm) {
-  this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));    // dispatch actions
-}
-
-
-```
-
-```html
-<li *ngFor="let ingredient of (ingredients | async).ingredients" >
-```
