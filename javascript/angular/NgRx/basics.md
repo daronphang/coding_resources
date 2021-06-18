@@ -45,6 +45,21 @@ export function Reducer(state = initialState, action: CartActions) {
             let product = action.payload;
             return state.filter((el) => el.id != product.id)
         
+        case CartActionTypes.UPDATE_PRODUCT:
+            let product = state[action.payload.index];
+            const updatedProduct = {
+            ...product,
+            ...action.payload
+            }
+            
+            const updatedProducts = [state];
+            updatedProducts[action.payload.index] = updatedProduct;
+            
+            return {
+                ...state,
+                updatedProducts
+            }
+        
         default:
             return state
     }
@@ -81,6 +96,7 @@ import { Action } from '@ngrx/store';
 export enum CartActionTypes {
     ADD_PRODUCT = 'ADD_PRODUCT',
     REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+    UPDATE_PRODUCT = "UPDATE_PRODUCT'
 }
 
 export class AddProduct implements Action {
