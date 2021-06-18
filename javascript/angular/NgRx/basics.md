@@ -115,7 +115,7 @@ export class RemoveProduct implements Action {
 
 export type CartActions = AddProduct | RemoveProduct
 
+----------------------------------------------------------------------
 
-```
 
 
