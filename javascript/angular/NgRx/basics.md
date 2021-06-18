@@ -65,14 +65,14 @@ export function Reducer(state = initialState, action: CartActions) {
     }
 }
 
-----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 // app.module.ts
 // initializing the store
 
 imports: [StoreModule.forRoot({cart: Reducer})]
 
-----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 // app.component.ts
 // access states from store using select()
@@ -91,7 +91,7 @@ export class AppComponent {
   }
 }
 
-----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 // store/actions.ts
 
@@ -114,6 +114,7 @@ export class RemoveProduct implements Action {
 }
 
 export type CartActions = AddProduct | RemoveProduct
+
 
 ```
 
