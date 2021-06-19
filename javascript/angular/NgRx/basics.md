@@ -36,9 +36,9 @@ npm install --save @ngrx/store @ngrx/core @ngrx/effects @ngrx/store-devtools @ng
 //store/reducer.ts
 import { CartActionTypes, CartActions } from './actions';
 
-export let initialState = [];
+export let cartState = [];
 
-export function Reducer(state = initialState, action: CartActions) {
+export function Reducer(state = cartState, action: CartActions) {
     switch (action.type) {
         case CartActionTypes.ADD_PRODUCT:
             return [...state, action.payload]
