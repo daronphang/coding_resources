@@ -1,13 +1,12 @@
 ## State Management:
-Pros and cons for using different types of state management i.e. serices, NgRX, NgXS, Akita.
+Redux helps to solve the most common problem in React: extraneous props i.e. passing data many levels up the component tree which breaks single-responsibility issue.
+However, Angular is a complete framework and incoherent state management is solved with Dependency Injection system i.e. injecting services into components. Moreover, RxJs offers Behavioral Subject whereby you can define initial state. 
 
-Pros/Cons of using services:
-- No extra library neeeded.
-- Flexible whereby states can be mutable. 
-- No clear standards defined.
-- As Angular is complete framework, may not be necessary to use third-party libraries to solve architectural problems.
+State management in summary: 
+- Data flow must be unidirectional.
+- Stores offer better performance, testability, and has tooling ecosystem. 
+- Angular offers Dependency Injection system which is bureaucracy-free, straightfoward, and simple. 
+- Redux is most likely overkill in Angular and requires alot boilerplate code.
+- Don't overcomplicate things and solve problems that don't exist.
 
-Pros/Cons of using NgRX:
-- More boilerplate code.
-- Steeper learning curve.
-- Library may become deprecated.
+When in doubt, refer to this quote: "You'll never know when you need Flux. If you aren't sure if you need it, you don't need it".
