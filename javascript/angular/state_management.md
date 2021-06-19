@@ -11,4 +11,3 @@ Pros/Cons of using NgRX:
 - More boilerplate code.
 - Steeper learning curve.
 - Library may become deprecated.
-- 
