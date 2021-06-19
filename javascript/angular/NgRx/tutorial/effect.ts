@@ -9,8 +9,9 @@ export class AuthEffects {
   authLogin = this.actions$.pipe(
     ofType(AuthActions.LOGIN_START)  // to filter type of effects you want
     switchMap((authData: AuthActions.LoginStart) => {   // inner Observable supplied is cancelled and new is subscribed
-      return this.http.post('http://example.com, {username: authData.payload.email, password: authData.payload.password})
-    }).pipe(
+      return this.http.post(
+        'http://example.com', {username: authData.payload.email, password: authData.payload.password}
+    ).pipe(
       map(resData => {
         return new AuthActions.Login({username: resData.username, password: resData.password))
       }
