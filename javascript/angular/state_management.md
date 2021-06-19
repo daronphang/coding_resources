@@ -1,0 +1,13 @@
+## State Management:
+Pros and cons for using different types of state management i.e. serices, NgRX, NgXS, Akita.
+
+Pros/Cons of using services:
+- No extra library neeeded.
+- Flexible whereby states can be mutable. 
+- No clear standards defined.
+
+Pros/Cons of using NgRX:
+- More boilerplate code.
+- Steeper learning curve.
+- Library may become deprecated.
+- 
