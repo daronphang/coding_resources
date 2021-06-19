@@ -80,7 +80,7 @@ imports: [StoreModule.forRoot({cart: Reducer})]
 // access states from store using select()
 
 export class AppComponent {
-  cart: Array<any>
+  cart: Observable<any[]>;
   
   constructor(private store: Store<any>) {}
   
@@ -89,7 +89,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.store.select('cart').subscribe((state) => this.cart = state))
+    // select slice of state
+    this.store.select('cart').subscribe((state) => this.cart = state)) 
+    
+    // or this.cart$ = this.store.select('cart')
   }
 }
 
@@ -102,7 +105,7 @@ import { Action } from '@ngrx/store';
 export enum CartActionTypes {
     ADD_PRODUCT = 'ADD_PRODUCT',
     REMOVE_PRODUCT = 'REMOVE_PRODUCT'
-    UPDATE_PRODUCT = "UPDATE_PRODUCT'
+    UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 }
 
 export class AddProduct implements Action {
