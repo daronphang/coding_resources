@@ -14,7 +14,6 @@ useEffect()
 useReducer()
 useRef()
 useContext()
-
 ```
 
 ## States:
@@ -27,7 +26,7 @@ Built-in React object used to manage data about the component. Needed if changes
 - For updating states that are dependent on previous states, pass a function into the state function.
 - React provides Hooks to give functional components access to states.
 
-## useState(initial_value):
+## useState:
 Can set initial value and always returns an array with two elements:
 1) First is current value itself, used to 'preserve' values so they don't get lost.
 2) Second is always a function which can be called to set a new value (re-evaluates component).
