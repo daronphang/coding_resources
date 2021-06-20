@@ -38,17 +38,19 @@ return (
 // navigation.js:
 import React from 'react';
 
-return (
-  <AuthContext.Consumer> 
-  {(value) => {
-    return (
-      ...place code here
-      value.isLoggedIn
-    )
-  }}
-  
-  </AuthContext.Consumer> 
-)
+const Navigation = (props) => {
+  return (
+    <AuthContext.Consumer> 
+    {(value) => {
+      return (
+        ...place code here
+        value.isLoggedIn
+      )
+    }}
+
+    </AuthContext.Consumer> 
+  )
+}
 ```
 
 ```javascript
