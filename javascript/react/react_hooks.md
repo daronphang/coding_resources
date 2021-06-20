@@ -33,7 +33,23 @@ Can set initial value and always returns an array with two elements:
 2) Second is always a function which can be called to set a new value (re-evaluates component).
 
 ```javascript
+import ( useState ) from 'react';
 
+function App() {
+  const [showParagraph, setShowParagraph] = useState(false);
+  
+  const toggleParagraphHandler = () => {
+    setShowParagraph(prevShowParagraph => !prevShowParagraph);
+  }
+  
+  return (
+    <div>
+    <h1> hi there </h1>
+    {showParagraph && <p> this is new </p>}
+    <button onClick={toggleParagraphHandler}></button>
+    </div>
+  )
+}
 ```
 
 ## UseRef:
