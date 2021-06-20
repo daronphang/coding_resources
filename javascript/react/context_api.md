@@ -2,7 +2,7 @@
 State management library built into React to solve props drilling. Need create context, consumer and provider.
 
 ### Consumer: 
-Consumer is where the stored information ends up. It can request data via the provider and manipulate the central store if the provider allows it.
+Consumer is where the stored information ends up. It can request data via the provider and manipulate the central store.
 
 ### Provider:
 Acts as a delivery service. When a consumer asks for something, it finds it in the conext and delivers it to where it's needed. 
