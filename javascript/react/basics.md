@@ -15,6 +15,7 @@ Built-in React object used to manage data about the component. Needed if changes
 - State data can be modified by its own component but not from outside (private).
 - Can have multiple states in single component, and separated by per component basis.
 - For updating states that are dependent on previous states, pass a function into the state function.
+- React provides Hooks to give functional components access to states.
 
 ### useState(initial_value):
 Can set initial value and always returns an array with two elements:
