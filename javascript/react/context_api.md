@@ -54,19 +54,6 @@ ReactDOM.render(<AuthContextPRovider><App /></AuthContextProvider>, ...)
 ```
 
 ```javascript
-// app.js:
-
-function App() {
-
-  return (
-    <React.Fragment>
-    ...
-    </React.Fragment>
-  )
-}
-```
-
-```javascript
 // navigation.js:
 import React from 'react';
 
