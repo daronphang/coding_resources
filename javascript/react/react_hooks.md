@@ -9,10 +9,10 @@ components the things that were only able to do with classes.
 4) Hooks can call other hooks.
 
 ```
-// hooks
 useState()
 useEffect()
 useReducer()
+useRef()
 useContext()
 
 ```
