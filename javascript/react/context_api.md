@@ -22,6 +22,11 @@ return (
 )
 
 // navigation.js:
+import React, { useContext } from 'react';
+
+const Navigation = (props) => {
+  const ctx = useContext(AuthContext);
+}
 
 return (
   <AuthContext.Consumer> 
