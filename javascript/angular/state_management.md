@@ -1,5 +1,5 @@
 ## State Management:
-The State of a component is an object that holds some information that may change over the lifetime of the component.
+State management refers to how data is shared/communicated between components. The State of a component is an object that holds some information that may change over the lifetime of the component.
 
 Redux helps to solve the two most common problems in React:
 - Extraneous props i.e. passing data many levels up the component tree which breaks single-responsibility issue.
