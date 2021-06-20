@@ -26,9 +26,18 @@ export default AuthContext;
 ```javascript
 // app.js:
 
+const logoutHandler = () => {
+  localStorage.removeItem('userData');
+  setIsLoggedIn(false);
+};
+
 return (
   <React.Fragment>
-  <AuthContext.Provider value={{isLoggedIn: isLoggedIn}}>    // to wrap everything with AuthContext as it is needed everywhere 
+  <AuthContext.Provider value={{    // to wrap everything with AuthContext as it is needed everywhere 
+    isLoggedIn: isLoggedIn,
+    onLogout: logoutHandler     // dynamic context
+  }}
+  >    
   ...
   </AuthContext.Provider> 
 )
@@ -38,13 +47,13 @@ return (
 // navigation.js:
 import React from 'react';
 
-const Navigation = (props) => {
+const Navigation = () => {    // don't need pass props as argument
   return (
     <AuthContext.Consumer> 
-    {(value) => {
+    {(ctx) => {
       return (
         ...place code here
-        value.isLoggedIn
+        ctx.isLoggedIn
       )
     }}
 
@@ -58,12 +67,14 @@ const Navigation = (props) => {
 // using useContext:
 import React from 'react';
 
-const Navigation = (props) => {
-  const value = useContext(AuthContext);
+const Navigation = () => {
+  const ctx = useContext(AuthContext);
 
   return (
   ...place code here
-  value.isLoggedIn
+  ctx.isLoggedIn
+  
+  <button onClick={ctx.onLogout}>Logout</button>
   )
 }
 
