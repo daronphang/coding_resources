@@ -10,6 +10,10 @@ Acts as a delivery service. When a consumer asks for something, it finds it in t
 ### useContext:
 React Hook that allows us to manage state data inside functional components. Provides cleaner code than Consumer component.
 
+### Limitations:
+- Not optimized for high frequency changes i.e. many changes per second.
+- Should not be used to replace ALL communications via props.
+
 
 ```javascript
 // store/auth-context.js
