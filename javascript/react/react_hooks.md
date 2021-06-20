@@ -31,3 +31,36 @@ Built-in React object used to manage data about the component. Needed if changes
 Can set initial value and always returns an array with two elements:
 1) First is current value itself, used to 'preserve' values so they don't get lost.
 2) Second is always a function which can be called to set a new value (re-evaluates component).
+
+```javascript
+
+```
+
+## UseRef:
+Available in functional components only. Alternative to state when accessing input value from forms. Don't have to log every keystroke and uses less code.
+
+```javascript
+import React, { useRef } from 'react';
+
+const Example = (props) => {
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+  
+  const addUserHandler = (event) => {
+    event.preventDefault();
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
+    
+    nameInputRef.current.value = ''   // to reset the form; though technically shouldnt manipulate DOM without using React
+    
+    <put some code here>
+    
+    
+  }
+  
+  return (
+    <input id="username" type="text" ref={nameInputRef}>
+  )
+  
+}
+```
