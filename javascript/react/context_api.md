@@ -14,33 +14,56 @@ React Hook that allows us to manage state data inside functional components. Pro
 ```javascript
 // store/auth-context.js
 // equivalent to store method of Redux
-import React from 'react'; 
+// all logic goes in here
 
-React.createContext({
-  isLoggedIn: false   // to set default value
+import React, { useState } from 'react'; 
+
+const AuthContext = React.createContext({
+  isLoggedIn: false,   // to set default value
+  onLogout: () => {},    // pass dummy function for IDE auto completion
+  onLogin: (email, password) => {}
 });
+
+export const AuthContextProvider = (props) => {     // to have one central place for state management
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const logoutHandler = () => {
+    localStorage.removeItem('userData');
+    setIsLoggedIn(false);
+  }
+  
+  const loginHandler = () => {
+    localStorage.setItem('userData', 'test');
+    setIsLoggedIn(true);
+  }
+  
+  return <AuthContext.Provider value={{     // to wrap everything with AuthContext as it is needed everywhere 
+      isLoggedIn: isLoggedIn,
+      onLogout: logoutHandler,
+      onLogin: loginHandler
+    }}>{props.children}</AuthContext.Provider>;
+}
 
 export default AuthContext; 
 ```
 
 ```javascript
+// index.js
+
+ReactDOM.render(<AuthContextPRovider><App /></AuthContextProvider>, ...)
+
+```
+
+```javascript
 // app.js:
 
-const logoutHandler = () => {
-  localStorage.removeItem('userData');
-  setIsLoggedIn(false);
-};
+function App() {
 
-return (
-  <React.Fragment>
-  <AuthContext.Provider value={{    // to wrap everything with AuthContext as it is needed everywhere 
-    isLoggedIn: isLoggedIn,
-    onLogout: logoutHandler     // dynamic context
-  }}
-  >    
-  ...
-  </AuthContext.Provider> 
-)
+  return (
+    <React.Fragment>
+    ...
+    </React.Fragment>
+  )
+}
 ```
 
 ```javascript
