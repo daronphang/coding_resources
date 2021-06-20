@@ -18,7 +18,13 @@ Stateless/dumb components are those that do not have hold any states.
 If the logic or data is handled in parent component, the child component is uncontrolled.
 
 ## Component Re-evaluation:
-When a component re-evaluates, its child components will also get re-rendered. To only allow re-evaluation when a state has changed, can use React.memo(), else will be skipped. Applicable for functional components only.
+When a component re-evaluates, its child components will also get re-rendered. To only allow re-evaluation when a state has changed, can use React.memo(), else will be skipped. Applicable for functional components only. However, take note that component gets re-evaluated when functions are involved even though there is no change, but not for primitive values.
+```javascript
+false === false   // true
+1 === 1           // true
+
+[1, 2, 3] === [1, 2, 3]   // false
+```
 
 ```javascript
 export default React.memo(DemoOutputComponent)
