@@ -8,6 +8,11 @@
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
 ``` 
 ## Property Binding:
+Allows you to set the property of a view element.
+```html
+<button [disabled]="buttonDisabled"></button>
+<img [src]="itemImageUrl">
+```
 
 ## Input:
 For sharing data from parent to child.
