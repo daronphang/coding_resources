@@ -1,7 +1,7 @@
 ## Summary:
 ```
 {{ data }}                                String Interpolation
-[property]="some value"                   Property Binding such as 'disabled' 
+[html element]="property"                 Property Binding such as 'disabled' 
 (event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
 
 (input)="onUpdateServerName($event)"
