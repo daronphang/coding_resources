@@ -35,7 +35,7 @@ ng new hello-world
 cd hello-world
 ng serve
 
-ng generate component components/header
+ng generate component components/header --module app
 ng generate component components/buttons
 
 ng generate service hero
