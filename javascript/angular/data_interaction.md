@@ -2,10 +2,13 @@
 ```
 {{ data }}                                String Interpolation
 [html element]="property"                 Property Binding such as 'disabled' 
-(event)="expression"                      Event Binding (HTML to TypeScript, react to user events)
+(event)="expression"                      Event Binding (HTML to TypeScript, react to user events
+[ngValue]="some value"                    Binds input value to ngModel of the parent element
 
 (input)="onUpdateServerName($event)"
 // $event is a reserved variable name used in HTML when performing event binding, outputs the data emitted from the event
+
+value vs ngValue: value binds to string, ngValue binds to any object
 ``` 
 ## Property Binding:
 Allows you to set the property of a view element.
