@@ -13,7 +13,7 @@
 splice(start, deleteCount, item1)      Deletes elements in original array
 
 .map(function)              Creates new array containing results of applying function operation
-.filter(function)           Creates new array containing elements passing specified condition
+.filter(x=> condition)      Creates new array containing elements passing specified condition
 .reduce(function)           Boils down all elements to one single value
 .find(function)             Same as filter but returns first element instead of new array
 .some(function)             Same as .includes(), but function is a condition instead of equality
