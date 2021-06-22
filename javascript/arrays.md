@@ -12,12 +12,12 @@
 .slice(number)                          Removes x number of elements at front
 splice(start, deleteCount, item1)      Deletes elements in original array
 
-.map(function)              Creates new array containing results of applying function operation
-.filter(x=> condition)      Creates new array containing elements passing specified condition
-.reduce(function)           Boils down all elements to one single value
-.find(function)             Same as filter but returns first element instead of new array
-.some(function)             Same as .includes(), but function is a condition instead of equality
-.every(function)            Function is a boolean condition
+.map(function)                  Creates new array containing results of applying function operation
+.filter(array => condition)     Creates new array containing elements passing specified condition
+.reduce(function)               Boils down all elements to one single value
+.find(function)                 Same as filter but returns first element instead of new array
+.some(function)                 Same as .includes(), but function is a condition instead of equality
+.every(function)                Function is a boolean condition
 
 .fill(value,start,end)
 .from(object,function)      Creates array from array-like objects i.e. Array.from('foo') // ['f', 'o', 'o']
