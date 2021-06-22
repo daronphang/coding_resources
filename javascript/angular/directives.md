@@ -24,7 +24,7 @@ Help to change appearance of DOM element/component conditionally. Basically a cl
 <input [(ngModel)]="currentItem.name" id="example-ngModel">
 ```
 
-## NgModel:
+### NgModel:
 Directive binds the value of HTML controls (input, select, text area) to application data i.e. bind input field value to variable. Can include (ngModelChange). Difference between (ngModelChange) and (change):
 - (change) is DOM event which fires when user has blurred input.
 - (ngModelChange) listens to input event and fire before the value bound to NgModel has changed.
