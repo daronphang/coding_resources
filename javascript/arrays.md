@@ -9,8 +9,8 @@
 .flat(level)                Level refers to the number of nested arrays
 .flatMap(function)          Combines both map and flat
 
-.slice(number)              Removes x number of elements at front
-.splice(index, number)      Deletes elements in original array
+.slice(number)                          Removes x number of elements at front
+splice(start, deleteCount, item1)      Deletes elements in original array
 
 .map(function)              Creates new array containing results of applying function operation
 .filter(function)           Creates new array containing elements passing specified condition
