@@ -2,7 +2,7 @@
 ```
 catchError        Returns a new observable or throws an error.
 tap               Function returns an identical Observable to the source, but runs the specified callback for each items (side effects).
-
+merge             Flattens multiple Observables together by blending their values into one Observable.
 
 Mapping:
 All map operators help to map (return an Observable) and flatten it (subscribe). 4 flattening strategies available. 
