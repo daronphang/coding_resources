@@ -24,6 +24,36 @@ Help to change appearance of DOM element/component conditionally. Basically a cl
 <input [(ngModel)]="currentItem.name" id="example-ngModel">
 ```
 
+## NgModel:
+Directive binds the value of HTML controls (input, select, text area) to application data i.e. bind input field value to variable. Can include (ngModelChange). Difference between (ngModelChange) and (change):
+- (change) is DOM event which fires when user has blurred input.
+- (ngModelChange) listens to input event and fire before the value bound to NgModel has changed.
+
+```javascript
+@Component({
+  selector: 'my-app',
+  template: `
+  <div>
+    <input [value]="foo" (change)="changeFn($event)">
+    <p></p>
+    <input [ngModel]="bar" (ngModelChange)="modelChangeFn($event)">
+    <p></p>
+  </div>
+  `
+})
+export class AppComponent {
+  foo = 'Hello';
+  bar = 'World';
+  changeFn(e) {
+    this.foo = e.target.value;
+  }
+  modelChangeFn(value) {
+    this.bar = value;
+  }
+}
+```
+
+
 ## Inbuilt Structural Directives:
 Responsible for HTML layout. Used for manipulating, modifying and removing elements inside a component template. * character translate the attribute into a <ng-template> element.
   
