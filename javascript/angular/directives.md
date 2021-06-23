@@ -1,5 +1,5 @@
 ## Directives:
-Directives are elements that change the apperance or behavior of DOM element. Three types are Components, Structural and Attribute.
+Directives are elements that change the apperance or behavior of DOM element. Three types are Components, Structural and Attribute. They are markers on DOM element that tell Angular to attach a specified behavior to that element.
 
 ## Components:
 Directives with template. 
