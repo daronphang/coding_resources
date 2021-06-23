@@ -85,3 +85,12 @@ export class AuthComponent implements OnInit {
     username: ['', [Validators.required]], 
     password: ['', [Validators.required, Validators.minLength(5)]]
 ```
+
+## Custom Form Controls:
+AngularForm/ReactiveForm modules come with built-in directives to bind native HTML elements like inputs, checkboxes, select text areas to a form group. these directives implement Control Value Accessor interface to work with ngModel directive i.e. responsible for writing data from model (component) to view and vice versa.
+
+
+
+## Child Forms in Parent Form:
+To implement custom form control to integrate with Angular Forms, implement ControlValueAccessor. If want the integration to include validation, need to implement Validator interface and provide custom control as a multi provider to built-in NG_VALIDATOR token as validators are at top-level form (parent component).
+
