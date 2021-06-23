@@ -87,8 +87,82 @@ export class AuthComponent implements OnInit {
 ```
 
 ## Custom Form Controls:
-AngularForm/ReactiveForm modules come with built-in directives to bind native HTML elements like inputs, checkboxes, select text areas to a form group. these directives implement Control Value Accessor interface to work with ngModel directive i.e. responsible for writing data from model (component) to view and vice versa.
+AngularForm/ReactiveForm modules come with built-in directives to bind native HTML elements like inputs, checkboxes, select text areas to a form group. these directives implement Control Value Accessor interface to work with ngModel directive i.e. responsible for writing data from model (component) to view and vice versa. Besides standard HTML elements, may want to use custom form controls like dropdowns, selection boxes, toggle buttons, sliders, etc. To have ability to configure them as form fields using built-in directives like ngModel, formControl, formControlName, need to implement CVA directive.
 
+CVA interface:
+- writeValue: this method is called by the Forms module to write a value into a form control
+- registerOnChange: When a form value changes due to user input, we need to report the value back to the parent form. This is done by calling a callback, that was initially registered with the control using the registerOnChange method
+- registerOnTouched: When the user first interacts with the form control, the control is considered to have the status touched, which is useful for styling. In order to report to the parent form that the control was touched, we need to use a callback registered using the registerOnToched method
+- setDisabledState: form controls can be enabled and disabled using the Forms API. This state can be transmitted to the form control via the setDisabledState method
+
+```javascript
+@Component({
+  selector: 'choose-quantity',
+  templateUrl: "choose-quantity.component.html",
+  styleUrls: ["choose-quantity.component.scss"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi:true,
+      useExisting: ChooseQuantityComponent
+    }
+  ]
+})
+export class ChooseQuantityComponent implements ControlValueAccessor {
+
+  quantity = 0;
+
+  @Input()
+  increment: number;
+
+  onChange = (quantity) => {};
+
+  onTouched = () => {};
+
+  touched = false;
+
+  disabled = false;
+
+  onAdd() {
+    this.markAsTouched();
+    if (!this.disabled) {
+      this.quantity+= this.increment;
+      this.onChange(this.quantity);
+    }
+  }
+
+  onRemove() {
+    this.markAsTouched();
+    if (!this.disabled) {
+      this.quantity-= this.increment;
+      this.onChange(this.quantity);
+    }
+  }
+
+  writeValue(quantity: number) {
+    this.quantity = quantity;
+  }
+
+  registerOnChange(onChange: any) {
+    this.onChange = onChange;
+  }
+
+  registerOnTouched(onTouched: any) {
+    this.onTouched = onTouched;
+  }
+
+  markAsTouched() {
+    if (!this.touched) {
+      this.onTouched();
+      this.touched = true;
+    }
+  }
+
+  setDisabledState(disabled: boolean) {
+    this.disabled = disabled;
+  }
+}
+```
 
 
 ## Child Forms in Parent Form:
