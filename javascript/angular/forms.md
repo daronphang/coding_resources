@@ -1,6 +1,6 @@
 ## Approaches:
-1) Template-Driven: Angular infers the form object from DOM.
-2) Reactive: Form is created programmatically and synchronized with the DOM.
+1) Template-Driven: Angular infers the form object from DOM. Uses NgModel directive to create form control.
+2) Reactive: Form is created programmatically and synchronized with the DOM. Uses FormControl directive.
 
 ## Template-Driven:
 ```javascript
