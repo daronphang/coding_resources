@@ -17,15 +17,23 @@ app.component.html:
 <app-example> Hi there </app-example>   // will display Hi there, and not get lost by default
 ```
 ## Lifecycle Hooks:
+Allow you to run a piece of code at different stages of the component's life.
 ```
 constructor
-ngOnInit
 ngOnChanges
+ngOnInit
 ngDoCheck
 ngAfterContentInit
 ngAfterContentChecked
+ngAfterViewInit
+ngAfterViewChecked
 ```
-
+## Constructor vs NgOnInit:
+- During initialization phase, Angular bootstrap process consists of components tree construction and running change detection.
+- Constructor is called in former, while lifecycle hooks are called in latter.
+- Constructor comes with every class (ES6 feature) which creates an instance of component class (not the component itself).
+- Dependencies are injected into the constructor.
+- Initialization code is placed in OnInit as it doesn't get executed in constructor.
 
 ## Cli:
 ```
