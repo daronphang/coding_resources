@@ -1,5 +1,5 @@
 ## Bind:
-Creates a new function that has this keyword set to the provided value.
+Creates a new function that has this keyword set to the provided value. Sets this value now and allows to execute function in future.
 
 ```javascript
 var pokemon = {
@@ -24,7 +24,7 @@ logPokemon('sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
 
 ## Call and Apply:
 Calls a function with a given this value and arguments provided individually i.e. explicitly specify what this should reference within the calling function. Difference between
-bind() is that call() can accept additional parameters and does not create a new function. Apply() is same as call() but expects an array of parameters.
+bind() is that call() can accept additional parameters, executes immediately and does not create a new function. Apply() is same as call() but expects an array of parameters.
 
 ```javascript
 var pokemon = {
