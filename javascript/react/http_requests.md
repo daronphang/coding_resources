@@ -8,6 +8,16 @@ function App() {
   useEffect(()=> {    // don't call when component gets re-evaluated, else inifinite loop
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);   // only gets executed when dependencies change
+  
+  function addMovieHandler(movie) {
+    fetch('http://example.com', {
+      method: 'POST',
+      body: JSON.stringify(movie),
+      headers: {
+        'Content-Type': 'application/json'
+       }
+    })
+  }
 
   const fetchMoviesHandler = useCallback(async () => {
     setisLoading(true);
