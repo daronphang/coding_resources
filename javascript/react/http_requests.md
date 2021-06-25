@@ -1,10 +1,15 @@
 ## Example:
+If want to execute HTTP request as the page loads, use useEffect() and useCallback() to prevent infinite loop in dependencies.
 ```javascript
 
 function App() {
   const [error, setError] = useState(null);
+  
+  useEffect(()=> {    // don't call when component gets re-evaluated, else inifinite loop
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);   // only gets executed when dependencies change
 
-  async fetchMoviesHandler = () => {
+  const fetchMoviesHandler = useCallback(async () => {
     setisLoading(true);
     setError(null);
     
@@ -23,7 +28,7 @@ function App() {
     } catch (error) {
       setError(error.message);
     }
-  }
+  }, []);
 }
 
 ```
