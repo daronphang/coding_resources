@@ -38,7 +38,7 @@ var pokemon = {
 
 var pokemonName = function(snack, hobby) {
     console.log(this.getPokeName() + ' loves ' + snack + ' and ' + hobby);
-};
+};           // pokemon.getPokeName()
 
 pokemonName.call(pokemon,'sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
 pokemonName.apply(pokemon,['sushi', 'algorithms']); // Pika Chu  loves sushi and algorithms
