@@ -2,12 +2,23 @@
 ```javascript
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState('');
-  const [inputValid, setInputValid] = useState('true');
+  const [inputValid, setInputValid] = useState(false);
+  const [inputTouched, setInputTouched] = useState(false);
   const nameInputRef = useRef();
   
   const nameInputChangeHandler = event => {
     setEnteredName(event.target.value)
   }
+  
+  const nameInputBlurHandler = event => {
+    setInputTouched(true);
+    
+    if (enteredName.trim() === '') {
+      setInputValid(false);
+      return;
+    }
+  }
+  
   
   const formSubmissionHandler = event => {
     event.preventDefault();
@@ -32,8 +43,10 @@ const SimpleInput = (props) => {
           type='text'
           id='name'
           value={enteredName}
-          onChange={nameInputChangeHandler}/> 
-          {!inputValid && <p>Name must not be empty</p>}
+          onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
+          /> 
+          {!inputValid && inputTouched <p>Name must not be empty</p>}
       </div>
       <button>Submit</button>
     </form?
