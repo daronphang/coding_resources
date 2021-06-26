@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 
 const initialState = {counter: 0, showCounter: true};
 
-createSlice({   // ensures state is not mutated
+const counterSlice = createSlice({   // ensures state is not mutated
   name: 'counter',
   initialState,
   reducers: {
@@ -21,7 +21,18 @@ createSlice({   // ensures state is not mutated
       state.showCounter = !state.showCounter;
     }
   }
-})
+});
+
+// create map of reducers
+const store = configureStore({
+  // reducer: {counter: counterSlice.reducer}    // for bigger apps
+  reducer: counterSlice.reducer
+});
+
+
+export const counterActions = counterSlice.actions   // create action objects which have type property
+export default store;
+
 
 // dont have to copy existing state with toolkit
 // const counterReducer = (initialState, action) => {
@@ -38,17 +49,12 @@ createSlice({   // ensures state is not mutated
 //   }
 // }
 
-// store
-const store = createStore(counterReducer);
 
-export default store;
+// // subscriber
+// const counterSubscriber = () => {
+//   store.getState();
+// }
 
-
-// subscriber
-const counterSubscriber = () => {
-  store.getState();
-}
-
-// actions
-store.dispatch({type: 'INCREMENT'});
-store.dispatch({type: 'DECREMENT'});
+// // actions
+// store.dispatch({type: 'INCREMENT'});
+// store.dispatch({type: 'DECREMENT'});
