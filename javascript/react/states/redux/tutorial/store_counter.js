@@ -23,6 +23,8 @@ const counterSlice = createSlice({   // ensures state is not mutated
   }
 });
 
+export const counterActions = counterSlice.actions   // create action objects which have unique identifier type property
+
 // dont have to copy existing state with toolkit
 // const counterReducer = (initialState, action) => {
 //   if (action.type === 'INCREMENT') {
