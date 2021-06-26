@@ -15,6 +15,7 @@ Main purpose of redux pattern is to provide a predictable state container based 
 
 ```
 npm install redux react-redux
+npm install @reduxjs/toolkit
 ```
 
 ### Actions:
