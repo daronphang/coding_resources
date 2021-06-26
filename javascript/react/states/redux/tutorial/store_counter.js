@@ -23,17 +23,6 @@ const counterSlice = createSlice({   // ensures state is not mutated
   }
 });
 
-// create map of reducers
-const store = configureStore({
-  // reducer: {counter: counterSlice.reducer, auth: authSlice.reducer}    // for bigger apps
-  reducer: counterSlice.reducer
-});
-
-
-export const counterActions = counterSlice.actions   // create action objects which have unique identifier type property
-export default store;
-
-
 // dont have to copy existing state with toolkit
 // const counterReducer = (initialState, action) => {
 //   if (action.type === 'INCREMENT') {
