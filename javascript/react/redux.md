@@ -6,12 +6,12 @@
 ## Basics:
 Library with state management pattern that stores states in central store i.e. centralized place to make changes. When changing states, services/components will dispatch actions where updated states are sent to Reducers which will reduce/combine state. State changes must always be immutable i.e. cannot edit existing/previous state. NgRx is a Redux version for Angular. 
 
-### Flow: Components -> dispatch actions -> Reducers return new state to Store -> State is updated in component through Subscription.
-
 Main purpose of redux pattern is to provide a predictable state container based on three principles:
 1) Single source of truth i.e. state of whole application is stored in an object tree within a single store.
 2) State is read-only/immutable; actions are dispatched instead i.e. getting, adding, removing, updating state.
 3) Changes are made with pure functions through Reducer function which returns a new state object.  
+
+### Flow: Components -> dispatch actions -> Reducers return new state to Store -> State is updated in component through Subscription.
 
 ### Actions:
 Dispatched to Reducer from Components. Actions reach out to all Reducers; need return DEFAULT case if no case found. Have two properties:
