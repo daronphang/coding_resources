@@ -12,6 +12,10 @@ const Counter = () => {
     dispatch(counterActions.increment());
   }
   
+  const increaseHandler = () => {
+    dispatch(counterActions.increase(10));    // 10 is stored as payload
+  }
+  
   return (
     <div>{counter}</div>
     <button onClick={incrementHandler}>Increment</button>
