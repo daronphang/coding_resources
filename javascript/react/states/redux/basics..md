@@ -13,6 +13,10 @@ Main purpose of redux pattern is to provide a predictable state container based 
 
 ### Flow: Components -> dispatch actions -> Reducers return new state to Store -> State is updated in component through Subscription.
 
+```
+npm install redux react-redux
+```
+
 ### Actions:
 Dispatched to Reducer from Components. Actions reach out to all Reducers; need return DEFAULT case if no case found. Have two properties:
 1) type: read only string describing what the action stand for.
@@ -32,7 +36,3 @@ If an Effect gets triggered by dispatching an Action, this means side effects ar
 
 ### Store:
 Database of application comprising of different states that are immmutable and only altered by actions. An object that holds application state and brings Actions, Reducers and Selectors together i.e. when an action is dispatched, the store finds and executes the appropriate Reducer. Store folder contains Actions, Effects, Reducers, Selectors and State folders.
-
-```
-npm install redux react-redux
-```
