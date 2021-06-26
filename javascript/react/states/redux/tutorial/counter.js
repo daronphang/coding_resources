@@ -4,7 +4,7 @@ import { counterActions } from '../store';
 const Counter = () => {
   // hook executed by React redux to retrieve part of state
   // automatically setup subscription to redux store for the current component
-  const counter = useSelector(state => state.counter);  
+  const counter = useSelector(state => state.counter.value);  
   const dispatch = useDispatch();
   
   const incrementHandler = () => {
