@@ -32,3 +32,7 @@ If an Effect gets triggered by dispatching an Action, this means side effects ar
 
 ### Store:
 Database of application comprising of different states that are immmutable and only altered by actions. An object that holds application state and brings Actions, Reducers and Selectors together i.e. when an action is dispatched, the store finds and executes the appropriate Reducer. Store folder contains Actions, Effects, Reducers, Selectors and State folders.
+
+```
+npm install redux react-redux
+```
