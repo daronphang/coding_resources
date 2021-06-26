@@ -6,7 +6,7 @@ const initialState = {counter: 0, showCounter: true};
 
 const counterSlice = createSlice({   // ensures state is not mutated
   name: 'counter',
-  initialState,
+  initialState: initialState,
   reducers: {
     increment(state) {
       state.counter++;    // okay to mutate this way as toolkit will auto clone existing state
