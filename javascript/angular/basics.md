@@ -1,6 +1,23 @@
 ## Basics:
 Framework for building client applications in HTML, CSS, and Javascript/Typescript.
 
+## Cli:
+```
+# cli commands:
+npm install -g @angular/cli
+ng new hello-world
+cd hello-world
+ng serve
+ng build --prod
+
+ng generate component components/header --module app
+ng generate component components/buttons
+
+ng generate service hero
+
+ng generate directive example
+```
+
 ## View Encapsulation:
 ```javascript
 @component({
@@ -35,21 +52,7 @@ ngAfterViewChecked
 - Dependencies are injected into the constructor.
 - Initialization code is placed in OnInit as it doesn't get executed in constructor.
 
-## Cli:
-```
-# cli commands:
-npm install -g @angular/cli
-ng new hello-world
-cd hello-world
-ng serve
 
-ng generate component components/header --module app
-ng generate component components/buttons
-
-ng generate service hero
-
-ng generate directive example
-```
 
 ## Angular Structure:
 ```
