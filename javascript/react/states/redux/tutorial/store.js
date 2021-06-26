@@ -25,7 +25,7 @@ const counterSlice = createSlice({   // ensures state is not mutated
 
 // create map of reducers
 const store = configureStore({
-  // reducer: {counter: counterSlice.reducer}    // for bigger apps
+  // reducer: {counter: counterSlice.reducer, auth: authSlice.reducer}    // for bigger apps
   reducer: counterSlice.reducer
 });
 
