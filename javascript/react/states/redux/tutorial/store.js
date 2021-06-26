@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 
-const initialState = {counter: 0, showCounter: true};
+const initialState = {value: 0, showCounter: true};
 
 const counterSlice = createSlice({   // ensures state is not mutated
   name: 'counter',
