@@ -30,7 +30,7 @@ const store = configureStore({
 });
 
 
-export const counterActions = counterSlice.actions   // create action objects which have type property
+export const counterActions = counterSlice.actions   // create action objects which have unique identifier type property
 export default store;
 
 
