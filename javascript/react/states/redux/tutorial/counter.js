@@ -8,7 +8,7 @@ const Counter = () => {
   const dispatch = useDispatch();
   
   const incrementHandler = () => {
-    dispatch({type: 'INCREMENT'});
+    dispatch({type: 'INCREMENT', payload: 2});
   }
   
   return (
