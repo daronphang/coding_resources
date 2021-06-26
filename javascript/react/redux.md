@@ -14,11 +14,15 @@ Main purpose of redux pattern is to provide a predictable state container based 
 3) Changes are made with pure functions through Reducer function which returns a new state object.  
 
 ### Actions:
-Dispatched to Reducer from Components. Actions reach out to all Reducers; need return DEFAULT case. Have two properties:
+Dispatched to Reducer from Components. Actions reach out to all Reducers; need return DEFAULT case if no case found. Have two properties:
 1) type: read only string describing what the action stand for.
 2) payload: the data sent to the Reducer (not all actions need a payload).
 
 Can prefix for larger applications as different components may have same action name i.e. "[SHOPPING LIST] Add Ingredients".
+
+```javascript
+dispatch()
+```
 
 ### Reducers:
 Pure functions that reduce/transform input data. Accepts two arguments, previous State and Action. When an Action is dispatched, NgRx goes through all reducers in the order the Reducers were created until it finds a case for that Action. 
