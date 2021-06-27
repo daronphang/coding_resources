@@ -37,7 +37,7 @@ Scope is the context in which a variable exists; can be local or global. Assignm
 var hero = "Batman";
 let antiHero = "Captain Cold";
 if (true) {
-    var hero = "The Flash";         //scope is global
+    var hero = "The Flash";         //scope is global as this is declared in block and not function
     let antiHero = "Reverse Flash"; //scope is (local) block-level
     console.log(hero);              //The Flash
     console.log(antiHero);          //Reverse Flash
