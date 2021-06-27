@@ -95,3 +95,27 @@ const addQuoteHandler = (quoteData) => {
 }
 
 ```
+## Prompt:
+```javascript
+import { Prompt } from 'react-router-dom';
+
+const QuoteForm = (props) => {
+  const [isEntered, setIsEntering] = useState(false);
+
+  const formFocusedHandler = () => {
+    setIsEntering(true);
+  }
+  
+  const finishEnteringHandler = () => {
+    setIsEntering(false);
+  }
+
+  return (
+    <Fragment>
+      <Prompt when={isEntering} message={(location)=> 'Do you want to leave page?'}/>
+      <form onFocus={formFocusedHandler}>
+      <button onClick={finishEnteringHandler}></button>
+    </Fragment>
+  )
+}
+```
