@@ -75,7 +75,7 @@ export default ProductDetail;
 ```
 
 ## Nested Routes:
-Adding Routes to individual components and not just on main component.
+Adding Routes to individual components and not just on main component. Can use useRouteMatch() to adjust nested routes using path property.
 
 ## Fallback Route:
 Add Route at the end to match all other incoming requests.
@@ -121,7 +121,7 @@ const QuoteForm = (props) => {
 ```
 
 ## Query Parameters:
-UseLocation gives access to a location object which has info about currently loaded page.
+UseLocation gives access to a location object which has info about currently loaded page. 
 ```javascript
 import { useHistory, useLocation } from 'react-router-dom'; 
 
