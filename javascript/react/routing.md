@@ -92,6 +92,12 @@ const history = useHistory();
 
 const addQuoteHandler = (quoteData) => {
   history.push('/quotes');
+  
+  // can also pass in an object
+  history.push({
+    pathname: location.pathname,
+    search: '?sort=${(isSortingAsc ? 'desc' : 'asc')}`
+  });
 }
 
 ```
