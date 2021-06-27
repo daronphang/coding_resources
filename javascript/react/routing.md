@@ -119,3 +119,24 @@ const QuoteForm = (props) => {
   )
 }
 ```
+
+## Query Parameters:
+UseLocation gives access to a location object which has info about currently loaded page.
+```javascript
+import { useHistory, useLocation } from 'react-router-dom'; 
+
+const QuoteList = (props) => {
+  const history = useHistory();
+  const location = useLocation();
+  
+  const queryParams = new URLSearchParams(location.search); // search is a location property holding ? values
+  
+  const isSortingAsc = queryParams.get('sort') === 'asc'  // boolean
+  
+  const changeSortingHandler = () => {
+    history.push('/quotes?=sort=' + (isSortingAsc ? 'desc' : 'asc'));   // re-renders component even if it's the same page
+  }
+}
+
+
+```
