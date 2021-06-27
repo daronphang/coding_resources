@@ -1,5 +1,9 @@
 ## Node.js:
-A Javascript runtime built on Chrome's V8 JavaScript engine; Javascript running on server instead of browser. Has non-blocking I/O model that is single threaded. Capable of handling a huge number of simultaneous connections with high
+A Javascript runtime built on Chrome's V8 JavaScript engine. Comes with runtime environment on which Javascript can be executed on any machine outside of a browser i.e. on a server. 
+
+Node.js = Runtime environment + Javascript library
+
+Has non-blocking I/O model that is single threaded. Capable of handling a huge number of simultaneous connections with high
 throughput which equates to high scalability. Used to build powerful, fast and scalable web applications:
 - REST APIs and backend applications.
 - Real-time services.
