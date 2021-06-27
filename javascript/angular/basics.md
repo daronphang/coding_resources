@@ -36,14 +36,17 @@ app.component.html:
 ## Lifecycle Hooks:
 Allow you to run a piece of code at different stages of the component's life.
 ```
-constructor
-ngOnChanges
-ngOnInit
-ngDoCheck
-ngAfterContentInit
-ngAfterContentChecked
-ngAfterViewInit
-ngAfterViewChecked
+constructor                 Calling new on the class
+ngOnChanges                 Invokes everytime there is a change in @input properties of component
+ngOnInit                    Invoked when component has been initialized; only called once after first ngOnChanges
+ngDoCheck                   custom change-detection for directive; should not be implemented together with ngDoCheck
+ngOnDestroy
+
+// hooks for component's children
+ngAfterContentInit          Called when contents between <ng-content> are initialized
+ngAfterContentChecked       Default change detector for ng-content
+ngAfterViewInit             Called after component's and its children's views have been initialized
+ngAfterViewChecked          Called after change detector of child component has been run for checks
 ```
 ## Constructor vs NgOnInit:
 - During initialization phase, Angular bootstrap process consists of components tree construction and running change detection.
