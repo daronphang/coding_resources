@@ -49,3 +49,9 @@ vw      Relative to 1% of width of viewport; scales with sizing.
 vh      Relative to 1% of height of viewport.
 %       Relative to parent element.
 ```
+
+## Styles:
+```
+Visibility: Hidden          Not visible but takes up original space
+Display: None               Hidden and takes no space
+```
