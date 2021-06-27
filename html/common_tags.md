@@ -5,7 +5,7 @@ Link Reference: <https://www.w3schools.com/tags/default.asp>
 <style>      internal styling
 <base>       base URL and/or target for all relative URLs in current page  
 <link>       CSS external links  
-<meta>       metadata for webpage  
+<meta>       metadata for webpage that always goes inside head tag; passed as key value pairs  
 <script>     client-side Javascript  
 <noscript>
 
