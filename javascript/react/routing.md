@@ -76,3 +76,10 @@ export default ProductDetail;
 
 ## Nested Routes:
 Adding Routes to individual components and not just on main component.
+
+## Fallback Route:
+Add Route at the end to match all other incoming requests.
+
+```javascript
+<Route path='*'><NotFound /></Route>
+```
