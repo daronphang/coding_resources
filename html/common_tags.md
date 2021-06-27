@@ -25,3 +25,10 @@ Link Reference: <https://www.w3schools.com/tags/default.asp>
 <input type="tel" id="phone" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br><br>
 <!-- placeholder is the light grey text for reference --> 
 ``` 
+
+```
+Inline          Default like <span>
+Block           Block elements like <div> or <p>
+Inline-block    Shows an element as an inline-level block container
+Box-sizing      Displays browser-sizing properties
+```
