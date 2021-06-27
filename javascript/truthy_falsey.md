@@ -10,8 +10,8 @@ new Date()
 ### Falsy:
 ```
 0
-null
-undefined
+null          An object with no value; typeof null is object
+undefined     Property type; typeof undefined is undefined
 NaN
 ```
 
