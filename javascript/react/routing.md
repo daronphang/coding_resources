@@ -83,3 +83,15 @@ Add Route at the end to match all other incoming requests.
 ```javascript
 <Route path='*'><NotFound /></Route>
 ```
+
+## Programmatic Navigation:
+Trigger navigation action such as submitting form. Can use useHistory.
+
+```javascript
+const history = useHistory();
+
+const addQuoteHandler = (quoteData) => {
+  history.push('/quotes');
+}
+
+```
