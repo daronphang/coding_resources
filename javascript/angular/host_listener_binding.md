@@ -1,6 +1,6 @@
 Built-in Listener:
 ```
-onClick
+click
 mouseEnter
 mouseLeave
 ```
