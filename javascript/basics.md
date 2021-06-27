@@ -24,7 +24,7 @@ Scope is the context in which a variable exists; can be local or global. Assignm
 2) Using LET and CONST (ES6) which are block scoped {} i.e. within loops, conditionals (for, while, if, switch).
 3) LET allows mutation while CONST doesn't.
 4) For VAR, will result in undefined if referenced before declaration.
-5) For LET and CONST, stay uninitialized (ReferenceError) until declared.
+5) For LET and CONST, stay uninitialized (ReferenceError) until declared (ensures variables are declared first).
 
 ```javascript
 (function() {              //IIFE
