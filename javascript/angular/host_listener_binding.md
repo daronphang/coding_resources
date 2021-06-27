@@ -1,3 +1,10 @@
+Built-in Listener:
+```
+onClick
+mouseEnter
+mouseLeave
+```
+
 ## Host Listener:
 Decorator method used for listening to DOM events on the host element of both component and attribute directives. Sets the listeners once the directive is initialized and removes them automatically once the directive gets destroyed. Also listens to events from children or nested elements.
 In a component, the host element is the outer most shell element that contains the template, and its tag name is your chosen selector string in the component’s configuration. 
