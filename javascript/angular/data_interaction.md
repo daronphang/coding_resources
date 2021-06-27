@@ -18,7 +18,7 @@ Allows you to set the property of a view element.
 ```
 
 ## Input:
-For sharing data from parent to child.
+For sharing data from parent to child. For detecting changes, use ngOnChanges() or setter function in child component.
 ```javascript
 // child.component.ts
 export class ChildComponent {
