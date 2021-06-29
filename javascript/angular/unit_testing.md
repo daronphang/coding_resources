@@ -206,3 +206,10 @@ import { TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing
     expect(capturedValue).toBe('testing value');
   }));
 ``` 
+
+## Testing DOM:
+Ensure fixture.detectchanges() is present after every DOM change. For async ngIf, use fakeasync() and tick() to control.
+
+```javascript
+
+```
