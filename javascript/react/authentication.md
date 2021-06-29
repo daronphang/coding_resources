@@ -2,7 +2,7 @@
 ```javascript
 return (
   {!auth.ctx.isLoggedIn && (<Route path='/auth'><AuthPage /></Route>)}
-  {authctx.isLoggedIn && (<Route path='/home'><Home /></Route>)}
-  <Route path='*'><Redirect to='/'</Route>    // or render error page
+  <Route path='/home'>{authctx.isLoggedIn && <Home />}</Route>)}
+  <Route path='*'><Redirect to='/error'</Route>    // or redirect to home page
 )
 ```
