@@ -78,6 +78,22 @@ and.callFake(someFunction())      Pass some function to be called i..e throw err
 toHaveBeenCalled()
 ```
 ```javascript
+// if using createSpyObj, need to declare in beforeEach, else won't get executed
+
+let mockAuthService: jasmine.SpyObj<any>;
+// provide: AuthService, useValue: mockAuthService
+
+beforeEach(() => {
+    mockAuthService = jasmine.createSpyObj('AuthService', ['authenticateUser']);
+    mockAuthService.authenticateUser.and.returnValue();
+
+    fixture = TestBed.createComponent(AuthComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+``` 
+
+```javascript
 // dashboard.service.spec.ts:
 // this dashboard service has AuthService dependency
 
