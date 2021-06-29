@@ -16,6 +16,10 @@ ng generate component components/buttons
 ng generate service hero
 
 ng generate directive example
+
+// for cloning directory
+npm install   // to install node modules
+
 ```
 
 ## View Encapsulation:
