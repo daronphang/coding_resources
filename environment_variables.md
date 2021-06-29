@@ -4,4 +4,4 @@ that can be started without knowing and typing whole path in cmd. Steps to chang
 1. Search environment variables in Start search.
 2. Go Advanced tab -> Environment Variables.
 3. Click on Path and edit.
-4. Add full path of programs that can be executed in cmd.
+4. Add full path of programs that can be executed in cmd i.e. GIT, Python, Node.js.
