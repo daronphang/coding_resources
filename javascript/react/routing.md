@@ -85,7 +85,7 @@ Add Route at the end to match all other incoming requests.
 ```
 
 ## Programmatic Navigation:
-Trigger navigation action such as submitting form. Can use useHistory.
+Trigger navigation action such as submitting form. Can use useHistory. Can also be used for redirecting with history.replace('/home').
 
 ```javascript
 const history = useHistory();
