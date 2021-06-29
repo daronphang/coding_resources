@@ -1,5 +1,5 @@
 ## Example:
-If want to execute HTTP request as the page loads, use useEffect() and useCallback() to prevent infinite loop in dependencies.
+If want to execute HTTP request as the page loads, use useEffect() and useCallback() to prevent infinite loop in dependencies. When using fetch(), can include methods (POST,GET), body and headers objects.
 ```javascript
 
 function App() {
