@@ -213,3 +213,22 @@ Ensure fixture.detectchanges() is present after every DOM change. For async ngIf
 ```javascript
 
 ```
+
+## Testing Nested Components:
+Use technique Shallow Component Testing. Can either use one approach or combine them.
+
+``` javascript
+@Component({selector: 'app-banner', template: ''})
+class BannerStubComponent {
+}
+
+TestBed
+    .configureTestingModule({
+      declarations: [
+        AppComponent,
+        BannerStubComponent,
+        RouterLinkDirectiveStub
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
+    })
+```
