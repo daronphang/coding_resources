@@ -214,6 +214,23 @@ Ensure fixture.detectchanges() is present after every DOM change. For async ngIf
 
 ```
 
+To trigger events programmatically, can use dispatchEvent() and doesn't require fakeAync() as it is synchronous.
+```javascript
+it('should set the 😜 on mouseenter', () => {
+  const fixture = TestBed.createComponent(AppComponent);
+  fixture.detectChanges();
+
+  const h1 = fixture.debugElement.query(By.css('h1'));
+  const mouseenter = new MouseEvent('mouseenter');
+  h1.nativeElement.dispatchEvent(mouseenter);
+
+  fixture.detectChanges();
+  expect(fixture.debugElement.query(By.css('h1')).nativeElement.innerText).toEqual('😜');
+});
+```
+
+
+
 ## Testing Nested Components:
 Use technique Shallow Component Testing. Can either use one approach or combine them.
 
