@@ -249,3 +249,18 @@ TestBed
       schemas: [NO_ERRORS_SCHEMA]
     })
 ```
+
+## Common Issues:
+### Change Detection:
+When modifying variables of test component, calling fixture.detectChanges() might not work due to ChangeDetectionStrategy.onPush setting. Two ways to bypass this:
+1) Place fixture.detectChanges() inside each it() instead of inside beforeEach().
+2) Override settings when compiling.
+
+```javascript
+  .overrideComponent( ChipsLevelsComponent, {
+    set: { changeDetection: ChangeDetectionStrategy.Default }
+  })
+  .compileComponents();
+```
+
+For modifying properties of services, can create mock class and using array methods like push.
