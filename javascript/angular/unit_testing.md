@@ -214,7 +214,7 @@ Ensure fixture.detectchanges() is present after every DOM change. For async ngIf
 
 ```
 
-To trigger events programmatically, can use dispatchEvent() and doesn't require fakeAync() as it is synchronous.
+To trigger events programmatically, can use dispatchEvent() and doesn't require fakeAync() as it is synchronous. Can also use triggerEventHandler() provided by Angular; however, it will invoke only if it was declared on native element using event bindings such as @HostListener and @Output. 
 ```javascript
 it('should set the 😜 on mouseenter', () => {
   const fixture = TestBed.createComponent(AppComponent);
