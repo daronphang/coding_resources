@@ -1,5 +1,5 @@
 ## Directives:
-Directives are elements that change the apperance or behavior of DOM element. Three types are Components, Structural and Attribute. They are markers on DOM element that tell Angular to attach a specified behavior to that element.
+Directives are classes that add additional behavior or styling to elements. Three types are Components, Structural and Attribute. They are markers on DOM element that tell Angular to attach a specified behavior to that element.
 
 ## Components:
 Directives with template. 
@@ -96,6 +96,7 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 ## Building Attribute Directives:
 Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements. Best practice is to use Renderer2 and HostListener.
 ```javascript
+
 // highlight.directive.ts
 import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, Input } from '@angular/core';
 
