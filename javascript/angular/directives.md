@@ -95,36 +95,50 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 
 ## Building Attribute Directives:
 Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements. Best practice is to use Renderer2 and HostListener.
+
+```html
+// component.html:
+<p [appHighlight]="color" defaultColor="violet" >Highlight me!</p>
+
+// defaultColor is static so don't use square brackets
+``` 
+
 ```javascript
+// app.component:
+export class AppComponent {
+  color = 'yellow';
+}
 
 // highlight.directive.ts
 import { Directive, Renderer2, ElementRef, OnInit, HostListener, HostBinding, Input } from '@angular/core';
 
 @directive({
-  selector: '[appBasicHighlight]'
+  selector: '[appHighlight]'   // specify directive's CSS attribute selector
 })
 
-export class BasicHighlightDirective implements OnInit {
+export class HighlightDirective implements OnInit {
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
   
-  @Input() defaultColor: string = 'transparent';
-  @Input() highlightColor: string = 'blue';
+  // passing values into attribute directive
+  @Input() appHighlight = '';
+  @Input() defaultColor: string = '';    // binding to second property
+  
   @HostBinding('style.backgroundColor') backgroundColor: string;  // shortcut for renderer
   
-  ngOnInit() {
-  this.backgroundColor = this.defaultColor;
-  
-  @HostListener('mouseenter') mouseover(eventData: Event) {
-     this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'green', false, false);
-     // same as this.elementRef.nativeElement.style.backgroundColor = 'green'; not good way of acccessing element directly
+  // handling user events
+  @HostListener('mouseenter') onMouseEnter(eventData: Event) {
+    this.highlight(this.appHighlight || this.defaultColor || 'yellow');
+   } 
+   
+ private highlight(color: string) {
+   this.renderer.setStyle(this.elRef.nativeElement, 'background-color', color, false, false);
+   // same as this.elementRef.nativeElement.style.backgroundColor = color;  Not good way of acccessing element directly
+ }
      
-     // this.backgroundColor = this.highlightColor; used with host binding
-   }
-  }
+  ngOnInit() {this.backgroundColor = this.defaultColor}
+  
 }
 
-// html file:
-<p appBasicHighlight [defaultColor]="yellow">Highlight me!</p>
 ```
 ## Building Custom Structural Directives:
 1) Use Directive decorator to define Custom Directive.
