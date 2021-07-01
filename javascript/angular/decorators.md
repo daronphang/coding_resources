@@ -69,3 +69,13 @@ export class AppComponent  {
 
 }
 ```
+
+## ViewChild:
+Property decorator that configures a view query i.e. to access a directive, child component or DOM element from parent parent component. Change detector looks for first element or directive matching the selector in view DOM. If the view DOM changes and new child matches the selector, the property is updated. Can only view elements inside template of component itself and not cross boundaries i.e. local.
+
+Variable is injected after view initialization is completed. To use references injected by ViewChild, need to initialize inside AfterViewInit() and not in ngOnInit(). 
+
+```javascript
+  @ViewChild('primaryColorSample') sample: ColorSampleComponent;    // to access component
+  @ViewChild('primaryColorSample', {read: ElementRef}) sample: ElementRef;  // to access template ref
+```
