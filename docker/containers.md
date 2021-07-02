@@ -1,5 +1,5 @@
 ## Containers: 
-Processes that run inside host OS and are not mini-VMs.
+Processes that run inside host OS and are not mini-VMs. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80.
 
 ## Image vs Container:
 - Image is the application to run i.e. Nginx web server.
