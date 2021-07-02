@@ -17,3 +17,6 @@ $ docker rm [container name]                  Delete specific container
 $ docker rm $(docker ps -a -q)                Delete all containers
 $ docker logs [container name]
 ```
+
+## File Directory:
+Ensure codes that are going to be used inside containers are placed in /Users.
