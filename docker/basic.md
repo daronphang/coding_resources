@@ -20,3 +20,15 @@ $ docker logs [container name]
 
 ## File Directory:
 Ensure codes that are going to be used inside containers are placed in /Users.
+
+## GUI:
+Can use Cmder. Runs PowerShell, CMD Prompt or Bash. Before unzipping, make sure to unblock the folder. To tell Docker how to find server in Cmder:
+```
+docker-machine env default
+```
+
+## Docker on Linux:
+Easiest OS to use Docker. Install Linux VM on Windows. Can either install with script, store or docker-machine. Can use Ubuntu or CentOS. Need to also install Docker Machine and Docker Compose.
+```
+curl -sSL https://get.docker.com/ | sh
+```
