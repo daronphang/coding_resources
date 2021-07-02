@@ -7,6 +7,9 @@ only shares resources of host machine in order to run its environments (does not
 - Reduces complexity and maintenance as backend, frontend, db, queues are packaged in containers.
 
 ```
+$ docker version
+$ docker info
+$ docker                                      Shows list of commands
 $ docker image 1s                             List images
 $ docker image rm [image name]                Delete a specific image
 $ docker image rm $(docker images -a -q)      Delete existing images
