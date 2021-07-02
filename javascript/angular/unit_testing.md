@@ -1,5 +1,14 @@
 ## Testing:
-Unittests written in Jasmine framework with Karma as test runner. 
+Unittests written in Jasmine framework with Karma as test runner. Best practices:
+- Used for testing behaviors such as if/for loops, executing functions etc.
+- Should be tested in isolation without any dependencies.
+- When subscribing to Observables, to provide both success and failure callbacks.
+- When testing components with services dependencies, always use mock services.
+- When accessing DOM, always use debugElement and not nativeElement.
+- Always use fixture.detectChanges() when making a change.
+- Don't overuse NO_ERRORS_SCHEMA.
+
+
 ```
 describe(string, function)    Function takes a title and function containing one or more specs
 it(string, function)          Function takes title and function containing one or more expectations
