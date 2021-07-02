@@ -10,4 +10,5 @@ Powershell is a cross-platform task automation solution made up of command-line 
 
 CMD is original shell for Microsoft OS. Powershell is new shell that replaces old CMD functionality with new scripting, allowing users to automate complicated tasks with reusable scripts. PowerShell uses cmdlets which are self-contained programming objects that expose the underlying admin options inside of Windows. Used mainly by IT administrators. For example, implementing new security solution dependent on a specific service that has to run on all servers; checking if each server has specific service installed can be tedious, but PowerShell scripting helps to automate this.
 
-
+## Secure Socket Shell (SSH):
+Network protocol that gives users a secure way to access a computer over an unsecured network. Provides strong password authentication and public key authentication, including encrypted data communications between computers connecting over an open network.
