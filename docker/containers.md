@@ -2,11 +2,16 @@
 Processes that run inside host OS and are not mini-VMs. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80.
 
 ```
+docker container <some command> --help
 docker container top          Process list in one container
 docker container inspect      Details of one container config
 docker container stats        Performance stats for all containers
-docker container run -it      Start new container interactively
+
+// get shell inside containers
+docker container run -it --name proxy nginx bash
+docker container run -it      Start new container with interactive shell (with command 'exit' to close)
 docker container exec -it     Run additional process in existing container
+docker container start -ai 
 ```
 
 ## Image vs Container:
@@ -32,3 +37,6 @@ docker container ls -a
 docker container logs specify_name
 docker container rm -f specify_name (to force stop and remove container)
 ```
+
+## Linux Distributions for Container Images:
+Alpine, Ubuntu.
