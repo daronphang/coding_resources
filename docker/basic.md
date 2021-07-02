@@ -2,8 +2,9 @@
 Allows users to create independent and isolated environments (called containers) to launch and deploy applications. Not a virtual machine as it
 only shares resources of host machine in order to run its environments (does not include complete OS). Benefits of Docker:
 - Can be built and destroyed faster than VM.
-- Multi-platform i.e. can launch containers on any system.
+- Multi-platform i.e. can launch containers on any system on Mac, PC, Linux.
 - Each environment is isolated.
+- Reduces complexity and maintenance as backend, frontend, db, queues are packaged in containers.
 
 ```
 $ docker image 1s                             List images
