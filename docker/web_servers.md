@@ -10,7 +10,7 @@ How web server works:
 4. Web server accepts and responds by sending requested page to browser through HTTP.
 5. Browser displays webpage.
 
-To publish a website, need either static or dynamic web server. Static web server consists of computer (hardware) and HTTP server (software). Dynamic web server consists of both static web server plus extra software such as an application server and database. 
+To publish a website, need either static or dynamic web server. Static web server consists of computer (hardware) and HTTP server (software). Dynamic web server consists of both static web server plus extra software such as an application server and database. Application server is used to update files hosted before they are sent to browser.
 
 Popular web server software include Nginx, Tomcat and Apache.
 
