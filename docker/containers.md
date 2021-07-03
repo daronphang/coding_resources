@@ -8,6 +8,7 @@ docker container <some command> --help
 docker container top          Process list in one container
 docker container inspect      Details of one container config
 docker container stats        Performance stats for all containers
+docker update                 Change resources for given container
 
 // get shell inside containers
 docker container run -it --name proxy nginx bash
