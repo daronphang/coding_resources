@@ -9,8 +9,8 @@ docker container stats        Performance stats for all containers
 
 // get shell inside containers
 docker container run -it --name proxy nginx bash
-docker container run -it      Start new container with interactive shell (with command 'exit' to close)
-docker container exec -it     Run additional process in existing container
+docker container run -it                     Start new container with interactive shell (with command 'exit' to close)
+docker container exec -it <container> sh     Run additional process in existing container
 docker container start -ai 
 ```
 
@@ -42,10 +42,11 @@ docker container rm -f specify_name (to force stop and remove container)
 Alpine, Ubuntu.
 
 ## Network:
-Each container is connected to a private virtual network through 'bridge'. Each virtual network routes through NAT firewall on host IP. All containers on a virtual network can talk to each other without -p. Each app should have their own network. Can attach containers to more than one virtual network.
+Each container is connected to a private virtual network called 'bridge'. Each virtual network routes through NAT firewall on host IP. All containers on a virtual network can talk to each other without -p. Each app with frontend/backend should sit on the same network. Can attach containers to more than one virtual network.
 
 Terminologies:
 - Network Driver: Built-in or third-party extensions that give virtual network features.
+- Bridge: Network driver that allows containers to communicate with each other running on same docker host.
 
 ``` 
 docker container run -d -p 80:80 --name webhost --network my_app_net nginx
@@ -55,6 +56,8 @@ docker container inspect bridge
 
 docker network ls
 docket network create --driver
-docker network connect/disconnect
+docker network connect/disconnect     Connect an existing container to new network
 
 ```
+### DNS:
+Static IP's for talking to containers is an anti-pattern and avoid it. Use DNS naming (host name). Docker daemon has built-in DNS server that containers use by default.
