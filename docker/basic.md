@@ -37,3 +37,5 @@ Easiest OS to use Docker. Install Linux VM on Windows. Can either install with s
 ```
 curl -sSL https://get.docker.com/ | sh
 ```
+
+
