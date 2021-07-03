@@ -34,11 +34,11 @@ docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
 4. Routes that traffic to container IP, port 80.
 5. Detach is to run server in background, gives unique container ID.
 
-docker container start (to start an existing stopped one)
-docker container stop 690 (type in first few digits of UID)
+docker container start                  Start an existing stopped one
+docker container stop 690               Type in first few digits of UID
 docker container ls -a
 docker container logs specify_name
-docker container rm -f specify_name (to force stop and remove container)
+docker container rm -f specify_name     Force stop and remove container
 ```
 
 ## Linux Distributions for Container Images:
