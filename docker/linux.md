@@ -23,5 +23,5 @@ sudo apt-get update && apt-get upgrade
 7) Applications
 
 ## Distributions:
-Different versions to suit different users. Examples include Linux Mint, Ubuntu, Antergos, Solus, etc. For servers, exammples include Red Hat, Ubuntu, CentOS, SUSE Enterprise.
+Different versions to suit different users. Examples include Linux Mint, Ubuntu, Debian, Antergos, Solus, etc. For servers, exammples include Red Hat, Ubuntu, CentOS, SUSE Enterprise.
 
