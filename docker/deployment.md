@@ -1,23 +1,6 @@
 ## Deploying HTML Site with Docker and Nginx:
 1. Create directory for website with HTML files included.
 2. Create a dockerfile in the same directory that builds a docker image.
-
-```
-# syntax=docker/dockerfile:1
-FROM python:3.7-alpine                              Creates layer from base image
-MAINTAINER daronphang <daronphang@gmail.com>
-WORKDIR /code
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt              Adds files from docker client's current directory
-RUN pip install -r requirements.txt                 Runs when building container
-EXPOSE 5000
-COPY . .
-CMD ["flask", "run"]                                To run on cmd; only runs after container is created
-```
-
-
 3. Place either content in dockerfile for web server.
 
 ``` 
