@@ -5,5 +5,5 @@ Clustering service solution built inside Docker. Consists of Manager Node and Wo
 docker swarm init
 docker service create alpine        Spits out service ID instead of container ID
 docker service ls
-docker service update 
+docker service update               Offers more features than container update
 ```
