@@ -10,3 +10,9 @@ docker pull nginx1.11
 
 ## Building Images:
 Order is critical. Keep things that do not change at top.
+
+## Instructions for Dockerfile:
+```
+FROM      Sets base image
+
+```
