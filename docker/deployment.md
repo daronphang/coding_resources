@@ -1,10 +1,13 @@
 ## Deploying HTML Site with Docker and Nginx:
 1. Create directory for website with HTML files included.
-2. Create a dockerfile.
+2. Create a dockerfile in the same directory.
 
 ``` 
 FROM nginx:alpine
-COPY ./user/share/nginx/html
+COPY ./usr/share/nginx/html
+
+FROM apache
+COPY . /var/www/html
 ```
 3. Build docker image for HTML server.
 
