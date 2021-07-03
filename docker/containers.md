@@ -1,5 +1,7 @@
 ## Containers: 
-Processes that run inside host OS and are not mini-VMs. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80.
+A container consists of an entire runtime environment: an application, plus all its dependencies, libraries and other binaries, and configuration files needed to run it, bundled into one package. By containerizing the application platform and its dependencies, differences in OS distributions and underlying infrastructure are abstracted away. Allows the application to run quickly and reliably from one computing environment to another. 
+
+Processes that run inside host OS and are not mini-VMs. Though VMs provide full process isolation, comes at computational overhead cost to virtualize. Containers provide most of isolation of VMs at fraction of computing power. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80.
 
 ```
 docker container <some command> --help
