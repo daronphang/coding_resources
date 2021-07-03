@@ -8,7 +8,7 @@
 
 ## Linux OS:
 1) Bootloader: Software that manages boot process.
-2) Kernel: Core of system and manages CPU, memory and peripheral devices.
+2) Kernel: Core of OS system and manages CPU, memory and peripheral devices.
 3) Init System: Sub-system that bootstraps user space and is charged with controlling daemons.
 4) Daemons: Background services that start up during boot or after logging in.
 5) Graphical Server: Sub-system that displays graphics on monitor.
