@@ -11,6 +11,8 @@ sudo                        Superuser do
 sudo apt-get update         Updates packages but does not install them
 sudo apt-get upgrade
 sudo apt-get update && apt-get upgrade
+
+ubuntu-drivers devices
 ```
 
 ## Linux OS:
