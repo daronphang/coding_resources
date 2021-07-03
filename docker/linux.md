@@ -6,6 +6,10 @@
 - Used in smartphones (android), cars, home appliances, servers (most used), etc. 
 - Reliable and secure as it is easy to detect bugs and fix.
 
+```
+sudo        Superuser do
+```
+
 ## Linux OS:
 1) Bootloader: Software that manages boot process.
 2) Kernel: Core of OS system and manages CPU, memory and peripheral devices.
