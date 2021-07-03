@@ -7,6 +7,7 @@ only shares resources of host machine in order to run its environments (does not
 - Reduces complexity and maintenance as backend, frontend, db, queues are packaged in containers.
 
 ```
+docker --help
 docker version
 docker info
 docker top moongo
