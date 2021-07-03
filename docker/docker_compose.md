@@ -14,7 +14,7 @@ docker-compose up
 version: "3.9"  # optional since v1.27.0
 services:
   web:
-    build: .
+    build: .            // to specify where dockerfile of image is supposed to build from
     ports:
       - "5000:5000"
     volumes:
