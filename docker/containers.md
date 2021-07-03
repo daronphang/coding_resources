@@ -64,3 +64,7 @@ docker network connect/disconnect     Connect an existing container to new netwo
 ```
 ### DNS:
 Static IP's for talking to containers is an anti-pattern and avoid it. Use DNS naming (host name). Docker daemon has built-in DNS server that containers use by default.
+
+## Persistent Data:
+Containers are usually immutable (to change, only re-deploy). However, databases are not, and Docker gives features to ensure 'separation of concerns'. Two ways to solve it: Volumes and Bind Mounts that will outlive the executable. Volumes make special location outside of container Union File System. Bind Mounts link container path to host path.
+
