@@ -12,3 +12,29 @@ CMD is original shell for Microsoft OS. Powershell is new shell that replaces ol
 
 ## Secure Socket Shell (SSH):
 Network protocol that gives users a secure way to access a computer over an unsecured network. Provides strong password authentication and public key authentication, including encrypted data communications between computers connecting over an open network.
+
+
+## Curl:
+Command line tool that allows transfer of data across network. Supports many protocols including HTTP, HTTPS, FTP, FTPS, POP3, etc. Supports on universal OS. 
+
+``` 
+curl --verbose https://example.com        Inspect all details of request and response
+
+curl https://example.com                  GET request, returns body of response
+curl https://{one,two,three}.com          Send multiple requests
+curl -i https://example.com               Show response headers
+
+curl -d "option=value" -X POST https://example.com    Sending URL-encoded data
+curl -d '{"option": "value"}' -H "Content-Type: application/json" -X POST https://example.com
+curl -d "@my-file.json" -X POST https://example.com
+
+curl -L https://example.com       Follow automatically to redirect response specified in Location response header
+
+curl -o file.html https://example.com             Save response to a file
+
+curl -u user:pass https://example.com             Provide basic auth
+
+curl -b "oraclelicense=a" https://example.com     Sending cookies
+
+curl -x 192.168.1:8888 https://example.com        Using proxies
+``` 
