@@ -40,3 +40,21 @@ docker container rm -f specify_name (to force stop and remove container)
 
 ## Linux Distributions for Container Images:
 Alpine, Ubuntu.
+
+## Network:
+Each container is connected to a private virtual network through 'bridge'. Each virtual network routes through NAT firewall on host IP. All containers on a virtual network can talk to each other without -p. Each app should have their own network. Can attach containers to more than one virtual network.
+
+Terminologies:
+- Network Driver: Built-in or third-party extensions that give virtual network features.
+
+``` 
+docker container run -p 80:80 --name webhost -d nginx
+docker container port webhost
+docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost
+docker container inspect bridge
+
+docker network ls
+docket network create --driver
+docker network connect/disconnect
+
+```
