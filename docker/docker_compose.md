@@ -1,5 +1,5 @@
 ## Docker Compose:
-Ideal for local development and testing but not production-grade tool. Consists of YAML file. YAML file can be used with docker-compose for local docker automation or with docker directly in production with Swarm.
+Ideal for local development and testing but not production-grade tool. Consists of YAML file. YAML file can be used with docker-compose for local docker automation or with docker directly in production with Swarm. DNS names for containers in compose file come from service name declared in .yml.
 
 ```
 docker-compose up           Setup volumes/networks and start all containers
