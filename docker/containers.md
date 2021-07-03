@@ -29,7 +29,7 @@ docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
 
 1. Downloaded image 'nginx' from Docker Hub (if cannot find image locally).
 2. Started a new container from that image.
-3. Opened port 8080 on host IP.
+3. Opened port 8080 on host IP (exposes external port).
 4. Routes that traffic to container IP, port 80.
 5. Detach is to run server in background, gives unique container ID.
 
