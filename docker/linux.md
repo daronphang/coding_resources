@@ -7,7 +7,10 @@
 - Reliable and secure as it is easy to detect bugs and fix.
 
 ```
-sudo        Superuser do
+sudo                        Superuser do
+sudo apt-get update         Updates packages but does not install them
+sudo apt-get upgrade
+sudo apt-get update && apt-get upgrade
 ```
 
 ## Linux OS:
