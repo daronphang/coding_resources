@@ -21,6 +21,7 @@ docker container start -ai
 - Container is an instance of that image running as a process.
 - Can have many containers running off the same image.
 - Docker's default image 'registry/repository' is called Docker Hub.
+- Container is a single read/write layer on top of image.
 
 ```
 docker container run --publish 8080:80 --detach <specify_name> nginx
