@@ -48,7 +48,7 @@ Terminologies:
 - Network Driver: Built-in or third-party extensions that give virtual network features.
 
 ``` 
-docker container run -p 80:80 --name webhost -d nginx
+docker container run -d -p 80:80 --name webhost --network my_app_net nginx
 docker container port webhost
 docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost
 docker container inspect bridge
