@@ -7,3 +7,6 @@ For containers using the same image, they are stacked ontop of same image i.e. i
 docker pull nginx                   Download latest version
 docker pull nginx1.11
 ```
+
+## Building Images:
+Order is critical. Keep things that do not change at top.
