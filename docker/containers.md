@@ -44,6 +44,10 @@ docker container logs specify_name
 docker container rm -f specify_name     Force stop and remove container
 ```
 
+## Ports:
+Number used to uniquely identify a transaction over a network. Default for HTTP is 80, and 25 for SMTP. Can be used to provide firewall security i.e. block outsiders from accessing intranet server at port 80.
+
+
 ## Linux Distributions for Container Images:
 Alpine, Ubuntu.
 
