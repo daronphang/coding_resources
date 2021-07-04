@@ -6,6 +6,8 @@ An ordered list of items. String, list, tuple, range, bytes and bytearray.
 a/b     # float
 a//b    # integer
 a % b   # remainder after integer division
+
+sevens = range(7, 1000, 7)      // divisble by 7
 ```
 
 ## strings and Slices:
@@ -56,10 +58,44 @@ list[1][0]    # m
 
 list.append(x)
 list.sort(reverse=True)     # same as sorted(list, reverse=True)
+
+vowels = ['a', 'e', 'i', 'o', 'u']
+vowels_iter = iter(vowels)
+
+print(next(vowels_iter))    # 'a'
+print(next(vowels_iter))    # 'e'
+
 ```
 
+## Tuples:
+Same as lists but immutable. Can be destructured. Accessed by [].
 
+```
+metallica = ('ride', 1984, ' metallica')
+title, year, artist = metallica
+print(title)
+```
 
+## Dictionaries:
+```python
+fruit = {'pear': 'green', 'apple': 'red'}
+veg = {}
+
+fruit['pear']
+fruit['orange'] = 'orange'    # either add or replace value
+del fruit['pear]              # sane as fruit.pop('pear)
+fruit.clear()
+
+keys_list = list(fruit.keys())    # or .values()
+
+x = tuple(fruit.items())          # convert to tuples
+
+veg.update(fruit)
+x = fruit.copy()
+
+if all(value is None for value in fruit.values()):
+  print('dict is empty')
+```
 
 
 
