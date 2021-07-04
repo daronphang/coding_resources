@@ -1,5 +1,5 @@
 ## Swarm:
-Clustering service solution built inside Docker. Consists of Manager Node and Worker Node. Docker service replaces docker run.
+Clustering service solution built inside Docker. Consists of Manager Node and Worker Node. Docker service replaces docker run. IP address of manager must be assigned to a network interface available to host OS; all nodes in swarm must connect to the manager at same IP.
 
 ```
 docker swarm init
@@ -11,7 +11,14 @@ docker node ps
 docker node ls
 docker service ps <service name>
 
+docker-machine ls                   Get IP address
+docker-machine ip <machine_name>
+
 docker node update --role manager node2
 docker swarm join <SSH key & IP>      Add to other worker nodes to join to swarm
 docker swarm join-token manager       Add response to other worker nodes to make them manager by default
+```
+## Overlay Multi-Host Networking:
+```
+--driver overlay        For intra-swarm communication
 ```
