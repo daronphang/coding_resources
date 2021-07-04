@@ -1,6 +1,15 @@
 ## Sequence Types:
 An ordered list of items. String, list, tuple, range, bytes and bytearray.
 
+## Type Conversions:
+```
+int()
+float()
+str()
+tuple()
+list()
+```
+
 ## Operations:
 ```
 a/b     # float
