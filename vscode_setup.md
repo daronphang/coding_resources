@@ -15,19 +15,19 @@ Need to install pylint in virtual environment; activation depends on autosave fu
 
 ### Customization in settings.json:
 ```
-Python Path               "python.pythonPath": "venv\\Scripts\\python.exe"
-Linting                   "python.linting.enabled": true
-pylint                    "python.linting.pylintEnabled": false
-Line Spacing              "editor.lineHeight": 20
-Letter Spacing            "editor.letterSpacing": -0.7
-Render Indent Guides      "editor.renderIndentGuides": true
-pep8                      "python.linting.pycodestyleEnabled": true
-flake8                    "python.linting.flake8Enabled": true
-Right Vertical            "editor.rulers": [80]
-Kite                      "kite.codefinder.enableLineDecoration": false
-Prettier                  "editor.defaultFormatter": "esbenp.prettier-vscode"
-Code Runner               "code-runner.clearPreviousOutput": true,
-                          "code-runner.executorMap": {
-                              "python": "C:\\financial_analysis\\venv\\Scripts\\python.exe"
-                          }
+"python.pythonPath": "venv\\Scripts\\python.exe",
+"python.linting.enabled": true,
+"python.linting.pylintEnabled": false,
+"editor.lineHeight": 20,
+"editor.letterSpacing": -0.7,
+"editor.renderIndentGuides": true,
+"python.linting.pycodestyleEnabled": true,
+"python.linting.flake8Enabled": true,
+"editor.rulers": [80],
+"kite.codefinder.enableLineDecoration": false,
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"code-runner.clearPreviousOutput": true,
+"code-runner.executorMap": {
+  "python": "C:\\financial_analysis\\venv\\Scripts\\python.exe"
+},
 ```
