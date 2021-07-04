@@ -55,6 +55,8 @@ print('pi is approx {0:12}'.format(22/7))   # defualt for 15 decimals
 name = 'john'
 age = 23
 print(f'my name is {name}, age {age}')
+
+print(x,y, sep='\n')
 ```
 
 ## True vs False:
