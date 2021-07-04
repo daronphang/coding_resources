@@ -12,8 +12,14 @@ su <user>
 sudo apt-get update         Updates packages but does not install them
 sudo apt-get upgrade
 sudo apt-get update && apt-get upgrade
+conda activate
+df
 
-vi  
+
+
+vi
+ls -la 
+ps -ax | grep nginx
 
 ubuntu-drivers devices
 ```
