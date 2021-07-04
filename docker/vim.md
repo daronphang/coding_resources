@@ -17,8 +17,9 @@ G, gg                   Move end of file, beginning of file
 :q            Exit
 d             Delete
 !             Force
-y             Copy
-yy            Copy line
+o             Insert text at beginning of following line
+v             Copy   
+y             Copy line
 p             Paste
 d             Cut
 dd            Cut line
@@ -28,8 +29,7 @@ dd            Cut line
 /text         Search text in document
 n, N          Next instance, previous instance
 
-i             Insert mode
-o             Insert text at beginning of following line
-V             Copy            
+
+         
 
 ```
