@@ -4,6 +4,10 @@ import datetime
 
 today = datetime.datetime.now()             # same as datetime.datetime.today()
 today_utc = datetime.datetime.utcnow()
+
+date = datetime.date.today()
+time = datetime.datetime.now().time()
+
 two_years = today + datetime.timedelta(days=730)
 
 print(today.strftime('%A %x %X %z'))      # look at documentation
