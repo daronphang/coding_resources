@@ -36,3 +36,6 @@ ubuntu-drivers devices
 ## Distributions:
 Different versions to suit different users. Examples include Linux Mint, Ubuntu, Debian, Antergos, Solus, etc. For servers, exammples include Red Hat, Ubuntu, CentOS, SUSE Enterprise.
 
+Both Debian and Ubuntu use APT package management system and DEB packages for manual installation. Desktop environment is GNOME.
+
+
