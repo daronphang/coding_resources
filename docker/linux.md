@@ -14,7 +14,7 @@ sudo apt-get upgrade
 sudo apt-get update && apt-get upgrade
 conda activate
 df
-
+whoami
 
 
 vi
