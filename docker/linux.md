@@ -1,4 +1,4 @@
-## Linux:
+# Linux:
 - Linux is an open-source OS using UNIX core which sites underneath of all other software on a computer.
 - OS is a software that manages connection between software and hardware resources associated with desktop i.e. car engine.
 - User has access to alter source code of kernel and code unlike Windows.
@@ -6,7 +6,7 @@
 - Used in smartphones (android), cars, home appliances, servers (most used), etc. 
 - Reliable and secure as it is easy to detect bugs and fix.
 
-### Useful Linux Commands:
+## Useful Linux Commands:
 ```
 sudo                        Superuser do
 su <user>                   ctrl+D to logout of su
