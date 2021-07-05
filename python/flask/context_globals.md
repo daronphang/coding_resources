@@ -22,3 +22,14 @@ with app.app_context():
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 ```
+
+## Examples:
+```
+# request behaves as a dict
+request.args.get()          # retrieve url query arguments with ?=
+request.get_json()          # parse request body in JSON
+request.headers.get()       # retrieve 
+request.form.get()
+request.method == 'GET'
+
+```
