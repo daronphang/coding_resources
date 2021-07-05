@@ -28,8 +28,4 @@ dd            Cut line
 
 /text         Search text in document
 n, N          Next instance, previous instance
-
-
-         
-
 ```
