@@ -78,7 +78,7 @@ Method used for space distribution between items in an interface with powerful a
 Visibility: Hidden          Not visible but takes up original space
 Display: None               Hidden and takes no space
 
-top:                        Used together with position
+top:                        Used together with position, no effect on surrounding elements
 position: relative        
 
 margin-top: 10em            Move block of element away from other elements
