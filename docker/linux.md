@@ -6,16 +6,23 @@
 - Used in smartphones (android), cars, home appliances, servers (most used), etc. 
 - Reliable and secure as it is easy to detect bugs and fix.
 
+### Useful Linux Commands:
 ```
 sudo                        Superuser do
 su <user>
-sudo apt-get update         Updates packages but does not install them
-sudo apt-get upgrade
-sudo apt-get update && apt-get upgrade
-conda activate
-df
+sudo apt update             Updates packages but does not install them
+sudo apt upgrade
+
+ifconfig                    Show network interface such as IP address
+curl ifconfig.me
+ip address show
+
 whoami
 
+
+
+conda activate
+df
 
 vi
 ls -la 
