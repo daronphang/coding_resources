@@ -90,7 +90,7 @@ print(title)
 ## Dictionaries:
 ```python
 fruit = {'pear': 'green', 'apple': 'red'}
-fruit_keys = list(fruit.keys())
+fruit_keys = list(fruit.keys())   # .keys(), .values(), .items()
 veg = {}
 
 fruit['pear']
@@ -98,8 +98,6 @@ fruit_keys[1]                 # 'apple'
 fruit['orange'] = 'orange'    # either add or replace value
 del fruit['pear]              # sane as fruit.pop('pear)
 fruit.clear()
-
-keys_list = list(fruit.keys())    # or .values()
 
 x = tuple(fruit.items())          # convert to tuples
 
