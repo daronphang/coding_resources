@@ -45,4 +45,5 @@ Different versions to suit different users. Examples include Linux Mint, Ubuntu,
 
 Both Debian and Ubuntu use APT package management system and DEB packages for manual installation. Desktop environment is GNOME.
 
-
+## Remote Computing:
+MobaXterm provides toolbox for remote computing (SSH, X11, RDP, VNC, FTP, MOSH) and Unix commands on Windows.
