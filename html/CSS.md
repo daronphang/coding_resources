@@ -50,6 +50,21 @@ vh      Relative to 1% of height of viewport.
 %       Relative to parent element.
 ```
 
+## Flex:
+```
+.container {
+    display: flex;
+    flex-direction: column/row;
+    align-items: flex-start             Default is flex-stretch
+}
+
+.break {
+    height: 70px;  
+}
+
+```
+
+
 ## Styles:
 ```
 Visibility: Hidden          Not visible but takes up original space
