@@ -45,5 +45,8 @@ Different versions to suit different users. Examples include Linux Mint, Ubuntu,
 
 Both Debian and Ubuntu use APT package management system and DEB packages for manual installation. Desktop environment is GNOME.
 
+## Bash vs Terminal:
+Bash is both a shell and scripting language used to interact with OS (similar to PowerShell). Comes with SSH command by default. Terminal is an emulator window that runs shell by default i.e. terminal sends user input to shell program which will then generate output and passes back to terminal. Can run bash inside a terminal i.e. shell running another. Examples of Shell include bash, fish, zsh, PowerShell, cmd, pwsh, etc.
+
 ## Remote Computing:
 MobaXterm provides toolbox for remote computing (SSH, X11, RDP, VNC, FTP, MOSH) and Unix commands on Windows.
