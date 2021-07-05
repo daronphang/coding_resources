@@ -16,9 +16,8 @@ sudo apt upgrade
 ifconfig                    Show network interface such as IP address
 curl ifconfig.me
 ip address show
-
 whoami
-
+speedtest.cli               Network test
 
 
 conda activate
