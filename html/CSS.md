@@ -60,7 +60,7 @@ Method used for space distribution between items in an interface with powerful a
     justify-content: center;            flex-start, flex-end, space-around, space-between, space-evenly
     flex-wrap: nowrap;
     
-    flex: 1 1 auto;
+    flex: 1 1 auto;                     Grow, shrink, basis
     flex-basis: auto;                   Sets initial main size of flex item, else content size
     flex-grow: -1/1                     Cause items to stretch and take up any available space 
     flex-shrink: -1/1                   If postiive, can become smaller than flex-basis if insufficient space  
