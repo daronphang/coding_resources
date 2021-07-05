@@ -21,6 +21,7 @@ speedtest.cli               Network test
 
 
 conda activate
+conda install
 df
 
 vi
