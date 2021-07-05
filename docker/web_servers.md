@@ -1,4 +1,4 @@
-## Web Servers:
+# Web Servers:
 Web server is used to store and deliver website content. Refers to both hardware and software. On hardware side, web server is a computer that stores web server software and website's component files such as HTML docs, images, JS and CSS. It connects to the Internet and support physical data interchange with other devices. On software side, a web server includes several parts that control how web users access hosted files, having at least a single HTTP server whhich understands URLs and HTTP protocol. 
 
 Web servers are used to serve Web pages requested by clients i.e tool responsible for server-client communication through HTTP protocol. Biggest challenge is to serve many web users requesting different pages written in different programming languages. Web Servers turn files into static HTML and serve them in browser. 
