@@ -1,5 +1,5 @@
 ## Sequence Types:
-An ordered list of items. String, list, tuple, range, bytes and bytearray.
+An ordered list of items. String, list, tuple, range, bytes and bytearray. Dictionaries are ordered from 3.6 onwards.
 
 ## Type Conversions:
 ```
@@ -90,9 +90,11 @@ print(title)
 ## Dictionaries:
 ```python
 fruit = {'pear': 'green', 'apple': 'red'}
+fruit_keys = list(fruit.keys())
 veg = {}
 
 fruit['pear']
+fruit_keys[1]                 # 'apple'
 fruit['orange'] = 'orange'    # either add or replace value
 del fruit['pear]              # sane as fruit.pop('pear)
 fruit.clear()
