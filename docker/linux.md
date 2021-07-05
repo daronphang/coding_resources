@@ -9,7 +9,7 @@
 ### Useful Linux Commands:
 ```
 sudo                        Superuser do
-su <user>
+su <user>                   ctrl+D to logout of su
 sudo apt update             Updates packages but does not install them
 sudo apt upgrade
 
