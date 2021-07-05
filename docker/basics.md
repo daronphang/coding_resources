@@ -1,4 +1,4 @@
-## Docker:
+# Docker:
 Allows users to create independent and isolated environments (called containers) to launch and deploy applications. Not a virtual machine as it
 only shares resources of host machine in order to run its environments (does not include complete OS). Benefits of Docker:
 - Can be built and destroyed faster than VM.
