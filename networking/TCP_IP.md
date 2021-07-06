@@ -1,7 +1,7 @@
 ## Basics:
 Communication protocols are built using layers in OSI model stack. Each layer has a particular function, providing a standard service to the layer above. Top is application layer (email, text messaging, web browser, etc), next is Transport/TCP layer, Internet/IP layer, and lastly network/physical layer (ethernet, WIFI, optic fibre, etc).
 
-Internet Protocol is responsible for logical addressing. Primary version is IPv4; newer IPv6 addresses size contraints. Transmission Control Protocol is reponsible for transporting and routing data through network architecture and ensuring it gets delivered to destination application or device. IP obtains the address while TCP guarantees delivery of data to that address. 
+Internet Protocol is responsible for logical addressing i.e. ensures data packets are sent to right address. Primary version is IPv4; newer IPv6 addresses size contraints. Transmission Control Protocol is reponsible for transporting and routing data through network architecture and ensuring it gets delivered to destination application or device. IP obtains the address while TCP guarantees delivery of data to that address. 
 
 ## TCP/IP:
 Suite of communication protocols (stateless) used to interconnect network devices on the internet/intranet. Specifies how data is exchanged by providing end-to-end communications that identify how it should be broken into packets, addressed, transmitted, routed and recived at destination. TCP/IP also includes HTTP, HTTPS and FTP (File Transfer Protocol). 
