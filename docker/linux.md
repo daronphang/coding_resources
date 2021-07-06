@@ -19,6 +19,7 @@ ip address show
 whoami
 speedtest.cli               Network test
 
+sudo dkms status            Get drivers from dynamic kernel module support
 
 conda activate
 conda install
