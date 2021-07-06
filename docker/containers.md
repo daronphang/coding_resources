@@ -65,7 +65,7 @@ docket network create --driver
 docker network connect/disconnect     Connect an existing container to new network
 
 ```
-### DNS:
+## DNS:
 Static IP's for talking to containers is an anti-pattern and avoid it. Use DNS naming (host name). Docker daemon has built-in DNS server that containers use by default.
 
 ## Persistent Data:
