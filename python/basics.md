@@ -60,7 +60,7 @@ print(x,y, sep='\n')
 ```
 
 ## True vs False:
-False object are None, False, 0, 0.0, 0j, '', (), {}, range(0).
+False object are None, False, 0, 0.0, 0j, '', (), {}, range(0). Use any() or all() to check for truth in lists.
 
 ## Lists:
 ```
