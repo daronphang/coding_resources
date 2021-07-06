@@ -1,4 +1,4 @@
-## Application & Request Contexts:
+# Application & Request Contexts:
 Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client.
 
 ```
@@ -9,12 +9,32 @@ session         Request Context         User session, a dictionary that the app 
 
 g.current_user
 session['x'] = form.x.data
+```
 
-request.args.get()          # retrieve url query arguments with ?=
+## Request:
+```
+# hooks
+before_request 
+before_first_request
+after_request
+teardown_request
+```
+
+```
+# Request is a dictionary 
 request.get_json()          # parse request body in JSON
-request.headers.get()       # retrieve 
-request.form.get()
-request.method == 'GET'
+request.args.get()          # retrieve url query arguments with ?=
+request.headers
+request.form
+request.values              # combines values in form and args
+request.cookies
+request.files
+request.method              # GET, POST, etc.
+request.full_path           # path and query string portions of URL
+request.url                 # complete URL including query string component
+
+# methods
+is_secure()                 # boolean, check if request came through HTTPS
 ```
 
 ## Activating Context in Blueprint:
