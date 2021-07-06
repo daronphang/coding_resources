@@ -16,7 +16,7 @@ docker                                      Shows list of commands
 docker image 1s                             List images
 docker image rm [image name]                Delete a specific image
 docker image rm $(docker images -a -q)      Delete existing images
-docker ps -a                                List all existing containers, running/not running (process status), same as ls
+docker ps -a                                List all existing containers (process status), same as ls
 docker stop [container name]                Stop container
 docker stop $(docker ps -a -q)              Stop all containers
 docker rm [container name]                  Delete specific container
