@@ -3,7 +3,7 @@ Web server is used to store and deliver website content. Refers to both hardware
 
 Web servers are used to serve Web pages requested by clients i.e tool responsible for server-client communication through HTTP protocol. Biggest challenge is to serve many web users requesting different pages written in different programming languages. Web Servers turn files into static HTML and serve them in browser. 
 
-How web server works:
+Basics of web-browser and server communication:
 1. Client specifies URL in web browser.
 2. Web browser makes request to Domain Name Server (DNS) and translates URL to obtain IP address which brings browser to web server.
 3. Browser establishes TCP/IP (protocols) socket connection with server.
