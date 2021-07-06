@@ -51,3 +51,11 @@ Shell is a program that exposes OS' services to human users or other programs th
 
 ## Remote Computing:
 MobaXterm provides toolbox for remote computing (SSH, X11, RDP, VNC, FTP, MOSH) and Unix commands on Windows.
+
+## Tp-link AC600:
+```
+sudo apt install git dkms
+git clone https://github.com/aircrack-ng/rtl8814au.git
+cd rtl8814au
+sudo make dkms_install
+```
