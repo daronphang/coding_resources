@@ -4,6 +4,12 @@ A container consists of an entire runtime environment: an application, plus all 
 Processes that run inside host OS and are not mini-VMs. Though VMs provide full process isolation, comes at computational overhead cost to virtualize. Containers provide most of isolation of VMs at fraction of computing power. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80. To make port available to outside services, need to use -p flag.
 
 ```
+docker container start                  Start an existing stopped one
+docker container stop 690               Type in first few digits of UID
+docker container ls -a
+docker container logs specify_name
+docker container rm -f specify_name     Force stop and remove container
+
 docker container <some command> --help
 docker container top          Process list in one container
 docker container inspect      Details of one container config
@@ -36,22 +42,7 @@ docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
 5. Detach is to run server in background, gives unique container ID.
 
 // to access, use curl or through browser with host IP + :8080
-
-docker container start                  Start an existing stopped one
-docker container stop 690               Type in first few digits of UID
-docker container ls -a
-docker container logs specify_name
-docker container rm -f specify_name     Force stop and remove container
 ```
-
-## Ports:
-Number used to uniquely identify a transaction over a network. Default for TCP port HTTP is 80, and 25 for SMTP. Can be used to provide firewall security i.e. block outsiders from accessing intranet server at port 80. Within host, port refers to the address of the service within the system i.e. IP address + port defines the address of service on that system.
-```
-0-1023          Special companies like Apple, SQL services have
-1024-49151      Registered ports to specific protocols by software corporations
-49152-655536    Dynamic or private ports
-```
-
 
 ## Linux Distributions for Container Images:
 Alpine, Ubuntu.
