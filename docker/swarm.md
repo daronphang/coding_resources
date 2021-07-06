@@ -24,4 +24,5 @@ Creates a Swarm-wide bridge network where containers across hosts on the same vi
 --driver overlay      
 docker network create --driver overlay mydrupal
 docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypassword postgres
+docker service create --name drupal --network mydrupal -p 80:80 drupal
 ```
