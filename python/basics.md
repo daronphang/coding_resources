@@ -108,6 +108,16 @@ if all(value is None for value in fruit.values()):
   print('dict is empty')
 ```
 
+## Functions:
+Zip, filter, reduce, map. Zip combines tuples and returns an iterator of tuples where first item is paired with the other tuple. If one tuple contains more items, they are ignored.
+
+```python
+list = [1,2,3, 4]
+str = ['a','b','c']
+
+result = zip(list, str)     # {(1, 'a'), (2, 'b'), (3, 'c')}
+
+```
 
 
 
