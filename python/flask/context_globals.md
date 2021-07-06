@@ -24,7 +24,7 @@ with app.app_context():
 ```
 
 ## Examples:
-```
+```python
 # request behaves as a dict
 request.args.get()          # retrieve url query arguments with ?=
 request.get_json()          # parse request body in JSON
