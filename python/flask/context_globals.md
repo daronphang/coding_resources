@@ -17,9 +17,9 @@ request.form.get()
 request.method == 'GET'
 ```
 
+## Activating Context in Blueprint:
 Flask activates the application and request contexts before dispatching a request to the application, and removes them after the request is handled. When the application context is pushed, current_app and g variables become available to the thread. Likewise, when request context is pushed, request and session become available.
 
-## Activating Context in Blueprint:
 ```python
 with app.app_context():
     from .main import main as main_blueprint
