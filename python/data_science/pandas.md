@@ -17,6 +17,18 @@ pd.series([1,2,3],['US','CH', 'SG'])
 
 ```python
 df = pd.DataFrame(data, index, columns, dtype, copy)
+df.head()
+df.describe() 
+df = pd.read_csv()
+df.values()                   # returns a numpy representation of df
+df.unique()
+df['col1'].count()            # returns number of non-NA elements in series
+df.value_counts()             # unique combinations of columns
+df.sort_values(by='col1')
+df.isnull()                   # checks for any null values, returns boolean
+df.pivot_table(values,index,column)
+df.query()
+df.stack()
 
 # accessing columns/rows
 df['col_name1', 'col_name2']
@@ -38,5 +50,28 @@ df.reset_index()
 df.set_index()
 df.index = np.arange(1, len(df) + 1)
 
+# convert to numpy
+df.to_numpy()
+array = df.values
+
+# missing values
+df.dropna(axis=0)       # drops any row with NaN, axis=1 for column
+
+# replacing missing values
+df.fillna(value='some value')
+
+# rename columns
+df = df.rename(columns={'B': 'Block'})
+
+# groupby
+df.groupby(['col name', 'col name 2']).sum().loc['col name']
+.getgroup[]
+
+# merging
+pd.concat([df1,df2])
+pd.merge(left, right, row, on='key')
+
+# applying functions
+df.apply(function)
 
 ```
