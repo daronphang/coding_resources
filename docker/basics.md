@@ -22,6 +22,7 @@ docker stop $(docker ps -a -q)              Stop all containers
 docker rm [container name]                  Delete specific container
 docker rm $(docker ps -a -q)                Delete all containers
 docker logs [container name]
+watch docker service ls                     Runs command repeatedly
 ```
 
 ## File Directory:
