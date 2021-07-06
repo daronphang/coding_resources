@@ -21,5 +21,4 @@ content_type
 
 set_cookie()
 get_data()
-
 ```
