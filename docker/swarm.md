@@ -19,6 +19,9 @@ docker swarm join <SSH key & IP>      Add to other worker nodes to join to swarm
 docker swarm join-token manager       Add response to other worker nodes to make them manager by default
 ```
 ## Overlay Multi-Host Networking:
+Creates a Swarm-wide bridge network where containers across hosts on the same virtual network can access each other. For intra-swarm communication.
 ```
---driver overlay        For intra-swarm communication
+--driver overlay      
+docker network create --driver overlay mydrupal
+docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypassword postgres
 ```
