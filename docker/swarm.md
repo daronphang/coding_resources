@@ -1,5 +1,7 @@
 ## Swarm:
-Clustering service solution built inside Docker. Consists of Manager Node and Worker Node. Docker service replaces docker run. IP address of manager must be assigned to a network interface available to host OS; all nodes in swarm must connect to the manager at same IP. Services can be attached to multiple Docker networks, and network can have many containers.
+Clustering service solution built inside Docker. Consists of Manager Node and Worker Node. Docker service replaces docker run. IP address of manager must be assigned to a network interface available to host OS; all nodes in swarm must connect to the manager at same IP. Services can be attached to multiple Docker networks, and network can have many containers. 
+
+Docker service is a cluster management command and must be executed on a swarm manager node. Docker service create is used to create instances/tasks of that service running in a cluster/swarm of nodes i.e. manage a group of containers from the same image.
 
 ```
 docker swarm init
