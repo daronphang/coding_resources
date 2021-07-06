@@ -12,14 +12,19 @@ ng-touched
 ng-untouched
 ```
 
-## Keystroke Events:
+## Events:
 ```
+// keystroke
 (change)            Fires when input loses focus
 (ngModelChange)     Used in conjuction with NGModel
 (keypress)          Doesn't trigger on certain keystrokes like backspace
 (keydown)           Gets element state before keystroke was registered
 (keyup)             Triggers each time a key push event is completed
 (input)*            Fire when both input or binding value has changed
+
+// others
+(blur)
+(focus)
 ```
 
 ## Template-Driven:
