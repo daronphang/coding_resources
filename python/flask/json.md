@@ -18,6 +18,6 @@ import json
 
 dict = {'test': 'hello world'}
 
-json_object = json.dumps(dict)  # serializing JSON
-python_dict = json.loads(json_object) # deserializing JSON
+json_object = json.dumps(dict)  # serializing JSON, converts dict to JSON
+python_dict = json.loads(json_object) # deserializing JSON, converts JSON to dict
 ```
