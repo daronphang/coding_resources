@@ -56,3 +56,7 @@ docker service update --secret-rm     // will recreate container, not ideal for 
 // secrets in stacks
 docker stack deploy -c docker-compose.yml mydb      Secrets defined in Compose file
 ```
+```
+// using secrets in local docker compose
+docker-compose exec psql cat /run/secrets/psql_user
+```
