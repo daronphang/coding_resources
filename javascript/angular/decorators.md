@@ -48,23 +48,22 @@ export class OnlyMyBacon {
 Directives can also bind input properties in the host element. Similar to property binding. Helps to bind a class property to a property of the host element.
 
 ```javascript
-import { Component, HostListener, HostBinding } from '@angular/core';
+import { Directive, HostBinding, Input, OnChanges } from "@angular/core";
 
-@Component({
-  selector: 'app-root',
-  template: `<p>This is nice text<p>`,
+@Directive({
+    selector: '[focusDirective]'
 })
-export class AppComponent  {
 
-  @HostBinding('style.color') color;  // color is a property of component
-  // can bind style.background, class.someClassName, etc.
+export class FocusDirective implements OnChanges {
+    @Input() focusDirective: boolean = false;
+    @HostBinding('style.border') border?: String; 
+    // can bind style.background, class.someClassName, etc.
 
-  @HostListener('click')
-  onclick() {
-    this.color =  'blue';
-  }
-
+    ngOnChanges() {
+        this.focusDirective ? this.border = '2px solid #3383FF' : this.border = '1px solid #D3D3D3'
+    }
 }
+
 ```
 
 ## ViewChild:
