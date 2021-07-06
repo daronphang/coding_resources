@@ -58,4 +58,6 @@ sudo apt install git dkms
 git clone https://github.com/aircrack-ng/rtl8814au.git
 cd rtl8814au
 sudo make dkms_install
+
+sudo apt install dkms git build-essential libelf-dev linux-headers-$(uname -r)
 ```
