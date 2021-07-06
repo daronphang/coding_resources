@@ -57,6 +57,7 @@ import { Component, HostListener, HostBinding } from '@angular/core';
 export class AppComponent  {
 
   @HostBinding('style.color') color;  // color is a property of component
+  // can bind style.background, class.someClassName, etc.
 
   @HostListener('click')
   onclick() {
