@@ -46,6 +46,9 @@ export class OnlyMyBacon {
 
 ## Host Binding: 
 Directives can also bind input properties in the host element. Similar to property binding. Helps to bind a class property to a property of the host element.
+```html
+<div class="search-container" [focusDirective]="_elementBorder"></div>
+```
 
 ```javascript
 import { Directive, HostBinding, Input, OnChanges } from "@angular/core";
