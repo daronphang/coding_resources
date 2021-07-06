@@ -1,4 +1,4 @@
-# Application & Request Contexts:
+## Application & Request Contexts:
 Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client.
 
 ```
