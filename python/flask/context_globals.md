@@ -1,15 +1,21 @@
-# Application & Request Contexts:
-Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads.
+## Application & Request Contexts:
+Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client.
 
-## Application Context Variables:  
-1) **current_app**: application instance for active application
-2) **g**: an object that the application can use for temporary storage during handling of request; variable is rest with each request.
+```
+curent_app      Application Context     Application instance for active application
+g               Application Context     Object that the app can use for temporary storage during handling of request; reset with each request
+request         Request Context         Encapsulates the contents of HTTP request sent by client
+session         Request Context         User session, a dictionary that the app can use to store values that are 'remembered' between requests
 
-## Request Context Variables:  
-1) **request**: request object that encapsulates the contents of an HTTP request send by the client.
-2) **session**: a dictionary that the application can use to store values that are "remembered" between requests.
+g.current_user
+session['x'] = form.x.data
 
-Examples: g.current_user, request.args.get(), session['x'] = form.x.data
+request.args.get()          # retrieve url query arguments with ?=
+request.get_json()          # parse request body in JSON
+request.headers.get()       # retrieve 
+request.form.get()
+request.method == 'GET'
+```
 
 Flask activates the application and request contexts before dispatching a request to the application, and removes them after the request is handled. When the application context is pushed, current_app and g variables become available to the thread. Likewise, when request context is pushed, request and session become available.
 
@@ -21,15 +27,4 @@ with app.app_context():
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
-```
-
-## Examples:
-```python
-# request behaves as a dict
-request.args.get()          # retrieve url query arguments with ?=
-request.get_json()          # parse request body in JSON
-request.headers.get()       # retrieve 
-request.form.get()
-request.method == 'GET'
-
 ```
