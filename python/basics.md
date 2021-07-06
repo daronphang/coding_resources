@@ -31,7 +31,7 @@ parrot[:6]      # ' norweg'
 parrot[:6:2]    # 'nre'
 parrot[5::-1]   # 'gewron' 
 parrot[:-5:-1]  # 'eulb'
-parrot[::-1]
+parrot[::-1]    # prints entire string backwards
 
 str.casefold()          # convert to lowercase, same as islower()
 str.capitalize()        # same as isupper() 
