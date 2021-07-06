@@ -15,9 +15,12 @@ Payload refers to an integral part of each unit of data being transmitted.
 ## Converting Data Types to JSON:
 ```python
 import json
+from flask import jsonify
 
 dict = {'test': 'hello world'}
 
 json_object = json.dumps(dict)  # serializing JSON, converts dict to JSON
 python_dict = json.loads(json_object) # deserializing JSON, converts JSON to dict
+
+jsonify(dict)
 ```
