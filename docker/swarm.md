@@ -49,4 +49,10 @@ Secrets Storage is the easiest 'secure' solution for storing secrets in Swarm. S
 
 ```
 /run/secrets/<secret_name_or_alias>
+docker secret create psql_user psql_user.txt
+docker service create --name psql --secret psql_user --secret psql_pass -e POSTGRES_NAME_FILE=/run/secrets/psql_name
+docker service update --secret-rm     // will recreate container, not ideal for database
+
+// secrets in stacks
+docker stack deploy -c docker-compose.yml mydb      Secrets defined in Compose file
 ```
