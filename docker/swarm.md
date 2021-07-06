@@ -33,3 +33,20 @@ Routes incoming packets for a service to proper Task. Spans all nodes in Swarm. 
 2) External traffic incoming to published ports (all nodes will have published port open and listening).
 
 When deploying containers to Swarm, don't have to care which server it is on as it might change. Allows one service to be accessible from any nodes in the Swarm. Takes packets from server, routes over VIP to the container. If a service is run on host port:8080 on container port:80 nginx from node1, any node connected in swarm can visit the nginx page on port:8080.
+
+## Stacks:
+New layer of abstraction to Swarm. Stacks accept Compose files as their declarative definition for services, overlay networks and volumes. When using deploy in Compose file, cannot use build. Does not need docker-compose cli on the Swarm server.
+
+```
+docker stack deploy -c example-voting.yml voteapp         c for compose 
+docker stack services voteapp
+docker stack ps voteapp
+docker network ls
+```
+
+## Stack Secrets:
+Secrets Storage is the easiest 'secure' solution for storing secrets in Swarm. Secrets include username, passwords, SSH keys, etc. Doesn't require apps to be rewritten. Stored on disk on Manager nodes. Only containers in assigned services can see them.
+
+```
+/run/secrets/<secret_name_or_alias>
+```
