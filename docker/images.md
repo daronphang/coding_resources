@@ -44,10 +44,13 @@ VOLUME        Creates a mount point and marks it as holding externally mounted v
 USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
-# Tips:
+# Best practices:
+-WORKDIR should always use absolute paths
 -Use ARG for build-time customization as ENV will persist when a container starts running
--Dockerfile should have either CMD or ENTRYPOINT commands
+-Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD
 -CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container
+-Don't install unnecessary packages
+-COPY is preferred over ADD as it is more transparent 
 ```
 
 ## Dockerfile example:
