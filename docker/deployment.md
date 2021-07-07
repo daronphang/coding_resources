@@ -13,7 +13,7 @@ COPY . /var/www/html
 4. Build docker image for HTML server.
 
 ```
-docker build -t html-server-image:v1
+docker build -t html-server-image:v1          t is to tag image
 docker build -f /path/to/file
 ```
 
