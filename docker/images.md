@@ -61,13 +61,14 @@ USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 # Best practices:
--WORKDIR should always use absolute paths
--Use ARG for build-time customization as ENV will persist when a container starts running
--Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD
--CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container
--Don't install unnecessary packages
--COPY is preferred over ADD as it is more transparent 
--Don't need virtualenv as Docker achieves the same isolation
+-WORKDIR should always use absolute paths.
+-Use ARG for build-time customization as ENV will persist when a container starts running.
+-Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
+-CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container.
+-Don't install unnecessary packages.
+-COPY is preferred over ADD as it is more transparent .
+-Don't need virtualenv as Docker achieves the same isolation.
+-For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
 ```
 
 ## Dockerfile example:
@@ -90,7 +91,7 @@ CMD ["flask", "run"]
 ARG PYTHON_VERSION=3.7
 FROM python:3.7-alpine
 COPY . /home/user/Documents/test_docker/testing         # copies all files in cwd to container directory
-WORKDIR /home/user/Documents/test_docker/testing        # best practice to use absolute path
+WORKDIR /home/user/Documents/test_docker/testing       
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 CMD ["python", "test.py"]
