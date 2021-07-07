@@ -9,7 +9,19 @@ docker pull nginx1.11
 ```
 
 ## Building Images:
-Order is critical. Keep things that do not change at top. Can add .dockerignore file. 
+Order is critical. Keep things that do not change at top. Can add .dockerignore file. Need to disable builtkit if have error.
+
+```
+# error
+failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token
+
+# linux
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+
+# windows
+"buildkit": false         Found in docker engine settings
+```
 
 ### Parser Directives:
 Must be at top of dockerfile. Affects the way in which subsequent lines are handled and do not add layers to build. Can only be used once. supports syntax and escape.
