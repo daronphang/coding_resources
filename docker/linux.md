@@ -21,9 +21,12 @@ speedtest.cli               Network test
 
 sudo dkms status            Get drivers from dynamic kernel module support
 
-conda activate
-conda install
-df
+echo hello world
+x=10
+echo value of ix = $x
+
+
+
 
 vi
 ls -la 
