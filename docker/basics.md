@@ -23,6 +23,8 @@ docker rm [container name]                  Delete specific container
 docker rm $(docker ps -a -q)                Delete all containers
 docker logs [container name]
 watch docker service ls                     Runs command repeatedly
+
+docker run -e HTTP_PROXY="http://example.com:80" hello-world
 ```
 
 ## File Directory:
