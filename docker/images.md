@@ -86,3 +86,15 @@ EXPOSE 5000
 COPY . .
 CMD ["flask", "run"]                                
 ```
+```
+ARG PYTHON_VERSION=3.7
+FROM python:3.7-alpine
+COPY . /home/user/Documents/test_docker/testing         # copies all files in cwd to container directory
+WORKDIR /home/user/Documents/test_docker/testing        # best practice to use absolute path
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 8080
+CMD ["python", "test.py"]
+```
+
+
+
