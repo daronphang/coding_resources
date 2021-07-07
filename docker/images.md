@@ -38,7 +38,9 @@ FROM imageName
 ```
 docker build .                    Builds an image from a dockerfile and context; run by Docker daemon and not CLI
 docker build -f path/to/file
-docker build -t test/myapp        Specify repo and tag at which to save new image if build succeeds
+docker build -t test-image:1.1    Specify repo (test-image) and tag (1.1)
+
+docker images                     View list of images built
 
 docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
 ```
