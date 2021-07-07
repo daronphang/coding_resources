@@ -13,10 +13,13 @@ su <user>                   ctrl+D to logout of su
 sudo apt update             Updates packages but does not install them
 sudo apt upgrade
 
+pwd                         Present working directory
+whoami
+
 ifconfig                    Show network interface such as IP address
 curl ifconfig.me
 ip address show
-whoami
+
 speedtest.cli               Network test
 
 sudo dkms status            Get drivers from dynamic kernel module support
