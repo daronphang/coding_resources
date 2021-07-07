@@ -49,11 +49,11 @@ docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_pro
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
 RUN           Default is run in shell /bin/sh -c; need to change on Windows
-ARG           Instructions support variables, referenced with ${variable_name}, may precede FROM
+ARG           Instructions support variables, referenced with ${var} or $var, may precede FROM
 CMD           Runs after container is created
 LABEL         Adds metadata to an image, key-value pair
 EXPOSE        Assumes TCP by default; informs Docker that container listens on specified network ports at runtime
-ENV           Environment variables, key-value pairs, noted with ${var} or $var
+ENV           Environment variables, key-value pairs
 ADD           Copies new files, directories or URLs from <src> and adds them to filesystem of image at path <dest>
 ENTRYPOINT    Allows to configure container that will run as an executable
 VOLUME        Creates a mount point and marks it as holding externally mounted volumes
@@ -62,6 +62,8 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 # Best practices:
 -WORKDIR should always use absolute paths.
+-ENV persists when container starts running and can be viewed using docker inspect, changed using docker run --env <key>=<value>.
+-ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
 -Use ARG for build-time customization as ENV will persist when a container starts running.
 -Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
 -CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container.
@@ -88,11 +90,13 @@ COPY . .
 CMD ["flask", "run"]                                
 ```
 ```
-# Windows/Linux:
 ARG PYTHON_VERSION=3.7
 FROM python:3.7-alpine
-COPY . /home/user/Documents/test_docker/testing         # copies all files in cwd to container directory
-WORKDIR /home/user/Documents/test_docker/testing       
+ARG PATH=c:/Users/daronphang/my_assistant/container
+
+COPY . ${PATH}                                      # copies all files in cwd to container directory
+WORKDIR ${PATH}
+RUN apk add python-pip                              # apk for alpine, apt for ubuntu
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 CMD ["python", "test.py"]
