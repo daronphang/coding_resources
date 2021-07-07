@@ -1,0 +1,12 @@
+ARG PYTHON_VERSION=3.7
+FROM python:${PYTHON_VERSION}-alpine
+ENV PATH=C:\\Users\\daronphang\\my_assistant\\docker_container
+WORKDIR $PATH
+COPY . $PATH
+# RUN pip install --upgrade pip
+# RUN ["cmd", "/S", "/C", "pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
+RUN apk update && apk add python-pip
+RUN pip install --no-cache-dir -r requirements.txt
+# --no-cache-dir --trusted-host pypi.org --trusted-host files.pythonhosted.org --proxy proxy-web.micron.com:80
+EXPOSE 8080
+CMD ["python", "authentication_test_api.py"]
