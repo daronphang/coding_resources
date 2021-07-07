@@ -22,6 +22,7 @@ docker stop $(docker ps -a -q)              Stop all containers
 docker rm [container name]                  Delete specific container
 docker rm $(docker ps -a -q)                Delete all containers
 docker logs [container name]
+docker system prune --all                   Delete all images/containers/volumes
 watch docker service ls                     Runs command repeatedly
 
 docker run -e HTTP_PROXY="http://example.com:80" hello-world
