@@ -28,7 +28,7 @@ docker run -e HTTP_PROXY="http://example.com:80" hello-world
 ```
 
 ## Docker Proxy:
-Need to configure proxy for docker engine and container. For engine, need to set HTTP_PROXY, HTTPS_PROXY and NO_PROXY in docker engine settings. To propagate proxy settings to containers, need to set using env variables.
+Need to configure proxy for docker engine and container. For Windows, need to set HTTP_PROXY, HTTPS_PROXY and NO_PROXY in docker engine settings. To propagate proxy settings to containers, need to set using env variables.
 
 ```
 docker run \
