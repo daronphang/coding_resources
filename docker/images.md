@@ -9,26 +9,35 @@ docker pull nginx1.11
 ```
 
 ## Building Images:
-Order is critical. Keep things that do not change at top.
+Order is critical. Keep things that do not change at top. Can add .dockerignore file. 
+
+### Parser Directives:
+Must be at top of dockerfile. Affects the way in which subsequent lines are handled and do not add layers to build. Can only be used once. supports syntax and escape.
+
+```
+Escape: \ or `
+
+#directive=value1
+
+FROM imageName
+```
 
 ## Instructions for Dockerfile:
 ```
 docker build .                    Builds an image from a dockerfile and context; run by Docker daemon and not CLI
 docker build -f path/to/file
 docker build -t test/myapp        Specify repo and tag at which to save new image if build succeeds
-
 ```
-
 
 ```
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest>
 RUN           Two forms, <command> and ["executable", "param1", "param2"]
-ARG           Instructions support variables, referenced with ${variable_name}
+ARG           Instructions support variables, referenced with ${variable_name}, may precede FROM
 CMD           Runs after container is created
 LABEL         Adds metadata to an image, key-value pair
 EXPOSE        Assumes TCP by default; informs Docker that container listens on specified network ports at runtime
-ENV           Environment variables, key-value pairs
+ENV           Environment variables, key-value pairs, noted with ${var} or $var
 ADD           Copies new files, directories or URLs from <src> and adds them to filesystem of image at path <dest>
 ENTRYPOINT    Allows to configure container that will run as an executable
 VOLUME        Creates a mount point and marks it as holding externally mounted volumes
@@ -39,7 +48,8 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 ## Dockerfile example:
 ```
 # syntax=docker/dockerfile:1
-FROM python:3.7-alpine                              
+ARG  CODE_VERSION=3.7
+FROM python:${CODE_VERSION}-alpine                              
 WORKDIR /code
 LABEL "com.example.vendor"="ACME Incorporated"
 ENV FLASK_APP=app.py
