@@ -4,6 +4,21 @@ A container consists of an entire runtime environment: an application, plus all 
 Processes that run inside host OS and are not mini-VMs. Though VMs provide full process isolation, comes at computational overhead cost to virtualize. Containers provide most of isolation of VMs at fraction of computing power. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80. To make port available to outside services, need to use -p flag.
 
 ```
+docker container run --publish 8080:80 --detach <specify_name> nginx
+docker container run -d --name nginx1 nginx
+docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
+
+1. Downloaded image 'nginx' from Docker Hub (if cannot find image locally).
+2. Started a new container from that image.
+3. Opened port 8080 on host IP (exposing host port).
+4. Routes that traffic to container IP, port 80 (exposing container port).
+5. Detach is to run server in background, gives unique container ID.
+
+// to access, use curl or through browser with host IP + :8080
+```
+
+
+```
 docker run hello-world                  For testing
 docker pull nginx   
 
@@ -33,19 +48,6 @@ docker container start -ai
 - Docker's default image 'registry/repository' is called Docker Hub.
 - Container is a single read/write layer on top of image.
 
-```
-docker container run --publish 8080:80 --detach <specify_name> nginx
-docker container run -d --name nginx1 nginx
-docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
-
-1. Downloaded image 'nginx' from Docker Hub (if cannot find image locally).
-2. Started a new container from that image.
-3. Opened port 8080 on host IP (exposing host port).
-4. Routes that traffic to container IP, port 80 (exposing container port).
-5. Detach is to run server in background, gives unique container ID.
-
-// to access, use curl or through browser with host IP + :8080
-```
 
 ## Linux Distributions for Container Images:
 Alpine, Ubuntu.
