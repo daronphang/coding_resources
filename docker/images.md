@@ -46,7 +46,7 @@ docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_pro
 ```
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
-RUN           Two forms, <command> and ["executable", "param1", "param2"]
+RUN           Default is run in shell /bin/sh -c; need to change on Windows
 ARG           Instructions support variables, referenced with ${variable_name}, may precede FROM
 CMD           Runs after container is created
 LABEL         Adds metadata to an image, key-value pair
@@ -77,9 +77,9 @@ WORKDIR /code
 LABEL "com.example.vendor"="ACME Incorporated"
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
+RUN apk add --no-cache gcc musl-dev linux-headers   
 COPY requirements.txt requirements.txt             
-RUN pip install -r requirements.txt                 
+RUN pip install -r requirements.txt                 # RUN ["cmd", "/S", "/C"] for Windows
 EXPOSE 5000
 COPY . .
 CMD ["flask", "run"]                                
