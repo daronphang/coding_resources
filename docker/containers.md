@@ -4,6 +4,9 @@ A container consists of an entire runtime environment: an application, plus all 
 Processes that run inside host OS and are not mini-VMs. Though VMs provide full process isolation, comes at computational overhead cost to virtualize. Containers provide most of isolation of VMs at fraction of computing power. Containers can be listening on same port without conflicts if they are published on different host ports i.e. 80:80 or 8080:80. To make port available to outside services, need to use -p flag.
 
 ```
+docker run hello-world                  For testing
+docker pull nginx   
+
 docker container start                  Start an existing stopped one
 docker container stop 690               Type in first few digits of UID
 docker container ls -a
