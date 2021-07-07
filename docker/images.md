@@ -45,7 +45,9 @@ USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 # Tips:
-Use ARG for build-time customization as ENV will persist when a container starts running
+-Use ARG for build-time customization as ENV will persist when a container starts running
+-Dockerfile should have either CMD or ENTRYPOINT commands
+-CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container
 ```
 
 ## Dockerfile example:
