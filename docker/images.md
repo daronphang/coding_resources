@@ -88,6 +88,7 @@ COPY . .
 CMD ["flask", "run"]                                
 ```
 ```
+# Windows/Linux:
 ARG PYTHON_VERSION=3.7
 FROM python:3.7-alpine
 COPY . /home/user/Documents/test_docker/testing         # copies all files in cwd to container directory
