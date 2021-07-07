@@ -13,10 +13,18 @@ Order is critical. Keep things that do not change at top.
 
 ## Instructions for Dockerfile:
 ```
-ARG           Instructions support variables, referenced with ${variable_name}
-FROM          Sets base image
+docker build .                    Builds an image from a dockerfile and context; run by Docker daemon and not CLI
+docker build -f path/to/file
+docker build -t test/myapp        Specify repo and tag at which to save new image if build succeeds
+
+```
+
+
+```
+FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest>
 RUN           Two forms, <command> and ["executable", "param1", "param2"]
+ARG           Instructions support variables, referenced with ${variable_name}
 CMD           Runs after container is created
 LABEL         Adds metadata to an image, key-value pair
 EXPOSE        Assumes TCP by default; informs Docker that container listens on specified network ports at runtime
