@@ -43,6 +43,10 @@ ENTRYPOINT    Allows to configure container that will run as an executable
 VOLUME        Creates a mount point and marks it as holding externally mounted volumes
 USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
+
+# Tips:
+Use ARG for build-time customization as ENV will persist when a container starts running
+
 ```
 
 ## Dockerfile example:
