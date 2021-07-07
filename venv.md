@@ -13,7 +13,7 @@ deactivate                  #venv\Scripts\deactivate
 ## Requirements.txt:
 A text file containing the venv packages and versions required to run the Python program. 
 ```
-pip freeze > requirements.txt
+pip freeze > requirements.txt         Create txt file
 pip install -r requirements.txt 
 ```
 ## Common Mistakes:
