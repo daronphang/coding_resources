@@ -27,6 +27,18 @@ watch docker service ls                     Runs command repeatedly
 docker run -e HTTP_PROXY="http://example.com:80" hello-world
 ```
 
+## Docker Proxy:
+Need to configure proxy for docker engine and container. For engine, need to set HTTP_PROXY, HTTPS_PROXY and NO_PROXY. To propagate proxy settings to containers, need to set using env variables.
+
+```
+docker run \
+    --env http_proxy="http://my.proxy.com:3128" \
+    --env https_proxy="http://my.proxy.com:3128" \
+    nginx sh -c "curl google.com"
+```
+
+
+
 ## File Directory:
 Ensure codes that are going to be used inside containers are placed in /Users.
 
