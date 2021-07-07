@@ -14,6 +14,7 @@ COPY . /var/www/html
 
 ```
 docker build -t html-server-image:v1
+docker build -f /path/to/file
 ```
 
 5. Run docker container.
