@@ -51,6 +51,7 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 -CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container
 -Don't install unnecessary packages
 -COPY is preferred over ADD as it is more transparent 
+-Don't need virtualenv as Docker achieves the same isolation
 ```
 
 ## Dockerfile example:
