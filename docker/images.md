@@ -46,7 +46,6 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 # Tips:
 Use ARG for build-time customization as ENV will persist when a container starts running
-
 ```
 
 ## Dockerfile example:
