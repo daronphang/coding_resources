@@ -31,7 +31,7 @@ docker build -t test/myapp        Specify repo and tag at which to save new imag
 
 ```
 FROM          Sets base/parent image (must start with FROM)
-COPY          Copies files from <src> to path <dest>
+COPY          Copies files from <src> to path <dest>, can be file or folder name
 RUN           Two forms, <command> and ["executable", "param1", "param2"]
 ARG           Instructions support variables, referenced with ${variable_name}, may precede FROM
 CMD           Runs after container is created
