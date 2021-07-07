@@ -48,6 +48,9 @@ docker container start -ai
 - Docker's default image 'registry/repository' is called Docker Hub.
 - Container is a single read/write layer on top of image.
 
+## Exposing vs Publishing Ports:
+- EXPOSE is for documentation purposes in docker build; doesn't actually map or open any ports.
+- Publish flag makes container port available to outside world and maps container port to host port.
 
 ## Linux Distributions for Container Images:
 Alpine, Ubuntu.
