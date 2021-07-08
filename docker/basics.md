@@ -10,16 +10,7 @@ only shares resources of host machine in order to run its environments (does not
 docker --help
 docker version
 docker info
-docker top moongo
-ps aux | grep mongo                         Grep is a filtering tool
 
-
-docker ps -a                                List all existing containers (process status), same as ls
-docker container stop <container_name>      Stop container
-docker stop $(docker ps -a -q)              Stop all containers
-docker rm [container name]                  Delete specific container
-docker rm $(docker ps -a -q)                Delete all containers
-docker logs [container name]
 docker system prune --all                   Delete all images/containers/volumes
 watch docker service ls                     Runs command repeatedly
 
