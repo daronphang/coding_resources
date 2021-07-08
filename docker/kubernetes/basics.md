@@ -48,6 +48,13 @@ kubectl describe pod/my-nginx                     Similar to docker inspect
 kubectl scale deploy/my-nginx --replicas 2        deploy/ same as deployment
 ```
 
-### Abstraction Layers:
+## Abstraction Layers:
 When kubectl create, it creates the Deployment controller -> Replicaset -> Pod. Replicaset is to ensure two pods are running with identical template. Deployment's job is to manage the Replicaset configuration.
 
+## Generators:
+Helper templates for Run, Create and Expose commands. Every resource has a specification. Shows the output generated with that command.
+
+```
+kubectl create deployment sample --image nginx --dry-run -o yaml
+kubectl create job test --image nginx --dry-run -o yaml
+```
