@@ -6,6 +6,11 @@ Number used to uniquely identify a transaction over a network. Default for TCP p
 49152-655536    Dynamic or private ports
 ```
 
+## IP Address:
+```
+127.0.0.1:<host port>         localhost
+```
+
 ## Secure Socket Shell (SSH):
 Network protocol that gives users a secure way to access a computer over an unsecured network. Provides strong password authentication and public key authentication, including encrypted data communications between computers connecting over an open network. Standard for strong authentication.
 
