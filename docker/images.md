@@ -23,7 +23,7 @@ export COMPOSE_DOCKER_CLI_BUILD=0
 "buildkit": false         Found in docker engine settings
 ```
 
-### Parser Directives:
+## Parser Directives:
 Must be at top of dockerfile. Affects the way in which subsequent lines are handled and do not add layers to build. Can only be used once. supports syntax and escape.
 
 ```
@@ -61,7 +61,9 @@ VOLUME        Creates a mount point and marks it as holding externally mounted v
 USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
-# Best practices:
+```
+
+## Best Practices:
 -WORKDIR should always use absolute paths.
 -ENV persists when container starts running and can be viewed using docker inspect, changed using docker run --env <key>=<value>.
 -ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
@@ -72,7 +74,6 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 -COPY is preferred over ADD as it is more transparent .
 -Don't need virtualenv as Docker achieves the same isolation.
 -For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
-```
 
 ## Dockerfile example:
 ```
