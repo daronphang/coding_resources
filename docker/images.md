@@ -12,6 +12,17 @@ docker pull nginx1.11
 Order is critical. Keep things that do not change at top. Can add .dockerignore file. Need to disable builtkit if have error.
 
 ```
+docker build .                    Builds an image from a dockerfile and context; run by Docker daemon and not CLI
+docker build -f path/to/file
+docker build -t test-image:1.1    Specify repo (test-image) and tag (1.1)
+
+docker images                     View list of images built
+docker container run --name test_name -p 8080:80 -d test-image:1.1
+
+docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
+```
+
+```
 # error
 failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token
 
@@ -35,16 +46,6 @@ FROM imageName
 ```
 
 ## Instructions for Dockerfile:
-```
-docker build .                    Builds an image from a dockerfile and context; run by Docker daemon and not CLI
-docker build -f path/to/file
-docker build -t test-image:1.1    Specify repo (test-image) and tag (1.1)
-
-docker images                     View list of images built
-docker container run --name test_name -p 8080:80 -d test-image:1.1
-
-docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
-```
 
 ```
 FROM          Sets base/parent image (must start with FROM)
