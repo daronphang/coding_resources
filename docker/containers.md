@@ -19,16 +19,17 @@ docker container run -d --name mysql -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql
 
 
 ```
-docker run hello-world                  For testing
-docker pull nginx   
+docker run hello-world                    For testing 
 
-docker container start                  Start an existing stopped one
-docker container stop 690               Type in first few digits of UID
+docker container run --rm <image>         Run and remove upon exit
+docker container start                    Start an existing stopped one
+docker container stop 690                 Type in first few digits of UID
 docker container ls -a
-docker container logs specify_name
-docker container rm -f specify_name     Force stop and remove container
+docker container logs <ID_or_name>
+docker container rm <ID_or_name>
+docker container rm -f <ID_or_name>       Force stop and remove container
+docker container rm $(docker ls -a -q)
 
-docker container <some command> --help
 docker container top          Process list in one container
 docker container inspect      Details of one container config
 docker container stats        Performance stats for all containers
@@ -80,7 +81,4 @@ docker network connect/disconnect     Connect an existing container to new netwo
 ```
 ## DNS:
 Static IP's for talking to containers is an anti-pattern and avoid it. Use DNS naming (host name). Docker daemon has built-in DNS server that containers use by default.
-
-## Persistent Data:
-Containers are usually immutable (to change, only re-deploy). However, databases are not, and Docker gives features to ensure 'separation of concerns'. Two ways to solve it: Volumes and Bind Mounts that will outlive the executable. Volumes make special location outside of container Union File System. Bind Mounts link container path to host path i.e. maps files from host directory into a directory in the container.
 
