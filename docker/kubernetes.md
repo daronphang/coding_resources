@@ -32,10 +32,18 @@ kubectl run my-nginx --image nginx                Pod creation (v1.18 and above)
 kubectl create deployment nginx --image nginx     Creates Deployment
 kubectl create                                    Create resources via CLI or YAML
 kubectl apply                                     Create/update anything via YAML
-kubectl delete deployment my-nginx
-kubectl get pods/all
 
-kubectl scale deploy/my-nginx --replicas 2        deploy/ same as deployment 
+kubectl delete deployment my-nginx
+kubectl delete pod/my-nginx-544232
+
+kubectl get pods/all
+kubectl get pods -w                               Refreshes every few seconds
+
+kubectrl logs deployment/my-nginx --follow --tail 1
+kubectl logs -l run-my-nginx                      Label command
+kubectl describe pod/my-nginx                     Similar to docker inspect
+
+kubectl scale deploy/my-nginx --replicas 2        deploy/ same as deployment
 ```
 
 ### Abstraction Layers:
