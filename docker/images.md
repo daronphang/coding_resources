@@ -64,16 +64,16 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 ```
 
 ## Best Practices:
--WORKDIR should always use absolute paths.
--ENV persists when container starts running and can be viewed using docker inspect, changed using docker run --env <key>=<value>.
--ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
--Use ARG for build-time customization as ENV will persist when a container starts running.
--Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
--CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container.
--Don't install unnecessary packages.
--COPY is preferred over ADD as it is more transparent .
--Don't need virtualenv as Docker achieves the same isolation.
--For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
+- WORKDIR should always use absolute paths.
+- ENV persists when container starts running and can be viewed using docker inspect, changed using docker run --env <key>=<value>.
+- ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
+- Use ARG for build-time customization as ENV will persist when a container starts running.
+- Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
+- CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container.
+- Don't install unnecessary packages.
+- COPY is preferred over ADD as it is more transparent.
+- Don't need virtualenv as Docker achieves the same isolation.
+- For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
 
 ## Dockerfile example:
 ```
