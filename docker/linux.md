@@ -28,6 +28,12 @@ echo hello world
 x=10
 echo value of ix = $x
 
+# cat: concatenate command to create single/multiple files, view files
+cat testfile testfile1        Outputs contents of both files
+cat /etc/file1
+cat >test2                    Creates a file
+cat -n song.txt               Displays line numbers of file
+
 
 
 
