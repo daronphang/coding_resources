@@ -45,3 +45,11 @@ curl localhost:32334
 kubectl delete service/httpenv service/httpenv-np
 kubectl delete service/httpenv-lb deployment/httpenv
 ```
+
+## Namespaces:
+When using hostname to access services, only works for services in same Namespace. 
+
+```
+kubectl get namespaces
+curl <hostname>.<namespace>.svc.cluster.local
+```
