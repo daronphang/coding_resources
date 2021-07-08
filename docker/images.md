@@ -39,9 +39,7 @@ Must be at top of dockerfile. Affects the way in which subsequent lines are hand
 
 ```
 Escape: \ or `
-
 #directive=value1
-
 FROM imageName
 ```
 
