@@ -41,6 +41,7 @@ docker build -f path/to/file
 docker build -t test-image:1.1    Specify repo (test-image) and tag (1.1)
 
 docker images                     View list of images built
+docker container run --name test_name -p 8080:80 -d test-image:1.1
 
 docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
 ```
