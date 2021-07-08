@@ -20,6 +20,11 @@ docker node update --role manager node2
 docker swarm join <SSH key & IP>      Add to other worker nodes to join to swarm
 docker swarm join-token manager       Add response to other worker nodes to make them manager by default
 ```
+
+## RAFT Protocol:
+Requires odd number of nodes.
+
+
 ## Overlay Multi-Host Networking:
 Creates a Swarm-wide bridge network where containers across hosts on the same virtual network can access each other. For intra-swarm communication. All nodes will have access to virtual IP that is mapped to the DNS name of the service. Has built-in load balancer that will distribute incoming network connections evenly.
 ```
