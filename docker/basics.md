@@ -12,12 +12,10 @@ docker version
 docker info
 docker top moongo
 ps aux | grep mongo                         Grep is a filtering tool
-docker                                      Shows list of commands
-docker image 1s                             List images
-docker image rm [image name]                Delete a specific image
-docker image rm $(docker images -a -q)      Delete existing images
+
+
 docker ps -a                                List all existing containers (process status), same as ls
-docker stop [container name]                Stop container
+docker container stop <container_name>      Stop container
 docker stop $(docker ps -a -q)              Stop all containers
 docker rm [container name]                  Delete specific container
 docker rm $(docker ps -a -q)                Delete all containers
