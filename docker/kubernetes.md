@@ -33,8 +33,9 @@ kubectl create deployment nginx --image nginx     Creates Deployment
 kubectl create                                    Create resources via CLI or YAML
 kubectl apply                                     Create/update anything via YAML
 kubectl delete deployment my-nginx
-
 kubectl get pods/all
+
+kubectl scale deploy/my-nginx --replicas 2        deploy/ same as deployment 
 ```
 
 ### Abstraction Layers:
