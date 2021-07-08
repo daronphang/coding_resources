@@ -5,7 +5,7 @@ Terms:
 - Kubectl: CLI used to configure Kubernetes.
 - Node: Single server in the Kubernetes cluster.
 - Kubelet: Kubernetes agent running on nodes.
-- Control Plane: Set of containers that manage the cluster
+- Control Plane: Set of containers that manage the cluster including API server, scheduler, controller manager, etcd, and more.
 
 ## Distributions:
 Cloud or self-managed including Docker Enterprise, Rancher, OpenShift, Canonical, VMWare PKS.
