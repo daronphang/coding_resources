@@ -75,7 +75,7 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 - For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
 
 ## Running Flask App:
-Example of Flask setup needed. To view page, enter localhost:8000 in browser.
+Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser.
 ```python
 # need specify host and port (optional, default is 5000)
 # 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
