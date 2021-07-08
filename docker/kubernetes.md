@@ -6,6 +6,8 @@ Container orchestration platform that takes a series of nodes and decides how to
 - Node: Single server in the Kubernetes cluster.
 - Kubelet: Kubernetes agent running on nodes.
 - Control Plane: Set of containers that manage the cluster including API server, scheduler, controller manager, etcd, and more.
+- Pod: One or more containers running together on one node.
+- Controller: Creating/updating pods and other objects.
 
 ### Master configuration setup:
 - etcd: Distributed storage system for key values similar to Swarm's RAFT algorithm.
