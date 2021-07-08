@@ -65,7 +65,7 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 ## Best Practices:
 - WORKDIR should always use absolute paths.
-- ENV persists when container starts running; viewed using docker inspect, changed using docker run --env <key>=<value>.
+- ENV persists when container starts running; viewed using docker inspect, changed using docker run --env key=value.
 - ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
 - Use ARG for build-time customization as ENV will persist when a container starts running.
 - Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
