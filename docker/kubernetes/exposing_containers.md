@@ -7,10 +7,10 @@ Default service type. Single, internal virtual IP allocated. Only reachable from
 ### NodePort:
 High port allocated on each node. Port is open on every node's IP. Anyone can connect.
 
-## LoadBalancer:
+### LoadBalancer:
 Controls a loadbalancer endpoint external to cluster. Only available when infrastructure/cloud provider gives LB. Creates NodePort+ClusterIP services.
 
-## ExternalName:
+### ExternalName:
 Adds CNAME DNS record to CoreDNS only. Not used for pods but for giving pods a DNS name to use outside Kubernetes.  
 
 ```
