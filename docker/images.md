@@ -6,6 +6,12 @@ For containers using the same image, they are stacked ontop of same image i.e. i
 ```
 docker pull nginx                   Download latest version
 docker pull nginx1.11
+
+docker images -a                            List images
+docker image rm <image_name>                Delete a specific image
+docker rmi $(docker images -a -q)           Delete all images
+docker images -f dangling=true              Filters images that have no relationship with tagged images
+docker images -a |  grep "pattern"
 ```
 
 ## Building Images:
