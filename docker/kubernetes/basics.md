@@ -1,7 +1,7 @@
 ## Basics:
 Container orchestration platform that takes a series of nodes and decides how to run container workloads across nodes. Runs on top of Docker. Set of APIs that run on apps in containers to manage a set of servers and then execute containers on Docker. Provides API/CLI to manage containers across servers. Control plane consists of Masters and Nodes.
 
-Comes unopinionated i.e. don't have to adopt a particular workflow to make something work. Have Imperative and Declarative approach.
+Comes unopinionated i.e. don't have to adopt a particular workflow to make something work. Have Imperative, Declarative and Three Management Approaches.
 
 ### Terms:
 - Kubectl: CLI used to configure Kubernetes.
@@ -58,3 +58,8 @@ Helper templates for Run, Create and Expose commands. Every resource has a speci
 kubectl create deployment sample --image nginx --dry-run -o yaml
 kubectl create job test --image nginx --dry-run -o yaml
 ```
+
+## Imperative vs Declarative:
+- Imperative refers to how a program opereates, Declarative focuses on what it should accomplish (end state).
+- RUN, CREATE, UPDATE are Imperative.
+- APPLY is Declarative; requires understanding of YAML keys and values and easiest to automate.
