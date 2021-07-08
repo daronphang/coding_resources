@@ -1,7 +1,7 @@
 ## Basics:
 Container orchestration platform that takes a series of nodes and decides how to run container workloads across nodes. Runs on top of Docker. Set of APIs that run on apps in containers to manage a set of servers and then execute containers on Docker. Provides API/CLI to manage containers across servers. Control plane consists of Masters and Nodes.
 
-Comes unopinionated i.e. don't have to adopt a particular workflow to make something work. Have Imperative, Declarative and Three Management Approaches.
+Comes unopinionated i.e. don't have to adopt a particular workflow to make something work. Have Imperative and Declarative.
 
 ### Terms:
 - Kubectl: CLI used to configure Kubernetes.
@@ -32,7 +32,8 @@ Cloud or self-managed including Docker Enterprise, Rancher, OpenShift, Canonical
 ```
 kubectl run my-nginx --image nginx                Pod creation (v1.18 and above)
 kubectl create deployment nginx --image nginx     Creates Deployment
-kubectl create                                    Create resources via CLI or YAML
+kubectl create -f file.yml                        Create resources via CLI or YAML
+kubectl replace -f file.yml
 kubectl apply                                     Create/update anything via YAML
 
 kubectl delete deployment my-nginx
@@ -62,4 +63,6 @@ kubectl create job test --image nginx --dry-run -o yaml
 ## Imperative vs Declarative:
 - Imperative refers to how a program opereates, Declarative focuses on what it should accomplish (end state).
 - RUN, CREATE, UPDATE are Imperative.
+- -Middle ground is using Imperative objects such as create -f file.yml.
 - APPLY is Declarative; requires understanding of YAML keys and values and easiest to automate.
+- Overall, don't mix three approaches.
