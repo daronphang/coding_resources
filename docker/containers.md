@@ -52,6 +52,11 @@ docker container start -ai
 - EXPOSE is for documentation purposes in docker build; doesn't actually map or open any ports.
 - Publish flag makes container port available to outside world and maps container port to host port.
 
+```
+docker container run -p 80:5000 -d nginx
+docker container run -p 8000-9000:5000 -d nginx       Binds to randomly available port on host
+```
+
 ## Linux Distributions for Container Images:
 Alpine, Ubuntu.
 
