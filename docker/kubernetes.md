@@ -25,3 +25,18 @@ Container orchestration platform that takes a series of nodes and decides how to
 
 ## Distributions:
 Cloud or self-managed including Docker Enterprise, Rancher, OpenShift, Canonical, VMWare PKS.
+
+## CLI:
+```
+kubectl run my-nginx --image nginx                Pod creation (v1.18 and above)
+kubectl create deployment nginx --image nginx     Creates Deployment
+kubectl create                                    Create resources via CLI or YAML
+kubectl apply                                     Create/update anything via YAML
+kubectl delete deployment my-nginx
+
+kubectl get pods/all
+```
+
+### Abstraction Layers:
+When kubectl create, it creates the Deployment controller -> Replicaset -> Pod. Replicaset is to ensure two pods are running with identical template. Deployment's job is to manage the Replicaset configuration.
+
