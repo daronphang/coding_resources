@@ -8,6 +8,8 @@ Container orchestration platform that takes a series of nodes and decides how to
 - Control Plane: Set of containers that manage the cluster including API server, scheduler, controller manager, etcd, and more.
 - Pod: One or more containers running together on one node.
 - Controller: Creating/updating pods and other objects.
+- Service: Network endpoint to connect to a pod.
+- Namespace: Filtered group of objects in cluster. 
 
 ### Master configuration setup:
 - etcd: Distributed storage system for key values similar to Swarm's RAFT algorithm.
