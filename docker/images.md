@@ -76,6 +76,19 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 - Don't need virtualenv as Docker achieves the same isolation.
 - For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
 
+## Running Flask App:
+Example of Flask setup needed. To view page, enter localhost:8000 in browser.
+```python
+# need specify host and port (optional, default is 5000)
+# 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
+# localhost port inside docker container does not actually get exposed on host machine
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port=5555)  # port defined is container port
+```
+```
+docker container run -p 8000:5555 -d <image_name>
+```
+
 ## Dockerfile example:
 ```
 # syntax=docker/dockerfile:1
@@ -101,7 +114,7 @@ COPY . ${PATH}                                      # copies all files in cwd to
 WORKDIR ${PATH}
 RUN apk add python-pip                              # apk for alpine, apt for ubuntu
 RUN pip install --no-cache-dir -r requirements.txt
-EXPOSE 8080
+EXPOSE 8888                                         # for documentation only
 CMD ["python", "test.py"]
 ```
 
