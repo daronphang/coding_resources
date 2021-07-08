@@ -30,10 +30,10 @@ docker container rm <ID_or_name>
 docker container rm -f <ID_or_name>       Force stop and remove container
 docker container rm $(docker ls -a -q)
 
-docker container top          Process list in one container
-docker container inspect      Details of one container config
-docker container stats        Performance stats for all containers
-docker update                 Change resources for given container
+docker container top <name>                   Display running process of specified container
+docker container inspect <name>               Details of one container config
+docker container stats                        Performance stats for all containers
+docker container update <OPTIONS> <name>      Change resources for given container
 
 // get shell inside containers
 docker container run -it --name proxy nginx bash
