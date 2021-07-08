@@ -23,9 +23,13 @@ docker run hello-world                    For testing
 
 docker container run --rm <image>         Run and remove upon exit
 docker container start                    Start an existing stopped one
+
 docker container stop 690                 Type in first few digits of UID
+docker stop $(docker ps -a -q)            Stop all containers
+
 docker container ls -a
 docker container logs <ID_or_name>
+
 docker container rm <ID_or_name>
 docker container rm -f <ID_or_name>       Force stop and remove container
 docker container rm $(docker ls -a -q)
