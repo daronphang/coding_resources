@@ -70,4 +70,5 @@ kubectl create job test --image nginx --dry-run -o yaml
 ## Storage/Volume: 
 Orchestration was initially designed around containers being immutable; having storage/stateful workloads will add complexity to the system. StatefulSets is a new resource type that makes Pods more sticky. Volumes are tied to the lifecycle of a Pod; all containers in single Pod can share them. PersistentVolumes is created at cluster level and outlives a Pod. For third-party storage, Container Storage Interface (CSI) plugins are used to connect to them.
 
-
+## Ingress:
+None of Service types work at OSI Layer 7 (HTTP). For multiple sites sharing same ports i.e. 80, Ingress Controllers help to route outside connections based on hostname or URL to different containers. Vendors that make the controllers include Nginx, Traefik, HAProxy, F5, Envoy, Istio, etc. 
