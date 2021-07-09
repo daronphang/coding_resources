@@ -20,8 +20,8 @@ TCP/IP model is more concise framework than OSI model which consists of four lay
 4. Application: Combines Session, Presentation and Application from OSI.
 
 TCP/IP relatiosnhip can be analogized to client sending an email message in puzzle form:
-1. Puzzle is broken down into pieces.
-2. Each piece (packet) can travel through different route which may take longer than others.
+1. Puzzle is broken down into pieces (packets).
+2. Each packet can travel through different route which may take longer than others.
 3. When puzzle pieces arrive at destination, they may be out of order.
 4. IP ensures puzzle pieces arrive at their destination.
 5. TCP assembles puzzle on receiving side, asks for missing pieces to be resent, and informs sender that it has been received. 
