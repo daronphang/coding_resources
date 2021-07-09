@@ -24,9 +24,11 @@ speedtest.cli               Network test
 
 sudo dkms status            Get drivers from dynamic kernel module support
 
+# echo
+echo [option] [string]      Display text that are passed as an argument
 echo hello world
 x=10
-echo value of ix = $x
+echo value of x = $x
 
 # cat: concatenate command to create single/multiple files, view files
 cat testfile testfile1        Outputs contents of both files
