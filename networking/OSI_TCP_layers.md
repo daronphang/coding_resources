@@ -6,7 +6,7 @@ Communication protocols are built using layers in OSI model stack. Each layer ha
 4. Transport (TCP, UDP, port numbers): Coordinates data transfer between system and hosts with error-checking and data recovery.
 5. Session (Syn/ack): Establishes and terminates connections between devices and determines which packets belong to text/image.
 6. Presentation (encryption, ASCII, PNG, MIDI): Converts data to and from Application layer (app format to network format).
-7. Application (SNMP, HTTP, FTP): What user interacts with.
+7. Application (SNMP, HTTP, FTP): What user interacts with such as web browser or Outlook.
 
 ## TCP/IP:
 Suite of communication protocols (stateless) used to interconnect network devices on the internet/intranet. Specifies how data is exchanged by providing end-to-end communications that identify how it should be broken into packets, addressed, transmitted, routed and recived at destination. TCP/IP also includes HTTP, HTTPS and FTP (File Transfer Protocol). 
