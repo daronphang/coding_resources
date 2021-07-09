@@ -66,7 +66,7 @@ docker container run -p 8000-9000:5000 -d nginx       Binds to randomly availabl
 Alpine, Ubuntu.
 
 ## Network:
-Each container is connected to a private virtual network called 'bridge'. Each virtual network routes through NAT firewall on host IP. All containers on a virtual network can talk to each other without -p. Each app with frontend/backend should sit on the same network. Can attach containers to more than one virtual network.
+Each container is connected to a private virtual network called 'bridge' (default network driver). Each virtual network routes through NAT firewall on host IP. All containers on a virtual network can talk to each other without -p. Each app with frontend/backend should sit on the same network. Can attach containers to more than one virtual network.
 
 Terminologies:
 - Network Driver: Built-in or third-party extensions that give virtual network features.
