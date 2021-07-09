@@ -1,13 +1,19 @@
 ## YAML:
 Each file can contain more than one manifest. Each manifest describes an API object (deployment, job, secret) and requires four parts:
 1) apiVersion
-2) knd
+2) kind
 3) metadata
 4) spec
 
 ```
 kubectl apply -f filename.yml           Create/update resources in a file
 kubectl apply -f myyaml/                Create/update whole directory of yaml
+
+kubectl api-resources
+kubectl api-versions
+kubectl explain services --recursive    Get keys each API version supports
+kubectl explain services.spec           Get subkeys of spec
+kubectl explain services.spec.type      Drilling down to type key with values of ClusterIP, NodePort etc.
 ```
 
 ```
@@ -22,7 +28,7 @@ metadata:
         app: nginx
     replicas: 2
     template:
-      metadata:
+      metadata:                         kubectl explain deployment.spec.template.metadata
         labels:
           app: nginx:
       spec:
