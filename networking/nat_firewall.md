@@ -17,3 +17,6 @@ Router is assigned with single public IP address that is visible; devices connec
 3) Data packets reach web server and get necessary information.
 4) Information travels back to router which uses its NAT forwarding table to determine which device requested it.
 5) NAT changes the data packet's public IP to its previous private IP and information is sent to requested device. 
+
+## VPN:
+VPN connects devices from all over the world to a remote server with a public-facing IP address and provides encryption. Can also bypass Webmaster restrictions whererby users can connect to a remote IP that corresponds to a location where the service is not restricted. 
