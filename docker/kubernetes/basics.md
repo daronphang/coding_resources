@@ -66,3 +66,8 @@ kubectl create job test --image nginx --dry-run -o yaml
 - -Middle ground is using Imperative objects such as create -f file.yml.
 - APPLY is Declarative; requires understanding of YAML keys and values and easiest to automate.
 - Overall, don't mix three approaches.
+
+## Storage/Volume: 
+Orchestration was initially designed around containers being immutable; having storage/stateful workloads will add complexity to the system. StatefulSets is a new resource type that makes Pods more sticky. Volumes are tied to the lifecycle of a Pod; all containers in single Pod can share them. PersistentVolumes is created at cluster level and outlives a Pod. For third-party storage, CSI plugins are used to connect to them.
+
+
