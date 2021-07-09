@@ -27,7 +27,7 @@ Consensus is a fundamental problem in fault-tolerant distributed systems involvi
 Manager nodes implement this algorithm to manage global cluster state to ensure all Managers are storing the same consistent state. Having same consistent state across cluster means in failure, any Manager node can pick up tasks and restore services to stable state. 
 
 ## Overlay Multi-Host Networking:
-Creates a Swarm-wide bridge network where containers across hosts on the same virtual network can access each other. For intra-swarm communication. All nodes will have access to virtual IP that is mapped to the DNS name of the service. Has built-in load balancer that will distribute incoming network connections evenly.
+Default network driver for Swarm. Creates a Swarm-wide bridge network where containers across hosts on the same virtual network can access each other. For intra-swarm communication. All nodes will have access to virtual IP that is mapped to the DNS name of the service. Has built-in load balancer that will distribute incoming network connections evenly.
 ```
 --driver overlay      
 docker network create --driver overlay mydrupal
