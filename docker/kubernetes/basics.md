@@ -72,3 +72,6 @@ Orchestration was initially designed around containers being immutable; having s
 
 ## Ingress:
 None of Service types work at OSI Layer 7 (HTTP). For multiple sites sharing same ports i.e. 80, Ingress Controllers help to route outside connections based on hostname or URL to different containers. Vendors that make the controllers include Nginx, Traefik, HAProxy, F5, Envoy, Istio, etc. 
+
+## Higher Deployment Abstractions:
+Helm is the de facto that everyone looks to for creating templates and using templating YAML standards for deploying third-party apps. However, there are over 60 third-party tools to do this. For Docker, can use compose yaml to deploy on Kubernetes. 
