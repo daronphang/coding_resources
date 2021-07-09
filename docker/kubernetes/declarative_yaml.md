@@ -8,7 +8,6 @@ Each file can contain more than one manifest. Each manifest describes an API obj
 ```
 kubectl apply -f filename.yml           Create/update resources in a file
 kubectl apply -f myyaml/                Create/update whole directory of yaml
-
 ```
 
 ```
@@ -32,4 +31,6 @@ metadata:
           image: nginx:1.17.3
           ports:
             containerPort: 80
+---                                         # separation between manifests
+apiVersion: apps/v2
 ```
