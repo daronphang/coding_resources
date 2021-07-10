@@ -13,7 +13,7 @@ G, gg                   Move end of file, beginning of file
 // can use in combination with above i.e. d$ will delete to end of line
 :i            Edit file content
 :w            Save
-:wq           Save and exist
+:wq           Save and exit
 :q            Exit
 d             Delete
 !             Force
