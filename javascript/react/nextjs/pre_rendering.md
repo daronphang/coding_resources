@@ -17,9 +17,12 @@ function Component = (props) => {
 // will not directly call functional component and return JSX as html content
 // function is to prepare props for html page
 // any code here will not get executed on client side (in build process)
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   // fetch data from API
   // state management can be placed here
+  
+  const paramsId = context.params.meetupId;
+  
   return {
     props: {
       meetups: DUMMY_MEETUPS
