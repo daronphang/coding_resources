@@ -19,13 +19,6 @@ Programming paradigm that relies on concept of classes and objects, structuring 
 - Abstraction focuses on what the object does whereas Encapsulation focuses on how the object does it.
 - Abstraction hides data at design level while Encapsulation at implementation level.
 
-### Example:
-Using OOP to design a car:
-- Inheritance: Create vehicle() class extended to cars(), trucks(), buses().
-- Encapsulation: Wrapping variables/methods such as engine, wheel, door, accelerate(), brake() in vehicle() class.
-- Abstraction: User wants to accelerate, stop and change gears of the vehicle. 
-- Polymorphism: How a vehicle is charged i.e. through gasoline, electricity, or CNG.
-
 ```
 // to.String() is an abstraction
 // how number is converted to string and initialized is encapsulation
@@ -33,7 +26,12 @@ int number = 5;
 string stringNumber = number.ToString();
 ```
 
-
+### Example:
+Using OOP to design a car:
+- Inheritance: Create vehicle() class extended to cars(), trucks(), buses().
+- Encapsulation: Wrapping variables/methods such as engine, wheel, door, accelerate(), brake() in vehicle() class.
+- Abstraction: User wants to accelerate, stop and change gears of the vehicle. 
+- Polymorphism: How a vehicle is charged i.e. through gasoline, electricity, or CNG.
 
 ## Python vs Javascript:
 - In Python, everything is an object (every entity has some metatdata and functionality accessible by dot notation).
