@@ -1,5 +1,5 @@
 ## Data Fetching for Pre-Rendering:
-Two forms of pre-rendering:
+Key functions built into Nextjs. Two forms of pre-rendering:
 1) Static Site Generation (SSG).
 2) Server-Side Rendering (SSR).
 
