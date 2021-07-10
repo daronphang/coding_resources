@@ -123,6 +123,19 @@ var expression = function() {
 ## Closures:
 Gives acesss to an outer function's scope from an inner function. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function).
 
+```javascript
+const secureBooking = function() {
+  let passCount = 0;
+  return function() {
+    passCount ++; 
+    console.log(`${passCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+booker();   // 1 passengers
+booker();   // 2 passengers
+```
 
 ## Cookies vs Session vs Local:
 - Cookies allow apps to store data in client's browser.
