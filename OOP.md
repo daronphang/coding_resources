@@ -13,11 +13,18 @@ Programming paradigm that relies on concept of classes and objects, structuring 
 - Hide Complexity.
 
 ### Encapsulation vs Abstraction:
-- Encapsulation is the process of wrapping data and functions into single unit i.e. classes wrapping method/property.
+- Encapsulation is the process of wrapping data and functions into single unit i.e. classes, methods.
 - Encapsulation requries defining fields as private or public. 
 - Abstraction refers to hiding implementation details/complexities and exposing functionality only.
 - Abstraction focuses on what the object does whereas Encapsulation focuses on how the object does it.
 - Abstraction hides data at design level while Encapsulation at implementation level.
+
+### Example:
+Using OOP to design a car:
+- Inheritance: Create vehicle() class extended to cars(), trucks(), buses().
+- Encapsulation: Wrapping variables/methods such as engine, wheel, door, accelerate(), brake() in vehicle() class.
+- Abstraction: User wants to accelerate, stop and change gears of the vehicle. 
+- Polymorphism: How a vehicle is charged i.e. through gasoline, electricity, or CNG.
 
 ```
 // to.String() is an abstraction
