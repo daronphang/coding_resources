@@ -123,25 +123,6 @@ var expression = function() {
 ## Closures:
 Gives acesss to an outer function's scope from an inner function. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function).
 
-## OOP: 
-Objects are linked to a prototype object. Prototype contains methods (behavior) that are accessible to all objects linked to that prototype. Prototype property allows new properties to be added to object constructors. Classes are introduced in ES6.
-
-```javascript
-const Person = function(firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-}
-
-Person.prototype.calcAge = () => {
-  console.log(2007-this.birthYear);
-}
-
-Person.prototype    // calcAge
-Object.prototype    // many methods inherited from Object class
-
-Person.prototype.nationality = "English";
-
-```
 
 ## Cookies vs Session vs Local:
 - Cookies allow apps to store data in client's browser.
