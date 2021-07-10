@@ -1,3 +1,25 @@
+## Parent to Child:
+Use props. Immutable and are used to pass data between components (parent to child only). 
+
+```javascript
+// parent component:
+const ParentComponent = () => {
+  ...
+  let value = 'hello world';
+  return (
+    <div>
+      <ChildComponent parentValue = {value} />
+    </div>
+  )
+}
+
+// child component:
+const ChildComponent = (props) => {
+  let message = this.props.parentValue
+}
+
+```
+
 ## Child to Parent:
 ```javascript
 // NewExpense.js (parent component)
