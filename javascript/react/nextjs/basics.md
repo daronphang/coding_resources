@@ -5,7 +5,22 @@ React fullstack framework for production. Key features and benefits:
 - Fullstack capabilities i.e. ability to add backend API code.
 
 ## Nested Paths:
-Need create new folders for nested paths i.e. /home/news/[newsId]. Dynamic routes are identified with [].
+Need create new folders for nested paths i.e. /home/news/[newsId]. Dynamic routes are identified with []. To extract the params, 
+
+```javascript
+import { useRouter } from 'next/router';
+
+function DetailPage() {
+  const router = useRouter();
+  const newsId = router.query.newsId;
+  
+  return <h1>The Detail Page</h1>
+}
+
+export default DetailPage;
+
+```
+
 ```
 -- pages
   |-- news
