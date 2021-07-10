@@ -10,7 +10,7 @@ Programming paradigm that relies on concept of classes and objects, structuring 
 ### Benefits of Encapsulation:
 - Added Security: Only public methods and attributes are accessible from outside.
 - Protection Against Mistakes: Developers don't accidentally change something that is private. 
-- Hide Complexity 
+- Hide Complexity.
 
 ### Encapsulation vs Abstraction:
 - Encapsulation is the process of wrapping data and functions into single unit i.e. classes wrapping method/property.
