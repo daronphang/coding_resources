@@ -28,3 +28,22 @@ export default DetailPage;
     |-- [newsId].js
   |-- index.js
 ```
+
+## Linking Between Pages:
+Use Link for SPA.
+
+```javascript
+import Link from 'next/link';
+
+function NewsPage(){
+  return (
+    <Fragment>
+      <ul>
+        <li>
+          <Link href='/news/etc'>Hello World Link</Link>
+        </li>
+      </ul>
+    </Fragment>
+  )
+}
+```
