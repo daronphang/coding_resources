@@ -7,12 +7,6 @@ cd my-app
 npm start
 ```
 
-
-
-## Props:
-Immutable and are used to pass data between components (parent to child only). 
-
-
 ## Uncontrolled/Stateless:
 Stateless/dumb components are those that do not have hold any states.
 If the logic or data is handled in parent component, the child component is uncontrolled.
