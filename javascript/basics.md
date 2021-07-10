@@ -1,5 +1,5 @@
 ## Shortcircuiting:
-Returns first value if it's truthy value for || operator. For AND operator, returns falsy value if one of them is false.
+Returns first value if it's truthy value for || operator. For AND operator, returns falsy value if one of them is false, else the last value.
 
 ```javascript
 console.log(3 || 'Jonas')   // 3
