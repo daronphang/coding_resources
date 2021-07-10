@@ -72,9 +72,51 @@ alert(user.fullName);
 user.fullName = "Alice Cooper";
 ```
 
-## Call, Apply and Bind Methods:
-Used to set this keyword to the provided value. The call() takes arguments separately while apply() takes arguments as an array. Bind method creates a new function
-with an explicitly bound this; call and apply are one-time use methods.
+## Bind:
+Creates a new function that has this keyword set to the provided value. Sets this value now and allows to execute function in future.
+
+```javascript
+var pokemon = {
+    firstname: 'Pika',
+    lastname: 'Chu ',
+    getPokeName: function() {
+        var fullname = this.firstname + ' ' + this.lastname;
+        return fullname;
+    }
+};
+
+var pokemonName = function(snack, hobby) {
+    console.log(this.getPokeName() + 'I choose you!');
+    console.log(this.getPokeName() + ' loves ' + snack + ' and ' + hobby);
+};
+
+var logPokemon = pokemonName.bind(pokemon); // creates new object and binds pokemon. 'this' of pokemon === pokemon now
+
+logPokemon('sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
+
+```
+
+## Call and Apply:
+Calls a function with a given this value and arguments provided individually i.e. explicitly specify what this should reference within the calling function. Difference between bind() is that call() can accept additional parameters, executes immediately and does not create a new function. Apply() is same as call() but expects an array of parameters. Call and apply are one-time use methods.
+
+```javascript
+var pokemon = {
+    firstname: 'Pika',
+    lastname: 'Chu ',
+    getPokeName: function() {
+        var fullname = this.firstname + ' ' + this.lastname;
+        return fullname;
+    }
+};
+
+var pokemonName = function(snack, hobby) {
+    console.log(this.getPokeName() + ' loves ' + snack + ' and ' + hobby);
+};           // pokemon.getPokeName()
+
+pokemonName.call(pokemon,'sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
+pokemonName.apply(pokemon,['sushi', 'algorithms']); // Pika Chu  loves sushi and algorithms
+```
+
 ```javascript
 var person = {
   fullName: function(city, country) {
