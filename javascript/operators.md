@@ -5,12 +5,4 @@ For AND operator, returns falsy value if either is false. Returns last value if 
 console.log(0 || 'Jonas');  // 'Jonas'
 console.log(0 && 'Jonas'); // 0
 ```
-## Nullish Coalescing Operator:
-```javascript
-const x = 0 ?? 10   // checks for null or undefined, returns 0
-```
-## Optional Chaining:
-Returns undefined if a certain property does not exist i.e. null or undefined.
-```javascript
-console.log(restaurant.openingHours?.monday?.open); 
-```
+
