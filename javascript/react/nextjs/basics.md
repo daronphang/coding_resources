@@ -47,3 +47,17 @@ function NewsPage(){
   )
 }
 ```
+
+## CSS:
+If file is named module.css and imported into a component, the CSS styles will be scoped to that component.
+
+```javascript
+import classes from './example.module.css';
+
+function Component = (props) => {
+  return (
+    <div className={classes.detail}></div>    // detail is css class defined
+  )
+}
+```
+
