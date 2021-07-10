@@ -1,7 +1,11 @@
-## Cookies vs Session vs Local:
-- Cookies allow apps to store data in client's browser.
-- Session storage allows apps to store data until window is closed.
-- Local storage lets apps store data without an end.
+## Shortcircuiting:
+Returns first value if it's truthy value for || operator. For AND operator, returns falsy value if one of them is false.
+
+```javascript
+console.log(3 || 'Jonas')   // 3
+console.log(0 && 'Jonas')   // 0
+console.log(7 && 'Jonas')   // Jonas
+```
 
 ## Callback Function:
 A function passed into another function as an argument which is then invoked inside the outer function. Is utilized to limit function from happening as it is not called until the previous line of code is executed.
@@ -106,3 +110,10 @@ var expression = function() {
 };
 ```
 
+## Closures:
+Gives acesss to an outer function's scope from an inner function. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function).
+
+## Cookies vs Session vs Local:
+- Cookies allow apps to store data in client's browser.
+- Session storage allows apps to store data until window is closed.
+- Local storage lets apps store data without an end.
