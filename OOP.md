@@ -5,7 +5,7 @@ Programming paradigm that relies on concept of classes and objects, structuring 
 1) Inheritance: Child classes inherit data and behaviors from parent class (prototyping in JS).
 2) Encapsulation: Containing all important info inside an object and exposing selected.
 3) Abstraction: Process of exposing high-level mechanism for using the object (user-interaction).
-4) Polymorphism: Designing objects to share/override behaviors i.e. CalculateSurfaceArea for different shapes.
+4) Polymorphism: Defining same functionality in different forms i.e. CalculateSurfaceArea for different shapes.
 
 ### Benefits of Encapsulation:
 - Added Security: Only public methods and attributes are accessible from outside.
