@@ -1,6 +1,13 @@
 ## ES6 Classes and Prototype:
-All objects inherit properties and methods from a prototype. Object.prototype is on top of the prototype inheritance chain. Prototype allows adding new properties or methods to objects constructors.
+All objects inherit properties and methods from a prototype. Object.prototype is on top of the prototype inheritance chain. Prototype allows adding new properties or methods to objects constructors. Prototype property allows new properties to be added to object constructors. Classes are introduced in ES6.
 ```javascript
+// constructor function
+const Person = function(firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+}
+
+// ES6
 class Person {
     constructor(firstName, birthYear) {
         this.firstName = firstName;
@@ -18,6 +25,7 @@ const jonas = new Person('Jonas', 1993);
 console.log(jonas.hasOwnProperty('firstName'));     // true
 console.log(jonas.hasOwnProperty('language'));      // false
 ```
+
 ## Class Inheritance:
 Use extends and super.
 ```javascript
