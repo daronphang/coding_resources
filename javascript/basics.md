@@ -7,6 +7,16 @@ console.log(0 && 'Jonas')   // 0
 console.log(7 && 'Jonas')   // Jonas
 ```
 
+## Nullish Coalescing Operator:
+```javascript
+const x = 0 ?? 10   // checks for null or undefined, returns 0
+```
+## Optional Chaining:
+Returns undefined if a certain property does not exist i.e. null or undefined.
+```javascript
+console.log(restaurant.openingHours?.monday?.open); 
+```
+
 ## Callback Function:
 A function passed into another function as an argument which is then invoked inside the outer function. Is utilized to limit function from happening as it is not called until the previous line of code is executed.
 ```javascript
