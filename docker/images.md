@@ -112,7 +112,7 @@ CMD ["flask", "run"]
 ```
 ARG PYTHON_VERSION=3.7
 FROM python:3.7-alpine
-ARG PATH=c:/Users/daronphang/my_assistant/container
+ARG PATH=c:/Users/daronphang/my_assistant/container/
 ENV FLASK_APP authentication_test_api.py
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_RUN_PORT=8888
