@@ -49,7 +49,7 @@ app_ctx = app.app_context()
 app_ctx.push()
 app_ctx.pop()
 
-# manually push
+# manually push with context manager
 def create_app():
     app = Flask(__name__)
     with app.app_context():
