@@ -49,7 +49,7 @@ app_ctx = app.app_context()
 app_ctx.push()
 app_ctx.pop()
 
-// manually push
+# manually push
 def create_app():
     app = Flask(__name__)
     with app.app_context():
@@ -57,7 +57,7 @@ def create_app():
 
     return app
 
-// inside blueprint:
+# inside blueprint:
 with app.app_context():
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
