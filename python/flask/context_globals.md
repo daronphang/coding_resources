@@ -37,15 +37,17 @@ request.url                 # complete URL including query string component
 is_secure()                 # boolean, check if request came through HTTPS
 ```
 
-## Activating Application Context Manually:
-Flask activates the application and request contexts before dispatching a request to the application, and removes them after the request is handled. When the application context is pushed, current_app and g variables become available to the thread. Likewise, when request context is pushed, request and session become available. Flask automatically pushes an application and request context when handling a request, or when running CLI commands registered with Flask.cli using @app.cli.command(). Flask will pop the request context then the application context when the request ends.
+## Activating Application Context:
+Flask activates the application and request contexts before dispatching a request to the application, and removes them after the request is handled. When the application context is pushed, current_app and g variables become available to the thread. Likewise, when request context is pushed, request and session become available. Flask automatically pushes an application and request context when handling a request (inside view functions), or when running CLI commands registered with Flask.cli using @app.cli.command(). Flask will pop the request context then the application context when the request ends. 
+
+However, to access objects outside of view functions or in python shell, need to manually activate:
 
 ```python
 from flask import current_app
 from flask import Flask
 
 app = Flask(__name__)
-app_ctx = app.app_context()
+app_ctx = app.app_context()     # or app.test_request_context()
 app_ctx.push()
 app_ctx.pop()
 
