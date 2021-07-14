@@ -83,7 +83,14 @@ secondary       Specifies the name of association table to use in many-to-many r
 seondaryjoin    Specifies the secondary join condition for many-to-many relationships.
 ```
 ## Database Operations:
-Best way to work with models is in Python shell. 
+Best way to work with models is in Python shell. When using shell context processor, will auto import database instance and models each time a shell session is created. 
+
+```python
+@app.shell_context_processor
+def make_shell_context():
+    return dict(db=db, User=User, Role=Role)
+```
+
 ### Creating Tables:
 ```
 (venv) $ flask shell
