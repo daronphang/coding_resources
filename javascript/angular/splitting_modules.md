@@ -29,6 +29,11 @@ imports: [
   SharedModule
 ]
 ```
+
+## Adding Routes:
+Can either create a routing module for each feature or use forChild() in module component.
+
+
 ## Shared Module:
 Important key to take note is that Components can only be declared once but can be imported multiple times.
 ```javascript
