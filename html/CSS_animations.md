@@ -2,6 +2,14 @@
 Consists of two components, a style describing the CSS animation and a set of keyframes that indicate the start and end states. When specifying CSS styles inside @keyframes, animation will gradually change from current style to new style at certain times.
 
 ```
+// CSS properties
+transform-origin: -100% 50%;
+transform: rotate(45deg);
+transform: translate(100px, 200px);
+
+```
+
+```
 // animation properties
 
 animation-name
