@@ -75,6 +75,7 @@ Method used for space distribution between items in an interface with powerful a
 ## CSS Tricks:
 ```
 min-width: 55em;            Prevent container size from resizing when user resizes window
+overflow: hidden;           Prevent inner content from overflowing the wrapping container outline
 ```
 
 
