@@ -9,7 +9,7 @@ transform: translate(100px, 200px);
 transform: translateX(-50px)
 
 transform: scaleX(1)
-transform-origin: top left;         Default is set at center
+transform-origin: 0% 50%;           Default is set at center
 ```
 
 ```
