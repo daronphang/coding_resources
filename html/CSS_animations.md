@@ -11,14 +11,13 @@ transform: translateX(-50px)
 
 ```
 // animation properties
-
 animation-name
 animation-duration
 animation-timing-function
 animation-delay
 animation-iteration-count           Number of times animation should repeat, can specify infinite
 animation-direction
-animation-fill-mode
+animation-fill-mode                 Sets styles to its target before and after its execution; none, forwards, backwards, both
 animation-play-state
 ```
 
