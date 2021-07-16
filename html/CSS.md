@@ -81,7 +81,14 @@ transform: rotate(20deg);
 transform: skewY(20deg);
 transform: scaleY(1.5);
 ```
-
+## Pseudo Elements:
+To style specified parts of an element. Used with :: as contrast with pseudo-classes (single :).
+```
+p::first-line {             
+  color: #ff0000;
+  font-variant: small-caps;
+}
+```
 
 ## Styles:
 ```
