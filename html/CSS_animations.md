@@ -25,19 +25,25 @@ animation-play-state
 ```
 
 ```
-// example
-@keyframes example {
-  from {background-color: red;}
-  to {background-color: yellow;}
-}
+// need to use pseudo element to avoid applying animation to text
+.activeRouterClass::after {
+    border-bottom: 2px solid white;
+    display: block;
+    content: '';
+    animation-name: activeRouter;
+    animation-duration: 0.5s;
+  }
 
-div {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  animation-name: example;
-  animation-duration: 4s;
-}
+  @keyframes activeRouter {
+      0% {
+          transform: scaleX(0);
+          border-bottom: 0px;
+        }
+      100% {
+          transform: scaleX(1);
+          border-bottom: 2px solid white;
+        }
+  }
 ```
 
 ```
