@@ -60,3 +60,17 @@ function Component = (props) => {
   )
 }
 ```
+
+## API Routes:
+Need to create folder called 'api' inside 'pages' folder. 
+
+```javascript
+function handler(req, res) {
+  if (req.method === 'POST') {
+    const data = req.body;
+    const { title, image, address, description } = data;
+  }
+}
+
+export default handler;
+```
