@@ -1,3 +1,10 @@
+## Transitions:
+Property defined in CSS classes. Alternative to animations. Cannot define display property.
+
+```css
+transition: all 1s ease-out;    
+```
+
 ## Animations:
 Consists of two components, a style describing the CSS animation and a set of keyframes that indicate the start and end states. When specifying CSS styles inside @keyframes, animation will gradually change from current style to new style at certain times.
 
@@ -10,6 +17,8 @@ transform: translateX(-50px)
 
 transform: scaleX(1)
 transform-origin: 0% 50%;           Default is set at center
+
+opacity: 0
 ```
 
 ```
