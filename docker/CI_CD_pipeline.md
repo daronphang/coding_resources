@@ -15,3 +15,9 @@ Continuous Integration/Continuous Delivery pipelines are a practice focused on i
 - A fast feedback loop helps build an organizational culture of learning and responsibility.
 
 Good CI/CD pipeline is fast, reliable and accurate.
+
+## Best Practices with Docker:
+- Before optimizing CI/CD, need to think how inner loop (code, build, run, test) relates with outer loop (push change, CI build, CI test, deployment).
+- Use Docker Hub access token when setting up CI rather than password.
+- Reduce build time and number of calls by making use of build cache to reuse layers that have been pulled.
+- Have release images goto DockerHub.
