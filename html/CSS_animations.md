@@ -2,7 +2,9 @@
 Property defined in CSS classes. Alternative to animations. Cannot define display property.
 
 ```css
-transition: all 1s ease-out;    
+.example {
+    transition: all 1s ease-out;    
+}
 ```
 
 ## Animations:
