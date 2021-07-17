@@ -1,5 +1,5 @@
 ## Animations:
-Can use ReactTransition library.
+Can use ReactTransitionGroup library.
 
 ```javascript
 function ExampleComponent () {
