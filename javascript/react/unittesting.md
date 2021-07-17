@@ -14,11 +14,13 @@ Screen gives access to virtual DOM. Have three types of functions:
 import { Render, screen } from '@testing-library/react'; 
 import Greeting from './Greeting';
 
-test('renders Hello world as a text', () => {
-  // arrange
-  render(<Greeting />);
-  
-  const helloWorldEl = screen.getByText('Hello World', {exact: true});
-  expect(helloWorldEl).toBeInTheDcoument();
-})
+describe('greeting component', () => {
+  test('renders Hello world as a text', () => {
+    // arrange
+    render(<Greeting />);
+
+    const helloWorldEl = screen.getByText('Hello World', {exact: true});
+    expect(helloWorldEl).toBeInTheDcoument();
+  })
+}
 ```
