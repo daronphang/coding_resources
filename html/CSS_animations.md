@@ -1,8 +1,8 @@
 ## Animations:
 Consists of two components, a style describing the CSS animation and a set of keyframes that indicate the start and end states. When specifying CSS styles inside @keyframes, animation will gradually change from current style to new style at certain times.
 
-```
-// CSS properties
+```css
+/*CSS properties*/
 transform-origin: -100% 50%;
 transform: rotate(45deg);
 transform: translate(100px, 200px);
@@ -12,16 +12,16 @@ transform: scaleX(1)
 transform-origin: 0% 50%;           Default is set at center
 ```
 
-```
-// animation properties
-animation-name
-animation-duration
-animation-timing-function
-animation-delay
+```css
+/*animation properties*/
+animation-name                      Name of keyframes
+animation-duration                  Duration for animation to complete one cycle
+animation-timing-function           Establishes preset acceleration curves such as ease-in-out, linear, cubic-bezier
+animation-delay                     Delay between element loaded and start of animation sequence
 animation-iteration-count           Number of times animation should repeat, can specify infinite
-animation-direction
-animation-fill-mode                 Sets styles to its target before and after its execution; none, forwards, backwards, both
-animation-play-state
+animation-direction                 Sets the direction after cycle; default resets on each cycle; normal, alternate
+animation-fill-mode                 Sets styles to its target before/after its execution; none, forwards, backwards, both
+animation-play-state                Pause/play animation; paused, running
 ```
 
 ```
