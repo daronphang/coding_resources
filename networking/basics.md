@@ -21,7 +21,8 @@ Command line tool that allows transfer of data across network. Supports many pro
 ``` 
 curl --verbose https://example.com        Inspect all details of request and response
 
-curl https://example.com                  GET request, returns body of response
+curl https://example.com                  GET request (default), returns body of response
+curl -X POST http://URL/example.php       POST request
 curl https://{one,two,three}.com          Send multiple requests
 curl -i https://example.com               Show response headers
 
