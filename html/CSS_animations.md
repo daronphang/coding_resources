@@ -24,8 +24,8 @@ animation-fill-mode                 Sets styles to its target before/after its e
 animation-play-state                Pause/play animation; paused, running
 ```
 
-```
-// need to use pseudo element to avoid applying animation to text
+```css
+/*need to use pseudo element to avoid applying animation to text*/
 .activeRouterClass::after {
     border-bottom: 2px solid white;
     display: block;
@@ -46,7 +46,7 @@ animation-play-state                Pause/play animation; paused, running
   }
 ```
 
-```
+```css
 p {
   animation-duration: 3s;
   animation-name: slidein;
