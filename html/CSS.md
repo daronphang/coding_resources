@@ -54,7 +54,7 @@ top: 50px;                          Used together with position, no effect on su
 position: relative;
 
 Visibility: Hidden                  Not visible but takes up original space
-Display: None                       Hidden and takes no space
+Display: None                       Hidden and takes no space; can also set inline, block, inline-block
 ```
 
 ## Pseudo Elements:
