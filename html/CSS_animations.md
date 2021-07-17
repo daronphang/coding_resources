@@ -12,7 +12,7 @@ transform: scaleX(1)
 transform-origin: 0% 50%;           Default is set at center
 ```
 
-```css
+```
 /*animation properties*/
 animation-name                      Name of keyframes
 animation-duration                  Duration for animation to complete one cycle
