@@ -9,34 +9,6 @@ p {
 # p is the selector that specifies which html element the CSS styling will effect
 # text-align is the declaration that contains properties and values applied to the selector
 ```
-### Styling Methods:
-```
-# External
-<head>
-  <link rel="stylesheet" type="text/css" href=mysitestyle.css">
-</head>
-
-# Internal
-<head>
-  <style>
-    body {background-color: powderblue;}
-    h1   {color: blue;}
-    p    {color: red;}
-  </style>
-</head>
-
-# Inline
-<h1 style="color:blue;">A Blue Heading</h1>
-
-<p style="color:red;">A red paragraph.</p>
-```
-## Styling:
-```
-position: "relative";
-top: 50%";                  Use position property to change top property.
-z-index: 50;                Positive stacks in front, negative stacks behind. Changes transparency/
-
-```
 
 ## Units:
 ```
@@ -76,11 +48,15 @@ Method used for space distribution between items in an interface with powerful a
 ```
 min-width: 55em;                    Prevent container size from resizing when user resizes window
 overflow: hidden;                   Prevent inner content from overflowing the wrapping container outline
+z-index: 50;                        Positive stacks in front, negative stacks behind (changes transparency)
 
-transform: rotate(20deg);
-transform: skewY(20deg);
-transform: scaleY(1.5);
+top: 50px;                          Used together with position, no effect on surrounding elements
+position: relative;
+
+Visibility: Hidden                  Not visible but takes up original space
+Display: None                       Hidden and takes no space
 ```
+
 ## Pseudo Elements:
 To style specified parts of an element. Used with :: as contrast with pseudo-classes (single :).
 ```
@@ -88,15 +64,4 @@ p::first-line {
   color: #ff0000;
   font-variant: small-caps;
 }
-```
-
-## Styles:
-```
-Visibility: Hidden          Not visible but takes up original space
-Display: None               Hidden and takes no space
-
-top:                        Used together with position, no effect on surrounding elements
-position: relative        
-
-margin-top: 10em            Move block of element away from other elements
 ```
