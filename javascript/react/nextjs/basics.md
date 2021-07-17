@@ -65,6 +65,20 @@ function Component = (props) => {
 Need to create folder called 'api' inside 'pages' folder. 
 
 ```javascript
+// frontend
+function MeetupPage() {
+  ...
+  const response = await fetch('/api/new-meetup',
+    method: 'POST',
+    body: JSON.stringify(meetupData),
+    headers: {
+      'Content-Type': 'application/json'
+    };
+    
+    const data = await response,json();
+}
+
+// backend api
 function handler(req, res) {
   if (req.method === 'POST') {
     const data = req.body;
