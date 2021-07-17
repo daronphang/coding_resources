@@ -1,5 +1,7 @@
 ## CI/CD Pipeline:
-Continuous Integration/Continuous Delivery pipelines are a practice focused on improving software delivery using either a DevOps or Site Reliability Engineering (SRE) approach. A series of steps that must be performed in order to deliver a new version of software. Introduces monitoring and automation to improve the process of application development. Pipeline elements include:
+Continuous Integration is the process where software is built and initial tests are completed. Continuous Deployment is the process of combining code with infrastructure, ensuring all tests are completed and policies followed.
+
+CI/CD pipelines are a practice focused on improving software delivery using either a DevOps or Site Reliability Engineering (SRE) approach. A series of steps that must be performed in order to deliver a new version of software. Introduces monitoring and automation to improve the process of application development. Pipeline elements include:
 1) Build: Stage where application is compiled.
 2) Test: Stage where code is tested. 
 3) Release: Stage where application is delivered to repository.
