@@ -2,6 +2,8 @@
 1) Template-Driven: Angular infers the form object from DOM. Uses NgModel directive to create form control.
 2) Reactive: Form is created programmatically and synchronized with the DOM. Uses FormControl directive.
 
+FormBuilder provides syntactic sugar that shortens creating instances of FormControl, FormGroup or FormArray i.e. reduces boilerplate code.
+
 ## CSS Classes:
 ```
 ng-valid
