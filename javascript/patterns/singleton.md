@@ -1,5 +1,20 @@
 ## Singleton:
-A design pattern that states only one instance of a class would persist in memory during application's life cycle. Any repeated calls to the constructor would always fetch the same instance. Useful in situations where system-wide actions need to be coordinated from a single central place such as database connection pool.
+A creational design pattern that states only one instance of a class would persist in memory during application's life cycle. Any repeated calls to the constructor would always fetch the same instance. Useful in situations where system-wide actions need to be coordinated from a single central place such as database connection pool. Ensures that a class has a single instance and provides a global access point to that instance. 
+
+```javascript
+class Singleton {
+    private static Singleton obj;
+    
+    private Singleton() {}      // make constructor private to prevent other objects from using new operator
+    
+    public static Singleton getInstance() {
+        if (obj==null)
+            obj = new Singleton();
+        return obj;
+    }
+}
+
+```
 
 ```javascript
 var Singleton = (function () {
