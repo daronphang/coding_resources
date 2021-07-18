@@ -1,3 +1,6 @@
+## Javascript:
+Lightweight, asynchronous, prototyped-based, interpreted, OOP langauge with first-class functions. First-class functions are treated like other variables i.e. functions can be assigned to variable or passed as an argument or can be returned by another function.
+
 ## Web Workers:
 Thread refers to a unit capable of executing code. JS was conceived as single-threaded programming language that ran in browser between all tabs i.e. only one set of instructions is executed at any time. However, modern JS offers ways to create additional threads, each executing independently while possibly communicating between one another through use of web workers.
 
