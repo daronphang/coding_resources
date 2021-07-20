@@ -136,7 +136,7 @@ d1 = Dog()
 ```
 
 ## Mixin:
-Special kind of multiple inheritance. Cannot be instantiated by themselves. Useful when:
+Special kind of multiple inheritance. Not created with intention to run on its own. No limit on number of mixins that can be used to compose a new class. Useful when:
 - Want to provide alot of optional features for a class.
 - Want to use one particular feature in alot of different classes.
 
