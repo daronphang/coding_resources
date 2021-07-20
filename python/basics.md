@@ -119,7 +119,9 @@ result = zip(list, str)     # {(1, 'a'), (2, 'b'), (3, 'c')}
 
 ```
 
-## Classes:
+## Super Classes:
+For multiple inheritance whereby both classes have same method name, Method Resolution Order (MRO) algorithm comes into play which decides where Python will look for a given method, and which method will be called when there's a conflict. Order is child class, followed by left to right.  
+
 ```python
 class Mammal(object):
   def __init__(self, mammalName):
@@ -133,8 +135,17 @@ class Dog(Mammal):
 d1 = Dog()
 ```
 
+## Mixin:
+Special kind of multiple inheritance. Cannot be instantiated by themselves. Useful when:
+- Want to provide alot of optional features for a class.
+- Want to use one particular feature in alot of different classes.
 
+```python
+from werkzeug import BaseRequest, AcceptMixin, ETagRequestMixin, UserAgentMixin, AuthenticationMixin
 
+class Request(AcceptMixin, ETagRequestMixin, UserAgentMixin, AuthenticationMixin, BaseRequest):
+    pass
+```
 
 
 
