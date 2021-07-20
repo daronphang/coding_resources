@@ -1,4 +1,5 @@
 ## Decorators:
+Structural pattern that allows adding new behaviors to objects dynamically by placing them inside special wrapper objects.
 Python decorators allow functions to be wrapped with another function i.e. a function that is passed a function, and returns a callable object.
 In most cases, the decorator should return an object to mimic the decorated function, which is performed through wrapper function.
 ```python
