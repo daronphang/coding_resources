@@ -14,6 +14,18 @@ Creating product variants of a product family i.e. chairs, sofas and tables in V
 2) All variants of products will follow those interfaces. 
 3) Declare the Abstract Factory which is an interface with a list of creation methods for all products.
 
+```
+FurnitureFactory <interface>:
+createChair(): Chair
+createTable(): Table
+createSofa(): Sofa
+
+VictorianFurnitureFactory:
+createChair(): Chair
+createTable(): Table
+createSofa(): Sofa
+```
+
 ## Advantages:
 - Compatibility between products created by same factory class is guaranteed.
 - Cleaner code since new product families can be introduced without breaking existing code.
