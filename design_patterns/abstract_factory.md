@@ -6,7 +6,6 @@ Allows you to produce families of related objects without specifying their concr
 - Abstract Product: Interface for product that sub factory returns.
 - Concrete Product: Object that is finally returned.
 
-
 ## Problem:
 Creating product variants of a product family i.e. chairs, sofas and tables in Victorian, Art Deco and Modern designs. Need to create individual furniture objects so that they match other objects of the same family i.e. Victorian sofa, table and chair. 
 
@@ -24,93 +23,142 @@ Creating product variants of a product family i.e. chairs, sofas and tables in V
 
 ## Example:
 ```python
-import random
-from typing import Type
-
-# abstract product 
-class Pet:
-    def __init__(self, name: str) -> None:
-        self.name = name
-
-    def speak(self) -> None:
-        raise NotImplementedError
-
-    def __str__(self) -> str:
-        raise NotImplementedError
-
-# concrete factory
-class Dog(Pet):
-    def speak(self) -> None:
-        print("woof")
-
-    def __str__(self) -> str:
-        return f"Dog<{self.name}>"
+from abc import ABC, abstractmethod
 
 
-class Cat(Pet):
-    def speak(self) -> None:
-        print("meow")
+class AbstractFactory(ABC):
+    @abstractmethod
+    def create_product_a(self) -> AbstractProductA:
+        pass
 
-    def __str__(self) -> str:
-        return f"Cat<{self.name}>"
-
-# abstract factory
-class PetShop:
-
-    """A pet shop"""
-
-    def __init__(self, animal_factory: Type[Pet]) -> None:
-        """pet_factory is our abstract factory.  We can set it at will."""
-
-        self.pet_factory = animal_factory
-
-    def buy_pet(self, name: str) -> Pet:
-        """Creates and shows a pet using the abstract factory"""
-
-        pet = self.pet_factory(name)
-        print(f"Here is your lovely {pet}")
-        return pet
+    @abstractmethod
+    def create_product_b(self) -> AbstractProductB:
+        pass
 
 
-# Additional factories:
+class ConcreteFactory1(AbstractFactory):
+    def create_product_a(self) -> AbstractProductA:
+        return ConcreteProductA1()
 
-# Create a random animal
-def random_animal(name: str) -> Pet:
-    """Let's be dynamic!"""
-    return random.choice([Dog, Cat])(name)
+    def create_product_b(self) -> AbstractProductB:
+        return ConcreteProductB1()
 
 
-# Show pets with various factories
-def main() -> None:
+class ConcreteFactory2(AbstractFactory):
+    def create_product_a(self) -> AbstractProductA:
+        return ConcreteProductA2()
+
+    def create_product_b(self) -> AbstractProductB:
+        return ConcreteProductB2()
+
+
+class AbstractProductA(ABC):
     """
-    # A Shop that sells only cats
-    >>> cat_shop = PetShop(Cat)
-    >>> pet = cat_shop.buy_pet("Lucy")
-    Here is your lovely Cat<Lucy>
-    >>> pet.speak()
-    meow
-    # A shop that sells random animals
-    >>> shop = PetShop(random_animal)
-    >>> for name in ["Max", "Jack", "Buddy"]:
-    ...    pet = shop.buy_pet(name)
-    ...    pet.speak()
-    ...    print("=" * 20)
-    Here is your lovely Cat<Max>
-    meow
-    ====================
-    Here is your lovely Dog<Jack>
-    woof
-    ====================
-    Here is your lovely Dog<Buddy>
-    woof
-    ====================
+    Each distinct product of a product family should have a base interface. All
+    variants of the product must implement this interface.
     """
+
+    @abstractmethod
+    def useful_function_a(self) -> str:
+        pass
+
+
+"""
+Concrete Products are created by corresponding Concrete Factories.
+"""
+
+
+class ConcreteProductA1(AbstractProductA):
+    def useful_function_a(self) -> str:
+        return "The result of the product A1."
+
+
+class ConcreteProductA2(AbstractProductA):
+    def useful_function_a(self) -> str:
+        return "The result of the product A2."
+
+
+class AbstractProductB(ABC):
+    """
+    Here's the the base interface of another product. All products can interact
+    with each other, but proper interaction is possible only between products of
+    the same concrete variant.
+    """
+    @abstractmethod
+    def useful_function_b(self) -> None:
+        """
+        Product B is able to do its own thing...
+        """
+        pass
+
+    @abstractmethod
+    def another_useful_function_b(self, collaborator: AbstractProductA) -> None:
+        """
+        ...but it also can collaborate with the ProductA.
+
+        The Abstract Factory makes sure that all products it creates are of the
+        same variant and thus, compatible.
+        """
+        pass
+
+
+"""
+Concrete Products are created by corresponding Concrete Factories.
+"""
+
+
+class ConcreteProductB1(AbstractProductB):
+    def useful_function_b(self) -> str:
+        return "The result of the product B1."
+
+    """
+    The variant, Product B1, is only able to work correctly with the variant,
+    Product A1. Nevertheless, it accepts any instance of AbstractProductA as an
+    argument.
+    """
+
+    def another_useful_function_b(self, collaborator: AbstractProductA) -> str:
+        result = collaborator.useful_function_a()
+        return f"The result of the B1 collaborating with the ({result})"
+
+
+class ConcreteProductB2(AbstractProductB):
+    def useful_function_b(self) -> str:
+        return "The result of the product B2."
+
+    def another_useful_function_b(self, collaborator: AbstractProductA):
+        """
+        The variant, Product B2, is only able to work correctly with the
+        variant, Product A2. Nevertheless, it accepts any instance of
+        AbstractProductA as an argument.
+        """
+        result = collaborator.useful_function_a()
+        return f"The result of the B2 collaborating with the ({result})"
+
+
+def client_code(factory: AbstractFactory) -> None:
+    """
+    The client code works with factories and products only through abstract
+    types: AbstractFactory and AbstractProduct. This lets you pass any factory
+    or product subclass to the client code without breaking it.
+    """
+    product_a = factory.create_product_a()
+    product_b = factory.create_product_b()
+
+    print(f"{product_b.useful_function_b()}")
+    print(f"{product_b.another_useful_function_b(product_a)}", end="")
 
 
 if __name__ == "__main__":
-    random.seed(1234)  # for deterministic doctest outputs
-    import doctest
+    """
+    The client code can work with any concrete factory class.
+    """
+    print("Client: Testing client code with the first factory type:")
+    client_code(ConcreteFactory1())
 
-    doctest.testmod()
+    print("\n")
+
+    print("Client: Testing the same client code with the second factory type:")
+    client_code(ConcreteFactory2())
 
 ```
