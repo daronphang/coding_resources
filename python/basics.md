@@ -141,10 +141,27 @@ Special kind of multiple inheritance. Cannot be instantiated by themselves. Usef
 - Want to use one particular feature in alot of different classes.
 
 ```python
-from werkzeug import BaseRequest, AcceptMixin, ETagRequestMixin, UserAgentMixin, AuthenticationMixin
+from .views import View
+from .models import Product, Category, Customer, Order
 
-class Request(AcceptMixin, ETagRequestMixin, UserAgentMixin, AuthenticationMixin, BaseRequest):
-    pass
+class SingleObjectMixin(object):
+    model = None
+    def get_object(self, request):
+        if self.model is None:
+            raise Exception("Model must be set.")
+        return self.model.get(id=request.kwargs.get("id")
+
+class ProductView(SingleObjectMixin, View):
+    model = Product
+
+class CategoryView(SingleObjectMixin, View):
+    model = Category
+
+class CustomerView(SingleObjectMixin, View):
+    model = Customer
+
+class OrderView(SingleObjectMixin, View):
+    model = Order
 ```
 
 
