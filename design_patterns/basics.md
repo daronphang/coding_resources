@@ -3,7 +3,10 @@ Design patterns are reusable solutions to commonly occurring problems in softwar
 
 However, applying wrong pattern to given problem could lead to undesirable effects such as unnecessary code complexity, overhead on performance or spawning of new anti-pattern.
 
-The power of design patterns is in communication i.e. easier to say 'use a factory pattern' rather than describing in code. Moreover, these patterns are most likely being used in code long before you knew they had names. 
+Design patterns are all about increasing abstraction in code and hence, objects have less dependencies between them. However, every extra layer of indirection will open up more places for developers to change code. Patterns are best in the hands of framework designers i.e. events as Observer pattern, Prototype pattern in JS, MVC pattern in server-side web frameworks.
+
+The power of design patterns is in communication i.e. easier to say 'use a factory pattern' rather than describing in code. Moreover, these patterns are most likely being used in code long before you knew they had names. When coding web services, most likely are using Facade pattern. 
+
 
 
 ### Creational:
