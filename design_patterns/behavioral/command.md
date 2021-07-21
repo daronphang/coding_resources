@@ -1,7 +1,7 @@
 ## Description:
 Turns a request into an action. Allows you to pass requests as a method argument, delay or queue a request's execution, and support undoable operations. Command serves as links between various GUI and business logic objects i.e. breaking an app into GUI layer and business logic layer. Terminology:
 - Command: Can refer to command interface or command class itself.
-- Receiver: Class that contains some business logic.
+- Receiver: Class that contains some business logic that is delegated by more complex commands.
 - Invoker: Sends a request to the command; associated with one or several commands.
 
 Command method encapsulates a request as an object and hence, allowing objects to be parameterized with different requests i.e. button used to  close window can be used to save or print document. 
@@ -14,19 +14,32 @@ from abc import ABC, abstractmethod
 
 # command interface
 class Command(ABC):
-    def __init__(self, receiver):
-        self.receiver = receiver
-      
-    def process(self):
+
+    @abstractmethod
+    def process(self):  # interface declares a method for executing a command
         pass
   
   
 class CommandImplementation(Command):
-    def __init__(self, receiver):
-        self.receiver = receiver
+    def __init__(self, payload):
+        self.payload = payload
   
     def process(self):
+        print('payload')
+        
+        
+class ComplexCommand(Command):
+    """
+    Some commands can delegate more complex operations to other
+    objects, called "receivers."
+    """
+    
+    def __init__(self, receiver)
+        self.receiver = receiver
+    
+    def process(self):
         self.receiver.perform_action()
+    
   
 
 class Receiver:
@@ -43,10 +56,14 @@ class Invoker:
   
   
 if __name__ == "__main__":
-    receiver = Receiver()
-    cmd = CommandImplementation(receiver)
     invoker = Invoker()
+    cmd = CommandImplementation('hello world')
     invoker.command(cmd)
+    invoker.execute()
+    
+    receiver = Receiver()
+    complex = ComplexCommand(receiver)
+    invoker.command(complex)
     invoker.execute()
 ```
 
