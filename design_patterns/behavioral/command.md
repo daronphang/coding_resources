@@ -41,7 +41,6 @@ class ComplexCommand(Command):
         self.receiver.perform_action()
     
   
-
 class Receiver:
     def perform_action(self):
         print('Action performed in receiver.')
