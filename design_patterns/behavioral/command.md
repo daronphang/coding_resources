@@ -12,7 +12,7 @@ Command pattern suggests that GUI objects shouldn't send requests directly to bu
 ```python
 from abc import ABC, abstractmethod
 
-# command interface
+
 class Command(ABC):
 
     @abstractmethod
