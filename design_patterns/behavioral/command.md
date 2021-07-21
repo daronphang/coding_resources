@@ -25,7 +25,7 @@ class CommandImplementation(Command):
         self.payload = payload
   
     def process(self):
-        print('payload')
+        print(self.payload)
         
         
 class ComplexCommand(Command):
