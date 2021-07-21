@@ -3,6 +3,9 @@ Design patterns are reusable solutions to commonly occurring problems in softwar
 
 However, applying wrong pattern to given problem could lead to undesirable effects such as unnecessary code complexity, overhead on performance or spawning of new anti-pattern.
 
+The power of design patterns is in communication i.e. easier to say 'use a factory pattern' rather than describing in code. Moreover, these patterns are most likely being used in code long before you knew they had names. 
+
+
 ### Creational:
 Focus on handling object creation mechanisms by controlling the creation process. A basic object creation approach in a program can lead to an added complexity. Patterns include Constructor, Factory, Prototype, Singleton, etc.
 
