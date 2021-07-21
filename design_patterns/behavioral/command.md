@@ -2,7 +2,7 @@
 Turns a request into an action. Allows you to pass requests as a method argument, delay or queue a request's execution, and support undoable operations. Command serves as links between various GUI and business logic objects i.e. breaking an app into GUI layer and business logic layer. Terminology:
 - Command: Can refer to command interface or command class itself.
 - Receiver: Class that contains some business logic that is delegated by more complex commands.
-- Invoker: Sends a request to the command; associated with one or several commands.
+- Invoker: Sends a request to the command; associated with one or several commands i.e. button is an invoker.
 
 Command method encapsulates a request as an object and hence, allowing objects to be parameterized with different requests i.e. button used to  close window can be used to save or print document. 
 
