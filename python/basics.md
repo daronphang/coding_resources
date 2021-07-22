@@ -135,6 +135,32 @@ class Dog(Mammal):
 d1 = Dog()
 ```
 
+```python
+class Root:
+    def draw(self):
+        assert not hasattr(super(), 'draw')
+
+class Shape(Root):
+    def __init__(self, shapename, **kwds):
+        self.shapename = shapename
+        super().__init__(**kwds)
+    def draw(self):
+        print('Drawing.  Setting shape to:', self.shapename)
+        super().draw()
+
+class ColoredShape(Shape):
+    def __init__(self, color, **kwds):
+        self.color = color
+        super().__init__(**kwds)
+    def draw(self):
+        print('Drawing.  Setting color to:', self.color)
+        super().draw()
+
+cs = ColoredShape(color='blue', shapename='square')
+cs.draw()
+
+```
+
 ## Mixin:
 Special kind of multiple inheritance. Not created with intention to run on its own. No limit on number of mixins that can be used to compose a new class. Useful when:
 - Want to provide alot of optional features for a class.
