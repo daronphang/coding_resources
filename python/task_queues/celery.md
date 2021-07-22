@@ -1,13 +1,3 @@
-## Task Queues:
-Manage background work that must be executed outside the usual HTTP request-response cycle.
-
-Tasks are handled asynchronously either because they are not initiated by an HTTP request or are long-running jobs that would dramatically reduce the performance
-of an HTTP response. Example is having database query performed in background on fixed intervals with results stored in database; when HTTP request comes, it would simply
-fetch the precalculate result instead of re-executing the longer query. Other types of jobs include:
-- Spreading out large numbers of independent database inserts over time
-- Aggregating collected data values on fixed interval.
-- Scheduling periodic jobs such as batch processes.
-
 ## Celery:
 Defacto standard Python asynchronous task queue. Framework that allows workers to communicate with database backend. Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Has three core components:
 1) Celery Client: Used to issue background jobs (client runs with Flask application).
