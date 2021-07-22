@@ -1,5 +1,5 @@
 ## Celery:
-Defacto standard Python asynchronous task queue. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Has three core components:
+Defacto standard Python asynchronous task queue that integrates itself with web frameworks including Django, Flask, Pyramid, Pylons, etc. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Has three core components:
 1) Celery Client: Used to issue background jobs (client runs with Flask application).
 2) Celery Workers: Processes that run background jobs, supports both local and remote workers.
 3) Message Broker: Client communicates with workers through message queue; commonly used brokers are RabbitMQ and Redis.
@@ -22,6 +22,10 @@ apply_async()
 ready()                 Returns boolean on whether the task has finished processing or not
 wait()
 ```
+
+
+
+
 
 ```python
 from flask import Flask
