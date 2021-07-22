@@ -9,10 +9,21 @@ fetch the precalculate result instead of re-executing the longer query. Other ty
 - Scheduling periodic jobs such as batch processes.
 
 ## Celery:
-Defacto standard Python asynchronous task queue. Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Has three core components:
+Defacto standard Python asynchronous task queue. Framework that allows workers to communicate with database backend. Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Has three core components:
 1) Celery Client: Used to issue background jobs (client runs with Flask application).
 2) Celery Workers: Processes that run background jobs, supports both local and remote workers.
 3) Message Broker: Client communicates with workers through message queue; commonly used brokers are RabbitMQ and Redis.
+
+Brokers such as Redis is simply an in-memory data structure store used as a distributed, in-memory key-value database, cache and message broker.
+
+### Process Workflow:
+1) Client talks to Flask application to place their request.
+2) App takes the request and puts it in database queue with PENDING status.
+3) Client receives a JobID and polls as response; flask app is then free to take-on next request.
+4) Celery worker takes on the request and runs the service.
+5) Once worker is done, it updates the job's status from PENDING to SUCCESS.
+6) Flask app signals this change and client gets updated on request status. 
+
 
 ```
 # methods
