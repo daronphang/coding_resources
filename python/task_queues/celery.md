@@ -4,7 +4,7 @@ Defacto standard Python asynchronous task queue that integrates itself with web 
 2) Celery Workers: Processes that run background jobs, supports both local and remote workers.
 3) Message Broker: Client communicates with workers through message queue; commonly used brokers are RabbitMQ and Redis.
 
-Brokers such as Redis is simply an in-memory data structure store used as a distributed, in-memory key-value database, cache and message broker.
+Brokers such as Redis is an in-memory data structure store used as a distributed, in-memory key-value database, cache and message broker.
 
 Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Background tasks include:
 - Running ML models.
