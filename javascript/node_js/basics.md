@@ -33,6 +33,16 @@ npm install -g live-server    Type live-server in terminal to run
 
 node -v                       Check Node.js version
 ```
+
+## File System Functionality:
+
+```javascript
+const fs = require('fs');   // node core module 
+  
+fs.writeFileSync('hello.txt', 'hello world');   // writes file to hard drive
+```
+
+
 ### Application Example:
 ```javascript
 const http = require('http');
