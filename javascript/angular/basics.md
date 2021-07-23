@@ -70,11 +70,11 @@ karma           Test runner
 
 
 
-### Hot Module Replacement:
+## Hot Module Replacement:
 HMR exchanges, adds or removes modules while an application is running without a full reload. 
 
-### Webpack:
-Module bundler, to bundle Javascript files for usage in browser. Automatically adds script files to index.html.
+## Webpack:
+Module bundler, to bundle Javascript files for usage in browser. Automatically adds script files to index.html. Takes modules with dependencies and generates static assets representing those modules. Modules are reusuable chunks of code. Allows you to use require() for CSS files. If one file depends on another, Webpack treats this as a dependency.
 
 ## Constructor vs NgOnInit:
 Constructor is a default method that will always be executed when the class is instantiated. Used mainly for Dependency Injection. Common practice is to put as little logic as possible.
