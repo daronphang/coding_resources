@@ -10,7 +10,7 @@ Can use it to execute tasks outside of context of application. Any resource cons
 - Running ML models.
 - Sending confirmation emails.
 - Scraping and crawling.
-- analyzing data.
+- Analyzing data.
 - Generating reports.
 
 ### Process Workflow:
