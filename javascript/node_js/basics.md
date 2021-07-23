@@ -34,10 +34,17 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 function rqListener(req, res) {
+  console.log(req.headers, req.url, req,method);
+  
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-  console.log(req.headers, req.url, req,method)
+  
+  res.write('<html>');
+  res.write('<head><title>Hello</title></head>');
+  res.write('<body>hi</body>');
+  res.write('</html>');
+  
+  res.end();  // node.js will send response back to client
   
   process.exit();   // quits process
 }
