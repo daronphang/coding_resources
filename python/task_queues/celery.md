@@ -45,8 +45,8 @@ app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'], backend=app.config['CELERY_RESULT_BACKEND])
 celery.conf.update(app.config)                                          # additional configuration options for Celery
-```
-```python
+
+
 # Decorating functions with Celery to run as background tasks
 @celery.task
 def my_background_task(arg1, arg2, name='tasks.my_background_task', max_retries=3):
