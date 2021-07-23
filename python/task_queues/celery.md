@@ -59,6 +59,10 @@ def execute_task():
     payload = request.get_json()
     task = my_background_task.delay(10, 20)                                
     # task = my_background_task.apply_async(args=[10, 20], countdown=60)      # runs every 60s
+    
+    # task_id = uuid.uuid1()
+    # my_background_task.apply_async(args=[10, 20], task_id=task_id)
+    
     return jsonify({'task_id': task.id}), 202
     
 
