@@ -57,7 +57,7 @@ def my_background_task(arg1, arg2, name='tasks.my_background_task', max_retries=
 @app.route('/tasks', methods=['POST', 'GET']
 def execute_task():
     payload = request.get_json()
-    task = my_background_task.delay(10, 20)                                 # shortcut to more powerful apply_async() method
+    task = my_background_task.delay(10, 20)                                
     # task = my_background_task.apply_async(args=[10, 20], countdown=60)      # runs every 60s
     return jsonify({'task_id': task.id}), 202
     
