@@ -13,7 +13,7 @@ Uses SQL language that offers a highly organized and structured approach to info
 - Scalability and sharding challenges: Difficult to scale up and dividing large database into smaller parts for easier management.
 - Less efficient: Slower performance than NoSQL.
 
-### Popular SQL database engines:
+### Popular SQL Database Engines:
 - Oracle, MySQL, Postgres, Microsoft SQL Server.
 
 
@@ -31,4 +31,17 @@ Allows you to organize information in looser fashion such as email texts, custom
 - Lack of tools: Have lesser third-party tools compared to SQL-based. 
 - Compatibility and standardization challenges: Lack high degree of compatibility and standardization.
 
+### Database Types:
+1) Graph Stores: Neo4j and JanusGraph.
+2) Column Stores: Schema-agnostic that can handle querying of non-sequential data in real-time. Apache Cassandra and Hbase. 
+3) Key-Value Stores: Speed of utmost importance. Redis and Couchbase.
+4) Document Stores: Databases with flexible schemas (semi-structured data with dynamic querying) including MongoDB.
+
+Schema-agnostic means users don't have to understand schema of database before they can store data or query.
+
+## Choosing Database:
+Key factors include:
+- Atomicity: Either all of operations (insert, update, delete) inside a transaction take place or none. Offers consistency.
+- Vertical vs Horizontal Scaling: Relational for vertical (adding more compute power to server) and non-relational for horizontal (distribute load across servers).
+- Speed: Non-relational database offers faster performance. Useful for real-time data such as sensor data.
 
