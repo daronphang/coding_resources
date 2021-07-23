@@ -1,5 +1,5 @@
 ## Node.js:
-A Javascript runtime built on Chrome's V8 JavaScript engine. Comes with runtime environment on which Javascript can be executed on any machine outside of a browser i.e. on a server. 
+A Javascript runtime built on Chrome's V8 JavaScript engine that can be executed on any machine outside of a browser i.e. on a server. V8 engine takes JS code and compiles to machine code. Node JS adds useful features to JS engine such as opening/reading/deleting files which were not possible in browser.
 
 Node.js = Runtime environment + Javascript library
 
