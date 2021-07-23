@@ -39,11 +39,19 @@ function rqListener(req, res) {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   
+  const url = req.url;
+  
+  if (url === '/message' && method === 'POST') {
+    fs.writeFileSync('message.txt', 'DUMMY');
+    res.statusCode = 302;
+    res.setHeader('Location', '/')'
+    return res.end();
+  }
+  
   res.write('<html>');
   res.write('<head><title>Hello</title></head>');
   res.write('<body>hi</body>');
   res.write('</html>');
-  
   res.end();  // node.js will send response back to client
   
   process.exit();   // quits process
