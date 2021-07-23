@@ -1,10 +1,17 @@
 ## Celery:
-Defacto standard Python asynchronous task queue that integrates itself with web frameworks including Django, Flask, Pyramid, Pylons, etc. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Has three core components:
+Defacto standard Python asynchronous task queue that integrates itself with web frameworks including Django, Flask, Pyramid, Pylons, etc. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Has three core components:
 1) Celery Client: Used to issue background jobs (client runs with Flask application).
 2) Celery Workers: Processes that run background jobs, supports both local and remote workers.
 3) Message Broker: Client communicates with workers through message queue; commonly used brokers are RabbitMQ and Redis.
 
 Brokers such as Redis is simply an in-memory data structure store used as a distributed, in-memory key-value database, cache and message broker.
+
+Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Background tasks include:
+- Running ML models.
+- Sending confirmation emails.
+- Scraping and crawling.
+- analyzing data.
+- Generating reports.
 
 ### Process Workflow:
 1) Client talks to Flask application to place their request.
@@ -21,32 +28,49 @@ delay()                 Call task, shortcut to more powerful apply_async()
 apply_async()
 ready()                 Returns boolean on whether the task has finished processing or not
 wait()
+time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
-
-
-
+## Example: 
 
 ```python
 from flask import Flask
 from celery import Celery
+from celery.result import AsyncResult
+
 
 app = Flask(__name__)
 app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
 app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 
-celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
+celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'], backend=app.config['CELERY_RESULT_BACKEND])
 celery.conf.update(app.config)                                          # additional configuration options for Celery
 ```
 ```python
 # Decorating functions with Celery to run as background tasks
 @celery.task
-def my_background_task(arg1, arg2):
+def my_background_task(arg1, arg2, name='tasks.my_background_task', max_retries=3):
     # some long running task here
     return result
     
-task = my_background_task.delay(10, 20)                                 # shortcut to more powerful apply_async() method
-task = my_background_task.apply_async(args=[10, 20], countdown=60)      # runs every 60s
+    
+@app.route('/tasks', methods=['POST', 'GET']
+def execute_task():
+    payload = request.get_json()
+    task = my_background_task.delay(10, 20)                                 # shortcut to more powerful apply_async() method
+    # task = my_background_task.apply_async(args=[10, 20], countdown=60)      # runs every 60s
+    return jsonify({'task_id': task.id}), 202
+    
+
+@app.route('/tasks/<task_id>', methods=['GET']
+def execute_task(task_id):
+    task_result = AsyncResult(task_id)
+    result = {
+        'task_id': task_id,
+        'task_status': task_result.status,
+        'task_result': task_result.result   # or result.get()
+    }
+    return jsonify(result), 200
 ```
 
 ### Background Tasks with Status Updates Example:
