@@ -38,7 +38,11 @@ html(lang="en")
               li.main-header-item
                 a.active(href="/") Shop
         main
-            .grid   <!--this is for <div>-->
-                h1.product-title #{prods}
-
+            if prods.length > 0
+              .grid   <!--this is for <div>-->
+                    each product in prods
+                        h1.product-title #{product.title}
+                          img(src="", alt="test")
+            else
+              h1 No Products
 ```
