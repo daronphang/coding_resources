@@ -27,4 +27,6 @@ db.execute('some SQL code')
 db.execute('INSERT INTO products (title, price, url, description) VALUES (?, ?, ?, ?)',
   [this.title, this.price, this.url, this.description]
 );
+
+db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
 ```
