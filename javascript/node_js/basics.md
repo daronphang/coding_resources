@@ -28,6 +28,7 @@ Event loop handles event and other callback functions that contain fast finishin
 5) Registers any 'close' event callbacks.
 6) Exits if there are no remaining event handlers registered (process.exit) where counter ref == 0.
 
+Can use module.exports for registering global objects.
 At poll phase, event loop will check again for any timers and can jump back to execute them if exists (doesn't finish iteration).
 
 ## File System Functionality:
