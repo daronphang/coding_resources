@@ -8,6 +8,7 @@ npm install --save ejs pug express-handlebars
 ```
 
 ## Pug:
+Autocomplete with html:5.
 ```javascript
 // app.js
 app.set('view engine', 'pug');
