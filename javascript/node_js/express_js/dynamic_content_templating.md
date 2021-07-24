@@ -8,7 +8,7 @@ npm install --save ejs pug express-handlebars
 ```
 
 ## Pug:
-Autocomplete with html:5.
+Autocomplete with html:5. For CSS classes, can either use dot notation or class=().
 
 ```javascript
 // app.js
@@ -39,6 +39,7 @@ html(lang="en")
             ul.main-header-item-list
               li.main-header-item
                 a.active(href="/") Shop
+                a(href="/add-product", class=(path === '/admin/add-product ? active : ''))
         main
             if prods.length > 0
               .grid   <!--this is for <div>-->
