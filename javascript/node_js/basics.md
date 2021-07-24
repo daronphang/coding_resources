@@ -18,6 +18,18 @@ throughput which equates to high scalability. Used to build powerful, fast and s
 2) Parses code and register variables and functions.
 3) Creates event loop that keeps on running as long as there are event listeners registered (always available).
 
+Event loop handles event and other callback functions that contain fast finishing code. Other operations including file system are sent to a worker pool that is spun up and amanged by node.js. Responsible for heavy lifting that is detached from js code and runs on different threads. When worker pool is done, it triggers a callback that is handled by event loop.
+
+### Event Loop:
+1) Registers timers including setTimeout, setInterval callbacks.
+2) Checks for any pending callbacks and execute I/O-related that were deferred.
+3) Enters poll phase that will look for new I/O events and execute their callbacks, else defers them.
+4) Checks for setImmediate() callbacks.
+5) Registers any 'close' event callbacks.
+6) Exits if there are no remaining event handlers registered (process.exit) where counter ref == 0.
+
+At poll phase, event loop will check again for any timers and can jump back to execute them if exists (doesn't finish iteration).
+
 ## File System Functionality:
 
 ```javascript
@@ -25,6 +37,23 @@ const fs = require('fs');   // node core module
   
 fs.writeFileSync('hello.txt', 'hello world');   // writes file to hard drive
 ```
+
+## Routing Requests:
+Similar concept with render_template in Flask. Defined in action.
+
+```javascript
+res.write('<html>');
+res.write('<head><title>Hello</title></head>');
+res.write('<body><form action="/message" method="POST"><input type="text" name="message"</form></body>');
+res.write('</html>');
+return res.end();
+```
+
+## Parsing Request Payload:
+Request data is read by node.js in chunks i.e. body A, body B, body C. Hence, incoming requests will be rendered in streams and buffers. Useful when working with files as don't have to wait for file to be fully parsed before doing something about it. Buffer is used to organize individual chunks of data (not possible work with indvidual chunks).
+
+## Blocking and Non-Blocking:
+Sync stands for synchronous. Register a callback function as third argument that will execute when it completes.
 
 ## Example:
 ```javascript
@@ -42,10 +71,23 @@ function rqListener(req, res) {
   const url = req.url;
   
   if (url === '/message' && method === 'POST') {
-    fs.writeFileSync('message.txt', 'DUMMY');
-    res.statusCode = 302;
-    res.setHeader('Location', '/')'
-    return res.end();
+    const body = [];  
+    req.on('data', (chunk)= > {       
+      body.push(chunk);      
+    });
+    
+    req.on('end' () => {
+      const parsedBody = Buffer.concat(body).toString();    // parsing request bodies
+      console.log(parsedBody)   // message=hello world
+      const message = parsedBody.split('=')[1]
+      
+      // fs.writeFileSync('message.txt', message);    this is synchronous and hence, code blocking
+      fs.writeFile('message.txt', message, (err) => {   // third arg is callback function that executes when it is done
+        res.statusCode = 302;
+        res.setHeader('Location', '/')'
+        return res.end();
+      });
+    });
   }
   
   res.write('<html>');
