@@ -31,6 +31,18 @@ Event loop handles event and other callback functions that contain fast finishin
 Can use module.exports for registering global objects.
 At poll phase, event loop will check again for any timers and can jump back to execute them if exists (doesn't finish iteration).
 
+```javascript
+module.exports = {
+  handler: requestHandler;
+  someText: 'hello world'
+}
+
+const routes = require('./routes');
+
+console.log(routes.someText);
+const server = http.createServer(routes.handler);
+```
+
 ## File System Functionality:
 
 ```javascript
