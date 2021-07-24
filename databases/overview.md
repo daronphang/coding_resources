@@ -4,6 +4,10 @@ Two types, SQL-based (relational) and NoSQL-based (non-relational).
 ## Relational Database Management System:
 Uses SQL language that offers a highly organized and structured approach to information management. 
 
+### Core Characteristics:
+- Data Schema: All data has to fit in a table.
+- Data Relations: One-to-One, One-to-Many, Many-to-Many.
+
 ### Advantages:
 - **ACID compliance**: Satifies priorities that measure atomicity, consistency, isolation and durability. More ACID-compliant serves to guarantee the validity of database transactions, reduced anomalies, safeguard data integrity and create stable database systems.
 - **Consistency**: Information will remain in structure originally created.
