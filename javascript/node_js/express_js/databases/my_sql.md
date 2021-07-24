@@ -1,4 +1,4 @@
-## Basics:
+## My SQL:
 ```javascript
 // util/database.js
 const mysql = require('mysql2');
@@ -23,4 +23,8 @@ db.execute('some SQL code')
 .catch(err => {
   console.log(err);
 });
+
+db.execute('INSERT INTO products (title, price, url, description) VALUES (?, ?, ?, ?)',
+  [this.title, this.price, this.url, this.description]
+);
 ```
