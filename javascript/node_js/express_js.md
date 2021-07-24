@@ -1,32 +1,76 @@
 ## Basics:
 All about Middleware whereby an incoming reuqest is automatically funneled through a series of functions by expressjs. Offers pluggable nature. 
 
+For incoming requests, need to parse them first with third-party packages before you can use req.body.
+
+For limiting middleware execution, app.use() for POST/GET/PUT/DELETE, app.post() for POST, app.get() for GET requests.
+
 ```
 npm install --save express (not --save dev as this is production dependency)
+npm install --save body-parser (should be added automatically by express)
+```
+
+## Helpers:
+```javascript
+// util/path.js
+const path = require('path');
+
+// dont have to add '..' when specifying absolute paths 
+module.exports = path.dirname(process.mainModule.filename);
 ```
 
 ## Example:
 
 ```javascript
-const http = require('http');
+// routes.js
 const express = require('express');
+const router = express.Router();
+const path = require('path');
+const rootDir = require('../util/path');
 
-const app = express();
-
-app.use((req, res, next) => {   // add middleware function, executed for every incoming request
+router.use((req, res, next) => {   // add middleware function, executed for every incoming request
   console.log('in the middleware');
   next();   // allows reuqest to continue to next middleware 
 });    
 
-app.use('/add-product', (req, res, next) => { 
+router.use('/add-product', (req, res, next) => { 
   console.log('in second middleware');
   res.send('<h1>hello world</h1>');   // automatically sends content type header
 }); 
 
-app.use('/', (req, res, next) => { 
+router.use('/product', (req, res, next) => {
+  console.log(req.body);
+  res.redirect('/');
+}); 
+
+router.use('/', (req, res, next) => { 
   console.log('in third middleware');
-  res.send('<h1>hello world</h1>');   // automatically sends content type header
+  // res.send('<h1>hello world</h1>');   // automatically sends content type header
+  // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));   // need pass absolute path
+  
+  res.sendFile(path.join(rootDir, 'views', 'shop.html'));
 });    
+
+module.exports = Router;
+
+
+// app.js
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+
+const routes = require('./routes');
+
+const app = express();
+
+// parsing incoming requests
+app.use(bodyParser.urlencoded());
+
+app.use('/admin', routes);      // can filter paths by adding first arg
+app.use('/shop', shopRoutes);   // order matters!
+app.use((req, rs, next) => {
+  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+})
 
 app.listen(3000);   // combines createServer and listens
 ```
