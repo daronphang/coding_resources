@@ -6,6 +6,63 @@ Handlebars    <p>{{ name }}</p>
 
 npm install --save ejs pug express-handlebars
 ```
+## EJS:
+Can render vanilla JS code.
+```javascript
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+```
+```ejs
+<main>
+  <% if(prods.length > 0) { %>
+    <% prods.forEach(prods => { %>
+    <div class="grid">
+      <h1>prods.title</h1>
+    </div>
+    <% }) %>
+  <% } else { %>
+    <h1>No Products Found</h1>
+  <% } %>
+```
+
+### Partials:
+For layout functionality, can use partials and merge them together to render final html template. 
+```ejs
+<!--head.ejs-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= pageTitle %></title>
+```
+```ejs
+<header class="main-header">
+  <nav>
+    <ul>
+      <li class="main-header-list"><a class="<%= path === '/admin/product ? active : '' %>" href="/"></li>
+    </ul>
+  </nav>
+</header>
+```
+
+```ejs
+<!--404.ejs-->
+<%- include('/head.ejs') %>
+</head>
+
+<body>
+  <%- include('/navigation.ejs') %>
+</body>
+```
+
+## Handlebars:
+```javascript
+const expressHbs = require('express-handlebars');   // engine not auto installed by express
+
+app.engine('handlebars', expressHbs());
+app.set('view engine', 'handlebars');
+app.set('views', 'views');
+```
 
 ## Pug:
 Autocomplete with html:5. For CSS classes, can either use dot notation or class=().
@@ -50,7 +107,7 @@ html(lang="en")
               h1 No Products
 ```
 
-## Extending Templates:
+### Extending Templates:
 ```pug
 <!--base.pug-->
 <!DOCTYPE html>
