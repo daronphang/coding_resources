@@ -102,6 +102,8 @@ const obj = { x:x, y:y };
 const obj = { x, y };
 ```
 ### Arrow Functions:
+Does not have its own bindings to this or super  but inherits from parent scope (lexical scoping), and should not be used as methods. Not suitable for call, apply or bind methods. Useful when working with closures or callbacks, but not good choice when working with class/object methods or constructors.
+
 ```javascript
 function sayHello(name) {
   console.log('Hello', name);
