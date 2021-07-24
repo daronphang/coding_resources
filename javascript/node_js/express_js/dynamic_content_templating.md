@@ -6,12 +6,14 @@ Handlebars    <p>{{ name }}</p>
 
 npm install --save ejs pug express-handlebars
 ```
+
+## Pug:
 ```javascript
 // app.js
 app.set('view engine', 'pug');
 app.set('views', 'views');
-```
-```javascript
+
+
 //shop.js
 
 router.get('/', (req, res, next) => {
