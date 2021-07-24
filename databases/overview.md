@@ -22,7 +22,7 @@ Uses SQL language that offers a highly organized and structured approach to info
 
 
 ## Non-Relational Database Management System:
-Allows you to organize information in looser fashion such as email texts, customer surveys, random social media information, etc. Ability to expose to powerful business intelligence systems that will analyze data with AI algorithms for machine learning. Can also structure data later and works with JSON format. 
+Allows you to organize information in looser fashion such as email texts, customer surveys, random social media information, etc. Ability to expose to powerful business intelligence systems that will analyze data with AI algorithms for machine learning. Can also structure data later and works with JSON format. Tables are also known as Collections.
 
 ### Advantages:
 - **Excellent for handling 'big data' analytics**: Support speed and efficiency of server operations while offering capacity to work with large data.
@@ -46,6 +46,6 @@ Schema-agnostic means users don't have to understand schema of database before t
 ## Choosing Database:
 Key factors include:
 - **Atomicity**: Either all of operations (insert, update, delete) inside a transaction take place or none. Offers consistency.
-- **Vertical vs Horizontal Scaling**: Relational for vertical (adding more compute power to server) and non-relational for horizontal (distribute load across servers).
+- **Vertical vs Horizontal Scaling**: Relational for vertical (adding more compute power to a server) and non-relational for horizontal (distribute load across more servers).
 - **Speed**: Non-relational database offers faster performance. Useful for real-time data such as sensor data.
 
