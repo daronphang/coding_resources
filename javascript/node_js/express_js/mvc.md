@@ -43,7 +43,7 @@ module.exports = router;
 ```
 
 ## Models:
-```
+```javascript
 const fs = require('fs');
 const path = reuqire('path');
 
