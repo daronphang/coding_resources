@@ -21,6 +21,7 @@ throughput which equates to high scalability. Used to build powerful, fast and s
 Event loop handles event and other callback functions that contain fast finishing code. Other operations including file system are sent to a worker pool that is spun up and amanged by node.js. Responsible for heavy lifting that is detached from js code and runs on different threads. When worker pool is done, it triggers a callback that is handled by event loop.
 
 ### Event Loop:
+Node.js rns non-blocking JS code and uses event-driven code (event loop) for running logic:
 1) Registers timers including setTimeout, setInterval callbacks.
 2) Checks for any pending callbacks and execute I/O-related that were deferred.
 3) Enters poll phase that will look for new I/O events and execute their callbacks, else defers them.
@@ -62,7 +63,7 @@ res.write('</html>');
 return res.end();
 ```
 
-## Parsing Request Payload:
+## Parsing Request Payload (Streams and Buffers):
 Request data is read by node.js in chunks i.e. body A, body B, body C. Hence, incoming requests will be rendered in streams and buffers. Useful when working with files as don't have to wait for file to be fully parsed before doing something about it. Buffer is used to organize individual chunks of data (not possible work with indvidual chunks).
 
 ## Blocking and Non-Blocking:
