@@ -23,6 +23,7 @@ app.set('views', 'views');
   <% } else { %>
     <h1>No Products Found</h1>
   <% } %>
+</main>
 ```
 
 ### Partials:
