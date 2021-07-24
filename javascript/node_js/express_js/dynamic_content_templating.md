@@ -11,6 +11,11 @@ Can render vanilla JS code.
 ```javascript
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
+// shop.js
+router.get('/', (req, res, next) => {
+  res.render('shop', {prods: products, docTitle: 'Shop'});
+});
 ```
 ```ejs
 <main>
