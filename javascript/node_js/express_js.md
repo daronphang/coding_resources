@@ -18,8 +18,13 @@ app.use((req, res, next) => {   // add middleware function, executed for every i
   next();   // allows reuqest to continue to next middleware 
 });    
 
-app.use((req, res, next) => { 
-  console.log('in another middleware');
+app.use('/add-product', (req, res, next) => { 
+  console.log('in second middleware');
+  res.send('<h1>hello world</h1>');   // automatically sends content type header
+}); 
+
+app.use('/', (req, res, next) => { 
+  console.log('in third middleware');
   res.send('<h1>hello world</h1>');   // automatically sends content type header
 });    
 
