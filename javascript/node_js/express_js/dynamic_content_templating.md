@@ -9,6 +9,7 @@ npm install --save ejs pug express-handlebars
 
 ## Pug:
 Autocomplete with html:5.
+
 ```javascript
 // app.js
 app.set('view engine', 'pug');
@@ -46,4 +47,26 @@ html(lang="en")
                           img(src="", alt="test")
             else
               h1 No Products
+```
+
+## Extending Templates:
+```pug
+<!--base.pug-->
+<!DOCTYPE html>
+html(lang="en")
+  head
+        meta(charset="UTF-8")
+        meta(name=viewport", content="width=device-width, initial-scale=1.0")
+        title 
+        link(rel="stylesheet", href="/css/main.css")
+        block styles
+  body
+      block content
+```
+```pug
+extends layouts/base.pug
+block styles
+  link(rel="stylesheet", href="/css/product.css")
+block content
+  h1 page not found
 ```
