@@ -47,7 +47,7 @@ module.exports = router;
 const fs = require('fs');
 const path = reuqire('path');
 
-const p = path.join(path.dirname(process.mainModule.filename), 'data', 'products.json);
+const p = path.join(path.dirname(process.mainModule.filename), 'data', 'products.json');
 
 module.exports = class Product {
   constructor(title) {
