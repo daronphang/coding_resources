@@ -1,5 +1,5 @@
 ## Basics:
-Backend web application framework for node.js. Designed for building web applications and APIs. Key concept is middleware whereby an incoming request is automatically funneled through a series of functions by expressjs. Offers pluggable nature. 
+Backend web application framework for node.js. Designed for building web applications and APIs. Relies heavily on middleware functions whereby an incoming request is automatically funneled through them. Highly extensible and other packages can be plugged into it.
 
 For incoming requests, need to parse them first with third-party packages before you can use req.body.
 
