@@ -49,32 +49,33 @@ const path = require('path');
 
 const p = path.join(path.dirname(process.mainModule.filename), 'data', 'products.json');
 
+const getProductsFromFile = (callback) => {
+  fs.readFile(p, (err, fileContent) => {        // readFile is asynchronous! Need to pass callback function as arg
+    if (err) {
+      return callback([]);   // passes empty array as arg in callback function
+    };
+    
+    callback(JSON.parse(fileContent));
+  }
+});
+}
+
+
 module.exports = class Product {
   constructor(title) {
     this.title = title;
   }
   
   save() {
-    fs.readFile(p, (err, fileContent) => {
-      let products = [];
-      if (!err) {
-        products = JSON.parse(fileContent); 
-      }
+    getProductsFromFile(products => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (err) => {
         console.log(err);
       });
-      
     });
   }
   
-  static fetchAll(callback) {       
-    fs.readFile(p, (err, fileContent) => {    // readFile is asynchronous! Need to pass callback function as arg
-      if (err) {
-        callback([]);   // passes empty array as arg in callback function
-      callback(JSON.parse(fileContent));
-      }
-    }
+  static fetchAll(callback) {
+    getProductsFromFile(callback);
   }
-}
 ```
