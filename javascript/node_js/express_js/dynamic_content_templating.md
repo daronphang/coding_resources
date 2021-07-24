@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
 });
 ```
 
-```html
+```pug
 <!--shop.pug-->
 <!DOCTYPE html>
 html(lang="en")
