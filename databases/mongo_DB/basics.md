@@ -1,5 +1,5 @@
 ## Mongo DB:
-For relations, can have nested/embedded documents or references.
+Has GUI called MonogoDB Compass. For relations, can have nested/embedded documents or references.
 
 ```
 // nested document 
