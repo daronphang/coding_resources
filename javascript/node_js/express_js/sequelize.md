@@ -103,9 +103,9 @@ Product.findByPk(pk).then(product => {
 Sequelize will automatically create FK. For belongs to/has many relationship, can use createProduct(). Don't have to define the PK explicitly. 
 
 ```
-User        Has Many products, has One cart, has Many order
-Product     Belongs to Many cart, belongs to Many order
-Cart      
+User        Has Many products, has One cart, has Many orders
+Product     Belongs to Many carts, belongs to Many orders
+Cart        Belongs to Many products  (Many-to-Many)
 Order
 ```
 
