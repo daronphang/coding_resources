@@ -137,6 +137,9 @@ module.exports = User;
 Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'});
 User.hasMany(Product);    // optional as first is defined
 
+Cart.belongsToMany(Product, {through: CartItem});   // CartItem is the intermediate table that stores Cart and Product IDs
+Product.belongsToMany(Cart, {through: CartItem});
+
 sequelize.sync({).then(result => {
   app.listen(3000);
 }),catch(err => {
