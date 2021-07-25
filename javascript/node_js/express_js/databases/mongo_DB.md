@@ -53,11 +53,15 @@ class Product {
   
   save() {
     const db = getDb();
-    db.collection('products').insertOne(this)   // will create new one if doesn't exist
-    .then(result => {
+    return db.collection('products').insertOne(this).then(result => {     // will create new one if doesn't exist
       console.log(result);
-    })
-    .catch(err => console.log(err))
+    }).catch(err => console.log(err))
   }
 }
+```
+
+## Adding:
+```javascript
+const product = new Product('hello', 12.50);
+product.save().then().catch();
 ```
