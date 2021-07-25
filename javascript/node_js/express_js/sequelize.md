@@ -1,5 +1,5 @@
 ## Basics:
-An object-relational mapping library (for flask is SQLAlchemy). Offers models to work with database.
+An object-relational mapping library (for flask is SQLAlchemy). Allows to define models to interact with the database. Also allows relations/associations to be setup easily.
 ```
 INSERT INTO users VALUES ('Max', 28)                  Not needed
 const user = User.create({name: 'Max', age: 28})      Create js object
