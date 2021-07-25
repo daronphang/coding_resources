@@ -7,7 +7,9 @@ const user = User.create({name: 'Max', age: 28})      Create js object
 npm install --save sequelize
 ```
 
-## Example:
+## Instantiation:
+{force: true} in sync() overwrites table.
+
 ```javascript
 // database.js
 const Sequelize = require('sequelize');
@@ -48,6 +50,94 @@ const sequelize = require('../util/database');
 
 // sync models to database, looks through all sequelize.define (Models you defined)
 sequelize.sync().then(result => {
+  app.listen(3000);
+}),catch(err => {
+  console.log(err);
+})
+```
+
+## Adding:
+```javascript
+Product.create({      // alternative to build() which has to save manually
+  title: 'hello',
+  price: 4.50
+}).then(result => {
+  console.log('created product');
+}).catch(err => console.log(err));   
+```
+
+## Retrieving:
+Can use findAll() which returns an array or findByPk(). 
+```javascript
+Product.findAll({
+  where: {id: 123}
+}).then(products => {
+  res.render('shop/index', {
+    prods: products
+  })
+}).catch(err => {
+  console.log(err);
+});
+```
+
+## Updating:
+```javascript
+Product.findByPk(pk).then(product => {
+  product.title = updatedTitle;
+  product.price = updatedPrice;
+  return product.save();                   // save updated product to database
+})
+.then(result => console.log('updated product'))   // handles result from product.save()
+.catch(err => console.log(err));    // catches errors from both promises
+```
+
+## Deleting:
+Can findByPk() followed by destroy().
+```javascript
+Product.findByPk(pk).then(product => {
+  return product.destroy();
+}).then(result => console.log('deleted product').catch(err => console.log(err));
+```
+
+## Relations:
+Sequelize will automatically create FK. For belongs to/has many relationship, can use createProduct(). Don't have to define the PK explicitly. 
+
+```
+User        Has Many products, has One cart, has Many order
+Product     Belongs to Many cart, belongs to Many order
+Cart      
+Order
+```
+
+```javascript
+req.user.createProduct({
+  title: 'hello',
+  price: 12.50
+})
+```
+
+```javascript 
+// models/user.js
+const User = sequelize.define(modelName='user', attributes={
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true
+  },
+  name: Sequelize.STRING,
+  email: Sequelize.STRING
+  }
+});
+
+module.exports = User;
+
+
+// app.js
+Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'});
+User.hasMany(Product);    // optional as first is defined
+
+sequelize.sync({).then(result => {
   app.listen(3000);
 }),catch(err => {
   console.log(err);
