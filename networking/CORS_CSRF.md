@@ -64,3 +64,6 @@ Vary: Accept-Encoding, Origin
 Keep-Alive: timeout=2, max=100
 Connection: Keep-Alive
 ```
+
+## CSRF Attacks:
+Refers to Cross-Site Request Forgery where sessions are abused and trick application users to execute malicious code. Users send requests to a fake site (inteded to look like original site) that exploits valid session, changes the original request and submits to backend server. To prevent this, can prevent sessions from using unless users are using expected views i.e. CSRF token.
