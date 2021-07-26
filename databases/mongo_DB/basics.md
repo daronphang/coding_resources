@@ -1,4 +1,5 @@
 ## Mongo DB:
+Stores data in BSON (binary json).
 Has GUI called MonogoDB Compass. For relations, can have nested/embedded documents or references.
 
 ```
