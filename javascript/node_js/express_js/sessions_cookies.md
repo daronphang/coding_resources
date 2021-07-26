@@ -19,7 +19,7 @@ exports.postLogin = (req, res, next) => {
 ;samesite=      Prevents browser from sending cookie along with cross-site requests (CSRF attacks); Strict, Lax or None
 ```
 ## Sessions:
-Data stored in server for the same user which requires a session ID. Can use cookies to store hashed session ID.
+Data stored in server for the same user which requires a session ID. Can use session cookies to store hashed session ID for identifying user. Sessions can be stored in memory or in database. Can configure cookie settings in session. Useful for storing private data that belongs to user that doesn't get lost after every response sent.
 
 ```
 npm install --save express-session
@@ -27,9 +27,41 @@ npm install --save express-session
 ```javascript
 const session = require('express-session');
 
+app.use(session({       // express automatically sets a cookie
+  secret: 'my secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {}
+}));
+
+
+// setting session (storing in memory)
+export.postLogin = (req, res, next) => {
+  req.session.isLoggedIn = true;
+}
+```
+### Storing in Database:
+```javascript
+const session = require('express-session');
+const MongoDbStore = require('connect-mongodb-session')(session);
+
+const store = new MongoDbStore({
+  uri: 'some uri',
+  collection: 'sessions',
+}); 
+
 app.use(session({
   secret: 'my secret',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: store
 }));
+```
+
+### Deleting Sessions:
+```javascript
+req.session.destroy((err) => {
+  console.log(err);
+  req.redirect('/');
+});
 ```
