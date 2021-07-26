@@ -29,3 +29,10 @@ content_type
 set_cookie()
 get_data()
 ```
+## Authentication:
+Password hashing function takes a password, adds a random component (salt) and applies several one-way cryptographic transformations to it. Werkzeug's security module conveniently implements secure password hashing.
+
+```
+generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+check_password_hash(hash, password)
+```
