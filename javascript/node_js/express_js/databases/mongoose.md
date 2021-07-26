@@ -36,7 +36,11 @@ product.save().then().catch();
 ```
 
 ### Querying:
-Mongoose queries are not promises; don't mix callbacks and promises with queries as may end up with duplicate operations. 
+Mongoose queries are not promises; don't mix callbacks and promises with queries as may end up with duplicate operations. For specifying document fields to include/exclude, use select() or populate().
+
+```javascript
+Product.find().select('title price -_id')   // _id is excluded
+```
 
 ### Streaming:
 To stream data (applicable for large data), call cursor() to return an instance of QueryCursor. Cursors are subject to cursor timeouts with default of 10mins. Iterating through Mongoose query using async iterators also creates a cursor.
