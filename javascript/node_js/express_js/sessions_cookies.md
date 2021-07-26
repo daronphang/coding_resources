@@ -18,3 +18,18 @@ exports.postLogin = (req, res, next) => {
 ;expires=       Date in GMT string format
 ;samesite=      Prevents browser from sending cookie along with cross-site requests (CSRF attacks); Strict, Lax or None
 ```
+## Sessions:
+Data stored in server for the same user which requires a session ID. Can use cookies to store hashed session ID.
+
+```
+npm install --save express-session
+```
+```javascript
+const session = require('express-session');
+
+app.use(session({
+  secret: 'my secret',
+  resave: false,
+  saveUninitialized: false
+}));
+```
