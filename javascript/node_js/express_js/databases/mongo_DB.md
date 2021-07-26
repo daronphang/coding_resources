@@ -65,3 +65,20 @@ class Product {
 const product = new Product('hello', 12.50);
 product.save().then().catch();
 ```
+
+## Fetching:
+Method find() returns a cursor; can use toArray() to return all elements or pagination of working with big data. To fetch single item, pass an object into find() and use next().
+```javascript
+static findById(prodId) {
+  const db = getDb();
+  return db.collection('products').find({_id: prodId}).next().then().catch();
+}
+
+static fetchAll() {
+  const db = getDb();
+  return db.collection('products').find().toArray().then(products => {
+    return products;
+  }).catch();
+}
+```
+
