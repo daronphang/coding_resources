@@ -1,7 +1,7 @@
 ## Basics:
 Object-Document Mapping Library for node.js which provides a schema-based solution to model data. Core concepts include Schemas (blueprint), Models, Instances and Queries.
 
-## Connections:
+### Connections:
 ```javascript
 const mongoose = require('mongoose');
 mongoose.connect('mongoDB url', options).then(
@@ -9,7 +9,7 @@ mongoose.connect('mongoDB url', options).then(
 ).catch();
 ```
 
-## Schemas/Models:
+### Schemas/Models:
 Each schema maps to MongoDB collection and defines the shape of documents within that collection. Automatically adds an \_id property to schemas. Models are constructors compiled from Schema definitions. An instance of a model is called a document. Models are responsible for creating and reading documents from underlying MongoDB database. 
 
 ```javascript
