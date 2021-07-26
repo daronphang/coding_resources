@@ -67,11 +67,11 @@ product.save().then().catch();
 ```
 
 ## Fetching:
-Method find() returns a cursor; can use toArray() to return all elements or pagination of working with big data. To fetch single item, pass an object into find() and use next().
+Method find() returns a cursor; can use toArray() to return all elements or pagination of working with big data. To fetch single item, pass an object into find() and use next(). MongoDB uses special ObjectId type. 
 ```javascript
 static findById(prodId) {
   const db = getDb();
-  return db.collection('products').find({_id: prodId}).next().then().catch();
+  return db.collection('products').find({_id: new mongodb.ObjectId(prodId)}).next().then().catch();
 }
 
 static fetchAll() {
@@ -79,6 +79,20 @@ static fetchAll() {
   return db.collection('products').find().toArray().then(products => {
     return products;
   }).catch();
+}
+```
+
+## Updating:
+Can use updateOne() or updateMany(). Use $set to describe the update operation. 
+```javascript
+db.collection('products').updateOne({_id: new mongodb.ObjectId(some_id)}, {$set: this});
+```
+
+## Deleting:
+```javascript
+static deleteById(prodId) {
+  const db = getDb();
+  db.collection('products').deleteOne({_id: new mongodb.ObjectId(prodId}}).then().catch();
 }
 ```
 
