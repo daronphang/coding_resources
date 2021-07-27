@@ -50,3 +50,26 @@ app.use((req, res, next) => {
   next();
 });
 ```
+
+## Tokens:
+```javascript
+const crypto = require('crypto');
+
+exports.postResetPassword = (req, res, next) => {
+  crypto.randomBytes(32, (err, buffer) => {
+    if (err) {
+      console.log(err);
+      return res.redirect('/reset');
+    }
+    const token = buffer.toString('hex');
+  });
+}
+
+exports.getNewPassword = (req, res, next) => {
+  const token = req.params.token;
+  User.findOne({
+    resetToken: token,
+    resetTokenExpiration: {$gt: Date.now()}
+  }).then().catch();
+}
+```
