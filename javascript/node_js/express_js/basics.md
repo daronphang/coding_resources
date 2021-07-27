@@ -115,3 +115,17 @@ transporter.sendMail({
   html: '<h1>Success</h1>'
 }).then().catch();
 ```
+
+## Error Handling:
+For error-handling middlewares, pass error argument and calling next(error).
+
+```javascript
+// auth.js
+const error = new Error(err);
+return next(error);
+
+// app.js
+app.use({error, req, res, next} => {
+  res.render('500');    // res.redirect('/500')
+});
+```
