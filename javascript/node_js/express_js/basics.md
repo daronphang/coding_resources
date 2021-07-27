@@ -117,7 +117,7 @@ transporter.sendMail({
 ```
 
 ## Error Handling:
-For error-handling middlewares, pass error argument and calling next(error). To avoid inifite loop in then-catch block, do not throw error but call next(new Error(err)).
+For error-handling middlewares, pass error argument and calling next(error). To avoid inifite loop in then-catch block, call next(new Error(err)) in catch block.
 
 ```javascript
 // auth.js
@@ -125,6 +125,15 @@ const error = new Error(err);
 return next(error);
 
 // app.js
+app.use((req, res, next) => {
+  User.findById(id).then(user => {
+    throw new Error('dummy');
+  }).catch(err => {
+    next(new Error(err));
+  })
+  }
+});
+
 app.use({error, req, res, next} => {
   res.render('500');    // res.redirect('/500')
 });
