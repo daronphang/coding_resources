@@ -157,3 +157,6 @@ Data is stored on server and not on client. Cannot be viewed/manipulated by user
 
 ### Local Storage:
 Store data without an end.
+
+## Error Handling:
+For synchronous code, use try-catch; then-catch for asynchronous. Can also throw errors to trigger in catch block.
