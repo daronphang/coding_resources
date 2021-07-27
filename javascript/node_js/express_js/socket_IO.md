@@ -4,7 +4,8 @@ Bidirectional channel between Socket.IO server (node.js) and Socker.IO client (b
 Socket.IO is not WebSocket implementation as it adds additional metadata to each packet. Hence, WebSocket client cannot connect to Socket.IO server and vice versa.
 
 ```
-io.on()     Event handler that handles connection, disconnection, and events using socket object
+io.on()         Event handler that handles connection, disconnection, and events using socket object
+socket.on()     Handles events sent with socket.send(), socket.emit() or socket.broadcast()
 ```
 
 ```javascript
@@ -33,7 +34,11 @@ httpServer.listen(3000);  // cannot use app.listen() as it creates a new HTTP se
 // establishing connection from client
 import openSocket from 'socket.io-client';
 
-openSocket('http://localhost:3000');    // initialize socket object to establish client connection to server
+const socket = openSocket('http://localhost:3000');    // initialize socket object to establish client connection to server
+
+// handles event sent with socket.emit() from server
+socket.on("greetings", (elem1, elem2, elem3) => {
+  console.log(elem1, elem2, elem3);
 ```
 
 ## Emitting Events:
