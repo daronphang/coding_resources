@@ -1,17 +1,18 @@
 ## Express Validator:
+
 ```
-npm install --save express-validator
-```
-```
-check()                   Goes through body and headers to find input with name equal to specified arg
-ValidationResult()        Gather all errors prior validation middleware 
+check()                   Goes through body, params, cookies and headers to find input with name equal to specified arg
+ValidationResult()        Gather all errors prior validation middleware
 ```
 
 ```javascript
-const { check } = require('express-validator/check');
+const { check, body } = require('express-validator/check');
 
 // add validator middleware
-router.post('/signup', check('email').isEmail().withMessage('Please enter an email'), authController.postSignup);
+router.post('/signup', [
+    check('email').isEmail().withMessage('Please enter an email'),
+    body('password', 'some default error msg').isLength({min: 5, max: 10}).isAlphanumeric(),
+  ], authController.postSignup);
 
 
 // auth.js
@@ -27,5 +28,26 @@ exports.postSignup = (req, res, next) => {
   }
 }
 
+```
 
+## Custom Validators:
+```javascript
+router.post('/signup', check('email').isEmail().custom((value, {req} => {
+  if (value == 'example@gmail.com') {
+    throw new Error('Invalid email');
+  }
+  return true;
+}), authController.postSignup);
+```
+
+## Async Validation:
+Return Promise.reject('some error msg') and Express Validation will catch that error.
+```javascript
+router.post('/signup', check('email').isEmail().custom((value, {req} => {
+  return User.findOne({email: 'hello'}).then(user => {
+    if (user) {
+      return Promise.reject('some error msg');
+    }
+  })
+}), authController.postSignup);
 ```
