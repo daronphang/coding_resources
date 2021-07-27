@@ -117,7 +117,7 @@ transporter.sendMail({
 ```
 
 ## Error Handling:
-For error-handling middlewares, pass error argument and calling next(error).
+For error-handling middlewares, pass error argument and calling next(error). To avoid inifite loop in then-catch block, do not throw error but call next(new Error(err)).
 
 ```javascript
 // auth.js
