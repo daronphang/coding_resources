@@ -42,9 +42,15 @@ socket.on("greetings", (elem1, elem2, elem3) => {
 ```
 
 ## Emitting Events:
-Both server and client can emit events. Both requires socket.emit() or socket.broadcast() method. 
-1) broadcast.emit(): from user to everyone except user.
-2) emit(): from user to everyone (including user).
+Both server and client can emit events. 
+```
+socket.emit()                           Basic emit
+socket.broadcast.emit()                 To all clients in current namespace except sender
+socket.to('room1').to('room2'.emit()    To all clients in room1 and/or 2 except sender
+io.in('room1').emit()                   To all clients in room 1
+io.emit()                               To all connected clients
+```
+
 
 ## Sharing IO Across Files:
 ```javascript
