@@ -43,7 +43,7 @@ socket.on("greetings", (elem1, elem2, elem3) => {
 
 ## Emitting Events:
 Both server and client can emit events. Both requires socket.emit() or socket.broadcast() method. 
-1) broadcast(): from user to everyone except user.
+1) broadcast.emit(): from user to everyone except user.
 2) emit(): from user to everyone (including user).
 
 ## Sharing IO Across Files:
