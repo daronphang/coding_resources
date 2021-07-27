@@ -44,11 +44,17 @@ socket.on("greetings", (elem1, elem2, elem3) => {
 ## Emitting Events:
 Both server and client can emit events. 
 ```
+// server
 socket.emit()                           Basic emit
 socket.broadcast.emit()                 To all clients in current namespace except sender
 socket.to('room1').to('room2'.emit()    To all clients in room1 and/or 2 except sender
 io.in('room1').emit()                   To all clients in room 1
 io.emit()                               To all connected clients
+
+// client
+socket.emit()
+socket.compress(false).emit()
+socket.volatile.emit()
 ```
 
 
