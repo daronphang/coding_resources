@@ -3,6 +3,10 @@
 ```
 check()                   Goes through body, params, cookies and headers to find input with name equal to specified arg
 ValidationResult()        Gather all errors prior validation middleware
+
+// Sanitizers
+trim()
+normalizeEmail()
 ```
 
 ```javascript
