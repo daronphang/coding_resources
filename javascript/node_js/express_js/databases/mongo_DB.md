@@ -96,3 +96,5 @@ static deleteById(prodId) {
 }
 ```
 
+## Pagination:
+Use skip() and limit().
