@@ -91,3 +91,27 @@ app.use((req, rs, next) => {
 
 app.listen(3000);   // combines createServer and listens
 ```
+
+## Sending Emails:
+Using third-party mail server service such as AWS and SendMail.
+
+```
+npm install --save nodemailer nodemailer-sendgrid-transport
+```
+```javascript
+const transporter = nodemailer.createTransport(sendgridTransport({
+  auth: {
+    api_user: 'user', 
+    api_key: '123'
+  }
+}));
+
+
+// sending email
+transporter.sendMail({
+  to: 'hello@gmail.com',
+  from: 'world@gmail.com',
+  subject: 'signup success',
+  html: '<h1>Success</h1>'
+}).then().catch();
+```
