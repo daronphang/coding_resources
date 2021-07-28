@@ -156,6 +156,17 @@ fetch('http://localhost:8000/graphql, {
     throw new Error('user validation failed');
   }
 }).catch();
+
+
+// app.js
+// setup required as express graphql declines automatically if it is not POST/GET request
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  // other CORS setup 
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  } 
+})
 ```
 
 ## Input Validation:
