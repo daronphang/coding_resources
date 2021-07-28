@@ -7,9 +7,11 @@ Key benefits of GraphQL:
 3) Eliminates need for frontend to ask backend for new endpoints or changes to existing. 
 
 ### How GraphQL Works:
-1. Sends POST request to /graphql single endpoint.
-2. Request contains query expression to define the data that should be returned. 
-3. Server-side resolver analyses request body, fetches, filters and returns relevant data to frontend.
+1. Create schema to describe the complete APIs type system; each API call is validated against the schema. 
+2. Create root resolver that contains mapping of actions to functions.
+3. Sends POST request to /graphql single endpoint.
+4. Request contains query expression to define the data that should be returned. 
+5. Server-side resolver analyses request body, fetches, filters and returns relevant data to frontend.
 
 ### Operation Types:
 ```
