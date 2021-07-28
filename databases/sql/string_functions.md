@@ -1,5 +1,5 @@
 ## Common String Functions:
-```
+```sql
 LENGTH()
 LOWER()
 UPPER()
