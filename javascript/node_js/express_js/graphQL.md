@@ -137,3 +137,17 @@ mutation {
   createUser(userInput: {email: "hello@gmail.com", name: "john", password: "123"}) { _id email }   // returns _id and email only
 }
 ```
+
+## Input Validation:
+```javascript
+const validator = require('validator');
+
+errors = [];
+if (!validator.isEmail(userInput.email)) {
+  errors.push({msg: 'email is invalid'});
+};
+
+if (!validator.isEmpty(userInput.password) || validator.isLength(userInput.password, {min: 5}) {
+  errors.push({msg: 'password is invalid'});
+}
+```
