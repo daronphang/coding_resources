@@ -151,8 +151,7 @@ module.exports = {
   }
 };
 ```
-```javascript
-// querying
+```graphql
 mutation {
   createUser(userInput: {email: "hello@gmail.com", name: "john", password: "123"}) { _id email }   // returns _id and email only
 }
@@ -231,7 +230,21 @@ if (errors.length > 0) {
 ```
 
 ## Variables:
-
+Can assign query to any name with variables specified in arguments.
+```javascript
+const graphqlQuery = {
+  query: `
+    query FetchPosts($page: Int) {
+      posts(page: $page) {
+        _id
+        title
+      }
+    }`,
+  variables: {
+    page: this.page
+  }
+}
+```
 
 ## Aliases and Fragments:
 To query results for the same field, use aliases. To avoid repeating same set of fields in mutliple queries, use Fragments which are reusuable units (similar to deconstructing arrays with spread operator). Need to assign values to parameters.
