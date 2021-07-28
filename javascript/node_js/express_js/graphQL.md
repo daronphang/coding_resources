@@ -126,8 +126,8 @@ module.exports = {
       name: userInput.name,
       password: hashedPw
     });
-    const createdUser = await user.save();
-    return { ...createdUser._doc, _id: createdUser._id.toString() };
+    const createdUser = await user.save();  // using mongodb
+    return { ...createdUser._doc, _id: createdUser._id.toString() };    // _doc returns data without metadata
   }
 }
 ```
