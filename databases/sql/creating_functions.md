@@ -1,5 +1,5 @@
 ## Creating Functions:
-```
+```sql
 # General syntax
 CREATE/REPLACE FUNCTION function_name(arg1 TYPE, arg2 TYPE, arg3 TYPE)
 RETURNS return_data_type
@@ -14,7 +14,7 @@ END;
 $$
 ```
 ### Example (Counting Rows of Each Table in Database):
-```
+```sql
 CREATE FUNCTION count_rows(schema TEXT, tablename TEXT)
 RETURNS INTEGER
 LANGUAGE plpsql
