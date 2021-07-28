@@ -1,5 +1,5 @@
 ## Common Date Functions:
-```
+```sql
 CURRENT_DATE()
 CURRENT_TME()
 CURRENT_TIMESTAMP()         Returns current date and time
@@ -11,13 +11,13 @@ SELECT NOW()
 SELECT TIMEOFDAY()
 ```
 ## Extracting Information from Timebased Data:
-```
+```sql
 EXTRACT()   Arguments include YEAR, MONTH, DAY, WEEK, QUARTER
 
 SELECT EXTRACT(YEAR FROM col1) FROM table
 ```
 ## Converting Data Type to Text:
-```
+```sql
 # Useful for timestamp formatting
 TO_CHAR()
 
