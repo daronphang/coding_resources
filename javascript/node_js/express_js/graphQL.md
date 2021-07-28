@@ -59,7 +59,7 @@ const app = express();
 app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
   rootValue: graphqlResolver,
-  graphiql: true        // provides GUI on browser 
+  graphiql: true,        // provides GUI on browser 
 }));
 app.listen(3000);
 
@@ -138,8 +138,48 @@ mutation {
 }
 ```
 
-## Input Validation:
+## Connecting with Frontend:
 ```javascript
+const graphqlQuery = {
+  query: `
+    mutation {
+      createUser(userInput: {email: "${email}", name: "${name}", password: "${password}"}) { _id email }
+    }` 
+}
+
+fetch('http://localhost:8000/graphql, {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify(graphqlQuiery)
+}).then(resData => {
+  if (resData.errors) {
+    throw new Error('user validation failed');
+  }
+}).catch();
+```
+
+## Input Validation:
+Can define custom errors with formatError() in setting up GraphQL at backend.
+```javascript
+// defining custom errors
+app.use('/graphql', graphqlHTTP({
+  schema: graphqlSchema,
+  rootValue: graphqlResolver,
+  graphiql: true,       
+  formatError(err) {
+    if (!err.originalError) {return err;}
+    const data = err.originalError.data;
+    const message = err.message || 'an error occured';
+    const code = err.originalError.code || 500;
+    return {
+      message: message,
+      status: code,
+      data: data
+    }
+  }
+}));
+
+
 const validator = require('validator');
 
 errors = [];
@@ -149,5 +189,12 @@ if (!validator.isEmail(userInput.email)) {
 
 if (!validator.isEmpty(userInput.password) || validator.isLength(userInput.password, {min: 5}) {
   errors.push({msg: 'password is invalid'});
+}
+
+if (errors.length > 0) {
+  const error = new Error('invalid input');
+  error.data = errors;
+  error.code = 422;
+  throw error;
 }
 ```
