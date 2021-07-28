@@ -93,6 +93,11 @@ module.exports = buildSchema('
     name: String!
     password: String!
   }
+  
+  type PostData {
+    posts: [Post!]!
+    totalPosts: Int!
+  }
 
   type RootMutation {
     createUser(userInput: UserInputdata): User!     // specify response layout as type User
@@ -106,6 +111,7 @@ module.exports = buildSchema('
   
   type RootQuery {
     login(email: String!, password: String!): AuthData!
+    posts: PostData!
   }
   
   schema {
