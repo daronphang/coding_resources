@@ -234,7 +234,7 @@ if (errors.length > 0) {
 
 
 ## Aliases and Fragments:
-To query results for the same field, use aliases. To avoid repeating same set of fields in mutliple queries, use Fragments which are reusuable units (similar to deconstructing arrays with ...). Need to assign values to parameters.
+To query results for the same field, use aliases. To avoid repeating same set of fields in mutliple queries, use Fragments which are reusuable units (similar to deconstructing arrays with spread operator). Need to assign values to parameters.
 
 ```graphql
 query getCourseWithFragments($courseID1: Int!, $courseID2: Int!) {
