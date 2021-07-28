@@ -229,3 +229,29 @@ if (errors.length > 0) {
   throw error;
 }
 ```
+
+## Variables:
+
+
+## Aliases and Fragments:
+To query results for the same field, use aliases. To avoid repeating same set of fields in mutliple queries, use Fragments which are reusuable units. Need to assign values to parameters.
+
+```graphql
+query getCourseWithFragments($courseID1: Int!, $courseID2: Int!) {
+      course1: course(id: $courseID1) { title author },
+      course2: course(id: $courseID2) { title author } 
+}
+
+fragment courseFields on Course {
+  title
+  author
+  description
+  topic
+  url
+}
+
+{ 
+    "courseID1":1,
+    "courseID2":2
+}
+```
