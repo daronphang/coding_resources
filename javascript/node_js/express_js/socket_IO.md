@@ -11,10 +11,10 @@ socket.on()     Handles events sent with socket.send(), socket.emit() or socket.
 ```javascript
 // establishing connection from server
 const app = require("express")();
-const httpServer = require("http").createServer(app);
+const httpServer = require("http").createServer(app);   // need running http server
 const options = { /* ... */ };
 
-const io = require("socket.io")(httpServer, options);   // creates socket.io instance
+const io = require("socket.io")(httpServer, options);   // creates socket.io instance built on top of http server
 
 io.on("connection", socket => {
   console.log('client connected');
