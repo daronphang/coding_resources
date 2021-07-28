@@ -10,7 +10,7 @@ git clone github.com/some/software
 docker-compose up
 ```
 
-```
+```yaml
 version: "3.9"  # optional since v1.27.0
 services:
   web:
