@@ -24,11 +24,11 @@ sys
 INFORMATION_SCHEMA
 ```
 ### Creating Schema:
-```
+```sql
 CREATE SCHEMA schema_name [AUTHORIZATION owner_name]
 ```
 ### Creating Objects:
-```
+```sql
 # General syntax
 CREATE TABLE schemaname.tablename(
  values... );
@@ -40,7 +40,7 @@ DOJ DATETIME2 NOT NULL
 ); 
 ```
 ### Query All Schema:
-```
+```sql
 SELECT 
     s.name AS schema_name, 
     u.name AS schema_owner
