@@ -98,8 +98,13 @@ module.exports = buildSchema('
     createUser(userInput: UserInputdata): User!     // specify response layout as type User
   }
   
+  type AuthData {
+    token: String!
+    userId: String!
+  }
+  
   type RootQuery {
-    hello: String   // dummy
+    login(email: String!, password: String!): AuthData!
   }
   
   schema {
@@ -129,7 +134,15 @@ module.exports = {
     const createdUser = await user.save();  // using mongodb
     return { ...createdUser._doc, _id: createdUser._id.toString() };    // _doc returns data without metadata
   }
-}
+  login: async function({ email, password }) {
+    // some code authenticating user in database
+    const token = jwt.sign({
+      userId: user._id.toString(),
+      email: user.email
+    }, 'secret key', { expiresIn: '1h'});
+    return { token: token, userId: user._id.toString() };
+  }
+};
 ```
 ```javascript
 // querying
