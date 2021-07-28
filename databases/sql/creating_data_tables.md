@@ -17,7 +17,7 @@ of the other table i.e. FK in child table, PK in parent table. A table can have 
 ## Constraints:
 Rules enforced on data columns in a table. Used to prevent invalid data from being entered into the database and hence, ensuring accuracy and reliability.
 Commonly used in PK and FK. Constraints can be for column or table.
-```
+```sql
 NOT NULL
 UNIQUE
 CHECK           # Value must satisfy Boolean
@@ -27,7 +27,7 @@ PRIMARY KEY     # Multiple columns can be PK. Same as UNIQUE NOT NULL
 CREATE TABLE example(a INTEGER, b INTEGER, c INTEGER, PRIMARY KEY(a,c))
 ```
 ## Creating Tables:
-```
+```sql
 # General syntax
 CREATE TABLE table_name (
   col_name1 TYPE col_constraint,
@@ -60,7 +60,7 @@ CREATE TABLE products(
 ```
 ### INSERT:
 SERIAL columns do not need to be provided a value. Inserted row values must match up for the table including constraints. 
-```
+```sql
 INSERT INTO account(username, passwword, create_on)
 VALUES('Jose', '1234', CURRENT_TIMESTAMP),
       ('John', '1234', CURRENT_TIMESTAMP)
@@ -68,16 +68,16 @@ VALUES('Jose', '1234', CURRENT_TIMESTAMP),
 INSERT INTO table(col1,col2) SELECT col1,col2 FROM table2
 ```
 ### UPDATE:
-```
+```sql
 # Use UPDATE and SET
 UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = 'Jose'
 ```
 ### RETURNING:
-```
+```sql
 UPDATE account SET last_login = CURRENT_TIMESTAMP RETURNING username, last_login
 ```
 ### DELETE:
-```
+```sql
 DELETE FROM table WHERE row_id = 1
 ```
 ### ALTER:
@@ -86,7 +86,7 @@ Allows for changes to an existing table structure:
 - Changing column's data type
 - setting default values for a column
 - Adding CHECK constraints
-```
+```sql
 ALTER TABLE account ADD COLUMN job_role TEXT
 ALTER TABLE account DROP COLUMN job CASCADE     # CASCADE removes all dependencies
 ALTER TABLE account DROP COLUMN IF EXISTS col1
