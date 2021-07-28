@@ -1,6 +1,6 @@
 ## VIEW:
 Database object of a stored query i.e. virtual table.
-```
+```sql
 CREATE VIEW view_name AS SELECT col1,col2 FROM table 
 
 # To view virtual table
