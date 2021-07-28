@@ -34,3 +34,5 @@ const certificate = fs.readFileSync('server.cert');
 
 https.createServer({key: privateKey, cert: certifcate}, app).listen(3000)
 ```
+
+## Heroku:
