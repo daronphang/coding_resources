@@ -96,6 +96,7 @@ module.exports = buildSchema('
 
   type RootMutation {
     createUser(userInput: UserInputdata): User!     // specify response layout as type User
+    createPost(postInput: PostInputData): Post!
   }
   
   type AuthData {
