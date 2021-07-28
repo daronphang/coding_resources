@@ -238,8 +238,8 @@ To query results for the same field, use aliases. To avoid repeating same set of
 
 ```graphql
 query getCourseWithFragments($courseID1: Int!, $courseID2: Int!) {
-      course1: course(id: $courseID1) { title author },
-      course2: course(id: $courseID2) { title author } 
+      course1: course(id: $courseID1) { ...courseFields },
+      course2: course(id: $courseID2) { ...courseFields } 
 }
 
 fragment courseFields on Course {
