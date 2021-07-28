@@ -134,9 +134,6 @@ module.exports = {
 ```javascript
 // querying
 mutation {
-  createUser(userInput: {email: "hello@gmail.com", name: "john", password: "123"}) {
-  _id         // returns _id and email only
-  email
-  }
+  createUser(userInput: {email: "hello@gmail.com", name: "john", password: "123"}) { _id email }   // returns _id and email only
 }
 ```
