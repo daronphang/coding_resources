@@ -1,5 +1,6 @@
 ## Basics:
-Query language for APIs and runtime with higher query flexibility than RESTFUL. Uses types and fields instead of endpoints. 
+Query language for APIs and server-side runtime for executing queries using type system. Has more query flexibility than RESTFUL. Uses types and fields instead of endpoints. 
+
 Key benefits of GraphQL:
 1) Allows dynamic filtering of response API to avoid sending unnecessary data.
 2) Allows developers to construct requests that pull data from multiple data sources in a single API call. 
@@ -28,7 +29,7 @@ module.exports = buildSchema(`
   }
 
   type RootQuery {
-    hello: TestData!
+    hello123: TestData!
   }
 
   schema {
@@ -37,29 +38,103 @@ module.exports = buildSchema(`
 `);
 
 
-// resolver.js
-module.exports = {}
-  hello() {
+// resolver.js providing a function for each API endpoint
+module.exports = {
+  hello123() {
     return {
       text: 'hello world!',
       views: 123
     };
   }
-
+}
 
 // app.js
-const { graphqlHttp } = require('express-graphql');
+const { graphqlHTTP } = require('express-graphql');
 const graphqlSchema = require('./graphql/schema');
 const graphqlResolver = require('./graphql/resolver');
 
-app.use('/graphql', graphqlHttp({
+const app = express();
+app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
-  rootValue: graphqlResolver
+  rootValue: graphqlResolver,
+  graphiql: true        // provides GUI on browser 
 }));
+app.listen(3000);
 
 
 // POST request data
 {
-  "query": "{ hello { text views } }" 
+  "query": "{ hello123 { text views } }" 
+}
+```
+
+## Mutations:
+```javascript
+// schema.js
+module.exports = buildSchema('
+  type Post {
+    _id: ID!
+    title: String!
+    content: String!
+  }
+  
+  type User {
+    _id: ID!
+    name: String!
+    password: String
+    status: String!
+    posts: []
+  }
+
+  input UserInputData {     // interface for data and type used as argument 
+    email: String!
+    name: String!
+    password: String!
+  }
+
+  type RootMutation {
+    createUser(userInput: UserInputdata): User!     // specify response layout as type User
+  }
+  
+  type RootQuery {
+    hello: String   // dummy
+  }
+  
+  schema {
+    query: RootQuery
+    mutation: RootMutation
+  }
+');
+```
+```javascript
+// resolver.js
+const User = require('../models/user');
+
+module.exports = {
+  createUser: async function({ userInput }, req) {
+    // const email = args.userInput.email
+    const existingUser = await User.findOne({email: userInput.email});
+    if (existingUser) {
+      const error = new Error('user exists already');
+      throw error;
+    }
+    const hashedPw = await bcrypt.hash(userInput.password, 12);
+    const user = new User({
+      email: userInput.email,
+      name: userInput.name,
+      password: hashedPw
+    });
+    const createdUser = await user.save();
+    return { ...createdUser._doc, _id: createdUser._id.toString() };
+  }
+}
+```
+```javascript
+// querying
+mutation {
+  createUser(userInput: {email: "hello@gmail.com", name: "john", password: "123"}) {
+  _id         // returns _id and email only
+  email
+  }
 }
 ```
