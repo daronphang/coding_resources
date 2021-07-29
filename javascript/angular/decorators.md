@@ -111,3 +111,10 @@ Direct interaction with plain HTML element of template.
   @ViewChild('title') title: ElementRef;  // to access template ref
   @ViewChild('primaryColorSample', {read: ElementRef}) sample: ElementRef;  // to access HTML element of child component, pass in options arg
 ```
+
+## ViewChildren:
+provides a list of element references rather than returning a single reference. 
+
+```javascript
+ @ViewChildren(ChildComponent) children: QueryList<ChildComponent>;
+```
