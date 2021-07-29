@@ -71,11 +71,43 @@ export class FocusDirective implements OnChanges {
 ```
 
 ## ViewChild:
-Property decorator that configures a view query i.e. to access a directive, child component or DOM element from parent component. Change detector looks for first element or directive matching the selector in view DOM. If the view DOM changes and new child matches the selector, the property is updated. Can only view elements inside template of component itself and not cross boundaries i.e. local.
+Property decorator that configures a view query i.e. to access a directive, child component or DOM element from parent component. Change detector looks for first element or directive matching the selector in view DOM. If the view DOM changes and new child matches the selector, the property is updated. In terms of visibility scope, @ViewChild cannot be used to inject anything inside the templates of its child and parent components i.e. decorator can only query templates that are local to the component and not cross boundaries.
 
-Variable is injected after view initialization is completed. To use references injected by ViewChild, need to initialize inside AfterViewInit() and not in ngOnInit(). 
+```html
+
+<color-sample [color]="primary" #primaryColorSample>
+</color-sample>
+<h2 #title>Choose Brand Colors:</h2>
+<mat-input-container>
+  <mat-label>Primary Color</mat-label>
+  <input matInput #primaryInput [(colorPicker)]="primary" [(ngModel)]="primary"/>
+</mat-input-container>
+```
 
 ```javascript
-  @ViewChild('primaryColorSample') sample: ColorSampleComponent;    // to access component
-  @ViewChild('primaryColorSample', {read: ElementRef}) sample: ElementRef;  // to access template ref
+// child component 
+export class ColorSampleComponent {
+    ...
+}
+```
+
+### Injecting Reference to Child Component:
+Variable is injected after view initialization is completed. To use references injected by ViewChild, need to initialize inside AfterViewInit() and not in ngOnInit(). Can also inject reference to DOM element of child component which will return the child component instance and not HTML element. 
+```javascript
+// parent component
+export class ParentComponent implements AfterViewInit {
+    @ViewChild(ColorSampleComponent) primarySampleComponent: ColorSampleComponent;
+    @ViewChild('primaryColorSample') sample: ColorSampleComponent;      // same as above
+    
+    ngAfterViewInit() {
+        console.log(this.primarySampleComponent);
+    }
+}
+```
+
+### Injecting Reference to DOM Element:
+Direct interaction with plain HTML element of template. 
+```javascript
+  @ViewChild('title') title: ElementRef;  // to access template ref
+  @ViewChild('primaryColorSample', {read: ElementRef}) sample: ElementRef;  // to access HTML element of child component, pass in options arg
 ```
