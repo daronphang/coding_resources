@@ -18,7 +18,7 @@ TCP/IP model is more concise framework than OSI model which consists of four lay
 1. Network: Combines both Physical and Data Link from OSI; handles physical parts of sending/receiving data.
 2. Internet: Controls the movement of packets around the network.
 3. Transport: Responsible for providing solid/reliable data connection; level where data gets divided into packets. 
-4. Application: Refers to programs that need TCP/IP to communicate with each other; combines Session, Presentation and Application from OSI.
+4. Application: Refers to programs that need TCP/IP to communicate with each other; combines Session, Presentation and Application.
 
 ### TCP/IP Analogy:
 TCP/IP relationship can be analogized to client sending an email message in puzzle form:
