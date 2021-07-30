@@ -9,19 +9,19 @@ Communication protocols are built using layers in OSI model stack. Each layer ha
 7. Application (SMTP, HTTP, FTP, DNS): What user interacts with such as web browser or Outlook.
 
 ## TCP/IP:
-Suite of communication protocols (stateless) to specify how computers transfer data from one device to another on internet/intranet. Emphasizes on accuracy. Each device has its own TCP/IP address. 
+Separate protocols that work together (stateless) and specify how computers transfer data from one device to another on internet/intranet. Emphasizes on accuracy. Default method of data communication and developed by US Department of Defense. Each device has its own TCP/IP address. It breaks messages into packets and avoid having to resend entire message in the event of missed transmission. Packets are automatically reassembled once they reach their destination. Every packet can take a different route, depending on whether the original route becomes congested/unavailable.
 
-Specifies how data is exchanged by providing end-to-end communications that identify how it should be broken into packets, addressed, transmitted, routed and recived at destination. TCP/IP also includes HTTP, HTTPS and FTP (File Transfer Protocol). 
+IP is responsible for delivery of data packets from source to destination nodes. Primary version is IPv4; newer IPv6 addresses size contraints. TCP is responsible for maintaining a reliable connection between communicating devices and for ensuring data transfers are completed successfully. IP obtains the address while TCP guarantees delivery of data to that address. 
 
-Internet Protocol is responsible for logical addressing i.e. breaks up information into network packets, reassembles on receiving end and ensures they are sent to right address. Primary version is IPv4; newer IPv6 addresses size contraints. Transmission Control Protocol is reponsible for transporting and routing data through network architecture and ensuring it gets delivered to destination application or device. IP obtains the address while TCP guarantees delivery of data to that address. 
-
+### TCP/IP Layers: 
 TCP/IP model is more concise framework than OSI model which consists of four layers:
 1. Network: Combines both Physical and Data Link from OSI; handles physical parts of sending/receiving data.
 2. Internet: Controls the movement of packets around the network.
-3. Transport: Divides data in packets and exchanges acknowledgement between sender and receiver. 
-4. Application: Combines Session, Presentation and Application from OSI.
+3. Transport: Responsible for providing solid/reliable data connection; level where data gets divided into packets. 
+4. Application: Refers to programs that need TCP/IP to communicate with each other; combines Session, Presentation and Application from OSI.
 
-TCP/IP relatiosnhip can be analogized to client sending an email message in puzzle form:
+### TCP/IP Analogy:
+TCP/IP relationship can be analogized to client sending an email message in puzzle form:
 1. Puzzle is broken down into pieces (packets).
 2. Each packet can travel through different route which may take longer than others.
 3. When puzzle pieces arrive at destination, they may be out of order.
@@ -29,6 +29,7 @@ TCP/IP relatiosnhip can be analogized to client sending an email message in puzz
 5. TCP assembles puzzle on receiving side, asks for missing pieces to be resent, and informs sender that it has been received. 
 6. TCP also maintains connection with sender before first packet is sent to after final piece is sent.
 
+### Three-Way Handshake:
 For every connection, TCP/IP establishes 3-way handshake:
 1. Source sends SYN packet (initial request) to target server to start dialogue.
 2. Target server sends SYN-ACK to agree the process.
