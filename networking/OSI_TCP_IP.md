@@ -44,6 +44,6 @@ Data packets sent over TCP/IP are not private and hence, can be intercepted. One
 - HTTP is located at application layer 7 while TCP is located at abstraction layer 4.
 - HTTP is one-way communication system whereas TCP is three-way handshake.
 - HTTP uses port 80 while TCP uses no port.
-- HTTP is utilized to access websies while TCP is session establishment protocol between client/server.
+- HTTP is utilized to access websites while TCP is session establishment protocol between client/server.
 - TCP manages data stream while HTTP describes what data in the stream contains. 
 
