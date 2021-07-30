@@ -58,7 +58,11 @@ Display: None                       Hidden and takes no space; can also set inli
 
 word-wrap: break-word;              Text wrapping
 
+writing-mode: vertical-rl;          Changing orientation 
 
+resize: both|horizontal|vertical;   Defines if and how an element is resizable
+
+overflow: scroll|hidden|visible;    Specifies what should happen if content overflows an element box
 ```
 
 ## Pseudo Elements:
