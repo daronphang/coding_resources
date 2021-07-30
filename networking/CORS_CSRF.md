@@ -66,4 +66,8 @@ Connection: Keep-Alive
 ```
 
 ## CSRF Attacks:
-Refers to Cross-Site Request Forgery where sessions are abused and trick application users to execute malicious code. Users send requests to a fake site (inteded to look like original site) that exploits valid session, changes the original request and submits to backend server. To prevent this, can prevent sessions from using unless users are using expected views i.e. CSRF token. Tokens are generated for every page rendered and sent as a response from backend server. 
+Refers to Cross-Site Request Forgery where sessions are abused and trick application users to execute malicious code. Allows an attacker to circumvent the same origin policy. Examples include changing email address, password, making funds transfer, etc. Attack inherits the identity and privileges of victim to perform an undesired function on victim's behalf through the following:
+- Authenticated users normally send session cookie with every request; if victim visits/loads attacker's site (similar to original site), they can steal session and perform malicious code to actual website. 
+- Victim logins into attacker's site (login CSRF). 
+
+To prevent this, can prevent sessions from using unless users are using expected views i.e. CSRF token. Tokens are generated for every page rendered and sent as a response from backend server. 
