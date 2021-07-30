@@ -55,6 +55,10 @@ position: relative;
 
 Visibility: Hidden                  Not visible but takes up original space
 Display: None                       Hidden and takes no space; can also set inline, block, inline-block
+
+word-wrap: break-word;              Text wrapping
+
+
 ```
 
 ## Pseudo Elements:
