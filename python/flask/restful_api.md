@@ -35,3 +35,5 @@ Content-Type        application/json (response type sent to client by server)
 Cache-Control
 ```
 
+## CRUD API:
+Create, read, update and delete. Four major functions for interacting with database applications of persistent storage. REST APIs often involve the use of CRUD functions, but are not limited to them.
