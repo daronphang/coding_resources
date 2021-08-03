@@ -11,6 +11,9 @@ Stable version: January 2021, version 1.53.2
 7) Prettier
 8) Error Lens
 9) Auto Rename Tag
+10) Bracket Pair Colorizer
+11) Live Server
+12) ES7-Snippets
 
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
