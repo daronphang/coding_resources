@@ -24,7 +24,7 @@ vh      Relative to 1% of height of viewport.
 
 ## Flex:
 Method used for space distribution between items in an interface with powerful alignment capabilities.
-```
+```css
 .container {
     display: flex;
     flex-direction: column/row;
@@ -45,7 +45,7 @@ Method used for space distribution between items in an interface with powerful a
 ```
 
 ## CSS Tricks:
-```
+```css
 min-width: 55em;                    Prevent container size from resizing when user resizes window
 overflow: hidden;                   Prevent inner content from overflowing the wrapping container outline
 z-index: 50;                        Positive stacks in front, negative stacks behind (changes transparency)
@@ -66,10 +66,23 @@ overflow: scroll|hidden|visible;    Specifies what should happen if content over
 ```
 
 ## Pseudo Elements:
-To style specified parts of an element. Used with :: as contrast with pseudo-classes (single :).
-```
+Allows you to insert content on the page without writing HTML for it i.e. not an actual DOM element. Inline by default. Cannot use an image in pseudo elements. 
+To style specified parts of an element. Used with :: as contrast with pseudo-classes (single :). Useful cases include icons, borders, arrows and quotes.
+```css
 p::first-line {             
   color: #ff0000;
   font-variant: small-caps;
+}
+
+P::before {
+    content: '';
+    background-color: red;
+    display: block;
+}
+
+P::after {
+    content: '';
+    background-color: red;
+    display: block;
 }
 ```
