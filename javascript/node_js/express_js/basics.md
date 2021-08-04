@@ -1,13 +1,54 @@
 ## Express.js:
-Backend web application framework for node.js. Designed for building web applications and APIs. Relies heavily on middleware functions whereby an incoming request is automatically funneled through them. Highly extensible and other packages can be plugged into it.
-
-For incoming requests, need to parse them first with third-party packages before you can use req.body.
-
-For limiting middleware execution, app.use() for POST/GET/PUT/DELETE, app.post() for POST, app.get() for GET requests.
+Backend web application framework for node.js. Designed for building web applications and APIs. Relies heavily on middleware functions whereby an incoming request is automatically funneled through them. Highly extensible and other packages can be plugged into it. For incoming requests, need to parse them first with third-party packages before you can use req.body. For limiting middleware execution, app.use() for POST/GET/PUT/DELETE, app.post() for POST, app.get() for GET requests.
 
 ```
 npm install --save express (not --save dev as this is production dependency)
-npm install --save body-parser (should be added automatically by express)
+npm install --save-dev nodemon
+
+npm init
+
+Need add "start": "nodemon app,js" under scripts in package.json
+```
+
+## Basic Example:
+```javascript
+// app.js
+const express = require('express');
+
+const shoppingRoutes = require('./routes/shopping');
+
+const app = express();
+
+app.use(express.json()); // application/json
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT,PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+
+app.use(shoppingRoutes);
+
+app.listen(8080);
+```
+```javascript
+// routes/shopping.js
+const express = require('express');
+const shoppingController = require('../controllers/shopping')
+
+const router = express.Router();
+
+router.get('/shopping-items', shoppingController.getShoppingItems);
+
+module.exports = router;
+```
+
+```javascript
+// controller/shopping.js
+exports.getShoppingItems = (req, res, next) => {
+    res.status(200).json({title: 'hello world!!!'})
+}
 ```
 
 ## Helpers:
