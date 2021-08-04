@@ -1,3 +1,6 @@
+## Basics:
+Functions that have access to request object, resposne object and next function in application's request-response cycle. If current middleware does not end request-response cycle, it must call next() to pass control to next middleware function. 
+
 ## Body Parser:
 Parse incoming request bodies before handlers. All middlewares will populate the req.body property with parsed body when Content-Type request header matches the type option.
 
