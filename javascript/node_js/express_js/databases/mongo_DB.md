@@ -1,4 +1,5 @@
 ## Mongo DB:
+Manages connection pooling whereby it will ensure it provides sufficient connections for multiple simultaneous interactions with database.
 ```
 npm install --save mongodb
 ```
