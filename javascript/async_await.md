@@ -33,8 +33,12 @@ const whereAmI = async function(country) {
 ```
 
 ## Async/Await vs Promises:
+- Both async/await and promises are used to handle asynchronous result of an operation so others can continue to execute.
+- Async/await is syntatic sugar for promises.
+- Entire wrapper function for async/await is asynchronous, whereas for promises, only the promise chain itself is.
 - Await is used for calling an async function and waits for it to resolve or reject (blocks execution code).
-- 
+- If function2 depends on output of function1, use await.
+- Mutliple promises are handled with Promise.all().
 
 
 ## Other Promise Combinators:
