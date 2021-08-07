@@ -31,6 +31,12 @@ const whereAmI = async function(country) {
     };
 };
 ```
+
+## Async/Await vs Promises:
+- Await is used for calling an async function and waits for it to resolve or reject (blocks execution code).
+- 
+
+
 ## Other Promise Combinators:
 ```
 Promise.all()           Constructor which takes an array of promises and runs them in parallel. 
