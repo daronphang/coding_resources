@@ -1,5 +1,5 @@
 ## Custom Hooks:
-Custom hooks are regular functions that help to share stateful logic between components without forcing you to add more components to the tree. Starts with 'use' and may call other hooks and React states. Components that use the same hook do not share state as all state and effects inside are isolated.
+Custom hooks are regular functions that help to share stateful logic between components without forcing you to add more components to the tree. Allows to extract components logic into a reusuable function. Starts with 'use' and may call other hooks and React states. Components that use the same hook do not share state as all state and effects inside are isolated.
 
 ```javascript
 // custom hook function
