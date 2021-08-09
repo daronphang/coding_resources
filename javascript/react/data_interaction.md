@@ -50,3 +50,24 @@ const ExpenseForm = (props) => {
   }
 }
 ```
+
+## Two-Way Binding:
+Achieved by using useState() and setting it as input value.
+
+```javascript
+const function = () => {
+  const [enteredTitle, setEnteredTitle] = useState('');
+  
+  submitHandler = () => {
+    event.preventDefault();
+    setEnteredTitle('');    // clearing input value
+  }
+  
+  return (
+    <form onSubmit={submitHandler}>
+      <input type="text" value={enteredTitle} onChange={titleChangeHandler}>
+    </form>
+  )
+}
+
+```
