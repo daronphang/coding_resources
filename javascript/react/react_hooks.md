@@ -89,6 +89,12 @@ Side effects are handled using useEffect() which is executed after every compone
 For checking form validity, the useEffect() is executed upon each change in keystroke which creates unncessary network traffic. Can avoid this using a technique called debouncing through usage of cleanup functions.
 
 ```javascript
+// function runs only once as there is no dependency provided
+useEffect(() => {
+  console.log('running');
+}, []);
+
+// function reruns if dependencies change
 useEffect(() => {}, [dependencies]);
 
 function App() {
