@@ -1,5 +1,5 @@
 ## Basics:
-State management library built into React to solve props drilling. Need create context, consumer and provider.
+State management library built into React to solve props drilling. Provides a way to pass data through component tree without having to pass props down manually at every level. Designed to share data that can be considered "global" for a tree of React components such as current authenticated user, theme, or preferred language. Need create context, consumer and provider.
 
 ### Consumer: 
 Consumer is where the stored information ends up. It can request data via the provider and manipulate the central store.
@@ -22,13 +22,15 @@ React Hook that allows us to manage state data inside functional components. Pro
 
 import React, { useState } from 'react'; 
 
+// creating context for authenticated user, value passed in is default 
 const AuthContext = React.createContext({
   isLoggedIn: false,   // to set default value
   onLogout: () => {},    // pass dummy function for IDE auto completion
   onLogin: (email, password) => {}
 });
 
-export const AuthContextProvider = (props) => {     // to have one central place for state management
+// to have one central place for state management
+export const AuthContextProvider = (props) => {     
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const logoutHandler = () => {
     localStorage.removeItem('userData');
@@ -40,11 +42,16 @@ export const AuthContextProvider = (props) => {     // to have one central place
     setIsLoggedIn(true);
   }
   
-  return <AuthContext.Provider value={{     // to wrap everything with AuthContext as it is needed everywhere 
-      isLoggedIn: isLoggedIn,
-      onLogout: logoutHandler,
-      onLogin: loginHandler
-    }}>{props.children}</AuthContext.Provider>;
+  
+  return (  
+      <AuthContext.Provider value={{      // to wrap everything with AuthContext as it is needed everywhere 
+        isLoggedIn: isLoggedIn,
+        onLogout: logoutHandler,
+        onLogin: loginHandler
+      }}>{props.children}
+    </AuthContext.Provider>;
+  )
+
 }
 
 export default AuthContext; 
@@ -53,7 +60,7 @@ export default AuthContext;
 ```javascript
 // index.js
 
-ReactDOM.render(<AuthContextPRovider><App /></AuthContextProvider>, ...)
+ReactDOM.render(<AuthContextProvider><App /></AuthContextProvider>, ...)
 
 ```
 
