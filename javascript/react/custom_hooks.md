@@ -20,10 +20,9 @@ export default useCounter;
 ```
 ```javascript
 // component:
-  const ForwardCounter - () => {
-    useCounter(true);   // states declared in hook will be tied to individual component (not shared)
-    
-    return <Card>{counter}</Card>;
-  };
+const ForwardCounter - () => {
+  useCounter(true);   // states declared in hook will be tied to individual component (not shared)
 
+  return <Card>{counter}</Card>;
+};
 ```
