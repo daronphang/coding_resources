@@ -7,6 +7,22 @@ cd my-app
 npm start
 ```
 
+## Handling Events:
+With JSX, need to pass a function as the event handler and not a string. Full list of events: https://reactjs.org/docs/events.html#mouse-events.
+```javascript
+function Todo(props) => {
+  // document.querySelector('button').addEventListener('click');   this is imperative approach, not declarative
+  
+  return (
+    <div>
+      <button className="button" onClick={function()}></button>
+    </div>
+  )
+}
+
+```
+
+
 ## Uncontrolled/Stateless:
 Stateless/dumb components are those that do not have hold any states.
 If the logic or data is handled in parent component, the child component is uncontrolled.
