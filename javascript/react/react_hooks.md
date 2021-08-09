@@ -175,7 +175,6 @@ const Login = (props) => {
     const identifier = setTimeout(() => {
       setFormIsValid(emailIsValid && passwordIsValid);
     }; 500);
-  }
   
     return () => {
       clearTimeout(identifier);
