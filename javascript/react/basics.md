@@ -95,7 +95,8 @@ return (
 ```
 
 ## React Portals:
-Make HTML rendered semantically correct i.e. displaying alert/modal boxes.
+When displaying modals/alert boxes, they are overlays to the entire page and in HTML, it should be above everything else instead of nested in some HTML code. Portals help to make HTML rendered semantically correct and provide a clean HTML structure persepective.
+
 ```html
 <!--index.html-->
 
