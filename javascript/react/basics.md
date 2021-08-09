@@ -99,7 +99,7 @@ When displaying modals/alert boxes, they are overlays to the entire page and in 
 
 ```html
 <!--index.html-->
-
+<div id="backdrop-root" </div>
 <div id="overlay-root" </div> <!--instead of nesting in HTML code-->
 <div id="root"></div>
 ```
