@@ -66,8 +66,8 @@ const titleChangeHandler = (event) => {
   
 }
 ```
-## Wrapper Component:
-Can create your own or use <React.Fragment> or <> (empty).
+## Wrapper/Fragment Component:
+JSX requires one root element that return a constant or variable. Can create your own or use <React.Fragment> or <> (empty).
 ```javascript
 // helper/wrapper.js
 const Wrapper = props => {
@@ -75,6 +75,23 @@ const Wrapper = props => {
 }
 
 export default Wrapper;
+```
+
+```javascript
+// Fragments
+return (
+  <React.Fragment>
+    <h2>hi</h2>
+    <p>this works</p>
+  </React.Fragment>
+)
+
+return (
+  <>
+    <h2>hi</h2>
+    <p>this works</p>
+  </>
+)
 ```
 
 ## React Portals:
