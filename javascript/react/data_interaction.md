@@ -71,3 +71,9 @@ const function = () => {
 }
 
 ```
+
+## Props vs State:
+- Both hold information relating to component but are used differently.
+- Props contains information set by parent component and are immutable.
+- State contains 'private' information for component to initalize, change and use on it's own.
+- Props are passed into the component whereas State is created in the component.
