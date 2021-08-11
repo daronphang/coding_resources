@@ -1,6 +1,7 @@
-## Definitions:
-- **Observable**: a data source i.e. from user input events, HTTP requests, etc. 
-- **Observer**: an interface that executes instructions when there is a new value or change in the Observable, and delivers values to the Observable using next(), error() or complete().
+## Overview:
+- **Observable**: Data source i.e. from user input events, HTTP requests, etc. 
+- **Observer**: An interface that executes instructions when there is a new value or change in the Observable, and delivers values to the Observable using next(), error() or complete().
+- **Subscription**: An Object that represents a disposable resource with unsubscribe(). 
 
 Observable -> Connected to Observer -> Performs execution that delivers value to Observable -> Observable is subscribed to emit value.
 
@@ -30,6 +31,7 @@ ngOnDestroy() {
 
 ## Advantages Over Promises:
 - An Observable pushes a stream of values whereas Promise pushes one resolved value.
+- Observables are declarative whereby computation does not start until subscription whereas promises are executed immediately on creation.
 - Error handlers can be done inside Observables rather than a construct like Promises.
 - Data can be transformed using operators through pipe(). 
 
