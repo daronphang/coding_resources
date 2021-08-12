@@ -22,10 +22,8 @@ function Todo(props) => {
 
 ```
 
-
-## Uncontrolled/Stateless:
-Stateless/dumb components are those that do not have hold any states.
-If the logic or data is handled in parent component, the child component is uncontrolled.
+## Lifting State Up:
+Sometimes we have state that's located within a particular component that also needs to be shared with sibling components. Instead of using an entire state management library like Redux or React Context, can just lift state up to closest common ancestor (parent component as a single source of truth) and pass both state variables and values down through props to update the state. 
 
 
 ## Listening to User Input:
@@ -118,3 +116,7 @@ const ErrorModal = props => {
   )
 } 
 ```
+
+## Uncontrolled/Stateless:
+Stateless/dumb components are those that do not have hold any states.
+If the logic or data is handled in parent component, the child component is uncontrolled.
