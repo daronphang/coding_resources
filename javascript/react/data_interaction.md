@@ -21,6 +21,7 @@ const ChildComponent = (props) => {
 ```
 
 ## Child to Parent:
+Create a callback function in parent component which receives the data from child component as an argument. Pass the callback function in parent as prop to child component. Child component calls the parent callback function using props.
 ```javascript
 // NewExpense.js (parent component)
 
