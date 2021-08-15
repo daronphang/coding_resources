@@ -55,8 +55,16 @@ mouseover
 search
 select
 ```
+
 ## Common Attributes:
 ```
 .firstChild?.nodeValue
 .setAttribute(name, value)
+```
+
+## Event Properties:
+```
+currentTarget         Returns the target HTML element
+preventDefault()      Prevents the browser's default behavior
+stopPropagation()     Prevents event from bubbling up the DOM i.e. on all of the parent elements
 ```
