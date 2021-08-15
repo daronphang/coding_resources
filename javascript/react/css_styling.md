@@ -52,6 +52,55 @@ return (
 )
 ```
 
+### Passing on props:
+```javascript
+const Button = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => props.primary ? "palevioletred" : "white"};
+  color: ${props => props.primary ? "white" : "palevioletred"};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+render(
+  <div>
+    <Button>Normal</Button>
+    <Button primary>Primary</Button>
+  </div>
+);
+```
+
+### Extending Styles (in React Material):
+
+```javascript
+import React from 'react';
+import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+
+const StyledButton = styled(Button)`
+  background-color: #6772e5;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 7px 14px;
+  &:hover {
+    background-color: #5469d4;
+  }
+`;
+
+export default function StyledComponents() {
+  return (
+    <div>
+      <Button>Default</Button>
+      <StyledButton>Customized</StyledButton>
+    </div>
+  );
+}
+```
+
 ## CSS Module:
 Buiilt into React. Simply use styles() method. Recommended way as styling is stored in .css files. Need to rename CSS files as example.module.css.
 
