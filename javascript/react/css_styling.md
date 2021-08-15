@@ -30,7 +30,7 @@ return (
 ```
 
 ## Styled Components:
-When declaring CSS files explicitly, they are not scoped to the components they are declared in. Can use 'Styled Components' package. Has methods for all HTML tags. Guarantees every className is unique so that it doesn't spill over to other components. Styling stored in js files. For different devices, use @media (condition) to set styling for mobile devices, computer etc.
+When declaring CSS files explicitly, they are not scoped to the components they are declared in. Can use 'Styled Components' package which is CSS-in-JS approach. Styles can use JS logic and stored in JS files. Has methods for all HTML tags. Guarantees every className is unique so that it doesn't spill over to other components. For different devices, use @media (condition) to set styling for mobile devices, computer etc. However, browser won't start interpreting styles until components has parsed them added them to DOM which slows down rendering. Also, absence of CSS files means cannot cache separate CSS. 
 ```
 npm install --save styled-components
 ```
