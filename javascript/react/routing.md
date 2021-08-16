@@ -6,6 +6,7 @@ npm install react-router-dom
 ```
 
 ```javascript
+// Welcome component 
 return (
   <nav>
     <Link to='/welcome'>Welcome</Link>    // instead of using href
@@ -15,6 +16,7 @@ return (
 ```
 
 ```javascript
+// app.js to define routes
 import { Route } from 'react-router-dom';
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
 }
 ``` 
 ```javascript
+// activate routes in index.js 
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
