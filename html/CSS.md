@@ -44,6 +44,25 @@ Method used for space distribution between items in an interface with powerful a
 
 ```
 
+## Horizontal/Vertical Alignment:
+```css
+.horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-left: auto;
+    align-right: auto;
+    text-align: center;
+}
+
+.vertical {
+    line-height: 10px;
+    align-top: auto;
+    align-bottom: auto;
+}
+```
+
+
 ## CSS Tricks:
 ```css
 min-width: 55em;                    Prevent container size from resizing when user resizes window
