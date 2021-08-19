@@ -60,6 +60,10 @@ Method used for space distribution between items in an interface with powerful a
     align-top: auto;
     align-bottom: auto;
 }
+
+.right {
+    float: right;
+}
 ```
 
 
