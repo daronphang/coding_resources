@@ -73,3 +73,8 @@ const appRoutes: Routes = [
 <router-outlet></router-outlet>    // need add this
 ```
 
+## Navigate to Top When Routing:
+```javascript
+// in routing module
+RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})
+```
