@@ -94,6 +94,13 @@ for (const item of menu.entries()) {
 // use .forEach() shortcut for looping arrays
 const arr = [200, 400, -5, 10];
 arr.forEach((element, index, array) => console.log(element));
+
+// Creating iterable array
+var foo = new Array(45);
+
+for(var i = 0; i < foo.length; i++){
+  document.write('Item: ' + (i + 1) + ' of ' + foo.length + '<br/>'); 
+}
 ```
 ## Looping Objects:
 ```javascript
