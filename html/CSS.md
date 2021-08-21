@@ -87,7 +87,9 @@ resize: both|horizontal|vertical;   Defines if and how an element is resizable
 
 overflow: scroll|hidden|visible;    Specifies what should happen if content overflows an element box
 
-scroll-behavior: smooth;        
+scroll-behavior: smooth;
+
+white-space: pre;                   Allows inline spacing
 ```
 
 ## Pseudo Elements:
