@@ -67,7 +67,8 @@ Authentication middleware for express.js. Supports various login types including
 // passport.js
 
 const passport = require("passport");
-const GoogleStrategy = require('passport-google-oauth2').Strategy;  // GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy; 
+// GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.serializeUser(function(user, done) {
     done(null, user);
