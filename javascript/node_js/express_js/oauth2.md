@@ -59,3 +59,6 @@ app.get("/oauth/redirect", (req, res) => {
 app.use(express.static(__dirname + "/public"));
 app.listen(8080);
 ```
+
+## Authorization Server:
+Can use Okta to secure data, a cloud service that allows developers to CRUD user accounts and user account data.
