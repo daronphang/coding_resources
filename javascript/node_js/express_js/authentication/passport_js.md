@@ -16,6 +16,8 @@ Requires verify callback function that finds the user that possesses a set of cr
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+const Users = mongoose.model('Users');
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
