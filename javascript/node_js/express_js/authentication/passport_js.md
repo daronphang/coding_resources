@@ -7,7 +7,7 @@ Authentication middleware for Node. As each application has unique authenticatio
 3) Sessions (optional).
 
 ## Strategies:
-Requires verify callback that finds the user that possesses a set of credentials. When Passport authenticates a request, it parses the credentials in request and then invokes the verify callback with those credentials as arguments. If credentials are valid, the verify callback invokes done() to supply Passport with the user that authenticated.
+Requires verify callback function that finds the user that possesses a set of credentials. When Passport authenticates a request, it parses the credentials in request and then invokes the verify callback with those credentials as arguments. If credentials are valid, the verify callback invokes done() to supply Passport with the user that authenticated.
 
 ## Basic Auth Example:
 ```js
