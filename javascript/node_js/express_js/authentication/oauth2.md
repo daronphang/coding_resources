@@ -5,17 +5,20 @@ An authentication protocol used to authenticate users in an application by using
 - Able to handle non-web clients.
 
 ### Three parties in any OAuth mechanism:
-1) Resource Owner/Client: User who is trying to log in.
-2) Consumer: Application the client wants to log into.
-3) Service Provider: External application that authenticates user's identity through their Oauth2 API.
+1) Resource Owner: User who is trying to log in.
+2) Consumer/Client: Application the user wants to log into.
+3) Resource Server: Hosts the protected resources such as user's profile.
+4) Authorization Server: Responsible for authenticating user and providing access token to clients.
 
 ### Overiew:
-1) User requests authorization from Service Provider through their gateway URL.
-2) Service Provider asks permission from user who thereby grants access for app to access the user's data. 
-4) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
-5) Consumer sends GET/POST request to Service Provider with request token to exchange for access token.
-6) Access token is used to authenticate future requests sent to Service Provider.
-7) Service Provider sends response with access token and redirects to Consumer's application page.
+1) User requests authorization from Authorization Server through their gateway URL and enters credentials.
+2) Authorization Server asks permission from user who thereby grants access for app to access the user's data. 
+4) Authorization Server authorizes user and redirects to Consumer's redirect URL with request token.
+5) Consumer sends GET/POST request to Authorization Server with request token to exchange for access token.
+6) Access token is used to authenticate future requests sent to Resource Server.
+7) Authorization Server sends response with access token.
+8) Client uses access token to request user's profile from Resource Server.
+9) Client validates user's existence in its database and redirects to application's page.
 
 ### OAuth2 Workflow:
 1) User authenticates with Facebook account.
