@@ -13,9 +13,9 @@ An authentication protocol used to authenticate users in an application by using
 1) Client/application requests authorization from Service Provider through their gateway URL.
 2) Service Provider asks permission from user who thereby grants access for app to access the user's data. 
 4) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
-5) Consumer sends POST request to Service Provider using request token to obtain access token.
+5) Consumer sends GET request to Service Provider using request token to obtain access token.
 6) Access token is used to authenticate future requests sent to Service Provider.
-7) Service Provider redirects to Consumer's application page with access token and client is authorized.
+7) Service Provider sends response with access token and redirects to Consumer's application page.
 
 ### OAuth2 Workflow:
 1) User authenticates with Facebook account.
@@ -29,6 +29,7 @@ Need to regsiter application with OAuth provider first.
 
 https://morioh.com/p/e37dfcf12462
 https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0
+https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#login
 
 ## NodeJS Example:
 Client ID is the identity of Consumer who is accessing the OAuth service (registered through their portal). Client secret will also be issued and is used together with request token to obtain access token (get information about the user). 
@@ -65,12 +66,13 @@ const clientSecret = "<your client secret>";
 app.get("/oauth/redirect", (req, res) => {
   const requestToken = req.query.code;
   axios({
-    method: "post",
+    method: "get",
     url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${requestToken}`,
     headers: {
       accept: "application/json",
     },
   }).then((response) => {
+    // example response is {"access_token": {access-token}, "token_type": {type},"expires_in": {seconds-til-expiration}}
     const accessToken = response.data.access_token;
     res.redirect(`/welcome.html?access_token=${accessToken}`);
   });
