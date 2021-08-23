@@ -27,9 +27,9 @@ An authentication protocol used to authenticate users in an application by using
 
 Need to regsiter application with OAuth provider first. 
 
-https://morioh.com/p/e37dfcf12462
-https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0
-https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#login
+https://morioh.com/p/e37dfcf12462  
+https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0  
+https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#login  
 
 ## NodeJS Example:
 Client ID is the identity of Consumer who is accessing the OAuth service (registered through their portal). Client secret will also be issued and is used together with request token to obtain access token (get information about the user). 
