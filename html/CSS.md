@@ -95,6 +95,10 @@ overflow: hidden;                   Overflow text represented by ellipsis
 white-space: nowrap;
 width: 100%;
 text-overflow: ellipsis;
+
+display: -webkit-box;               For modern browsers spanning over multiple lines
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
 ```
 
 ## Pseudo Elements:
