@@ -1,15 +1,33 @@
 ## Basics:
-An authentication protocol used to authenticate users in an application by using another service provider. Three parties in any OAuth mechanism:
-1) Client: User who is trying to log in.
-2) Consumer: Application the client wants to log into.
+An authentication protocol used to authenticate users in an application by using another service provider. Industry-standard protocol for authorization. OAuth2 benefits:
+- Users don't need to remember their credentials (only need to authorize the app to access their info for selected OAuth provider).
+- Prevents security holes as user doesn't provide passwords for sign in/sign up.
+- Able to handle non-web clients.
+
+### Three parties in any OAuth mechanism:
+1) Resource Owner: User who is trying to log in.
+2) Consumer/Client: Application the client wants to log into.
 3) Service Provider: External application that authenticates user's identity through their Oauth2 API.
 
-## Overiew:
-1) Client requests authorization from Service Provider through their gateway URL.
-2) Service Provider asks permission from user who thereby grants access.
-3) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
-4) Consumer sends POST request to Service Provider using request token to obtain access token.
-5) Service Provider redirects to Consumer's application page with access token and client is authorized.
+### Overiew:
+1) Client/application requests authorization from Service Provider through their gateway URL.
+2) Service Provider asks permission from user who thereby grants access for app to access the user's data. 
+4) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
+5) Consumer sends POST request to Service Provider using request token to obtain access token.
+6) Access token represents the authenticity of client's identity.
+7) Service Provider redirects to Consumer's application page with access token and client is authorized.
+
+### OAuth2 Workflow:
+1) User authenticates with Facebook account.
+2) Facebook Server sends back access token to frontend.
+3) Frontend sends access token to Express Server.
+4) Express Server sends access token to Facebook Server to verify identity.
+5) If valid, Facebook Server sends user details to Express Server who then validates user in its database.
+6) Express Server sends JWT Token back to frontend.
+
+Need to regsiter application with OAuth provider first. 
+
+https://morioh.com/p/e37dfcf12462
 
 ## NodeJS Example:
 Client ID is the identity of Consumer who is accessing the OAuth service (registered through their portal). Client secret will also be issued and is used together with request token to obtain access token (get information about the user). 
