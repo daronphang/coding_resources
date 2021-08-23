@@ -6,9 +6,10 @@ An authentication protocol used to authenticate users in an application by using
 
 ## Overiew:
 1) Client requests authorization from Service Provider through their gateway URL.
-2) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
-3) Consumer sends POST request to Service Provider using request token to obtain access token.
-4) Service Provider redirects to Consumer's application page with access token and client is authorized.
+2) Service Provider asks permission from user who thereby grants access.
+3) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
+4) Consumer sends POST request to Service Provider using request token to obtain access token.
+5) Service Provider redirects to Consumer's application page with access token and client is authorized.
 
 ## NodeJS Example:
 Client ID is the identity of Consumer who is accessing the OAuth service (registered through their portal). Client secret will also be issued and is used together with request token to obtain access token (get information about the user). 
