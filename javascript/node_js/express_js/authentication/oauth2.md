@@ -14,7 +14,7 @@ An authentication protocol used to authenticate users in an application by using
 2) Service Provider asks permission from user who thereby grants access for app to access the user's data. 
 4) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
 5) Consumer sends POST request to Service Provider using request token to obtain access token.
-6) Access token represents the authenticity of client's identity.
+6) Access token is used to authenticate future requests sent to Service Provider.
 7) Service Provider redirects to Consumer's application page with access token and client is authorized.
 
 ### OAuth2 Workflow:
@@ -28,6 +28,7 @@ An authentication protocol used to authenticate users in an application by using
 Need to regsiter application with OAuth provider first. 
 
 https://morioh.com/p/e37dfcf12462
+https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0
 
 ## NodeJS Example:
 Client ID is the identity of Consumer who is accessing the OAuth service (registered through their portal). Client secret will also be issued and is used together with request token to obtain access token (get information about the user). 
