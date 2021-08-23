@@ -5,23 +5,23 @@ An authentication protocol used to authenticate users in an application by using
 - Able to handle non-web clients.
 
 ### Three parties in any OAuth mechanism:
-1) Resource Owner: User who is trying to log in.
-2) Consumer/Client: Application the client wants to log into.
+1) Resource Owner/Client: User who is trying to log in.
+2) Consumer: Application the client wants to log into.
 3) Service Provider: External application that authenticates user's identity through their Oauth2 API.
 
 ### Overiew:
-1) Client/application requests authorization from Service Provider through their gateway URL.
+1) User requests authorization from Service Provider through their gateway URL.
 2) Service Provider asks permission from user who thereby grants access for app to access the user's data. 
 4) Service Provider authorizes client and redirects to Consumer's redirect URL with request token.
-5) Consumer sends GET request to Service Provider using request token to obtain access token.
+5) Consumer sends GET/POST request to Service Provider with request token to exchange for access token.
 6) Access token is used to authenticate future requests sent to Service Provider.
 7) Service Provider sends response with access token and redirects to Consumer's application page.
 
 ### OAuth2 Workflow:
 1) User authenticates with Facebook account.
 2) Facebook Server sends back access token to frontend.
-3) Frontend sends access token to Express Server.
-4) Express Server sends access token to Facebook Server to verify identity.
+3) Frontend sends request token to Express Server.
+4) Express Server sends request token to Facebook Server to exchange for access token.
 5) If valid, Facebook Server sends user details to Express Server who then validates user in its database.
 6) Express Server sends JWT Token back to frontend.
 
