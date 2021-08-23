@@ -99,6 +99,8 @@ text-overflow: ellipsis;
 display: -webkit-box;               For modern browsers spanning over multiple lines
 -webkit-line-clamp: 4;
 -webkit-box-orient: vertical;
+
+cursor: pointer;                    Change cursor to hand upon hover
 ```
 
 ## Pseudo Elements:
