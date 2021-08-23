@@ -20,6 +20,32 @@ onLoadServers() {
   this.router.navigate(['/users'], {relativeTo: this.route});    // relativeTo tells Angular what current route it is on
 }
 ```
+
+## Dynamic Routing:
+```js
+const routes: Routes = [
+     { path: 'gcp-tracking/:id', pathMatch: 'full', component: SingleCardViewComponent, canActivate: [AuthGuardService] }
+]
+
+// with query parameters
+goProducts() {
+  // http://localhost:4200/products?order=popular
+  this.router.navigate(['/products'], { queryParams: { order: 'popular' } });
+}
+
+// to preserve query maters on any subsequent navigation action
+goUsers() {
+  // http://localhost:4200/users?order=popular
+  this.router.navigate(['/users'], { queryParamsHandling: 'preserve' });
+}
+
+// with RouterLink
+<a [routerLink]="['/products']" [queryParams]="{ order: 'popular'}">
+  Products
+</a>
+```
+
+
 ## Fetching Route Parameters:
 ```javascript
 // Fetching route parameters i.e. home/users/1/john
