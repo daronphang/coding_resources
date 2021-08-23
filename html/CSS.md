@@ -90,6 +90,11 @@ overflow: scroll|hidden|visible;    Specifies what should happen if content over
 scroll-behavior: smooth;
 
 white-space: pre;                   Allows inline spacing
+
+overflow: hidden;                   Overflow text represented by ellipsis
+white-space: nowrap;
+width: 100%;
+text-overflow: ellipsis;
 ```
 
 ## Pseudo Elements:
