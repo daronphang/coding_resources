@@ -4,7 +4,7 @@ An authentication protocol used to authenticate users in an application by using
 - Prevents security holes as user doesn't provide passwords for sign in/sign up.
 - Able to handle non-web clients.
 
-### Three parties in any OAuth mechanism:
+### Parties in OAuth Mechanism:
 1) Resource Owner: User who is trying to log in.
 2) Consumer/Client: Application the user wants to log into.
 3) Resource Server: Hosts the protected resources such as user's profile.
