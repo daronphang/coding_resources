@@ -14,7 +14,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 return (
   <nav>
     <Link to='/welcome'>Welcome</Link>
-    <NavLink activeClassName={class.active} to='/welcome' />
+    <NavLink activeClassName={class.active} to='/welcome'> </NavLink>
     
     <IconButton>
        <Link to='/cart' style={{ color: 'white'}}><ShoppingCartIcon /></Link>
