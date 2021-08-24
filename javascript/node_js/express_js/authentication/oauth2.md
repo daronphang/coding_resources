@@ -97,17 +97,14 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const GOOGLE_CLIENT_ID = 'our-google-client-id';
 const GOOGLE_CLIENT_SECRET = 'our-google-client-secret';
 
-let userProfile;
-
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
-  function(accessToken, refreshToken, profile, done) {
-      userProfile = profile;
-      return done(null, userProfile);
-  }
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
 ));
 
 exports.userProfile = userProfile;
@@ -117,21 +114,20 @@ exports.userProfile = userProfile;
 const express = require('express');
 const app = express();
 const passport = require('passport');
-const userProfile = require('./passport').userProfile
 
 app.use(passport.initialize());
 
-app.get('/success', (req, res) => res.send(userProfile));
-app.get('/error', (req, res) => res.send("error logging in"));
+app.get('/auth/google/success', (req, res) => res.send(userProfile));
+app.get('/auth/google/error', (req, res) => res.send("error logging in"));
 
 app.get('/auth/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
  
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/error' }),
-  function(req, res) {
-    res.redirect('/success');
-  });
+app.get( '/auth/google/callback',
+    passport.authenticate( 'google', {
+        successRedirect: '/auth/google/success',
+        failureRedirect: '/auth/google/error'
+}));
   
 const port = process.env.PORT || 3000;
 app.listen(port , () => console.log('App listening on port ' + port));
