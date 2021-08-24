@@ -12,6 +12,26 @@ function ExpenseItem() {
 }
 ```
 
+## Inline Styling:
+Properties with two names must be written in camelcase as inline CSS is JS object.
+```js
+export default function Component () {
+  const someStyle = {
+    color: "white",
+    padding: "10px",
+    textDecoration: "none"
+  }
+  
+  return (
+    <div>
+      <h1 style={{ color: "red", backgroundColor: "blue" }}>Hello Style!</h1>
+      <h1 style={someStyle}>Hello Again</h1>
+    </div>
+  )
+}
+```
+
+
 ## Dynamic Inline Styling/Classes:
 Need pass in an object. Use states to change styling for a HTML element or adding CSS classes dynamically.
 ```javascript
