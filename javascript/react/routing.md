@@ -6,11 +6,19 @@ npm install react-router-dom
 ```
 
 ```javascript
+import { Link, NavLink } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 // Welcome component 
 return (
   <nav>
     <Link to='/welcome'>Welcome</Link>    // instead of using href
     // <NavLink activeClassName={class.active} to='/welcome'>
+    
+    <IconButton>
+       <Link to='/cart' style={{ color: 'white'}}><ShoppingCartIcon /></Link>
+    </IconButton>
   </nav>
 )
 ```
