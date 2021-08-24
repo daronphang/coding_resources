@@ -7,10 +7,11 @@ An authentication protocol used to authenticate users in an application by using
 ### Parties in OAuth Mechanism:
 1) Resource Owner: User who is trying to log in.
 2) Consumer/Client: Application the user wants to log into.
-3) Resource Server: Hosts the protected resources such as user's profile.
-4) Authorization Server: Responsible for authenticating user and providing access token to clients.
+3) Express Server: Client backend server.
+4) Resource Server: Hosts the protected resources such as user's profile.
+5) Authorization Server: Responsible for authenticating user and providing access token to clients.
 
-### Overiew:
+### OAuth2 Workflow:
 1) User requests authorization from Authorization Server through their gateway URL and enters credentials.
 2) Authorization Server asks permission from user who thereby grants access for app to access the user's data. 
 4) Authorization Server authorizes user and redirects to Consumer's redirect URL with request token.
@@ -30,6 +31,7 @@ An authentication protocol used to authenticate users in an application by using
 
 Need to regsiter application with OAuth provider first. 
 
+https://www.loginradius.com/blog/async/google-authentication-with-nodejs-and-passportjs/
 https://morioh.com/p/e37dfcf12462  
 https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0  
 https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#login  
@@ -89,93 +91,60 @@ app.listen(8080);
 Authentication middleware for express.js. Supports various login types including token, basic, OAuth, OAuth2, etc. Also used to connect external auth services to choose to login with selected Strategies.
 
 ```js
-// passport.js
+// passport setup for Google auth
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GOOGLE_CLIENT_ID = 'our-google-client-id';
+const GOOGLE_CLIENT_SECRET = 'our-google-client-secret';
 
-const passport = require("passport");
-const GoogleStrategy = require('passport-google-oauth2').Strategy; 
-// GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-        done(null, user);
-});
+let userProfile;
 
 passport.use(new GoogleStrategy({
-        clientID:"here use the clientID given by google",
-        clientSecret:"here use the client secret given by google",
-        callbackURL: "http://localhost:5000/google/callback",
-        passReqToCallback   : true
-    },
-    function(request, accessToken, refreshToken, profile, done) {
-            return done(null, profile);
-    }
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+      userProfile = profile;
+      return done(null, userProfile);
+  }
 ));
+
+export userProfile;
 ```
-
 ```js
+// app.js
 const express = require('express');
-const passport = require('passport');
-const cookieSession = require('cookie-session');
-require('./passport');
-
 const app = express();
-
-app.use(cookieSession({
-  name: 'google-auth-session',
-  keys: ['key1', 'key2']
-}))
-
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
+const passport = require('passport');
 
 app.use(passport.initialize());
-app.use(passport.session());
 
-const port = process.env.PORT || 5000
+app.get('/success', (req, res) => res.send(userProfile));
+app.get('/error', (req, res) => res.send("error logging in"));
 
-app.get("/", (req, res) => {
-    res.json({message: "You are not logged in"})
-})
-
-app.get("/failed", (req, res) => {
-    res.send("Failed")
-})
-app.get("/success",isLoggedIn, (req, res) => {
-    res.send(`Welcome ${req.user.email}`)
-})
-
-app.get('/google',
-    passport.authenticate('google', {
-            scope:
-                ['email', 'profile']
-        }
-    ));
-
-app.get('/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: '/failed',
-    }),
-    function (req, res) {
-        res.redirect('/success')
-
-    }
-);
-
-app.get("/logout", (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/');
-})
-
-app.listen(port, () => console.log("server running on port" + port))
+app.get('/auth/google', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/error' }),
+  function(req, res) {
+    res.redirect('/success');
+  });
+  
+const port = process.env.PORT || 3000;
+app.listen(port , () => console.log('App listening on port ' + port));
+```
+```html
+<body>
+<div class="container">
+    <div class="jumbotron text-center text-primary">
+        <h1><span class="fa fa-lock"></span> Social Authentication</h1>
+        <p>Login or Register with:</p>
+        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google"></span> SignIn with Google</a>
+    </div>
+</div>
+</body>
 ```
 
 ## Authorization Server:
