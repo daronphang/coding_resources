@@ -106,8 +106,6 @@ passport.use(new GoogleStrategy({
       return done(err, user);
     });
 ));
-
-exports.userProfile = userProfile;
 ```
 ```js
 // app.js
