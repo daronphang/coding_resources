@@ -14,7 +14,7 @@ export default function Welcome() {
   return (
     <nav>
       <Link to='/welcome'>Welcome</Link>
-      <NavLink activeClassName={class.active} to='/welcome'> </NavLink>
+      <NavLink activeClassName={class.active} to='/welcome' />
 
       <IconButton>
          <Link to='/cart' style={{ color: 'white'}}><ShoppingCartIcon /></Link>
