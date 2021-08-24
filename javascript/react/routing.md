@@ -1,5 +1,5 @@
 ## Routing:
-To prevent page from reloading, use Link from react-router-dom. To add CSS class to active router link, use NavLink.
+To prevent page from reloading, use Link from react-router-dom. Do not use href. To add CSS class to active router link, use NavLink.
 
 ```
 npm install react-router-dom
@@ -13,8 +13,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 // Welcome component 
 return (
   <nav>
-    <Link to='/welcome'>Welcome</Link>    // instead of using href
-    // <NavLink activeClassName={class.active} to='/welcome'>
+    <Link to='/welcome'>Welcome</Link>
+    <NavLink activeClassName={class.active} to='/welcome' />
     
     <IconButton>
        <Link to='/cart' style={{ color: 'white'}}><ShoppingCartIcon /></Link>
