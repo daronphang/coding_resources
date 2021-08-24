@@ -110,13 +110,14 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-export userProfile;
+exports.userProfile = userProfile;
 ```
 ```js
 // app.js
 const express = require('express');
 const app = express();
 const passport = require('passport');
+const userProfile = require('./passport').userProfile
 
 app.use(passport.initialize());
 
