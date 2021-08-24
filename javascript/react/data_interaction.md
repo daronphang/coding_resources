@@ -78,3 +78,23 @@ const function = () => {
 - Props contains information set by parent component and are immutable.
 - State contains 'private' information for component to initalize, change and use on it's own.
 - Props are passed into the component whereas State is created in the component.
+
+## Showing Different Components on Event:
+Use short circuiting and useState from React Hook.  
+```js
+import React from 'react';
+import LoginComponent from './login';
+
+export default function HomeComponent() {
+  const [showLogin, setShowLogin] = React.useState(false);
+  const handleLoginComponent = () => {
+    setShowLogin(true);
+  }
+  
+  return (
+    <React.Fragment>
+      {showLogin && <LoginComponent />}
+    </React.Fragment>
+  )
+}
+```
