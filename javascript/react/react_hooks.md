@@ -35,9 +35,20 @@ import ( useState ) from 'react';
 
 function App() {
   const [showParagraph, setShowParagraph] = useState(false);
+  const [count, setCount] = useState(0);
+  const [items, setItems] = useState([]);
+ 
   
   const toggleParagraphHandler = () => {
-    setShowParagraph(prevShowParagraph => !prevShowParagraph);
+    setShowParagraph(true);   // updating state with value and triggers re-rendering of component
+    setShowParagraph(showParagraph => !showParagraph);  // updating state with callback function
+    
+    setCount(count => count + 1);
+    
+    setItems(items => [...items, 'new item']);
+    
+    console.log(showParagraph);   // won't show updated state here as useState is asynchronous
+                                  // also, state values are used by functions based on their current closures
   }
   
   return (
