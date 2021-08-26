@@ -40,15 +40,15 @@ function App() {
  
   
   const toggleParagraphHandler = () => {
-    setShowParagraph(true);   // updating state with value and triggers re-rendering of component
+    setShowParagraph(true);   // updating state with value and triggers re-rendering of component (not async reason)
     setShowParagraph(showParagraph => !showParagraph);  // updating state with callback function
     
     setCount(count => count + 1);
     
     setItems(items => [...items, 'new item']);
     
-    console.log(showParagraph);   // won't show updated state here as useState is asynchronous
-                                  // also, state values are used by functions based on their current closures
+    console.log(showParagraph);   // won't show updated state here due to scope of closure function
+                                  // state updates will reflect in the next re-render where new closures are created
   }
   
   return (
@@ -59,6 +59,13 @@ function App() {
     </div>
   )
 }
+```
+```js
+// to read the updated value from useState, can use useEffect() or useRef()
+
+useEffect(() => setCount(+count + 1), [])
+console.log(count);
+
 ```
 
 ## UseRef:
