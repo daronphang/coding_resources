@@ -64,6 +64,37 @@ const titleChangeHandler = (event) => {
   
 }
 ```
+
+## Converting string into HTML:
+Use dangerouslySetInnerHTML function.
+```js
+const productDescription = `
+        <div>
+            <p>
+                When a split second can mean the difference between victory and defeat,
+                the absolute speed of the Razer Huntsman Tournament Edition is what 
+                separates the champions from everyone else. Designed and tested by Team Razer athletes, 
+                this gaming keyboard is armed with the fastest Razer switches we’ve ever designed, to 
+                give you the edge you need to thrive where the competition is fiercest.
+            </p>
+            <br />
+            <p>
+                RAZER™ LINEAROPTICAL SWITCH
+            </p>
+            <br />
+            <p>
+                With 1.0mm optical actuation that registers at the speed of light, expect nothing but instant response from every keystroke, as you react and execute clutch plays with clinical efficiency.
+                Tested to have an industry-leading durability of up to 100 million keystrokes, the Razer™ Linear Optical Switches are also well-equipped to withstand the rigors of training and competitive play.
+            </p>
+        </div>
+        `
+
+return (
+  <div dangerouslySetInnerHTML={{__html: productDescription}}></div>
+)
+```
+
+
 ## Wrapper/Fragment Component:
 JSX requires one root element that return a constant or variable. Can create your own or use <React.Fragment> or <> (empty).
 ```javascript
