@@ -65,6 +65,8 @@ select
 ## Event Properties:
 ```
 currentTarget         Returns the target HTML element
-preventDefault()      Prevents the browser's default behavior
-stopPropagation()     Prevents event from bubbling up the DOM i.e. on all of the parent elements
+preventDefault()      Prevents the browser's default behavior such as submitting form
+stopPropagation()     Prevents same event from bubbling up the DOM i.e. prevents propagation of same event on all of the parent elements
+
+return false;         Prevents both default and propagation
 ```
