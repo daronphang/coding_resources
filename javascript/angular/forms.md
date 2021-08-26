@@ -14,8 +14,8 @@ Use form arrays nested in form groups.
 ng-valid
 ng-invalid
 ng-pristine
-ng-dirty
-ng-touched
+ng-dirty            When user changes value in watched field
+ng-touched          When user blurs the form control element
 ng-untouched
 ```
 
