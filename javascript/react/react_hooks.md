@@ -47,7 +47,7 @@ function App() {
     
     setItems(items => [...items, 'new item']);
     
-    console.log(showParagraph);   // won't show updated state here due to scope of closure function
+    console.log(showParagraph);   // won't show updated state here due to scope of closure function (not due to asynchronous)
                                   // state updates will reflect in the next re-render where new closures are created
   }
   
