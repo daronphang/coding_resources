@@ -1,8 +1,8 @@
 ## Javascript:
-- expressJS
+- expressJS: framework for nodeJS.
 - graphQL
-- passportJS
-- 
+- PassportJS: authentication middleware for nodeJS.
+- RevealJS: creating browser slides.
 
 ## Python:
 - Flask
