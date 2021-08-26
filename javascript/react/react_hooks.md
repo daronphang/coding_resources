@@ -60,12 +60,12 @@ function App() {
   )
 }
 ```
-```js
-// to read the updated value from useState, can use useEffect() or useRef()
 
+### Performing Action on State Update:
+To perform an action on state update i.e. reading updated value, can use useEffect() or useRef().
+```js
 useEffect(() => {setCount(+count + 1)}, [])
 console.log(count);
-
 ```
 
 ## UseRef:
