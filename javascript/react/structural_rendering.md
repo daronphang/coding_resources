@@ -8,7 +8,7 @@ const itemsArray = [{description: 'testing23232222', price: 12.55}, {description
 // rendering through an array
 const itemsRendered = itemsArray.forEach(item => items.push(<ItemCartComponent description={item.description} price={item.price} />));
 
-// render JSX element directly
+// render JSX element directly; cannot put {} inside callback function
 const itemsRendered = itemsArray.forEach(item => <ItemCartComponent description={item.description} price={item.price} />);
 
 return (
