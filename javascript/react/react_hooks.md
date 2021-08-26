@@ -63,7 +63,7 @@ function App() {
 ```js
 // to read the updated value from useState, can use useEffect() or useRef()
 
-useEffect(() => setCount(+count + 1), [])
+useEffect(() => {setCount(+count + 1)}, [])
 console.log(count);
 
 ```
