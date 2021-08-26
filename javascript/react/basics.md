@@ -123,26 +123,6 @@ return (
 )
 ```
 
-## Showing Different Components on Event:
-Use short circuiting and useState from React Hook.  
-```js
-import React from 'react';
-import LoginComponent from './login';
-
-export default function HomeComponent() {
-  const [showLogin, setShowLogin] = React.useState(false);
-  const handleLoginComponent = () => {
-    setShowLogin(true);
-  }
-  
-  return (
-    <React.Fragment>
-      {showLogin && <LoginComponent />}
-    </React.Fragment>
-  )
-}
-```
-
 ## React Portals:
 When displaying modals/alert boxes, they are overlays to the entire page and in HTML, it should be above everything else instead of nested in some HTML code. Portals help to make HTML rendered semantically correct and provide a clean HTML structure persepective.
 
