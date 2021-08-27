@@ -39,6 +39,8 @@ Array.from([1, 2, 3], x => x + x);              // [2, 4, 6]
 Array.from({length: 7}, (cur, i) => i + 1);     // [1, 2, 3, 4, 5, 6, 7]
 ```
 ## Destructuring Arrays/Objects:
+Destructuring allows us to unpack values from arrays or object properties and store them in distinct variables.
+
 ```javascript
 const restaurant = {
     name: 'Pizzerio',
@@ -58,6 +60,8 @@ const [first, , third] = restaurant.categories; // 'Italian', 'Chinese'
 
 // Destructuring objects
 const {name: resName, menu: resMenu, location: resLoc} = restaurant; // order doesn't matter
+({a, b} = {a: 10, b: 20})
+
 
 // {} is for declaring key-value object
 // [] is for declaring array
