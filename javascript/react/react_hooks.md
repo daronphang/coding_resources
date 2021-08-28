@@ -150,12 +150,44 @@ useEffect(() => {
 
 ## useReducer:
 More powerful state management for handling complex/multiple states, replacement for useState(). 
-```
-const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn)
+```js
+const [state, dispatchFn] = useReducer(reducerFn, initialState);
 
-state         State snapshot used in component re-rendering
-dispatchFn    Function used to dispatch a new action i.e. trigger an update of state
-reducerFn     Triggered automatically once an action is dispatched; receives latest state and returns updated state
+// state         State snapshot used in component re-rendering
+// dispatchFn    Function that accepts an object that represents the action type to execute
+// reducerFn     Triggered automatically once an action is dispatched; receives latest state and returns updated state
+
+// reducerFn accepts two parameters and returns one value; action parameter is executed by a dispatch function
+// action is like the instruction passed to reducer function
+reducerFn = (state, action) => {}
+
+dispatch({type: 'incremenet'})
+```
+
+```javascript
+const initialState = {count: 0};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
 ```
 
 ```javascript
