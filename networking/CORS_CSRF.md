@@ -26,8 +26,8 @@ HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://malicious-website.com
 Access-Control-Allow-Credentials: true
 ```
-### Preflight Requests for Complex HTTP Calls:
-If web app needs to make a complex HTTP request, the browser adds a preflight request to the front of request chain. Creates OPTIONS request.
+## Preflight Requests for Complex HTTP Calls:
+If web app needs to make a complex HTTP request, the browser adds a preflight request to the front of request chain. Creates OPTIONS request. Preflight request is automatically issued by browser.
 CORS specification defines complex request as:
 - Uses other methods than GET, POST or HEAD.
 - Includes headers other than Accept, Accept-Language or Content-Language.
@@ -38,12 +38,16 @@ CORS specification defines complex request as:
 2) Access-Control-Request-Headers
 3) Origin
 
-Preflight request is automatically issued by browser.
-
 ### Workflow:
 1. Browser sends OPTIONS request to server (preflight request).
 2. Server checks if it allows OPTIONS request.
 3. If accepted, browser then sends original POST/PUT/DELETE/GET requests.
+
+## Why Postman Does Not Throw Error:
+- CORS standard is implemented by browser which prevents call from completing and generates error message.
+- Postman does not implement CORS restrictions as CORS defines restrictions relative to origin of page which initiates the request.
+- Postman does not originate from a page with an URL.
+
 
 ```
 // check if server supports request method
