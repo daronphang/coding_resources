@@ -33,14 +33,14 @@ CORS specification defines complex request as:
 - Includes headers other than Accept, Accept-Language or Content-Language.
 - Has Content-Type header other than application/x-www-form-urlencoded, multipart/form-data or text/plain.
 
-OPTIONS request uses three HTTP request headers:
+### OPTIONS request uses three HTTP request headers:
 1) Access-Control-Request-Method
 2) Access-Control-Request-Headers
 3) Origin
 
 Preflight request is automatically issued by browser.
 
-Workflow:
+### Workflow:
 1. Browser sends OPTIONS request to server (preflight request).
 2. Server checks if it allows OPTIONS request.
 3. If accepted, browser then sends original POST/PUT/DELETE/GET requests.
