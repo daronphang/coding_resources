@@ -40,7 +40,7 @@ CORS specification defines complex request as:
 
 ### Workflow:
 1. Browser sends OPTIONS request to server (preflight request).
-2. Server checks if it allows OPTIONS request.
+2. Server checks if it allows OPTIONS request (response headers must include Allow: POST, OPTIONS).
 3. If accepted, browser then sends original POST/PUT/DELETE/GET requests.
 
 ## Why Postman Does Not Throw Error:
@@ -73,7 +73,8 @@ HTTP/1.1 204 No Content
 Date: Mon, 01 Dec 2008 01:15:39 GMT
 Server: Apache/2
 Access-Control-Allow-Origin: https://foo.example
-Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Methods: POST, GET, OPTIONS                  
+Allow: POST, OPTIONS                                              // *MUST RESPONSE WITH THIS*
 Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
 Access-Control-Max-Age: 86400
 Vary: Accept-Encoding, Origin
