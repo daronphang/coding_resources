@@ -7,7 +7,7 @@ Observable -> Connected to Observer -> Performs execution that delivers value to
 
 Can use of() method as mock API which returns an Observable and emits values in a sequence upon subscription.
 
-For infinite subscriptions, need call OnDestroy() to manually unsubscribe. For finite subscriptions like HTTP calls or take(1), no need to unsubscribe.
+For infinite subscriptions, need call OnDestroy() to manually unsubscribe. Examples include forms, router, and intervals. For finite subscriptions like HTTP calls or take(1), no need to unsubscribe.
 
 ```javascript
 let subscription = new Subscription;
@@ -19,13 +19,13 @@ let observable = Observable.create((observer:any) => {
    observer.next('I am number 5')
 })
 
-ngOnInit() {
-   subscription = observable.subscribe(msg => console.log(msg));
-}
+const subscription = observable.subscribe(msg => console.log(msg));
+const childSubscription = observable2.subscribe(x => console.log('second: ' + x));
 
+subscription.add(childSubscription);   // putting subscriptions together
 
 ngOnDestroy() {
-   this.subscription.unsubscribe();
+   this.subscription.unsubscribe();    // unsubscribes both parent and child subscriptions
 }
 ```
 
