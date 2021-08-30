@@ -1,7 +1,7 @@
 ## Operators:
 Two types: Pipeable and Creation Operators. Creation Operators are standalone functions to create a new Observable. Pipeable Operators are functions that can be piped to Observables; when called, they do not change existing Observable instance but returns new Observable. Takes an Observable as its input and returns another Observable; pure operation and the previous Observable stays unmodified.
 
-of(1, 2, 3).subscribe(x => console.log(x));
+of(1, 2, 3).subscribe(x => console.log(x));  
 obs.pipe(op1(), op2(), op3(), op4());
 
 ```
