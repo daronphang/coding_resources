@@ -106,6 +106,17 @@ x = fruit.copy()
 
 if all(value is None for value in fruit.values()):
   print('dict is empty')
+
+
+# to print an array of keys and values in a tuple 
+car = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+x = car.items()   # dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 1964)])
+
 ```
 
 ## Functions:
