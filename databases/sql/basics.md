@@ -23,7 +23,11 @@ SELECT * FROM table WHERE col1 = 'David'
 SELECT * FROM table ORDER BY col1,col2
 ```
 ### LIMIT:
+Different DB use different syntax.
 ```sql
+# mssql
+SELECT TOP 100|50% column_name FROM table_name
+
 # Limits number of rows returned for a query.
 SELECT col1 FROM table ORDER BY col2 LIMIT 5
 ```
