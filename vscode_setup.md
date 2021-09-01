@@ -14,6 +14,7 @@ Stable version: January 2021, version 1.53.2
 10) Bracket Pair Colorizer
 11) Live Server
 12) ES7-Snippets
+13) Debugger for Chrome
 
 ### Linting:
 Need to install pylint in virtual environment; activation depends on autosave function. 
