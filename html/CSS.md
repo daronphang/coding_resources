@@ -101,6 +101,8 @@ display: -webkit-box;               For modern browsers spanning over multiple l
 -webkit-box-orient: vertical;
 
 cursor: pointer;                    Change cursor to hand upon hover
+
+box-sizing: border-box;             Sets total width and height that to account for border/padding
 ```
 
 ## Pseudo Elements:
