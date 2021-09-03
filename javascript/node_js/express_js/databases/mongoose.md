@@ -1,5 +1,10 @@
 ## Basics:
-Object-Document Mapping Library for node.js which provides a schema-based solution to model data. Core concepts include Schemas (blueprint), Models, Instances and Queries.
+Object-Document Mapping Library for node.js which provides a schema-based solution to model data. Core concepts include Schemas (blueprint), Models, Instances and Queries. When working with NoSQL database, you are not constrained to rigid data model; however, being too flexible can be a challenge. ODM like Mongoose force us into a semi-rigi schema. Main advantages are that it provides abstraction over pure MongoDB but may have unintended conseqeuences in the future, and provides validation of data.
+
+### Disadvantages:
+- Models have to align with the defined schema; changing the schema will slow down projects in rapid development.
+- Schema and model only exists within Node.js application as MongoDB database is not aware of the relationship (no validation).
+- Though using ODM can make development feel familiar, forcing into rigid design can be anti-pattern when using NoSQL.
 
 ### Connections:
 ```javascript
