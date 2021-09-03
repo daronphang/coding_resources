@@ -17,11 +17,20 @@ Help to change appearance of DOM element/component conditionally. Basically a cl
 [ngStyle]="{'background-color':person.country === 'UK' ? 'green' : 'red' }
 [ngStyle]="appStyleGreen"
 
+[ngStyle]="{'color': changeColor(condition)}"
+
 [ngClass]="['btn', 'btn-primary']"
 [ngClass]="{ btn:true, 'btn-primary':true }"  
 <div [ngClass]="isSpecial ? 'specialClass' : ''">This div is special</div>
 
 <input [(ngModel)]="currentItem.name" id="example-ngModel">
+```
+```js
+changeColor(condition: string) {
+  if (condition == 'hello') {
+    return 'red';
+  } return 'blue';
+}
 ```
 
 ### NgModel:
