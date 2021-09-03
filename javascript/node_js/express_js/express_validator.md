@@ -12,9 +12,25 @@ app.post(
     });
   }),
   (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     // Handle the request
   },
 );
+
+
+// error response
+{
+  "errors": [
+    {
+      "location": "body",
+      "msg": "Invalid value",
+      "param": "username"
+    }
+  ]
+}
 ```
 
 ```js
@@ -31,6 +47,10 @@ app.post(
     return true;
   }),
   (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     // Handle the request
   },
 );
