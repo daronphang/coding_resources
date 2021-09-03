@@ -55,3 +55,6 @@ app.post(
   },
 );
 ```
+
+## Sanitizers:
+Documentation: https://github.com/validatorjs/validator.js#sanitizers
