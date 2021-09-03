@@ -1,7 +1,7 @@
 ## Mongo DB:
 Manages connection pooling whereby it will ensure it provides sufficient connections for multiple simultaneous interactions with database.
 
-Collection methods: http://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#find
+Collection methods: http://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#find  
 Cursor methods: http://mongodb.github.io/node-mongodb-native/3.6/api/Cursor.html
 
 ```
