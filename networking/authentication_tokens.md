@@ -14,7 +14,7 @@ Should not use local storage for various reasons:
 - Cannot be used by web workers.
 - Any JS code can access local storage and has no data protection whatsoever (huge security issue and vulnerable to XSS attacks).
 
-Always store JWT inside httpOnly cookie (special cookie that's only sent in HTTP requests to server) and never accessible.
+Always store JWT inside httpOnly cookie (special cookie that's only sent in HTTP requests to server) and never accessible but still vulnerable to CSRF attacks.
 
 ## Session vs JWT:
 - JWT scales better as tokens are stored on client-side while session uses server memory/database which requires additional querying.
