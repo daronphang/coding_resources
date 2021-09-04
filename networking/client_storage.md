@@ -1,5 +1,5 @@
 ## Cookies:
-HTTP is stateless protocol; each request doesn't store any state or persisting information. However, if need to remember user's session, can use cookies. Cookies are assoicated with websites i.e. cannot access cookie_a in another website_b. Mainly used for three purposes:
+HTTP is stateless protocol; each request doesn't store any state or persisting information. However, if need to remember user's session, can use cookies. Cookies are assoicated with websites i.e. cannot access cookie_a in another website_b. Have two types: persistent and session cookies. Mainly used for three purposes:
 1) Session management: Storing logins, shopping carts, game scores the server should remember.
 2) Personalization: User preferences, themes, and other settings.
 3) Tracking: Recording and analyzing user behavior.
