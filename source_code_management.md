@@ -32,13 +32,17 @@ cd /d C:\users\daronphang
 git clone <repo URL>
 ```
 ### Git Pull:
-Pull command is used to fetch and download content from 
-remote repository and immediately update local repository to match
-that content i.e. combination of git.fetch and git.merge.
+Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. To pull other branches from remote repo, use git fetch followed by git pull origin <new_branch_name>.
 
 ```
 git pull <remote URL>
 git pull --no-commit <remote>
+
+git fetch --all                            Fetch all branches in remote repo
+git fetch <remote> <branch>
+
+git pull origin <new_branch_name>
+git pull <repo> <remotebranchname>:<localbranchname>
 ```
 ### Gitignore:
 Text file that tells git which files to ignore. Local .gitignore
