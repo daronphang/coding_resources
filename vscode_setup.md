@@ -61,7 +61,8 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 Need to install pylint in virtual environment; activation depends on autosave function. 
 
 ### Customization in settings.json:
-```
+```json
+{
   "python.pythonPath": "venv\\Scripts\\python.exe",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": false,
@@ -80,4 +81,5 @@ Need to install pylint in virtual environment; activation depends on autosave fu
   "editor.codeActionsOnSave": { "source.fixAll.eslint": true }, 
   "editor.formatOnSave": true, 
   "eslint.alwaysShowStatus": true, 
+}
 ```
