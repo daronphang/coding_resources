@@ -5,7 +5,7 @@
 4. Session cookie gets deleted when client closes browser; however, web browsers may use session restoring to make it permanent.
 
 ## Token-Based (JWT):
-Widely used in RESTful APIs. Server generates encrypted JWT and sends it back to client. Client sends JWT in header as Bearer Token for every subsequent request. Can be stored in local/session storage (storing in session cookie defeats the purpose of stateless). For transporting tokens securely, should send it via an encrypted channel such as HTTPS.
+Widely used in RESTful APIs. Server generates encrypted JWT and sends it back to client. Client sends JWT in header as Bearer Token for every subsequent request. SHould be stored in httpOnly cookie as local storage is vulnerable to XSS attacks. For transporting tokens securely, should send it via an encrypted channel such as HTTPS.
 
 ### Local Storage for Storing JWT:
 Should not use local storage for various reasons:
@@ -23,5 +23,8 @@ Always store JWT inside httpOnly cookie (special cookie that's only sent in HTTP
 - JWTs are better for server-server and client-server communication in API services without needing to perform network validation.
 - JWTs can be used to store client claims i.e. ID, department, address, etc. that cannot be modified.
 - JWT is easier to implement as there are libraries in every language.
+- Cannot invalidate JWT tokens until they are expired. 
 
+### Correct Comparisons:
+Session vs JWT and not Cookie vs JWT. Cookie vs Local Storage (storage mechanism).
 
