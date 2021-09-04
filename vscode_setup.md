@@ -52,7 +52,8 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ],
 "rules": {
   "prettier/prettier": "error",
-  "require-jsdoc" : 0
+  "require-jsdoc" : 0,
+  "new-cap": 0
 }
 ```
 
