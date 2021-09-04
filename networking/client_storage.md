@@ -8,17 +8,17 @@ Employed to store user data (password, preferences, IP address, date/time of vis
 
 Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are transferrred on each HTTP request. 
 
-## Cache: 
-Temporary storage of web documents such as HTML pages and images in client's browser. Purpose is to reduce bandwidth usage, server load and browser loading. Web cache system stores copies of documents passing through it; subsequent requests may be satisfied from cache if conditions are met. Cache is kept indefinitely. 
-
-## Session: 
-Data is stored on server and not on client. Cannot be viewed/manipulated by users and hence, useful for storing sensitive data that should survive across requests. Sessions are identified via Cookies which has an \_id value. Can either be saved on server's memory or in database. 
-
 ## Local Storage:
 Store data without an end.
 
 ## Session Storage:
 Accessible from client-side only and has no SSL support. Unlike cookies where they are sent on each request, local and session storage data sits in browser until someone requests for it. Session storage data are gone when browser tab is closed. 
+
+## Cache: 
+Temporary storage of web documents such as HTML pages and images in client's browser. Purpose is to reduce bandwidth usage, server load and browser loading. Web cache system stores copies of documents passing through it; subsequent requests may be satisfied from cache if conditions are met. Cache is kept indefinitely. 
+
+## Session: 
+Data is stored on server and not on client. Cannot be viewed/manipulated by users and hence, useful for storing sensitive data that should survive across requests. Sessions are identified via Cookies which has an \_id value. Can either be saved on server's memory or in database. 
 
 ## Error Handling:
 For synchronous code, use try-catch; then-catch for asynchronous. Can also throw errors to trigger in catch block.
