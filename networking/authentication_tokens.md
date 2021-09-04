@@ -1,8 +1,9 @@
 ## Session-Based:
-1. User logs in and server creates a session for user in database or server memory.
-2. Session ID is stored in a cookie in client's browser and is sent along with every request made.
-3. Server verifies with session data on cookie with session data stored on server-side.
-4. Session cookie gets deleted when client closes browser; however, web browsers may use session restoring to make it permanent.
+1. User logs in and server creates a session ID for user in database or server memory.
+2. Session ID is a long, unique random string that doesn't contain any user information.
+3. Session ID is stored in a cookie in client's browser and is sent along with every request made.
+4. Server verifies with session data on cookie with session data stored on server-side.
+5. Session cookie gets deleted when client closes browser; however, web browsers may use session restoring to make it permanent.
 
 ## Token-Based (JWT):
 Widely used in RESTful APIs. Server generates encrypted JWT and sends it back to client. Client sends JWT in header as Bearer Token for every subsequent request. SHould be stored in httpOnly cookie as local storage is vulnerable to XSS attacks. For transporting tokens securely, should send it via an encrypted channel such as HTTPS.
@@ -23,7 +24,14 @@ Always store JWT inside httpOnly cookie (special cookie that's only sent in HTTP
 - JWTs are better for server-server and client-server communication in API services without needing to perform network validation.
 - JWTs can be used to store client claims i.e. ID, department, address, etc. that cannot be modified.
 - JWT is easier to implement as there are libraries in every language.
-- Cannot invalidate JWT tokens until they are expired. 
+- Cannot invalidate/revoke JWT tokens until they are expired i.e. JWTs are self-contained. 
+
+## Hybrid Session & JWT:
+Session ID is stored on frontend. Backend validates session ID and replaces it with JWT token to authorize further requests. Advantages/disadvantages:
+- Can easily revoke sessions.
+- Backend services can authorize requests based only on JWT token.
+- Skip logic and user flow when JWT token expires on frontend and needs a refresh.
+- However, authentication service will be under heavy pressure as JWT token is issued for each request.
 
 ### Correct Comparisons:
 Session vs JWT and not Cookie vs JWT. Cookie vs Local Storage (storage mechanism).
