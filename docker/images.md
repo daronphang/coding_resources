@@ -10,6 +10,8 @@ docker image rm <image_name>                Delete a specific image
 docker rmi $(docker images -a -q)           Delete all images
 docker images -f dangling=true              Filters images that have no relationship with tagged images
 docker images -a |  grep "pattern"
+
+docker image prune -a                       Removes all unused images, not just dangling ones
 ```
 
 ## Building Images:
