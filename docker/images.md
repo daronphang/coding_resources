@@ -7,7 +7,8 @@ docker pull nginx1.11
 
 docker images -a                            List images
 docker image rm <image_name>                Delete a specific image
-docker rmi $(docker images -a -q)           Delete all images
+docker rmi $(docker images -a -q)           Delete all images, need run inside Windows powershell
+docker rmi $(docker images -q)          
 docker images -f dangling=true              Filters images that have no relationship with tagged images
 docker images -a |  grep "pattern"
 
