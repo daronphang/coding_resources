@@ -107,7 +107,7 @@ docker container run -p 8000:5555 -d <image_name>
 ```
 
 ## Dockerfile example:
-```
+```dockerfile
 # syntax=docker/dockerfile:1
 ARG  CODE_VERSION=3.7
 FROM python:${CODE_VERSION}-alpine                              
@@ -122,7 +122,7 @@ EXPOSE 5000
 COPY . .
 CMD ["flask", "run"]                                
 ```
-```
+```dockerfile
 ARG PYTHON_VERSION=3.7
 FROM python:3.7-alpine
 ARG PATH=c:/Users/daronphang/my_assistant/container/
