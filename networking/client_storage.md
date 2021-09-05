@@ -8,6 +8,9 @@ Employed to store user data (password, preferences, IP address, date/time of vis
 
 Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are transferrred on each HTTP request. 
 
+
+https://medium.com/swlh/how-the-new-chrome-80-cookie-rule-samesite-none-secure-affects-web-development-c06380220ced
+
 ## Local Storage:
 Store data without an end.
 
