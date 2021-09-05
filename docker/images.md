@@ -143,14 +143,18 @@ FROM python:${PYTHON_VERSION}
 ARG PATH /myassistant
 ENV FLASK_APP ma.py
 # ENV PYTHONPATH /myassistant       # if there is import issues
-ENV FAB7SERVER TSMSSPROD06
-ENV FAB7USERNAME FAB7PLAN
-ENV FAB7PASSWORD FAB7PLAN
-ENV FAB7PORT 4106
+ENV FAB7SERVER SERVERNAME
+ENV FAB7USERNAME USERNAME
+ENV FAB7PASSWORD PASSWORD
+ENV FAB7PORT 1234
 COPY . /myassistant
 WORKDIR /myassistant
-RUN pip install --no-cache-dir  --trusted-host pypi.org --trusted-host files.pythonhosted.org --proxy proxy-web.micron.com:80 -r requirements-docker.txt
+RUN pip install --no-cache-dir -r requirements-docker.txt
 EXPOSE 8888  
 CMD [ "flask", "run", "--host=0.0.0.0", "--port=8888"]
 ```
+```py
+import os
 
+env_variables = {name: os.environ['FAB7SERVER']}
+```
