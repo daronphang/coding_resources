@@ -10,7 +10,7 @@ Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are 
 
 ### Important:
 For browser to set cookies from cross-site origin, need to configure:
-1) setCredentials to true from client side.
+1) setCredentials to true from client side for all requests to server (login and post login).
 2) Set Access-Control-Allow-Credentials to true in server-side.
 
 https://medium.com/swlh/how-the-new-chrome-80-cookie-rule-samesite-none-secure-affects-web-development-c06380220ced
