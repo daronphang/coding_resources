@@ -71,10 +71,10 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 ```
 
 ### Important:
--RUN is an image build step; triggered when we are building the docker image.
--CMD can be overwritten when starting a container with docker run.
-
--When setting ENV, you can detect ENV variables as follows:
+- RUN is an image build step; triggered when we are building the docker image.
+- CMD can be overwritten when starting a container with docker run.
+- ENTRYPOINT is used for commands that always need to be executed.
+- When setting ENV, you can detect ENV variables as follows:
 ```py
 if os.environ['FLASK_ENV'] == 'production':
     print('hello')
