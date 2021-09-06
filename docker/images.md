@@ -193,5 +193,6 @@ CMD [ "flask", "run", "--host=0.0.0.0", "--port=8888"]
 ```py
 import os
 
-env_variables = {name: os.environ['FAB7SERVER']}
+if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
+  print('hello')
 ```
