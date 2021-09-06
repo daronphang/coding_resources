@@ -8,7 +8,7 @@
 ## Token-Based (JWT):
 Widely used in RESTful APIs. Server generates encrypted JWT and sends it back to client. Client sends JWT in header as Bearer Token for every subsequent request. SHould be stored in httpOnly cookie as local storage is vulnerable to XSS attacks. For transporting tokens securely, should send it via an encrypted channel such as HTTPS.
 
-### Local Storage for Storing JWT:
+### Storing JWT on Client-Side:
 Should not use local storage for various reasons:
 - Can only store string data.
 - Synchronous operation which may slow down app's runtime.
