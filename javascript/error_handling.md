@@ -1,3 +1,11 @@
+## Error:
+```js
+// Creates a new error object
+const error = new Error('hello world');
+error.statusCode = 500;
+console.log({ message: error.message, status: error.statusCode });
+````
+
 ## Reject:
 Inbuilt function that returns a Promise object which has been rejected.
 ```js
