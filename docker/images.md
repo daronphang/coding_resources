@@ -1,7 +1,7 @@
 # Images:
 Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, metadata and settings. Container images become containers at runtime. Not a complete OS i.e. no kernel, drivers, etc. For containers using the same image, they are stacked ontop of same image i.e. image is only stored once on host.
 
-```
+```cmd
 docker pull nginx                   Download latest version
 docker pull nginx1.11
 
@@ -30,9 +30,8 @@ docker container inspect test_name
 docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
 ```
 
-```
-# error
-failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token
+```dockerfile
+# error: failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token
 
 # linux
 export DOCKER_BUILDKIT=0
@@ -79,6 +78,8 @@ WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 if os.environ['FLASK_ENV'] == 'production':
     print('hello')
 ```
+
+https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-248ce5b69b1c
 
 ## Best Practices:
 - WORKDIR should always use absolute paths.
