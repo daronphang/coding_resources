@@ -1,7 +1,7 @@
 # Images:
 Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, metadata and settings. Container images become containers at runtime. Not a complete OS i.e. no kernel, drivers, etc. For containers using the same image, they are stacked ontop of same image i.e. image is only stored once on host.
 
-```cmd
+```
 docker pull nginx                   Download latest version
 docker pull nginx1.11
 
@@ -30,7 +30,7 @@ docker container inspect test_name
 docker build --build-arg http_proxy=http://10.239.4.80:913 --build-arg https_proxy=http://10.239.4.80:913 .
 ```
 
-```dockerfile
+```
 # error: failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token
 
 # linux
@@ -55,28 +55,64 @@ FROM imageName
 ```
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
-RUN           Default is run in shell /bin/sh -c; need to change on Windows
+ADD           Copies new files, directories or URLs from <src> and adds them to filesystem of image at path <dest>
+ENV           Environment variables that are available after built-time, key-value pairs
 ARG           Instructions support variables, referenced with ${var} or $var, may precede FROM
-CMD           Runs after container is created
+RUN           Used for installing software packages; default is run in shell /bin/sh -c; need to change on Windows
+ENTRYPOINT    Allows to configure container that will run as an executable
+CMD           Runs after container is created; sets default command and/or parameters which can be overwritten
 LABEL         Adds metadata to an image, key-value pair
 EXPOSE        Assumes TCP by default; informs Docker that container listens on specified network ports at runtime
-ENV           Environment variables, key-value pairs
-ADD           Copies new files, directories or URLs from <src> and adds them to filesystem of image at path <dest>
-ENTRYPOINT    Allows to configure container that will run as an executable
 VOLUME        Creates a mount point and marks it as holding externally mounted volumes
 USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 ```
 
-### Important:
+### RUN vs CMD vs ENTRYPOINT:
+- ENTRYPOINT configures a container that will run as an executable; used for commands that always need to execute.
+- CMD sets default command and/or parameters which can be overwritten from 'docker container run' command line.
 - RUN is an image build step; triggered when we are building the docker image.
-- CMD can be overwritten when starting a container with docker run.
-- ENTRYPOINT is used for commands that always need to be executed.
-- When setting ENV, you can detect ENV variables as follows:
-```py
-if os.environ['FLASK_ENV'] == 'production':
-    print('hello')
+
+If have multiple CMD instructions, all but last CMD instructions are ignored.
+All three can be specified in either Shell or Exec form.
+
+### CMD & ENTRYPOINT:
+```dockerfile
+# CMD ["param1", "param2"]
+ENTRYPOINT ["/bin/echo", "Hello"]
+CMD ["world"]
+
+# docker run -it <image>            # Hello world
+# docker run -it <image> John       # Hello John
+```
+
+### RUN:
+```dockerfile
+# both update and install are executed in single RUN to ensure latest packages are installed
+# if separated, apt-get install would reuse a layer added by apt-get update
+RUN apt-get update && apt-get install -y \
+  bzr \
+  cvs \
+  git \
+  mercurial \
+  subversion
+```
+
+### Shell (use if need to run bash):
+```dockerfile
+# <instruction> <command>
+# automatically calls /bin/sh -c <command>
+RUN apt-get install python3
+CMD echo "Hello world"
+ENTRYPOINT echo "Hello world"
+```
+### Exec: 
+```dockerfile
+# <instruction> ["executable", "param1", "param2", ...]
+RUN ["apt-get", "install", "python3"]
+CMD ["/bin/echo", "Hello world"]
+ENTRYPOINT ["/bin/echo", "Hello world"]
 ```
 
 https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-248ce5b69b1c
@@ -143,7 +179,7 @@ ARG PYTHON_VERSION=3.7
 FROM python:${PYTHON_VERSION}
 ARG PATH /myassistant
 ENV FLASK_APP ma.py
-# ENV PYTHONPATH /myassistant       # if there is import issues
+# ENV PYTHONPATH /myassistant       # if there are import issues, need specify PYTHONPATH
 ENV FAB7SERVER SERVERNAME
 ENV FAB7USERNAME USERNAME
 ENV FAB7PASSWORD PASSWORD
