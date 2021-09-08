@@ -22,6 +22,12 @@ An authentication protocol used to authenticate users in an application by using
 8) Client uses access token to request user's profile from Resource Server either in Bearer Authorization header.
 10) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
 
+```
+GET /drive/v2/files HTTP/1.1
+Host: www.googleapis.com
+Authorization: Bearer access_token
+```
+
 Need to register application with OAuth provider first. 
 
 https://developers.google.com/identity/protocols/oauth2
