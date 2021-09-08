@@ -17,9 +17,9 @@ An authentication protocol used to authenticate users in an application by using
 3) Authorization Server asks permission from User who thereby grants access for Client to access the user's data. 
 4) Authorization Server authorizes User and redirects to redirect/callback URL (backend server) with request token.
 5) Backend Server sends GET/POST request to Authorization Server's access token URL with request token to exchange for access token.
-6) Access token is used to authenticate future requests sent to Resource Server.
-7) Authorization Server sends response with access token.
-8) Client uses access token to request user's profile from Resource Server either in Bearer Authorization header.
+7) Access token is used to authenticate future requests sent to Resource Server.
+8) Authorization Server sends response to redirect_uri specified with access token in #hash fragment parameter.
+9) Client uses access token to request user's profile from Resource Server in Bearer Authorization header.
 10) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
 
 ```
