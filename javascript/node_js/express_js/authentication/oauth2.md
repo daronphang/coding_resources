@@ -51,6 +51,11 @@ app.listen(8080);
 
 ## Using Passport JS:
 Authentication middleware for express.js. Supports various login types including token, basic, OAuth, OAuth2, etc. Also used to connect external auth services to choose to login with selected Strategies.
+```
+npm install passport
+npm install passport-google-oauth
+npm install passport-http-bearer
+```
 
 ```js
 // passport setup for Google auth
