@@ -14,6 +14,12 @@ String(123)
 (123.456).toFixed(2)    // returns a string with specified number of decimals
 ```
 
+## Checking Types:
+```js
+Array.isArray([1,2,3])      // true
+Array.isArray({foo:123})    // false
+typeof(x)   // number, string, boolean, undefined 
+```
 
 ## Web Workers:
 Thread refers to a unit capable of executing code. JS was conceived as single-threaded programming language that ran in browser between all tabs i.e. only one set of instructions is executed at any time. However, modern JS offers ways to create additional threads, each executing independently while possibly communicating between one another through use of web workers.
