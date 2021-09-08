@@ -16,10 +16,10 @@ An authentication protocol used to authenticate users in an application by using
 2) After registration, Facebook provides client ID and secret.
 
 ### OAuth2 Workflow:
-1) User requests authorization from Authorization Server through their gateway/callback URL and enters credentials.
+1) User requests authorization from Authorization Server through their gateway/auth URL and enters credentials.
 2) Authorization Server asks permission from User who thereby grants access for Client to access the user's data. 
-4) Authorization Server authorizes User and redirects to Consumer's redirect URL with request token.
-5) Consumer sends GET/POST request to Authorization Server with request token to exchange for access token.
+4) Authorization Server authorizes User and redirects to Consumer's redirect/callback URL with request token.
+5) Consumer sends GET/POST request to Authorization Server's access token URL with request token to exchange for access token.
 6) Access token is used to authenticate future requests sent to Resource Server.
 7) Authorization Server sends response with access token.
 8) Client uses access token to request user's profile from Resource Server.
