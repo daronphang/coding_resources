@@ -1,21 +1,33 @@
-## OAuth 2.0:
-Industry-standard protocol for authorization. 
+## Basics:
+An authentication protocol used to authenticate users in an application by using another service provider. Industry-standard protocol for authorization. OAuth2 benefits:
+- Users don't need to remember their credentials (only need to authorize the app to access their info for selected OAuth provider).
+- Prevents security holes as user doesn't provide passwords for sign in/sign up.
+- Able to handle non-web clients.
 
-## Roles:
-1) Resource Owner/User: Account owner granting third-party websites to access his account data.
-2) Client: Third-party application.
-3) Resource Server: Database server containing information of resource owners; requires access token from Authorization Server.
-4) Authorization Server: Generates access token after user grants permission to client. 
+## Parties in OAuth Mechanism:
+1) Resource Owner: User who is trying to log in.
+2) Consumer/Client: Application the user wants to log into.
+3) Express Server: Client backend server.
+4) Resource Server: Hosts the protected resources such as user's profile; requires access token from Authorization Server.
+5) Authorization Server: Responsible for authenticating user and providing access token to clients.
 
 ## Client Registration:
 1) Client application provides callback URL to Facebook.
 2) After registration, Facebook provides client ID and secret.
 
-## Workflow:
-1. User signs in to Authorization Server through callback URL.
-2. Server responds with authorization grant back to user.
-3. User grants access to server give details to client. 
-4. Authorization Server responds with access token.
-5. Client sends request to Resource Server with attached access token.
-6. If token is valid, Resource Server responds with user details (limited to scope) back to client.  
+### OAuth2 Workflow:
+1) User requests authorization from Authorization Server through their gateway/callback URL and enters credentials.
+2) Authorization Server asks permission from User who thereby grants access for Client to access the user's data. 
+4) Authorization Server authorizes User and redirects to Consumer's redirect URL with request token.
+5) Consumer sends GET/POST request to Authorization Server with request token to exchange for access token.
+6) Access token is used to authenticate future requests sent to Resource Server.
+7) Authorization Server sends response with access token.
+8) Client uses access token to request user's profile from Resource Server.
+9) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
 
+Need to regsiter application with OAuth provider first. 
+
+https://www.loginradius.com/blog/async/google-authentication-with-nodejs-and-passportjs/
+https://morioh.com/p/e37dfcf12462  
+https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0  
+https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#login  
