@@ -11,22 +11,20 @@ An authentication protocol used to authenticate users in an application by using
 4) Resource Server: Hosts the protected resources such as user's profile; requires access token from Authorization Server.
 5) Authorization Server: Responsible for authenticating user and providing access token to clients.
 
-## Client Registration:
-1) Client application provides callback URL to Facebook.
-2) After registration, Facebook provides client ID and secret.
-
-### OAuth2 Workflow:
+### OAuth2 Workflow for Client-side JS Applications:
 1) User requests authorization from Authorization Server through their gateway/auth URL and enters credentials.
-2) Authorization Server asks permission from User who thereby grants access for Client to access the user's data. 
-4) Authorization Server authorizes User and redirects to Consumer's redirect/callback URL with request token.
-5) Consumer sends GET/POST request to Authorization Server's access token URL with request token to exchange for access token.
+2) URL includes query parameters that indicate the type of access being requested including client_id, redirect_url, and scope. 
+3) Authorization Server asks permission from User who thereby grants access for Client to access the user's data. 
+4) Authorization Server authorizes User and redirects to redirect/callback URL (backend server) with request token.
+5) Backend Server sends GET/POST request to Authorization Server's access token URL with request token to exchange for access token.
 6) Access token is used to authenticate future requests sent to Resource Server.
 7) Authorization Server sends response with access token.
-8) Client uses access token to request user's profile from Resource Server.
-9) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
+8) Client uses access token to request user's profile from Resource Server either in Bearer Authorization header.
+10) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
 
-Need to regsiter application with OAuth provider first. 
+Need to register application with OAuth provider first. 
 
+https://developers.google.com/identity/protocols/oauth2
 https://www.loginradius.com/blog/async/google-authentication-with-nodejs-and-passportjs/
 https://morioh.com/p/e37dfcf12462  
 https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0  
