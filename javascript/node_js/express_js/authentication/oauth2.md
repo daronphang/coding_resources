@@ -134,7 +134,7 @@ app.listen(port , () => console.log('App listening on port ' + port));
 </body>
 ```
 
-### Verifying Oauth Access Tokens for Subsequent API Calls:
+### Verifying Oauth Access Tokens for Subsequent API Calls to Provider:
 To verify the integrity of access token, best is to use Google API client library or a general-purpose JWT library. For debugging only, can use validation endpoint.
 
 https://developers.google.com/identity/sign-in/web/backend-auth
