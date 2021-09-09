@@ -53,7 +53,7 @@ app.listen(8080);
 Authentication middleware for express.js. Supports various login types including token, basic, OAuth, OAuth2, etc. Also used to connect external auth services to choose to login with selected Strategies.
 
 https://www.freecodecamp.org/news/a-quick-introduction-to-oauth-using-passport-js-65ea5b621a/
-https://dev.to/phyllis_yym/beginner-s-guide-to-google-oauth-with-passport-js-2gh4
+https://dev.to/phyllis_yym/beginner-s-guide-to-google-oauth-with-passport-js-2gh4  
 http://www.passportjs.org/packages/passport-google-oauth2/
 
 ```
