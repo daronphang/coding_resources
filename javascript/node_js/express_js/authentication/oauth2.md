@@ -53,6 +53,7 @@ app.listen(8080);
 Authentication middleware for express.js. Supports various login types including token, basic, OAuth, OAuth2, etc. Also used to connect external auth services to choose to login with selected Strategies.
 
 https://www.freecodecamp.org/news/a-quick-introduction-to-oauth-using-passport-js-65ea5b621a/
+https://dev.to/phyllis_yym/beginner-s-guide-to-google-oauth-with-passport-js-2gh4
 
 ```
 npm install passport
@@ -66,6 +67,11 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys: 'SOME_SECRET_COOKIE_KEY'
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());    // used for persistent login sessions
@@ -81,20 +87,23 @@ passport.use(new GoogleStrategy({
     },
     // verify callback function that parses credentials as arguments
     (accessToken, refreshToken, profile, done) => {
-        return done(null, profile);    // passes the profile data to serializeUser
+      const { email, first_name, last_name } = profile;
+      new User(first_name, email); 
+      done(null, profile);    // passes the profile data to serializeUser
     }
 ));
 
 
 // FOR SESSIONS ONLY
-// Used to stuff a piece of information into a cookie
+// Passport generates some identifying token and stuff it inside a cookie
 passport.serializeUser((user, done) => {
-    done(null, user);
+    done(null, user.email);
 });
 
 // Used to decode the received cookie and persist session
-passport.deserializeUser((user, done) => {
-    done(null, user);
+passport.deserializeUser((id, done) => {
+  // Check in database if user id exists
+  done(null, user);
 });
 
 // ROUTES
