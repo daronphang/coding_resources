@@ -88,7 +88,8 @@ passport.use(new GoogleStrategy({
     // verify callback function that parses credentials as arguments
     (accessToken, refreshToken, profile, done) => {
       const { email, first_name, last_name } = profile;
-      new User(first_name, email); 
+      // find or create user in separate Mongodb collection as there is no password field
+      // ...
       done(null, profile);    // passes the profile data to serializeUser
     }
 ));
