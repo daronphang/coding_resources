@@ -67,7 +67,7 @@ npm install passport-http-bearer
 const express = require('express');
 const app = express();
 const passport = require('passport');
-const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+const GoogleStrategy = require( 'passport-google-oauth' ).OAuth2Strategy;
 
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
@@ -85,7 +85,6 @@ passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: "http://localhost:3000/auth/google/callback",
-        passReqToCallback: true
     },
     // verify callback function that parses credentials as arguments
     (accessToken, refreshToken, profile, done) => {
@@ -111,7 +110,7 @@ passport.deserializeUser((id, done) => {
 });
 
 // ROUTES
-app.get('/auth/google/success', (req, res) => res.send(userProfile));
+app.get('/auth/google/success', (req, res) => res.send("success"));
 app.get('/auth/google/error', (req, res) => res.send("error logging in"));
 
 app.get('/auth/google', 
@@ -122,7 +121,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { 
   failureRedirect: '/auth/google/error',
   successRedirect: '/auth/google/success',
-  session: false
+  session: false    // default for done() is to pass data to session
   })
 );
   
