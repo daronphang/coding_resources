@@ -66,7 +66,7 @@ npm install passport-http-bearer
 const express = require('express');
 const app = express();
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
@@ -83,7 +83,8 @@ const GOOGLE_CLIENT_SECRET = 'our-google-client-secret';
 passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/google/callback"
+        callbackURL: "http://localhost:3000/auth/google/callback",
+        passReqToCallback: true
     },
     // verify callback function that parses credentials as arguments
     (accessToken, refreshToken, profile, done) => {
@@ -135,7 +136,23 @@ app.listen(port , () => console.log('App listening on port ' + port));
 </div>
 </body>
 ```
-
+```
+// profile response
+provider
+id
+name
+displayName
+birthday
+relationship
+isPerson
+isPlusUser
+placesLived
+language
+emails
+gender
+picture
+coverPhoto
+```
 ### Verifying Oauth Access Tokens for Subsequent API Calls to Provider:
 To verify the integrity of access token, best is to use Google API client library or a general-purpose JWT library. For debugging only, can use validation endpoint.
 
