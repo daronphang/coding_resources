@@ -2,7 +2,7 @@
 An ordered list of items. String, list, tuple, range, bytes and bytearray. Dictionaries are ordered from 3.6 onwards.
 
 ## Type Conversions:
-```
+```python
 int()
 float()
 str()
@@ -11,7 +11,7 @@ list()
 ```
 
 ## Operations:
-```
+```python
 a/b     # float
 a//b    # integer
 a % b   # remainder after integer division
@@ -20,7 +20,7 @@ sevens = range(7, 1000, 7)      // divisble by 7
 ```
 
 ## strings and Slices:
-```
+```python
 'this string\n has been\n split'
 tabbed\t strings
 """He said, "no, he's resting""""
@@ -63,7 +63,7 @@ print(x,y, sep='\n')
 False object are None, False, 0, 0.0, 0j, '', (), {}, range(0). Use any() or all() to check for truth in lists.
 
 ## Lists:
-```
+```python
 list = ['computer', 'monitor']
 list[1][0]    # m
 
@@ -81,7 +81,7 @@ print(next(vowels_iter))    # 'e'
 ## Tuples:
 Same as lists but immutable. Can be destructured. Accessed by [].
 
-```
+```python
 metallica = ('ride', 1984, ' metallica')
 title, year, artist = metallica
 print(title)
