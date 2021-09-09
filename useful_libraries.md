@@ -3,6 +3,7 @@
 - graphQL
 - PassportJS: authentication middleware for nodeJS.
 - RevealJS: creating browser slides.
+- D3JS: Data visualization.
 
 ### ExpressJS:
 - Cookie-Parser: parse cookie sent along with requests.
