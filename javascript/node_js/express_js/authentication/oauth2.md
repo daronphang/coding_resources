@@ -51,6 +51,9 @@ app.listen(8080);
 
 ## Using Passport JS:
 Authentication middleware for express.js. Supports various login types including token, basic, OAuth, OAuth2, etc. Also used to connect external auth services to choose to login with selected Strategies.
+
+https://www.freecodecamp.org/news/a-quick-introduction-to-oauth-using-passport-js-65ea5b621a/
+
 ```
 npm install passport
 npm install passport-google-oauth
@@ -58,30 +61,43 @@ npm install passport-http-bearer
 ```
 
 ```js
-// passport setup for Google auth
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const GOOGLE_CLIENT_ID = 'our-google-client-id';
-const GOOGLE_CLIENT_SECRET = 'our-google-client-secret';
-
-passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback"
-  },
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-));
-```
-```js
 // app.js
 const express = require('express');
 const app = express();
 const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 app.use(passport.initialize());
+app.use(passport.session());    // used for persistent login sessions
 
+// PASSPORT STRATEGY FOR GOOGLE AUTH
+const GOOGLE_CLIENT_ID = 'our-google-client-id';
+const GOOGLE_CLIENT_SECRET = 'our-google-client-secret';
+
+passport.use(new GoogleStrategy({
+        clientID: GOOGLE_CLIENT_ID,
+        clientSecret: GOOGLE_CLIENT_SECRET,
+        callbackURL: "http://localhost:3000/auth/google/callback"
+    },
+    // verify callback function that parses credentials as arguments
+    (accessToken, refreshToken, profile, done) => {
+        return done(null, profile);    // passes the profile data to serializeUser
+    }
+));
+
+
+// FOR SESSIONS ONLY
+// Used to stuff a piece of information into a cookie
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+// Used to decode the received cookie and persist session
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+// ROUTES
 app.get('/auth/google/success', (req, res) => res.send(userProfile));
 app.get('/auth/google/error', (req, res) => res.send("error logging in"));
 
@@ -107,6 +123,36 @@ app.listen(port , () => console.log('App listening on port ' + port));
     </div>
 </div>
 </body>
+```
+
+### Verifying Oauth Access Tokens for Subsequent API Calls:
+To verify the integrity of access token, best is to use Google API client library or a general-purpose JWT library. For debugging only, can use validation endpoint.
+
+https://developers.google.com/identity/sign-in/web/backend-auth
+
+```
+npm install google-auth-library --save
+
+// validation endpoint (do not use in production)
+GET https://oauth2.googleapis.com/tokeninfo?id_token=XYZ123
+```
+```js
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(CLIENT_ID);
+async function verify() {
+// verifyIdToken verifies JWT signature, aud/exp/iss claim
+  const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+      // Or, if multiple clients access the backend:
+      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+  });
+  const payload = ticket.getPayload();
+  const userid = payload['sub'];
+  // If request specified a G Suite domain:
+  // const domain = payload['hd'];
+}
+verify().catch(console.error);
 ```
 
 ## Authorization Server:
