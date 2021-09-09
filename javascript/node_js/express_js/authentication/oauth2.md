@@ -117,6 +117,7 @@ app.get('/auth/google/error', (req, res) => res.send("error logging in"));
 app.get('/auth/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
  
+ // middleware receives data from Google and runs the function on strategy config
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/auth/google/error' }),
   function(req, res) {
