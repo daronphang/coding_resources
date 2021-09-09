@@ -89,6 +89,7 @@ passport.use(new GoogleStrategy({
     (accessToken, refreshToken, profile, done) => {
       const { email, first_name, last_name } = profile;
       // find or create user in separate Mongodb collection as there is no password field
+      // store profile.id, profile.first_name, profile.email, accessToken, refreshToken
       // ...
       done(null, profile);    // passes the profile data to serializeUser
     }
