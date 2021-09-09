@@ -104,11 +104,11 @@ app.get('/auth/google/error', (req, res) => res.send("error logging in"));
 app.get('/auth/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
  
-app.get( '/auth/google/callback',
-    passport.authenticate( 'google', {
-        successRedirect: '/auth/google/success',
-        failureRedirect: '/auth/google/error'
-}));
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/auth/google/error' }),
+  function(req, res) {
+    res.redirect('/auth/google/succes');
+  });
   
 const port = process.env.PORT || 3000;
 app.listen(port , () => console.log('App listening on port ' + port));
