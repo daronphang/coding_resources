@@ -78,4 +78,20 @@ class MSSQLDBConnectionSession:
         return full_conn_string
 
 ```
-
+```python
+ # conn_payload is current_app.config['TSMSSPROD06'] which returns a dict of host, username, password, port
+def query(self, conn_payload: dict, as_dict: bool):    
+        with MSSQLDBConnectionSession(
+            host=conn_payload['host'],
+            username=conn_payload['username'],
+            password=conn_payload['password'],
+            port=conn_payload['port'],
+            as_dict=as_dict
+        ) as conn:
+            conn.execute(self.sql_string)
+            result = conn.fetchall()
+        if result:
+            return result
+        else:
+            return None
+```
