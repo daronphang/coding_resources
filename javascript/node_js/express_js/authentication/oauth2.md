@@ -93,7 +93,7 @@ passport.use(new GoogleStrategy({
       // find or create user in separate Mongodb collection as there is no password field
       // store profile.id, profile.first_name, profile.email, accessToken, refreshToken
       // ...
-      done(null, profile);    // passes the profile data to serializeUser
+      done(null, profile);    // tells passport to proceed with auth flow; passes the profile data to serializeUser
     }
 ));
 
