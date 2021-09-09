@@ -119,10 +119,12 @@ app.get('/auth/google',
  
  // middleware receives data from Google and runs the function on strategy config
 app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/auth/google/error' }),
-  function(req, res) {
-    res.redirect('/auth/google/succes');
-  });
+  passport.authenticate('google', { 
+  failureRedirect: '/auth/google/error',
+  successRedirect: '/auth/google/success',
+  session: false
+  })
+);
   
 const port = process.env.PORT || 3000;
 app.listen(port , () => console.log('App listening on port ' + port));
