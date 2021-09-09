@@ -3,6 +3,23 @@ Usage of resources like file operations and database connections is very common 
 managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection. 
 
 Both methods are built-in methods for 'with' statement in Python.
+```
+r       Read mode
+w       Write mode
+r+      Read/Write mode
+a       Append mode
+a+      Append/Read mode
+x       Exclusive creating mode
+```
+
+```python
+with open('example.txt', 'r') as f:
+    json.load(f)        // read json file; json.loads() for reading json string
+    json.dump(f)        // convert dict to json object
+    print(f.read())     // f.write()
+    
+# f.closed      // true
+```
 
 ```python
 class ContextManager:
