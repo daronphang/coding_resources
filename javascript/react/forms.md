@@ -1,4 +1,14 @@
-## Forms:
+## Uncontrolled:
+In browser, forms maintain their own internal state. For uncontrolled, DOM manages and stores data and input is pulled from it through refs.
+```js
+return (
+  <input type="text" name="name" ref={this.nameInput} />
+)
+```
+
+## Controlled:
+State is stored in the component that renders the input. Each input field accepts its current value as a prop and has callback function which is called when the state of input changes.
+
 ```javascript
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState('');
