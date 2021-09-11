@@ -64,3 +64,72 @@ const SimpleInput = (props) => {
 }
 
 ```
+
+## React-Hook-Form:
+Provides most of the abstraction with form validation. 
+
+https://github.com/react-hook-form/react-hook-form/tree/master/examples
+
+```js
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { useForm, Controller } from "react-hook-form";
+
+const InputObjects = [
+  {
+    type: "username",
+    placeholder: "Enter Username",
+    errorMsg: "Please enter a username (5 characters or more).",
+  },
+  {
+    type: "password",
+    placeholder: "Enter Password",
+    errorMsg: "Please enter a password (5 characters or more).",
+  },
+];
+
+export default function LoginModal() {
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({ mode: "onBlur" });
+
+  const handleFinalSubmit = (data) => {
+    console.log(data);
+  };
+
+  const renderInputFields = InputObjects.map((obj) => (
+    <InputField>
+      <Controller
+        name={obj.type}
+        control={control}
+        defaultValue=""
+        rules={{ required: true, minLength: 5 }}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            error={errors[obj.type]}
+            helperText={errors[obj.type] ? obj.errorMsg : null}
+            style={InputFieldStyle}
+            type="text"
+            placeholder={obj.placeholder}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  {obj.type === "username" && <AccountCircle />}
+                  {obj.type === "password" && <LockIcon />}
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
+      />
+    </InputField>
+  ));
+
+  return (
+    {renderInputFields}
+  )
+
+```
