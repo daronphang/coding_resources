@@ -25,6 +25,7 @@ An authentication protocol used to authenticate users in an application by using
 ### Alternative Workflow Involving Client-Side:
 https://blog.prototypr.io/how-to-build-google-login-into-a-react-app-and-node-express-api-821d049ee670
 
+https://datatracker.ietf.org/doc/html/rfc6749
 ```
 GET /drive/v2/files HTTP/1.1
 Host: www.googleapis.com
