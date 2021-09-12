@@ -23,6 +23,8 @@ An authentication protocol used to authenticate users in an application by using
 10) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
 
 ### Alternative Workflow Involving Client-Side:
+Authorization flow vs implicit flow. In implicit flow, client browser receives access token (passed as hash# which can only be read using JS running in browser) from Authorization Server of Social Providers but is potentially exposed to XSS attacks. With authorization flow, browser only gets temporary auth code but never the access or refresh token.
+
 https://blog.prototypr.io/how-to-build-google-login-into-a-react-app-and-node-express-api-821d049ee670
 
 https://datatracker.ietf.org/doc/html/rfc6749
