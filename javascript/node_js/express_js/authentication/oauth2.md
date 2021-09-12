@@ -161,6 +161,33 @@ gender
 picture
 coverPhoto
 ```
+
+### Custom Callback:
+```js
+exports.getGoogleOAuthCallback = function (req, res, next) {
+  return passport.authenticate("google", function (err, profile) {
+    if (err) {
+      return res.redirect(`http://127.0.0.1:3000/404?msg=${err}`);
+    }
+    if (!profile) {
+      return res.redirect(
+        404,
+        "http://127.0.0.1:3000/404?msg=no-profile-available"
+      );
+    }
+    generateTokens(_id, "LOGIN")
+      .then((tokens) => {
+        res.cookie("accessToken", tokens.accessToken, { httpOnly: true });
+        res.cookie("refreshToken", tokens.refreshToken, { httpOnly: true });
+        return res.redirect("http://127.0.0.1:3000");
+      })
+      .catch((err) => {
+        return res.redirect(`http://127.0.0.1:3000/404?msg=${err}`);
+      });
+  })(req, res, next);
+};
+```
+
 ### Verifying Oauth Access Tokens for Subsequent API Calls to Provider:
 To verify the integrity of access token, best is to use Google API client library or a general-purpose JWT library. For debugging only, can use validation endpoint.
 
