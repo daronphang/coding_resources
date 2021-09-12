@@ -115,8 +115,10 @@ app.get('/auth/google/error', (req, res) => res.send("error logging in"));
 
 app.get('/auth/google', 
   passport.authenticate('google', 
-  { scope : ['profile', 'email'] },
-  prompt : "select_account" // prevent auto-sign in with PassportJS or implement request that revokes token
+    {
+      scope : ['profile', 'email'],
+       prompt : "select_account" // prevent auto-sign in with PassportJS or implement request that revokes token
+    }
 ));
  
  // middleware receives data from Google and runs the function on strategy config
