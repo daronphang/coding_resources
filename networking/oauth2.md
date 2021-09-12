@@ -22,6 +22,9 @@ An authentication protocol used to authenticate users in an application by using
 9) Client uses access token to request user's profile from Resource Server in Bearer Authorization header.
 10) Client validates user's existence in its database, responds with user's details (limited to scope) and redirects to application's page.
 
+### Alternative Workflow Involving Client-Side:
+https://blog.prototypr.io/how-to-build-google-login-into-a-react-app-and-node-express-api-821d049ee670
+
 ```
 GET /drive/v2/files HTTP/1.1
 Host: www.googleapis.com
