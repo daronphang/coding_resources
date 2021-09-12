@@ -15,7 +15,7 @@ An authentication protocol used to authenticate users in an application by using
 1) User requests authorization from Authorization Server through their gateway/auth URL and enters credentials.
 2) URL includes query parameters that indicate the type of access being requested including client_id, redirect_url, and scope. 
 3) Authorization Server asks permission from User who thereby grants access for Client to access the user's data. 
-4) Authorization Server authorizes User and redirects to redirect/callback URL (backend server) with request token.
+4) Authorization Server authorizes User and redirects to redirect/callback URL (backend/frontend server) with request token.
 5) Backend Server sends GET/POST request to Authorization Server's access token URL with request token to exchange for access token.
 7) Access token is used to authenticate future requests sent to Resource Server.
 8) Authorization Server sends response to redirect_uri specified with access token in #hash fragment parameter.
