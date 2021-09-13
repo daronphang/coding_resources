@@ -1,8 +1,14 @@
 ## Basics:
-State management library built into React to solve props drilling. Provides a way to pass data through component tree without having to pass props down manually at every level. Designed to share data that can be considered "global" for a tree of React components such as current authenticated user, theme, or preferred language. Allows you to broadcast such data and changes to it, to all components nested below. Need create context, consumer and provider. However, apply it sparingly as it increases complexity for higher level components and unit-testing. 
+State management library built into React to solve props drilling. Provides a way to pass data through component tree without having to pass props down manually at every level. Designed to share data that can be considered "global" for a tree of React components such as current authenticated user, theme, or preferred language. Allows you to broadcast such data and changes to it, to all components nested below. Need create context, consumer and provider. 
+### Limitations:
+- Not optimized for high frequency changes i.e. many changes per second.
+- Should not be used to replace ALL communications via props.
+- Apply sparingly as it increases complexity for higher level components and unit-testing. 
+
+
 
 ### Context:
-When React renders a component that subscribes to this Context object, it will read the current value from the closest matching Provider above it in the tree. Default value is only used when a component does not have a matching Provider above it in the tree i.e. useful for testing components in isolation without wrapping them. Passing undefined as a Provider value does not cause consuming components to use default value.
+When React renders a component that subscribes to this Context object, it will read the current value from the closest matching Provider above it in the tree. Default value is only used when a component does not have a matching Provider above it in the tree i.e. useful for testing components in isolation without wrapping them. Passing undefined as a Provider value does not cause consuming components to use default.
 
 To update context from a nested component, can pass a function down to allow consumers to trigger an update. 
 
@@ -43,9 +49,6 @@ Consumer is where the stored information ends up. It can request data via the pr
 ### useContext:
 React Hook that allows us to manage state data inside functional components. Provides cleaner code than Consumer component.
 
-### Limitations:
-- Not optimized for high frequency changes i.e. many changes per second.
-- Should not be used to replace ALL communications via props.
 
 
 ```javascript
