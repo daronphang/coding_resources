@@ -64,7 +64,7 @@ return (
     <Route path='/product' exact>    // exact tells React to load if it matches exactly
       <Product />
     </Route>
-    <Route path='/product/:productId'>    // if navigate to this, both products and productDetail routes will be active if no Switch
+    <Route path='/product/:productId'> // if navigate to this, both Product and ProductDetail routes will be active if no Switch
       <ProductDetail />
     </Route>
   </Switch>
