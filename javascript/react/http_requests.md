@@ -50,7 +50,19 @@ Data fetching library that has following benefits:
 - Better error handling.
 - Can be used on server/client.
 
-Will send duplicate requests for GET/POST; first request is pre-flight request.
+To disable duplicate requests, remove React.StrictMode in index.js.
+```js
+ReactDOM.render(
+  <React.StrictMode>    // REMOVE THIS
+    <BrowserRouter>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
 
 ```js
 import axios from "axios";
