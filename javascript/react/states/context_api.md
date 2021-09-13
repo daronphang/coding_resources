@@ -1,11 +1,44 @@
 ## Basics:
-State management library built into React to solve props drilling. Provides a way to pass data through component tree without having to pass props down manually at every level. Designed to share data that can be considered "global" for a tree of React components such as current authenticated user, theme, or preferred language. Need create context, consumer and provider.
+State management library built into React to solve props drilling. Provides a way to pass data through component tree without having to pass props down manually at every level. Designed to share data that can be considered "global" for a tree of React components such as current authenticated user, theme, or preferred language. Allows you to broadcast such data and changes to it, to all components nested below. Need create context, consumer and provider. However, apply it sparingly as it increases complexity for higher level components and unit-testing. 
+
+### Context:
+When React renders a component that subscribes to this Context object, it will read the current value. Default value is only used when a component does not have a matching Provider above it in the tree i.e. useful for testing components in isolation without wrapping them. 
+
+To update context from a nested component, can pass a function down to allow consumers to trigger an update. 
+
+```js
+// UserContext.js
+// Returns a consumer and provider
+export const UserContext = React.createContext({
+  name: null,
+  age: null,
+  happyBirthday: () => {},
+});
+
+export default UserContext;
+```
+
+### Provider:
+Allows consuming components to subscribe to context changes. All consumers that are descendants of a Provider will re-render whenever the Provider's value prop changes.
+```js
+// UserProvider.js
+import UserContext from './context';
+
+export default function UserProvider({ children }) {
+  const [name, setName] = useState("John Doe");
+  const [age, setAge] = useState(1);
+  const happyBirthday = () => setAge(age + 1);
+  
+  return (
+    <UserContext.Provider value={{ name, age, happyBirthday }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
+```
 
 ### Consumer: 
 Consumer is where the stored information ends up. It can request data via the provider and manipulate the central store.
-
-### Provider:
-Acts as a delivery service. When a consumer asks for something, it finds it in the conext and delivers it to where it's needed. 
 
 ### useContext:
 React Hook that allows us to manage state data inside functional components. Provides cleaner code than Consumer component.
