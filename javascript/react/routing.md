@@ -53,6 +53,16 @@ ReactDOM.render(
 
 ```
 
+### Passing Props to Routes:
+```js
+return (
+  <Route
+  path="/home"
+  component={() => <HomePageComponent handleNavBar={handleNavBar} />}
+  />
+)
+```
+
 ## Dynamic Routes:
 Can extract route params with react-router-dom.
 ```javascript
