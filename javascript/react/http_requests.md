@@ -50,6 +50,8 @@ Data fetching library that has following benefits:
 - Better error handling.
 - Can be used on server/client.
 
+Will send duplicate requests for GET/POST; first request is pre-flight request.
+
 ```js
 import axios from "axios";
 import React from "react";
