@@ -50,6 +50,7 @@ Consumer is where the stored information ends up. It can request data via the pr
 React Hook that allows us to manage state data inside functional components. Provides cleaner code than Consumer component.
 
 
+## Example:
 
 ```javascript
 // store/auth-context.js
