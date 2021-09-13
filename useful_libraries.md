@@ -1,19 +1,26 @@
 ## Javascript:
-- expressJS: framework for nodeJS.
-- graphQL
-- PassportJS: authentication middleware for nodeJS.
-- RevealJS: creating browser slides.
-- D3JS: Data visualization.
-- React-Hook-Form: Provides abstraction for forms.
+```
+expressJS             Framework for nodeJS
+  passportJS          Authentication middleware  
+  cookie-parser       Parse cookie sent along with requests
+  body-parser         Parse body of incoming requests
+  dotenv              Load ENV variables
 
-### ExpressJS:
-- Cookie-Parser: parse cookie sent along with requests.
-- Body-Parser: parse body of incoming requests.
-- Dotenv: load ENV variables.
+graphQL             
+RevealJS              Browser slides with animations
+D3JS                  Data-visualization
+
+// REACT
+react-hook-form       Provides abstraction for form creation
+  
+```
 
 ## Python:
-- Flask
-- Django
+```
+Flask
+Django
+
+```
 
 ## Designing:
 - Figma
