@@ -51,6 +51,7 @@ FROM imageName
 ```
 
 ## Instructions for Dockerfile:
+Need to also create .dockerignore.
 
 ```
 FROM          Sets base/parent image (must start with FROM)
@@ -196,3 +197,22 @@ import os
 if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
   print('hello')
 ```
+
+### NodeJS:
+```dockerfile
+FROM node:10-alpine
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+WORKDIR /home/node/app
+COPY package*.json ./
+USER node
+RUN npm install
+COPY --chown=node:node . .
+EXPOSE 8080
+CMD [ "node", "app.js" ]
+```
+```
+// .dockerignore
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
