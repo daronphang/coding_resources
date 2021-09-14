@@ -210,8 +210,10 @@ RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 COPY ["package.json", "package-lock.json*", "./"]
 USER node
-RUN npm install # ci --only=production for production build
-ENV NODE_ENV=development   # 'production' for performance and security related optimizations
+# ci --only=production for production build
+RUN npm install 
+# 'production' for performance and security related optimizations
+ENV NODE_ENV=development   
 COPY --chown=node:node . .
 EXPOSE 8080
 CMD [ "node", "app.js" ]
