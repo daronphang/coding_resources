@@ -16,7 +16,7 @@ docker image prune -a                       Removes all unused images, not just 
 ```
 
 ## Building Images:
-Order is critical. Keep things that do not change at top. Can add .dockerignore file. Need to disable builtkit if have error.
+Order is critical. Keep things that do not change at top. Can add .dockerignore file. Need to disable builtkit if have error. Don't need virtualenv as Docker achieves the same isolation.
 
 ```
 docker build .                    Builds an image from a dockerfile and context; run by Docker daemon and not CLI
@@ -57,7 +57,7 @@ Need to also create .dockerignore.
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
 ADD           Copies new files, directories or URLs from <src> and adds them to filesystem of image at path <dest>
-ENV           Environment variables that are available after built-time, key-value pairs
+ENV           Environment variables available after built-time, key-value pairs
 ARG           Instructions support variables, referenced with ${var} or $var, may precede FROM
 RUN           Used for installing software packages; default is run in shell /bin/sh -c; need to change on Windows
 ENTRYPOINT    Allows to configure container that will run as an executable
@@ -68,9 +68,13 @@ VOLUME        Creates a mount point and marks it as holding externally mounted v
 USER          Sets username or usergroup when running the image
 WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
+
+-ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD)
+-ENV can be changed using docker run --env key=value
 ```
 
 ### RUN vs CMD vs ENTRYPOINT:
+- Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
 - ENTRYPOINT configures a container that will run as an executable; used for commands that always need to execute.
 - CMD sets default command and/or parameters which can be overwritten from 'docker container run' command line.
 - RUN is an image build step; triggered when we are building the docker image.
@@ -120,15 +124,12 @@ https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-24
 
 ## Best Practices:
 - WORKDIR should always use absolute paths.
-- ENV persists when container starts running; viewed using docker inspect, changed using docker run --env key=value.
-- ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD).
 - Use ARG for build-time customization as ENV will persist when a container starts running.
-- Dockerfile should have either CMD or ENTRYPOINT commands; ENTRYPOINT followed by CMD.
-- CMD is to provide default args for an ENTRYPOINT command or for executing an ad-hoc command in container.
-- Don't install unnecessary packages.
 - COPY is preferred over ADD as it is more transparent.
-- Don't need virtualenv as Docker achieves the same isolation.
+- Don't install unnecessary packages.
 - For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
+- Use explicit Docker base image tags (default is :latest) as they are inconsistent and exposed to vulnerabilities. 
+- Don’t run containers as root
 
 ## Running Flask App:
 Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser.
@@ -199,14 +200,16 @@ if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
 ```
 
 ### NodeJS:
+https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
+
 ```dockerfile
-FROM node:10-alpine
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+// get digest of base image
+FROM node:lts-alpine@sha256:b2da3316acdc2bec442190a1fe10dc094e7ba4121d029cb32075ff59bb27390a
+ENV NODE_ENV=development   // 'production' for performance and security related optimizations
 WORKDIR /home/node/app
-COPY package*.json ./
+COPY --chown=node:node . /home/node/app
 USER node
-RUN npm install
-COPY --chown=node:node . .
+RUN npm install // ci --only=production for production build
 EXPOSE 8080
 CMD [ "node", "app.js" ]
 ```
@@ -216,3 +219,7 @@ node_modules
 npm-debug.log
 Dockerfile
 .dockerignore
+.git
+.gitignore
+.npmrc
+```
