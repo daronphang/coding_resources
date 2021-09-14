@@ -66,7 +66,7 @@ LABEL         Adds metadata to an image, key-value pair
 EXPOSE        Assumes TCP by default; informs Docker that container listens on specified network ports at runtime
 VOLUME        Creates a mount point and marks it as holding externally mounted volumes
 USER          Sets username or usergroup when running the image
-WORKDIR       Sets working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
+WORKDIR       Sets default working directory for any RUN, CMD, ENTRYPOINT, COPY, ADD
 
 
 -ARG is passed at build-time but is not available after image is created (ENTRYPOINT, CMD)
@@ -203,18 +203,21 @@ if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
 https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 
 ```dockerfile
-// get digest of base image
-FROM node:lts-alpine@sha256:b2da3316acdc2bec442190a1fe10dc094e7ba4121d029cb32075ff59bb27390a
-ENV NODE_ENV=development   // 'production' for performance and security related optimizations
+FROM node:10-alpine
+# using non-root node user's home directory as working directory, and setting ownership on them for container
+# -p creates the directory and if required, all parent directories
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app   
 WORKDIR /home/node/app
-COPY --chown=node:node . /home/node/app
+COPY ["package.json", "package-lock.json*", "./"]
 USER node
-RUN npm install // ci --only=production for production build
+RUN npm install # ci --only=production for production build
+ENV NODE_ENV=development   # 'production' for performance and security related optimizations
+COPY --chown=node:node . .
 EXPOSE 8080
 CMD [ "node", "app.js" ]
 ```
 ```
-// .dockerignore
+# .dockerignore
 node_modules
 npm-debug.log
 Dockerfile
