@@ -207,6 +207,7 @@ FROM node:10-alpine
 # using non-root node user's home directory as working directory, and setting ownership on them for container
 # official node image includes a least-privileged user of name "node"
 # -p creates the directory and if required, all parent directories
+# creating node_modules sub directory first which binds to "node" user instead of npm install creating sub folder for us
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app   
 WORKDIR /home/node/app
 
