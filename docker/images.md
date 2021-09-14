@@ -205,10 +205,13 @@ https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-w
 ```dockerfile
 FROM node:10-alpine
 # using non-root node user's home directory as working directory, and setting ownership on them for container
+# official node image includes a least-privileged user of name "node"
 # -p creates the directory and if required, all parent directories
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app   
 WORKDIR /home/node/app
-COPY ["package.json", "package-lock.json*", "./"]
+
+# Docker caches results of npm install and rerun if only the packaging files change
+COPY --chown=node:node ["package.json", "package-lock.json*", "./"]
 USER node
 # ci --only=production for production build
 RUN npm install 
