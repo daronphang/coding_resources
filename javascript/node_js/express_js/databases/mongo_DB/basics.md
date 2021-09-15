@@ -114,14 +114,7 @@ static fetchAll() {
 }
 ```
 
-## Updating:
-Can use updateOne() or updateMany(). Use $set to describe the update operation. 
 
-https://docs.mongodb.com/manual/reference/operator/update/
-
-```javascript
-db.collection('products').updateOne({_id: new mongodb.ObjectId(some_id)}, {$set: this});
-```
 
 ## Deleting:
 ```javascript
