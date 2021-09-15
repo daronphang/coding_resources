@@ -31,7 +31,11 @@ $[<identifier>]      Identifies array elements that match arrayFilters condition
 $addToSet            Adds value to array unless have duplicate; can combine with $each to add each element to array
 $pop                 Removes first or last element of an array
 $pull                Removes all instances from an array of a value or values that match specified condition
+$pullAll             Removes all elements that match listed values as compared to $pull which uses query
 $push                Append specified value to array
+$position            Specifies location in array at which $push operator inserts elements
+$slice               Limits number of array elements during $push operation
+$sort                Orders elements of an array during $push operation
 ```
 
 ```js
@@ -71,4 +75,9 @@ db.stores.update(
     { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } },
     { multi: true }
 )
+
+// $pullAll
+{ _id: 1, scores: [ 0, 2, 5, 5, 1, 0 ] }
+db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
+
 ```
