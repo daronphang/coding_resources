@@ -1,4 +1,5 @@
 ## Querying:
+Find() returns a cursor. To get results, join it wtith toArray() which returns a promise.
 Documentation: https://docs.mongodb.com/manual/tutorial/query-documents/
 ```js
 const cursor = db.collection('inventory').find({
@@ -10,6 +11,8 @@ const cursor = db.collection('inventory').find({
 const cursor = db.collection('inventory').find({
   $or: [{ status: 'A' }, { qty: { $lt: 30 } }]
 });
+
+const array = cursor.toArray().then().catch();
 
 ```
 
