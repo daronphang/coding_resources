@@ -25,12 +25,15 @@ git push -u origin <new branch name>
 git remote -v                               #to verify remote repository URL
 git remote set-url origin <new repo URL>
 ```
-### Cloning Repository:
 
+### Other Functions:
 ```
-cd /d C:\users\daronphang
+cd /d C:\users\daronphang         Cloning repo
 git clone <repo URL>
+
+git checkout master               Switch branch without -b tag
 ```
+
 ### Git Pull:
 Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. To pull other branches from remote repo, use git fetch followed by git pull origin <new_branch_name>.
 
