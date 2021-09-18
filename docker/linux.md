@@ -36,6 +36,8 @@ cat /etc/file1
 cat >test2                    Creates a file
 cat -n song.txt               Displays line numbers of file
 
+mkdir -p test1/test2/test3              Creates parent directory 'test1' if doesn't exist
+
 chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
 chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 
