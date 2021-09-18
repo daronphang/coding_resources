@@ -36,8 +36,8 @@ cat /etc/file1
 cat >test2                    Creates a file
 cat -n song.txt               Displays line numbers of file
 
-
-
+chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
+chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 
 vi
 ls -la 
