@@ -104,3 +104,25 @@ const appRoutes: Routes = [
 // in routing module
 RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})
 ```
+
+## Navigate With Anchor Tag:
+```js
+// app.routing.module
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules,
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    scrollOffset: [0, 100]
+  })],
+  exports: [RouterModule] 
+})
+```
+```html
+<a routerLink="." fragment="capacity-tracking" >Capacity Tracking</a>
+
+<div id="capacity-tracking" class="single-container extended tableview">
+ <app-capacity-tracking></app-capacity-tracking>
+</div>
+
+```
