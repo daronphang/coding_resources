@@ -14,6 +14,9 @@ const cursor = db.collection('inventory').find({
 
 const array = cursor.toArray().then().catch();
 
+const productArr = await getDb().collection("products").find({ _id: { $in: updatedItems } }).toArray();
+
+
 ```
 
 ### Comparison Query Operators:
