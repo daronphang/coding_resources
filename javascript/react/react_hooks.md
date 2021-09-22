@@ -71,6 +71,29 @@ console.log(count);
 
 ## UseRef:
 Available in functional components only. Alternative to state when accessing input value from forms. Don't have to log every keystroke and uses less code.
+Hook that accepts one argument as initial value and returns a mutable reference which is an object having a .current property (used for DOM node or element). 
+
+### UseRef vs UseState:
+- useRef does not trigger component re-rendering and can be useful for tracking states that change frequently. 
+- When storing states in a variable, it can hold the new state without trigger re-rendering but it doesn't persist; however, the returned object from useRef will persist for full lifetime of component.
+- An update to useRef will trigger shallow rendering which affects just the component.
+- An update to useState will trigger deep rendering which affects parent and child components.
+
+```js
+import { useRef } from 'react';
+
+function MyComponent() {
+  const reference = useRef(initialValue);
+
+  const someHandler = () => {
+    // Access reference value:
+    const value = reference.current;
+
+    // Update reference value:
+    reference.current = newValue;
+  };
+}
+```
 
 ```javascript
 import React, { useRef } from 'react';
@@ -97,6 +120,10 @@ const Example = (props) => {
   
 }
 ```
+
+## UseCallback:
+Primary function is to avoid unnecessary re-renders to make app more efficient. Receives a function as a parameter and an array of dependencies; it will return a memoized version of callback and it will only change if the dependencies change. 
+
 
 ## Side Effects:
 Main job of React is to render UI and react to user input by evaluating JSX. Side effects are anything else including storing data in storage, sending HTTP requests,
