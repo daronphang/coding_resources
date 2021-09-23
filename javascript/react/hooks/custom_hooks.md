@@ -1,6 +1,15 @@
 ## Custom Hooks:
 Custom hooks are regular functions that help to share stateful logic between components without forcing you to add more components to the tree. Allows to extract components logic into a reusuable function. Starts with 'use' and may call other hooks and React states. Components that use the same hook do not share state as all state and effects inside are isolated.
 
+when returning values, can either return as an object or array destructuring. Values returned can be variable, string, object, or function.
+
+```js
+return {x, y, z}    // when calling custom hooks, need to use the SAME reference x, y, z
+return [x, y, z]    // can name variables yourself in components calling custom hooks
+
+// when using multiple instances of hook in single component, use array return
+```
+
 https://alterclass.io/blog/5-react-custom-hooks-you-should-start-using-explained
 
 ## Examples:
