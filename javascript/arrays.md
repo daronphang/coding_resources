@@ -38,6 +38,12 @@ console.log(arr1.flat(2))   // [1, 2, 3, 4, 5, 6, 7, 8]
 Array.from('foo');                              // [ "f", "o", "o" ]
 Array.from([1, 2, 3], x => x + x);              // [2, 4, 6]
 Array.from({length: 7}, (cur, i) => i + 1);     // [1, 2, 3, 4, 5, 6, 7]
+
+// finding array in array
+req.body.deleteItems.forEach((itemID) => {
+    const itemExists = req.user.cartProducts.some(
+        (item) => item._id === itemID
+);
 ```
 ## Destructuring Arrays/Objects:
 Destructuring allows us to unpack values from arrays or object properties and store them in distinct variables.
