@@ -6,9 +6,9 @@ State management library built into React to solve props drilling. Provides a wa
 - Apply sparingly as it increases complexity for higher level components and unit-testing. 
 
 ## IMPORTANT:
-When the state of Context Provider changes, it will cause all its consumers to re-render and setState values will be lost. To preserve state in consumers:
+When the state of Context Provider changes, it will cause all its consumers to re-render and setState values will be lost. To preserve state:
 ```js
-let errorMessage; 
+let errorMessage; // preserve state when component re-renders
 
 export default function ExampleComponent () {
   const ctx = useContext(Test);
