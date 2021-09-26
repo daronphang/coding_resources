@@ -5,7 +5,26 @@ State management library built into React to solve props drilling. Provides a wa
 - Should not be used to replace ALL communications via props.
 - Apply sparingly as it increases complexity for higher level components and unit-testing. 
 
+## IMPORTANT:
+When the state of Context Provider changes, it will cause all its consumers to re-render and setState values will be lost. To preserve state in consumers:
+```js
+let errorMessage; 
 
+export default function ExampleComponent () {
+  const ctx = useContext(Test);
+  const [errMsg, setErrMsg] = useState(null);
+  
+  useEffect(() => {
+    ctx.test("update state in context provider");
+    setErrMsg('hello world'); // this state will get lost when context provider re-renders consumers
+  }, []);
+}
+
+  useEffect(()=>{
+    if (!errMsg) errorMessage = null;
+    else errorMessage = "hello world!" // this state gets preserved upon re-render
+  },[errMsg]);
+```
 
 ### Context:
 When React renders a component that subscribes to this Context object, it will read the current value from the closest matching Provider above it in the tree. Default value is only used when a component does not have a matching Provider above it in the tree i.e. useful for testing components in isolation without wrapping them. Passing undefined as a Provider value does not cause consuming components to use default.
