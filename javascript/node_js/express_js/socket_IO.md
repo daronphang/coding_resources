@@ -1,5 +1,5 @@
 ## Basics:
-Bidirectional channel between Socket.IO server (node.js) and Socker.IO client (browser, node.js, python, etc) is established with WebSocket connection and will use HTTP long-polling as fallback. Consists of Engine.IO and Socket.IO API. Engine.IO is responsible for establishing low-level connection between server and client.
+Bidirectional channel between Socket.IO server (node.js) and Socker.IO client (browser, node.js, python, etc) is established with WebSocket connection and will use HTTP long-polling as fallback. Consists of Engine.IO and Socket.IO API. Engine.IO is responsible for establishing low-level connection between server and client. As it uses web sockets protocol, it does not interfere with HTTP requests.
 
 Socket.IO is not WebSocket implementation as it adds additional metadata to each packet. Hence, WebSocket client cannot connect to Socket.IO server and vice versa.
 
