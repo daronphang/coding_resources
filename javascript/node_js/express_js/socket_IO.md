@@ -4,6 +4,9 @@ Bidirectional channel between Socket.IO server (node.js) and Socker.IO client (b
 Socket.IO is not WebSocket implementation as it adds additional metadata to each packet. Hence, WebSocket client cannot connect to Socket.IO server and vice versa.
 
 ```
+npm install --save socket.io
+npm install --save socket.io-client
+
 io.on()         Event handler that handles connection, disconnection, and events using socket object
 socket.on()     Handles events sent with socket.send(), socket.emit() or socket.broadcast()
 ```
