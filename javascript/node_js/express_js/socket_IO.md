@@ -44,6 +44,17 @@ socket.on("greetings", (elem1, elem2, elem3) => {
   console.log(elem1, elem2, elem3);
 ```
 
+### Alternative: 
+
+```js
+const server = app.listen(8080);
+const io = require('socket.io')(server);
+io.on('connection', socket => {
+  console.log('client connected');
+})
+
+```
+
 ## Emitting Events:
 Both server and client can emit events. 
 ```
