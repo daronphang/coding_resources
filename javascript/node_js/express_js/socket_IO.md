@@ -76,7 +76,7 @@ socket.on('event name', (data) => {})  // listens to event name
 ```
 
 
-## Sharing IO Across Files:
+## Sharing IO Across Files (Server):
 ```javascript
 // socket.js
 let io;
@@ -121,4 +121,19 @@ someFunction() {
     }
   })
 }
+```
+
+## Client:
+```js
+import openSocket from "socket.io-client";
+
+useEffect(() => {
+    handleNavBar("SHOW");
+    const socket = openSocket("http://localhost:8080");
+
+    socket.on("notification", (data) => {
+      console.log(data);
+      if (data) setNotification(data);
+    });
+  }, []);
 ```
