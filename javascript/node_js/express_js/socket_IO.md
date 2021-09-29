@@ -57,18 +57,22 @@ io.on('connection', socket => {
 
 ## Emitting Events:
 Both server and client can emit events. 
-```
+```js
 // server
-socket.emit()                           Basic emit
-socket.broadcast.emit()                 To all clients in current namespace except sender
-socket.to('room1').to('room2'.emit()    To all clients in room1 and/or 2 except sender
-io.in('room1').emit()                   To all clients in room 1
-io.emit()                               To all connected clients
+socket.emit()                           // Basic emit
+socket.broadcast.emit()                 // To all clients in current namespace except sender
+socket.to('room1').to('room2'.emit()    // To all clients in room1 and/or 2 except sender
+io.in('room1').emit()                   // To all clients in room 1
+io.emit()                               // To all connected clients
 
 // client
 socket.emit()
 socket.compress(false).emit()
 socket.volatile.emit()
+
+
+socket.emit('event name', object);  // server
+socket.on('event name', (data) => {})  // listens to event name 
 ```
 
 
