@@ -21,6 +21,13 @@ Array.isArray({foo:123})    // false
 typeof(x)   // number, string, boolean, undefined 
 ```
 
+## Assigning to Multiple Variables:
+```js
+x = y = 15;
+{ a, b } = someObject
+```
+
+
 ## Web Workers:
 Thread refers to a unit capable of executing code. JS was conceived as single-threaded programming language that ran in browser between all tabs i.e. only one set of instructions is executed at any time. However, modern JS offers ways to create additional threads, each executing independently while possibly communicating between one another through use of web workers.
 
