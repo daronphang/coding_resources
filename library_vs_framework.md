@@ -1,5 +1,5 @@
 ## Library vs Framework:
-you call a library; framework calls you.
+You call a library; framework calls you.
 
 Library is a collection of objects/functions that performs specific, well-defined operations. Can use certain parts of library for project and replaceable.
 
