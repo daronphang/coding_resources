@@ -1,5 +1,5 @@
 ## Javascript:
-```txt
+```
 # JAVASCRIPT
 graphQL             
 RevealJS              Browser slides with animations
@@ -14,18 +14,20 @@ dotenv              Load ENV variables
 
 # REACT
 react-hook-form       Provides abstraction for form creation
-  
 ```
 
 ## Python:
 ```
 Flask
 Django
-
 ```
 
 ## Designing:
-- Figma
+```
+Figma
+```
 
 ## Project Planning:
-- Microsoft Azure Ops
+```
+Microsoft Azure Ops
+```
