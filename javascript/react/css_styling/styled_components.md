@@ -21,7 +21,7 @@ return (
 )
 ```
 
-### Passing on props:
+## Passing on props:
 ```javascript
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
@@ -43,7 +43,7 @@ render(
 );
 ```
 
-### Extending Styles (in React Material):
+## Extending Styles (in React Material):
 
 ```javascript
 import React from 'react';
@@ -70,7 +70,7 @@ export default function StyledComponents() {
 }
 ```
 
-### Using Keyframes:
+## Using Keyframes:
 ```js
 import styled, { keyframes } from 'styled-components'
 
@@ -86,5 +86,13 @@ const Circle = styled.div`
  animation-duration: 8s;
  animation-iteration-count: infinite;
 `
+
+// Passing props to keyframes by using a function
+
+const fadeIn = (opacity) => keyframes`
+ 0% { opacity: 0 }
+ 100% { opacity: ${opacity} } 
+`;
+
 
 ```
