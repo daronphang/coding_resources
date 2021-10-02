@@ -107,6 +107,8 @@ box-sizing: border-box;             Sets total width and height that to account 
 html {                              Offset for anchor tag if have fixed navbar
     scroll-padding-top: 70px;
 }
+
+filter: blur(5px);                  Applies graphical effects to an element to adjust rendering of images/borders
 ```
 
 ## Pseudo Elements:
