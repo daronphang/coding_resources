@@ -15,6 +15,7 @@ sudo apt upgrade
 
 pwd                         Present working directory
 whoami
+cd /a/b/c                   Different from Windows which is using \ slash
 
 ifconfig                    Show network interface such as IP address
 curl ifconfig.me
