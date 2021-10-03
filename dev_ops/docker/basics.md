@@ -12,6 +12,10 @@ docker version
 docker info
 
 docker system prune --all                   Delete all images/containers/volumes
+docker volume prune --force
+docker container prune --force
+docker image prune --force
+
 watch docker service ls                     Runs command repeatedly
 
 docker run -e HTTP_PROXY="http://example.com:80" hello-world
