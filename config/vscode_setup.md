@@ -16,6 +16,7 @@ Stable version: January 2021, version 1.53.2
 12) ES7-Snippets
 13) Debugger for Chrome
 14) ESLint
+15) Remote Development
 
 ### JS Prettier and ESLint Setup:
 ```
@@ -55,6 +56,17 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
   "require-jsdoc" : 0,
   "new-cap": 0
 }
+```
+
+### Remote Development:
+When cloning a repo, can run in container instead of running npm install locally. Container contains all node_modules dependencies. Main difference is that need to specify "host" parameter to tell Angular/React to connect to IP address. Also unable to use certain Windows commands in terminal as container is running in Linux (debian).
+
+```
+ng serve --host 0.0.0.0
+
+npm run gen-ll
+ng build --project=@omelek/library-name
+ng g c my-new-component --project=@omelek/library-name
 ```
 
 ### Linting:
