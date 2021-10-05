@@ -1,3 +1,6 @@
+## Setup:
+Install MySQL Workbench and MySQL Community Server.
+
 ## My SQL:
 ```javascript
 // util/database.js
