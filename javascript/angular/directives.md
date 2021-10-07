@@ -70,7 +70,9 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 *ngIf="property"                        Conditionally add/remove elements from DOM (it is not hidden). Property must be boolean
 *ngFor="let x of array"                 Makes each item available to HTML for each iteration
 [ngSwitch] & *ngSwitchCase/Default      Used when displaying an element tree containing many children
-
+```
+  
+ ```html
 <app-item-detail *ngFor="let item of items" [item]="item"></app-item-detail>
 <div *ngFor="let item of items; let i=index">{{i + 1}} - {{item.name}}</div>
 
@@ -103,7 +105,7 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 ```
 
 ## Building Attribute Directives:
-Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements. Best practice is to use Renderer2 and HostListener.
+Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements. Best practice is to use Renderer2 and HostListener. The initial @Input must match with selector name. Make sure the directive is imported and exported in shared module.
 
 ```html
 // component.html:
