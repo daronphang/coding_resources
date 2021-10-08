@@ -114,6 +114,9 @@ filter: blur(5px);                  Applies graphical effects to an element to a
 ## Pseudo Elements:
 Allows you to insert content on the page without writing HTML for it i.e. not an actual DOM element. Inline by default. Cannot use an image in pseudo elements. 
 To style specified parts of an element. Used with :: as contrast with pseudo-classes (single :). Useful cases include icons, borders, arrows and quotes.
+
+Pseudo classes such as :before and :after WILL NOT WORK in html input element. To work, encapsulate the input element with a div container and adding css class to div.
+
 ```css
 p::first-line {             
   color: #ff0000;
