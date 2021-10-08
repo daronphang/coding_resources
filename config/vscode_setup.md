@@ -58,6 +58,37 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 }
 ```
 
+### Angular:
+1. Npm install prettier.
+2. Create .prettierrc.json/.prettierrc and .prettierignore files.
+3. Configure JSON settings for VSCode.
+```
+npm install --save-dev --save-exact prettier tslint-config-prettier
+
+// .prettierignore
+/dist
+package-lock.json
+package.json
+
+// .prettierrc.json
+{
+    "printWidth": 120,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "parser": "typescript",
+    "semi": true
+}
+
+// VSCode JSON Settings
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+}
+```
+
+
 ### Remote Development:
 When cloning a repo, can run in container instead of running npm install locally. Container contains all node_modules dependencies. Main difference is that need to specify "host" parameter to tell Angular/React to connect to IP address. Also unable to use certain Windows commands in terminal as container is running in Linux (debian).
 
