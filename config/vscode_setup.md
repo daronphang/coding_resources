@@ -72,11 +72,10 @@ package.json
 
 // .prettierrc.json
 {
-    "printWidth": 120,
+    "printWidth": 100,
     "tabWidth": 2,
     "singleQuote": true,
     "bracketSpacing": true,
-    "parser": "typescript",
     "semi": true
 }
 
