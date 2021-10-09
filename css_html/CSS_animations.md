@@ -12,7 +12,7 @@ Consists of two components, a style describing the CSS animation and a set of ke
 
 ```css
 /*CSS properties*/
-transform-origin: -100% 50%;
+transform-origin: -100% 50%;        X-offset, Y-offset
 transform: rotate(45deg);
 transform: translate(100px, 200px);
 transform: translateX(-50px)
