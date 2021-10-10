@@ -27,6 +27,11 @@ x = y = 15;
 { a, b } = someObject
 ```
 
+## String Manipulation:
+```js
+let str = "Hello world!";
+str.substr(1, 4)   // Returns "ello"
+```
 
 ## Web Workers:
 Thread refers to a unit capable of executing code. JS was conceived as single-threaded programming language that ran in browser between all tabs i.e. only one set of instructions is executed at any time. However, modern JS offers ways to create additional threads, each executing independently while possibly communicating between one another through use of web workers.
