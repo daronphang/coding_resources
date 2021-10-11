@@ -64,3 +64,36 @@ ngOnInit() {
   }
 }
 ```
+
+## Multiple AJAX Calls:
+- forkJoin() for Observable which has similar functionality as Promise.all().
+- For converting to a Promise, use lastValueFrom() as toPromise() is deprecated and finally using Promise.all().
+- If interested in getting first emitted value from a stream that is constantly emitting, use firstValueFrom().
+
+```js
+// forkJoin
+let data = ['hello', 'world'];
+
+const someFn = function () {
+  const obsArr = data.map(item => {
+    const res = this.httpClient.get(`http://hello.com${item}`, options);
+    return res.pipe(
+      catchError(err => 'some error'),
+      tap(data => {
+        // perform some data manipulation
+      })
+    )
+  });
+
+  return forkJoin(obsArr);
+}
+
+someFn().subscribe(data => console.log(data), err => console.log(err));
+
+
+// using lastValueFrom()
+async function execute() {
+  const source$ = interval(2000).pipe(take(10));
+  const finalNumber = await lastValueFrom(source$);
+}
+```
