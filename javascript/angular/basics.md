@@ -43,7 +43,7 @@ Allow you to run a piece of code at different stages of the component's life.
 constructor                 Calling new on the class
 ngOnChanges                 Invokes everytime there is a change in @input properties of component
 ngOnInit                    Invoked when component has been initialized; only called once after first ngOnChanges
-ngDoCheck                   custom change-detection for directive; should not be implemented together with ngDoCheck
+ngDoCheck                   custom change-detection for directive where ngOnChanges won't catch but very expensive
 ngOnDestroy
 
 // hooks for component's children
