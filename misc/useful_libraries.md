@@ -7,6 +7,7 @@ D3JS                  Data-visualization
 CkEditor              Text editor to write content directly in web pages
 virtual-scroller
 dropzone-wrapper
+ng-grid               For responsive tables
 
 # NODE JS
 expressJS             Framework for nodeJS
