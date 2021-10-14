@@ -19,6 +19,7 @@ String(123)
 Array.isArray([1,2,3])      // true
 Array.isArray({foo:123})    // false
 typeof(x)   // number, string, boolean, undefined 
+instanceof(x) // check if variable is an instance of a given class
 ```
 
 ## Assigning to Multiple Variables:
