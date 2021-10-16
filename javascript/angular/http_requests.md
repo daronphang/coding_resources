@@ -100,7 +100,7 @@ async function execute() {
 
 ## Adding Delay before HTTP Requests:
 - Using setTimeout() in an async function and converting Observables into a Promise.
-- Using concatMap() to wait for first Observable to finish before subscribing to next Observable.
+- Using from() and concatMap() to wait for first Observable to finish before subscribing to next Observable.
 
 ```js
 fetchData(ticker: string) {
@@ -126,19 +126,49 @@ async delayRequest(chunk: string[], i: number) {
   return forkJoin(chunkObs$).toPromise();
 }
 
-  getTickersData(tickerList: string[]) {
-    // Maximum of 5 variables in array
-    const chunkArr: string[][] = [];
-    for (let i = 0; i < tickerList.length; i += 5) {
-      const chunk = tickerList.slice(i, i + 5);
-      chunkArr.push(chunk);
-    }
-
-    const tickersObs$ = chunkArr.map((chunk, i) => {
-      return this.delayRequest(chunk, i);
-    });
-
-    return forkJoin(tickersObs$);
+getTickersData(tickerList: string[]) {
+  // Maximum of 5 variables in array
+  const chunkArr: string[][] = [];
+  for (let i = 0; i < tickerList.length; i += 5) {
+    const chunk = tickerList.slice(i, i + 5);
+    chunkArr.push(chunk);
   }
 
+  const tickersObs$ = chunkArr.map((chunk, i) => {
+    return this.delayRequest(chunk, i);
+  });
+
+  return forkJoin(tickersObs$);
+}
+```
+```js
+getTickersData(tickerList: string[]) {
+  // Maximum of 5 variables in array
+  const chunkArr: string[][] = [];
+  for (let i = 0; i < tickerList.length; i += 5) {
+    const chunk = tickerList.slice(i, i + 5);
+    chunkArr.push(chunk);
+  }
+
+  return from(chunkArr).pipe(
+    concatMap((chunk) => {
+      const chunkObs$ = chunk.map((ticker) => {
+        return this.fetchData(ticker);
+      });
+      return forkJoin(chunkObs$);
+    })
+  );
+ }
+}
+
+const finalData: any[] = [];
+const finalDataSub = new BehavorialSubject<any[]>([]);
+
+getTickersData.pipe(take(10)).subscribe(
+  data => {
+    this.finalData.push(data);
+  }, 
+  err => console.log(err),
+  finally => finalDataSub.next(finalData)
+)
 ```
