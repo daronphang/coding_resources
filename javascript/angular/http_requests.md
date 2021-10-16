@@ -97,3 +97,48 @@ async function execute() {
   const finalNumber = await lastValueFrom(source$);
 }
 ```
+
+## Adding Delay before HTTP Requests:
+- Using setTimeout() in an async function and converting Observables into a Promise.
+- Using concatMap() to wait for first Observable to finish before subscribing to next Observable.
+
+```js
+fetchData(ticker: string) {
+  const headers = {
+    'x-rapidapi-host': 'yh-finance.p.rapidapi.com',
+    'x-rapidapi-key': '9484f772fbmsh9f388e9e7326eddp1f626ejsnc3ef33d3f125',
+  };
+
+  const response$ = this.http.get(
+    `https://yh-finance.p.rapidapi.com/stock/v2/get-summary?symbol=${ticker}&region=US`,
+    {
+      headers: new HttpHeaders(headers),
+    }
+  );
+  return response$.pipe(
+    catchError((err) => `Error retrieving data from rapidapi for ticker ${ticker}. ${err}`)
+  );
+}
+
+async delayRequest(chunk: string[], i: number) {
+  await new Promise((resolve) => setTimeout(resolve, i * 2000));
+  const chunkObs$ = chunk.map((item) => this.fetchData(item));
+  return forkJoin(chunkObs$).toPromise();
+}
+
+  getTickersData(tickerList: string[]) {
+    // Maximum of 5 variables in array
+    const chunkArr: string[][] = [];
+    for (let i = 0; i < tickerList.length; i += 5) {
+      const chunk = tickerList.slice(i, i + 5);
+      chunkArr.push(chunk);
+    }
+
+    const tickersObs$ = chunkArr.map((chunk, i) => {
+      return this.delayRequest(chunk, i);
+    });
+
+    return forkJoin(tickersObs$);
+  }
+
+```
