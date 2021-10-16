@@ -158,7 +158,6 @@ getTickersData(tickerList: string[]) {
       return forkJoin(chunkObs$);
     })
   );
- }
 }
 
 const finalData: any[] = [];
