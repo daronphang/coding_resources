@@ -13,12 +13,15 @@ map
 
 Mapping:
 All map operators help to map (return an Observable) and flatten it (subscribe). 4 flattening strategies available. 
-mergeMap()        Keep subscribing to every new Observable that is returned from the map.
-switchMap()       Unsubscribes the last mapped Observable when the new one arrives.
+mergeMap()        Will not wait for previous Observable to complete before subscribing; runs in parallel 
+switchMap()       Unsubscribes the last mapped Observable when new one arrives; useful for typeahead with debounceTime and distinctUntilChanged
 concatMap()       Queues every new Observable, and subscribes to it only when the last Observable is completed.
 exhaustMap()      Ignores every new Observable (temporary disable mapping) until the first Observable is finished; does not keep in memory.
 
 ```
+
+https://blog.angular-university.io/rxjs-higher-order-mapping/
+
 
 ```js
 import {catchError, tap } from 'rxjs/operators';
