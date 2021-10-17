@@ -20,7 +20,8 @@ splice(start, deleteCount, item1)       // Deletes elements in original array
 .findIndex(function)
 .some(function)                 // Same as .includes(), but function is a condition instead of equality
 .every(function)                // Function is a boolean condition
-
+.reduce(prev, next => {})      // final result is single value; useful for sum
+        
 .fill(value,start,end)
 .from(object,function)      // Creates array from array-like objects i.e. Array.from('foo') // ['f', 'o', 'o']
 ```
