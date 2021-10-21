@@ -7,7 +7,7 @@ class ClassTest:
         return f'called instance method of {self}'
 
     @classmethod    
-    def class_method(cls):          # cls refers to the class itself i.e. ClassTest
+    def class_method(cls):          # receives class as first arg, cls refers to the class itself i.e. ClassTest
         return f'class method called'
 
     @staticmethod                   # a separate function that does not have any info about class/object
