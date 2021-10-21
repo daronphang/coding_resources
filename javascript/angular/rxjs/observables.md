@@ -67,3 +67,15 @@ Subscribe() can take 3 arguments as follows:
 When navigating somewhere else, Angular will destroy the component; need to unsubscribe to prevent memory leak. Use pipe operators to auto-unsubscribe such as first() and take(). For unsubscribing best practices:
 - Store all subscriptions in an array and using .forEach() in ngOnDestroy().
 - Using .takeUntil()
+
+
+## Emitting Empty Observables:
+```js
+import { NEVER, EMPTY, of } from 'rxjs';
+
+someObs$.pipe(tap(() => {
+   NEVER;   // emits no events and never ends
+   EMPTY;   // emits only complete;
+   of();    // emits both next and complete
+}));
+```
