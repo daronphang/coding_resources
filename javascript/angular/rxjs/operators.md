@@ -13,6 +13,8 @@ map               Returns mapped data when subscribed
 
 debounceTime      Works with fromEvent()
 delay             Delay emitting value from Observable
+take
+takeUntil         Argument is an Observable; takes until Observable emits a value
 
 Mapping:
 All map operators help to map (return an Observable) and flatten it (subscribe). 4 flattening strategies available. 
