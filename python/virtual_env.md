@@ -11,6 +11,8 @@ venv\Scripts\activate
 deactivate                  #venv\Scripts\deactivate
 
 # Bash
+source venv/Scripts/activate
+
 cd venv/Scripts
 . activate
 deactivate
