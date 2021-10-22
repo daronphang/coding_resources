@@ -2,10 +2,12 @@
 Five standard levels indicating severity of events: DEBUG, INFO, WARNING, ERROR, CRITICAL. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID.
 
 Commonly used parameters for basic config:
-- level: Root logger set to specified severity level.
-- filename: Specifies the file.
-- filemode: File opened in this mode (default is append).
-- format: Format of log message.
+```
+level         Root logger set to specified severity level.
+filename      Specifies the file.
+filemode      File opened in this mode (default is append).
+format        Format of log message.
+``
 
 Commonly used parameters for logging:
 - exc_info: Boolean, displays full stack traces for exception.
