@@ -8,6 +8,36 @@ Model class that has attributes matching the columns of a corresponding database
 - Postgres: postgresql://username:password@hostname/database
 - SQLite: sqlite:///c/absolute/path/to/database
 
+### SQLAlchemy Column Types:
+```
+Integer
+SmallInteger
+BigInteger
+Float
+Numeric
+String
+Text
+Unicode
+UnicodeText
+Boolean
+Date
+Time
+DateTime
+Interval
+Enum
+PickleType
+LargeBinary
+```
+
+### SQLAlchemy Column Options:
+```
+primary_key
+unique          If set true, do not allow duplicates for this column
+index           If set true, creates an index for column so queries are more efficient
+nullable
+default         Defines default value for column
+```
+
 ### Python Configuration:
 ```python
 # In Application Script module (top-level directory):
