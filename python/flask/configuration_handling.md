@@ -32,7 +32,7 @@ Configuring from outside of application package.
 
 ```py
 app = Flask(__name__)
-app.config.from_object('yourapplication.default_settings')
+app.config.from_object('yourapplication.default_settings')  # Objects are either modules/classes, will NOT work with dictionary object
 app.config.from_envvar('APP_SETTINGS')
 
 # Changing file format
