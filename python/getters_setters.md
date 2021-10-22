@@ -1,5 +1,5 @@
 ## Property Decorator:
-Pythonic way to use getters and setters in OOP. Without property, all programs that make use of class have to be refactored if properties of class change.
+Pythonic way to use getters and setters in OOP. Without property, all programs that make use of class have to be refactored if properties of class change i.e. making attributes private/public.
 
 ```py
 # Using @property decorator
