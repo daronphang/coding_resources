@@ -11,30 +11,44 @@ g.current_user
 session['x'] = form.x.data
 ```
 
-## Request:
-```
-# hooks
-before_request 
-before_first_request
-after_request
-teardown_request
-```
+## Request Objects:
 
 ```
 # Request is a dictionary 
-request.get_json()          # parse request body in JSON
-request.args.get()          # retrieve url query arguments with ?=
+request.get_json()          Parse request body in JSON
+request.args.get()          Retrieve url query arguments with ?=
 request.headers
 request.form
-request.values              # combines values in form and args
+request.values              Combines values in form and args
 request.cookies
 request.files
-request.method              # GET, POST, etc.
-request.full_path           # path and query string portions of URL
-request.url                 # complete URL including query string component
+request.method              GET, POST, etc.
+request.full_path           Path and query string portions of URL
+request.url                 Complete URL including query string component
 
 # methods
-is_secure()                 # boolean, check if request came through HTTPS
+is_secure()                 Boolean, check if request came through HTTPS
+```
+
+## Request Hooks:
+Sometimes it is useful to execute code before/after each request is processed i.e. creating database connection or authenticating user. Request hooks are implemented as decorators.
+```
+@before_request 
+@before_first_request
+@after_request
+@teardown_request
+```
+
+## Response Objects:
+```
+status_code
+headers                 Dictioanry-like object with all headers that will be sent with response
+set_cookie()            
+delete_cookie()
+content_length          Length of response body
+content_type
+set_data()              Sets the response body as a string or bytes value
+get_data()              Gets the response body
 ```
 
 ## Activating Application Context:
