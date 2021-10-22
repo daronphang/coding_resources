@@ -7,7 +7,7 @@ level         Root logger set to specified severity level.
 filename      Specifies the file.
 filemode      File opened in this mode (default is append).
 format        Format of log message.
-``
+```
 
 Commonly used parameters for logging:
 - exc_info: Boolean, displays full stack traces for exception.
