@@ -92,7 +92,7 @@ print(next(vowels_iter))    # 'e'
 ```
 
 ## Tuples:
-Same as lists but immutable. Can be destructured. Accessed by [].
+Same as lists but immutable. Can be destructured. Accessed by []. When function returns multiple values, the result is a tuple.
 
 ```python
 metallica = ('ride', 1984, ' metallica')
