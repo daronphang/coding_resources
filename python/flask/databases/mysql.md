@@ -26,7 +26,8 @@ def users():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
+```
+```py
 # using mysql.connector
 import mysql.connector as mysql
 from flask import current_app
