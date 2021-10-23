@@ -10,6 +10,7 @@ a, b = itemgetter('a', 'b')(params)
 ```
 
 ## Type Conversions:
+Can use type() or isinstance()
 ```python
 int()     'int'
 float()   'float'
