@@ -35,8 +35,9 @@ Sometimes it is useful to execute code before/after each request is processed i.
 ```
 @before_request 
 @before_first_request
-@after_request
+@after_request              Register a function to be run after each request
 @teardown_request
+@after_this_request         Executes a function after this request; useful for modifying response objects
 ```
 
 ## Response Objects:
