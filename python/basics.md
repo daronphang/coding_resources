@@ -63,6 +63,19 @@ print(x,y, sep='\n')
 False object are None, False, 0, 0.0, 0j, '', (), {}, range(0). Use any() or all() to check for truth in lists.
 
 ## Lists:
+```
+append()
+clear()
+copy()
+count()
+extend()        Adds elements of a list/iterable to end of current list
+index()         Returns index of first element with specified value
+insert()        Adds element at specified position
+pop()           Removes element at specified position
+remove()        Removes first item with specified value
+reverse()
+sort()
+```
 ```python
 list = ['computer', 'monitor']
 list[1][0]    # m
