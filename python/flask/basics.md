@@ -3,7 +3,7 @@
 # in Linux:
 export FLASK_APP=flasky.py
 export FLASK_ENV=development
-flask run
+flask run --host=0.0.0.0 --port 4200
 
 # in Windows:
 set FLASK_APP=flasky.py
