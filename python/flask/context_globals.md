@@ -37,8 +37,23 @@ Sometimes it is useful to execute code before/after each request is processed i.
 @before_first_request
 @after_request              Register a function to be run after each request
 @teardown_request
+
 @after_this_request         Executes a function after this request; useful for modifying response objects
 ```
+```py
+@app.before_request
+def before_request_func():
+    print("before_request is running!")
+    
+@app.route('/')
+def index():
+    @after_this_request
+    def add_header(response):
+        response.headers['X-Foo'] = 'Parachute'
+        return response
+    return 'Hello World!'
+```
+
 
 ## Response Objects:
 Need create response object with make_response(). For RESTFUL API, set jsonified object as response.
