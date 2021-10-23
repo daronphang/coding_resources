@@ -34,19 +34,19 @@ from flask import current_app
 
 
 class MySQLDBConnectionSession:
-def __init__(self, dictionary: bool):
-    self.conn = mysql.connect(
-        host=current_app.config['MYSQL_HOST'],
-        user=current_app.config['MYSQL_USER'],
-        password=current_app.config['MYSQL_PASSWORD'],
-        database=current_app.config['MYSQL_DATABASE'],
-        port=current_app.config['MYSQL_PORT']
-    )
-    self.dictionary = dictionary
+    def __init__(self, dictionary: bool):
+        self.conn = mysql.connect(
+            host=current_app.config['MYSQL_HOST'],
+            user=current_app.config['MYSQL_USER'],
+            password=current_app.config['MYSQL_PASSWORD'],
+            database=current_app.config['MYSQL_DATABASE'],
+            port=current_app.config['MYSQL_PORT']
+        )
+        self.dictionary = dictionary
 
-def __enter__(self):
-    return self.conn.cursor(dictionary=self.dictionary)
+    def __enter__(self):
+        return self.conn.cursor(dictionary=self.dictionary)
 
-def __exit__(self, exc_type, exc_val, exc_tb):
-    self.conn.close()
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.conn.close()
 ```
