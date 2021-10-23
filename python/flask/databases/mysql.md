@@ -49,4 +49,5 @@ class MySQLDBConnectionSession:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.conn.close()
+        print(self.conn.is_connected()) # check if connection is closed
 ```
