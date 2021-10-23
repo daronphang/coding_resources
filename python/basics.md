@@ -1,5 +1,13 @@
-## Sequence Types:
+## Sequence Types & Destructuring:
 An ordered list of items. String, list, tuple, range, bytes and bytearray. Dictionaries are ordered from 3.6 onwards.
+
+```py
+# destructuring dict 
+from operator import itemgetter
+
+params = {'a': 1, 'b': 2}
+a, b = itemgetter('a', 'b')(params)
+```
 
 ## Type Conversions:
 ```python
