@@ -11,11 +11,13 @@ a, b = itemgetter('a', 'b')(params)
 
 ## Type Conversions:
 ```python
-int()
-float()
-str()
-tuple()
-list()
+int()     'int'
+float()   'float'
+str()     'str'
+tuple()   'tuple'
+list()    'list'
+dict()    'dict'
+set()     'set'
 ```
 
 ## Operations:
