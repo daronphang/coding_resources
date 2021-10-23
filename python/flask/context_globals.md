@@ -40,7 +40,21 @@ Sometimes it is useful to execute code before/after each request is processed i.
 ```
 
 ## Response Objects:
+Need create response object with make_response(). For RESTFUL API, set jsonified object as response.
+```py
+# RESTFUL 
+@main.route()
+def example():
+    response = jsonify({})
+    response.status_code = 404
+    response.set_cookie()
+    # return {'test': '123'}, 200, {'Set-Cookie': 'name=john', 'Set-Cookie': 'token=12345abc'}
+
 ```
+```
+response = make_response()
+response.status_code = 400
+
 status_code
 headers                 Dictioanry-like object with all headers that will be sent with response
 set_cookie()            
