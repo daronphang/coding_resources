@@ -28,3 +28,32 @@ def hello():
     
 hello = a(b(c(hello)))
 ```
+
+## Decorators with Arguments:
+```py
+@decorator
+def foo(*args, **kwargs):
+    pass
+
+foo = decorator(foo)
+
+# With arguments
+@decorator_with_args(arg)
+def foo(*args, **kwargs):
+    pass
+ 
+# decorator_with_args is a function that accepts arg and returns actual decorator that will be applied to decorated function
+foo = decorator_with_args(arg)(foo)
+
+def sql_connection(is_dict, error_msg):
+    def inner_decorator(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            with MySQLDBConnectionSession(is_dict) as cursor:
+                try:
+                    return f(cursor, *args, **kwargs)
+                except Exception as e:
+                    return '{}, {}'.format(e, error_msg)
+        return wrapper
+    return inner_decorator
+```
