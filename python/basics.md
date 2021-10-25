@@ -222,7 +222,7 @@ def foo(a, *, b:int, **kwargs):
   pass
 
 sig = signature(foo)
-print(sig)  # (a, *, b:int, **kwargs)
+print(str(sig))  # '(a, *, b:int, **kwargs)'
 ```
 
 
