@@ -8,22 +8,23 @@ ascii()
 bin()
 bool()
 bytes()
-callable()
+callable()        Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
 dict()
 dir()             Without args, return list of names in current local scope; with args, return list of valid attributes for object
 enmuerate()
-filter()
+filter()          Takes in a function and iterable
 float()
 getattr()         Returns value of named attribute of object
 len()
 list()
-map()
+map()             Executes a specified function for each item in an iterable
 max()
 min()
 object()
 property()        Can be used as decorator in Classes; has getter, setter and deleter methods
 range()
 round()
+reduce()          Useful if need apply a function to an iterable and reduce it to a single cumulative value i.e. sum
 set()
 setattr()         Args are an object, a string and value
 slice()
@@ -31,8 +32,8 @@ sorted()
 sum()
 super()
 tuple()
-type()
-zip()
+type()  
+zip()             Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
 ```
 
 ```py
@@ -44,6 +45,7 @@ class Shape:
 
 s = Shape()
 dir(s)  # ['area', 'location', 'perimeter']
+
 
 # property
 class C:
@@ -62,4 +64,55 @@ class C:
     @x.deleter
     def x(self):
         del self._x
+       
+       
+from functools import reduce
+
+list = [1, 3, 5, 6, 2]
+print(reduce(lambda a, b: a + b, list))
+
+
+# filter
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def check_even(number):
+    if number % 2 == 0:
+          return True  
+    return False
+
+even_numbers_iterator = filter(check_even, numbers)
+
+
+# map
+def myfunc(n):
+  return len(n)
+
+x = map(myfunc, ['apple', 'banana']
+
+
+# For zip, if one tuple contains more items, they are ignored
+list = [1,2,3, 4]
+str = ['a','b','c']
+
+result = zip(list, str)     # {(1, 'a'), (2, 'b'), (3, 'c')}
+
+# callable
+# Objects that are callable is an instance of class with __call__ method
+def Geek():
+    return 5
+
+let = Geek
+num = 5 * 5
+
+print(callable(let))  # True
+print(callable(num))  # False
 ```
+
+
+## Functional Programming:
+Important concepts:
+1) Recursion: Technique in which functions call themselves (directly/indirectly) in order to loop.
+2) Pure Functions: Have no side effects i.e. do not update or modify global variable, object or data structure
+3) Higher-order Functions: Functions that take functions as arguments or return functions.
+
+
