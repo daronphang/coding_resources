@@ -11,7 +11,7 @@ bytes()
 callable()        Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
 dict()
 dir()             Without args, return list of names in current local scope; with args, return list of valid attributes for object
-enmuerate()
+enmuerate()       Adds counter to an iterable and returns the object
 filter()          Takes in a function and iterable
 float()
 getattr()         Returns value of named attribute of object
@@ -36,8 +36,8 @@ type()
 zip()             Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
 ```
 
+### Dir:
 ```py
-# dir
 # if object has method __dir__(), it will be called and must return list of attributes
 class Shape:
   def __dir__(self):
@@ -45,9 +45,10 @@ class Shape:
 
 s = Shape()
 dir(s)  # ['area', 'location', 'perimeter']
+```
 
-
-# property
+### Property:
+```py
 class C:
     def __init__(self):
         self._x = None
@@ -64,16 +65,18 @@ class C:
     @x.deleter
     def x(self):
         del self._x
-       
+```
 
-# reduce
+### Reduce:
+```py
 from functools import reduce
 
 list = [1, 3, 5, 6, 2]
 print(reduce(lambda a, b: a + b, list))
+```
 
-
-# filter
+### Filter:
+```py
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 def check_even(number):
@@ -82,22 +85,26 @@ def check_even(number):
     return False
 
 even_numbers_iterator = filter(check_even, numbers)
+```
 
-
-# map
+### Map:
+```py
 def myfunc(n):
   return len(n)
 
 x = map(myfunc, ['apple', 'banana']
-
-
+```
+### Zip:
+```py
 # For zip, if one tuple contains more items, they are ignored
 list = [1,2,3, 4]
 str = ['a','b','c']
 
 result = zip(list, str)     # {(1, 'a'), (2, 'b'), (3, 'c')}
+```
 
-# callable
+### Callable:
+```py
 # Objects that are callable is an instance of class with __call__ method
 def Geek():
     return 5
@@ -107,6 +114,25 @@ num = 5 * 5
 
 print(callable(let))  # True
 print(callable(num))  # False
+```
+
+### Enumerate:
+```python
+grocery = ['bread', 'milk', 'butter']
+egrocery = enumerate(grocery)   # [(0, 'bread'), (1, 'milk'), (2, 'butter')]
+```
+### Nested Arguments:
+```python
+first = ['a', 'b', 'c']
+second = ['d', 'e', 'f']
+third = ['g', 'h', 'i']
+
+for count, (one,two,three) in enumerate(zip(first,second,third)):
+    print(count, one, two, three)
+
+# 0 a d g
+# 1 b e h
+# 2 c f i
 ```
 
 
