@@ -7,6 +7,12 @@ from operator import itemgetter
 
 params = {'a': 1, 'b': 2}
 a, b = itemgetter('a', 'b')(params)
+
+# spread operator in python
+def multiply(a, b):
+    return a * b
+numbers = [3, 5]
+print(multiply(*numbers))
 ```
 
 ## Type Conversions:
