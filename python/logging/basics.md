@@ -1,16 +1,20 @@
-## Logging:
-Five standard levels indicating severity of events: DEBUG, INFO, WARNING, ERROR, CRITICAL. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID.
+## Logging Procedure (Commonly-used Classes):
+1. Logger: Provides primary interface that logs events from app.
+2. Handler: Directs events/records to their destination.
+3. Formatter: Used to specify layout of log record.
+4. Filter: Used to filter log records based on some parameters other than log-level.
 
-Commonly used parameters for basic config:
+## Configuration:
 ```
-level         Root logger set to specified severity level.
-filename      Specifies the file.
-filemode      File opened in this mode (default is append).
-format        Format of log message.
-```
+# Instance config
+level         Root logger set to specified severity level
+filename      Specifies the file; if none, will log to console
+filemode      File opened in this mode (default is append)
+format        Format of log message
 
-Commonly used parameters for logging:
-- exc_info: Boolean, displays full stack traces for exception.
+# Logging
+exc_info      Boolean, displays full stack traces for exception
+```
 
 ```python
 import logging
@@ -23,18 +27,18 @@ logging.warning('This will get logged to a file')
 # root - ERROR - This will get logged to a file - 12356
 ```
 
-## Classes and Functions:
-Commonly used classes defined in logging module:
-- Logger: Objects used directly in application code to call functions.
-- LogRecord: Loggers automatically create LogRecord objects that have all information related to event being logged.
-- Handler: Handlers send LogRecord to required output destination, like console or file. Have subclasses like HTTPHandler.
-- Formatter: Where format of output is specified in string format.
+## Logger:
+Entry-level to logging system. Events recorded by Logger are called log records. Each record has a severity level. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID. 
 
-## Logging Flow:
-1. Logger provides primary interface that logs events from app known as log records. Each record has severity level.
-2. Handler directs events/records to their destination.
-3. Formatter is used to specify layout of log record.
-4. Filter is used to filter log records based on some parameters other than log-level.
+Logs are stored in files with .log extension. If want to display logs in console, remove the filename attribute in configuration.
+
+```
+DEBUG       10
+INFO        20
+WARNING     30
+ERROR       40
+CRITICAL    50
+```
 
 ## Example: 
 ```python
