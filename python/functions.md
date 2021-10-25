@@ -65,7 +65,8 @@ class C:
     def x(self):
         del self._x
        
-       
+
+# reduce
 from functools import reduce
 
 list = [1, 3, 5, 6, 2]
