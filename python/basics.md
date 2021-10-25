@@ -211,8 +211,19 @@ ismodule()
 isfunction()
 ismethod()
 getmembers(object)    Returns all members of an object in a list of (name, value) pairs sorted by name
+signature()           Helps understand the attributes which are to be passed onto a callable
 ```
 
+```py
+# Accepts wide range of Python callables including functions, classes, partial objects
+from inspect import signature
+
+def foo(a, *, b:int, **kwargs):
+  pass
+
+sig = signature(foo)
+print(sig)  # (a, *, b:int, **kwargs)
+```
 
 
 
