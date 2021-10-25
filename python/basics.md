@@ -143,15 +143,33 @@ x = car.items()   # dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year'
 
 ```
 
-## Functions:
-Zip, filter, reduce, map. Zip combines tuples and returns an iterator of tuples where first item is paired with the other tuple. If one tuple contains more items, they are ignored.
+## Built-in Functions:
+```
+zip             Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
+filter
+reduce
+map
+
+callable        Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
+```
 
 ```python
+# For zip, if one tuple contains more items, they are ignored
 list = [1,2,3, 4]
 str = ['a','b','c']
 
 result = zip(list, str)     # {(1, 'a'), (2, 'b'), (3, 'c')}
 
+# callable
+# Objects that are callable is an instance of class with __call__ method
+def Geek():
+    return 5
+
+let = Geek
+num = 5 * 5
+
+print(callable(let))  # True
+print(callable(num))  # False
 ```
 
 ## Super Classes:
