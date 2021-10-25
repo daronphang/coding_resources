@@ -1,3 +1,10 @@
+## Self Attributes:
+```
+self.__class__                  Get class of current instance
+self.__class__.__base__         Get parent class
+self.__class__.__name__
+```
+
 ## Class Attribute vs Instance Attribute:
 An instance attribute is a Python variable belonging to one object. Vairable is only accessible in scope of object and defined inside constructor.
 
