@@ -22,6 +22,15 @@ meals = [meal for meal in menu if 'spam' not in meal]   # [['egg', 'bacon']]
 ``` 
 ## Nested Comprehensions:
 ```python
+entries = [[1,2,3], [4,5,6]]
+placeholder = []
+for entry in entries:
+    for x in entry:
+        placeholder.append(x)   # For nested comprehensions, move this at top of chain
+
+placeholder = [x for entry in entries for x in entry]
+
+
 burgers = ['beef', 'chicken', 'bean']
 toppings = ['cheese', 'egg', 'bean', 'spam']
 
