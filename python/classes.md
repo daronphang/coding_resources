@@ -6,7 +6,7 @@ self.__class__.__name__
 ```
 
 ## Class Attribute vs Instance Attribute:
-An instance attribute is a Python variable belonging to one object. Vairable is only accessible in scope of object and defined inside constructor.
+An instance attribute is a Python variable belonging to one object. Variable is only accessible in scope of object and defined inside constructor.
 
 Class attribute belongs to class rather than an instance of an object. Shared between all objects of class and defined outside of constructor. Useful for storing constants Class-wide or defining default values.
 
