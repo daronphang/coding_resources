@@ -30,6 +30,13 @@ Commonly used classes defined in logging module:
 - Handler: Handlers send LogRecord to required output destination, like console or file. Have subclasses like HTTPHandler.
 - Formatter: Where format of output is specified in string format.
 
+## Logging Flow:
+1. Logger provides primary interface that logs events from app known as log records. Each record has severity level.
+2. Handler directs events/records to their destination.
+3. Formatter is used to specify layout of log record.
+4. Filter is used to filter log records based on some parameters other than log-level.
+
+## Example: 
 ```python
 import logging
 
