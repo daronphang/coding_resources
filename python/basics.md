@@ -202,6 +202,18 @@ print(callable(let))  # True
 print(callable(num))  # False
 ```
 
+## Inspect:
+Provides useful functions to help get information about live objects i.e. examine contents of class, retrieve source code of method, extract and format the argument list for a function, or get all information to display a detailed traceback for debugging.
+
+```
+isclass()
+ismodule()
+isfunction()
+ismethod()
+getmembers(object)    Returns all members of an object in a list of (name, value) pairs sorted by name
+```
+
+
 
 
 
