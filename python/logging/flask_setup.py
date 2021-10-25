@@ -14,7 +14,7 @@ def blog():
 app.run(host='localhost', debug=True)
 
 
-
+# alternative
 from logging.config import dictConfig
 
 dictConfig({
