@@ -143,17 +143,47 @@ x = car.items()   # dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year'
 
 ```
 
+## Functional Programming:
+Important concepts:
+1) Recursion: Technique in which functions call themselves (directly/indirectly) in order to loop.
+2) Pure Functions: Have no side effects i.e. do not update or modify global variable, object or data structure
+3) Higher-order Functions: Functions that take functions as arguments or return functions.
+
 ## Built-in Functions:
 ```
-zip             Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
-filter
-reduce
-map
+zip         Combines tuples and returns an iterator of tuples where first item is paired with the other tuple
+filter      Takes in a function and iterable
+reduce      Useful if need apply a function to an iterable and reduce it to a single cumulative value i.e. sum
+map         Executes a specified function for each item in an iterable
 
-callable        Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
+callable    Checks if an object is callable i.e. allows to use parenthesis (); if object passed, appears to be callable but actual call to object may fail
 ```
 
 ```python
+from functools import reduce
+
+list = [1, 3, 5, 6, 2]
+print(reduce(lambda a, b: a + b, list))
+
+
+# filter
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def check_even(number):
+    if number % 2 == 0:
+          return True  
+    return False
+
+even_numbers_iterator = filter(check_even, numbers)
+
+
+# map
+def myfunc(n):
+  return len(n)
+
+x = map(myfunc, ['apple', 'banana']
+
+
 # For zip, if one tuple contains more items, they are ignored
 list = [1,2,3, 4]
 str = ['a','b','c']
