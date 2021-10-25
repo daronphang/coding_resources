@@ -61,9 +61,18 @@ cs.draw()
 ```
 
 ## Mixin:
-Special kind of multiple inheritance. Not created with intention to run on its own. No limit on number of mixins that can be used to compose a new class. Useful when:
+A Mixin is a class that provides methods to other classes (a utility class) but not considered as a base class itself i.e. not instantiated by itself. Mixins provide a safe form of multiple inheritance as they enforce a new constraint on classes and can't fall prey to diamond inheritance problems. No limit on number of mixins that can be used to compose a new class. Subclasses that inherit from Mixin only inherit that feature and nothing else.  Useful when:
 - Want to provide alot of optional features for a class.
 - Want to use one particular feature in alot of different classes.
+
+When inheriting multiple classes/Mixins, order is important. Recommended and logical way to structure order is to make highest to lowest from left to right.
+```py
+class Foo(FirstMixin, SecondMixin, BaseClass):
+    pass
+
+class Bar(BaseClass, SecondMixin, FirstMixin):
+    pass
+```
 
 ```python
 from .views import View
