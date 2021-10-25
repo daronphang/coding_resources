@@ -1,3 +1,16 @@
+## Class Attribute vs Instance Attribute:
+An instance attribute is a Python variable belonging to one object. Vairable is only accessible in scope of object and defined inside constructor.
+
+Class attribute belongs to class rather than an instance of an object. Shared between all objects of class and defined outside of constructor. Useful for storing constants Class-wide or defining default values.
+
+```py
+class ExampleClass(object):
+  class_attr = 0
+
+  def __init__(self, instance_attr):
+    self.instance_attr = instance_attr
+```
+
 ## Super Classes:
 For multiple inheritance whereby both classes have same method name, Method Resolution Order (MRO) algorithm comes into play which decides where Python will look for a given method, and which method will be called when there's a conflict. Order is child class, followed by left to right.  
 
