@@ -67,6 +67,7 @@ A Mixin is a class that provides methods to other classes (a utility class) but 
 
 When inheriting multiple classes/Mixins, order is important. Recommended and logical way to structure order is to make highest to lowest from left to right.
 ```py
+# Mixins should come in first if they override a method defined in base class
 class Foo(FirstMixin, SecondMixin, BaseClass):
     pass
 
