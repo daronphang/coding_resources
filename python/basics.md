@@ -165,7 +165,26 @@ def foo(a, *, b:int, **kwargs):
 sig = signature(foo)
 print(str(sig))  # '(a, *, b:int, **kwargs)'
 ```
+```py
+import inspect
 
+class TestMixin:
+    def get_class_attr(self):
+        return str(inspect.signature(self.__class__))
+
+
+class Test(TestMixin):
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+
+
+test = Test('hello', 'world')
+
+print(test.get_class_attr())
+print(getattr(test, 'name'))
+print(dir(test))
+```
 
 
 
