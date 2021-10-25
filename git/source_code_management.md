@@ -44,6 +44,7 @@ Pull command is used to fetch and download content from remote repository and im
 ```
 git pull <remote URL>
 git pull --no-commit <remote>
+git pull origin master --allow-unrelated-histories    When encountered "refusing to merge unrelated histories"
 
 git fetch --all                            Fetch all branches in remote repo
 git fetch <remote> <branch>
@@ -51,6 +52,7 @@ git fetch <remote> <branch>
 git pull origin <new_branch_name>
 git pull <repo> <remotebranchname>:<localbranchname>
 ```
+
 ### Gitignore:
 Text file that tells git which files to ignore. Local .gitignore
 file is usually placed in the root directory.
