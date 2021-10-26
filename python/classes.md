@@ -3,6 +3,7 @@
 self.__class__                  Get class of current instance
 self.__class__.__base__         Get parent class
 self.__class__.__name__
+self.__dict__                   Get instance attributes and values in dict format
 ```
 
 ## Class Attribute vs Instance Attribute:
