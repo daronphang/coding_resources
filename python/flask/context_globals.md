@@ -1,6 +1,8 @@
 ## Application & Request Contexts:
 Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client.
 
+For g, the data is lost after the context ends and is not an appropriate place to store data between requests. Use session instead.
+
 ```
 curent_app      Application Context     Application instance for active application
 g               Application Context     Object that the app can use for temporary storage during handling of request; reset with each request
