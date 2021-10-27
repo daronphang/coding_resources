@@ -147,6 +147,10 @@ car = {
 
 x = car.items()   # dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 1964)])
 
+
+# To test for keys
+if 'some_key' in dict:  # cannot use hasattr() method
+    return
 ```
 
 ## Inspect:
