@@ -108,6 +108,15 @@ print(next(vowels_iter))    # 'e'
 
 ```
 
+## Sets:
+Use sets to compare lists with lists or to output unique values only.
+```py
+query_op = {'AND': {'id': '123'}}
+test_set = set(['AND', 'OR'])
+
+print(set(query_op.keys()).intersection(test_set))
+```
+
 ## Tuples:
 Same as lists but immutable. Can be destructured. Accessed by []. When function returns multiple values, the result is a tuple.
 
