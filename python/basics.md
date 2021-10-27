@@ -115,6 +115,7 @@ query_op = {'AND': {'id': '123'}}
 test_set = set(['AND', 'OR'])
 
 print(set(query_op.keys()).intersection(test_set))
+print(bool(set(query_op.keys()).intersection(test_set)))
 ```
 
 ## Tuples:
