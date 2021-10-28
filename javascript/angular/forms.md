@@ -9,6 +9,12 @@ Use form arrays nested in form groups.
 - https://blog.angular-university.io/angular-form-array/
 - https://medium.com/aviabird/complete-angular2-guide-reactive-forms-in-depth-part-1-21a8e2428904
 
+To iterate form arrays, use controls as they inherit from it. 
+```js
+const array = this.form.get('array') as FormArray;
+array.controls.findIndex();
+```
+
 ## CSS Classes:
 ```
 ng-valid
