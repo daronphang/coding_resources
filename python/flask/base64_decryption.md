@@ -1,4 +1,4 @@
-## Base64:
+## Base64 Decrpytion:
 ```python
 @app.route('/auth', methods=['POST'])
 def authentication():
