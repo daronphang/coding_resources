@@ -27,10 +27,28 @@ logging.warning('This will get logged to a file')
 # root - ERROR - This will get logged to a file - 12356
 ```
 
-## Logger:
+## LogRecord:
 Entry-level to logging system. Events recorded by Logger are called log records. Each record has a severity level. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID. 
 
 Logs are stored in files with .log extension. If want to display logs in console, remove the filename attribute in configuration.
+
+https://docs.python.org/3/library/logging.html
+
+```
+# LogRecord attributes
+asctime         %(asctime)s  
+created         %(created)f
+exc_info
+filename        %(filename)s
+funcName        %(funcName)s
+levelname       %(levelname)s
+message         %(message)s
+module          %(module)s
+name            %(name)s
+pathname        %(pathname)s
+stack_info
+threadName      %(threadName)s
+```
 
 ```
 DEBUG       10
@@ -38,14 +56,6 @@ INFO        20
 WARNING     30
 ERROR       40
 CRITICAL    50
-```
-## Format Structure:
-```
-%(asctime)s       Timestamp
-%(levelname)s     Logging level i.e. DEBUG, ERROR
-%(name)s          Logger name
-%(threadname)s    Thread name
-%(message)s       Log message
 ```
 
 ## Logging Handlers:
