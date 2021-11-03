@@ -39,6 +39,44 @@ WARNING     30
 ERROR       40
 CRITICAL    50
 ```
+## Format Structure:
+```
+%(asctime)s       Timestamp
+%(levelname)s     Logging level i.e. DEBUG, ERROR
+%(name)s          Logger name
+%(threadname)s    Thread name
+%(message)s       Log message
+```
+
+## Logging Handlers:
+```
+StreamHandler
+FileHandler
+NullHandler
+SockerHandler
+SysLogHandler
+SMTPHandler
+MemomryHandler
+HTTPHandler
+QueueHandler
+```
+
+
+## Capturing Stack Traces:
+Need set exc_info to True. Best is to call logging.exception() which logs a message with level ERROR.
+```py
+import logging
+
+a = 5
+b = 0
+
+try:
+  c = a / b
+except Exception as e:
+  # logging.error("Exception occurred", exc_info=True)
+  logging.exception('exception occurred')
+```
+
 
 ## Example: 
 ```python
@@ -73,17 +111,4 @@ logger.error('This is an error')
 # 2018-08-03 16:12:21,723 - __main__ - ERROR - This is an error
 ```
 
-## Capturing Stack Traces:
-Need set exc_info to True. Best is to call logging.exception() which logs a message with level ERROR.
-```py
-import logging
 
-a = 5
-b = 0
-
-try:
-  c = a / b
-except Exception as e:
-  # logging.error("Exception occurred", exc_info=True)
-  logging.exception('exception occurred')
-```
