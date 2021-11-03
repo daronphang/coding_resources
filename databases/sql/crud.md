@@ -84,10 +84,13 @@ Allows for changes to an existing table structure:
 - Changing column's data type
 - setting default values for a column
 - Adding CHECK constraints
+
 ```sql
 ALTER TABLE account ADD COLUMN job_role TEXT
 ALTER TABLE account DROP COLUMN job CASCADE     # CASCADE removes all dependencies
 ALTER TABLE account DROP COLUMN IF EXISTS col1
+
+ALTER TABLE account ALTER COLUMN col1 VARCHAR(50) [NULL | NOT NULL]
 ```
 
 
