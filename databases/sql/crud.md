@@ -10,19 +10,17 @@ JSON
 Hstore key-value pair
 ```
 ## Primary and Foreign Keys:
-Priamry key si a column or gorup of columns used to identify a row uniquely in a table.  
-Foreign key is a field or group of fields in a table that uniquely identifies a row in another table; references to the primary key
-of the other table i.e. FK in child table, PK in parent table. A table can have multiple FK depending on its relationship with other tables.
+Primary key is a column or gorup of columns used to identify a row uniquely in a table. A table can have multiple primary keys, and each table SHOULD have a primary key to uniquely identify a row for CRUD. Foreign key is a field or group of fields in a table that uniquely identifies a row in another table; references to the primary key of the other table i.e. FK in child table, PK in parent table. A table can have multiple FK depending on its relationship with other tables.
 
 ## Constraints:
 Rules enforced on data columns in a table. Used to prevent invalid data from being entered into the database and hence, ensuring accuracy and reliability.
 Commonly used in PK and FK. Constraints can be for column or table.
 ```sql
 NOT NULL
-UNIQUE
-CHECK           # Value must satisfy Boolean
-REFERENCES      # Used for indicating foreign key
-PRIMARY KEY     # Multiple columns can be PK. Same as UNIQUE NOT NULL
+UNIQUE          Combination of unique columns UNIQUE(col1, col2, col3)
+CHECK           Value must satisfy Boolean
+REFERENCES      Used for indicating foreign key
+PRIMARY KEY     Multiple columns can be PK. Same as UNIQUE NOT NULL
 
 CREATE TABLE example(a INTEGER, b INTEGER, c INTEGER, PRIMARY KEY(a,c))
 ```
