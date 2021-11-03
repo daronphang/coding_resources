@@ -1,5 +1,10 @@
 ## Application & Request Contexts:
-Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client.
+Contexts enable Flask to make certain variables globally accessible to a thread without interfering with other threads i.e. to access request sent from client. The Flask.wsgi_app() handles and manages the contexts during each request. Both request and application contexts work as stacks. When request starts, context is created and pushed, and global proxies (g, request, session) are available. As contexts are stacks, other contexts may be pushed to change the proxies during a request. After request, context is popped, and teardown_request() and teardown_appcontext() are executed even if there is an unhandled exception.
+
+```
+request_ctx_stack
+app_ctx_stack
+```
 
 For g, the data is lost after the context ends and is not an appropriate place to store data between requests. Use session instead.
 
