@@ -1,8 +1,10 @@
 ## Logging Procedure (Commonly-used Classes):
-1. Logger: Provides primary interface that logs events from app.
-2. Handler: Sends log messages to configured destinations.
-3. Formatter: Used to specify layout of log record.
-4. Filter: Used to filter log records based on some parameters other than log-level.
+```
+Logger        Provides primary interface that logs events from app
+Handler       Sends log messages to configured destinations
+Formatter     Converts LogRecord to readable string (default is %(message)s
+Filter        Used to filter log records based on some parameters other than log-level
+```
 
 ## Configuration:
 ```
