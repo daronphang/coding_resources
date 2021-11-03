@@ -1,6 +1,6 @@
 ## Logging Procedure (Commonly-used Classes):
 1. Logger: Provides primary interface that logs events from app.
-2. Handler: Directs events/records to their destination.
+2. Handler: Sends log messages to configured destinations.
 3. Formatter: Used to specify layout of log record.
 4. Filter: Used to filter log records based on some parameters other than log-level.
 
@@ -71,4 +71,19 @@ logger.error('This is an error')
 
 # f_handler writes to specified file 'file.log' at logger.error()
 # 2018-08-03 16:12:21,723 - __main__ - ERROR - This is an error
+```
+
+## Capturing Stack Traces:
+Need set exc_info to True. Best is to call logging.exception() which logs a message with level ERROR.
+```py
+import logging
+
+a = 5
+b = 0
+
+try:
+  c = a / b
+except Exception as e:
+  # logging.error("Exception occurred", exc_info=True)
+  logging.exception('exception occurred')
 ```
