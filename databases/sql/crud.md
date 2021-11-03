@@ -15,6 +15,12 @@ Primary key is a column or gorup of columns used to identify a row uniquely in a
 ## Constraints:
 Rules enforced on data columns in a table. Used to prevent invalid data from being entered into the database and hence, ensuring accuracy and reliability.
 Commonly used in PK and FK. Constraints can be for column or table.
+
+To view constraints in table, execute the following in query.
+```sql
+SHOW CREATE TABLE table1
+```
+
 ```sql
 NOT NULL
 UNIQUE          Combination of unique columns UNIQUE(col1, col2, col3)
