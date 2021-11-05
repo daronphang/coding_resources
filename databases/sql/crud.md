@@ -32,6 +32,20 @@ CREATE TABLE example(a INTEGER, b INTEGER, c INTEGER, PRIMARY KEY(a,c))
 ```
 ## Creating Tables:
 ```sql
+USE stock_app;
+CREATE TABLE user_portfolios (
+id SERIAL,
+userId CHAR(36) NOT NULL,
+portfolioName VARCHAR(36) NOT NULL,
+orderId TINYINT NOT NULL,
+createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
+updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+PRIMARY KEY (id, portfolioName),
+UNIQUE(userId, portfolioName),
+UNIQUE(userId, orderId),
+FOREIGN KEY (userId) REFERENCES stock_app.users (_id)
+)
+
 # General syntax
 CREATE TABLE table_name (
   col_name1 TYPE col_constraint,
@@ -42,7 +56,7 @@ CREATE TABLE account(
   user_id SERIAL PRIMARY KEY,
   username VARCHAR(50) UNIQUE NOT NULL,
   password VARCHAR(50) NOT NULL,
-  created_on TIMESTAMP NOT NULL
+  created_on TIMESTAMP NOT NULL,
   last_login TIMESTAMP)
 
 CREATE TABLE account_job(
@@ -92,6 +106,10 @@ Allows for changes to an existing table structure:
 - Adding CHECK constraints
 
 ```sql
+ALTER TABLE stock_app.users 
+MODIFY COLUMN createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
+MODIFY COLUMN updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW()
+
 ALTER TABLE account ADD COLUMN job_role TEXT
 ALTER TABLE account DROP COLUMN job CASCADE     # CASCADE removes all dependencies
 ALTER TABLE account DROP COLUMN IF EXISTS col1
