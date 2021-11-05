@@ -106,6 +106,8 @@ Allows for changes to an existing table structure:
 - Adding CHECK constraints
 
 ```sql
+ALTER TABLE stock_app.user_portfolios ADD COLUMN tickerCount TINYINT NOT NULL AFTER portfolioName
+
 ALTER TABLE stock_app.users 
 MODIFY COLUMN createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
 MODIFY COLUMN updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW()
