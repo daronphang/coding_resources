@@ -119,6 +119,13 @@ test_set = set(['AND', 'OR'])
 
 print(set(query_op.keys()).intersection(test_set))
 print(bool(set(query_op.keys()).intersection(test_set)))
+
+# Retrieve an item in set
+ all_ids = set(list(range(1, 5)))
+order_ids = set(
+    [item['orderId'] for item in current_portfolios]
+)
+del_id = next(iter(all_ids.difference(order_ids)))
 ```
 
 ## Tuples:
