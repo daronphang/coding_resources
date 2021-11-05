@@ -1,5 +1,5 @@
 ## CASE:
-Similar to IF/ELSE statement when certain conditions are met. Has two forms, one is an expression, ot her is search condition.
+Similar to IF/ELSE statement when certain conditions are met. Has two forms, one is an expression, ot her is search condition. For expression, the case_value compares with when_value.
 ```sql
 # expression
 CASE case_value
