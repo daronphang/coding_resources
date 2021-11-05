@@ -99,6 +99,9 @@ list[1][0]    # m
 
 list.append(x)
 list.sort(reverse=True)     # same as sorted(list, reverse=True)
+list.sort(key=lambda x: x['some_key'])
+
+del list[-n:]   # delete last n items from list
 
 vowels = ['a', 'e', 'i', 'o', 'u']
 vowels_iter = iter(vowels)
@@ -129,6 +132,8 @@ print(title)
 
 ## Dictionaries:
 ```python
+ordered_dict = OrderedDict()
+
 fruit = {'pear': 'green', 'apple': 'red'}
 fruit_keys = list(fruit.keys())   # .keys(), .values(), .items()
 veg = {}
