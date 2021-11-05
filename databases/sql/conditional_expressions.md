@@ -1,12 +1,19 @@
 ## CASE:
-Similar to IF/ELSE statement when certain conditions are met.
+Similar to IF/ELSE statement when certain conditions are met. Has two forms, one is an expression, ot her is search condition.
 ```sql
-# General syntax
-CASE 
-  WHEN condition1 THEN result1
-  WHEN condition2 THEN result2
-  ELSE result3
-END
+# expression
+CASE case_value
+    WHEN when_value THEN statement_list
+    [WHEN when_value THEN statement_list] ...
+    [ELSE statement_list]
+END CASE
+
+# search condition 
+CASE
+    WHEN search_condition THEN statement_list
+    [WHEN search_condition THEN statement_list] ...
+    [ELSE statement_list]
+END CASE
 
 SELECT col1, CASE WHEN ... END FROM table_name
 ```
