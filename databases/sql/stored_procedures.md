@@ -6,7 +6,7 @@ SET           Assign a value directly SET @var = 1;
 DECLARE       Initialized to NULL when stored procedure is called
 ```
 
-### Passing Parameters:
+## Passing Parameters:
 - MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters.
 - Can only pass parameters to query statements and not tablename.
 - Avoid name collision between parameter names and name of columns. 
@@ -26,7 +26,39 @@ DECLARE @ADDRESS NVARCHAR
 END
 ```
 
-### Execute Stored Procedures:
+## Dynamic SQL:
+MySQL provides PREPARE, EXECUTE and DEALLOCATE PREPARE statements that can contain placeholder values. If using CONCAT, script is susceptible to SQL injection attacks.
+
+https://dev.mysql.com/doc/refman/8.0/en/sql-prepared-statements.html
+
+```sql
+PREPARE stmt1 FROM 'SELECT SQRT(POW(?,2) + POW(?,2)) AS hypotenuse';
+SET @a = 3;
+SET @b = 4;
+EXECUTE stmt1 USING @a, @b;
+DEALLOCATE PREPARE stmt1;
+```
+
+```sql
+SET @s = 'SELECT SQRT(POW(?,2) + POW(?,2)) AS hypotenuse';
+PREPARE stmt2 FROM @s;
+SET @a = 6;
+SET @b = 8;
+EXECUTE stmt2 USING @a, @b;
+DEALLOCATE PREPARE stmt2;
+```
+
+```sql
+CREATE PROCEDURE `deletePortfolio`(IN queryString VARCHAR(255))
+BEGIN
+SET @deletesql=CONCAT('DELETE FROM user_portfolios WHERE', queryString);
+PREPARE dynamic_statement FROM @deletesql;
+EXECUTE dynamic_statement;
+DEALLOCATE PREPARE dynamic_statement;
+END
+```
+
+## Execute Stored Procedures:
 SQL Server uses exec or sp_executesql for dynamic SQL.
 ```
 CALL stored_proc_name('some variable')      Inside mysql command interpreter
