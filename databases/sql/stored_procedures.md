@@ -6,6 +6,17 @@ SET           Assign a value directly SET @var = 1;
 DECLARE       Initialized to NULL when stored procedure is called
 ```
 
+### Passing Parameters:
+MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters. 
+```
+CREATE PROCEDURE PRO
+@ID INT
+@NAME NVARCHAR
+AS BEGIN
+DECLARE @ADDRESS NVARCHAR 
+END
+```
+
 ### Execute Stored Procedures:
 ```
 CALL stored_proc_name('some variable')      Inside mysql command interpreter
