@@ -6,6 +6,32 @@ SET           Assign a value directly SET @var = 1;
 DECLARE       Initialized to NULL when stored procedure is called
 ```
 
+## Getting Results from SELECT:
+Each SELECT statement taht does not insert into a table or variable will produce a result set.
+
+```sql
+-- returns 2 result sets
+DELIMITER ;;
+CREATE DEFINER=CURRENT_USER PROCEDURE stored_procedure_name()
+BEGIN
+    DECLARE local_variable_name INT;
+
+    SELECT column_name FROM table_1 LIMIT 1 INTO local_variable_name;
+
+    SELECT * FROM table_1;
+
+    SELECT * FROM table_2;
+END;;
+DELIMITER ;
+```
+
+```py
+# for mysql
+cursor.callproc('stored_procedure_name')
+for result in cursor.stored_results():
+  print(result.fetchall())
+```
+
 ## Passing Parameters:
 - MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters.
 - Can only pass parameters to query statements and not tablename.
