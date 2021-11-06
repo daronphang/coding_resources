@@ -6,6 +6,12 @@ SET           Assign a value directly SET @var = 1;
 DECLARE       Initialized to NULL when stored procedure is called
 ```
 
+### Execute Stored Procedures:
+```
+CALL stored_proc_name('some variable')      Inside mysql command interpreter
+cursor.callproc('proc_name', (args,))       Python
+```
+
 https://dev.mysql.com/doc/refman/8.0/en/cursors.html
 
 ## Example:
