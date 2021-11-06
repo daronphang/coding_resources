@@ -7,7 +7,10 @@ DECLARE       Initialized to NULL when stored procedure is called
 ```
 
 ### Passing Parameters:
-MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters. Can only pass parameters in query statements and not tablename.
+- MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters.
+- Can only pass parameters to query statements and not tablename.
+- Avoid name collision between parameter names and name of columns. 
+
 ```sql
 CREATE PROCEDURE `deletePortfolio`(IN tableName VARCHAR(255), IN userId CHAR(36), IN portfolioName VARCHAR(255))
 BEGIN
