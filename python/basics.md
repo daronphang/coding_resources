@@ -138,6 +138,7 @@ print(title)
 ```
 
 ## Dictionaries:
+When converting Dictionaries to JSON, it doesn't respect order if use OrderedDict() and sorts key alphabetically. Best to use a list of tuples.
 ```python
 ordered_dict = OrderedDict()
 
