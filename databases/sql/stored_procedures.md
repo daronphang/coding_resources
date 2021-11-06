@@ -1,9 +1,10 @@
 ## Basics:
-Stored procedure is a batch of statements that is stored in relational database management system as a group that can be reused. Can access/modify data in a database, but not tied to a specific database. Allows passing of dynamic parameters. 
+Stored procedure is a batch of statements (separated by semicolons) that is stored in relational database management system as a group that can be reused. Can access/modify data in a database, but not tied to a specific database. Allows passing of dynamic parameters. 
 
 ```
-SET           Assign a value directly SET @var = 1;
-DECLARE       Initialized to NULL when stored procedure is called
+DELIMITER       SQL recognizes semicolons as statement delimiters; need to redefine if passing program to server
+SET             Assign a value directly SET @var = 1;
+DECLARE         Initialized to NULL when stored procedure is called
 ```
 
 ## Getting Results from SELECT:
@@ -82,7 +83,7 @@ END
 ```
 
 ## Execute Stored Procedures:
-SQL Server uses exec or sp_executesql for dynamic SQL.
+SQL Server uses EXEC or SP_EXECUTESQL for executing dynamic SQL.
 ```
 CALL stored_proc_name('some variable')      Inside mysql command interpreter
 cursor.callproc('proc_name', (args,))       Python
