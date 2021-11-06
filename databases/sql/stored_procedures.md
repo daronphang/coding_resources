@@ -18,6 +18,7 @@ END
 ```
 
 ### Execute Stored Procedures:
+SQL Server uses exec or sp_executesql for dynamic SQL.
 ```
 CALL stored_proc_name('some variable')      Inside mysql command interpreter
 cursor.callproc('proc_name', (args,))       Python
