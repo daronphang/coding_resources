@@ -12,9 +12,9 @@ DECLARE       Initialized to NULL when stored procedure is called
 - Avoid name collision between parameter names and name of columns. 
 
 ```sql
-CREATE PROCEDURE `deletePortfolio`(IN tableName VARCHAR(255), IN userId CHAR(36), IN portfolioName VARCHAR(255))
+CREATE PROCEDURE `deletePortfolio`(IN user_id CHAR(36), IN portfolio_name VARCHAR(255))
 BEGIN
-DELETE FROM user_portfolios WHERE userId = userId AND portfolioName = portfolioName;
+DELETE FROM user_portfolios WHERE userId = user_id AND portfolioName = portfolio_name;
 END
 ```
 ```sql
