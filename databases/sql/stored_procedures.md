@@ -51,7 +51,7 @@ DEALLOCATE PREPARE stmt2;
 ```sql
 CREATE PROCEDURE `deletePortfolio`(IN queryString VARCHAR(255))
 BEGIN
-SET @deletesql=CONCAT('DELETE FROM user_portfolios WHERE', queryString);
+SET @deletesql=CONCAT('DELETE FROM user_portfolios WHERE ', queryString);
 PREPARE dynamic_statement FROM @deletesql;
 EXECUTE dynamic_statement;
 DEALLOCATE PREPARE dynamic_statement;
