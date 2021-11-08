@@ -11,6 +11,25 @@ func main() {
 }
 ```
 
+## Print Verbs:
+```
+%v    value in default format
+%#v   Go-syntax representation of value
+%T    type of value
+%%    literal % sign; consumes no value
+
+%b    base 2
+%c    character represented by corresponding Unicode code point
+%d    base 10
+%o    base 8
+
+%s    unintepreted bytes of string or slice
+%q    double-quoted string safely escaped with Go syntax
+%x    base 16, lower-case, two characters per byte
+%X    base 16, upper-case, two characters per byte   
+```
+
+
 ### Command Line Arguments:
 OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings. 
 
