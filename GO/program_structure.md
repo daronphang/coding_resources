@@ -42,7 +42,8 @@ func fToC(f float64) float64 {
 ## Variables:
 Either type or =expression may be omitted, but not both. If expression is omitted, initial value is 0/false/nil/"".
 ```GO
-var name type = expression
+var [name] [type] = [expression]
+
 var i, j, k int   // int, int, int
 var b, f, s = true, 2.3, "four"   // bool, float64, string
 var f, err = os.Open(name)        // os.Open() function returns a file and an error
@@ -58,7 +59,7 @@ t := 0.0
 A pointer value is the address of a variable to update the value indirectly without knowing the variable name. Pointers are key in flag package which uses a program's command-line arguments to set values of certain variables distributed throughout the program.
 ```GO
 x := 1
-p := &x           // p, of type *int, points to x or contains the address of x
+p := &x           // p, of type *int, points to x (contains the address of x)
 fmt.Println(*p)   // "1"
 *p = 2            // equivalent to x = 2, pointer variable
 fmt.Println(x)    // "2"
