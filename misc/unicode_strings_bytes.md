@@ -24,6 +24,13 @@ Dec	Hex	Binary    HTML	Char
 64 32 16 8 4 2 1 
 
 'B' = 66 = 64+2 = 1000010 = 01000010 (8 bits)
+
+# typically numbers are using base 10 (decimal) system
+# computers work with binary (base 2)
+# hexadecimals work in base 16
+
+3761  // 3*1000, 7*100, 6*10, 1*(10^0), each place value represents a power of 10
+
 ```
 As ASCII characters utilize 7 bits, there are still 127 more combinations to be represented; this gave birth to extended ASCII. However, different organizations
 came up with their own variants; this led to conflicted character encodings, and each extended ASCII was platform dependent.
