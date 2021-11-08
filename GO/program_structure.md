@@ -54,7 +54,7 @@ freq := rand.Float64() * 3.0
 t := 0.0
 ```
 
-### Pointers:
+## Pointers:
 A pointer value is the address of a variable to update the value indirectly without knowing the variable name. Pointers are key in flag package which uses a program's command-line arguments to set values of certain variables distributed throughout the program.
 ```GO
 x := 1
