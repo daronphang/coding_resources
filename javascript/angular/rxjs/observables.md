@@ -79,3 +79,9 @@ someObs$.pipe(tap(() => {
    of();    // emits both next and complete
 }));
 ```
+
+## Subscribing to Multiple Observables:
+```
+combineLatest()      Emits initial value only when all Observables emit at least one value
+forkJoin()           Emits the last emitted value from each observable when **all completes**
+```
