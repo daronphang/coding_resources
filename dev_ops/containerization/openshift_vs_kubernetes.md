@@ -7,7 +7,7 @@ Open-source container-as-a-service (CaaS) framework that enables developers to l
 ## OpenShift:
 Cloud-based Kubernetes container platform that is considered both a containerization software and platform-as-a-service (PaaS) i.e. software product that includes components of Kubernetes container management project, but adds productivity and security features. Supports containerized infrastructure where Docker is used to create lightweight Linux-based containers and Kubernetes supports the task of orchestrating and managing containers on multiple hosts. 
 
-Offers consistent security, built-in monitoring, centralized policy management, and compatibility with Kubernetes container workloads. Allows developers to create, test and deploy applications on the cloud. Supports Go, NodeJS, Ruby, Python, PHP, Perl and Java.
+Offers consistent security, built-in monitoring, centralized policy management, and compatibility with Kubernetes container workloads. Allows developers to create, test and deploy applications on the cloud. Supports Go, NodeJS, Ruby, Python, PHP, Perl and Java. Allows both Dev and Ops to work together without having to sacrifice their individual concerns i.e. developers create and deploy applications on demand in languages they prefer, while devops have to maintain them at appropriate scale.
 
 ## OpenShift vs Kubernetes:
 - Both manage groups of containers called clusters that contains a control plane and worker nodes.
