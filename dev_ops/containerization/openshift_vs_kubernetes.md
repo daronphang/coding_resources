@@ -14,4 +14,3 @@ Cloud-based Kubernetes container platform that is considered both a containeriza
 - OpenShift has stricter security policies i.e. forbidden to run container as root.
 - Kubernetes has larger community of developers while OpenShift is limited primarily to Red Hat Developers.
 - Kubernetes lack networking solution while OpenShift offers Open vSwitch which comes in three native plug-ins.
-- 
