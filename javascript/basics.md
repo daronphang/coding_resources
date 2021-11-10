@@ -32,6 +32,9 @@ x = y = 15;
 ```js
 let str = "Hello world!";
 str.substr(1, 4)   // Returns "ello"
+
+// convert number to string with prefix 0
+(6).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
 ```
 
 ## Web Workers:
