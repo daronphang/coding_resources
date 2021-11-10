@@ -45,6 +45,17 @@ req.body.deleteItems.forEach((itemID) => {
         (item) => item._id === itemID
 );
 ```
+
+## Objects:
+```js
+// Checking if property exists
+const hero = {name: 'Batman'};
+
+hero.hasOwnPorperty('name');
+'name' in hero;
+
+```
+
 ## Destructuring Arrays/Objects:
 Destructuring allows us to unpack values from arrays or object properties and store them in distinct variables.
 
