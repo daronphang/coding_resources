@@ -169,7 +169,48 @@ var expression = function() {
 ```
 
 ## Closures:
-Gives acesss to an outer function's scope from an inner function. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function).
+Functions in Javascript form closures. Closure is the combination of a function and the lexical environment within which that function was declared (access to global variables). This environment consists of any local variables that were in-scope at the time the closure was created. When nested functions are created, the inner function has access to scope "above" it. 
+
+Gives acesss to an outer function's scope from an inner function. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function). Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
+
+Every closure has three scopes:
+1) Local Scope (own scope).
+2) Outer Functions Scope.
+3) Global Scope.
+
+```js
+// lexical scoping uses the location where a variable is declared within the source code to determine where it is available
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  function displayName() { // displayName() is the inner function, a closure
+    alert(name); // use variable declared in the parent function
+  }
+  displayName();
+}
+init();
+```
+
+```js
+// global scope
+var e = 10;
+function sum(a){
+  return function sum2(b){
+    return function sum3(c){
+      // outer functions scope
+      return function sum4(d){
+        // local scope
+        return a + b + c + d + e;
+      }
+    }
+  }
+}
+
+var sum2 = sum(1);
+var sum3 = sum2(2);
+var sum4 = sum3(3);
+var result = sum4(4);
+console.log(result) //log 20
+```
 
 ```javascript
 const secureBooking = function() {
