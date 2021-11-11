@@ -35,6 +35,10 @@ str.substr(1, 4)   // Returns "ello"
 
 // convert number to string with prefix 0
 (6).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+
+// getting character of string
+const anyString = "hello world";
+console.log(anyString.charAt(0));
 ```
 
 ## Web Workers:
