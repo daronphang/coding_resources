@@ -190,6 +190,47 @@ function init() {
 init();
 ```
 
+### Example:
+
+```js
+function outer() {
+var b = 10;
+var c = 100;
+   function inner() {
+        
+         var a = 20; 
+         console.log("a= " + a + " b= " + b);
+         a++;
+         b++;
+    }
+   return inner;
+}
+var X = outer();  // outer() invoked the first time, X is referenced to the inner function
+var Y = outer();  // outer() invoked the second time
+//end of outer() function executions
+X(); // X() invoked the first time
+X(); // X() invoked the second time
+X(); // X() invoked the third time
+Y(); // Y() invoked the first time
+
+// a=20 b=10
+// a=20 b=11
+// a=20 b=12
+// a=20 b=10
+```
+
+Sequence of events:
+1) Variable b created and set to 10, and variable c is created and set to 100.
+2) variable a is created and set to 20.
+3) Next line is function declaration which is returned from the outer function.
+4) Return statement does not execute the function (only when it is followed by () but returns entire body of function).
+5) Inner function is returned and assigned to X where only variable b is enclosed and still exists as a closure within inner.
+6) Outer function completes execution, and variable c no longer exist.
+7) When X() is invoked, variable a is created and set to 20, and value of b is from closure value.
+8) X() completes execution and variable a ceased to exist but b is preserved as closure and continues to exist.
+
+
+
 ```js
 // global scope
 var e = 10;
