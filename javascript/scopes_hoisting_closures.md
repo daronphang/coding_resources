@@ -89,7 +89,7 @@ var expression = function() {
 ## Closures:
 Functions in Javascript form closures. Closure is the combination of a function and the lexical environment within which that function was declared (access to global variables). This environment consists of any local variables that were in-scope at the time the closure was created. When nested functions are created, the inner function has access to scope "above" it. 
 
-Closure is a feature where an inner function has access to outer (enclosing) function's variables. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function). Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
+Closure is a feature where an inner function has access to outer (enclosing) function's variables. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function) i.e. closure of a function remembers variables from the place where it was defined, regardless of where it is executed later. Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
 
 Every closure has three scopes:
 1) Local Scope (own scope).
@@ -124,8 +124,7 @@ function init() {
 init();
 ```
 
-### Closure Example:
-
+### Sequence of Events from Closure:
 ```js
 function outer() {
 var b = 10;
@@ -159,10 +158,13 @@ Sequence of events:
 3) Next line is function declaration which is returned from the outer function.
 4) Return statement does not execute the function (only when it is followed by () but returns entire body of function).
 5) Inner function is returned and assigned to X where only variable b is enclosed and still exists as a closure within inner.
-6) Outer function completes execution, and variable c no longer exist.
-7) When X() is invoked, variable a is created and set to 20, and value of b is from closure value.
-8) X() completes execution and variable a ceased to exist but b is preserved as closure and continues to exist.
+6) Closure captures variable b from the lexical scope. 
+7) Outer function completes execution, and variable c no longer exist.
+8) When X() is invoked, variable a is created and set to 20, and value of b is from closure value.
+9) X() completes execution and variable a ceased to exist but b is preserved as closure and continues to exist.
 
+
+### Examples:
 ```js
 // global scope
 var e = 10;
