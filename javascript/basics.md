@@ -171,7 +171,7 @@ var expression = function() {
 ## Closures:
 Functions in Javascript form closures. Closure is the combination of a function and the lexical environment within which that function was declared (access to global variables). This environment consists of any local variables that were in-scope at the time the closure was created. When nested functions are created, the inner function has access to scope "above" it. 
 
-Gives acesss to an outer function's scope from an inner function. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function). Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
+Closure is a feature where an inner function has access to outer (enclosing) function's variables. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function). Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
 
 Every closure has three scopes:
 1) Local Scope (own scope).
