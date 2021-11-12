@@ -113,8 +113,10 @@ Direct interaction with plain HTML element of template.
 ```
 
 ## ViewChildren:
-provides a list of element references rather than returning a single reference. 
+provides a list of element references rather than returning a single reference. If list is subscribed to an Observable, need to subscribe to changes to view latest results.
 
 ```javascript
  @ViewChildren(ChildComponent) children: QueryList<ChildComponent>;
+ 
+ children.changes.subscribe((results) => console.log(results));
 ```
