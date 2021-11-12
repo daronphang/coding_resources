@@ -30,6 +30,22 @@ PRIMARY KEY     Multiple columns can be PK. Same as UNIQUE NOT NULL
 
 CREATE TABLE example(a INTEGER, b INTEGER, c INTEGER, PRIMARY KEY(a,c))
 ```
+
+## Adding Entries Violating Keys:
+Need to drop and add back the key.
+
+```sql
+--check index name for key
+SHOW INDEX FROM user_portfolios;
+
+ALTER TABLE user_portfolios DROP INDEX userId_2;
+UPDATE user_portfolios 
+SET orderId =  CASE WHEN portfolioName='Semiconductor' THEN 2 WHEN portfolioName='Automobile' THEN 1 ELSE orderId END
+WHERE userId = '7bd32724-550e-4921-93ab-e62798e24f6a';
+ALTER TABLE user_portfolios ADD UNIQUE KEY `userId_2` (`userId`,`orderId`);
+```
+
+
 ## Creating Tables:
 ```sql
 USE stock_app;
