@@ -26,3 +26,5 @@ print(update_items)
 WHERE userId = '123' AND portfolioName = "Fintech" AND tickers IN ('APPS','JPM')" 
 
 "UPDATE user_portfolio_tickers orderId = CASE WHEN "
+
+query need account for IN and BETWEEN
