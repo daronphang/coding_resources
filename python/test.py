@@ -20,3 +20,9 @@ for item in update_items:
         deduct_number += 1
     item['order_id'] -= deduct_number
 print(update_items)
+
+
+"DELETE FROM user_portfolio_tickers WHERE id IN (SELECT id FROM user_portfolio_tickers \
+WHERE userId = '123' AND portfolioName = "Fintech" AND tickers IN ('APPS','JPM')" 
+
+"UPDATE user_portfolio_tickers orderId = CASE WHEN "
