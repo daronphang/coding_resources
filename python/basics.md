@@ -36,6 +36,24 @@ a % b   # remainder after integer division
 sevens = range(7, 1000, 7)      // divisble by 7
 ```
 
+## Working with Loops:
+Use either break, continue or pass to perform additional tasks in for loops or while loops:
+- Break: provides opportunity to exit out of a loop if external condition is triggered
+- Continue: skips over the part of a loop where an external condition is triggered but goes to complete rest of loop.
+- Pass: tells program to disregard condition and conitnue to run program as usual.
+
+```py
+# break 
+for number in range(10):
+    if number == 5:
+        break    # break here
+
+    print('Number is ' + str(number))
+    
+# continue
+
+```
+
 ## strings and Slices:
 ```python
 'this string\n has been\n split'
