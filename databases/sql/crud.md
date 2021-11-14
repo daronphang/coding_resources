@@ -111,8 +111,21 @@ UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = 'Jose'
 UPDATE account SET last_login = CURRENT_TIMESTAMP RETURNING username, last_login
 ```
 ### DELETE:
+To delete multiple items, use IN.
 ```sql
 DELETE FROM table WHERE row_id = 1
+
+DELETE FROM table WHERE id IN (value1, value2)
+
+--sub query must return only one column
+DELETE FROM your_table
+WHERE id IN (select aColumn from ...);
+
+DELETE FROM your_table
+WHERE id >= a_value AND id <= another_value
+
+DELETE FROM table
+WHERE id BETWEEN 125 AND 150
 ```
 ### ALTER:
 Allows for changes to an existing table structure:
