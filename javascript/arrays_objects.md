@@ -18,7 +18,7 @@ splice(start, deleteCount, item1)       // Deletes elements in original array
 .find(function)                 // Same as filter but returns first element instead of new array
 .findIndex(function)
 .some(function)                 // Same as .includes(), but function is a condition instead of equality
-.every(function)                // Function is a boolean condition
+.every(function)                // Function is a boolean condition; return false is equivalent to break
 .reduce(prev, next => {})      // final result is single value; useful for sum
         
 .fill(value,start,end)
