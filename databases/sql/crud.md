@@ -19,6 +19,7 @@ Commonly used in PK and FK. Constraints can be for column or table.
 To view constraints in table, execute the following in query.
 ```sql
 SHOW CREATE TABLE table1
+SELECT * FROM information_schema.statistics WHERE table_name = 'user_portfolios';
 ```
 
 ```sql
