@@ -7,6 +7,18 @@ SET             Assign a value directly SET @var = 1;
 DECLARE         Initialized to NULL when stored procedure is called
 ```
 
+## Create Temporary Table:
+```sql
+CREATE TEMPORARY TABLE credits(
+    customerNumber INT PRIMARY KEY,
+    creditLimit DEC(10,2)
+);
+
+CREATE TEMPORARY TABLE temp_table_name
+SELECT * FROM original_table
+LIMIT 0;
+```
+
 ## Getting Results from SELECT:
 Each SELECT statement that does not insert into a table or variable will produce a result set.
 
