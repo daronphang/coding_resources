@@ -57,6 +57,12 @@ someEmitter = new Subject<boolean>();
 // component.ts to listen:
 this.services.someEmitter.subscribe()   // or next()
 ```
+
+## Observables vs Subjects:
+- Observable and its Subscriber have one-to-one relationship (unicast).
+- Subject allows values to be multicasted to many Observers (one-to-many relationship).
+
+
 ## Subscribe:
 Subscribe() can take 3 arguments as follows:
 1) onNext: Function to invoke for each element in observable sequence.
