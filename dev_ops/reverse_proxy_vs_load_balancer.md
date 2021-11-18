@@ -14,3 +14,9 @@ Reverse proxy servers and load balancers are components in client-server ocmputi
 - Enhances security as information about backend servers are not visible outside of internal network and protects against DDoS attacks.
 - Increases scalability and flexibility as clients see only reverse proxy's IP address i.e. can change configuration of backend infrastructure. 
 - Reduces time taken to generate response with compression (reducing bandwidth required for transmitting responses), SSL termination (decrypts incoming requests and encrypts server responses) and caching (stores copy of response locally).
+
+## Forward Proxy:
+- Provides proxy services to a client or group of clients.
+- Request from client are forwarded to proxy which can be allowed or denied depending on proxy's settings.
+- Different clients can send out various requests to different servers through forward proxy.
+- Easier to enforce authentication, SSL encryption or other security policies; used in tandem with firewall. 
