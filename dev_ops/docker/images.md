@@ -138,7 +138,7 @@ https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-24
 - Containers run with root privileges by default (unrestricted management); however, exposes to high risk when running in production env as anyone who has access to container can inject malicious code or change user; always run containers as non-root.
 
 ## Running Flask App:
-Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser.
+Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser. Need to ensure VENV folder is not together with Dockerfile.
 ```python
 # need specify host and port (optional, default is 5000)
 # 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
