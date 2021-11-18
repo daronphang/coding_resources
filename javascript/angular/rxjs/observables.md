@@ -3,11 +3,9 @@
 - **Observer**: An interface that executes instructions when there is a new value or change in the Observable, and delivers values to the Observable using next(), error() or complete().
 - **Subscription**: An Object that represents a disposable resource with unsubscribe(). 
 
+An Observable allows you to handle different asynchronous events, from single finite operation (HTTP request) to multiple repeatable actions (keystrokes, cursor movements). Can use of() method as mock API which returns an Observable and emits values in a sequence upon subscription. For infinite subscriptions, need call OnDestroy() to manually unsubscribe. Examples include forms, router, and intervals. For finite subscriptions like HTTP calls or take(1), no need to unsubscribe.
+
 Observable -> Connected to Observer -> Performs execution that delivers value to Observable -> Observable is subscribed to emit value.
-
-Can use of() method as mock API which returns an Observable and emits values in a sequence upon subscription.
-
-For infinite subscriptions, need call OnDestroy() to manually unsubscribe. Examples include forms, router, and intervals. For finite subscriptions like HTTP calls or take(1), no need to unsubscribe.
 
 ```javascript
 let subscription = new Subscription;
