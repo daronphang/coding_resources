@@ -5,4 +5,7 @@ Containers are usually immutable (to change, only re-deploy). However, databases
 ```
 docker volume ls
 docker volume rm <vol_name1> <vol_name2>
+
+# removes all volumes not used by at least 1 container
+docker volume prune
 ```
