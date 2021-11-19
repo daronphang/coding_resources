@@ -24,7 +24,7 @@ services:
 
 ```
 # Connect to database directly in Docker
-docker ls -a
+docker container ls -a
 docker exec -it <database_container_name> mysql -uroot -p
 SHOW DATABASES;
 UPDATE mysql.user SET host='%' WHERE user='root';
