@@ -15,8 +15,8 @@ services:
     ports:
       - "30000:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root # use this password for establishing database connection
-      MYSQL_DATABASE: STOCK_APP_DOCKER
+      MYSQL_ROOT_PASSWORD: root         # use this password for establishing database connection
+      MYSQL_DATABASE: stock_app_docker  # Database name that is created
     volumes:
       - "./.data/db:/var/lib/mysql"
 
