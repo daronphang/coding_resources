@@ -1,4 +1,4 @@
-## Dockerfile example:
+## Python:
 ```dockerfile
 # syntax=docker/dockerfile:1
 ARG  CODE_VERSION=3.7
@@ -52,7 +52,7 @@ if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
   print('hello')
 ```
 
-### NodeJS:
+## NodeJS:
 https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 
 ```dockerfile
