@@ -33,6 +33,9 @@ UPDATE mysql.user SET host='%' WHERE user='root';
 ## Connecting to Same Network:
 https://docs.docker.com/compose/networking/
 
+```
+docker network inspect
+```
 ```yaml
 # Flask app example
 # Flask container
