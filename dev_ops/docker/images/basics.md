@@ -136,3 +136,4 @@ https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-24
 - For Windows, don't use backslash in WORKDIR, and not allowed in COPY.
 - Use explicit Docker base image tags (default is :latest) as they are inconsistent and exposed to vulnerabilities. 
 - Containers run with root privileges by default (unrestricted management); however, exposes to high risk when running in production env as anyone who has access to container can inject malicious code or change user; always run containers as non-root.
+- To increase Docker build performance, add dockerignore file.
