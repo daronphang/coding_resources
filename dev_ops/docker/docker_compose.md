@@ -1,6 +1,16 @@
 ## Docker Compose:
 Ideal for local development and testing but not production-grade tool. Consists of YAML file. YAML file can be used with docker-compose for local docker automation or with docker directly in production with Swarm. DNS names for containers in compose file come from service name declared in .yml.
 
+For ENV configuration, can pass in .env file:
+```yaml
+web:
+  env_file:
+    - web-variables.env
+```
+
+https://docs.docker.com/compose/environment-variables/#the-env_file-configuration-option
+
+
 ```
 docker-compose up           Setup volumes/networks and start all containers
 docker-compose down         Stop all containers and remove volumes/networks
