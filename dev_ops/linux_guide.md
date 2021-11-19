@@ -6,12 +6,14 @@
 - Used in smartphones (android), cars, home appliances, servers (most used), etc. 
 - Reliable and secure as it is easy to detect bugs and fix.
 
-## Useful Linux Commands:
+## Commands:
 ```
 sudo                        Superuser do
 su <user>                   ctrl+D to logout of su
 sudo apt update             Updates packages but does not install them
 sudo apt upgrade
+
+gcc                         GNU Compiler collections for compiling C and C++ language
 
 pwd                         Present working directory
 whoami
@@ -47,6 +49,11 @@ ls -la
 ps -ax | grep nginx
 
 ubuntu-drivers devices
+```
+
+## Options:
+```
+-y      Anwsers prompt as yes
 ```
 
 ## Linux OS:
