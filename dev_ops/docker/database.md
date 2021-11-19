@@ -29,3 +29,25 @@ docker exec -it <database_container_name> mysql -uroot -p
 SHOW DATABASES;
 UPDATE mysql.user SET host='%' WHERE user='root';
 ```
+
+## Connecting to Same Network:
+https://docs.docker.com/compose/networking/
+
+```yaml
+# Flask app example
+# Flask container
+version: "3.0"
+services:
+  web:
+    container_name: stock_app_backend
+    build: .
+    ports:
+      - "4280:4280"
+    env_file:
+      - .env
+networks:
+  default:
+    external: true
+    name: backend_default # Need to connect to same network as sql container
+
+```
