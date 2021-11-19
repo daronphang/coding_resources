@@ -1,3 +1,17 @@
+## Running Flask App:
+Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser. Need to ensure VENV folder is not together with Dockerfile.
+```python
+# need specify host and port (optional, default is 5000)
+# 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
+# localhost port inside docker container does not actually get exposed on host machine
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port=5555)  # port defined is container port
+```
+```
+docker build -t <image_name> .
+docker container run -p 8000:5555 -d <image_name>
+```
+
 ## Python:
 ```dockerfile
 # syntax=docker/dockerfile:1
