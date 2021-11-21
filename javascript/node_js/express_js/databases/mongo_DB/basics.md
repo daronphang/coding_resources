@@ -1,3 +1,6 @@
+## Connection Pooling:
+Cache of database connections maintained so that the connections can be reused when future requests to database are required (method used to keep connections open). Opening database connection is an expensive operation as you have to open up network sessions, authenticate, have authorization checked, etc. Used to enhance the performance of executing commands on a database. Standard feature of many database driver libraries.
+
 ## Mongo DB:
 Manages connection pooling whereby it will ensure it provides sufficient connections for multiple simultaneous interactions with database.
 
