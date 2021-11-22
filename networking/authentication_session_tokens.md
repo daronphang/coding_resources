@@ -37,7 +37,7 @@ Session ID is stored on frontend. Backend validates session ID and replaces it w
 Session vs JWT and not Cookie vs JWT. Cookie vs Local Storage (storage mechanism).
 
 ## CSRF:
-If tokens are stored in cookie, need to implement CSRF token to prevent Cross-Site Request Forgery:
+If tokens are stored in cookie, need to implement CSRF token to prevent Cross-Site Request Forgery since any API call browser makes will include cookies and hence, be authenticated by default. CSRF tokens are generated each time browser loads a page and are verified for every POST request by default. CSRF example:
 1. Someone sends a link and is clicked.
 2. Link ends up sending HTTP request to site under attack containing all cookies linked to the site.
 3. If logged in, cookie containing token will be forwarded too.
