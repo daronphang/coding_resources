@@ -15,6 +15,7 @@ passportJS          Authentication middleware
 cookie-parser       Parse cookie sent along with requests
 body-parser         Parse body of incoming requests
 dotenv              Load ENV variables
+csurf               CSRF token
 
 # REACT
 react-hook-form       Provides abstraction for form creation
