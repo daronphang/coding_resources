@@ -3,7 +3,7 @@ Type of attack which tricks the victim to do malicious task on a victim's authen
 
 ### CSRF Attack using POST:
 1. User logs into web application and receives cookie as response after authentication.
-2. User visits malicious website that sends POST request to vulnerable site and not to malicious site (cross-site) when user clicks on submit button.
+2. User visits malicious website that sends POST request to vulnerable site and not to malicious site when user clicks on submit button.
 3. User browser will send authentication cookie with request.
 4. Server validates user and performs operation.
 
