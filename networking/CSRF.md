@@ -7,4 +7,7 @@ Type of attack which tricks the victim to do malicious task on a victim's authen
 3. User browser will send authentication cookie with request.
 4. Server validates user and performs operation.
 
+### Anti-CSRF Tokens:
 
+### Same-Site Cookies:
+Though a cookie can set to same-site, not all modern browsers support them while older browsers do not support web applications that make use of same-site cookies.
