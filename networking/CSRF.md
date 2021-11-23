@@ -8,6 +8,13 @@ Type of attack which tricks the victim to do malicious task on a victim's authen
 4. Server validates user and performs operation.
 
 ### Anti-CSRF Tokens:
+CSRF tokens prevent CSRF as attacks are unable to create valid requests to backend server without token. Should be generated on server-side. Can be generated once per user session or for each request (may result in usability concerns when user clicks on "Back" button which may contain a CSRF token that is invalid).
+
+CSRF token should not be transmitted using cookies but through custom headers (more secure than hidden input field).
+
+https://dbillinghamuk.medium.com/csrf-setup-for-expressjs-and-ssr-react-redux-app-348e65261009
+
+https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html
 
 ### Same-Site Cookies:
 Though a cookie can set to same-site, not all modern browsers support them while older browsers do not support web applications that make use of same-site cookies.
