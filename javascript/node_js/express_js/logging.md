@@ -71,3 +71,23 @@ const info = {
 
 logger.log('error', 'hello', {message: 'world'}); // any message property in meta object will auto concatenate to any msg provided
 ```
+
+## Morgan
+
+### Predefined Tokens:
+```js
+morgan(':method :url :status :res[content-length] - :response-time ms');
+
+morgan(function (tokens, req, res) {
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    tokens.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms'
+  ].join(' ')
+});
+
+// Creating new token that returns a string value and is available as ":type"
+morgan.token('type', function (req, res) { return req.headers['content-type'] });
+```
