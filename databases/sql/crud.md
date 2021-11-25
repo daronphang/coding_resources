@@ -58,8 +58,8 @@ orderId TINYINT NOT NULL,
 createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
 updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
 PRIMARY KEY (id, portfolioName),
-UNIQUE(userId, portfolioName),
-UNIQUE(userId, orderId),
+CONSTRAINT constraint_1 UNIQUE(userId, portfolioName),
+CONSTRAINT constraint_2 UNIQUE(userId, orderId),
 FOREIGN KEY (userId) REFERENCES stock_app.users (_id)
 )
 
