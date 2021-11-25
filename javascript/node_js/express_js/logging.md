@@ -1,0 +1,72 @@
+## Winston:
+
+### Logging Levels:
+```
+0 Error
+1 Warn
+2 Info
+3 Verbose
+4 Debug
+5 Silly
+```
+
+### Transport Settings:
+```
+level                 Level of messages to log
+filename              File used to write log data to
+handleExceptions      Catch and log unhandled exceptions
+json                  Records log data in JSON format
+maxsize               maxsize of log file in bytes
+maxFiles              Limit number of files created when size of logfile is exceeded
+colorize              Colorize output
+```
+
+```js
+var options = {
+  file: {
+    level: 'info',
+    filename: `${appRoot}/logs/app.log`,
+    handleExceptions: true,
+    json: true,
+    maxsize: 5242880, // 5MB
+    maxFiles: 5,
+    colorize: false,
+  },
+  console: {
+    level: 'debug',
+    handleExceptions: true,
+    json: false,
+    colorize: true,
+  },
+};
+
+var logger = new winston.Logger({
+  transports: [
+    new winston.transports.File(options.file),
+    new winston.transports.Console(options.console)
+  ],
+  exitOnError: false, // do not exit on handled exceptions
+});
+```
+
+
+```js
+// Two ways of logging
+logger.log({
+  level: 'info',
+  message: 'Hello distributed log files!'
+});
+
+logger.info('Hello again distributed logs');
+```
+
+Info parameter provided must have at least level and message properties.
+```js
+const info = {
+  level: 'info',                 // Level of the logging message  
+  message: 'Hey! Log something?' // Descriptive message being logged.
+  ...meta                        // Other properties are considered as "meta"
+};
+
+logger.log('error', 'hello', {message: 'world'}); // any message property in meta object will auto concatenate to any msg provided
+```
