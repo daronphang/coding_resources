@@ -1,4 +1,5 @@
-## Winston:
+## Logging Libraries:
+Winston and Morgan (HTTP request logger middleware).
 
 ### Logging Levels:
 ```
