@@ -1,5 +1,5 @@
 ## Relative & Absolute Imports:
-Absolute import uses the full part from project's root folder to the desired module. Relative import uses the relative path (starting from the path of current module). Module is a single Python file.  
+Absolute import uses the full part from project's root folder to the desired module. Relative import uses the relative path (starting from the path of current module). Module is a single Python file. Package is a collection of modules. 
 
 Python defines two types of packages, regular and namespace. Regular package is typically implemented as a directory containing init file. When it is imported, the init file is implicitly executed i.e. importing parent.one will implicitly execute parent/__init__.py and parent/one/__init__.py. 
 
