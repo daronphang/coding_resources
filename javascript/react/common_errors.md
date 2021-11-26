@@ -40,6 +40,7 @@ const Resource = () => {
   return () => controller.abort();
   }, []);
 }
+```
 
 ### Axios:
 To cancel axios, use source.token instead.
