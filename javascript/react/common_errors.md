@@ -22,7 +22,7 @@ Can't perform a React state update on an unmounted component.
 
 https://medium.com/@shanplourde/avoid-react-state-update-warnings-on-unmounted-components-bcecf054e953
 
-### Abort Controller:
+### Abort Controller (Fetch Only):
 Used to cancel ongoing fetch requests. When fetching data, response will be used to setState once it resolves but need to consider situations where component querying is unmounted from DOM or data is not relevant anymore. 
 
 https://medium.com/@icjoseph/using-react-to-understand-abort-controllers-eb10654485df
@@ -40,4 +40,46 @@ const Resource = () => {
   return () => controller.abort();
   }, []);
 }
+
+### Axios:
+To cancel axios, use source.token instead.
+
+```js
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+
+
+const ComponentWithRequest = props => {
+
+    const [apiData, setApiData] = useState(null);
+
+    useEffect(() => {
+        const source = axios.CancelToken.source();
+
+        axios.get("https://jsonplaceholder.typicode.com/todos", {
+            cancelToken: source.token
+        }).then(response => {
+            setApiData(response.data);
+        }).catch(err => {
+            console.log("Catched error: " + e.message);
+        });
+
+        props.toggleMounted();
+
+        return () => {
+            source.cancel("Component got unmounted");
+        };
+    }, [props]);
+
+    return (
+        <div className="box">
+            <p>I will immediately get unmounted.</p>
+        </div>
+    );
+};
+
+export default ComponentWithRequest;
+```
+
+https://since1979.dev/cancel-axios-request-to-prevent-react-from-yelling-at-you/
 ```
