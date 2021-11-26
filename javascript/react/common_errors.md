@@ -25,6 +25,8 @@ https://medium.com/@shanplourde/avoid-react-state-update-warnings-on-unmounted-c
 ### Abort Controller:
 Used to cancel ongoing fetch requests. When fetching data, response will be used to setState once it resolves but need to consider situations where component querying is unmounted from DOM or data is not relevant anymore. 
 
+https://medium.com/@icjoseph/using-react-to-understand-abort-controllers-eb10654485df
+
 ```js
 const Resource = () => {
   const [resource, setResource] = useState(null);
@@ -34,7 +36,7 @@ const Resource = () => {
     fetch('something')
       .then(res => res.json())
       .then(res => setResource(res))
-      .catch(console.log(controller.signal.aborted));
+      .catch(console.log(controller.signal.aborted)); // can check if signal is aborted, if true, then skip updating error state
   return () => controller.abort();
   }, []);
 }
