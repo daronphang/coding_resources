@@ -82,4 +82,3 @@ export default ComponentWithRequest;
 ```
 
 https://since1979.dev/cancel-axios-request-to-prevent-react-from-yelling-at-you/
-```
