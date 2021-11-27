@@ -1,23 +1,25 @@
 ## State Update Warnings on Unmounted Components:
-Can't perform a React state update on an unmounted component. 
+Can't perform a React state update on an unmounted component. For temporal use, can declare isMounted property in useEffect. However, this only hides the warning and a reference is still kept on unmounted component i.e. application will continue to execute fetch/async queries. 
+
+https://medium.com/doctolib/react-stop-checking-if-your-component-is-mounted-3bb2568a4934
 
 ```js
-  useEffect(() => {
-    let isMounted = true;
-    const timeout = setTimeout(() => {
-      if (isMounted) {
-        setOpenSnackbar(false);
-      }
-    }, 3000);
-    if (openSnackbar) {
-      setTimeout(timeout);
+// TEMPORAL SOLUTION, USE ABORT INSTEAD
+useEffect(() => {
+  let isMounted = true;
+  const timeout = setTimeout(() => {
+    if (isMounted) {
+      setOpenSnackbar(false);
     }
-    return () => {
-      clearTimeout(timeout);
-      isMounted = false;
-    };
-  }, [openSnackbar]);
-
+  }, 3000);
+  if (openSnackbar) {
+    setTimeout(timeout);
+  }
+  return () => {
+    clearTimeout(timeout);
+    isMounted = false;
+  };
+}, [openSnackbar]);
 ```
 
 https://medium.com/@shanplourde/avoid-react-state-update-warnings-on-unmounted-components-bcecf054e953
