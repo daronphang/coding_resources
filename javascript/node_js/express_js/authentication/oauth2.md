@@ -56,6 +56,10 @@ https://www.freecodecamp.org/news/a-quick-introduction-to-oauth-using-passport-j
 https://dev.to/phyllis_yym/beginner-s-guide-to-google-oauth-with-passport-js-2gh4  
 http://www.passportjs.org/packages/passport-google-oauth2/
 
+``` 
+Google      https://console.developers.google.com/apis/credentials
+```
+
 ```
 npm install passport
 npm install passport-google-oauth
