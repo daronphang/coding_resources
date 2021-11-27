@@ -45,7 +45,7 @@ function App() {
 ```
 
 ## Child Re-rendering:
-Render is the process of converting JSX written into DOM nodes. JSX is painted on virtual DOM first and a diffing algorithm is used to compare the new vDOM to old vDOM and if changes are found, they are pushed to the browser DOM. Component re-renders when its state is manipulated through useState(). If parent component has triggered rerender, all child components will rerender, regardless of whether the child is consuming passed props.  
+Render is the process of converting JSX written into DOM nodes. JSX is painted on virtual DOM first and a diffing algorithm is used to compare the new vDOM to old vDOM and if changes are found, they are pushed to the browser DOM. Though vDOM would rerender many times, the actual DOM would only be rerendered once and hence, performance shouldn't be impacted significantly. Component re-renders when its state is manipulated through useState(). If parent component has triggered rerender, all child components will rerender, regardless of whether the child is consuming passed props.  
 
 https://blog.bitsrc.io/exploring-react-renders-different-ways-a-component-gets-re-rendered-edc11403b754
 
