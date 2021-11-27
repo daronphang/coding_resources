@@ -18,6 +18,9 @@ Render is the process of converting JSX written into DOM nodes. JSX is painted o
 
 https://blog.bitsrc.io/exploring-react-renders-different-ways-a-component-gets-re-rendered-edc11403b754
 
+### React StrictMode:
+StrictMode renders components twice (in dev but not in production) in order to detect problems with code and prompt warnings. Can disable by removing StrictMode.
+
 ## Mount vs Render:
 - Rendering is any time a function component gets called which returns a set of instructions for creating DOM.
 - Mounting is when React "renders" the component for the first time and actually builds the initial DOM from instructions.
