@@ -19,6 +19,9 @@ csurf               CSRF token
 
 # REACT
 react-hook-form       Provides abstraction for form creation
+react-cookies
+material-ui
+notistack             Handles multiple snackbar
 ```
 
 ## Python:
