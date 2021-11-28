@@ -53,7 +53,18 @@ SELECT * FROM table WHERE col1 LIKE 'A%'  # all names that begin with A
 SELECT * FROM table WHERE col1 LIKE 'Mission Impossible _'
 ```
 ### GROUP BY:
+Often used with aggregate functions i.e. COUNT(), SUM(), MIN(), AVG() to group the result-set by one or more columns. When grouping by multiple columns, it means to place all the rows with same values in multiple columns in one group.  
 ```sql
+SELECT
+	column1,
+	column2,
+	AGGREGATE_FUNCTION (column3)
+FROM
+	table1
+GROUP BY
+	column1,
+	column2;
+  
 SELECT col1,col2,SUM(sales) FROM table GROUP BY col1,col2
 
 # To group by date, need remove timestamp using DATE().
