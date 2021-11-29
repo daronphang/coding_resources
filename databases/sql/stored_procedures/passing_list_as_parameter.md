@@ -54,3 +54,11 @@ Can use built in STRING_SPLIT() but there are several shortcomings:
 - Does not trim spaces around values
 
 https://www.sommarskog.se/arrays-in-sql.html
+
+
+## Table-Valued Functions:
+TVF is a user-defined function that returns data of a table type.
+
+```sql
+
+```
