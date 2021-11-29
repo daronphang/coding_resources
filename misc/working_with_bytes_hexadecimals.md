@@ -10,4 +10,7 @@ print(string_hex)   # 4441524f4e5048414e475f42313641
 hexa = int(string_hex_str, 16)
 print(hex(hexa))    # 0x4441524f4e5048414e475f42313641
 print(hex(123456))  # 0x1e240
+
+# 1 digit = 4 bits
+# binary(8) = 8 bytes = 64 bits = 16 digits
 ```
