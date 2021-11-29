@@ -57,8 +57,29 @@ https://www.sommarskog.se/arrays-in-sql.html
 
 
 ## Table-Valued Functions:
-TVF is a user-defined function that returns data of a table type.
+TVF is a user-defined function that returns data of a table type. For SQL Server, can use string_split() which is a TVF that splits a string array with delimiter and returns results into a table. Returns a single-column table whose column name is 'value'.
+```sql
+SELECT value FROM STRING_SPLIT('red,green,blue', ',');
+```
 
 ```sql
-
+CREATE FUNCTION dbo.SPLIT_STRING(
+@string NVARCHAR(MAX),
+@delimiter CHAR(1)
+)
+RETURNS @output TABLE(
+value NVARCHAR(MAX)
+)
+BEGIN
+    DECLARE @start SMALLINT, @end SMALLINT, @counter SMALLINT
+    SET @counter = LEN(@string) - LEN(REPLACE(@string, @delimiter, '')) + 1 
+    SET @start = 1, @end = CHARINDEX(@delimiter, @string)
+    WHILE @counter > 0 BEGIN
+        INSERT INTO @output(value) VALUES (SUBSTRING(@string, @start, @end - @start))
+        SET @start = @end + 1
+        SET @end = CHARINDEX(@delimiter, @string, @start)
+        SET @counter = @counter - 1
+    END
+    RETURN
+END
 ```
