@@ -3,8 +3,15 @@ Stored procedure is a batch of statements (separated by semicolons) that is stor
 
 ```
 DELIMITER       SQL recognizes semicolons as statement delimiters; need to redefine if passing program to server
-SET             Assign a value directly SET @var = 1;
-DECLARE         Initialized to NULL when stored procedure is called
+DECLARE         Initialized to NULL when stored procedure is called unless type is specified
+SET             Assign a value directly SET @var = 1; initializes the variable
+```
+
+```sql
+DECLARE @Var1 INT;
+DECLARE @Var2 INT;
+SET @Var1 = 1;
+SET @Var2 = 2;
 ```
 
 ## Create Temporary Table:
