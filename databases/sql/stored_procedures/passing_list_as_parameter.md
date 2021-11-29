@@ -4,8 +4,8 @@ Three main contenders are Table-Valued Parameters, delimited list string and JSO
 ## Passing Data Table as Parameter (Table-Valued Parameters):
 Allows multiple rows of data to be passed to stored procedure by Transact-SQL code. Involves 3 step process:
 1) Create user-defined table that corresponds to table to be populated.
-2) Pass user-defined table to stored procedure as parameter.
-3) In stored procedure, select data from passed parameter and insert into table.
+2) Create stored procedure that uses TVP.
+3) Declare table type, populate it with data, and pass it to stored procedure.
 
 ```sql
 CREATE DATABASE ShowRoom
