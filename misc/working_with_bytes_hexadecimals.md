@@ -1,7 +1,7 @@
 ## Python:
 Hexadecimal has base 16 and is represented with prefix 0x.
 ```py
-// converting string to hexadecimal string
+# converting string to hexadecimal string
 string = "DARONPHANG_B16A"
 string_bytes = string.encode('utf-8')
 string_hex_str = string_bytes.hex() 
