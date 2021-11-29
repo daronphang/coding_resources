@@ -4,7 +4,7 @@ Stored procedure is a batch of statements (separated by semicolons) that is stor
 ```
 DELIMITER       SQL recognizes semicolons as statement delimiters; need to redefine if passing program to server
 DECLARE         Initialized to NULL when stored procedure is called unless type is specified
-SET             Assign a value directly SET @var = 1; initializes the variable
+SET             Initializes the variable; cannot SET variable if not declared for SQL Server
 ```
 
 ```sql
