@@ -1,4 +1,4 @@
-## Basics
+### Basics
 A variable that is used to store the memory address of another variable (in hexadecimal format). Also termed as special variables. 
 
 ```
@@ -30,6 +30,6 @@ func main() {
 }
 ```
 
-## When to use Pointers
+### When to use Pointers
 - If the function needs to modify its receiver.
 - When passing large amounts of data.
