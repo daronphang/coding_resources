@@ -200,3 +200,36 @@ type address struct {
 hits := make(map[address]int)
 hits[address{"golang.org", 443}]++
 ```
+
+### Struct Embedding and Anonymous Fields:
+Allows using named struct type as an anonymous field of another struct type. Provides convenient syntactic shortcut where x.f can stand for a chain of fields like x.d.e.f.
+
+```go
+type Circle struct {
+  X, Y Radius int
+}
+
+type Wheel struct {
+  X, Y, Radius, Spokes, int
+}
+
+// To avoid repetition
+type Point struct {
+  X, Y int
+}
+
+type Circle struct {
+  Center Point
+  Radius int
+}
+
+type Wheel struct {
+  Circle Circle
+  Spokes int
+}
+
+var w Wheel
+w.Circle.Center.X = 8
+w.Circle.Radius = 5
+w.Spokes = 20
+```
