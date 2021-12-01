@@ -212,8 +212,8 @@ type Circle struct {
 type Wheel struct {
   X, Y, Radius, Spokes, int
 }
-
-// To avoid repetition
+```
+```go
 type Point struct {
   X, Y int
 }
@@ -228,8 +228,28 @@ type Wheel struct {
   Spokes int
 }
 
+// accessing the fields is more verbose
 var w Wheel
 w.Circle.Center.X = 8
 w.Circle.Radius = 5
 w.Spokes = 20
+```
+```go
+// using anonymous fields
+type Circle struct {
+  Point
+  Radius int
+}
+
+type Wheel struct {
+  Circle
+  Spokes int
+}
+
+var w Wheel
+w.X = 8         // equivalent to w.Circle.Point.X = 8
+w.Radius = 5
+
+// however, does not have shorthand for struct literal syntax
+w = Wheel{X: 8, Y: 8, Radius: 5, Spokes: 20}  // compile error: unknown fields
 ```
