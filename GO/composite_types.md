@@ -82,7 +82,7 @@ for _, name := range names {
   fmt.Printf("%s\t%d\n", name, ages[name])
 }
 
-// testing if key is present
+// Subscripting a map yields the value itself and a boolean that reports whether element was present
 if age, ok := ages["bob"]; !ok {/* "bob" is not a key in this map /*}   // subscripting a map yields two values; second is a boolean
 ```
 
@@ -107,3 +107,54 @@ func main() {
   }
 }
 ```
+
+## Structs:
+An aggregate data type that groups together zero or more named values of arbitrary types as a single entity. Each value is called a field. Field order is significant to type identity.
+
+```go
+type Employee struct {
+  ID            int
+  Name, Address string
+  DoB           time.Time
+  Position      string
+  Salary        int
+  ManagerID     int
+}
+var dilbert Employee  // dilbert is an instance of Employee
+dilbert.Name = 'John'
+position := &dilbert.Position // taking address and accessing it through pointer
+*position = "Senior"
+
+var employeeOfMonth *Employee = &dilbert  // pointer to a struct
+employeeOfMonth.Position += "proactive team player"
+// same as (*employeeOfMonth).Position += "proactive team player"
+```
+
+Named struct of type S cannot declare field of same type S i.e. an aggregate value cannot contain itself. However, it can declare a field of pointer type *S* and hence, allows to create recursive data structures like linked lists and trees.
+
+```go
+type tree struct {
+  value       int
+  left, right *tree
+}
+
+func appendValues(values []int, t *tree) []int {
+  if t != nil {
+    values = appendValues(values, t.left)
+    values = append(values, t.value)
+    values = appendValues)values, t.right)
+  }
+  return values
+}
+```
+
+Struct type with no fields is called empty struct{} with size zero and carries no information. Can be used instead of bool as the value type of a map that represents a set, to emphasize that only the keys are significant. However, syntax is more cumbersome.
+
+```go
+seen := make(map[string]struct{})
+if _, ok := seen[s]; !ok {
+  seen[s] = struct{}{}
+  // perform logic for first time seeing s
+}
+```
+
