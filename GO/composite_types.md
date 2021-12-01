@@ -1,7 +1,7 @@
-## Basics:
+## Basics
 Arrays and structs are aggregate types whereby their values are concatenations of other values in memory. Arrays are homogeneous (all elements have same type) while structs are heterogeneous. Both arrays and structs are fixed size as compared to slices and maps which cater for dynamic data structures.
 
-## Arrays:
+## Arrays
 Rarely used directly in Go as they have fixed length; instead, slices are used which can grow and shrink.
 
 ```go
@@ -19,7 +19,7 @@ c2 := sha256.Sum256([]byte("X"))
 fmt.Printf("%x\n%x\n%t\n%T\n", c1, c2, c1 == c2, c1)  // 2145,2312, false, [32]uint8
 ```
 
-## Slices:
+## Slices
 Has 3 components: pointer, length and capacity. Pointer points toe the first element of array that is reachable through slice, which is not necessarily the array's first element. Length cannot exceed capacity. Multiple slices can share the same underlying array and may refer to overlapping parts. Unlike arrays, slices cannot use == to compare with each other. Only legal comparison is to check for nil.
 ```
 nonempty
@@ -50,7 +50,7 @@ x = append(x, 1)
 x = append(x, x...) // append slice x, 
 ```
 
-## Maps:
+## Maps
 A reference to a hash table, an unordered collection of key/value pairs in which all keys are distinct. All keys in a given map are of the same type, and all values are of the same type. However, keys need not be of same type as values. Should not use floating-points for keys. Need to allocate the map first before can store into it.
 
 ```go
@@ -86,7 +86,7 @@ for _, name := range names {
 if age, ok := ages["bob"]; !ok {/* "bob" is not a key in this map /*}   // subscripting a map yields two values; second is a boolean
 ```
 
-### Equivalent of Sets:
+### Equivalent of Sets
 GO does not provide set type; however, since keys of a map are distinct, a map can serve this purpose.
 
 ```go
@@ -108,7 +108,7 @@ func main() {
 }
 ```
 
-## Structs:
+## Structs
 An aggregate data type that groups together zero or more named values of arbitrary types as a single entity. Each value is called a field. Field order is significant to type identity.
 
 ```go
@@ -158,7 +158,7 @@ if _, ok := seen[s]; !ok {
 }
 ```
 
-### Struct Literals:
+### Struct Literals
 ```go
 type Point struct{X, Y int}
 // first form
@@ -182,7 +182,7 @@ pp := new(Point)
 *pp = Point{1, 2} // Can be shorted to pp := &Point{1, 2}
 ```
 
-### Comparing Structs:
+### Comparing Structs
 ```go
 type Point struct {X, Y int}
 p := Point{1, 2}
@@ -201,7 +201,7 @@ hits := make(map[address]int)
 hits[address{"golang.org", 443}]++
 ```
 
-### Struct Embedding and Anonymous Fields:
+### Struct Embedding and Anonymous Fields
 Allows using named struct type as an anonymous field of another struct type. Provides convenient syntactic shortcut where x.f can stand for a chain of fields like x.d.e.f.
 
 ```go
@@ -252,4 +252,37 @@ w.Radius = 5
 
 // however, does not have shorthand for struct literal syntax
 w = Wheel{X: 8, Y: 8, Radius: 5, Spokes: 20}  // compile error: unknown fields
+```
+
+## JSON
+JSON objects are used to encode GO maps (with string keys) and structs. Converting a GO data structure to JSON is called marshaling. Field tag is a string of metadata associated at compile time with the field of a struct. Conventionally interpreted as space-separated list of key:"value" pairs.
+```go
+type Movie struct {
+  Title   string
+  Year    int     `json:"released"`   // string literals are field tags
+  Color   bool    `json:"color,omitempty"`  // doesn't output field if it is empty
+  Actors  []string
+}
+
+var movies = []Movie{
+  {
+    Title: "Hello",
+    Year: 1942,
+    Color: false,
+    Actors: []string{"john", "peter"}
+  }
+}
+
+data, err := json.Marshal(movies) // use MarshalIndent() for human readability
+if err != nil {
+  log.Fatalf("JSON marshaling failed: %s", err)
+  fmt.Printf("%s\n", data)
+}
+
+// decoding JSON with unmarshaling
+var titles []struct { Title string }
+if err := json.Unmarshal(data, &titles); err != nil { // unmarshal data into a slice of structs with Title field only
+  log.Fatalf("JSON unmarshaling failed: %s", err)
+}
+fmt.Println(titles)   // "[{hello}]"
 ```
