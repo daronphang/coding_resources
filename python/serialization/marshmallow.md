@@ -1,11 +1,11 @@
-## Marshmallow:
+## Marshmallow
 Marshmallow is an object-relational mapping library which is used to convert objects to and from Python data types. Often used alongside with SQLAlchemy, an ORM that maps
 database schemas to Python objects. Used primarily in commmunication between backend and frontend to:
 - Validate input data.
 - Deserialize input data to app-level objects.
 - Serialize app-level objects to primitive Python types.
 
-### Schema:
+## Schema
 Introduces schema which can be used to apply rules to validate the data being deserialized or change the way they are serialized. A schema defines the rules that guides deserialization called load and serialization, called dump. 
 ```python 
 from marshmallow import Schema, fields
@@ -18,7 +18,7 @@ class PersonSchema(Schema):
     name = fields.Str()
     age = fields.Int()
 ```
-### Validating Inputs (Deserialization):
+### Validating Inputs (Deserialization)
 ```python
 # Converting payload data to app-level data structure
 data = {
@@ -31,7 +31,7 @@ person = PersonSchema().load(data)
 # Successful deserialziation output which returns dictionary:
 # {'name': 'bill', 'age': 19}
 ```
-### Serializing Objects:
+### Serializing Objects
 ```python
 # Converting app-level data to Python primitive data
 person = Person(name='bill', age=19)        # app-level object
@@ -43,7 +43,7 @@ serialized_value = PersonSchema().dump(person)      # dumps() for returning JSON
 
 # Result is dictionary which can be converted easily into text for database storage.
 ```
-### Schema Field Arguments:
+### Schema Field Arguments
 ```
 many                Boolean, whether resulting schema is an array of the instantiated schema
 load_only           Boolean, to be considered only during load
@@ -70,7 +70,7 @@ class EmployeeSchema(Schema):
     skills = fields.Str(many=True, allow_none=True)
     home_address = fields.Str(data_key='address', default='Hanoi')
 ```
-### Nest Schemas:
+### Nest Schemas
 To nest a schema inside another so that the new schema inherits attributes of the one being nested.
 ```python
 from marshmallow import Schema, fields
@@ -84,7 +84,32 @@ class FamilySchema(HouseSchema):
     
 # FamilySchema inherits HouseSchema and hance, has field 'address'
 ```
-### Performing Transformation Before/After:
+
+### Template Schema
+Fields.Mapping() refers to an abstract class for objects with key-value pairs. Use class Meta for defining options. 
+```
+fields          Tuple of list of fields to include in serialized result
+additional
+include         Dict of additional fields to include in schema
+exclude
+dateformat
+timeformat
+ordered
+unknown         Whether to exclude, include or raise an error for unknown fields in data
+```
+```py
+
+class BaseSchema(ma.Schema):
+    userinfo = fields.Nested(Userinfo)
+    payload = fields.Mapping(required=True)
+
+class BeforeRequestSchema(BaseSchema):
+    class Meta:
+        unknown = INCLUDE
+```
+
+
+### Performing Transformation Before/After
 Allows to perform transformation before or after serialization and deserialization by using hooks.
 ```
 @pre_load       Before deserializing
