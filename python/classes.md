@@ -19,6 +19,38 @@ class ExampleClass(object):
     self.instance_attr = instance_attr
 ```
 
+## Class Functions with Decorators:
+If need to pass class/instance attribute to decorator that receives argument, declare the function in initialization.
+
+```py
+class CrudOperations:
+    def __init__(self, conn_payload, as_dict):
+        self.conn_payload = conn_payload
+        self.as_dict = as_dict
+        self.update_user_settings = mssql_connection_crud_operation(conn_payload, as_dict)(self.update_user_settings)
+    
+    def update_user_settings(self, cursor, payload: dict):
+        delim = ','
+        # Generate list of hexadecimals (8 bytes) for storing in database
+        add_oid = ['0x{}'.format(secrets.token_hex(7)) for item in range(len(payload['add_entries']))]
+
+        # Arrays are passed to stored procedure as string of delimited list
+        cursor.callproc('myassistant.dbo.update_user_settings', (
+            delim,
+            payload['username'],
+             ','.join(payload['del_did']),
+             ','.join(payload['del_step']),
+            ','.join(add_oid),
+            ','.join([item['did'] for item in payload['add_entries']]),
+             ','.join([item['process_step'] for item in payload['add_entries']]),
+             ','.join([item['mask_level'] for item in payload['add_entries']]),
+             ','.join([item['trav_id'] for item in payload['add_entries']]),
+        ))
+        return {
+            'message': 'update user settings successful'
+        }
+```
+
 ## Super Classes:
 For multiple inheritance whereby both classes have same method name, Method Resolution Order (MRO) algorithm comes into play which decides where Python will look for a given method, and which method will be called when there's a conflict. Order is child class, followed by left to right.  
 
