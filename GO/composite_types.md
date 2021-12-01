@@ -158,3 +158,45 @@ if _, ok := seen[s]; !ok {
 }
 ```
 
+### Struct Literals:
+```go
+type Point struct{X, Y int}
+// first form
+P := Point{1, 2} // However, order is critical and makes code fragile should set of fields grow/reorder
+
+// second form; both cannot be mixed in the same literal
+P := Point{a: 1, b: 2} // if field is omitted, it is set to zero and order doesn't matter as names are provided
+
+// struct values can be passed as arg and returned from functions directly/indirectly
+func Bonus(e *Employee, percent int) int {
+  return e.Salary * percent / 100
+}
+
+// Need use pointer as function receives a copy of arg, not reference to original arg
+func AnnualRaise(e *Employee) {
+  e.Salary = e.Salary * 105/100
+}
+
+// structs are commonly dealt with through pointers; shorthand notation
+pp := new(Point)
+*pp = Point{1, 2} // Can be shorted to pp := &Point{1, 2}
+```
+
+### Comparing Structs:
+```go
+type Point struct {X, Y int}
+p := Point{1, 2}
+q := Point{2, 1}
+fmt.Println(p.X == q.X && p.Y == q.Y} // false
+```
+
+Can be used as key type of a map.
+```go
+type address struct {
+  hostname  string
+  port      int
+}
+
+hits := make(map[address]int)
+hits[address{"golang.org", 443}]++
+```
