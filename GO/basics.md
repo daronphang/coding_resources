@@ -1,4 +1,4 @@
-## Golang:
+## Golang
 A compiled language. Organized into packages (similar to libraries/modules). Has a cultural agenda of radical simplicity with garbage collection, pacakge system, first-class functions (treated like any other variable), lexical scope, system call interface and immutable strings encoded in UTF-8 (can process in all languages). Language is mature, stable and guarantees backwards compatibiity. Well suited for building infrastructure like netwroked servers, tools and systems for programmers. 
 
 ```GO
@@ -11,7 +11,7 @@ func main() {
 }
 ```
 
-## Print Verbs:
+## Print Verbs
 ```
 %v    value in default format
 %#v   Go-syntax representation of value
@@ -30,7 +30,7 @@ func main() {
 ```
 
 
-### Command Line Arguments:
+## Command Line Arguments
 OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings. 
 
 ```GO
@@ -66,7 +66,7 @@ func main() {
 }
 ```
 
-### Loop Statements:
+## Loop Statements
 For loop is only loop statement in GO. 
 ```GO
 // traditional "while" loop
@@ -107,7 +107,7 @@ func main() {
 
 
 
-### Variable Declarations:
+## Variable Declarations
 All are equivalent.
 ```GO
 s := ""
