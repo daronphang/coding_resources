@@ -11,6 +11,9 @@ func main() {
 }
 ```
 
+### Garbage Collector
+GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
+
 ## Print Verbs
 ```
 %v    value in default format
