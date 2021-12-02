@@ -1,4 +1,4 @@
-## Integers:
+## Integers
 GO provides both signed and unsigned integer arithmetic.
 ```
 int8 int16 int32 int64
@@ -9,7 +9,7 @@ signed integers     -2^(n-1) to 2^(n-1)-1     int8 has -128 to 127
 unsigned integers   0 to 2^n -1               int8 has 0 255, uses full range of bits for non-negative values 
 ```
 
-## Binary Operators:
+## Binary Operators
 ```
 &     bitwise AND
 |     bitwise OR
@@ -26,7 +26,7 @@ var compote int = apples + oranges // compile error
 var compote = int(apples) + int(oranges)
 ```
 
-## Floating-Point Numbers:
+## Floating-Point Numbers
 GO provides float32 and float64.
 ```
 float32   math.MaxFloat32 = 3.4e38    6 decimals
@@ -41,7 +41,7 @@ for x := 0; x < 8; x++ {
 // x = 7 e^x = 1096.633
 ```
 
-## Strings:
+## Strings
 Immutable sequence of bytes. Index operation retrieves the i-th byte of string which may not necessarily be the i-th character of string as UTF-8 encoding of a non-ASCII code requires two or more bytes. 
 ```GO
 s := "hello, world"
@@ -64,7 +64,7 @@ Within a double-quoted string literal, escape sequences that begin with \ can be
 \\    backslash
 ```
 
-### Decoding UTF-8:
+### Decoding UTF-8
 ```go
 import "unicode/utf8"
 
@@ -83,14 +83,14 @@ for i, r := range "Hello, 世界" {
 }
 ```
 
-### Strings and Byte Slices:
+### Strings and Byte Slices
 ```go
 // basename function removes prefix with components separated by /, and suffix that looks like file type
 fmt.Println(basename("a/b/c.go")) // "c"
 fmt.Println(basename("c.d.go"))   // "c.d"
 ```
 
-### String and Byte Functions:
+### String and Byte Functions
 ```go
 func Contains(s, substr string) bool
 func Count(s, sep string) int
@@ -100,7 +100,7 @@ func Index(s, sep string) int
 func Join(a []string, sep string) string
 ```
 
-### Strings and Numbers Conversion:
+### Strings and Numbers Conversion
 ```go
 x := 123
 
@@ -116,7 +116,7 @@ x, err := strconv.Atoi("123")
 y, err := strconv.ParseInt("123", 10, 64) // base 10, up to 64 bits
 ```
 
-### Constants:
+## Constants
 Can declare a sequence of constants as a group. Can also use constant generator iota which is used to create a sequence of related values. Value of iota begins at 0 and increments by 1 for each item in sequence i.e. enumerator.
 
 ```go
