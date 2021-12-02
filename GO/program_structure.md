@@ -1,4 +1,4 @@
-## Names:
+#### Names
 Keywords that cannot be used as names.
 ```
 break       case      chan      const         continue
@@ -24,7 +24,7 @@ make len cap new append copy close delete
 complex real ima
 ```
 
-## Declarations:
+## Declarations
 ```
 var   const   type    func
 ```
@@ -39,7 +39,7 @@ func fToC(f float64) float64 {
 }
 ```
 
-## Variables:
+## Variables
 Either type or =expression may be omitted, but not both. If expression is omitted, initial value is 0/false/nil/"".
 ```GO
 var [name] [type] = [expression]
@@ -55,7 +55,7 @@ freq := rand.Float64() * 3.0
 t := 0.0
 ```
 
-## Pointers:
+## Pointers
 A pointer value is the address of a variable to update the value indirectly without knowing the variable name. Each time the address of a variable is taken or copied, new aliases are created to identify the same variable. Pointer aliasing is useful as it allows access to a variable without using its name; however, to find all statements that access a variable, need to know all aliases. 
 
 Pointers are key in flag package which uses a program's command-line arguments to set values of certain variables distributed throughout the program.
@@ -77,7 +77,7 @@ incr(&v)                // side effect: v is now 2
 fmt.Println(incr(&v))   // "3" (and v is 3)
 ```
 
-## Function New():
+## Function New()
 ```GO
 p := new(int)     // p, of type *int, points to an unnamed int variable
 fmt.Println(*p)   // "0"
@@ -85,17 +85,17 @@ fmt.Println(*p)   // "0"
 fmt.Println(*p)   // "2"
 ```
 
-## Variable Lifetimes:
+## Variable Lifetimes
 Lifetime of package-level variable is the entire execution of program. Local variables have dynamic lifetimes; new instance lives on until it becomes unreachable, at which point its storage may be recycled. Compiler may choose to allocate local variables on heap or stack depending on whether they are reachable after a function is called or not.
 
-## Assignability:
+## Assignability
 Allows both implicit and explicit assignments.
 
 ```GO
 mdeals := []string{"gold", "silver", "bronze"}
 ```
 
-## Type Declarations:
+## Type Declarations
 ```go
 type [name] [underlying-type]
 
@@ -109,10 +109,10 @@ fmt.Println(c == 0) // true
 fmt.Println(c == f) // compile error: type mismatch
 ```
 
-## Imports:
+## Imports
 It is an error to import a package and then not refer to it. Best to use golang.org/x/tools/cmd/goimports tool which automatically inserts and removes packages from import declaration as necessary. 
 
-## Package Initialization:
+## Package Initialization
 If package has multiple .go files, the are initialized in the order the files are given to the compiler. For variables such as tables that are difficult to set initial value, can use init().
 
 ```go
@@ -121,7 +121,7 @@ var b = f()     // b initialized second to 2, by calling f
 var c = 1       // c initialized first to 1
 ```
 
-## Scope:
+## Scope
 Syntactic block is a sequence of statements enclosed in braces. The generic notion of blocks including declarations not surrounded by braces are called lexical blocks. A declaration's lexical block determines its scope. A program can contain multiple declarations of the same name so long as each declaration is in a different lexical block. At package level, oreder in which declarations appear has no effect on their scope. 
 
 ```GO
