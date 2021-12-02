@@ -1,4 +1,4 @@
-## Basics:
+## Basics
 Stored procedure is a batch of statements (separated by semicolons) that is stored in relational database management system as a group that can be reused. Can access/modify data in a database, but not tied to a specific database. Allows passing of dynamic parameters. 
 
 ```
@@ -14,7 +14,7 @@ SET @Var1 = 1;
 SET @Var2 = 2;
 ```
 
-## Create Temporary Table:
+### Creating Temporary Table
 ```sql
 CREATE TEMPORARY TABLE credits(
     customerNumber INT PRIMARY KEY,
@@ -26,7 +26,7 @@ SELECT * FROM original_table
 LIMIT 0;
 ```
 
-## Getting Results from SELECT:
+### Getting Results from SELECT
 Each SELECT statement that does not insert into a table or variable will produce a result set.
 
 ```sql
@@ -49,7 +49,7 @@ for result in cursor.stored_results():
   print(result.fetchall())
 ```
 
-## Passing Parameters:
+### Passing Parameters
 - MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters.
 - Can only pass parameters to query statements and not tablename.
 - Avoid name collision between parameter names and name of columns. 
@@ -69,7 +69,7 @@ DECLARE @ADDRESS NVARCHAR
 END
 ```
 
-## Dynamic SQL:
+### Dynamic SQL
 MySQL provides PREPARE, EXECUTE and DEALLOCATE PREPARE statements that can contain placeholder values. If using CONCAT, script is susceptible to SQL injection attacks.
 
 https://dev.mysql.com/doc/refman/8.0/en/sql-prepared-statements.html
@@ -101,7 +101,7 @@ DEALLOCATE PREPARE dynamic_statement;
 END
 ```
 
-## Execute Stored Procedures:
+### Execute Stored Procedures
 SQL Server uses EXEC or SP_EXECUTESQL for executing dynamic SQL.
 ```
 CALL stored_proc_name('some variable')      Inside mysql command interpreter
@@ -110,7 +110,7 @@ cursor.callproc('proc_name', (args,))       Python
 
 https://dev.mysql.com/doc/refman/8.0/en/cursors.html
 
-## Example:
+### Example
 ```sql
 CREATE PROCEDURE curdemo()
 BEGIN
