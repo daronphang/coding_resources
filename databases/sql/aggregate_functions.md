@@ -1,4 +1,4 @@
-## Aggregate Functions:
+### Aggregate Functions
 Agg function calls happen only in SELECT or HAVING clause. Common functions:
 ```sql
 AVG()
