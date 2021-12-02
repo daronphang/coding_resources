@@ -1,12 +1,11 @@
 ### Function Declarations
 Functions that has result list MUST end with a return statement unless execution ends with infinite loop. 
-```
+
+```GO
 func name(parameter-list) (result-list) {
-  body
+  // body
 }
 
-```
-```GO
 func hypot(x, y float64) float64 {
   return math.Sqrt(x*x + y*y)
 }
