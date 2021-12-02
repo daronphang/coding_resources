@@ -1,4 +1,4 @@
-## Storing Delimited Lists:
+### Avoid Storing Delimited Lists
 Violates First Normal Form. Exception would be employing denormalization. If tables are normalized, to avoid storing entries in column as delimited lists for following reasons:
 - Can't ensure each value is right data type i.e. 1,2,3,banana,5.
 - Can't use FK to link values to lookup table and unable to enforce referential integrity.
@@ -8,6 +8,5 @@ Violates First Normal Form. Exception would be employing denormalization. If tab
 - Difficult to search for all entities with a given value in list with inefficient table-scan.
 - Difficult to count elements in list or perform aggregate functions.
 - Difficult to fetch list in sorted order.
-- 
 
 https://stackoverflow.com/questions/3653462/is-storing-a-delimited-list-in-a-database-column-really-that-bad
