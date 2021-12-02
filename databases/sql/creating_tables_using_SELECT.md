@@ -1,4 +1,4 @@
-### Creating Tables Using SELECT:
+### Creating Tables Using SELECT
 ```sql
 -- For single row, multiple columns
  SELECT
