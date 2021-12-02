@@ -43,3 +43,29 @@ func findLinks(url string) ([]string, error) {
   return visit(nil, doc), nil
 }
 ```
+
+### Errors and Error Handling
+Function for which failure is an expected behavior returns an additional result, conventionally the last one. If the failure has only one possible cause, the result is a boolean. GO's approach for error handling is different from many other languages; GO programs use ordinary control-flow mechanisms like if and return to respond to errors instead of exceptions consisting of stack trace and information that lack intelligible context about what went wrong. Hence, more attention needs to be paid for error-handling in GO.
+```go
+value, ok := cache.Lookup(key)
+if !ok {
+  // return nil, err                                              propagating error
+  // return nil, fmt.Error("parsing %s as HTML: %v", url, err)    return error msg
+}
+```
+```go
+// retrying failed operation with delay or limit on number of attempts
+func WaitForServer(url string) error {
+  const timeout = 1 * time.Minute
+  deadline := time.Now().Add(timeout)
+  for tries := ; time.Now().Before(deadline); tries ++ {
+    _, err := http.Head(url)
+    if err == nil {
+      return nil // success
+    }
+    log.Printf("server not responding (%s); retrying...", err)
+    time.Sleep(time.Second << uint(tries)) // expontential backoff
+  }
+  return fmt.Errorf("server %s failed to respond after %s", url, timeout)
+}
+```
