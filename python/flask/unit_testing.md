@@ -61,7 +61,7 @@ class FlaskClientTestCase(unittest.TestCase):
         self.assertEqual(json_response['body_html'],'<p>body of the <em>blog</em> post</p>')
 ```
 
-## Running Unittest
+### Running Unittest
 ```python
 import os
 from dotenv import load_dotenv
