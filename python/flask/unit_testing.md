@@ -1,4 +1,4 @@
-## Flask Test Client:
+## Flask Test Client
 Test client to replicate the environment (to certain extent) that exists when an app is running inside web server. Requests are received and routed to appropriate view functions, and response are generated and returned. After a view function executes, can test response passed to the test.
 
 ```python
@@ -61,7 +61,7 @@ class FlaskClientTestCase(unittest.TestCase):
         self.assertEqual(json_response['body_html'],'<p>body of the <em>blog</em> post</p>')
 ```
 
-## Running Unittest:
+## Running Unittest
 ```python
 import os
 from dotenv import load_dotenv
@@ -83,4 +83,46 @@ def testing():      # function cannot be named as testing_api
     import unittest
     tests = unittest.TestLoader().discover('app_api.test_api')    # start directory
     unittest.TextTestRunner(verbosity=2).run(tests)
+```
+
+### Example
+```py
+class FlaskApiQueryTest(unittest.TestCase):
+    def setUp(self):
+        self.app = create_app('testing')
+        self.app_context = self.app.app_context()
+        self.app_context.push()
+        self.client = self.app.test_client(use_cookies=True)
+
+    def tearDown(self):
+        self.app_context.pop()
+
+    def attach_headers(self):
+        return {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'  # needed for request.json to work
+        }
+
+    def test_base_schemas(self):
+        payload = json.dumps({'payload': 'testing'})   # Should throw error as userinfo is not present
+        resp = self.client.post('/MLLA/api/v1/query', headers=self.attach_headers(), data=payload)
+        self.assertEqual(resp.status_code, 400)
+        json_resp = json.loads(resp.get_data(as_text=True))
+        self.assertEqual(json_resp['message'], 'Schema Validation Error')
+
+    def test_query_success(self):
+        payload = json.dumps({
+            'userinfo': {
+                'username': 'DARONPHANG',
+                'fab': 'f10w'
+            },
+            'payload': {
+                'query_payload': {
+                    'fac_oid': '0x7f5156e2400a9854'
+                },
+                'query_name': 'retrieve_DID'
+             }
+        })
+        resp = self.client.post('/MLLA/api/v1/query', headers=self.attach_headers(), data=payload)
+        self.assertEqual(resp.status_code, 200)
 ```
