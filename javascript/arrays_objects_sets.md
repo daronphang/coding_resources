@@ -44,6 +44,15 @@ req.body.deleteItems.forEach((itemID) => {
     const itemExists = req.user.cartProducts.some(
         (item) => item._id === itemID
 );
+
+// filter and map with reduce()
+ const updateData = data.reduce((result: PortfolioMeta[], cur, i) => {
+    if (i > delIndex) {
+      cur.orderId -= 1;
+      result.push(cur);
+    }
+    return result;
+  }, []);
 ```
 
 ## Objects:
