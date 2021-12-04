@@ -103,8 +103,8 @@ len(string)
 
 #### String Replacement
 ```python
-txt = 'hello world'
-x = txt.replace('world', 'awesome world')
+txt = "one one was a race horse, two two was one too."
+x = txt.replace("one", "three", 2)
 
 print('my age is {0}, born in {1}'.format('12', '1993')
 print('pi is approx {0:12}'.format(22/7))   # defualt for 15 decimals
