@@ -1,4 +1,25 @@
-## Sequence Types & Destructuring:
+## Data Structures
+Data structures are a way of organizing and storing data; they explain the relationship between data and various logical operations that can be performed on the data. 
+
+### Primitive & Non-Primitive
+Primitive are basic data structures containing pure and simple data values and serve as building blocks for manipulating data. They include integers, float, string and boolean. Non-primitive not only store values but a collection of values in different formats. They include lists, dictionaries, tuples and sets. 
+
+### Stacks
+Linear data structures based on the principle of First-In/Last-Out (FILO). The addition of a new element at one end is accompanied by removal of an element from the same end. Operations include push(), pop(), size(), empty() and top().
+
+### Queue
+Linear data structures but items are stored based on First-In/First-Out principle. Item that is least recently added is removed first. Operations include enqueue (adding) and dequeue (deleting), front and rear. 
+
+### Tree
+Non-linear data structures and consist of nodes connected by edges. One node is designated as the root node, every other node has an associated parent node, and each node can have an arbitrary number of children nodes. A binary Tree data structure is one whose elements have no more than two children.
+
+### Linked List
+Linear data structure that has a series of data elements joined together via links. Implemented using the concept of nodes. Linked lists have an advantage over Arrays in having a dynamic size, with ease of inserting/adding elements.
+
+### Hashmaps/Hash Tables
+Hash function generates the address or index value of the data element. Index value serves as the key to the data value.
+
+## Sequence Types & Destructuring
 An ordered list of items. String, list, tuple, range, bytes and bytearray. Dictionaries are ordered from 3.6 onwards.
 
 ```py
@@ -15,19 +36,7 @@ numbers = [3, 5]
 print(multiply(*numbers))
 ```
 
-## Type Conversions:
-Can use type() or isinstance()
-```python
-int()     'int'
-float()   'float'
-str()     'str'
-tuple()   'tuple'
-list()    'list'
-dict()    'dict'
-set()     'set'
-```
-
-## Operations:
+## Operations
 ```python
 a/b     # float
 a//b    # integer
@@ -36,7 +45,7 @@ a % b   # remainder after integer division
 sevens = range(7, 1000, 7)      // divisble by 7
 ```
 
-## Working with Loops:
+## Working with Loops
 Use either break, continue or pass to perform additional tasks in for loops or while loops:
 - Break: provides opportunity to exit out of a loop if external condition is triggered
 - Continue: skips over the part of a loop where an external condition is triggered but goes to complete rest of loop.
@@ -54,7 +63,19 @@ for number in range(10):
 
 ```
 
-## strings and Slices:
+## Type Conversions
+Can use type() or isinstance()
+```python
+int()     'int'
+float()   'float'
+str()     'str'
+tuple()   'tuple'
+list()    'list'
+dict()    'dict'
+set()     'set'
+```
+
+### Strings and Slices
 ```python
 'this string\n has been\n split'
 tabbed\t strings
@@ -80,7 +101,7 @@ len(string)
 ",".join(x if x not in separators else " " for x in number)
 ```
 
-## String Replacement:
+#### String Replacement
 ```python
 print('my age is {0}, born in {1}'.format('12', '1993')
 print('pi is approx {0:12}'.format(22/7))   # defualt for 15 decimals
@@ -94,10 +115,10 @@ print(f'my name is {name}, age {age}')
 print(x,y, sep='\n')
 ```
 
-## True vs False:
+### Truthy vs Falsy
 False object are None, False, 0, 0.0, 0j, '', (), {}, range(0). Use any() or all() to check for truth in lists.
 
-## Lists:
+### Lists
 ```
 append()
 clear()
@@ -129,7 +150,7 @@ print(next(vowels_iter))    # 'e'
 
 ```
 
-## Sets:
+### Sets
 Use sets to compare lists with lists or to output unique values only.
 ```py
 query_op = {'AND': {'id': '123'}}
@@ -146,7 +167,7 @@ order_ids = set(
 del_id = next(iter(all_ids.difference(order_ids)))
 ```
 
-## Tuples:
+### Tuples
 Same as lists but immutable. Can be destructured. Accessed by []. When function returns multiple values, the result is a tuple.
 
 ```python
@@ -155,7 +176,7 @@ title, year, artist = metallica
 print(title)
 ```
 
-## Dictionaries:
+### Dictionaries
 When converting Dictionaries to JSON, it doesn't respect order if use OrderedDict() and sorts key alphabetically. Best to use a list of dictionaries.
 ```python
 ordered_dict = OrderedDict()
@@ -194,7 +215,7 @@ if 'some_key' in dict:  # cannot use hasattr() method
     return
 ```
 
-## Inspect:
+## Inspect
 Provides useful functions to help get information about live objects i.e. examine contents of class, retrieve source code of method, extract and format the argument list for a function, or get all information to display a detailed traceback for debugging.
 
 ```
