@@ -8,7 +8,7 @@ Employed to store user data (password, preferences, IP address, date/time of vis
 
 Client cannot access cookie if HttpOnly flag is true. Has SSL support. Data are transferrred on each HTTP request. 
 
-#### Important
+### IMPORTANT
 For browser to set cookies from cross-site origin, need to configure:
 1) setCredentials to true from client side for all requests to server (login and post login).
 2) Set Access-Control-Allow-Credentials to true in server-side.
