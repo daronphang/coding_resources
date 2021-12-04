@@ -103,6 +103,9 @@ len(string)
 
 #### String Replacement
 ```python
+txt = 'hello world'
+x = txt.replace('world', 'awesome world')
+
 print('my age is {0}, born in {1}'.format('12', '1993')
 print('pi is approx {0:12}'.format(22/7))   # defualt for 15 decimals
 {0:12f}   # default for 6 decimals
