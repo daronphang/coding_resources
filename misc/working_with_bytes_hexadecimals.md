@@ -1,4 +1,4 @@
-## Python:
+### Python
 Hexadecimal has base 16 and is represented with prefix 0x.
 ```py
 # converting string to hexadecimal string
