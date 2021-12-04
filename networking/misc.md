@@ -6,6 +6,10 @@ Number used to uniquely identify a transaction over a network. Default for TCP p
 49152-655536    Dynamic or private ports
 ```
 
+### Bandwidth
+- Bandwidth: The volume of information that can be sent over a connection in a measured amount of time (calculated in Mbps). 
+- Speed: How fast the information is received or downloaded.
+
 ### IP Address
 ```
 127.0.0.1:<host port>         localhost
