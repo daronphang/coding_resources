@@ -1,4 +1,4 @@
-## Bootstrap:
+### Bootstrap
 Bootstrap is an open-source CSS framework used for developing responsive websites (CSS does not provide responsive websites). Based on grid system and able to add pre-defined classes into code without writing from scratch. Other CSS frameworks include Foundation, Bulma, UIkit and Susy.
 ```
 <!doctype html>
@@ -28,7 +28,8 @@ Bootstrap is an open-source CSS framework used for developing responsive website
 ```
 
 Link Reference: https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp
-## Bootstrap Classes:
+
+### Bootstrap Classes
 ```
 .col:
 <div class="col-sm-4">{{ wtf.quick_form(form) }}</div>
@@ -40,7 +41,8 @@ Link Reference: https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.as
   </a>
 </div>
 ```
-## Containers:
+
+### Containers
 Used to establish the width for the layout. Have default fixed widths that will change based on the size of viewing device. Allows up to 12 columns across a page.
 ```
 <div class="container">     # use container-fluid to not fix the width size
