@@ -1,4 +1,4 @@
-## Common HTML Tags Reference:
+## HTML Tags
 Link Reference: <https://www.w3schools.com/tags/default.asp>
 ```
 <head>  
@@ -19,16 +19,9 @@ Link Reference: <https://www.w3schools.com/tags/default.asp>
 
 <h1 style="font-size:40px;"> Check this out </h1>   #inline styling example
 ```
-## Tag Examples:
+### Example
 ```html
 <label for="phone">Enter a phone number:</label><br><br>
 <input type="tel" id="phone" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br><br>
 <!-- placeholder is the light grey text for reference --> 
 ``` 
-
-```
-Inline          Default like <span>
-Block           Block elements like <div> or <p>
-Inline-block    Shows an element as an inline-level block container
-Box-sizing      Displays browser-sizing properties
-```
