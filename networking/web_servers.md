@@ -1,9 +1,9 @@
-# Web Servers:
+### Web Servers
 Web server is used to store and deliver website content. Refers to both hardware and software. On hardware side, web server is a computer that stores web server software and website's component files such as HTML docs, images, JS and CSS. It connects to the Internet and support physical data interchange with other devices. On software side, a web server includes several parts that control how web users access hosted files, having at least a single HTTP server whhich understands URLs and HTTP protocol. 
 
 Web servers are used to serve Web pages requested by clients i.e tool responsible for server-client communication through HTTP protocol. Biggest challenge is to serve many web users requesting different pages written in different programming languages. Web Servers turn files into static HTML and serve them in browser. 
 
-## Web-Browser and Web-Server Communication Protocol:
+### Web-Browser and Web-Server Communication Protocol
 1. Client specifies URL in web browser.
 2. Web browser makes request to Domain Name Server (DNS) and translates URL to obtain IP address which brings browser to web server.
 3. Browser establishes TCP/IP (protocols) socket connection with server.
@@ -36,5 +36,5 @@ Content-Type: text/html
 <BODY>
 ```
 
-## Apache:
+### Apache
 Most commonly used web server on Linux systems.  Apache Web Servers are often used in combination with MySQL database engine, PHP, Python and Perl (configuration is termed LAMP).
