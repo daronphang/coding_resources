@@ -1,7 +1,7 @@
-## Setting Up VSCode:
+### Setting Up VSCode
 Stable version: January 2021, version 1.53.2 
 
-### Extensions:
+### Extensions
 1) AREPL for real-time evaluation
 2) Kite AutoComplete AI Code (need install Kite Engine)
 3) Monokai Dimmed
@@ -18,7 +18,7 @@ Stable version: January 2021, version 1.53.2
 14) ESLint
 15) Remote Development
 
-### JS Prettier and ESLint Setup:
+### JS Prettier and ESLint Setup
 ```
 // go to project directory root folder
 npm install eslint --save-dev
@@ -58,7 +58,7 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 }
 ```
 
-### Angular:
+### Angular
 1. Npm install prettier.
 2. Create .prettierrc.json/.prettierrc and .prettierignore files.
 3. Configure JSON settings for VSCode.
@@ -88,7 +88,7 @@ package.json
 ```
 
 
-### Remote Development:
+### Remote Development
 When cloning a repo, can run in container instead of running npm install locally. Container contains all node_modules dependencies. Main difference is that need to specify "host" parameter to tell Angular/React to connect to IP address. Also unable to use certain Windows commands in terminal as container is running in Linux (debian).
 
 ```
@@ -99,10 +99,10 @@ ng build --project=@omelek/library-name
 ng g c my-new-component --project=@omelek/library-name
 ```
 
-### Linting:
+### Linting
 Need to install pylint in virtual environment; activation depends on autosave function. 
 
-### Customization in settings.json:
+### Customization in settings.json
 ```json
 {
   "python.pythonPath": "venv\\Scripts\\python.exe",
