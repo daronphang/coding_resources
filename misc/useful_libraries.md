@@ -1,4 +1,4 @@
-## Javascript:
+### Javascript
 ```
 # JAVASCRIPT
 graphQL             
@@ -24,18 +24,18 @@ material-ui
 notistack             Handles multiple snackbar
 ```
 
-## Python:
+### Python
 ```
 Flask
 Django
 ```
 
-## Designing:
+### Designing
 ```
 Figma
 ```
 
-## Project Planning:
+### Project Planning
 ```
 Microsoft Azure Ops
 ```
