@@ -33,8 +33,7 @@ CORS specification defines complex request as:
 - Includes headers other than Accept, Accept-Language or Content-Language.
 - Has Content-Type header other than application/x-www-form-urlencoded, multipart/form-data or text/plain.
 
-#### OPTIONS Request
-Requires three headers:
+OPTIONS request requires three headers: 
 1) Access-Control-Request-Method
 2) Access-Control-Request-Headers
 3) Origin
