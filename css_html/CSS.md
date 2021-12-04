@@ -33,10 +33,13 @@ sticky      Positioned based on user's scroll position
 ```
 
 ### Display
-```
-block     Able to set wiwdth and height
-```
 
+```
+inline          Default like <span>
+block           Block elements like <div> or <p>; Able to set wiwdth and height
+inline-block    Shows an element as an inline-level block container
+box-sizing      Displays browser-sizing properties
+```
 
 ### Flex
 Method used for space distribution between items in an interface with powerful alignment capabilities.
