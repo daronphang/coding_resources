@@ -1,4 +1,4 @@
-## Self Attributes:
+### Self Attributes
 ```
 self.__class__                  Get class of current instance
 self.__class__.__base__         Get parent class
@@ -6,7 +6,7 @@ self.__class__.__name__
 self.__dict__                   Get instance attributes and values in dict format
 ```
 
-## Class Attribute vs Instance Attribute:
+### Class Attribute vs Instance Attribute
 An instance attribute is a Python variable belonging to one object. Variable is only accessible in scope of object and defined inside constructor.
 
 Class attribute belongs to class rather than an instance of an object. Shared between all objects of class and defined outside of constructor. Useful for storing constants Class-wide or defining default values.
@@ -19,7 +19,7 @@ class ExampleClass(object):
     self.instance_attr = instance_attr
 ```
 
-## Class Functions with Decorators:
+### Class Functions with Decorators
 If need to pass class/instance attribute to decorator that receives argument, declare the function in initialization.
 
 ```py
@@ -51,7 +51,7 @@ class CrudOperations:
         }
 ```
 
-## Super Classes:
+### Super Classes
 For multiple inheritance whereby both classes have same method name, Method Resolution Order (MRO) algorithm comes into play which decides where Python will look for a given method, and which method will be called when there's a conflict. Order is child class, followed by left to right.  
 
 ```python
@@ -93,7 +93,7 @@ cs.draw()
 
 ```
 
-## Mixin:
+### Mixin
 A Mixin is a class that provides methods to other classes (a utility class) but not considered as a base class itself i.e. not instantiated by itself. Mixins provide a safe form of multiple inheritance as they enforce a new constraint on classes and can't fall prey to diamond inheritance problems. No limit on number of mixins that can be used to compose a new class. Subclasses that inherit from Mixin only inherit that feature and nothing else.  Useful when:
 - Want to provide alot of optional features for a class.
 - Want to use one particular feature in alot of different classes.
