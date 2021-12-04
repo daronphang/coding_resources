@@ -1,4 +1,4 @@
-## Transitions:
+### Transitions
 Property defined in CSS classes. Alternative to animations. Cannot define display property.
 
 ```css
@@ -7,7 +7,7 @@ Property defined in CSS classes. Alternative to animations. Cannot define displa
 }
 ```
 
-## Animations:
+### Animations
 Consists of two components, a style describing the CSS animation and a set of keyframes that indicate the start and end states. When specifying CSS styles inside @keyframes, animation will gradually change from current style to new style at certain times.
 
 ```css
