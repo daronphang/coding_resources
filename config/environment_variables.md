@@ -1,4 +1,4 @@
-## PATH:
+### PATH
 Environment variables hold values related to current environment. Most well-known is PATH which specifies the directories in which executable programs are located on the machine
 that can be started without knowing and typing whole path in cmd. Steps to change/add:
 1. Search environment variables in Start search or type in run command "sysdm.cpl".
