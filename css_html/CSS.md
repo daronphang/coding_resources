@@ -1,4 +1,4 @@
-## CSS:
+### CSS
 Stands for Cascading Style Sheets that specify document's style i.e. page layouts, colors, and fonts. Consists of selector and declaration.
 ```
 p {
@@ -10,7 +10,7 @@ p {
 # text-align is the declaration that contains properties and values applied to the selector
 ```
 
-## Units:
+### Units
 ```
 // Absolute length:
 cm, mm, in, px
@@ -22,7 +22,7 @@ vh      Relative to 1% of height of viewport.
 %       Relative to parent element.
 ```
 
-## Flex:
+### Flex
 Method used for space distribution between items in an interface with powerful alignment capabilities.
 ```css
 .container {
@@ -44,7 +44,7 @@ Method used for space distribution between items in an interface with powerful a
 
 ```
 
-## Horizontal/Vertical Alignment:
+### Horizontal/Vertical Alignment
 ```css
 .horizontal {
     display: flex;
@@ -67,7 +67,7 @@ Method used for space distribution between items in an interface with powerful a
 ```
 
 
-## CSS Tricks:
+### CSS Tricks
 ```css
 min-width: 55em;                    Prevent container size from resizing when user resizes window
 overflow: hidden;                   Prevent inner content from overflowing the wrapping container outline
@@ -111,7 +111,7 @@ html {                              Offset for anchor tag if have fixed navbar
 filter: blur(5px);                  Applies graphical effects to an element to adjust rendering of images/borders
 ```
 
-## Pseudo Elements:
+### Pseudo Elements
 Allows you to insert content on the page without writing HTML for it i.e. not an actual DOM element. Inline by default. Cannot use an image in pseudo elements. 
 To style specified parts of an element. Used with :: as contrast with pseudo-classes (single :). Useful cases include icons, borders, arrows and quotes.
 
