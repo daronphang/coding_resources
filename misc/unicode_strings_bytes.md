@@ -1,4 +1,4 @@
-## History:
+### History
 Characters in computer were represented with 8 bits (1 byte) of memory. A bit a single binary digit that can represent 0 or 1. 1 byte can have 255 different combinations of binary (255 different numbers).
 ```
 01100010 01101001 01110100 01110011
@@ -7,10 +7,10 @@ b        i        t        s
 # word 'bits' is equivalent to 4 bytes or 2^32.
 ```
 
-## Decimal (Base10):
+### Decimal (Base10)
 Number system that is represented with 10 unique digits. 
 
-## HEX (Base16):
+### HEX (Base16)
 Uses a set of 16 unique digits. Uses standard 0-9 and A-F. Provides a human-friendly representation of binary-coded values. Each hexadecimal digit represents 4 bits.
 
 ```
@@ -25,7 +25,7 @@ Dec   Hex   Binary
 37    25    100101
 ```
 
-## ASCII:
+### ASCII
 The first character set of encoding standard between computers on the internet. 128 characters containing 0-9, A-Z in upper and lower case, and some special characters. Each character is represented by a number between 32-127. Each character requires 7 bits. Character sets used in modern computers and HTML are based on ASCII.
 ```
 Dec	Hex	Binary    HTML	Char
@@ -53,7 +53,7 @@ Dec	Hex	Binary    HTML	Char
 As ASCII characters utilize 7 bits, there are still 127 more combinations to be represented; this gave birth to extended ASCII. However, different organizations
 came up with their own variants; this led to conflicted character encodings, and each extended ASCII was platform dependent.
 
-## Unicode:
+### Unicode
 Universal character standard that assigns a codepoint to every character, number and symbol in every language in the world. Unicode characters can be referenced 
 by their codepoint. Has backwards compatability with ASCII. Total of 143,859 characters.
 ```
@@ -72,7 +72,7 @@ U+0045	69    E
 # Unicode uses hexadecimal base 
 ```
 
-### Unicode Transformation Format:
+#### Unicode Transformation Format
 Problem with Unicode is that to represent 100,000 characters (or 100,000 numbers equivalent), need 32 bits per character. However, first 128 characters of ASCII
 need only 7 bits. To eliminate wastage, different UTF encodings were introduced. To represent Unicode characters as binary data (raw 8-bit values).
 ```
@@ -93,20 +93,20 @@ Char Dec Unicode UTF-8             Binary
 ã    227 U+0343  11000011 10100011 00011100011 = 11100011
 ```
 
-### Unicode Encoding & Decoding:
+#### Unicode Encoding/Decoding
 ```
 encode('utf-8')     convert str into bytes
 decode('utf-8')     convert bytes into str
 ```
 
-## Unicode vs ASCII:
+### Unicode vs ASCII
 ASCII is deisgned to represent basic English characters (128 characters). Uses one byte to represent each character.  
 Unicode designed to support characters from all languages across the world (1,000,000 characters). Supports up to four bytes per character.
 
-## Base64 vs HEX (Base16):
+### Base64 vs HEX (Base16)
 different ways of representing bytes (binary). HEX takes 2 characters for each byte while Base64 takes 4 characters for every 3 bytes and hence, it is more efficient i.e. 100K file will take 200K to encode in HEX and 133K in Base64.
 
-## Python 3:
+### Python 3
 A string object is made up of Unicode characters that is only human readable. Each Unicode character is assigned a code point which can be expressed as a sequence of hex digits.  
 A byte object is a sequence of bytes. Machine readable and can be saved into memory. Can be used in applications that process pure ASCII instead of unicode text.
 ```python
@@ -120,5 +120,5 @@ stringobject = '\u0061\u006E\u0074'   # Unicode codepoints, a hexadecimal number
 'τoρνoς'
 ```
 
-## Reading Weird Characters:
+### Reading Weird Characters
 The editor/browser that's trying to read the document is assuming the wrong encoding.
