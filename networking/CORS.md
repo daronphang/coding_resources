@@ -1,4 +1,4 @@
-## CORS:
+### CORS
 Cross-Origin Resource Sharing. A protocol that enables scripts running on browser client to interact with resources from a different origin such as different domain, scheme
 or port. Same-origin policy can be very restrictive as many websites interact with sub-domains or third-party sites.
 
@@ -26,28 +26,18 @@ HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://malicious-website.com
 Access-Control-Allow-Credentials: true
 ```
-## Preflight Requests for Complex HTTP Calls:
+### Preflight Requests (Complex HTTP Calls)
 If web app needs to make a complex HTTP request, the browser adds a preflight request to the front of request chain. Creates OPTIONS request. Preflight request is automatically issued by browser.
 CORS specification defines complex request as:
 - Uses other methods than GET, POST or HEAD.
 - Includes headers other than Accept, Accept-Language or Content-Language.
 - Has Content-Type header other than application/x-www-form-urlencoded, multipart/form-data or text/plain.
 
-### OPTIONS request uses three HTTP request headers:
+#### OPTIONS Request
+Requires three headers:
 1) Access-Control-Request-Method
 2) Access-Control-Request-Headers
 3) Origin
-
-### Workflow:
-1. Browser sends OPTIONS request to server (preflight request).
-2. Server checks if it allows OPTIONS request (response headers must include Allow: POST, OPTIONS).
-3. If accepted, browser then sends original POST/PUT/DELETE/GET requests.
-
-## Why Postman Does Not Throw Error:
-- CORS standard is implemented by browser which prevents call from completing and generates error message.
-- Postman does not implement CORS restrictions as CORS defines restrictions relative to origin of page which initiates the request.
-- Postman does not originate from a page with an URL.
-
 
 ```
 // check if server supports request method
@@ -82,9 +72,13 @@ Keep-Alive: timeout=2, max=100
 Connection: Keep-Alive
 ```
 
-## CSRF Attacks:
-Refers to Cross-Site Request Forgery where sessions are abused and trick application users to execute malicious code. Allows an attacker to circumvent the same origin policy. Examples include changing email address, password, making funds transfer, etc. Attack inherits the identity and privileges of victim to perform an undesired function on victim's behalf through the following:
-- Authenticated users normally send session cookie with every request; if victim visits/loads attacker's site (similar to original site), they can steal session and perform malicious code to actual website. 
-- Victim logins into attacker's site (login CSRF). 
 
-To prevent this, can prevent sessions from using unless users are using expected views i.e. CSRF token. Tokens are generated for every page rendered and sent as a response from backend server. 
+### Workflow
+1. Browser sends OPTIONS request to server (preflight request).
+2. Server checks if it allows OPTIONS request (response headers must include Allow: POST, OPTIONS).
+3. If accepted, browser then sends original POST/PUT/DELETE/GET requests.
+
+### Why Postman Does Not Throw Error
+- CORS standard is implemented by browser which prevents call from completing and generates error message.
+- Postman does not implement CORS restrictions as CORS defines restrictions relative to origin of page which initiates the request.
+- Postman does not originate from a page with an URL.
