@@ -66,7 +66,7 @@ ROLLBACK <TRANSACTION NAME>
 ```
 
 ### XACT_STATE
-Function that reports the user transaction state of current running request. SET XACT_ABORT ON will instruct SQL to rolblack the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
+Function that reports the user transaction state of current running request. SET XACT_ABORT ON will auto rollback the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
 ```
 1	Current request has active user transaction and capable of committing 
 0	No active user transaction for current request
