@@ -125,5 +125,113 @@ END CATCH;
 ```
 
 ### Common Errors
-#### Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements
-When you exit a stored procedure, and @@trancaount has a different value from when the procedure started executing, SQL Server will raise this error.
+#### Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements (266)
+When you exit a stored procedure, and @@trancaount has a different value from when the procedure started executing, SQL Server will raise this error. However, it may also appear as a consequence of other errors i.e. noise on the wire. In this situation, preferably to filter out error 266 as long as there are other errors.
+
+### Example
+```sql
+ALTER PROCEDURE [dbo].[update_user_settings]
+@delim VARCHAR(5),
+@username VARCHAR(50),
+@del_did VARCHAR(255),
+@del_step VARCHAR(MAX),
+@add_oid VARCHAR(MAX),
+@add_did VARCHAR(255),
+@add_step VARCHAR(MAX),
+@add_mask_level VARCHAR(255),
+@add_trav_id VARCHAR(MAX)
+AS
+BEGIN
+	BEGIN TRY
+		-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+		SET NOCOUNT ON;
+		-- SET XACT_ABORT ON will auto rollback current transaction when run-time error occurs.
+		SET XACT_ABORT ON;
+ 
+		 -- Deleting DIDs
+		DELETE FROM myassistant.dbo.user_settings WHERE
+		did IN (SELECT value FROM myassistant.dbo.SPLIT_STRING(@del_did, @delim)) OR
+		process_step IN (SELECT value FROM myassistant.dbo.SPLIT_STRING(@del_step, @delim));
+
+		-- INSERT rows into table if string is not empty
+		DECLARE @start_oid SMALLINT = 1
+		DECLARE @end_oid SMALLINT = CASE WHEN CHARINDEX(@delim, @add_oid) > 0 THEN CHARINDEX(@delim, @add_oid) ELSE LEN(@add_oid) + 1 END
+		DECLARE @oid_value BINARY(8)
+
+		DECLARE @start_did SMALLINT = 1
+		DECLARE @end_did SMALLINT = CASE WHEN CHARINDEX(@delim, @add_did) > 0 THEN CHARINDEX(@delim, @add_did) ELSE LEN(@add_did) + 1 END
+		DECLARE @did_value CHAR(4)
+
+		DECLARE @start_step SMALLINT = 1
+		DECLARE @end_step SMALLINT = CASE WHEN CHARINDEX(@delim, @add_step) > 0 THEN CHARINDEX(@delim, @add_step) ELSE LEN(@add_step) + 1 END
+		DECLARE @step_value VARCHAR(50)
+
+		DECLARE @start_level SMALLINT = 1
+		DECLARE @end_level SMALLINT = CASE WHEN CHARINDEX(@delim, @add_mask_level) > 0 THEN CHARINDEX(@delim, @add_mask_level) ELSE LEN(@add_mask_level) + 1 END
+		DECLARE @level_value CHAR(2)
+
+		DECLARE @start_trav SMALLINT = 1
+		DECLARE @end_trav SMALLINT = CASE WHEN CHARINDEX(@delim, @add_trav_id) > 0 THEN CHARINDEX(@delim, @add_trav_id) ELSE LEN(@add_trav_id) + 1 END
+		DECLARE @trav_value CHAR(10)
+
+		-- For getting loop count
+		DECLARE @counter SMALLINT = LEN(@add_did) - LEN(REPLACE(@add_did, @delim, '')) + 1
+
+		--Adding entries to user settings
+		WHILE @counter > 0 BEGIN
+			SET @oid_value = CONVERT(BINARY(8), SUBSTRING(@add_oid, @start_oid, @end_oid - @start_oid))
+			SET @did_value = SUBSTRING(@add_did, @start_did, @end_did - @start_did)
+			SET @step_value = SUBSTRING(@add_step, @start_step, @end_step - @start_step)
+			SET @level_value = SUBSTRING(@add_mask_level, @start_level, @end_level - @start_level)
+			SET @trav_value = SUBSTRING(@add_trav_id, @start_trav, @end_trav - @start_trav)
+			INSERT INTO dbo.user_settings (user_settings_OID, username, did, process_step, mask_level, trav_id) VALUES (
+			@oid_value,
+			@username,
+			@did_value,
+			@step_value,
+			@level_value,
+			@trav_value
+			)
+			SET @start_oid = @end_oid + 1
+			SET @start_did = @end_did + 1
+			SET @start_step = @end_step + 1
+			SET @start_level = @end_level + 1
+			SET @start_trav = @end_trav + 1
+
+			SET @end_oid = CASE WHEN CHARINDEX(@delim, @add_oid, @start_oid) > 0 THEN CHARINDEX(@delim, @add_oid, @start_oid) ELSE LEN(@add_oid) + 1 END
+			SET @end_did = CASE WHEN CHARINDEX(@delim, @add_did, @start_did) > 0 THEN CHARINDEX(@delim, @add_did, @start_did) ELSE LEN(@add_did) + 1 END
+			SET @end_step = CASE WHEN CHARINDEX(@delim, @add_step, @start_step) > 0 THEN CHARINDEX(@delim, @add_step, @start_step) ELSE LEN(@add_step) + 1 END
+			SET @end_level = CASE WHEN CHARINDEX(@delim, @add_mask_level, @start_level) > 0 THEN CHARINDEX(@delim, @add_mask_level, @start_level) ELSE LEN(@add_mask_level) + 1 END
+			SET @end_trav = CASE WHEN CHARINDEX(@delim, @add_trav_id, @start_trav) > 0 THEN CHARINDEX(@delim, @add_trav_id, @start_trav) ELSE LEN(@add_trav_id) + 1 END
+
+			SET @counter = @counter - 1
+		END
+	END TRY
+	BEGIN CATCH
+		DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+		DECLARE @ErrorNumber INT = ERROR_NUMBER();
+		DECLARE @ErrorSeverity SMALLINT = ERROR_SEVERITY();
+		DECLARE @ErrorProcedure VARCHAR(55) = ERROR_PROCEDURE();
+		DECLARE @ErrorLine INT = ERROR_LINE();
+		DECLARE @ErrorState INT = ERROR_STATE();
+
+		SELECT  
+		@ErrorNumber AS ErrorNumber,
+		@ErrorSeverity AS ErrorSeverity,
+		@ErrorProcedure AS ErrorProcedure,
+		@ErrorLine AS ErrorLine,
+		@ErrorMessage AS ErrorMessage;
+
+		IF (XACT_STATE()) = -1 BEGIN
+			ROLLBACK TRANSACTION
+		END
+
+		-- rollback transaction in CATCH block to not commit statements that ran prior to error
+		IF (XACT_STATE()) = 1 BEGIN
+			ROLLBACK TRANSACTION
+		END
+
+		RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+	END CATCH
+END
+```
