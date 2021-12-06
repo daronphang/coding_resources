@@ -64,9 +64,58 @@ ROLLBACK <TRANSACTION NAME>
 ```
 
 ### XACT_STATE
-Function that reports the user transaction state of current running request.
+Function that reports the user transaction state of current running request. SET XACT_ABORT ON will instruct SQL to rolblack the entire transaction and abort batch when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
 ```
 1	Current request has active user transaction and capable of committing 
 0	No active user transaction for current request
 -1	Current request has active user transaction but an error has occurred (uncommittable)
+```
+
+### TRY CATCH
+Catches all execution errors that have severity higher than 10 that do not close the database connection. If there are no errors enclosed in TRY block, control passes to statement immediately after END CATCH after executing last statement in TRY block. If END CATCH statement is last statement in stored procedure/trigger, control is passed back to the statement that called the stored procedure/trigger. 
+
+#### Errors Unaffected by TRY CATCH
+- Warnings or informational messages that have severity of 10 or lower.
+- Errors having severity of 20 or higher that stop database connection (errors higher than 20 and do not disrupt database connection will be handled by TRY CATCH).
+- Sessions ended by system admin using KILL statement.
+
+Following errors are not handled by TRY CATCH when they occur at same level of execution as TRY CATCH; these errors are returned to the level that ran the batch/stored procedure/trigger:
+- Compile errors such as syntax errors that prevents a batch from running.
+- Object name resolution errors.
+
+https://docs.microsoft.com/en-us/sql/t-sql/language-elements/try-catch-transact-sql?view=sql-server-ver15
+
+```sql
+BEGIN TRY  
+    -- Table does not exist; object name resolution  
+    -- error not caught.  
+    SELECT * FROM NonexistentTable;  
+END TRY  
+BEGIN CATCH  
+    SELECT   
+        ERROR_NUMBER() AS ErrorNumber  
+       ,ERROR_MESSAGE() AS ErrorMessage;  
+END CATCH  
+```
+```sql
+-- Verify that the stored procedure does not exist.  
+IF OBJECT_ID ( N'usp_ExampleProc', N'P' ) IS NOT NULL   
+    DROP PROCEDURE usp_ExampleProc;  
+GO  
+  
+-- Create a stored procedure that will cause an   
+-- object resolution error.  
+CREATE PROCEDURE usp_ExampleProc  
+AS  
+    SELECT * FROM NonexistentTable;  
+GO  
+  
+BEGIN TRY  
+    EXECUTE usp_ExampleProc;  
+END TRY  
+BEGIN CATCH  
+    SELECT   
+        ERROR_NUMBER() AS ErrorNumber  
+        ,ERROR_MESSAGE() AS ErrorMessage;  
+END CATCH;  
 ```
