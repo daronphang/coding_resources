@@ -1,13 +1,14 @@
-## START TRANSACTION, COMMIT and ROLLBACK:
+## MySQL
+### START TRANSACTION, COMMIT and ROLLBACK
 MySQL runs with autocommit enabled i.e. if have 3 queries and second fails, first query will be committed. To disable autocommit, use START TRANSACTION.
 
-## Implict Commits:
+### Implict Commits
 Some statements implicitly end any transaction active in current session i.e. done a commit before executing the statement, and also cause implicit commit after executing.
 
 https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html
 
 
-## Example:
+### Example
 ```sql
 CREATE PROCEDURE `reorderPortfolio1`(
 IN delimiter VARCHAR(10),
@@ -47,4 +48,25 @@ START TRANSACTION;
 	ALTER TABLE user_portfolios DROP INDEX userId_2;
 COMMIT;
 END
+```
+
+## SQL Server
+### TRANCOUNT
+@@TRANCOUNT function records the current transaction nesting level. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more. 
+
+```
+BEGIN TRANSACTION		@@TRANCOUNT increments by 1
+COMMIT TRANSACTION		@@TRANCOUNT decrements by 1
+COMMIT WORK			@@TRANCOUNT decrements by 1
+ROLLBACK WORK			@@TRANCOUNT decrements to 0 (not in transaction)
+ROLLBACK TRANSACTION		@@TRANCOUNT decrements by 0 (not in transaction)
+ROLLBACK <TRANSACTION NAME>	
+```
+
+### XACT_STATE
+Function that reports the user transaction state of current running request.
+```
+1	Current request has active user transaction and capable of committing 
+0	No active user transaction for current request
+-1	Current request has active user transaction but an error has occurred (uncommittable)
 ```
