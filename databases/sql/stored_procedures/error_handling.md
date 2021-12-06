@@ -51,8 +51,10 @@ END
 ```
 
 ## SQL Server
+https://www.sommarskog.se/error_handling/Part2.html#classification
+
 ### TRANCOUNT
-@@TRANCOUNT function records the current transaction nesting level. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more. 
+ @@ in SQL Server denotes global variables. @@TRANCOUNT function records the current transaction nesting level, and counts system and user-defined transactions i.e. BEGIN TRANSACTION. If ROLLBACK does not have transaction name, it will rollback all nested transactions and decrements @@TRANCOUNT to 0. To check if you are already in a transaction, check if @@TRANCOUNT is 1 or more. 
 
 ```
 BEGIN TRANSACTION		@@TRANCOUNT increments by 1
@@ -64,7 +66,7 @@ ROLLBACK <TRANSACTION NAME>
 ```
 
 ### XACT_STATE
-Function that reports the user transaction state of current running request. SET XACT_ABORT ON will instruct SQL to rolblack the entire transaction and abort batch when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
+Function that reports the user transaction state of current running request. SET XACT_ABORT ON will instruct SQL to rolblack the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
 ```
 1	Current request has active user transaction and capable of committing 
 0	No active user transaction for current request
@@ -72,11 +74,13 @@ Function that reports the user transaction state of current running request. SET
 ```
 
 ### TRY CATCH
-Catches all execution errors that have severity higher than 10 that do not close the database connection. If there are no errors enclosed in TRY block, control passes to statement immediately after END CATCH after executing last statement in TRY block. If END CATCH statement is last statement in stored procedure/trigger, control is passed back to the statement that called the stored procedure/trigger. 
+Catches all execution errors that have severity higher than 10 that do not close the database connection. If there are no errors enclosed in TRY block, control passes to statement immediately after END CATCH after executing last statement in TRY block. If END CATCH statement is last statement in stored procedure/trigger, control is passed back to the statement that called the stored procedure/trigger.
+
+When transactions are doomed in CATCH block, you cannot perform write.
 
 #### Errors Unaffected by TRY CATCH
 - Warnings or informational messages that have severity of 10 or lower.
-- Errors having severity of 20 or higher that stop database connection (errors higher than 20 and do not disrupt database connection will be handled by TRY CATCH).
+- Errors having severity of 20 or higher that stop database connection (errors higher than 20 will terminate the connection and hence, uncatchable).
 - Sessions ended by system admin using KILL statement.
 
 Following errors are not handled by TRY CATCH when they occur at same level of execution as TRY CATCH; these errors are returned to the level that ran the batch/stored procedure/trigger:
@@ -119,3 +123,7 @@ BEGIN CATCH
         ,ERROR_MESSAGE() AS ErrorMessage;  
 END CATCH;  
 ```
+
+### Common Errors
+#### Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements
+When you exit a stored procedure, and @@trancaount has a different value from when the procedure started executing, SQL Server will raise this error.
