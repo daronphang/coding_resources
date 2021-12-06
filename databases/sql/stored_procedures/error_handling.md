@@ -69,7 +69,7 @@ ROLLBACK <TRANSACTION NAME>
 Function that reports the user transaction state of current running request. SET XACT_ABORT ON will auto rollback the entire transaction and abort batch (cause transaction to be doomed) when a run-time error occurs that leaves transaction open i.e. constraint error, command timeout. 
 ```
 1	Current request has active user transaction and capable of committing 
-0	No active user transaction for current request
+0	No active user transaction for current request (commit/rollback operation would generate error)
 -1	Current request has active user transaction but an error has occurred (uncommittable)
 ```
 
