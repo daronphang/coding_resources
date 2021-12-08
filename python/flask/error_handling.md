@@ -71,7 +71,19 @@ def page_not_found(e):
 
 ### Werkzeug Abort
 Sometimes it is more convenient to just raise an exception by error code, without importing the exception.
+
+https://python.plainenglish.io/python-web-development-with-flask-error-handling-36349a7f82c
+
 ```py
 abort(404)
 abort(Response('hello world'))
+abort(404, 'hello world!')
+
+@app.errorhandler(400)
+def application_bad_request(e):
+    current_app.logger.error(e)
+    return jsonify({
+        'error': 'bad request',
+        'message': e.description,   # e returns error class
+    }), 400
 ```
