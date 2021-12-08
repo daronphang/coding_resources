@@ -87,3 +87,22 @@ def application_bad_request(e):
         'message': e.description,   # e returns error class
     }), 400
 ```
+
+### Error Classes
+Use inspect module to get class attributes.
+```py
+import inspect
+from flask import abort
+
+print(inspect.getmembers(obj))
+abort(400, e.args[1].decode('utf-8'))   # for mssql exceptions
+
+
+@api_v1.errorhandler(ValidationError)
+def schema_validation_error(e):
+    current_app.logger.error(e)
+    return jsonify({
+        'error': 'schema validation error',
+        'message': e.messages
+    }), 400
+```
