@@ -1,4 +1,4 @@
-## Error Handling:
+### Error Handling
 ```py
 from marshmallow import ValidationError
 from flask import current_app, jsonify
@@ -59,7 +59,7 @@ def internal_server_error(e):
     }), 500
 ```
 
-## Blueprint:
+### Blueprint
 If using @errorhandler, it will be invoked only for errors that originate in the routes defined by the blueprint. To install application-wide error handlers, use @app_errorhandler.
 ```py
 @main.app_errorhandler(404)
@@ -67,4 +67,11 @@ def page_not_found(e):
   return jsonify({
     'error': 'some error'
   })
+```
+
+### Werkzeug Abort
+Sometimes it is more convenient to just raise an exception by error code, without importing the exception.
+```py
+abort(404)
+abort(Response('hello world'))
 ```
