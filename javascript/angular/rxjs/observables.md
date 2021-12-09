@@ -1,4 +1,4 @@
-## Overview:
+### Overview
 - **Observable**: Data source i.e. from user input events, HTTP requests, etc. 
 - **Observer**: An interface that executes instructions when there is a new value or change in the Observable, and delivers values to the Observable using next(), error() or complete().
 - **Subscription**: An Object that represents a disposable resource with unsubscribe(). 
@@ -27,13 +27,13 @@ ngOnDestroy() {
 }
 ```
 
-## Advantages Over Promises:
+### Advantages Over Promises
 - An Observable pushes a stream of values whereas Promise pushes one resolved value.
 - Observables are declarative whereby computation does not start until subscription whereas promises are executed immediately on creation.
 - Error handlers can be done inside Observables rather than a construct like Promises.
 - Data can be transformed using operators through pipe(). 
 
-## Subjects:
+### Subjects
 Inherits operators and methods from Observable and implements Observer interface. An important distinction is that Observable is unicast while Subject is multicast i.e. Subject can cast values to multiple subscribers. Also have ReplaySubject for replaying last emitted event, and BehaviorSubject for setting initial value.
 ```javascript
 const subject = new Subject()
@@ -56,24 +56,29 @@ someEmitter = new Subject<boolean>();
 this.services.someEmitter.subscribe()   // or next()
 ```
 
-## Observables vs Subjects:
+### Subjects vs Variables
+When sharing data between components using Services, preferred is to use Observables:
+- Variable requires polling and has slower performance.
+- Angular change detection directly supports Observables. 
+
+### Observables vs Subjects
 - Observable and its Subscriber have one-to-one relationship (unicast).
 - Subject allows values to be multicasted to many Observers (one-to-many relationship).
 
 
-## Subscribe:
+### Subscribe
 Subscribe() can take 3 arguments as follows:
 1) onNext: Function to invoke for each element in observable sequence.
 2) onError: Function to invoke upon exceptional termination.
 3) onCompleted: Function to invoke upon graceful termination.
 
-## Unsubscribe:
+### Unsubscribe
 When navigating somewhere else, Angular will destroy the component; need to unsubscribe to prevent memory leak. Use pipe operators to auto-unsubscribe such as first() and take(). For unsubscribing best practices:
 - Store all subscriptions in an array and using .forEach() in ngOnDestroy().
 - Using .takeUntil()
 
 
-## Emitting Empty Observables:
+### Emitting Empty Observables
 ```js
 import { NEVER, EMPTY, of } from 'rxjs';
 
@@ -84,7 +89,7 @@ someObs$.pipe(tap(() => {
 }));
 ```
 
-## Subscribing to Multiple Observables:
+### Subscribing to Multiple Observables
 ```
 combineLatest()      Emits initial value only when all Observables emit at least one value
 forkJoin()           Emits the last emitted value from each observable when **all completes**
