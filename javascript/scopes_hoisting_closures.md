@@ -1,4 +1,4 @@
-## Scope:
+### Scope
 Scope is the context in which a variable exists; can be local or global. Assignments are not scoped. Variables can be declared in two ways:
 1) Using VAR which is function scoped.
 2) Using LET and CONST (ES6) which are block scoped {} i.e. within loops, conditionals (for, while, if, switch).
@@ -26,7 +26,7 @@ console.log(hero);                  //The Flash
 console.log(antiHero);              //Captain Cold
 ```
 
-## Hoisting:
+### Hoisting
 Behavior in Javascript in which variable and function declarations are moved to the top of their scope i.e. variable can be used before it has been declared. Variables defined with LET and CONST are hoisted but not initialized i.e. cannot be used until it has been declared. However, assigning value to undeclared variable implicitly creates it as a global variable.
 
 ```javascript
@@ -67,7 +67,7 @@ carName = "Volvo";
 const carName;  // code will not run, syntax error
 ```
 
-### Hoisting Functions:
+#### Hoisting Functions
 Function declarations are hoisted, while function expressions are not.
 
 ```javascript
@@ -86,7 +86,7 @@ var expression = function() {
 };
 ```
 
-## Closures:
+### Closures
 Functions in Javascript form closures. Closure is the combination of a function and the lexical environment within which that function was declared (access to global variables). This environment consists of any local variables that were in-scope at the time the closure was created. When nested functions are created, the inner function has access to scope "above" it. 
 
 Closure is a feature where an inner function has access to outer (enclosing) function's variables. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function) i.e. closure of a function remembers variables from the place where it was defined, regardless of where it is executed later. Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
@@ -109,7 +109,7 @@ function outerFunc() {
 outerFunc();
 ```
 
-### Lexical Scoping:
+### Lexical Scoping
 Lexical (static) scoping means that inside the inner scope you can access variables of outer scopes. Lexical scope consists of outer scopes determined statically.
 
 ```js
@@ -124,7 +124,7 @@ function init() {
 init();
 ```
 
-### Sequence of Events from Closure:
+### Sequence of Events from Closure
 ```js
 function outer() {
 var b = 10;
@@ -164,7 +164,7 @@ Sequence of events:
 9) X() completes execution and variable a ceased to exist but b is preserved as closure and continues to exist.
 
 
-### Examples:
+### Examples
 ```js
 // global scope
 var e = 10;
