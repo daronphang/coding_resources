@@ -218,7 +218,13 @@ if 'some_key' in dict:  # cannot use hasattr() method
     return
 ```
 
-## Inspect
+### Subscriptable
+Subscriptable objects are objects with a __getitem__ method such as lists, dictionaries and tuples. Class methods are not subscriptable; instead, add another function that returns the method.
+```py
+some_class
+```
+
+### Inspect
 Provides useful functions to help get information about live objects i.e. examine contents of class, retrieve source code of method, extract and format the argument list for a function, or get all information to display a detailed traceback for debugging.
 
 ```
