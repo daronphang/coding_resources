@@ -227,11 +227,17 @@ class CrudOperations:
         self.as_dict = as_dict
         self.update_user_settings = mssql_connection_crud_operation(conn_payload, as_dict)(self.update_user_settings)
     
-    def get_method(self, method_name):
+    def get_all_attributes(self, method_name):
         members = inspect.getmembers(self)
-        for methods in members:
-            if method_name in methods:
-                return methods[1]
+        for attribute, value in members:
+            if method_name == attribute:
+                return value
+        abort(400, 'crud method not found')
+        
+    def get_instance_attributes(self, method_name):
+        for attribute, value in self.__dict__.items():
+            if method_name == attribute:
+                return value
         abort(400, 'crud method not found')
 ```
 
