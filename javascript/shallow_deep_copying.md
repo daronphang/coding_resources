@@ -1,4 +1,4 @@
-## Deep vs Shallow Copying:
+### Deep vs Shallow Copying
 Shallow copy is bit-wise copy of an object (copying reference address only) i.e. both variables have same address and hence point to same memory location. Deep copy (cloning) means all values of new variable are copied and disconnected from original variable (different addresses are allocated).
 
 When copying primitive data types (number, string, boolean, undefined, null), it will be deep copy. 
