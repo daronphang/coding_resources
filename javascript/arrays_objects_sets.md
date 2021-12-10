@@ -65,25 +65,37 @@ const objectLiteral = {};
 objectLiteral.name                              // undefined
 objectLiteral.name.model                        // throws TypeError
 objectLiteral.name && objectLiteral.name.model  // guards exception
-```
 
-Objects are passed around by reference and never copied.
-
-```js
+// object referencing; objects are passed around by reference and never copied
 const a = {}, b = {}, c = {};   // different objects
 a = b = c = {}  // same object
+
+const newObj = JSON.parse(JSON.stringify(oldObj));      // copying object
+
+delete someObject.nickname;     // deleting property
 ```
 
+#### Prototype
+Every object is linked to a prototype object from which it can inherit properties. All objects created from object literals are linked to Object.prototype. Prototype link has no effect on updating i.e. making changes to an object (adding/deleting properties) won't affect its prototype. 
+
+Prototype link is used only in retrieval. When retrieving a property value from object, if the object lacks the name, Javascript will attempt to retrieve the property from the prototype object. If it is still lacking, Javascript goes to its prototype until the process bottoms out with Object.prototype. This process is known as delegation.
+
+As best practice, do not change Object.prototype as future libraries or Javascript versions may incorporate similar naming.
+
+```js
+
+```
+#### Reflection
 ```js
 // Checking if property exists
 const hero = {name: 'Batman'};
 
-hero.hasOwnPorperty('name');
+hero.hasOwnProperty('name');    // does not look at prototype chain
 'name' in hero;
 
 ```
 
-### Looping Objects
+### Object Enumeration
 ```javascript
 let user = {
   name: "John",
