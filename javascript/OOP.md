@@ -1,4 +1,4 @@
-## ES6 Classes and Prototype:
+### ES6 Classes and Prototype
 All objects inherit properties and methods from a prototype. Object.prototype is on top of the prototype inheritance chain. Prototype allows adding new properties or methods to objects constructors. Prototype property allows new properties to be added to object constructors. Classes are introduced in ES6.
 ```javascript
 // constructor function
@@ -26,7 +26,7 @@ console.log(jonas.hasOwnProperty('firstName'));     // true
 console.log(jonas.hasOwnProperty('language'));      // false
 ```
 
-## Class Inheritance:
+### Class Inheritance
 Use extends and super.
 ```javascript
 class Car {
@@ -51,7 +51,7 @@ class Model extends Car {
 let myCar = new Model("Ford", "Mustang");
 document.getElementById("demo").innerHTML = myCar.show();
 ```
-## Getters and Setters:
+### Getters and Setters
 Getters are used to bind an object property to a function that is called when that property is looked up. Setters are used to execute a function whenever a property is attempted to be changed.
 
 ```javascript
@@ -72,7 +72,7 @@ alert(user.fullName);
 user.fullName = "Alice Cooper";
 ```
 
-## Bind:
+### Bind
 Creates a new function that has this keyword set to the provided value. Sets this value now and allows to execute function in future.
 
 ```javascript
@@ -96,7 +96,7 @@ logPokemon('sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
 
 ```
 
-## Call and Apply:
+### Call and Apply
 Calls a function with a given this value and arguments provided individually i.e. explicitly specify what this should reference within the calling function. Difference between bind() is that call() can accept additional parameters, executes immediately and does not create a new function. Apply() is same as call() but expects an array of parameters. Call and apply are one-time use methods.
 
 ```javascript
