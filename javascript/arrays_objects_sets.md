@@ -1,4 +1,4 @@
-## Array Operations:
+### Array Operations
 ```js
 .push(x)                    // Adds element to array
 .pop()                      // Removes last element in array
@@ -24,7 +24,7 @@ splice(start, deleteCount, item1)       // Deletes elements in original array
 .fill(value,start,end)
 .from(object,function)      // Creates array from array-like objects i.e. Array.from('foo') // ['f', 'o', 'o']
 ```
-```javascript
+```js
 const arr = [10, 20, -30];
 
 const movementsUSD = arr.map(mov => Math.abs(mov) * 1.1);
@@ -55,7 +55,25 @@ req.body.deleteItems.forEach((itemID) => {
   }, []);
 ```
 
-## Objects:
+### Objects
+Simple types are numbers, strings, booleans, null and undefined. All other values are objects i.e. arrays, functions, regular expressions, and objects. Objects are mutable keyed collections. Javascript includes prototype linkage feature that allows one object to inherit properties of another which reduces initialization time and memory consumption. 
+
+```js
+const objectLiteral = {};
+
+// undefined and TypeError exception
+objectLiteral.name                              // undefined
+objectLiteral.name.model                        // throws TypeError
+objectLiteral.name && objectLiteral.name.model  // guards exception
+```
+
+Objects are passed around by reference and never copied.
+
+```js
+const a = {}, b = {}, c = {};   // different objects
+a = b = c = {}  // same object
+```
+
 ```js
 // Checking if property exists
 const hero = {name: 'Batman'};
@@ -65,7 +83,36 @@ hero.hasOwnPorperty('name');
 
 ```
 
-## Sets:
+### Looping Objects
+```javascript
+let user = {
+  name: "John",
+  age: 30
+};
+Object.keys(user)       // ["name", "age"]
+Object.values(user)     // ["John", 30]
+Object.entries(user)    // [["name","John"], ["age",30]]
+
+// Looping over keys and values
+const openingHours = {restaurant.openingHours};
+for (const day of Object.keys(openingHours) {
+console.log(day);
+
+for (const day of Object.values(openingHours) {
+console.log(day);
+}
+
+// Looping over entire object
+// entries method returns an array of [key, value] pairs
+const entries = Object.entries(openingHours)
+for (const [key, {open, close}] of entries) {
+    console.log(`on ${key} we open at ${open} and close at ${close}`);
+}
+```
+
+
+
+### Sets
 Allows storing of unique values, whether primitive (data that is not an object, no methods and immutable) or object references.
 
 ```js
@@ -80,7 +127,7 @@ mySet.delete(1)
 const myArr = Array.from(mySet)
 ```
 
-## Destructuring Arrays/Objects:
+### Destructuring Arrays/Objects
 Destructuring allows us to unpack values from arrays or object properties and store them in distinct variables.
 
 ```javascript
@@ -108,7 +155,7 @@ const {name: resName, menu: resMenu, location: resLoc} = restaurant; // order do
 // {} is for declaring key-value object
 // [] is for declaring array
 ```
-## Spread Operator and Rest Pattern:
+### Spread Operator and Rest Pattern
 ```javascript
 // Spread operator to unpack an array
 const arr = [4, 5, 6];
@@ -117,7 +164,7 @@ const newArr = [1, 2, 3, ...arr]    // [1, 2, 3, 4, 5, 6]
 // Rest pattern which is opposite of spread
 const [a, b, ...others] = [1, 2, 3, 4, 5];  // others = [3, 4, 5]
 ```
-## For-of and For-in Loops:
+### For-of and For-in Loops
 For-in loop iterates over values of an object. For-of used for looping arrays.
 For-in iterates over enumerable property of an object.
 ```javascript
@@ -146,31 +193,5 @@ var foo = new Array(45);
 
 for(var i = 0; i < foo.length; i++){
   document.write('Item: ' + (i + 1) + ' of ' + foo.length + '<br/>'); 
-}
-```
-## Looping Objects:
-```javascript
-let user = {
-  name: "John",
-  age: 30
-};
-Object.keys(user)       // ["name", "age"]
-Object.values(user)     // ["John", 30]
-Object.entries(user)    // [["name","John"], ["age",30]]
-
-// Looping over keys and values
-const openingHours = {restaurant.openingHours};
-for (const day of Object.keys(openingHours) {
-console.log(day);
-
-for (const day of Object.values(openingHours) {
-console.log(day);
-}
-
-// Looping over entire object
-// entries method returns an array of [key, value] pairs
-const entries = Object.entries(openingHours)
-for (const [key, {open, close}] of entries) {
-    console.log(`on ${key} we open at ${open} and close at ${close}`);
 }
 ```
