@@ -118,3 +118,11 @@ const parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/(
 const url = "http://www.ora.com:80/goodparts?q#fragment";
 const result = parse_url.exec(url); // [http, //, www.ora.com, 80, goodparts, q, fragment]
 ```
+```
+(?:([A-Za-z]+):)?
+Matches scheme name (http) only if it is followed by :
+(?:...) indicates non-capturing group i.e. group an expression but not save it as a matched/captured portion of string
+
+"abc".match(/(.)(.)./).captures #=> ["a","b"]
+"abc".match(/(?:.)(.)./).captures #=> ["b"]
+```
