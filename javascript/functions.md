@@ -40,3 +40,31 @@ const sum = function () {
 
 document.writeIn(sum(4, 8, 15, 16, 23, 42));  // 108
 ``` 
+
+### Memoization
+Functions can use objects to remember the results of previous operations and making it possible to avoid unncessary work. 
+
+```js
+var fibonacci = function (n) {
+  return n < 2 ? n : fibonacci(n-1) + fibonacci(n-2);
+}
+
+for (var i = 0; i <= 10; i += 1) {        // called 11 times, but function is called 453 times
+  document.writeln(i + fibonnacci(i));
+}
+
+// can keep memoized results in memo array that is hidden in closure
+// called 11 times but fib function now is called only 29 times
+var fibonacci = function () {
+  var memo = [0, 1];
+  var fib = function (n) {
+    var result = memo[n];
+    if (typeof result !== 'number'){
+      result = fib(n-1) + fib(n-2);
+      memo[n] = result;
+    }
+    return result;
+  };
+  return fib;
+}();
+```
