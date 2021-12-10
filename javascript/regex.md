@@ -50,7 +50,8 @@ $           Anchor, check if string ends with a certain character
 +           Shorthand for one or more {1,}
 *           Shorthand for {0,}
 ?           Shorthand for {0, 1}, makes symbol optional 
-  
+()          Group sub-patterns i.e. (a|b|c)xz to match either a or b or c followed by xz
+\           Backslash used to escape various characters including all metacharacters
 ```
 
 #### Greedy vs Lazy Mode 
@@ -108,4 +109,12 @@ let str =
 3rd place
 `
 console.log(str.match(/^\d/gm)  // 1, 2, 3
+```
+
+### Advanced Example
+```js
+const parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
+
+const url = "http://www.ora.com:80/goodparts?q#fragment";
+const result = parse_url.exec(url); // [http, //, www.ora.com, 80, goodparts, q, fragment]
 ```
