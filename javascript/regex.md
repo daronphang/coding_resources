@@ -122,6 +122,7 @@ const result = parse_url.exec(url); // [http, //, www.ora.com, 80, goodparts, q,
 (?:([A-Za-z]+):)?
 Matches scheme name (http) only if it is followed by :
 (?:...) indicates non-capturing group i.e. group an expression but not save it as a matched/captured portion of string
+'http:' is non-capturing, but 'http' is capturing as it is nested group
 
 "abc".match(/(.)(.)./).captures #=> ["a","b"]
 "abc".match(/(?:.)(.)./).captures #=> ["b"]
