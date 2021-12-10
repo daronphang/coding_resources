@@ -83,8 +83,23 @@ Prototype link is used only in retrieval. When retrieving a property value from 
 As best practice, do not change Object.prototype as future libraries or Javascript versions may incorporate similar naming.
 
 ```js
+const person = {
+  isHuman: false,
+  printIntroduction: function() {
+    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  }
+};
 
+// creates new object by using an existing object as prototype of newly created object
+const me = Object.create(person);
+
+me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+me.isHuman = true; // inherited properties can be overwritten
+
+me.printIntroduction();
+// expected output: "My name is Matthew. Am I human? true"
 ```
+
 #### Reflection
 ```js
 // Checking if property exists
