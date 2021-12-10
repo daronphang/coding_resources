@@ -53,12 +53,27 @@ $           Anchor, check if string ends with a certain character
   
 ```
 
+#### Greedy vs Lazy Mode 
+Greedy means match longest possible string. Lazy means match shortest possible string. Lazy mode of quantifiers is opposite to greedy mode i.e. repeat minimal number of times. Adding ? after another quantifier switches matching mode from greedy to lazy. For every step, engine doesn't try to match a dot one more time, but stops and tries to match the rest of the pattern "".
+
+https://javascript.info/regexp-greedy-and-lazy
+
+```js
+let str = 'two ways are "hello world" and "oh yeah" haha';
+str.match(/".+"/)     "hello world" and "oh yeah"
+str.match(/".+?"/)    "hello world", "oh yeah"
+
+// alternative approach without lazy mode 
+str.match(/"[^"]+"/)  "hello world", "oh yeah" 
+```
+
 ### RegEx Methods
 ```
 exec()          Test for match in a string, returns the first match
 test()          Test for match in a string, returns true or false
 toString()
 ```
+
 
 ### Examples
 ```js
@@ -74,6 +89,11 @@ str.match(/\d{4,6}/)  // 12345, find numbers between 4-6 digits
 let str = '+7(903)-123-45-67';
 str.match(/\d/g)      // [7, 9, 0 , 3, 1, 2, 3, 4, 5, 6, 7]
 str.match(/\d{1,}/)   // [7, 903, 123, 45, 67]
+str.match(/\d+/g)     // [7, 903, 123, 45, 67]
+
+let str = '100 10 1';
+str.match(/\d0*/)     // looks for a digit followed by 0 (many or none), returns 100, 10, 1
+str.match(/\d0+/)     // 100, 10  
 
 let str = 'issit color or colour';
 str.match(/colou?r/g)   // makes 'u' optional, returning color, colour
