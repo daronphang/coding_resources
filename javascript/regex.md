@@ -25,7 +25,7 @@ y     Sticky mode; finds all consecutive matches
 ```
 
 ### MetaCharacters
-Characters that are interpreted in a special way by RegEx engine.
+Characters that are interpreted in a special way by RegEx engine. Uppercase denotes inverse class. 
 ```
 \w      Find a word character
 \W      Find a non-word character
@@ -37,35 +37,20 @@ Characters that are interpreted in a special way by RegEx engine.
 ```
 
 ### Quantifiers
+Quantifier is appended to a character or a character class and specifies how many is needed.
 ```
 [].^S*+?{}()\|
 ```
-
 ```
 []          Specify a set of characters to match
 .           Matches any single character except newline '\n'
-^           Caret symbol used to check if a string starts with a certain character
-$           Check if string ends with a certain character
-*           Matches zero or more occurrences of pattern left to it
-+           Matches one or more occurrences of pattern left to it
-?           Matches zero or one occurrence of pattern left to it
-```
-```
-[abc]
-a           1 match
-ac          2 matches
-hey jude    No match
-abc de ca   5 matches
-
-ma*n
-mn          1 match
-mann        1 match
-main        0 matches (a is not followed by n)
-woman       1 match
-
-ma+n
-mn          0 matches
-man         1 match
+^           Anchor, caret symbol used to check if a string starts with a certain character
+$           Anchor, check if string ends with a certain character
+{n,m}       N denotes at least, m denotes at most; find sequence of characters
++           Shorthand for one or more {1,}
+*           Shorthand for {0,}
+?           Shorthand for {0, 1}, makes symbol optional 
+  
 ```
 
 ### RegEx Methods
@@ -80,4 +65,27 @@ toString()
 let str = 'We will, we will rock you';
 str.match(/we/gi)   // ['We', 'we']
 str.match(/hello/g)   // returns null, not an empty array
+
+let str = 'I am 12345 years old, not 123 years old';
+str.match(/\d{5}/)  // 12345, same as /\d\d\d\d\d/
+str.match(/\d{4,6}/)  // 12345, find numbers between 4-6 digits
+// {3,} denotes digits of length 3 or more
+
+let str = '+7(903)-123-45-67';
+str.match(/\d/g)      // [7, 9, 0 , 3, 1, 2, 3, 4, 5, 6, 7]
+str.match(/\d{1,}/)   // [7, 903, 123, 45, 67]
+
+let str = 'issit color or colour';
+str.match(/colou?r/g)   // makes 'u' optional, returning color, colour
+
+const regex = new RegExp(/^a...s$/);
+console.log(regex.test('alias'));   // true
+
+let str = 
+`
+1st place
+2nd place
+3rd place
+`
+console.log(str.match(/^\d/gm)  // 1, 2, 3
 ```
