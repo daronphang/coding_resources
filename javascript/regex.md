@@ -124,6 +124,40 @@ let str =
 `
 console.log(str.match(/^\d/gm)  // 1, 2, 3
 ```
+```js
+export function stringDelimiterHandler(stringList: string, delimiter: string) {
+  const iteration = stringList.length - stringList.replaceAll(delimiter, '').length + 1;
+  let startIndex = 0;
+  let endIndex = stringList.indexOf(delimiter) > 0 ? stringList.indexOf(delimiter) : stringList.length + 1;
+  const result: string[] = [];
+  for (let i = 1; i <= iteration; i += 1) {
+    result.push(stringList.substr(startIndex, endIndex - startIndex));
+    startIndex = endIndex + 1;
+    endIndex =
+      stringList.indexOf(delimiter, endIndex + 1) > 0
+        ? stringList.indexOf(delimiter, endIndex + 1)
+        : stringList.length + 1;
+  }
+  return result;
+}
+
+export function regExLotArr(lotArr: string[]) {
+  const regEx = /^\d{7}\.[0-9A-Z]{2}[7|1]/;
+  const finalArr = []; // contains either lot ID or boolean
+
+  lotArr.forEach((lot) => {
+    const checkLot = lot.trim();
+    if (!checkLot) return;
+    if (checkLot.length !== 11) {
+      return finalArr.push(false);
+    }
+    const result = checkLot.match(regEx);
+    finalArr.push(result ? result[0] : false);
+  });
+
+  return finalArr;
+}
+```
 
 ### Advanced Example
 ```js
