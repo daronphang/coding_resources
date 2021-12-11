@@ -82,7 +82,12 @@ Exec() returns an array of more detailed information with capturing groups. When
 // (?:...) is non-capturing
 // (...) is capturing
 
-// returns an array of information
+const regEx = /(?:(\d{7}\.[0-9A-Z]{2}[7|1]),?)/g;
+const str = '1234567.007, 1234568.011';
+let result;
+while ((result = regEx.exec(str)) !== null) {
+  console.log(result);  // returns an array of information
+}
 ```
 
 ### Examples
