@@ -36,8 +36,8 @@ Characters that are interpreted in a special way by RegEx engine. Uppercase deno
 \0      Find a NULL character
 ```
 
-### Quantifiers
-Quantifier is appended to a character or a character class and specifies how many is needed.
+### Factors
+Each factor can optionally be followed by a quantifier that determines how many times the factor is allowed to be repeated.
 ```
 [].^S*+?{}()\|
 ```
@@ -51,7 +51,14 @@ $           Anchor, check if string ends with a certain character
 *           Shorthand for {0,}
 ?           Shorthand for {0, 1}, makes symbol optional 
 ()          Group sub-patterns i.e. (a|b|c)xz to match either a or b or c followed by xz
-\           Backslash used to escape various characters including all metacharacters
+\           Backslash used to escape various characters including all quantifiers
+```
+
+### Quantifers
+Quantifier is appended to a character or a character class and specifies how many is needed.
+```
+/w{3}/      www
+/w{3,6}/    Must have 3/4/5/6 w's 
 ```
 
 #### Greedy vs Lazy Mode 
@@ -78,10 +85,14 @@ toString()
 ### Exec vs Match
 Exec() returns an array of more detailed information with capturing groups. When using exec(), do not invoke it from a literal regexp but assign it to a variable and call exec() from it.
 
+```
+// RegEx Groups
+Capturing             (...)
+Noncapturing          (:?...)
+Positive lookahead    (?=...), similar to noncapturing but after group matches, text is rewound to where the group started
+Negative lookahead    (?!...), similar to positive lookahead but matches only if it fails to match
+```
 ```js
-// (?:...) is non-capturing
-// (...) is capturing
-
 const regEx = /(?:(\d{7}\.[0-9A-Z]{2}[7|1]),?)/g;
 const str = '1234567.007, 1234568.011';
 let result;
