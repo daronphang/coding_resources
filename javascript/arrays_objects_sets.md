@@ -1,30 +1,37 @@
 ### Array Operations
-```js
-.push(x)                    // Adds element to array
-.pop()                      // Removes last element in array
-.shift()                    // Same as push() but puts element at front
-.unshift()                  // Same as pop() but removes first element
-.includes(x)                // Boolean to check if element exists
-.sort()                     // Sorts strings only, for integers need use function
-.flat(level)                // Level refers to the number of nested arrays
-.flatMap(function)          // Combines both map and flat
-.reverse()                  // Reverses an array in place
+```
+.concat()              Produces new array containing shallow copy of concatanated array
+.join(sep)             Makes a string from an array, defualt separator is ','
+.push(x)               Adds element to end of array
+.pop()                 Removes last element in array
+.shift()               Removes first element in array
+.unshift()             Adds one or more elements to beginning of an array
+.includes(x)           Boolean to check if element exists
+.sort()                Sorts strings only, for integers need use function
+.flat(level)           Level refers to the number of nested arrays
+.flatMap(function)     Combines both map and flat
+.reverse()             Reverses an array in place
 
-.slice(number)                          // Removes x number of elements at front
-splice(start, deleteCount, item1)       // Deletes elements in original array
+.slice(number)                          Removes x number of elements at front
+splice(start, deleteCount, item1)       Deletes elements in original array
 
-.map(function)                  // Creates new array containing results of applying function operation
-.filter(array => condition)     // Creates new array containing elements passing specified condition
-.find(function)                 // Same as filter but returns first element instead of new array
+.map(function)                  Creates new array containing results of applying function operation
+.filter(array => condition)     Creates new array containing elements passing specified condition
+.find(function)                 Same as filter but returns first element instead of new array
 .findIndex(function)
-.some(function)                 // Same as .includes(), but function is a condition instead of equality
-.every(function)                // Function is a boolean condition; return false is equivalent to break
-.reduce(prev, next => {})      // final result is single value; useful for sum
+.some(function)                Same as .includes(), but function is a condition instead of equality
+.every(function)               Function is a boolean condition; return false is equivalent to break
+.reduce(prev, next => {})      final result is single value; useful for sum
         
 .fill(value,start,end)
-.from(object,function)      // Creates array from array-like objects i.e. Array.from('foo') // ['f', 'o', 'o']
+.from(object,function)      Creates array from array-like objects i.e. Array.from('foo') // ['f', 'o', 'o']
 ```
 ```js
+const a = ['a', 'b', 'c'];
+const b = ['d', 'e', 'f'];
+const c = a.concant(b, true);   ['a', 'b', 'c', 'd', 'e', 'f', true]
+const d = a.join('');   // 'abc'
+
 const arr = [10, 20, -30];
 
 const movementsUSD = arr.map(mov => Math.abs(mov) * 1.1);
