@@ -75,6 +75,15 @@ test()          Test for match in a string, returns true or false
 toString()
 ```
 
+### Exec vs Match
+Exec() returns an array of more detailed information with capturing groups. When using exec(), do not invoke it from a literal regexp but assign it to a variable and call exec() from it.
+
+```js
+// (?:...) is non-capturing
+// (...) is capturing
+
+// returns an array of information
+```
 
 ### Examples
 ```js
