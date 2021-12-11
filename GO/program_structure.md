@@ -146,3 +146,23 @@ func main() {
   }
 }
 ```
+
+### Variable Scoping
+```go
+{
+    err := thisCouldFail()
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+
+// shorter syntax, useful for initializing condition variable and restricting scope of this variable to if block only
+if statement; condition {
+  // some code
+}
+
+// err is scoped inside and will shadow previous err variable declared outside block
+if err := thisCouldFail(); err != nil {
+  log.Fatal(err)
+}
+```
