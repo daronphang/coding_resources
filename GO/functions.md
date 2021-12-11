@@ -287,3 +287,15 @@ func doFile(filename string) error {
   // code to process file
 }
 ```
+
+### Panic
+During a typical panic, normal execution stops, all deferred function calls are executed, and the program crashes with log message. Can be called directly and accepts any value as an argument.
+
+```go
+switch s:= suit(drawCard()); s {
+  case "Spades": // ...
+  case "Hearts": // ...
+  default:
+    panic(fmt.Sprintf("invalid suit %q", s))
+}
+```
