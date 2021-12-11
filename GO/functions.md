@@ -120,3 +120,50 @@ func main() {
   fmt.Println(f())    // 9
 }
 ```
+
+### Lexical Scoping Caveat
+For loop introduces a new lexical block in which variable dir is declared. However, values passed to function is the addressable storage location of shared variable and not its value at that particular moment. By the time cleanup functions are called, the dir variable holds the value from the final iteration and consequently all calls to os.RemoveAll will attempt to remove the same directory.
+
+```go
+// program that creates a set of directories and later removes them
+var rmdirs []func()
+for _, dir := range tempDirs() {
+  dir := dir  // declares inner dir, initialized to outer dir (NECESSARY!)
+  os.MkdirAll(dir, 0755)    // creates parent directories
+  rmdirs = append(rmdirs, func(){
+    os.RemoveAll(dir)   // dir refers to inner dir
+  })
+}
+
+for _, rmdir := range rmdirs {
+  rmdir()   // cleanup function
+}
+
+// THIS DOES NOT WORK
+var rmdirs []func()
+for _, dir := range tempDirs() {
+  os.MkdirAll(dir, 0755)  // this is OKAY
+  rmdirs = append(rmdirs, func(){
+    os.RemoveAll(dir)   // incorrect! dir passed is the outer dir's addressable storage loc and not value at current moment
+  })
+}
+```
+
+### Variadic Functions
+One that can be called with varying numbers of arguments. Type of final parameter is preceded by an ellipsis.
+
+```go
+func sum(vals ...int) int {
+  total := 0
+  for _, val := range vals {
+    total += val
+  }
+  return total
+}
+
+fmt.Println(sum(1, 2, 3, 4))  // 10
+
+// allocating an array and passing a slice of entire array to function
+values := []int{1, 2, 3, 4}
+fmt.Println(sum(values...))   // 10
+``` 
