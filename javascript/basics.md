@@ -31,10 +31,11 @@ x = y = 15;
 ### String Manipulation
 ```js
 let str = "Hello world!";
-str.slice(-4)       // "rld!"
-str.substr(1, 4)    // "ello"
-str.substr(2)       // "llo world!"
-str.substr(0, -2)   // "Hello worl"
+str.slice(-4)                   // "rld!"
+str.substr(1, 4)                // "ello"
+str.substr(0, str.length - 3)   // "Hello wor"
+str.substr(2)                   // "llo world!"
+str.substr(0, -2)               // "Hello worl"
 
 // convert number to string with prefix 0
 (6).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
