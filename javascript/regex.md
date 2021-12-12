@@ -152,17 +152,27 @@ export function stringDelimiterHandler(stringList: string, delimiter: string) {
   return result;
 }
 
-export function regExLotArr(lotArr: string[]) {
-  const regEx = /^\d{7}\.[0-9A-Z]{2}[7|1]/;
+export function regExArrHelper(list: string[], type: string) {
+  const regExType = {
+    lotID: /^\d{7}\.[0-9A-Z]{2}[7|1]/,
+    email: /[a-zA-z]+@micron.com/,
+  };
   const finalArr = []; // contains either lot ID or boolean
 
-  lotArr.forEach((lot) => {
-    const checkLot = lot.trim();
+  // if type provided does not exist
+  if (!regExType.hasOwnProperty(type)) return finalArr;
+
+  list.forEach((item) => {
+    const checkLot = item.trim();
     if (!checkLot) return;
-    if (checkLot.length !== 11) {
+
+    // Additional checks for type provided
+    if (type === 'lotID' && checkLot.length !== 11) {
+      // check if lot ID provided is of 11 characters
       return finalArr.push(false);
     }
-    const result = checkLot.match(regEx);
+
+    const result = checkLot.match(regExType[type]);
     finalArr.push(result ? result[0] : false);
   });
 
