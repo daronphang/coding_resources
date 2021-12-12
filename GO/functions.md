@@ -299,3 +299,46 @@ switch s:= suit(drawCard()); s {
     panic(fmt.Sprintf("invalid suit %q", s))
 }
 ```
+### Recover
+If built-in function is called witin a deferred function and function containing the defer statement is panicking, recover ends the current state of panic and returns the panic value. The function panicking does not continue where it left off but returns normally. If recover is called at any other time, it has no effect and returns nil. For instance, web server encountering an unexpected problem could close the connection rather than leave client hanging, or update to data structure was not complete. 
+
+```go
+func Parse(input string) (s *Syntax, err error) {
+  // deferred func recovers from panic and r eturns panic value
+  // deferred function then assigns to err result which is returned to caller
+  defer func() {
+    if p:= recover(); p != nil {
+      err = fmt.Errorf("internal error: %v", p) // runtime.Stack for fullstack trace
+    }
+  }()
+}
+```
+```go
+func soleTitle(doc *html.Node) (title string, err error) {
+  type bailout struct{}
+  
+  defer func() {
+    switch p:= recover(); p {
+      case nil:
+        // no panic
+      case bailout{}:
+        err.fmt.Errorf("multiple title elements")
+      default:
+        panic(p)
+    }
+  }()
+  
+  forEachNode(doc, func(n *html.Node) {
+    if n.Type == html.ElementNode && n.Data == "title" && n.FirstChild != nil {
+      if title != "" {
+        panic(bailout{})  // multiple title elements
+      }
+      title = n.Firstchild.Data
+    }
+  }, nil)
+  if title == "" {
+    return "", fmt.Errorf("no title element")
+  }
+  return title, nil
+}
+```
