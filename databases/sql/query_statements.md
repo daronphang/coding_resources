@@ -38,11 +38,12 @@ SELECT * FROM table WHERE col1 NOT BETWEEN 5 AND 10
 # Can be used with dates in ISO 8601 format 'YYYY-MM-DD'
 SELECT * FROM table WHERE col2 BETWEEN '2007-02-01' AND '2007-02-15'
 ```
-### IN
+### IN, NOT IN
+Used to replace group of arguments using <> or != operator that are combined with AND. It CANNOT replace =, <, >, <=, >=, BETWEEN, or LIKE.
 ```sql
 SELECT * FROM table WHERE col1 IN ('red','blue')    # Red or Blue
 ```
-### LIKE and ILIKE
+### LIKE, ILIKE
 ```sql
 # Used for pattern matching i.e. emails ending with @gmail.com
 # Widlcard characters: 
