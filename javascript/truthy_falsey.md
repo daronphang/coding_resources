@@ -1,4 +1,4 @@
-### Truthy:
+### Truthy
 ```
 Object: {}
 Array: []
@@ -7,7 +7,7 @@ Array: []
 new Date()
 ```
 
-### Falsy:
+### Falsy
 ```
 0
 null          An object with no value; typeof null is object
@@ -15,7 +15,15 @@ undefined     Property type; typeof undefined is undefined
 NaN
 ```
 
-Others:
+### Falsey Check
+```js
+// objects
+Object.keys(someObj).length
+Object.hasOwnProperty()
+```
+
+
+### Others
 To cast a variable to be explicitly boolean, use !! instead of comparison operators which provides more freedom.
 ```
 Strictly equal: ===         Checks if both type and values are same
