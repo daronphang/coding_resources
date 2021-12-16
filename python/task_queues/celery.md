@@ -1,4 +1,4 @@
-## Celery:
+### Celery
 Defacto standard Python asynchronous task queue that integrates itself with web frameworks including Django, Flask, Pyramid, Pylons, etc. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Has three core components:
 1) Celery Client: Used to issue background jobs (client runs with Flask application).
 2) Celery Workers: Processes that run background jobs, supports both local and remote workers.
@@ -13,7 +13,7 @@ Can use it to execute tasks outside of context of application. Any resource cons
 - Analyzing data.
 - Generating reports.
 
-### Process Workflow:
+### Process Workflow
 1) Client talks to Flask application to place their request.
 2) App takes the request and puts it in database queue with PENDING status.
 3) Client receives a JobID and polls as response; flask app is then free to take-on next request.
@@ -31,7 +31,10 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
-## Example: 
+### Storing into Database
+For storing dictionaries with many columns, prefer to store them in binary. 
+
+### Example
 
 ```python
 from flask import Flask
@@ -93,7 +96,7 @@ def add(x, y):
     return result
 ```
 
-## Background Tasks with Status Updates Example:
+### Background Tasks with Status Updates Example
 ```python
 @celery.task(bind=True)     # bind=True instructs Celery to send a 'self' argument to function
 def long_task(self):
