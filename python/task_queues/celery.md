@@ -31,6 +31,19 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
+### Background Tasks with Status Updates
+```py
+@celery.task(bind=True)     # bind=True instructs Celery to send self argument
+def long_task(self):
+    # ... some tasks
+    # how Celery receives task updates; has built-in or can use custom states
+    self.update_state(
+        state='PROGRESS',
+        meta={'status': 'hello world'}
+    )
+    return {'status': 'Task completed!'}
+```
+
 ### Storing into Database
 For storing dictionaries with many columns, prefer to store them in binary. 
 
@@ -80,7 +93,7 @@ def execute_task(task_id):
     return jsonify(result), 200
 ```
 
-## Celery Task Logger:
+### Celery Task Logger
 Special logger that exposes task_id and task_name parameters. 
 
 ```python
