@@ -4,6 +4,8 @@ Storing byte-arrays in SQL can be useful for storing large binary objects (docum
 https://sqlsunday.com/2017/01/09/binary-types/
 
 ```sql
+SELECT CAST('HexTest' AS VARBINARY);                 
+SELECT CAST(0x48657854657374 AS VARCHAR);
 SELECT CAST (0x48656C6C6F20776F726C6421 AS VARCHAR(MAX)) -- 'Hello World!'
 
 -- 1 style tells SQL to treat string as hex string in text form 
