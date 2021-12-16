@@ -162,7 +162,7 @@ def taskstatus(task_id):
         # something went wrong in the background job
         response = {
             'state': task.state,
-            'error': str(task.info),  # this is the exception raised
+            'error': str(task.info.__repr__()),  # this is the exception raised; task.info type is class
         }
     return jsonify(response)
 ```
