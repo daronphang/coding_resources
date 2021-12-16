@@ -31,6 +31,13 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
+### Starting Celery and Configurations
+Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker.
+
+```
+docker run -d -p 6379:6379 celery
+```
+
 ### Integration with Flask
 When creating Flask using application factories, should create extensions and app factories so that the extension object does not initially get bound to the application:
 1) Write a function taking both extension and app instances to perform some desired initialization.
