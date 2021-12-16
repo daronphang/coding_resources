@@ -42,22 +42,38 @@ https://medium.com/@frassetto.stefano/flask-celery-howto-d106958a15fe
 ```py
 from celery import Celery
 
-# Creating celery app instance
+cors = CORS()
+ma = Marshmallow()
+db = SQLAlchemy()
+celery = Celery(
+    __name__,
+    backend=CeleryConfig.backend_result,
+    broker=CeleryConfig.broker_url
+)
+
+
+def create_app(config_name):
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
+
+    cors.init_app(app, resources={r"/*": {"origins": "*"}})
+    ma.init_app(app)
+    db.init_app(app)
+    update_celery(celery, app)
+
+    from myassistant.app.api.v1 import api_v1 as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/MO/api/v1')
+    return app
+
 # Able to freely import celery instance into other modules
-def make_celery(app_name=__name__):
-    redis_uri="redis://localhost:6379"
-    return Celery(app_name, backend=redis_uri, broker=redis_uri)
-    
 def init_celery(celery, app):
     celery.conf.update(app.config)  # add additional config to Celery
-    TaskBase = celery.Task
     class ContextTask(TaskBase):
         def __call__(self, *args, **kwargs):
             with app.app.context():
-                return TaskBase.__call__(self, *args, **kwargs)
+                return self.run(*args, **kwargs)
     celery.Task = ContextTask
-
-celery = make_celery()
 
 
 # importing from other modules
