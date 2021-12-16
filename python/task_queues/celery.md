@@ -32,10 +32,11 @@ time.sleep()            Suspend execution of current thread for a given number o
 ```
 
 ### Starting Celery and Configurations
-Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker.
+Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker. To trigger celery worker, need to activate virtualenv first and ensure directory in which celery cli is called is one level higher.
 
 ```
 docker run -d -p 6379:6379 celery
+celery -A myassistant.app.celery worker -l INFO
 ```
 
 ### Integration with Flask
