@@ -49,6 +49,9 @@ ls -la
 ps -ax | grep nginx
 
 ubuntu-drivers devices
+
+tail ~/log/MO/mo.err.log         Display last line in file
+
 ```
 
 ## Options:
