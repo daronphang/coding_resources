@@ -31,7 +31,7 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
-### Integration with Flask:
+### Integration with Flask
 When creating Flask using application factories, should create extensions and app factories so that the extension object does not initially get bound to the application:
 1) Write a function taking both extension and app instances to perform some desired initialization.
 2) Instantiate the extension in a separate file.
