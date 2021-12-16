@@ -1,4 +1,4 @@
-## Basics:
+### Basics
 Text editor used in CLI. 
 
 ```
