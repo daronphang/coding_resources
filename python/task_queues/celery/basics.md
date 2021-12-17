@@ -31,26 +31,6 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
-### Starting Celery and Configurations
-Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker. To trigger celery worker, need to activate virtualenv first and ensure directory in which celery cli is called is one level higher.
-
-```
-docker run -d -p 6379:6379 celery
-celery -A myassistant.app.celery worker -l INFO
-celery -A myassistant.celery_worker.celery worker -l INFO --concurrency 1 -P solo
-```
-
-``` py
-# separate module to create app in base directory where config file resides
-# celery_worker.py
-
-import os
-from myassistant.app import celery, create_app
-
-app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-app.app_context().push()
-``` 
-
 ### Background Tasks with Status Updates
 ```py
 @celery.task(bind=True)     # bind=True instructs Celery to send self argument
