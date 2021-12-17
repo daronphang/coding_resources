@@ -51,58 +51,6 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 app.app_context().push()
 ``` 
 
-### Integration with Flask
-When creating Flask using application factories, should create extensions and app factories so that the extension object does not initially get bound to the application:
-1) Write a function taking both extension and app instances to perform some desired initialization.
-2) Instantiate the extension in a separate file.
-3) Make an instance of celery app and import it in the factory module to call the initializing function implemented at first step.
-
-https://medium.com/@frassetto.stefano/flask-celery-howto-d106958a15fe
-
-```py
-from celery import Celery
-
-cors = CORS()
-ma = Marshmallow()
-db = SQLAlchemy()
-celery = Celery(
-    __name__,
-    backend=CeleryConfig.backend_result,
-    broker=CeleryConfig.broker_url
-)
-
-
-def create_app(config_name):
-    app = Flask(__name__)
-    app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
-
-    cors.init_app(app, resources={r"/*": {"origins": "*"}})
-    ma.init_app(app)
-    db.init_app(app)
-    update_celery(celery, app)
-
-    from myassistant.app.api.v1 import api_v1 as api_blueprint
-    app.register_blueprint(api_blueprint, url_prefix='/MO/api/v1')
-    return app
-
-# Able to freely import celery instance into other modules
-def init_celery(celery, app):
-    celery.conf.update(app.config)  # add additional config to Celery
-    class ContextTask(TaskBase):
-        def __call__(self, *args, **kwargs):
-            with app.app.context():
-                return self.run(*args, **kwargs)
-    celery.Task = ContextTask
-
-
-# importing from other modules
-from app import celery
-@celery.task(bind=True)
-def some_task(self):
-    return 'hello world!'
-```
-
 ### Background Tasks with Status Updates
 ```py
 @celery.task(bind=True)     # bind=True instructs Celery to send self argument
