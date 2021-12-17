@@ -3,8 +3,8 @@ Underlying Python logging system does not support all different concurrency conf
 
 To customize celery.task log format, can use after_setup_task_logger signal that gets triggered as soon as Celery worker has setup the celery.task logger. However, in order to access to task_id and task_name, need to use celery.app.log.TaskFormatter instead of logging.Formatter. TaskFormatter is an extension of logging.Formatter.
 
-https://www.distributedpython.com/2018/11/06/celery-task-logger-format/
-https://www.distributedpython.com/2018/08/28/celery-logging/
+https://www.distributedpython.com/2018/11/06/celery-task-logger-format/  
+https://www.distributedpython.com/2018/08/28/celery-logging/  
 https://docs.celeryproject.org/en/latest/userguide/signals.html#setup-logging
 
 ```python
