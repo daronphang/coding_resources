@@ -1,7 +1,7 @@
 ### Celery Logging
 Underlying Python logging system does not support all different concurrency configurations in Celery including eventlets, greenlets, prefork (subprocessing), and threads. Hence, Celery provides a special get_task_logger() that expoeses task_id and task_name parameters. Celery recommends as best practice to create common logger for all tasks.
 
-To customize celery.task log format, can use after_setup_task_logger signal that gets triggered as soon as Celery worker has setup the celery.task logger. However, in order to access to task_id and task_name, need to use celery.app.log.TaskFormatter instead of logging.Formatter.
+To customize celery.task log format, can use after_setup_task_logger signal that gets triggered as soon as Celery worker has setup the celery.task logger. However, in order to access to task_id and task_name, need to use celery.app.log.TaskFormatter instead of logging.Formatter. TaskFormatter is an extension of logging.Formatter.
 
 https://www.distributedpython.com/2018/11/06/celery-task-logger-format/
 https://www.distributedpython.com/2018/08/28/celery-logging/
