@@ -1,4 +1,4 @@
-## Logging Procedure (Commonly-used Classes):
+### Logging Procedure (Commonly-used Classes)
 ```
 Logger        Provides primary interface that logs events from app
 Handler       Sends log messages to configured destinations
@@ -6,7 +6,7 @@ Formatter     Converts LogRecord to readable string (default is %(message)s
 Filter        Used to filter log records based on some parameters other than log-level
 ```
 
-## Configuration:
+### Configuration
 ```
 # Instance config
 level         Root logger set to specified severity level
@@ -29,7 +29,7 @@ logging.warning('This will get logged to a file')
 # root - ERROR - This will get logged to a file - 12356
 ```
 
-## LogRecord:
+### LogRecord
 Entry-level to logging system. Events recorded by Logger are called log records. Each record has a severity level. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID. 
 
 Logs are stored in files with .log extension. If want to display logs in console, remove the filename attribute in configuration.
@@ -60,21 +60,42 @@ ERROR       40
 CRITICAL    50
 ```
 
-## Logging Handlers:
+### Logging Handlers
 ```
-StreamHandler
-FileHandler
+StreamHandler   Logging to screen
+FileHandler     Logging to file
 NullHandler
 SockerHandler
-SysLogHandler
+SysLogHandler   Logging to log management service such as Papertrail
 SMTPHandler
 MemomryHandler
 HTTPHandler
 QueueHandler
 ```
+```py
+import logging
+
+logger = logging.getLogger()
+formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s [%(lineno)d]')
+
+# StreamHandler
+sh = logging.StreamHandler()
+sh.setFormatter(formatter)
+logger.addHandler(sh)
+
+# FileHandler
+fh = logging.FileHandler('logs.log')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
+
+# SysLogHandler
+slh = logging.handlers.SysLogHandler(address=('logsN.papertrailapp.com', '...'))
+slh.setFormatter(formatter)
+logger.addHandler(slh)
+```
 
 
-## Capturing Stack Traces:
+### Capturing Stack Traces
 Need set exc_info to True. Best is to call logging.exception() which logs a message with level ERROR.
 ```py
 import logging
@@ -90,7 +111,7 @@ except Exception as e:
 ```
 
 
-## Example: 
+### Example
 ```python
 import logging
 
