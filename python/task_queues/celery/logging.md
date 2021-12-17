@@ -5,6 +5,7 @@ To customize celery.task log format, can use after_setup_task_logger signal that
 
 https://www.distributedpython.com/2018/11/06/celery-task-logger-format/
 https://www.distributedpython.com/2018/08/28/celery-logging/
+https://docs.celeryproject.org/en/latest/userguide/signals.html#setup-logging
 
 ```python
 import os
