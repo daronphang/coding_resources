@@ -37,7 +37,19 @@ Need two terminals, one to start Flask and other to start Celery worker. If runn
 ```
 docker run -d -p 6379:6379 celery
 celery -A myassistant.app.celery worker -l INFO
+celery -A myassistant.celery_worker.celery worker -l INFO --concurrency 1 -P solo
 ```
+
+``` py
+# separate module to create app in base directory where config file resides
+# celery_worker.py
+
+import os
+from myassistant.app import celery, create_app
+
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+app.app_context().push()
+``` 
 
 ### Integration with Flask
 When creating Flask using application factories, should create extensions and app factories so that the extension object does not initially get bound to the application:
