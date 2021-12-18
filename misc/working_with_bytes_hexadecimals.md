@@ -16,3 +16,11 @@ add_oid = ['0x{}'.format(secrets.token_hex(7)) for item in range(len(payload['ad
 # 1 digit = 4 bits
 # binary(8) = 8 bytes = 64 bits = 16 digits
 ```
+
+```py
+numbers = [2, 3, 5, 7]
+str = 'hello world'
+
+byte_arr = bytearray(numbers)
+byte_arr = bytearray(str, 'utf-8')
+```
