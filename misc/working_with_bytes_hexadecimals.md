@@ -5,11 +5,14 @@ Hexadecimal has base 16 and is represented with prefix 0x.
 string = "DARONPHANG_B16A"
 string_bytes = string.encode('utf-8')
 string_hex_str = string_bytes.hex() 
-print(string_hex)   # 4441524f4e5048414e475f42313641
+print(string_hex_str)   # 4441524f4e5048414e475f42313641
 
 hexa = int(string_hex_str, 16)
 print(hex(hexa))    # 0x4441524f4e5048414e475f42313641
 print(hex(123456))  # 0x1e240
+
+# short form
+str_hex = hex(int(string.encode('utf-8').hex(), 16))
 
 add_oid = ['0x{}'.format(secrets.token_hex(7)) for item in range(len(payload['add_entries']))]
 
