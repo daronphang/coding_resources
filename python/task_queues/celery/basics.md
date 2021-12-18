@@ -48,7 +48,7 @@ def long_task(self):
 ```
 
 ### Exception Handling
-If an exception is handled inside task, Celery will still overwrite custom meta data and return status as SUCCESS. To prevent this, raise an additional celery.exceptions.Ignore().
+In Celery, simply raise an exception and let Celery configuration deal with it i.e. let Celery handle exception. If an exception is handled inside task, Celery will still overwrite custom meta data and return status as SUCCESS. To prevent this, raise an additional celery.exceptions.Ignore().
 ```py
 from celery import states
 from celery.exceptions import Ignore
