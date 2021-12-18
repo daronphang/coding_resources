@@ -128,13 +128,19 @@ WHERE id >= a_value AND id <= another_value
 DELETE FROM table
 WHERE id BETWEEN 125 AND 150
 ```
-### ALTER:
+### ALTER
 Allows for changes to an existing table structure:
 - Adding/dropping/renaming columns
 - Changing column's data type
 - setting default values for a column
 - Adding CHECK constraints
 
+#### SQL Server
+```sql
+ALTER TABLE table_name ADD column_name type constraint
+```
+
+#### MySQL
 ```sql
 ALTER TABLE stock_app.user_portfolios ADD COLUMN tickerCount TINYINT NOT NULL AFTER portfolioName
 
