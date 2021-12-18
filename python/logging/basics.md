@@ -34,6 +34,8 @@ Entry-level to logging system. Events recorded by Logger are called log records.
 
 Logs are stored in files with .log extension. If want to display logs in console, remove the filename attribute in configuration.
 
+To edit formatter, can create custom class that takes record as argument.
+
 https://docs.python.org/3/library/logging.html
 
 ```
@@ -59,6 +61,29 @@ WARNING     30
 ERROR       40
 CRITICAL    50
 ```
+```py
+import logging
+
+class RequestFormatter(logging.Formatter):
+    def format(self, record):
+        record.context = g.context
+        record.username = g.username if hasattr(g, 'username') else request.remote_addr  # noqa
+        return super().format(record)
+
+app.logger.removeHandler(default_handler)
+app.logger.setLevel(logging.INFO)
+formatter = RequestFormatter(
+    '[%(asctime)s] %(username)s payload %(context)s '
+    '%(levelname)s in %(module)s: %(message)s'
+)
+logfile_handler = logging.FileHandler(
+    os.path.join(cls.BASEDIR, f'{cls.PROJECT_NAME}-TEST.log')
+)
+logfile_handler.setFormatter(formatter)
+logfile_handler.setLevel(logging.INFO)
+app.logger.addHandler(logfile_handler)
+```
+
 
 ### Logging Handlers
 ```
