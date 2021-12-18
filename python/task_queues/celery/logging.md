@@ -12,6 +12,7 @@ import os
 from celery import Celery
 from celery.utils.log import get_task_logger
 from celery.app.log import TaskFormatter
+from celery.signals import after_setup_task_logger
 from worker import app
 
 logger = get_task_logger(__name__)
