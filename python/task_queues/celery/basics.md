@@ -31,6 +31,9 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
+### Storing into Database
+For storing dictionaries with many columns, prefer to store them in binary. 
+
 ### Background Tasks with Status Updates
 ```py
 @celery.task(bind=True)     # bind=True instructs Celery to send self argument
@@ -44,8 +47,24 @@ def long_task(self):
     return {'status': 'Task completed!'}
 ```
 
-### Storing into Database
-For storing dictionaries with many columns, prefer to store them in binary. 
+### Exception Handling
+If an exception is handled inside task, Celery will still overwrite custom meta data and return status as SUCCESS. To prevent this, raise an additional celery.exceptions.Ignore().
+```py
+from celery import states
+from celery.exceptions import Ignore
+
+
+class CeleryFailure(Exception):
+    pass
+    
+    
+@celery.task(bind=True)
+def task(self):
+    try:
+        raise CeleryFailure('hello world')
+    except Exception as e:
+        self.update_state(state=states.FAILURE, meta={'custom': 'hi'})
+```
 
 ### Example
 
