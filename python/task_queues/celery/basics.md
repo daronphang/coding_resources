@@ -159,8 +159,9 @@ def taskstatus(task_id):
         response = {
             'state': task.state
         }
-        if 'result' in task.info:
-            response['result'] = task.info['result']
+        for attr, value in inspect.getmembers(resp):
+                if 'result' in attr:
+                    response['result'] = value
     else:
         # something went wrong in the background job
         response = {
