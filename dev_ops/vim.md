@@ -12,8 +12,10 @@ ctrl+o            Go back to previous location (not necessarily a buffer)
 tab               Go next location
 :E                Go directory listing of opened file
 :b#               Go to previously edited buffer
-
-
+:e <filename>     Go directly to file
+shift+h           Move to top of screen
+shift+m           Move to middle of screen
+shift+l           Move to bottom of screen
 
 // can preface movement number of times i.e. 6k to move up six lines
 
