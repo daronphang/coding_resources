@@ -1,14 +1,4 @@
-## Datatable Types:
-```
-Boolean
-Character               # CHAR, VARCHAR, TEXT
-Numeric                 # INTEGER, FLOAT, SMALLINT
-Temporal                # DATE, TIME, TIMESTAMP, INTERVAL
-UUID                    # Universally Unique Identifiers
-Array
-JSON
-Hstore key-value pair
-```
+
 ## Primary and Foreign Keys:
 Primary key is a column or gorup of columns used to identify a row uniquely in a table. A table can have multiple primary keys, and each table SHOULD have a primary key to uniquely identify a row for CRUD. Foreign key is a field or group of fields in a table that uniquely identifies a row in another table; references to the primary key of the other table i.e. FK in child table, PK in parent table. A table can have multiple FK depending on its relationship with other tables.
 
