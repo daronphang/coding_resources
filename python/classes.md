@@ -1,3 +1,9 @@
+### Get Attributes
+```py
+hasattr(class_name, 'attr')   # true/false
+getattr(class_name, 'attr')   # returns value, else None
+``` 
+
 ### Self Attributes
 ```
 self.__class__                  Get class of current instance
