@@ -1,8 +1,7 @@
-
-## Primary and Foreign Keys:
+### Primary and Foreign Keys
 Primary key is a column or gorup of columns used to identify a row uniquely in a table. A table can have multiple primary keys, and each table SHOULD have a primary key to uniquely identify a row for CRUD. Foreign key is a field or group of fields in a table that uniquely identifies a row in another table; references to the primary key of the other table i.e. FK in child table, PK in parent table. A table can have multiple FK depending on its relationship with other tables.
 
-## Constraints:
+### Constraints
 Rules enforced on data columns in a table. Used to prevent invalid data from being entered into the database and hence, ensuring accuracy and reliability.
 Commonly used in PK and FK. Constraints can be for column or table.
 
@@ -22,7 +21,7 @@ PRIMARY KEY     Multiple columns can be PK. Same as UNIQUE NOT NULL
 CREATE TABLE example(a INTEGER, b INTEGER, c INTEGER, PRIMARY KEY(a,c))
 ```
 
-## Adding Entries Violating Keys:
+### Adding Entries Violating Keys
 Need to drop and add back the key.
 
 ```sql
@@ -36,8 +35,7 @@ WHERE userId = '7bd32724-550e-4921-93ab-e62798e24f6a';
 ALTER TABLE user_portfolios ADD UNIQUE KEY `userId_2` (`userId`,`orderId`);
 ```
 
-
-## Creating Tables:
+### Creating Tables
 ```sql
 USE stock_app;
 CREATE TABLE user_portfolios (
@@ -83,7 +81,7 @@ CREATE TABLE products(
   CHECK(discounted_price > 0 AND price > discounted_price))
 
 ```
-### INSERT:
+### INSERT
 SERIAL columns do not need to be provided a value. Inserted row values must match up for the table including constraints. 
 ```sql
 INSERT INTO account(username, passwword, create_on)
@@ -92,16 +90,16 @@ VALUES('Jose', '1234', CURRENT_TIMESTAMP),
       
 INSERT INTO table(col1,col2) SELECT col1,col2 FROM table2
 ```
-### UPDATE:
+### UPDATE
 ```sql
 # Use UPDATE and SET
 UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = 'Jose'
 ```
-### RETURNING:
+### RETURNING
 ```sql
 UPDATE account SET last_login = CURRENT_TIMESTAMP RETURNING username, last_login
 ```
-### DELETE:
+### DELETE
 To delete multiple items, use IN.
 ```sql
 DELETE FROM table WHERE row_id = 1
