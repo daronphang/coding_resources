@@ -6,7 +6,8 @@ vim <filename>          Start in command mode i.e. cannot edit; need to insert
 h,j,k,l                 Move left, down, up right
 0, $                    Move to beginning of line, end of line
 w, b                    Move forward/backward one word
-G, gg                   Move end of file, beginning of file
+gg                      Move to beginning of file
+shift+g                 Move to last line in file
 
 // can preface movement number of times i.e. 6k to move up six lines
 
