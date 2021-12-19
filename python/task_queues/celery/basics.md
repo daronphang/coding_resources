@@ -149,7 +149,7 @@ def longtask():
 
 @app.route('/status/<task_id>')
 def taskstatus(task_id):
-    task = long_task.AsyncResult(task_id)
+    task = long_task.AsyncResult(task_id)   # task is a class instance, not dict
     if task.state == 'PENDING':
         # job did not start yet
         response = {
@@ -159,9 +159,8 @@ def taskstatus(task_id):
         response = {
             'state': task.state
         }
-        for attr, value in inspect.getmembers(resp):
-                if 'result' in attr:
-                    response['result'] = value
+         if hasattr(resp, 'result'):
+                response['result'] = getattr(resp, 'result')
     else:
         # something went wrong in the background job
         response = {
