@@ -1,3 +1,15 @@
+### Datatable Types
+```
+Boolean                 # 0 as false, 1 as true
+Character               # CHAR, VARCHAR, TEXT, BINARY
+Numeric                 # INTEGER, FLOAT, SMALLINT
+Temporal                # DATE, TIME, TIMESTAMP, INTERVAL
+UUID                    # Universally Unique Identifiers
+Array
+JSON
+Hstore key-value pair
+```
+
 ### Binary
 Storing byte-arrays in SQL can be useful for storing large binary objects (documents, multimedia, images, etc). Can also be used to store hash values for faster searching/high-level analysis. Binary value in SQL Server is a series of bytes (byte-array). Different types include BINARY(1-8000), VARBINARY(1-8000) or VARBINARY(MAX). SQL displays binary values as hexadecimal values prefixed with "0x". 
 
