@@ -1,7 +1,7 @@
-## Triggers:
+### Triggers
 A database object which fires when an event/change occurs in a database. Two types of triggers include DDL and DML.
 
-### DDL (Data Definition Language):
+### DDL (Data Definition Language)
 Fires in response to DDL command events including CREATE, ALTER and DROP.
 
 ```sql
@@ -14,7 +14,7 @@ print'you can not insert,update and delete this table i'
 ROLLBACK;
 ```
 
-### DML (Data Manipulation Language):
+### DML (Data Manipulation Language)
 Fires in response to DDML command events including INSERT, UPDATE and DELETE. Two types are AFTER and INSTEAD.
 
 ```sql
