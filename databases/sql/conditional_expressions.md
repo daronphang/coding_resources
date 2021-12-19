@@ -1,4 +1,4 @@
-## CASE:
+### CASE
 Similar to IF/ELSE statement when certain conditions are met. Has two forms, one is an expression, ot her is search condition. For expression, the case_value compares with when_value.
 ```sql
 # expression
@@ -17,7 +17,7 @@ END CASE
 
 SELECT col1, CASE WHEN ... END FROM table_name
 ```
-## COALESCE:
+### COALESCE
 Function accepts unlimited number of arguments. Returns first argument that is NOT NULL, else NULL. Useful for querying a table with NULL values.
 ```sql
 COALESCE(arg1, arg2, arg3 ... argn)
@@ -25,15 +25,8 @@ COALESCE(NULL, 2, 3)    # returns 2
 
 SELECT item, (price - COALESCE(discount, 0)) AS final_price FROM table
 ```
-## CAST:
-Converts from one data type into another.
-```sql
-# General syntax
-SELECT CAST('5' AS INTEGER)
 
-SELECT CHAR_LENGTH(CAST(inventory_id AS VARCHAR)) FROM table    # CAnnot use LENGTH on integers, need to convert to string
-```
-## NULLIF:
+### NULLIF
 Takes in two inputs and returns NULL if both are equal, otherwise the first argument passed. Useful in cases where NULL value would cause an error
 or give unwanted result.
 ```sql
