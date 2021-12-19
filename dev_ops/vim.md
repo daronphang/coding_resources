@@ -4,6 +4,9 @@ Text editor used in CLI.
 ```
 vim <filename>    Start in command mode i.e. cannot edit; need to insert
 h,j,k,l           Move left, down, up right
+:q                Warns about unsaved changes before exiting
+:qa               Quits all buffers with warning and exit vim
+:qa!              Quits all buffers without saving and without warning
 0, $              Move to beginning of line, end of line
 w, b              Move forward/backward one word
 gg                Move to beginning of file
