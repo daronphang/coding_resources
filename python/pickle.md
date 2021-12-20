@@ -1,5 +1,5 @@
 ### Pickling
-Pickle is used for serializing and de-serializing Python object structures, also called marshalling or flattening. Serialization refers to the process of converting an object in memory to a byte stream that can be stored on disk or sent over a network. This character stream can then be later retrieved and de-serialized back to a Python object.
+Pickle is used for serializing and de-serializing Python object structures, also called marshalling or flattening. Serialization refers to the process of converting an object in memory to a byte stream (linear form) that can be stored on disk or sent over a network. This character stream can then be later retrieved and de-serialized back to a Python object.
 
 Pickling: conversion of an object from one representation (data in RAM) to another (text on disk)  
 Compression: process of encoding data with fewer bits in order to save space
@@ -26,8 +26,29 @@ If data needs to be used across different programming languages, Pickle is not r
 
 ### Pickling Files
 ```py
+pickle.dump(obj, file, protocol=None, *, fix_imports=True, buffer_callback=None)
+pickle.dumps(obj, protocol=None, *, fix_imports=True, buffer_callback=None)
+pickle.load(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
+pickle.loads(bytes_object, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
+
+# dump() creates a file containing serialized result while dumps() returns a byte string 
+# load() reads a file to start unpickling process while loads() operates on a string
+```
+```py
 import pickle
 
 dogs_dict = { 'Ozzy': 3, 'Filou': 8, 'Luna': 5, 'Skippy': 10, 'Barco': 12, 'Balou': 9, 'Laika': 16 }
+with open('filename.txt', 'wb') as pickle_file:
+  pickle.dump(dogs_dict, pickle_file)
+```
 
+### Compressing Pickle Files
+Can be done using bzip2 or gzip (faster but produces files twice as large as bzip2).
+
+```py
+import bz2
+import pickle
+
+sfile = bz2.BZ2File('smallerfile', 'w')
+pickle.dump(dogs_dict, sfile)
 ```
