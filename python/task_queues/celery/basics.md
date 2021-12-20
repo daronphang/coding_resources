@@ -32,7 +32,7 @@ time.sleep()            Suspend execution of current thread for a given number o
 ```
 
 ### Storing into Database
-For storing dictionaries with many columns, prefer to store them in binary. 
+Celery stores results in database in binary using Pickle.
 
 ### Background Tasks with Status Updates
 ```py
