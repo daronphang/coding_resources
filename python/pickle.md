@@ -1,5 +1,5 @@
 ### Pickling
-Pickle is used for serializing and de-serializing Python object structures, also called marshalling or flattening. Serialization refers to the process of converting an object in memory to a byte stream (linear form) that can be stored on disk or sent over a network. This character stream can then be later retrieved and de-serialized back to a Python object.
+Pickle is used for serializing and de-serializing Python object structures (list, dict, classes, etc), also called marshalling or flattening. Serialization refers to the process of converting an object in memory to a byte stream (linear form) that can be stored on disk or sent over a network. This character stream can then be later retrieved and de-serialized back to a Python object.
 
 Pickling: conversion of an object from one representation (data in RAM) to another (text on disk)  
 Compression: process of encoding data with fewer bits in order to save space
