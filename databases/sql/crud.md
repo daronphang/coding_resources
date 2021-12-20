@@ -102,6 +102,9 @@ UPDATE account SET last_login = CURRENT_TIMESTAMP RETURNING username, last_login
 ### DELETE
 To delete multiple items, use IN.
 ```sql
+-- Delete all rows
+TRUNCATE TABLE myassistant.dbo.celery_taskmeta
+
 DELETE FROM table WHERE row_id = 1
 
 DELETE FROM table WHERE id IN (value1, value2)
