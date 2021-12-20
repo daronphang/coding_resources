@@ -52,3 +52,36 @@ Point{1, 2}.ScaleBy(2)    // compiler error; can't take address of Point literal
 Point{1,2}.Distance(q)  // Point
 pptr.ScaleBy(2)         // *Point
 ```
+
+### Nil as Receiver Value
+```go
+type IntList struct {
+  Value int
+  Tail *intList
+}
+
+func (list *IntList) Sum() int {
+  if list == nil {
+    return 0
+  }
+  return list.Value + list.Tail.sum()
+}
+```
+
+### Composing Types by Struct Embedding
+Can call methods of embedded Point field even though ColoredPoint has no declared methods.
+```go
+import "image/color"
+
+type Point struct { X, Y float64 }
+
+type ColoredPoint struct {
+  Point               // Point embedded to provide X and Y fields
+  Color color.RGBA
+}
+
+// calling Point methods
+red := color.RGBA{255, 0, 0, 255}
+var p = ColoredPoint(Point{1, 1}, red}
+p.ScaleBy(2)
+```
