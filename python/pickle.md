@@ -31,6 +31,7 @@ pickle.dumps(obj, protocol=None, *, fix_imports=True, buffer_callback=None)
 pickle.load(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
 pickle.loads(bytes_object, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
 
+# s behind represents string
 # dump() creates a file containing serialized result while dumps() returns a byte string 
 # load() reads a file to start unpickling process while loads() operates on a string
 ```
