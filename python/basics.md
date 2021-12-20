@@ -221,11 +221,22 @@ if 'some_key' in dict:  # cannot use hasattr() method
 ### Subscriptable
 Subscriptable objects are objects with a __getitem__ method such as lists, dictionaries and tuples. Class methods are not subscriptable; instead, add another function that returns the method using inspect library.
 ```py
+# subscriptable
+"foobar"[3] == "b"
+(1,2,3,4)[3] == 4
+[1,2,3,4][3] == 4
+{"a":1, "b":2, "c":3}["c"] == 3
+
 class CrudOperations:
     def __init__(self, conn_payload, as_dict):
         self.conn_payload = conn_payload
         self.as_dict = as_dict
         self.update_user_settings = mssql_connection_crud_operation(conn_payload, as_dict)(self.update_user_settings)
+        
+    def get_attribute(self, method_name):
+        if hasattr(self, method_name):
+            return getattr(self, method_name)
+        abort(400, 'crud method not found')
     
     def get_all_attributes(self, method_name):
         members = inspect.getmembers(self)
