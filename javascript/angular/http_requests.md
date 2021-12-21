@@ -1,4 +1,4 @@
-## HTTP Request:
+### HTTP Request
 Created as a service. Components will subscribe the HTTPrequest.
 ```javascript
 // app.module.ts:
@@ -65,7 +65,7 @@ ngOnInit() {
 }
 ```
 
-## Multiple AJAX Calls:
+### Multiple AJAX Calls
 - forkJoin() for Observable which has similar functionality as Promise.all().
 - For converting to a Promise, use lastValueFrom() as toPromise() is deprecated and finally using Promise.all().
 - If interested in getting first emitted value from a stream that is constantly emitting, use firstValueFrom().
@@ -98,7 +98,7 @@ async function execute() {
 }
 ```
 
-## Adding Delay before HTTP Requests:
+### Adding Delay before HTTP Requests
 - Using setTimeout() in an async function and converting Observables into a Promise.
 - Using from() and concatMap() to wait for first Observable to finish before subscribing to next Observable.
 
@@ -170,4 +170,34 @@ getTickersData.pipe(take(10)).subscribe(
   err => console.log(err),
   finally => finalDataSub.next(finalData)
 )
+```
+
+### Fetching CSV Data
+```js
+  retrieveInlineData(requestId: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Accept: 'application/octet-stream',
+      }),
+      responseType: 'text' as 'text',
+    };
+    const inlineDataRes = this.http.get(`https://tslma03/static/${requestId}.csv`, httpOptions);
+    return inlineDataRes.pipe(
+      catchError((err) => this.maService.handleError(err)),
+      map((res) => {
+        const splitIntoRows = res.split(/\r\n|\n|\r/);
+        const headers = stringDelimiterHandler(splitIntoRows[0], ',');
+        const spcDataArr: SpcData[] = [];
+        splitIntoRows.forEach((row, i) => {
+          if (i === 0) return;
+          let spcData: any = {};
+          const splitRowData = stringDelimiterHandler(row, ',');
+          headers.forEach((header, i) => (spcData[header] = splitRowData[i]));
+          spcDataArr.push(spcData);
+        });
+        spcDataArr.pop(); // removing empty object in last row
+        return spcDataArr;
+      })
+    );
+  }
 ```
