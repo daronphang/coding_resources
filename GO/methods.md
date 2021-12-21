@@ -69,7 +69,7 @@ func (list *IntList) Sum() int {
 ```
 
 ### Composing Types by Struct Embedding
-Can call methods of embedded Point field even though ColoredPoint has no declared methods.
+Can call methods of embedded Point field even though ColoredPoint has no declared methods. Variable of type ColoredPoint has all methods of Point, color.RGBA and additional methods declared on ColoredPoint directly. When calling a method, compiler looks for directly declared method, then for methods promoted once from ColoredPoint's, and then for methods promoted twice from within Point and RGBA, and so on. Compiler reports an error if two methods were promoted from the same rank.
 ```go
 import "image/color"
 
@@ -85,3 +85,31 @@ red := color.RGBA{255, 0, 0, 255}
 var p = ColoredPoint(Point{1, 1}, red}
 p.ScaleBy(2)
 ```
+
+### Method Values and Expressions
+Normally a method is selected and called in the same expression i.e. p.Distance(), but it is possible to separate these two operations.
+
+```go
+p := Point{1,2}
+q := Point{4,6}
+
+distanceFromP := p.Distance     // method value
+fmt.Println(distanceFromP(q))   // 5; function can be invoked without a receiver value; only needs non-receiver arguments
+// dont need p.Distance(q)
+
+scaleP := p.ScaleBy
+scaleP(2)   // p becomes (2,4)
+```
+```go
+// method expression
+
+p := Point{1,2}
+q := Point{4,6}
+
+distance := Point.Distance
+// function's first parameter takes the place of receiver i.e p.Distance
+fmt.Println(distance(p,q))    // 5
+```
+
+### Encapsulation
+A variable or method of an object is said t obe encapsulated if it is inaccessible to clients of the object i.e. information hiding. Go has only one mechanism to control the visibility of names: capitalized identifiers are exported from package in which they are defined, and uncaptilized names are not. To encapsulate an object, must make it a struct. 
