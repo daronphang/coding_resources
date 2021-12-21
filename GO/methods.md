@@ -112,4 +112,28 @@ fmt.Println(distance(p,q))    // 5
 ```
 
 ### Encapsulation
-A variable or method of an object is said t obe encapsulated if it is inaccessible to clients of the object i.e. information hiding. Go has only one mechanism to control the visibility of names: capitalized identifiers are exported from package in which they are defined, and uncaptilized names are not. To encapsulate an object, must make it a struct. 
+A variable or method of an object is said to be encapsulated if it is inaccessible to clients of the object i.e. information hiding. Go has only one mechanism to control the visibility of names: capitalized identifiers are exported from package in which they are defined, and uncaptilized names are not. To encapsulate an object, must make it a struct.
+
+```go
+type IntSet struct {
+  words []uint64
+}
+```
+
+Functions that modify internal values of a type or access are called getters/setters. In GO, usually omit the Get prefix for brevity, and extends to other prefixes including Fetch, Find, and Lookup.
+
+```go
+package log
+
+type Logger struct {
+  flags int
+  prefix string
+  // ...
+}
+
+funct(l *Logger) Flags() int          // getter
+funct(l *Logger) SetFlags(flag int)   // setter
+funct(l *Logger) Prefix() string
+funct(l *Logger) SetPrefix(prefix string) 
+
+```
