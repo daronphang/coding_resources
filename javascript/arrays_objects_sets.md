@@ -37,7 +37,13 @@ const arr = [10, 20, -30];
 const movementsUSD = arr.map(mov => Math.abs(mov) * 1.1);
 const deposits = arr.filter(mov => mov > 0);    // boolean condition
 const balance = arr.reduce((acc, cur, i, arr) => acc + cur, 0);     // accumulator value set at end
+
+// sorting
 const sortArr = arr.sort((a,b) => a - b);   // ascending order
+// by multiple fields 
+finalRes.sort((x: GcpTracking, y: GcpTracking) => {
+  return x.status.localeCompare(y.status) || Date.parse(y.createDate) - Date.parse(x.createDate);
+});
 
 const arr1 = [[[1, 2], 3], [4, 5, 6], 7, 8];
 console.log(arr1.flat(2))   // [1, 2, 3, 4, 5, 6, 7, 8]
