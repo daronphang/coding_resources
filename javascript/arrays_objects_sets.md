@@ -39,6 +39,9 @@ const deposits = arr.filter(mov => mov > 0);    // boolean condition
 const balance = arr.reduce((acc, cur, i, arr) => acc + cur, 0);     // accumulator value set at end
 
 // sorting
+// a - b > 0: sort b before a
+// a - b < 0: sort a before b
+// a - b === 0: keep original order
 const sortArr = arr.sort((a,b) => a - b);   // ascending order
 // by multiple fields 
 finalRes.sort((x: GcpTracking, y: GcpTracking) => {
