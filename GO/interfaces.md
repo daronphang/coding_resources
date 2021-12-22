@@ -184,3 +184,39 @@ sort.Sort(byArtist(tracks))
 // dont need to provide byReverseArtist since the sort package provides Reverse()
 sort.Sort(sort.Reverse(byArtist(tracks)))
 ```
+
+For multi-tier ordering function, can define customSort.
+```go
+type customSort struct {
+  t []*Track
+  less func(x, y *Track) bool   // comparison function defines a new sort order 
+}
+
+func (x customSort) Len() int { return len(x.t) }
+func (x customSort) Less(i, j int) bool { return x.less(x.t[i], x.t[j]) }
+func (x customSort) Swap(i, j int) { x.t[i], x.t[j] = x.t[j], x.t[i] }
+
+sort.Sort(customSort{tracks, func(x, y *Track) bool {
+  if x.Title != y.Title {
+    return x.Title < y.Title
+  }
+  if x.Year != y.Year {
+    return x.Year < y.Year
+  }
+  if x.Length != y.Length {
+    return x.Length < y.Length
+  }
+  return false
+}})
+```
+
+### Http.Handler Interface
+```go
+package http
+
+type Handler interface {
+  ServeHTTP(w ResponseWriter, r *Request)
+}
+func ListenAndServe(address string, h Handler) error
+```
+
