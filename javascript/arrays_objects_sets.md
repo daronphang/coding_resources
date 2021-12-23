@@ -74,8 +74,15 @@ req.body.deleteItems.forEach((itemID) => {
 ### Breaking Out of Loops
 To break out of loops, need to use for-of loops instead of Array prototype functions.
 ```js
+// breaking out of loop
 for (let i = 0; i < 10; i++) {
   if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+}
+
+// Breaking one iteration of loop i.e. continues with next iteration
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { continue; }
   text += "The number is " + i + "<br>";
 }
 ```
