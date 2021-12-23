@@ -71,6 +71,15 @@ req.body.deleteItems.forEach((itemID) => {
   }, []);
 ```
 
+### Breaking Out of Loops
+To break out of loops, need to use for-of loops instead of Array prototype functions.
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+}
+```
+
 ### Objects
 Simple types are numbers, strings, booleans, null and undefined. All other values are objects i.e. arrays, functions, regular expressions, and objects. Objects are mutable keyed collections. Javascript includes prototype linkage feature that allows one object to inherit properties of another which reduces initialization time and memory consumption. 
 
