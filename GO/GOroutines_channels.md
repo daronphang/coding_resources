@@ -34,3 +34,16 @@ func fib(x int) int {
   return fib(x-1) + fib(x-2)
 }
 ```
+
+### Channels
+Channels are the connections between goroutines i.e. a communication mechanism that lets one goroutine send values to another goroutine. A channel has two principal operations, send and receive. Also supports a third operation, close, which sets a flag indicating that no more values will ever be sent on this channel; subsequent attempts to send will panic. Receive operations on a close channel yield the values that have been sent until no more values are left.
+```go
+ch := make(chan int)    // ch has type 'chan int', unbuffered channe;
+ch := make(chan, int, 0)  // unbuffered channel
+ch := make(chan, int, 3)  // buffered channel with capacity 3
+close(ch)
+
+ch <- s   // a send statement
+x = <-ch    // a receive expression in an assignment statement
+<-ch    // a receive statement, reuslt is discarded
+```
