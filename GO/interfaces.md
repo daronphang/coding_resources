@@ -320,3 +320,29 @@ func Errorf(format string, args ...interface{}) error {
   return errors.New(Sprintf(format, args...))
 }
 ``` 
+
+### Type Assertions
+An operation applied to an interface value.
+
+```go
+// x.(T) where x is an expression of interface type and T is the asserted type (concrete/dynamic)
+
+var w io.Writer
+w = os.Stdout
+f := w.(*os.File)   // success: f == os.Stdout
+c := w.(*bytes.Buffer)  // panic: interface holds *os.File, not *bytes.Buffer
+
+// rw exposes both Read() and Write() while w exposes Write() only
+rw := w.(io.ReadWriter) // success: *os.File has both read and write
+
+// test interface type
+var w io.Writer = os.Stdout
+f, ok := w.(*os.File)       // success: ok, f == os.Stdout
+b, ok := w.(*bytes.Buffer)  // failure: !ok, b == nil
+
+if f, ok := w.(*os.File); ok {
+  // use f...
+}
+```
+
+### Discriminating Errors with Type Assertions
