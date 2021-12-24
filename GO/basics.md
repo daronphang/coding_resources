@@ -147,12 +147,10 @@ func main() {
 ```
 
 ### Variable Declarations
-All are equivalent.
 ```GO
-s := ""
-var s string
-var s = ""
-var s string = ""
+s := "Hello world"    // colon syntax used for assigning NEW variables only
+var s string = "Hello world"
+s = "Awesome!"    // equal syntax for reassigning variables
 ```
 
 
