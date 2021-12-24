@@ -116,6 +116,12 @@ x, err := strconv.Atoi("123")
 y, err := strconv.ParseInt("123", 10, 64) // base 10, up to 64 bits
 ```
 
+### Substrings
+```go
+w := "hello world!"
+strings.Contains(w, "hello")
+```
+
 ## Constants
 Can declare a sequence of constants as a group. Can also use constant generator iota which is used to create a sequence of related values. Value of iota begins at 0 and increments by 1 for each item in sequence i.e. enumerator.
 
