@@ -87,6 +87,9 @@ package.json
 }
 ```
 
+### Golang
+Install all tools and restart VS code: Command + Shift + P -> Go: Install/update tools.
+
 
 ### Remote Development
 When cloning a repo, can run in container instead of running npm install locally. Container contains all node_modules dependencies. Main difference is that need to specify "host" parameter to tell Angular/React to connect to IP address. Also unable to use certain Windows commands in terminal as container is running in Linux (debian).
