@@ -22,11 +22,11 @@ fmt.Printf("%x\n%x\n%t\n%T\n", c1, c2, c1 == c2, c1)  // 2145,2312, false, [32]u
 ## Slices
 Has 3 components: pointer, length and capacity. Pointer points toe the first element of array that is reachable through slice, which is not necessarily the array's first element. Length cannot exceed capacity. Multiple slices can share the same underlying array and may refer to overlapping parts. Unlike arrays, slices cannot use == to compare with each other. Only legal comparison is to check for nil.
 ```
-nonempty
-copy
-append
-reverse
-rotate
+nonempty()
+copy()
+append()
+reverse()
+rotate()
 ```
 ```go
 months := [...]string{1: "Jan", /*...*/, 12: "Dec"}
@@ -46,8 +46,12 @@ s = []int{}   // len(s) == 0, s != nil
 ```go
 // append
 var x []int
-x = append(x, 1)
-x = append(x, x...) // append slice x, 
+x = append(x, 1)  // returns a new slice and assign back to variable x
+x = append(x, x...) // append slice x
+
+for i, card := range x {
+  fmt.Println(card)
+}
 ```
 
 ## Maps
