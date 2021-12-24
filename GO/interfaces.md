@@ -10,7 +10,7 @@ Abstract interface that reveals only some of the methods.
 package fmt
 
 // abstract interface {}
-var any interface()
+var any interface{}
 any = true
 any = 12.34
 any = "hello"
