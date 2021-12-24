@@ -396,3 +396,91 @@ func IsNotExist(err error) bool {
 _, err := os.Open("/no/such/file")
 fmt.Println(os.IsNotExist(err))   // true
 ```
+
+### Checking Behaviors with Interface Type Assertions
+Can use type assertion to test whether a dynamic type has a method by defining a new interface.
+```go
+// example of writing HTTP headers to response with io.Writer
+// Write() requires byte slice but output value is a string and hence, requires []byte(...) conversion
+// this conversion allocates memory and makes a copy but thrown away after
+
+// writeString writes s to w
+// if w has WriteString(), it is invoked instead of w.Write
+func writeString(w io.Writer, s string) (n int, err error) {
+  type stringWriter interface {
+    WriteString(string) (n int, err error)
+  }
+  if sw, ok := w.(stringWriter); ok {
+    return sw.WriteString(s)  // avoid a copy
+  }
+  return w.Write([]byte(s)) // allocate temporary copy
+}
+
+func writeHeader(w io.Writer, contentType string) error {
+  if _, err := writeString(w, " Content-Type: "); err != nil {
+    return err
+  }
+  if _, err := writeString(w, contentType); err != nil {
+    // some code here
+  }
+}
+
+// standard library provides io.WriteString as recommended way to write string to io.Writer
+```
+
+### Type Switches
+```go
+import "database/sql"
+
+func listTracks(db sql.DB, artist string, minYear, maxYear int) {
+  result, err := db.Exec(
+    "SELECT * FROM tracks WHERE artist = ? AND ? <= year AND year ?",
+    artist, minYear, maxYear
+  )
+  // ...
+}
+
+// within Exec
+func sqlQuote(x interface{}) string {
+  if x == nil {
+    return "NULL"
+  } else if _, ok := x.(int); ok {
+    return fmt.Sprintf("%d", x)
+  } else if _, ok := x.(uint); ok {
+    return fmt.Sprintf("%d", x)
+  } else if b, ok := x.(bool); ok {
+    if b {
+      return "TRUE"
+    }
+    return "FALSE"
+  } else if s, ok := x.(string); ok {
+    return sqlQuoteString(s)
+  } else {
+    panic(fmt.Sprintf("unexpected type %T: %v", x, x))
+  }
+}
+
+// type switch
+func sqlQuote(x interface{}) string {
+  // each case implicitly creates a separate lexical block
+  // x.(type) is type switch
+  switch x := x.(type) {
+  case nil:
+    return "NULL"
+  case int, uint:
+    return fmt.Sprintf("%d", x)
+  case bool:
+    if x {
+      return "TRUE"
+    }
+    return "FALSE"
+  }
+  case string:
+    return sqlQuoteString(x)
+  default:
+    panic(fmt.Sprintf("unexpected type %T: %v", x, x))
+}
+```
+
+### Advice
+Interfaces that has only a single implementation are unnecessary abstractions and have run-time cost. Interfaces are only needed when there are two or more concrete types that must be dealt with in a uniform way. An exception to this rule is when an interface is satisfied by a single concrete type but that type cannot live in the same package as interface because of its dependencies.
