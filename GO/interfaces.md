@@ -261,8 +261,8 @@ The http package provides ServeMux, a request multiplexer, to simplify the assoc
 func main() {
   db := database{"shoes": 50, "socks": 5}
   mux := http.NewServeMux()
-  mux.Handle("/list", http.HandlerFunc(db.list))
-  mux.Handle("/price", http.HandlerFunc(db.price))
+  mux.Handle("/list", http.HandlerFunc(db.list))      // db.list does not have any methods 
+  mux.Handle("/price", http.HandlerFunc(db.price))    // does not satisfy http.Handler interface alone and cant be passed directly 
   log.Fatal(http.ListenAndServe("localhost:5000", mux))
 }
 
@@ -274,21 +274,49 @@ func (db database) list(w http.ResponseWriter, req *http.Request) {
 }
 
 func (db database) price(w http.ResponseWriter, req *http.Request) {
-      item := req.URL.Query().Get("item")
-      price, ok := db[item]
-      if !ok {
-        w.WriteHeader(http.StatusNotFound) // 404
-        fmt.Fprintf(w, "no such item: %q\n", item)
-        return
-      }
-      fmt.Fprintf(w, "%s\n", price)
+  item := req.URL.Query().Get("item")
+  price, ok := db[item]
+  if !ok {
+    w.WriteHeader(http.StatusNotFound) // 404
+    fmt.Fprintf(w, "no such item: %q\n", item)
+    return
+  }
+  fmt.Fprintf(w, "%s\n", price)
 }
 
 // an adapter that lets a function value satisfy an interface
-// a function type that has methods and satisfies an interface, http.Handler
-// converts argument to satisfy http.Handler interface in order to pass directly to mux.Handle
 type HandlerFunc func(w ResponseWriter, r *Request)
 func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request) {
+  // adapter adds ServeHTTP to db.list/price function to satisfy http.Handler interface
+  // behavior of ServeHTTP is to call the underlying db.list or db.price function
   f(w, r)
 }
 ```
+
+### Error Interface
+```go
+type error interface {
+  Error() string  // error interface has 1 method that returns string
+}
+
+// error package
+package errors
+
+type errorString struct { text string }  // struct to protect its representation from inadvertent updates
+func New(text string) error { return &errorString{text} }   
+
+// pointer satisfies error interface and ensure every call to New allocates a distinct error
+func(e *errorString) Error() string { return e.text }   
+
+errors.New('hello world') // returns a new error
+fmt.Println(errors.New("EOF") == errors.New("EOF"))   // false
+``` 
+``` go
+package fmt
+import errors
+
+// more convenient wrapper function fmt.Errorf rather than calling errors.New
+func Errorf(format string, args ...interface{}) error {
+  return errors.New(Sprintf(format, args...))
+}
+``` 
