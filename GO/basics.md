@@ -14,7 +14,20 @@ func main() {
 ### Garbage Collector
 GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
 
-### Print Verbs
+### Print Functions
+```go
+fmt.Sprinf()      // formats and stores a series of characters and values in array pointed to by buffer
+fmt.Errorf()
+fmt.Fprintf()
+fmt.Fscanf()
+fmt.Printf()      // formats and writes output to stdout
+fmt.Scanf()
+fmt.Sscanf()
+log.Printf()
+
+myString := "Results: " + results + " and more stuff: " + more
+myString := fmt.Sprinf("Results: %s and more stuff: %s", results, more)
+```
 ```
 %v    value in default format
 %#v   Go-syntax representation of value
