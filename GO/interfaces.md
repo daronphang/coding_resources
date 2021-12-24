@@ -346,3 +346,53 @@ if f, ok := w.(*os.File); ok {
 ```
 
 ### Discriminating Errors with Type Assertions
+For I/O operations, more reliable approach for error handling is to represent structured error values with type.
+```go
+package os
+
+// struct preserves underlying components of the error 
+// clients can distinguish one kind of failure from another using type assertion to detect specific type of error
+type PathError struct {
+  Op string
+  Path string
+  Err error
+}
+func (e *PathError) Error() string {
+  return e.Op + " " + e.Path + ": " + e.Err.Error()
+}
+
+_, err := os.Open("/no/such/file")
+fmt.Prntln(err) // "open /no/such/file: No such file or directory"
+fmt.Printf("%#v\n", err)
+// Output:
+// &os.PathError{Op:"Open, Path:"/no/such/file", Err: 0x2}
+```
+```go
+package os
+import (
+  "errors"
+  "syscall"
+)
+
+// provides 3 helper functions 
+func IsExist(err error) bool
+func IsNotExist(err error) bool
+func IsPermission(err error) bool
+
+// naive error implementation!
+func IsNotExist(err error) bool {
+  return strings.Contains(err.Error(), "file does not exist")
+}
+
+// using PathError
+var ErrNotExist = errors.New("file does not exist")
+func IsNotExist(err error) bool {
+  if pe, ok := err.(*PathError); ok {   // type assertion
+    err = pe.Err
+  }
+  return err == syscall.ENOENT || err == ErrNotExist
+}
+
+_, err := os.Open("/no/such/file")
+fmt.Println(os.IsNotExist(err))   // true
+```
