@@ -12,7 +12,7 @@ package main    // refers to project or workspace
 import "fmt"
 
 func main() {
-  fmt.Println("Hello,
+  fmt.Println("Hello world!")
 }
 ```
 
