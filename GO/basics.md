@@ -16,11 +16,13 @@ GO's garbage collector recycles unused memory but DO NOT assume it will release 
 
 ### Print Functions
 ```go
+fmt.Println()     // Takes a string, prints and adds a new line after string
+fmt.Print()       // same as Println() but does not add a new line after string
+fmt.Printf()      // formats string using custom specifier and writes output to stdout 
 fmt.Sprinf()      // formats and stores a series of characters and values in array pointed to by buffer
 fmt.Errorf()
 fmt.Fprintf()     // F prefix stands for file and indicates formatted output should be written to file
 fmt.Fscanf()
-fmt.Printf()      // formats and writes output to stdout
 fmt.Scanf()
 fmt.Sscanf()
 log.Printf()
