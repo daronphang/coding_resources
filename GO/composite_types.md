@@ -215,7 +215,7 @@ Allows using named struct type as an anonymous field of another struct type. Pro
 type person struct {
 	firstName string
 	lastName string
-	contact contactInfo
+	contactInfo
 }
 
 type contactInfo struct {
@@ -226,7 +226,7 @@ type contactInfo struct {
 jim := person{
   firstName: "Jim",
   lastName: "Tan",
-  contact: contactInfo{
+  contactInfo: contactInfo{
     email: "jim@gmail.com",
     number: 1234567,
   },
