@@ -212,12 +212,24 @@ hits[address{"golang.org", 443}]++
 Allows using named struct type as an anonymous field of another struct type. Provides convenient syntactic shortcut where x.f can stand for a chain of fields like x.d.e.f.
 
 ```go
-type Circle struct {
-  X, Y Radius int
+type person struct {
+	firstName string
+	lastName string
+	contact contactInfo
 }
 
-type Wheel struct {
-  X, Y, Radius, Spokes, int
+type contactInfo struct {
+	email string
+	number int
+}
+
+jim := person{
+  firstName: "Jim",
+  lastName: "Tan",
+  contact: contactInfo{
+    email: "jim@gmail.com",
+    number: 1234567,
+  },
 }
 ```
 ```go
