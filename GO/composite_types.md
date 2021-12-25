@@ -20,7 +20,9 @@ fmt.Printf("%x\n%x\n%t\n%T\n", c1, c2, c1 == c2, c1)  // 2145,2312, false, [32]u
 ```
 
 ## Slices
-Has 3 components: pointer, length and capacity. Pointer points toe the first element of array that is reachable through slice, which is not necessarily the array's first element. Length cannot exceed capacity. Multiple slices can share the same underlying array and may refer to overlapping parts. Unlike arrays, slices cannot use == to compare with each other. Only legal comparison is to check for nil.
+Has 3 components: pointer, length and capacity. Pointer points to the first element of array that is reachable through slice, which is not necessarily the array's first element. Length cannot exceed capacity. Multiple slices can share the same underlying array and may refer to overlapping parts. Unlike arrays, slices cannot use == to compare with each other. Only legal comparison is to check for nil. 
+
+Gotcha for slices is that when GO creates slices, it creates both a slice (pointer to the underlying array, length and capacity) and the underlying array. Hence, do not need to use pointers to update values inside slices. 
 ```
 nonempty()
 copy()
@@ -56,6 +58,17 @@ for i, card := range x {
   fmt.Println(card)
 }
 ```
+```go
+// slices gotcha that doesnt require pointers specifically
+mySlice := []string{"hello", "world"}
+updateSlice(mySlice)
+fmt.Println(mySlice)	// [Bye World]
+
+func updateSlice(s []string) {
+  s[0] = "Bye"
+}
+```
+
 
 ## Maps
 A reference to a hash table, an unordered collection of key/value pairs in which all keys are distinct. All keys in a given map are of the same type, and all values are of the same type. However, keys need not be of same type as values. Should not use floating-points for keys. Need to allocate the map first before can store into it.
