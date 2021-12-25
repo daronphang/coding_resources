@@ -1,8 +1,9 @@
 ### Basics
-A variable that is used to store the memory address of another variable (in hexadecimal format). Also termed as special variables. 
+A variable that is used to store the memory address of another variable (in hexadecimal format). Also termed as special variables. Pointers declared on types and variables are slightly different. 
 
 ```
 *operator   Dereferencing operator used to declare pointer variable and access the value stored in address
+*type       Type description that means to work with a pointer to that type
 &operator   Used to return the address of variable or to access the address of a variable to a pointer
 ```
 
@@ -27,6 +28,10 @@ func main() {
     fmt.Println("pointer =", pointer)     // pointer = 0xc0000721e0
     fmt.Println("*pointer =", *pointer)   // to print the value, need to dereference using *operator
     *pointer = "jellyfish"                // modifying value
+}
+
+func(pointerToPerson *person) updateName() {    // not an operator; arg must be a pointer to type person
+    *pointerToPerson    // this is an operator; to manipulate the value the pointer is referencing
 }
 ```
 
