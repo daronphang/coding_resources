@@ -5,6 +5,12 @@ A variable that is used to store the memory address of another variable (in hexa
 *operator   Dereferencing operator used to declare pointer variable and access the value stored in address
 *type       Type description that means to work with a pointer to that type
 &operator   Used to return the address of variable or to access the address of a variable to a pointer
+
+0001            person{firstName: "Jim"}
+address         value
+
+Turn address into value with *address
+Turn value into address with &value
 ```
 
 ### Purpose
