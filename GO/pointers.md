@@ -44,3 +44,24 @@ func(pointerToPerson *person) updateName() {    // not an operator; arg must be 
 ### When to use Pointers
 - If the function needs to modify its receiver.
 - When passing large amounts of data.
+
+### Value vs Reference Types
+Reference types have a pointer pointing to the underlying value; any updates to the reference type will indirectly update the underlying value and hence, do not need to specifically reference a pointer. For value types, need to use pointers to change/update values.
+
+#### Value Types
+```
+int
+float
+stirng
+bool
+structs
+```
+
+#### Reference Types
+```
+slices
+maps
+channels
+pointers
+functions
+```
