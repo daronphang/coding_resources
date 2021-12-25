@@ -1,5 +1,5 @@
 ### Interfaces
-Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types.
+Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types. Interfaces are able to take different sources of input and provide a common output i.e. Reader interface takes any type of data as input and outputs as []byte for anyone to work with.
 
 ```go
 // not ideal!
@@ -47,7 +47,9 @@ package io
 
 // Reader represents any time from which you can read bytes
 type Reader interface {
-  Read(p []byte) (n int, err error)
+  // byte slice is passed as arg where Read() will push data into byte slice; original gets updated as it is a 
+  // int is the number of bytes pushed to byte slice
+  Read(p []byte) (n int, err error) 
 }
 
 // Closer is any value that you can close such as a file or network connection
