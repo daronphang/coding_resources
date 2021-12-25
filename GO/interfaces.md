@@ -63,6 +63,19 @@ type ReadWriter interface {
   Writer
 }
 ```
+```go
+func main() {
+  resp, err := http.Get("http://google.com")
+  if err != nil {
+    fmt.Println(err)
+    os.Exit(1)
+  }
+<!--   bs := make([]byte, 99999)
+  resp.Body.Read(bs)
+  fmt.Println(string(bs)) -->
+  io.Copy(os.Stdout, resp.Body) // shortcut where os.Stdout implements Writer interface and resp.Body the Reader interface
+}
+```
 
 ### Interface Satisfaction
 Only depends on the methods of the two types involved; hence, do not need to declare the relationship between concrete type and the interface it satisfies. Nonetheless, it is useful to document and assert the relatiosnhip when it is intended. 
