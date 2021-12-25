@@ -43,7 +43,7 @@ func (p *Point) ScaleBy(factor float64) {
   // name of method: (*Point).ScaleBy
 }
 
-r := &Point{1, 2}
+r := Point{1, 2}
 r.ScaleBy(2)    // shorthand; compiler performs an implicit &p on the variable
 fmt.Println(*r) // {2, 4}
 
