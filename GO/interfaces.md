@@ -1,6 +1,13 @@
 ### Interfaces
 Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough.
 
+```go
+// not ideal!
+func (d deck) shuffle() {}
+func (d []int) shuffle() {}
+func (d string) shuffle() {}
+```
+
 ### Concrete Interface
 Concrete type specifies the exact representation of its values and exposes the intrinsic operations of that representation i.e. arithmetic for numbers, indexing/append/range for slices.
 
