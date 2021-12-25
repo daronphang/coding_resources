@@ -1,17 +1,26 @@
 ### Interfaces
-Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough.
+Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types.
 
 ```go
 // not ideal!
 func (d deck) shuffle() {}
-func (d []int) shuffle() {}
-func (d string) shuffle() {}
+func (i []int) shuffle() {}
+func (s string) shuffle() {}
+
+// as long as concrete type has function called createCardDeck(), it is also an honorary member of type Card
+type Card interface {
+  createCardDeck() []string
+}
+
+func shuffle(c Card) {
+  // some common shuffle logic
+}
 ```
 
-### Concrete Interface
+### Concrete Type
 Concrete type specifies the exact representation of its values and exposes the intrinsic operations of that representation i.e. arithmetic for numbers, indexing/append/range for slices.
 
-### Contracts Interface
+### Contracts Type
 Abstract interface that reveals only some of the methods. 
 ```go
 package fmt
