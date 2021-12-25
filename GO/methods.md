@@ -32,6 +32,11 @@ As calling a function makes a copy of each argument value, or if it needs to upd
 In a realistic program, convention dictates that if any method of variable has a pointer receiver, then all methods should have a pointer receiver, even ones that don't strictly need it. If all methods of named type T have a receiver type T itself (not \*T), it is safe to copy instances of that type i.e. calling any of its methods makes a copy.
 
 ```go
+func (p *Point) updateX(value float64) {
+  *p.X = value
+}
+
+
 func (p *Point) ScaleBy(factor float64) {
   p.X *= factor
   p.Y *= factor
