@@ -72,9 +72,11 @@ func main() {
     fmt.Println(err)
     os.Exit(1)
   }
-  /* bs := make([]byte, 99999)
+  /*
+  bs := make([]byte, 99999)
   resp.Body.Read(bs)
-  fmt.Println(string(bs)) */
+  fmt.Println(string(bs))
+  */
   io.Copy(os.Stdout, resp.Body) // shortcut where os.Stdout implements Writer interface and resp.Body the Reader interface
   
   lw := logWriter{}
