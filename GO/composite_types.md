@@ -82,10 +82,11 @@ ages := map[string]int{
 }
 
 ages := make(map[string]int)  // mapping from strings to ints
-ages["alice"] = 31
+ages["alice"] = 31 // can only use square bracket syntax to access value, not dot notation
 
 delete(ages, "alice")
-
+```
+```go
 // enumerate all key/value pairs
 for name, age := range ages {
   fmt.Printf("%s\t%d\n", name, age)
@@ -93,6 +94,7 @@ for name, age := range ages {
 
 // enumerate in order
 import "sort"
+
 names := make([]string, 0, len(ages)) // more efficient to allocate an array of required size upfront
 for name:= range ages {
   names = append(names, name)
@@ -285,6 +287,15 @@ w.Radius = 5
 // however, does not have shorthand for struct literal syntax
 w = Wheel{X: 8, Y: 8, Radius: 5, Spokes: 20}  // compile error: unknown fields
 ```
+
+### Structs vs Maps
+| Map                                                                 | Structs                                               |
+|---------------------------------------------------------------------|-------------------------------------------------------|
+| All keys must be the same type and all values must be of same type  | Values can be of different type                       |
+| Keys are indexed and can be iterated                                | Keys don't support indexing                           |
+| Reference type                                                      | Value type and must use pointers to update values     |
+| Don't need to know all keys at compile time                         | Need to know all different fields at compile time     |
+| Used to represent a collection of related properties                | Used to represent an object with different properties |
 
 ## JSON
 JSON objects are used to encode GO maps (with string keys) and structs. Converting a GO data structure to JSON is called marshaling. Field tag is a string of metadata associated at compile time with the field of a struct. Conventionally interpreted as space-separated list of key:"value" pairs. Names of all struct fields must be capitalized even if JSON names are not. However, matching process between JSON names and GO struct names during unmarshaling is case-insensitive i.e. use a field tag to cater for underscores.
