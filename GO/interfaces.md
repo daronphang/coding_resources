@@ -47,7 +47,7 @@ package io
 
 // Reader represents any time from which you can read bytes
 type Reader interface {
-  // byte slice is passed as arg where Read() will push data into byte slice; original gets updated as it is a 
+  // byte slice is passed as arg where Read() will push data into byte slice; original gets updated as it is a reference type
   // int is the number of bytes pushed to byte slice
   Read(p []byte) (n int, err error) 
 }
