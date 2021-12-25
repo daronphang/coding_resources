@@ -30,7 +30,10 @@ rotate()
 ```
 ```go
 months := [...]string{1: "Jan", /*...*/, 12: "Dec"}
+
 s[i:j]  // creates a new slice
+
+[]byte("Hello world!")  // converts a string into a byte slice (computer friendly representation of string)
 
 // to rotate elements, apply reverse func multiple times
 s := []int{0, 1, 2, 3, 4, 5}
