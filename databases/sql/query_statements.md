@@ -44,13 +44,20 @@ Used to replace group of arguments using <> or != operator that are combined wit
 SELECT * FROM table WHERE col1 IN ('red','blue')    # Red or Blue
 ```
 ### LIKE, ILIKE
+``` 
+%	Represents zero or more characters
+_	Represents a single character
+[]	Represents any single character within brackets
+-	Represents any single character within specified range in brackets
+^	Represents any character not in brackets
+``` 
 ```sql
-# Used for pattern matching i.e. emails ending with @gmail.com
-# Widlcard characters: 
-# %   Matches any sequence of characters
-# _   Matches any single character
-SELECT * FROM table WHERE col1 LIKE 'A%'  # all names that begin with A
-SELECT * FROM table WHERE col1 LIKE 'Mission Impossible _'
+WHERE col1 LIKE 'A%'		-- any values that begin with A
+WHERE col1 LIKE '%c'		-- any values that end with c
+WHERE col1 LIKE '%or%'		-- any values t hat have "or" in any position
+WHERE col1 LIKE 'h[a-d]t'
+WHERE col LIKE 'h[^oa]t'	-- 'hit' but not 'hat' or 'hot'
+WHERE col1 LIKE 'Mission Impossible _'
 ```
 ### GROUP BY
 Often used with aggregate functions i.e. COUNT(), SUM(), MIN(), AVG() to group the result-set by one or more columns. When grouping by multiple columns, it means to place all the rows with same values in multiple columns in one group i.e. all rows having the same values for col1 and col2 are placed in 1 group and then the aggregate is calculated.   
