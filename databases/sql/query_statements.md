@@ -4,6 +4,10 @@ SELECT col1,col2 FROM table
 SELECT * FROM infomration_schema.tables
 ```
 ### SELECT DISTINCT
+Should use it sparingly as it has significant overhead cost. If query returns duplicate, need to understand why joining tables produce duplicate results i.e. database PK may not be properly designed, ON statement is not sufficient, etc. 
+
+https://weblogs.sqlteam.com/markc/2008/11/11/60752/
+
 ```sql
 # For table columns with duplicate values.
 SELECT DISTINCT col1,col2 FROM table
