@@ -35,6 +35,17 @@ Django
 Figma
 ```
 
+### Source Code Management
+```
+Github
+Bitbucket
+```
+
+### Issue Tracking
+```
+jira
+```
+
 ### Project Planning
 ```
 Microsoft Azure Ops
