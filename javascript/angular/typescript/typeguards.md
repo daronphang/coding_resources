@@ -1,4 +1,4 @@
-## Checking Interface Type:
+### Checking Interface Type
 Create a user-defined type guard (https://www.typescriptlang.org/docs/handbook/advanced-types.html).
 
 ```js
