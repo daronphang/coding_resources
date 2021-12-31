@@ -21,4 +21,6 @@ console.log(d);                        // -> Sat Feb 28 2004 23:45:26 GMT-0300 (
 console.log(d.toLocaleString());       // -> Sat Feb 28 23:45:26 2004
 console.log(d.toLocaleDateString());   // -> 02/28/2004
 console.log(d.toLocaleTimeString());   // -> 23:45:26
+
+const month = date.toLocaleString('default', { month: 'long' });  // long, short, narrow; default is en-us
 ```
