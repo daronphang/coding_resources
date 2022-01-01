@@ -22,6 +22,7 @@ react-hook-form       Provides abstraction for form creation
 react-cookies
 material-ui
 notistack             Handles multiple snackbar
+material-table        Built on material-ui table
 ```
 
 ### Python
