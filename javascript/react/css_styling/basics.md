@@ -1,5 +1,7 @@
-## Basics:
+### CSS Classes
 When adding a CSS file to component, need to explicitly declare in React. When defining the class, need use className for JSX. When adding CSS files to components, they are added globally and not scoped only to the components they are added in. Can use either Styled Components or CSS Module library.
+
+
 
 ```javascript
 import './ExpenseItem.css';
@@ -12,8 +14,8 @@ function ExpenseItem() {
 }
 ```
 
-## Inline Styling:
-Properties with two names must be written in camelcase as inline CSS is JS object.
+### Inline Styling
+Properties with two names must be written in camelcase as inline CSS is JS object. Cannot specify pseudo-classes using inline styles i.e. :focus, :hover, :active, etc.
 ```js
 export default function Component () {
   const someStyle = {
@@ -32,7 +34,7 @@ export default function Component () {
 ```
 
 
-## Dynamic Inline Styling/Classes:
+### Dynamic Inline Styling/Classes
 Need pass in an object. Use states to change styling for a HTML element or adding CSS classes dynamically.
 ```javascript
 [isValid, setIsValid] = useState(true);
@@ -49,7 +51,7 @@ return (
 )
 ```
 
-## CSS Module:
+### CSS Module
 Buiilt into React. Simply use styles() method. Recommended way as styling is stored in .css files. Need to rename CSS files as example.module.css.
 
 ```javascript
