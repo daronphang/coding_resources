@@ -31,6 +31,12 @@ Flask
 Django
 ```
 
+### Cloud
+```
+dynamodb               NoSQL AWS database
+AppSync                Service developed by AWS to manage GraphQL APIs
+```
+
 ### Designing
 ```
 Figma
