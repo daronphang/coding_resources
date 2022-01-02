@@ -29,6 +29,7 @@ Observable.from(urls).concatMap.pipe(
 )
 ```
 
+### Pipeable
 ```
 // Common Operators
 catchError        Returns a new observable or throws an error.
