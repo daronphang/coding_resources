@@ -27,6 +27,12 @@ To not let Observables die if an error occurs, use catchError() and return an Ob
 Observable.from(urls).concatMap.pipe(
   catchError((err) => of(null))
 )
+
+const obsArr = [1,2,3].map((item) => this.http.get().pipe(
+  catchError((err) => of(null))
+))
+
+forkJoin(obsArr).subscribe()
 ```
 
 ### Pipeable
