@@ -42,6 +42,9 @@ const balance = arr.reduce((acc, cur, i, arr) => acc + cur, 0);     // accumulat
 // a - b > 0: sort b before a
 // a - b < 0: sort a before b
 // a - b === 0: keep original order
+
+// sort by string
+arr.sort((a,b) => a.value.localeCompare(b.value))
 const sortArr = arr.sort((a,b) => a - b);   // ascending order
 // by multiple fields 
 finalRes.sort((x: GcpTracking, y: GcpTracking) => {
