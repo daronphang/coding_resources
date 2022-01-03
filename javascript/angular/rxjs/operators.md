@@ -43,6 +43,7 @@ catchError        Returns a new observable or throws an error.
 tap               Function returns an identical Observable to the source, but runs the specified callback for each items (side effects).
 merge             Flattens multiple Observables together by blending their values into one Observable.             
 map               Returns mapped data when subscribed
+toArray           Collects all source emissions and emits them as an array when source completes
 
 debounceTime      Works with fromEvent()
 delay             Delay emitting value from Observable
