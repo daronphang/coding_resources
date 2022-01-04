@@ -14,6 +14,7 @@ shift+g           Move to last line in file
 ctrl+o            Go back to previous location (not necessarily a buffer)
 tab               Go next location
 :E                Go directory listing of opened file
+backspace         Go directory listing of opened file
 :b#               Go to previously edited buffer
 :e <filename>     Go directly to file
 shift+h           Move to top of screen
