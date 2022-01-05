@@ -1,25 +1,28 @@
-## Data Structures
-Data structures are a way of organizing and storing data; they explain the relationship between data and various logical operations that can be performed on the data. 
+### Args/Kwargs
+Both allow to pass a varying number of positional arguments. Both asterisks refer to the unpacking operator. The iterable object returned using unpacking operator is a tuple and not a list.
+Kwargs refers to keyword arguments which accepts keyword i.e. unpacks into a dictionary.
 
-### Primitive & Non-Primitive
-Primitive are basic data structures containing pure and simple data values and serve as building blocks for manipulating data. They include integers, float, string and boolean. Non-primitive not only store values but a collection of values in different formats. They include lists, dictionaries, tuples and sets. 
+```py
+# args is just a convention name i.e. can call *integers or *numbers
+def my_sum(*args):
+    result = 0
+    # iterating over args tuple
+    for x in args:
+        result += x
+    return result
 
-### Stacks
-Linear data structures based on the principle of First-In/Last-Out (FILO). The addition of a new element at one end is accompanied by removal of an element from the same end. Operations include push(), pop(), size(), empty() and top().
+def concantenate(**kwargs):
+    result = ''
+    for arg in kwargs.values():
+        result += arg
+    return result
 
-### Queue
-Linear data structures but items are stored based on First-In/First-Out principle. Item that is least recently added is removed first. Operations include enqueue (adding) and dequeue (deleting), front and rear. 
+print(my_sum(1, 2, 3))
 
-### Tree
-Non-linear data structures and consist of nodes connected by edges. One node is designated as the root node, every other node has an associated parent node, and each node can have an arbitrary number of children nodes. A binary Tree data structure is one whose elements have no more than two children.
 
-### Linked List
-Linear data structure that has a series of data elements joined together via links. Implemented using the concept of nodes. Linked lists have an advantage over Arrays in having a dynamic size, with ease of inserting/adding elements.
+```
 
-### Hashmaps/Hash Tables
-Hash function generates the address or index value of the data element. Index value serves as the key to the data value.
-
-## Sequence Types & Destructuring
+### Sequence Types & Destructuring
 An ordered list of items. String, list, tuple, range, bytes and bytearray. Dictionaries are ordered from 3.6 onwards.
 
 ```py
@@ -36,7 +39,7 @@ numbers = [3, 5]
 print(multiply(*numbers))
 ```
 
-## Operations
+### Operations
 ```python
 a/b     # float
 a//b    # integer
@@ -45,7 +48,7 @@ a % b   # remainder after integer division
 sevens = range(7, 1000, 7)      // divisble by 7
 ```
 
-## Working with Loops
+### Working with Loops
 Use either break, continue or pass to perform additional tasks in for loops or while loops:
 - Break: provides opportunity to exit out of a loop if external condition is triggered
 - Continue: skips over the part of a loop where an external condition is triggered but goes to complete rest of loop.
