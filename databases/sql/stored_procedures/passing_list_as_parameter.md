@@ -1,11 +1,14 @@
-## Passing List as Parameter in Stored Procedure:
+### Passing List as Parameter
+
 Three main contenders are Table-Valued Parameters, delimited list string and JSON string.
 
-## Passing Data Table as Parameter (Table-Valued Parameters):
+### TVP
+
 Allows multiple rows of data to be passed to stored procedure by Transact-SQL code. Involves 3 step process:
-1) Create user-defined table that corresponds to table to be populated.
-2) Create stored procedure that uses TVP.
-3) Declare table type, populate it with data, and pass it to stored procedure.
+
+1. Create user-defined table that corresponds to table to be populated.
+2. Create stored procedure that uses TVP.
+3. Declare table type, populate it with data, and pass it to stored procedure.
 
 ```sql
 CREATE DATABASE ShowRoom
@@ -46,8 +49,10 @@ INSERT INTO @CarTableType VALUES (5, 'Mustang', 'Ford')
 EXECUTE spInsertCars @CarTableType
 ```
 
-## Delimited List String:
+### Delimited List String
+
 Can use built in STRING_SPLIT() but there are several shortcomings:
+
 - Delimiter can only be single character.
 - Returns values and not position of values i.e. multiple lists keeping in sync.
 - Returns strings only and type specified as parameter i.e. VARCHAR(MAX) which comes with performance overhead.
@@ -55,9 +60,10 @@ Can use built in STRING_SPLIT() but there are several shortcomings:
 
 https://www.sommarskog.se/arrays-in-sql.html
 
+### Table-Valued Functions
 
-## Table-Valued Functions:
 TVF is a user-defined function that returns data of a table type. For SQL Server, can use string_split() which is a TVF that splits a string array with delimiter and returns results into a table. Returns a single-column table whose column name is 'value'.
+
 ```sql
 SELECT value FROM STRING_SPLIT('red,green,blue', ',');
 ```
@@ -72,7 +78,7 @@ value NVARCHAR(MAX)
 )
 BEGIN
     DECLARE @start SMALLINT, @end SMALLINT, @counter SMALLINT
-    SET @counter = LEN(@string) - LEN(REPLACE(@string, @delimiter, '')) + 1 
+    SET @counter = LEN(@string) - LEN(REPLACE(@string, @delimiter, '')) + 1
     SET @start = 1, @end = CHARINDEX(@delimiter, @string)
     WHILE @counter > 0 BEGIN
         INSERT INTO @output(value) VALUES (SUBSTRING(@string, @start, @end - @start))

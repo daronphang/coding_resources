@@ -1,2 +1,3 @@
-# coding_resources
-Supplementary information for reference.
+### coding_resources
+
+Supplementary and consolidated coding resources for reference.

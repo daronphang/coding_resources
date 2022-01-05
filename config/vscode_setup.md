@@ -1,49 +1,54 @@
 ### Setting Up VSCode
-Stable version: January 2021, version 1.53.2 
+
+Stable version: January 2021, version 1.53.2
 
 ### Extensions
-1) AREPL for real-time evaluation
-2) Kite AutoComplete AI Code (need install Kite Engine)
-3) Monokai Dimmed
-4) Code Runner
-5) Jupyter (need pip install ipykernel)
-6) Live Server for js
-7) Prettier
-8) Error Lens
-9) Auto Rename Tag
-10) Bracket Pair Colorizer
-11) Live Server
-12) ES7-Snippets
-13) Debugger for Chrome
-14) ESLint
-15) Remote Development
+
+1. AREPL for real-time evaluation
+2. Kite AutoComplete AI Code (need install Kite Engine)
+3. Monokai Dimmed
+4. Code Runner
+5. Jupyter (need pip install ipykernel)
+6. Live Server for js
+7. Prettier
+8. Error Lens
+9. Auto Rename Tag
+10. Bracket Pair Colorizer
+11. Live Server
+12. ES7-Snippets
+13. Debugger for Chrome
+14. ESLint
+15. Remote Development
 
 ### JS Prettier and ESLint Setup
+
 ```
-// go to project directory root folder
-npm install eslint --save-dev
-npx eslint --init
+# go to project directory root folder
+$npm install eslint --save-dev
+$npx eslint --init
 
-// REACT
-To check syntax and find problems
-Javascript modules (import/export)
-React
-No
-Browser
-JSON
+# REACT Setup
+$To check syntax and find problems
+$Javascript modules (import/export)
+$React
+$No
+$Browser
+$JSON
 
-NODEJS
-To check syntax and find problems and enforce code style
-CommonJS (require/exports)
-None
-No
-Node
-JSON
-Google/Airbnb
+# NODEJS Setup
+$To check syntax and find problems and enforce code style
+$CommonJS (require/exports)
+$None
+$No
+$Node
+$JSON
+$Google/Airbnb
 
-// Prettier with ESLint
-npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+# Prettier with ESLint
+$ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+```
 
+```json
 "extends": [
   "prettier",
   "airbnb-base"
@@ -59,17 +64,21 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
 ### Angular
+
 1. Npm install prettier.
 2. Create .prettierrc.json/.prettierrc and .prettierignore files.
 3. Configure JSON settings for VSCode.
+
 ```
-npm install --save-dev --save-exact prettier tslint-config-prettier
+$npm install --save-dev --save-exact prettier tslint-config-prettier
 
-// .prettierignore
-/dist
-package-lock.json
-package.json
+# .prettierignore
+$/dist
+$package-lock.json
+$package.json
+```
 
+```json
 // .prettierrc.json
 {
     "printWidth": 100,
@@ -88,24 +97,19 @@ package.json
 ```
 
 ### Golang
+
 Install all tools and restart VS code: Command + Shift + P -> Go: Install/update tools.
 
-
 ### Remote Development
+
 When cloning a repo, can run in container instead of running npm install locally. Container contains all node_modules dependencies. Main difference is that need to specify "host" parameter to tell Angular/React to connect to IP address. Also unable to use certain Windows commands in terminal as container is running in Linux (debian).
 
-```
-ng serve --host 0.0.0.0
-
-npm run gen-ll
-ng build --project=@omelek/library-name
-ng g c my-new-component --project=@omelek/library-name
-```
-
 ### Linting
-Need to install pylint in virtual environment; activation depends on autosave function. 
+
+Need to install pylint in virtual environment; activation depends on autosave function.
 
 ### Customization in settings.json
+
 ```json
 {
   "python.pythonPath": "venv\\Scripts\\python.exe",
@@ -123,8 +127,8 @@ Need to install pylint in virtual environment; activation depends on autosave fu
   "code-runner.executorMap": {
     "python": "C:\\financial_analysis\\venv\\Scripts\\python.exe"
   },
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": true }, 
-  "editor.formatOnSave": true, 
-  "eslint.alwaysShowStatus": true, 
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true
 }
 ```

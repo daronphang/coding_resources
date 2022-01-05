@@ -1,5 +1,7 @@
-## Running Flask App:
+### Running Flask App
+
 Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser. Need to ensure VENV folder is not together with Dockerfile.
+
 ```python
 # need specify host and port (optional, default is 5000)
 # 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
@@ -7,27 +9,30 @@ Example of Flask setup needed. Need exact map flask port to container port. To v
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5555)  # port defined is container port
 ```
+
 ```
 docker build -t <image_name> .
 docker container run -p 8000:5555 -d <image_name>
 ```
 
-## Python:
+### Python
+
 ```dockerfile
 # syntax=docker/dockerfile:1
 ARG  CODE_VERSION=3.7
-FROM python:${CODE_VERSION}-alpine                              
+FROM python:${CODE_VERSION}-alpine
 WORKDIR /code
 LABEL "com.example.vendor"="ACME Incorporated"
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers   
-COPY requirements.txt requirements.txt             
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt                 # RUN ["cmd", "/S", "/C"] for Windows
 EXPOSE 5000
 COPY . .
-CMD ["flask", "run"]                                
+CMD ["flask", "run"]
 ```
+
 ```dockerfile
 ARG PYTHON_VERSION=3.7
 FROM python:3.7-alpine
@@ -56,9 +61,10 @@ ENV FAB7PORT 1234
 COPY . /myassistant
 WORKDIR /myassistant
 RUN pip install --no-cache-dir -r requirements-docker.txt
-EXPOSE 8888  
+EXPOSE 8888
 CMD [ "flask", "run", "--host=0.0.0.0", "--port=8888"]
 ```
+
 ```py
 import os
 
@@ -66,7 +72,8 @@ if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
   print('hello')
 ```
 
-## NodeJS:
+### NodeJS
+
 https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 
 ```dockerfile
@@ -75,20 +82,21 @@ FROM node:10-alpine
 # official node image includes a least-privileged user of name "node"
 # -p creates the directory and if required, all parent directories
 # creating node_modules sub directory first which binds to "node" user instead of npm install creating sub folder for us
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app   
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 
 # Docker caches results of npm install and rerun if only the packaging files change
 COPY --chown=node:node ["package.json", "package-lock.json*", "./"]
 USER node
 # ci --only=production for production build
-RUN npm install 
+RUN npm install
 # 'production' for performance and security related optimizations
-ENV NODE_ENV=development   
+ENV NODE_ENV=development
 COPY --chown=node:node . .
 EXPOSE 8080
 CMD [ "node", "app.js" ]
 ```
+
 ```
 # .dockerignore
 node_modules

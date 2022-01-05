@@ -1,11 +1,11 @@
-## SQL Injection Attacks:
+### SQL Injection Attacks
+
 Fundamental problem that causes SQL injection is data being treated as query language.
 
 ```sql
 SELECT * FROM users WHERE username = '$username' AND password = '$password'
--- if set $username = 'FOO' -- 
--- if set $password = 'FOO' OR 'x' = 'x' 
-
+-- if set $username = 'FOO' --
+-- if set $password = 'FOO' OR 'x' = 'x'
 
 -- http://www.estore.com/items/iteams.asp?itemid=999 OR 1=1
 -- 1=1 always evalulates to true
@@ -19,14 +19,16 @@ FROM Items
 WHERE ItemNumber = 999; DROP TABLE USERS
 ```
 
-## Preventions:
+### Preventions
+
 Stored procedures can help to prevent SQL injection as it writes the query beforehand with markers for parameters. However, the introduction of dynamic SQL exposes vulnerability to SQL injection.
+
 ```sql
 SELECT * FROM users WHERE username = ? AND password = ?
 ```
-```sql
--- wrong way
 
+```sql
+-- Wrong!!!
 CREATE PROCEDURE VerifyUser
     @username varchar(50),
     @password varchar(50)
