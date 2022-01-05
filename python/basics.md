@@ -66,7 +66,7 @@ for number in range(10):
 
 ```
 
-## Type Conversions
+### Type Conversions
 Can use type() or isinstance()
 ```python
 int()     'int'
@@ -122,7 +122,18 @@ print(x,y, sep='\n')
 ```
 
 ### Truthy vs Falsy
-False object are None, False, 0, 0.0, 0j, '', (), {}, range(0). Use any() or all() to check for truth in lists.
+Use any() or all() to check for truth in lists.
+```
+# False
+None
+False
+0
+0.0
+0j
+'' 
+()
+{}
+```
 
 ### Lists
 ```
