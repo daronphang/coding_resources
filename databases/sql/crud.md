@@ -94,6 +94,7 @@ INSERT INTO table(col1,col2) SELECT col1,col2 FROM table2
 ```sql
 # Use UPDATE and SET
 UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = 'Jose'
+UPDATE account SET col1 = CURRENT_TIMESTAMP, col2 = "hello" WHERE username = 'Jose'
 ```
 ### RETURNING
 ```sql
