@@ -45,10 +45,15 @@ const anyString = "hello world";
 console.log(anyString.charAt(0));
 ```
 
-### Web Workers
-Thread refers to a unit capable of executing code. JS was conceived as single-threaded programming language that ran in browser between all tabs i.e. only one set of instructions is executed at any time. However, modern JS offers ways to create additional threads, each executing independently while possibly communicating between one another through use of web workers.
+### Immediately Invoked Function Expressions
+Executing a function without having to save it to memory.
+```js
+(function() {
+  console.log('once');
+})();
 
-Web Workers are JS scripts executed from HTML page that runs on a background thread away from main execution thread. Can utilize web workers to run process intensive tasks from browser without creating blocking instances.
+(() => console.log('once'))();
+```
 
 ### Shortcircuiting
 Returns first value if it's truthy value for || operator. For AND operator, returns falsy value if one of them is false, else the last value.
@@ -63,6 +68,7 @@ console.log(7 && 'Jonas')   // Jonas
 ```javascript
 const x = 0 ?? 10   // checks for null or undefined, returns 0
 ```
+
 ### Optional Chaining
 Returns undefined if a certain property does not exist i.e. null or undefined.
 ```javascript
