@@ -18,15 +18,13 @@ def concantenate(**kwargs):
     return result
 
 print(my_sum(1, 2, 3))
-
+```
 
 ### Copying
 Python never implicitly copies objects.
 ```py
 dict2 = dict1 # both points to the same dictionary
 dict2 = dict1.copy()
-```
-
 ```
 
 ### Sequence Types & Destructuring
