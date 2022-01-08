@@ -1,5 +1,7 @@
-## Basics:
+### Basics
+
 An object-relational mapping library (for flask is SQLAlchemy). Allows to define models to interact with the database. Also allows relations/associations to be setup easily.
+
 ```
 INSERT INTO users VALUES ('Max', 28)                  Not needed
 const user = User.create({name: 'Max', age: 28})      Create js object
@@ -7,7 +9,8 @@ const user = User.create({name: 'Max', age: 28})      Create js object
 npm install --save sequelize
 ```
 
-## Instantiation:
+### Instantiation
+
 {force: true} in sync() overwrites table.
 
 ```javascript
@@ -56,51 +59,64 @@ sequelize.sync().then(result => {
 })
 ```
 
-## Adding:
+### Adding
+
 ```javascript
-Product.create({      // alternative to build() which has to save manually
-  title: 'hello',
-  price: 4.50
-}).then(result => {
-  console.log('created product');
-}).catch(err => console.log(err));   
+Product.create({
+  // alternative to build() which has to save manually
+  title: "hello",
+  price: 4.5,
+})
+  .then((result) => {
+    console.log("created product");
+  })
+  .catch((err) => console.log(err));
 ```
 
-## Retrieving:
-Can use findAll() which returns an array or findByPk(). 
+### Retrieving
+
+Can use findAll() which returns an array or findByPk().
+
 ```javascript
 Product.findAll({
-  where: {id: 123}
-}).then(products => {
-  res.render('shop/index', {
-    prods: products
-  })
-}).catch(err => {
-  console.log(err);
-});
-```
-
-## Updating:
-```javascript
-Product.findByPk(pk).then(product => {
-  product.title = updatedTitle;
-  product.price = updatedPrice;
-  return product.save();                   // save updated product to database
+  where: { id: 123 },
 })
-.then(result => console.log('updated product'))   // handles result from product.save()
-.catch(err => console.log(err));    // catches errors from both promises
+  .then((products) => {
+    res.render("shop/index", {
+      prods: products,
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 ```
 
-## Deleting:
+### Updating
+
+```javascript
+Product.findByPk(pk)
+  .then((product) => {
+    product.title = updatedTitle;
+    product.price = updatedPrice;
+    return product.save(); // save updated product to database
+  })
+  .then((result) => console.log("updated product")) // handles result from product.save()
+  .catch((err) => console.log(err)); // catches errors from both promises
+```
+
+### Deleting
+
 Can findByPk() followed by destroy().
+
 ```javascript
 Product.findByPk(pk).then(product => {
   return product.destroy();
 }).then(result => console.log('deleted product').catch(err => console.log(err));
 ```
 
-## Relations:
-Sequelize will automatically create FK. For belongs to/has many relationship, can use createProduct(). Don't have to define the PK explicitly. 
+### Relations
+
+Sequelize will automatically create FK. For belongs to/has many relationship, can use createProduct(). Don't have to define the PK explicitly.
 
 ```
 User        Has Many products, has One cart, has Many orders
@@ -111,12 +127,12 @@ Order
 
 ```javascript
 req.user.createProduct({
-  title: 'hello',
-  price: 12.50
-})
+  title: "hello",
+  price: 12.5,
+});
 ```
 
-```javascript 
+```javascript
 // models/user.js
 const User = sequelize.define(modelName='user', attributes={
   id: {

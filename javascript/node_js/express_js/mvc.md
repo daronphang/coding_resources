@@ -1,9 +1,11 @@
-## MVC:
+### MVC Approach
+
 - Models: Represent data logic in code i.e. save, fetch.
 - Views: What the user sees.
 - Controllers: Connects models and views.
 
-## Controllers:
+### Controllers
+
 ```javascript
 const Product = require('../models/product');
 
@@ -31,18 +33,20 @@ exports.getProducts = (req, res, next) => {
 
 ```
 
-## Routes:
+### Routes
+
 ```javascript
-const productsController = require('../controllers/products');
+const productsController = require("../controllers/products");
 
-router.get('/add-product', productsController.getAddProduct);
+router.get("/add-product", productsController.getAddProduct);
 
-router.post('.add-product', productsController.postAddProduct);
+router.post(".add-product", productsController.postAddProduct);
 
 module.exports = router;
 ```
 
-## Models:
+### Models
+
 ```javascript
 const fs = require('fs');
 const path = require('path');
@@ -54,7 +58,7 @@ const getProductsFromFile = (callback) => {
     if (err) {
       return callback([]);   // passes empty array as arg in callback function
     };
-    
+
     callback(JSON.parse(fileContent));
   }
 });
@@ -65,7 +69,7 @@ module.exports = class Product {
   constructor(title) {
     this.title = title;
   }
-  
+
   save() {
     getProductsFromFile(products => {
       products.push(this);
@@ -74,7 +78,7 @@ module.exports = class Product {
       });
     });
   }
-  
+
   static fetchAll(callback) {
     getProductsFromFile(callback);
   }

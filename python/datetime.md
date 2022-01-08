@@ -1,4 +1,5 @@
-## Datetime:
+### Datetime
+
 ```python
 import datetime
 
@@ -14,7 +15,8 @@ print(today.strftime('%A %x %X %z'))      # look at documentation
 
 ```
 
-## Timezone:
+### Timezone
+
 When working with timezones, convert local time (naive) to UTC and work with UTC (aware). Only convert back to lcoal for end-user. Naive has no .tzinfo. to make datetime object aware, need to use pytz library.
 
 ```python

@@ -1,4 +1,5 @@
-## Custom Validators:
+### Custom Validators
+
 ```js
 const { body } = require('express-validator');
 
@@ -34,13 +35,13 @@ app.post(
 ```
 
 ```js
-const { body } = require('express-validator');
+const { body } = require("express-validator");
 
 app.post(
-  '/user',
-  body('passwordConfirmation').custom((value, { req }) => {
+  "/user",
+  body("passwordConfirmation").custom((value, { req }) => {
     if (value !== req.body.password) {
-      throw new Error('Password confirmation does not match password');
+      throw new Error("Password confirmation does not match password");
     }
 
     // Indicates the success of this synchronous custom validator
@@ -52,9 +53,10 @@ app.post(
       return res.status(400).json({ errors: errors.array() });
     }
     // Handle the request
-  },
+  }
 );
 ```
 
-## Sanitizers:
+### Sanitizers
+
 Documentation: https://github.com/validatorjs/validator.js#sanitizers

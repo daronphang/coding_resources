@@ -1,4 +1,5 @@
-## Flask Test Client
+### Flask Test Client
+
 Test client to replicate the environment (to certain extent) that exists when an app is running inside web server. Requests are received and routed to appropriate view functions, and response are generated and returned. After a view function executes, can test response passed to the test.
 
 ```python
@@ -15,28 +16,28 @@ class FlaskClientTestCase(unittest.TestCase):
         Role.insert_roles()
         self.client = self.app.test_client(use_cookies=True)
         WTF_CSRF_ENABLED = False      # disabled CSRF protection from Flask-WTF forms
-        
+
     def tearDown(self):
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
-    
+
     def test_home_page(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Stranger' in response.get_data(as_text=True))
-        
+
     def get_api_headers(self, username, password):
         return {
         'Authorization': 'Basic ' + b64encode((username + ':' + password).encode('utf-8')).decode('utf-8'),
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         }
-        
+
     def test_no_auth(self):
         response = self.client.get(url_for('api.get_posts'), content_type='application/json')
         self.assertEqual(response.status_code, 401)
-        
+
     def test_posts(self):
         # add a user
         r = Role.query.filter_by(name='User').first()
@@ -44,14 +45,14 @@ class FlaskClientTestCase(unittest.TestCase):
         u = User(email='john@example.com', password='cat', confirmed=True,role=r)
         db.session.add(u)
         db.session.commit()
-        
+
         # write a post
         response = self.client.post('/api/v1/posts/', headers=self.get_api_headers('john@example.com', 'cat'),
             data=json.dumps({'body': 'body of the *blog* post'}))
         self.assertEqual(response.status_code, 201)
         url = response.headers.get('Location')
         self.assertIsNotNone(url)
-        
+
         # get the new post
         response = self.client.get(url, headers=self.get_api_headers('john@example.com', 'cat'))
         self.assertEqual(response.status_code, 200)
@@ -62,6 +63,7 @@ class FlaskClientTestCase(unittest.TestCase):
 ```
 
 ### Running Unittest
+
 ```python
 import os
 from dotenv import load_dotenv
@@ -86,6 +88,7 @@ def testing():      # function cannot be named as testing_api
 ```
 
 ### Example
+
 ```py
 class FlaskApiQueryTest(unittest.TestCase):
     def setUp(self):

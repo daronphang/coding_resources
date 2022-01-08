@@ -1,9 +1,11 @@
-## Logging Libraries:
+### Logging Libraries
+
 Winston and Morgan (HTTP request logger middleware).
 
 ## Winston
 
-### Logging Levels:
+### Logging Levels
+
 ```
 0 Error
 1 Warn
@@ -13,7 +15,8 @@ Winston and Morgan (HTTP request logger middleware).
 5 Silly
 ```
 
-### Transport Settings:
+### Transport Settings
+
 ```
 level                 Level of messages to log
 filename              File used to write log data to
@@ -27,7 +30,7 @@ colorize              Colorize output
 ```js
 var options = {
   file: {
-    level: 'info',
+    level: "info",
     filename: `${appRoot}/logs/app.log`,
     handleExceptions: true,
     json: true,
@@ -36,7 +39,7 @@ var options = {
     colorize: false,
   },
   console: {
-    level: 'debug',
+    level: "debug",
     handleExceptions: true,
     json: false,
     colorize: true,
@@ -46,27 +49,27 @@ var options = {
 var logger = new winston.Logger({
   transports: [
     new winston.transports.File(options.file),
-    new winston.transports.Console(options.console)
+    new winston.transports.Console(options.console),
   ],
   exitOnError: false, // do not exit on handled exceptions
 });
 ```
 
-
 ```js
 // Two ways of logging
 logger.log({
-  level: 'info',
-  message: 'Hello distributed log files!'
+  level: "info",
+  message: "Hello distributed log files!",
 });
 
-logger.info('Hello again distributed logs');
+logger.info("Hello again distributed logs");
 ```
 
 Info parameter provided must have at least level and message properties.
+
 ```js
 const info = {
-  level: 'info',                 // Level of the logging message  
+  level: 'info',                 // Level of the logging message
   message: 'Hey! Log something?' // Descriptive message being logged.
   ...meta                        // Other properties are considered as "meta"
 };
@@ -78,32 +81,38 @@ logger.log('error', 'hello', {message: 'world'}); // any message property in met
 
 https://blog.logrocket.com/node-js-logging-best-practices/
 
-### Predefined Tokens:
+### Predefined Tokens
+
 ```js
-morgan(':method :url :status :res[content-length] - :response-time ms');
+morgan(":method :url :status :res[content-length] - :response-time ms");
 
 morgan(function (tokens, req, res) {
   return [
     tokens.method(req, res),
     tokens.url(req, res),
     tokens.status(req, res),
-    tokens.res(req, res, 'content-length'), '-',
-    tokens['response-time'](req, res), 'ms'
-  ].join(' ')
+    tokens.res(req, res, "content-length"),
+    "-",
+    tokens["response-time"](req, res),
+    "ms",
+  ].join(" ");
 });
 
 // Creating new token that returns a string value and is available as ":type"
-morgan.token('type', function (req, res) { return req.headers['content-type'] });
+morgan.token("type", function (req, res) {
+  return req.headers["content-type"];
+});
 ```
 
 ```js
-const morgan = require('morgan');
-const config = require('./config');
-const logger = require('./logger');
+const morgan = require("morgan");
+const config = require("./config");
+const logger = require("./logger");
 
-morgan.token('message', (req, res) => res.locals.errorMessage || '');
+morgan.token("message", (req, res) => res.locals.errorMessage || "");
 
-const getIpFormat = () => (config.env === 'production' ? ':remote-addr - ' : '');
+const getIpFormat = () =>
+  config.env === "production" ? ":remote-addr - " : "";
 const successResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms`;
 const errorResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms - message: :message`;
 

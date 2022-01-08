@@ -1,4 +1,5 @@
-## Redux vs React Hooks (With New Additions useContext and useReducer):
+### Redux vs React Hooks (With New Additions useContext and useReducer)
+
 - React hooks is the new way of handling state and lifecycle into React functional components without relying on classes.
 - React hooks replace class components and render prop pattern.
 - Redux is a library for managing global application state where state is transformed by giving user the ability to emit actions.

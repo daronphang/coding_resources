@@ -1,7 +1,9 @@
-## Flask Decorators:
+### Flask Decorators
+
 Each view in Flask is a function, and decorators can be used to inject additional functionality to one or more functions i.e. login_required decorator.
-A decorator is a function that wraps and replaces another function. Since the original function is replaced, need to remember to copy the original's 
+A decorator is a function that wraps and replaces another function. Since the original function is replaced, need to remember to copy the original's
 function's information to the new function you are creating. Use functools.wraps() to help with this.
+
 ```python
 from functools import wraps
 from flask import g, request, redirect, url_for
@@ -19,8 +21,11 @@ def login_required(f):
 def secret_page():
     pass
 ```
-## Functools Wraps:
+
+### Functools Wraps
+
 Module is for higher-order functions; functions that act or return other functions. Updates the wrapper function to look like the wrapped function.
+
 ```python
 from functools import wraps
 def my_decorator(f):

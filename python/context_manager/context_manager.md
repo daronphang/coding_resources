@@ -1,8 +1,10 @@
-## Context Manager:
+### Context Manager
+
 Usage of resources like file operations and database connections is very common but limited in supply; need to release/close them after usage. When creating context
-managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection. 
+managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection.
 
 Both methods are built-in methods for 'with' statement in Python.
+
 ```
 r       Read mode
 w       Write mode
@@ -17,7 +19,7 @@ with open('example.txt', 'r') as f:
     json.load(f)        // read json file; json.loads() for reading json string
     json.dump(f)        // convert dict to json object
     print(f.read())     // f.write()
-    
+
 # f.closed      // true
 ```
 
@@ -40,6 +42,7 @@ with ContextManager('example.txt', 'w') as f:
     f.write('message you want to add')
     print(f.closed)     # True
 ```
+
 ```python
 class MSSQLDBConnectionSession:
     def __init__(
@@ -78,9 +81,10 @@ class MSSQLDBConnectionSession:
         return full_conn_string
 
 ```
+
 ```python
  # conn_payload is current_app.config['TSMSSPROD06'] which returns a dict of host, username, password, port
-def query(self, conn_payload: dict, as_dict: bool):    
+def query(self, conn_payload: dict, as_dict: bool):
         with MSSQLDBConnectionSession(
             host=conn_payload['host'],
             username=conn_payload['username'],

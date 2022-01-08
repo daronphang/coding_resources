@@ -1,6 +1,8 @@
-## Creating Alert Component Using ngIf:
+### Creating Alert Component Using ngIf
+
 Recommended way of approach as Angular does the heavy-lifting for us.
-```javascript
+
+```js
 // child.component:
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -14,57 +16,66 @@ export class AlertComponent {
   @Input() message?: string;
 
   @Output() closeEvent = new EventEmitter<void>();
-  
+
   closeAlert() {
     this.closeEvent.emit();
   }
 }
 
 // parent.component:
-error?: string; 
+error?: string;
 onHandleError(event) {
   this.error = null;
 }
 ```
+
 ```html
-// child.html
+<!--child.html-->
 <div class="backdrop" (click)="closeAlert()"></div>
 <div class="alert-box">
-        <p>{{ message }}</p>
-        <button class="btn btn-primary" (click)="closeAlert()">Close</button>
+  <p>{{ message }}</p>
+  <button class="btn btn-primary" (click)="closeAlert()">Close</button>
 </div>
 
-// parent.html:
-<app-alert [message]="error" *ngIf="error" (closeEvent)="onHandleError($event)"></app-alert>
+<!--parent.html-->
+<app-alert
+  [message]="error"
+  *ngIf="error"
+  (closeEvent)="onHandleError($event)"
+></app-alert>
 ```
+
 ```css
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.75);
-    z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
 }
 
 .alert-box {
-    position: fixed;
-    top: 30vh;
-    left: 20vw;
-    width: 60vw;
-    padding: 16px;
-    z-index: 100;
-    background: white;
-    box-shadow: 0 2px 8px rbga(0,0,0,0.26);
+  position: fixed;
+  top: 30vh;
+  left: 20vw;
+  width: 60vw;
+  padding: 16px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
 }
 
 .alert-box-actions {
-    text-align: right;
+  text-align: right;
 }
 ```
-## Creating Components Programmatically:
+
+### Creating Components Programmatically
+
 Components are eventually DOM elements. Will need a placeholder to add element into DOM.
+
 ```javascript
 // placeholder.directive.ts
 import { Directive, ViewContainerRef } from '@angular/core';
@@ -76,10 +87,13 @@ import { Directive, ViewContainerRef } from '@angular/core';
 export class PlaceHolderDirective {
     constructor(public viewContainerRef: ViewContainerRef) {}
 ```
+
 ```html
-<ng-template appPlaceHolder></ng-template>   // to get access to this place in DOM using directives
+<!--get access to this place in DOM using directives-->
+<ng-template appPlaceHolder></ng-template>
 ```
-```javascript
+
+```js
 // app.component.ts:
 import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewChild, NgModule } from '@angular/core';
 
@@ -91,7 +105,7 @@ import { Component, Input, Output, EventEmitter, ComponentFactoryResolver, ViewC
 
 export class AppComponent implements OnDestroy {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
-  
+
   @ViewChild(PlaceHolderDirective, {static: false}) alertHost: PlaceHolderDirective;  // finds the first occurence of this directive in DOM
 
   private closeSub?: Subscription;
@@ -107,14 +121,14 @@ export class AppComponent implements OnDestroy {
     this.closeSub.unsubscribe();
     hostViewContainerRef.clear();
     })
-  
-  ngOnDestroy() {         // in the event the component is closed 
+
+  ngOnDestroy() {         // in the event the component is closed
     if (this.closeSub) {
       this.closeSub.unsubscribe();
     }
   }
   }
-  
+
 // app.module.ts
 @ngModule({
   entryComponents: [AlertComponent]

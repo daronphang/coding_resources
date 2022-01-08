@@ -1,4 +1,5 @@
-## Basics:
+### Pandas
+
 Library built on top of Numpy that allows for fast analysis and data cleaning. Has built in visualization features. Can work with data from variety of sources including strings, functions, and numbers. When performing operations, integers will be converted to float.
 
 ```python
@@ -13,12 +14,12 @@ pd.series(dict)           # takes key as index, value as data
 pd.series([1,2,3],['US','CH', 'SG'])
 ```
 
-## Dataframes:
+### Dataframes
 
 ```python
 df = pd.DataFrame(data, index, columns, dtype, copy)
 df.head()
-df.describe() 
+df.describe()
 df = pd.read_csv()
 df.values()                   # returns a numpy representation of df
 df.unique()
@@ -34,7 +35,7 @@ df.stack()
 df['col_name1', 'col_name2']
 df.loc['row or col name']
 df.loc['row name', 'col name']
-df.iloc['index number']       
+df.iloc['index number']
 df.iloc[:3]                   # or df.iloc[0,2]
 
 # removing rows/columns

@@ -1,7 +1,9 @@
-## Basics:
+### Numpy
+
 Linear Algebra library for Python.
 
-## Arrays:
+### Arrays
+
 Come in either vectors (1-D) or matrices (2-D). Difference with Python list is that arrays have ability to broadcast.
 
 ```python
@@ -27,7 +29,8 @@ arr = np.arange(0,11)
 arr[:5] = 1                     # [1,1,1,1,1,5,6,7,8,9,10]
 ```
 
-## Methods:
+### Methods
+
 ```python
 # methods
 arr.max()
@@ -36,7 +39,7 @@ arr.argmax()                    # index location of value
 arr.shape()
 arr.dtype()
 arr.copy()
-arr.reshape(3,3)                # converts np.arange(0,10) 
+arr.reshape(3,3)                # converts np.arange(0,10)
 
 np.arange(6).reshape(2,3)
 

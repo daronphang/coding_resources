@@ -1,4 +1,5 @@
-## Property Decorator:
+### Property Decorator
+
 Pythonic way to use getters and setters in OOP. Without property, all programs that make use of class have to be refactored if properties of class change i.e. making attributes private/public.
 
 ```py
@@ -32,6 +33,7 @@ print(human.to_fahrenheit())
 
 coldest_thing = Celsius(-300)
 ```
+
 ```py
 # Can use getter, setter and deleter
 

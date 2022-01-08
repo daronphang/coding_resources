@@ -1,6 +1,8 @@
-## Generators:
+### Generators
+
 Used to create lazy iterators that do not store contents in memory. common use of generators is to work with large files like CSV.  
 Uses yield instead of return.
+
 ```python
 def csv_reader(file_name):
     for row in open(file_name, "r"):
@@ -17,10 +19,11 @@ def infinite_sequence():
         num += 1
 ```
 
-### Methods:
+### Methods
+
 ```
 .send()         # used to pass data
-.throw()        # throw an error 
+.throw()        # throw an error
 .close()        # stop a generator
 
 # pal_gen.throw(ValueError("We don't like large palindromes"))

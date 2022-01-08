@@ -1,29 +1,33 @@
-## DOM Manipulation:
+### DOM Manipulation
+
 Document Object Model is the data representation of HTML documents. Allows Javascript to access and manipulate HTML/XML/CSS structure, styles and content.
 Examples of DOM include header, tables, elements, etc.
 
-## Common APIs in Web:
+#$# Common APIs in Web
+
+```js
+document.querySelector(selector);
+document.querySelectorAll("p.intro"); // Returns a list of all <p> elements with class="intro"
+document.getElementById(id).innerHTML;
+document.getElementsByClassName(name);
+document.getElementsByTagName(name);
+
+document.createElement(element);
+document.removeChild(element);
+document.appendChild(element);
+document.replaceChild(element);
+
+element.innerHTML = "new content"; // Get or replace content of HTML element
+element.attribute = "new value";
+element.style.property = "new style";
+element.setAttribute(attribute, value);
+
+element.insertAdjacentHTML(order, html); // Manipulate HTML content
 ```
-document.querySelector(selector)
-document.querySelectorAll("p.intro")        Returns a list of all <p> elements with class="intro"
-document.getElementById(id).innerHTML
-document.getElementsByClassName(name)
-document.getElementsByTagName(name)
 
-document.createElement(element)
-document.removeChild(element)
-document.appendChild(element)
-document.replaceChild(element)
+### Event Handling
 
-element.innerHTML = 'new content'           Get or replace content of HTML element
-element.attribute = 'new value'
-element.style.property = 'new style'
-element.setAttribute(attribute, value)
-
-element.insertAdjacentHTML(order, html)     Manipulate HTML content
-```
-## Handling Events:
-```javascript
+```js
 // syntax
 document.addEventListener(event, function, useCapture)
 
@@ -39,7 +43,9 @@ document.querySelector('.check').addEventListener('click', function() {
 
 // document.removeEventListerner()
 ```
-## Common Events:
+
+### Common Events
+
 ```
 click
 copy
@@ -56,13 +62,15 @@ search
 select
 ```
 
-## Common Attributes:
+### Common Attributes
+
 ```
 .firstChild?.nodeValue
 .setAttribute(name, value)
 ```
 
-## Event Properties:
+### Event Properties
+
 ```
 currentTarget         Returns the target HTML element
 preventDefault()      Prevents the browser's default behavior such as submitting form

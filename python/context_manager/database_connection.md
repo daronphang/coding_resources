@@ -1,4 +1,5 @@
-## Database Connection:
+### Database Connection
+
 Function that executes query in database is decorated with database context manager. Connection is passed to the query function as an implicit value. Cursor is used to execute statements to communicate with database and gives ability to have separate working environments through the same connection to the database.
 
 ```

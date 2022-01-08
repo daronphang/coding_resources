@@ -1,4 +1,5 @@
-## Animations:
+### Animations
+
 Can use ReactTransitionGroup library.
 
 ```javascript
@@ -9,7 +10,7 @@ function ExampleComponent () {
     {state => (
       <Modal show={state} closed={this.closeModal}  />
     )}
-    
+
     </Transition>
   )
 }

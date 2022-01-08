@@ -1,7 +1,9 @@
-## Data Fetching for Pre-Rendering:
+### Data Fetching for Pre-Rendering
+
 Key functions built into Nextjs. Two forms of pre-rendering:
-1) Static Site Generation (SSG).
-2) Server-Side Rendering (SSR).
+
+1. Static Site Generation (SSG).
+2. Server-Side Rendering (SSR).
 
 SSR can be disadvantage as have to wait for page to be generated on every incoming request. For SSG, to avoid data being outdated when fetching, use revalidate property; don't have to redeploy/rebuild just because of data changes.
 
@@ -20,9 +22,9 @@ function Component = (props) => {
 export async function getStaticProps(context) {
   // fetch data from API
   // state management can be placed here
-  
+
   const paramsId = context.params.meetupId;
-  
+
   return {
     props: {
       meetups: DUMMY_MEETUPS
@@ -34,13 +36,14 @@ export async function getStaticProps(context) {
 export default Component
 
 ```
+
 ```javascript
 // regenerate page for every incoming request, not during build process
 // code will run on server
 export async function getServerSideProps(context) {
   const req = context.req;  // request object; useful for authentication
   const res = context.res;  // response object
-  
+
   return {
     props: {};
   };

@@ -1,27 +1,33 @@
-## LDAP Protocol:
-1) Attribute names and string values must be stored in unicode with UTF-8 byte encoding as interaction with LDAP server is in bytes.
-2) Attribute names must use only ASCII letters, numbers and hypen character.
+### LDAP Protocol
 
-## LDAP Protocol Sequence:
-1) Client opens connection
-2) Client authenticates (bind)
-3) Client sends operations (search)
-4) Server sends results
-5) Client unbinds and closes connection
+1. Attribute names and string values must be stored in unicode with UTF-8 byte encoding as interaction with LDAP server is in bytes.
+2. Attribute names must use only ASCII letters, numbers and hypen character.
 
-### Bind:
+### LDAP Protocol Sequence
+
+1. Client opens connection
+2. Client authenticates (bind)
+3. Client sends operations (search)
+4. Server sends results
+5. Client unbinds and closes connection
+
+### Bind
+
 Authentication operation that can be performed in three ways:
+
 ```
 Anonymous Bind          Public access to LDAP server where no credentials are provided
 Simple Password Bind    Provide Distinguished Name (DN) and password to determine authorization level
 SASL                    Provides additional methods to identify a user i.e. external certificate, Kerberos ticket
 ```
 
-### Client Strategy:
+### Client Strategy
+
 Parameter of Connection object.
+
 ```
 # Synchronous, returns boolean if successful
-SYNC            
+SYNC
 RESTARTABLE
 
 # Asynchronous, returns a number and message_id of request. Can send multiple requests without waiting for responses
@@ -30,6 +36,7 @@ REUSABLE
 
 get_response(message_id, timeout)   # Exception raised if response has not arrived after timeout (default is 10s)
 ```
+
 ```python
 import ldap
 
@@ -37,10 +44,10 @@ def check_credentials(username, password):
     LDAP_SERVER = 'ldap://our-ldap.server'
     LDAP_USERNAME = username
     LDAP_PASSWORD = password
-    base_dn = 'dc=somedomain,dc=com'                            # domain  
+    base_dn = 'dc=somedomain,dc=com'                            # domain
     ldap_filter = 'userPrincipalName=user@somedomain.com'
-    ldap_attr = ['memberOf'] or ['*']                           # attributes to receive 
-    
+    ldap_attr = ['memberOf'] or ['*']                           # attributes to receive
+
     try:
         conn = ldap.initialize(LDAP_SERVER)
         conn.set_option(ldap.OPT_REFERRALS, 0)    # perform sychronous bind
@@ -50,16 +57,17 @@ def check_credentials(username, password):
         return 'Wrong username or password'
     except ldap.SERVER_DOWN:
         return 'AD server not available'
-  
-    result = connect.search_s(base_dn,                     
-                          ldap.SCOPE_SUBTREE,   # search object and all its descendants    
-                          ldap_filter,      
-                          ldap_attr)           
+
+    result = connect.search_s(base_dn,
+                          ldap.SCOPE_SUBTREE,   # search object and all its descendants
+                          ldap_filter,
+                          ldap_attr)
     conn.unbind()
-                         
+
 # result is a tuple
 # [(‘CN=user,OU=user_orgunit,OU=Users,OU=City,DC=somedomain,DC=com’, {‘memberOf’: [‘group1’, ‘group2’]})]
 ```
+
 ```python
 from ldap3 import Server, Connection, ALL
 from ldap3.core.exceptions import LDAPExceptionError
@@ -82,7 +90,7 @@ def ldap_authentication(username: str, password: str):
 
     server = Server(ldap_config['LDAP_SERVER'], get_info=ALL)
     conn = Connection(server, user=ldap_username, password=password)
-    
+
     try:
         conn.bind()
         result = conn.result
@@ -93,7 +101,7 @@ def ldap_authentication(username: str, password: str):
                 'result code': result['result'],
                 'description': result['description']
                 }
-        
+
         if result['result'] == 0:
             # Retrieving user hierarchy
             conn.search(search_base=ldap_config['LDAP_BASE_DN'],
@@ -116,19 +124,19 @@ def ldap_authentication(username: str, password: str):
                 'dept': response['raw_attributes']
                 ['businessCategory'][0].decode('utf-8')
             }
-    
+
     except LDAPExceptionError as e:
         ldap_msg = {
             'message': 'connection failure',
             'error': e
         }
-    
+
     else:
         conn.unbind()
     finally:
         return ldap_msg
-                
-  
+
+
 # conn = Connection(server, 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org', 'Secret123', auto_bind=True)
 
 >>> print(conn)
@@ -148,7 +156,9 @@ server.schema     # prints all information about server
     (mail=*@example.org)
 )
 ```
+
 ### Connection object attributes:
+
 ```
 result          Result of last operation returned by server
 response        Entries found if last operation is Search
@@ -158,7 +168,9 @@ bound           True if connection is bound to server
 listening       True if socket is listening to server
 closed          True if socket is not open
 ```
+
 ## Template:
+
 ```python
 import jwt
 import os

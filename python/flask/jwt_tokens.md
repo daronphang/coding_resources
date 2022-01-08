@@ -1,17 +1,21 @@
-# JWT Web Token:
-JSON Web Token is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information 
+### JWT Web Token
+
+JSON Web Token is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information
 between parties as a JSON object. Can be verified with digital signature using a secret key (HMAC algorithm) or public/private key (RSA/ECDSA).
 
 JWT are useful for the following:
-1) Authorization: protected RESTful API routes can be authenticated with JWT tokens for each subsequent request after the user is logged in.
-2) Information Exchange: transmitting information between parties securely.
 
-## JWT Structure:
-1) Header: consists of token type and signing algorithm.
-2) Payload: claims about the user, three types of claims including Registered/Public/Private.
-3) Signature: takes the encoded header and payload and signed using the secret key. 
+1. Authorization: protected RESTful API routes can be authenticated with JWT tokens for each subsequent request after the user is logged in.
+2. Information Exchange: transmitting information between parties securely.
 
-### Payload Parameters:
+### JWT Structure
+
+1. Header: consists of token type and signing algorithm.
+2. Payload: claims about the user, three types of claims including Registered/Public/Private.
+3. Signature: takes the encoded header and payload and signed using the secret key.
+
+### Payload Parameters
+
 ```
 iss     Issuer of token
 sub     Subject of token
@@ -23,7 +27,9 @@ jti     Unique identifier for JWT
 
 All names in structure are three characters long as JWT is meant to be compact.
 ```
-## Creating JWT Token:
+
+### Creating JWT Token
+
 ```python
 import jwt
 
@@ -40,10 +46,12 @@ def jwt_token(username):
 
     jwt_token = jwt.encode(payload=payload, key='JWT_SECRET_KEY', algorithm=' HS256', headers=header)
     return jsonify({'token' : jwt_token.decode('UTF-8')})
-    
+
 # Output is three Base64-URL strings separated by dots i.e. xxxxx.yyyyy.zzzzzzz
 ```
-## Authenticating JWT Token:
+
+### Authenticating JWT Token
+
 ```python
 import datetime
 from functools import wraps
@@ -79,7 +87,9 @@ def auth_token_required(f):
     return decorated_function
 
 ```
-## Unittest for JWT Token:
+
+### Unittest for JWT Token
+
 ```python
 class FlaskClientTestCase(unittest.TestCase):
     @staticmethod
@@ -111,7 +121,7 @@ class FlaskClientTestCase(unittest.TestCase):
             return {'message': 'expired'}
         except jwt.InvalidTokenError:
             return {'message': 'invalid'}
-            
+
     def test_expired_token(self):
         create_token = FlaskClientTestCase.get_api_headers(Config.JWT_SECRET_KEY, -60)
         token_value = create_token['Authorization'].split(' ')[1]

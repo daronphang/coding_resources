@@ -1,7 +1,8 @@
 ### Javascript
+
 ```
 # JAVASCRIPT
-graphQL             
+graphQL
 RevealJS              Browser slides with animations
 D3JS                  Data-visualization
 CkEditor              Text editor to write content directly in web pages
@@ -11,7 +12,7 @@ ag-grid               For responsive tables
 
 # NODE JS
 expressJS             Framework for nodeJS
-passportJS          Authentication middleware  
+passportJS          Authentication middleware
 cookie-parser       Parse cookie sent along with requests
 body-parser         Parse body of incoming requests
 dotenv              Load ENV variables
@@ -26,34 +27,40 @@ material-table        Built on material-ui table
 ```
 
 ### Python
+
 ```
 Flask
 Django
 ```
 
 ### Cloud
+
 ```
-dynamodb               NoSQL AWS database
+Dynamodb               NoSQL AWS database
 AppSync                Service developed by AWS to manage GraphQL APIs
 ```
 
 ### Designing
+
 ```
 Figma
 ```
 
 ### Source Code Management
+
 ```
 Github
 Bitbucket
 ```
 
 ### Issue Tracking
+
 ```
-jira
+Jira
 ```
 
 ### Project Planning
+
 ```
 Microsoft Azure Ops
 ```

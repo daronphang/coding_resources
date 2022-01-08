@@ -1,12 +1,13 @@
-## Uncontrolled:
+### Uncontrolled
+
 In browser, forms maintain their own internal state. For uncontrolled, DOM manages and stores data and input is pulled from it through refs.
+
 ```js
-return (
-  <input type="text" name="name" ref={this.nameInput} />
-)
+return <input type="text" name="name" ref={this.nameInput} />;
 ```
 
-## Controlled:
+### Controlled
+
 State is stored in the component that renders the input. Each input field accepts its current value as a prop and has callback function which is called when the state of input changes.
 
 ```javascript
@@ -15,35 +16,35 @@ const SimpleInput = (props) => {
   const [inputValid, setInputValid] = useState(false);
   const [inputTouched, setInputTouched] = useState(false);
   const nameInputRef = useRef();
-  
+
   const nameInputChangeHandler = event => {
     setEnteredName(event.target.value)
   }
-  
+
   const nameInputBlurHandler = event => {
     setInputTouched(true);
-    
+
     if (enteredName.trim() === '') {
       setInputValid(false);
       return;
     }
   }
-  
-  
+
+
   const formSubmissionHandler = event => {
     event.preventDefault();
-    
+
     if (enteredName.trim() === '') {
       setInputValid(false);
       return;
     }
-    
+
     setInputValid(true);
 
     setEnteredName('');
     // shouldnt use nameInputRef.current.value = '' as it directly manipulates to DOM, leave it to React
   }
-  
+
   return (
     <form onSubmit={formSubmissionHandler}>
       <div class="form-control">
@@ -55,7 +56,7 @@ const SimpleInput = (props) => {
           value={enteredName}
           onChange={nameInputChangeHandler}
           onBlur={nameInputBlurHandler}
-          /> 
+          />
           {!inputValid && inputTouched <p>Name must not be empty</p>}
       </div>
       <button>Submit</button>
@@ -65,8 +66,9 @@ const SimpleInput = (props) => {
 
 ```
 
-## React-Hook-Form:
-Provides most of the abstraction with form validation. 
+### React-Hook-Form
+
+Provides most of the abstraction with form validation.
 
 https://github.com/react-hook-form/react-hook-form/tree/master/examples
 

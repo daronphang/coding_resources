@@ -1,6 +1,7 @@
-## Looping Elements in Array:
-1) Push items to an array and render in JSX.
-2) Render JSX element directly using map().
+### Looping Elements in Array
+
+1. Push items to an array and render in JSX.
+2. Render JSX element directly using map().
 
 ```js
 const items = [];
@@ -22,22 +23,20 @@ return (
 )
 ```
 
-## Conditional Rendering:
-Use short circuiting and useState from React Hook.  
+### Conditional Rendering
+
+Use short circuiting and useState from React Hook.
+
 ```js
-import React from 'react';
-import LoginComponent from './login';
+import React from "react";
+import LoginComponent from "./login";
 
 export default function HomeComponent() {
   const [showLogin, setShowLogin] = React.useState(false);
   const handleLoginComponent = () => {
     setShowLogin(true);
-  }
-  
-  return (
-    <React.Fragment>
-      {showLogin && <LoginComponent />}
-    </React.Fragment>
-  )
+  };
+
+  return <React.Fragment>{showLogin && <LoginComponent />}</React.Fragment>;
 }
 ```

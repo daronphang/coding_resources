@@ -1,27 +1,45 @@
-## Routing:
-```javascript
-<li rounterLinkActive="myActiveClass"              // add CSS class to element     
-     [routerLinkActiveOptions]="{exact: true}">     // shows active tab, marked if full path is in router link
-     <a [routerLink]="['/users', 10, 'anna']">      // prevents page from reloading by default, loads /users/10/anna
-     [queryParams]="{allowEdit: '1', value: '10'}"  // /allowEdit?=1value?=10
-     [fragment]="loading"                           // /#loading
-     </a>
-</li>
+### Routing
 
-onLoadServers(id: number) {
-  this.router.navigate(['/users', id, 'edit'], {queryParams: {allowEdit:1}, fragment: 'loading'});
+```html
+<!--routerLink prevents page reloading by default -->
+<!--routerLinkActive used to add css class to element-->
+<!--routerLinkActiveOptions used to show active tab if full path is matched-->
+<li rounterLinkActive="myActiveClass" [routerLinkActiveOptions]="{exact: true}">
+  <a
+    [routerLink]="['/users', 10, 'anna']"
+    [queryParams]="{allowEdit: '1', value: '10'}"
+    [fragment]="loading"
+  >
+    10/anna
+  </a>
+</li>
 ```
-```javascript
+
+```js
+onLoadServers(id: number) {
+  this.router.navigate(
+    ['/users', id, 'edit'],
+    {
+      queryParams: {allowEdit:1},
+      fragment: 'loading'
+    }
+    );
+};
+```
+
+```js
 // Navigate programmatically
 constructor(private router: Router, private route: ActivatedRoute) {}
 
 onLoadServers() {
   // perform some complex calculation
-  this.router.navigate(['/users'], {relativeTo: this.route});    // relativeTo tells Angular what current route it is on
+  // relativeTo tells Angular what current route it is on
+  this.router.navigate(['/users'], {relativeTo: this.route});
 }
 ```
 
-## Dynamic Routing:
+### Dynamic Routing
+
 ```js
 const routes: Routes = [
      { path: 'gcp-tracking/:id', pathMatch: 'full', component: SingleCardViewComponent, canActivate: [AuthGuardService] }
@@ -38,23 +56,26 @@ goUsers() {
   // http://localhost:4200/users?order=popular
   this.router.navigate(['/users'], { queryParamsHandling: 'preserve' });
 }
+```
 
-// with RouterLink
+```html
+<!--with RouterLink-->
 <a [routerLink]="['/products']" [queryParams]="{ order: 'popular'}">
   Products
 </a>
 ```
 
+### Fetching Route Parameters
 
-## Fetching Route Parameters:
-```javascript
+```js
 // Fetching route parameters i.e. home/users/1/john
 // route.ts:
 const appRoutes: Routes = [
-  {path: 'users/:id/:name', component: UserComponent},
-]
+  { path: "users/:id/:name", component: UserComponent },
+];
 ```
-```javascript
+
+```js
 // component.ts:
 import { Subscription } from './rxjs/Subscription';
 
@@ -68,7 +89,7 @@ ngOnInit() {
     id: this.route.snapshot.param['id'],
     name: this,route.snapshot.param['name']
   };
-  
+
   // also have queryParams.subscribe() and fragment.subscribe()
   this.paramSubscription = this.route.params.subscribe((params: Params) => {   // runs when user param changes
     this.user.id = params['id'];
@@ -80,32 +101,42 @@ ngOnDestroy() {
 }
 }
 ```
-## Preserving Route Parameters:
+
+### Preserving Route Parameters
+
 ```javascript
 onEdit() {
      this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
 }
 ```
-## Nesting Routes:
+
+### Nesting Routes
+
 ```javascript
 // routing.ts
 const appRoutes: Routes = [
-  {path: 'users', component: UserComponent, children: [
-     {path: 'id', component: UserComponent}
-  ]},
-]
-
-// UserComponent.html
-<router-outlet></router-outlet>    // need add this
+  {
+    path: "users",
+    component: UserComponent,
+    children: [{ path: "id", component: UserIdComponent }],
+  },
+];
 ```
 
-## Navigate to Top When Routing:
-```javascript
+```html
+<!--UserComponent.html-->
+<router-outlet></router-outlet>
+```
+
+### Navigate to Top When Routing
+
+```js
 // in routing module
-RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})
+RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" });
 ```
 
-## Navigate With Anchor Tag:
+### Navigate With Anchor Tag
+
 ```js
 // app.routing.module
 @NgModule({
@@ -115,14 +146,24 @@ RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})
     anchorScrolling: 'enabled',
     scrollOffset: [0, 100]
   })],
-  exports: [RouterModule] 
+  exports: [RouterModule]
 })
 ```
+
 ```html
-<a routerLink="." fragment="capacity-tracking" >Capacity Tracking</a>
+<a routerLink="." fragment="capacity-tracking">Capacity Tracking</a>
 
 <div id="capacity-tracking" class="single-container extended tableview">
- <app-capacity-tracking></app-capacity-tracking>
+  <app-capacity-tracking></app-capacity-tracking>
 </div>
+```
 
+### Route Guards
+
+```
+CanActivate   Allows component for a given route to be activated (but not navigated to if returned false)
+CanActivateChild
+CanDeactivate
+CanLoad     Prevent activation and routing together if returned false.
+Resolve
 ```
