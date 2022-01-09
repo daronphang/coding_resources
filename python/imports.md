@@ -26,3 +26,7 @@ from ..module3 import class2
 
 # need to have __init__.py in packages for absolute import, else will be read as 'module' by Python
 ```
+
+### Import Errors
+- CD one directory higher than base directory and run python script.
+- Remove any unused imports (prevent circular imports).
