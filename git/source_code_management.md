@@ -12,6 +12,12 @@ git commit -a -m "description of changes"
 git remote add origin <paste GIT URL> 
 git push -u origin master
 ```
+
+### Verification
+```
+$git log src/myassistant/app/api/v1/endpoint.py   # View all changes made to file
+```
+
 ### Editing Existing Files
 
 ```
