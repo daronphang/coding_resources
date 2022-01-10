@@ -10,15 +10,12 @@
 ### Commands
 
 ```
-$sudo                        Superuser do
-$su <user>                   ctrl+D to logout of su
-$sudo apt update             Updates packages but does not install them
-$sudo apt upgrade
+
 
 $gcc                         GNU Compiler collections for compiling C and C++ language
 
-$pwd                         Present working directory
-$whoami
+
+
 $cd /a/b/c                   Different from Windows which is using \ slash
 
 $ifconfig                    Show network interface such as IP address
@@ -40,10 +37,7 @@ $cat /etc/file1
 $$cat >test2                    Creates a file
 $cat -n song.txt               Displays line numbers of file
 
-$mkdir -p test1/test2/test3              Creates parent directory 'test1' if doesn't exist
 
-$chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
-$chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 
 $vi
 $ls -la

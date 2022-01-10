@@ -28,5 +28,7 @@ from ..module3 import class2
 ```
 
 ### Import Errors
+
 - CD one directory higher than base directory and run python script.
 - Remove any unused imports (prevent circular imports).
+- Move run file into another folder.
