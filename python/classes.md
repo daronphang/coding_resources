@@ -224,3 +224,24 @@ class Car:
 my_car = Car('red', 1000)
 print(my_car)   # a red car or <Car red, 100>
 ```
+
+### Abstract Classes
+
+A class is an Abstract class if it contains one or more abstract methods (declared but no implementation). A subclass that doesn't implement the abstract methods will throw an error.
+
+```py
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def feed(self, action):
+        pass
+
+    def concrete_method(self):
+        # some logic
+        return 'hello world!'
+```
