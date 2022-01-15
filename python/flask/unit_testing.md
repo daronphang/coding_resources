@@ -62,6 +62,15 @@ class FlaskClientTestCase(unittest.TestCase):
         self.assertEqual(json_response['body_html'],'<p>body of the <em>blog</em> post</p>')
 ```
 
+### Asserts
+#### assertRaises
+```py
+self.assertRaises(Exception, test_function, args)
+with self.assertRaises(Exception):
+    test_function()
+```
+
+
 ### Running Unittest
 
 ```python
