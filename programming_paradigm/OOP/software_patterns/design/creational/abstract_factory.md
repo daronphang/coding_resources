@@ -1,39 +1,62 @@
-## Description:
-Allows you to produce families of related objects without specifying their concrete classes. Factory that returns factories. Provides an easy way to create a similar type of many objects. Terminology:
-- Client: Client application that calls Abstract Factory.
-- Abstract Factory: Common interface over all sub factories, declares a set of methods that return differnet abstract products.
-- Concrete Factory: Sub factory of Abstract Factory and contains methods to create Concrete Product.
-- Abstract Product: Interface for product that sub factory returns.
-- Concrete Product: Object that is finally returned.
+### Abstract Factory
 
-## Problem:
-Creating product variants of a product family i.e. chairs, sofas and tables in Victorian, Art Deco and Modern designs. Need to create individual furniture objects so that they match other objects of the same family i.e. Victorian sofa, table and chair. 
+Allows you to produce families of related objects without specifying their concrete classes by declaring the interface only. Each concrete subclass then implements the operations specific for their purpose. Also enforces dependencies between concrete subclasses whereby the constraint is enforced automatically as a consequence of using Abstract Factory.
 
-## Solution:
-1) Explicitly declare interfaces for each distinct product of product family. 
-2) All variants of products will follow those interfaces. 
-3) Declare the Abstract Factory which is an interface with a list of creation methods for all products.
+### Applicability
 
-```
-FurnitureFactory <interface>:
-createChair(): Chair
-createTable(): Table
-createSofa(): Sofa
+Use the Abstract Factory when:
 
-VictorianFurnitureFactory:
-createChair(): Chair
-createTable(): Table
-createSofa(): Sofa
-```
+- A system should be indepedent of how its products are created, composed, and represented.
+- A system should be configured with one of multiple families of products.
+- A family of related project objects is designed to be used together.
+- Want to provide a class library of products, and want to reveal just their interfaces and not implementations.
 
-## Advantages:
-- Compatibility between products created by same factory class is guaranteed.
-- Cleaner code since new product families can be introduced without breaking existing code.
+### Participants
 
-## Disadvantages:
-- Increased complexity in code and number of classes required.
+#### Client
 
-## Example:
+- Client application that calls Abstract Factory.
+
+#### Abstract Factory
+
+- Common interface over all sub factories, declares a set of methods that return different abstract products.
+
+#### Concrete Factory
+
+- Sub factory of Abstract Factory and contains methods to create Concrete Product.
+
+#### Abstract Product
+
+- Interface for product that sub factory returns.
+
+#### Concrete Product
+
+- Object that is finally returned.
+
+### Consequences
+
+#### Isolates concrete classes
+
+Helps control the classes of objects that an application creates. As factory encapsulates the responsibility and process of creating product objects, it isolates clients from implementation classes. Clients manipulate instances through abstract interfaces.
+
+#### Makes exchanging product families easy
+
+Classes of concrete factory can be configured easily by changing the concrete factory.
+
+#### Promotes consistency among products
+
+When product objects in a family are designed to work together, it is important that an application use objects from only one family at a time.
+
+#### Supporting new kinds of products is difficult
+
+Extending abstract factories to produce new kinds of products isn't easy as its interface fixes the set of products that can be created.
+
+### Related Patterns
+
+Often implemented with Factory Method, but can be implemented using Prototype. Concrete factory is often a Singleton.
+
+### Example
+
 ```python
 import abc
 
