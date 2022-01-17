@@ -245,3 +245,21 @@ class Animal(ABC):
         # some logic
         return 'hello world!'
 ```
+
+### Passing Class Parameters to Method Decorators
+```py
+class DatabaseDecorator:
+    @classmethod
+    def crud_execution(cls, f):
+        def wrapper(self, *args, **kwargs):
+            with self._db as db:
+                try:
+                    results = f(self, *args, **kwargs)
+                    self._db.conn.commit()
+                    return results
+                except Exception as e:
+                    self._db.conn.rollback()
+                    logger.error(e)
+                    abort(400, str(e))
+        return wrapper
+```
