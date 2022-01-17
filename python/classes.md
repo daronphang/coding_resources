@@ -148,7 +148,11 @@ class OrderView(SingleObjectMixin, View):
 
 ### Instance, Class and Static Methods
 
-Methods offered by Python to write object-oriented that communicates its intent more clearly and for easier maintenance.Help to communicate and enforce developer intent about class design.
+Methods offered by Python to write object-oriented that communicates its intent more clearly and for easier maintenance. Help to communicate and enforce developer intent about class design:
+
+- Instance: Takes self parameter which points to an instance of Class object. Can freely access attributes and other methods on same object.
+- Class: Takes cls parameter that points to the class and not object instance. Can modify class state but not instance state.
+- Static: Can neither modify object state nor class state (restricted in what data they can access).
 
 ```python
 class ClassTest:
@@ -243,4 +247,23 @@ class Animal(ABC):
     def concrete_method(self):
         # some logic
         return 'hello world!'
+```
+
+### Passing Class Parameters to Method Decorators
+
+```py
+class DatabaseDecorator:
+    @classmethod
+    def crud_execution(cls, f):
+        def wrapper(self, *args, **kwargs):
+            with self._db as db:
+                try:
+                    results = f(self, *args, **kwargs)
+                    self._db.conn.commit()
+                    return results
+                except Exception as e:
+                    self._db.conn.rollback()
+                    logger.error(e)
+                    abort(400, str(e))
+        return wrapper
 ```
