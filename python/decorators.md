@@ -6,7 +6,7 @@ In most cases, the decorator should return an object to mimic the decorated func
 
 https://medium.com/@vadimpushtaev/decorator-inside-python-class-1e74d23107f6
 
-```python
+```py
 def mydecorator(f):  # f is the function passed to us from python
     def wrapper():
         print(f'{f} was called.')
@@ -20,6 +20,16 @@ def hello():
 >>> hello()
 <function hello at 0x7f27738d7510> was called.
 hello
+
+def decorator_with_arguments(function):
+    def wrapper_accepting_arguments(arg1, arg2):
+        print("My arguments are: {0}, {1}".format(arg1,arg2))
+        function(arg1, arg2)
+    return wrapper_accepting_arguments
+
+@decorator_with_arguments
+def cities(city_one, city_two):
+    print("Cities I love are {0} and {1}".format(city_one, city_two))
 ```
 
 ### Nested
