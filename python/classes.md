@@ -3,6 +3,12 @@
 ```py
 hasattr(class_name, 'attr')   # true/false
 getattr(class_name, 'attr')   # returns value, else None
+
+def get_method(self, method_name):
+  for name in dir(self):
+      if method_name == name:
+          return getattr(self, method_name)
+  abort(400, 'crud method not found')
 ```
 
 ### Self Attributes
