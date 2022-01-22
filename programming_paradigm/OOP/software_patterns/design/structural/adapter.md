@@ -6,7 +6,7 @@ Converts the interface of a class into another interface clients expect i.e. con
 
 - When you want to use an existing class, and its interface does not match the one you need.
 - When you want to create a reusuable class that cooperates with unrelated or unforeseen classes i.e. classes don't have compatible interfaces.
-- When you need to use several existing subclasses, but it's impractical to adapt t heir interface by subclassing every one. An object adapter can adapt the interface of its parent class (object adapter only).
+- When you need to use several existing subclasses, but it's impractical to adapt their interface by subclassing every one. An object adapter can adapt the interface of its parent class (object adapter only).
 
 ### Participants
 
