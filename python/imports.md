@@ -27,6 +27,11 @@ from ..module3 import class2
 # need to have __init__.py in packages for absolute import, else will be read as 'module' by Python
 ```
 
+### Best Practices
+
+- Do not import a module that imports from another module as it may cause circular dependencies and lead to unexpected errors if imported module is changed i.e. module A importing module B, C, D but module C imports module B.
+- Do not cross-import from different folders.
+
 ### Import Errors
 
 - CD one directory higher than base directory and run python script.

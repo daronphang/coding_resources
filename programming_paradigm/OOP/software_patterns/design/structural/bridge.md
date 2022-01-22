@@ -20,7 +20,7 @@ Useful when dealing with cross-platform apps, supporting multiple types of datab
 - Defines the abstraction interface.
 - Maintains a reference to an object of second hierarchy of type Implementor.
 
-#### Refined Abstraction
+#### RefinedAbstraction
 
 - Extends the interface defined by Abstraction.
 
@@ -29,7 +29,7 @@ Useful when dealing with cross-platform apps, supporting multiple types of datab
 - Defines the interface for implementation classes.
 - Interface does not have to correspond exactly to Abstraction's interface; typically Implementor interface provides primitive operations while Abstraction defines higher-level operations.
 
-#### Concrete Implementor
+#### ConcreteImplementor
 
 - Implements the Implementor interface and deifnes its concrete implementation.
 

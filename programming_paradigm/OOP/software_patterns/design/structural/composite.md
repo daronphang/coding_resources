@@ -1,6 +1,6 @@
 ### Composite
 
-Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly i.e. a group of objects is treated the same way as a single instance of the same type of objects. Composite pattern describes how to use recursive composition so that clients don't have to make distinction.
+Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly i.e. a group of objects is treated the same way as a single instance of the same type of objects. Composite pattern describes how to use recursive composition so that clients don't have to make distinction. An example would be a drawing editor allowing users to build complex diagrams out of simple components i.e. lines, rectangle and text to form a picture.
 
 Key to Composite pattern is an abstract class that represents both primitives and their containers. Useful whenever we have tree-like data structure i.e. file system, stacked resources, organization.
 

@@ -17,7 +17,7 @@ Clients communicate with subsystem by sending requests to Facade, which forwards
 - Knows which subsystem classes are responsible for a request.
 - Delegates client requests to appropriate subsystem objects.
 
-#### Subsystem Classes
+#### SubsystemClasses
 
 - Implement subsystem functionality.
 - Handle work assigned by Facade object.
