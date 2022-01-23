@@ -2,6 +2,8 @@
 
 Allows you to produce families of related objects without specifying their concrete classes by declaring the interface only. Each concrete subclass then implements the operations specific for their purpose. Also enforces dependencies between concrete subclasses whereby the constraint is enforced automatically as a consequence of using Abstract Factory.
 
+Each of the factory method creates a different kind of object.
+
 ### Applicability
 
 Use the Abstract Factory when:

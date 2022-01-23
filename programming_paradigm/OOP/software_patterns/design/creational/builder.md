@@ -2,6 +2,8 @@
 
 Separates the construction of a complex object from its representation so that the same construction process can create different representations. Each converter class is called a **builder** in the pattern, and the reader is called **director**.
 
+Pattern helps in building complex object using simple objects and uses an algorithmic approach.
+
 ### Applicability
 
 - Algorithm for creating a complex object should be independent of the parts that make up the object and how they're assembled.
@@ -68,9 +70,8 @@ class Builder(ABC):
     @abstractmethod
     def product_part_c(self):
         pass
-```
 
-```py
+
 class ConcreteBuilder1(Builder):
     # Provides the specific implementations of building steps
     def __init__(self):
@@ -95,9 +96,8 @@ class ConcreteBuilder1(Builder):
 
     def product_part_c(self):
         self._product.add('Part3')
-```
 
-```py
+
 class Product1:
     def __init__(self):
         self.parts = []
@@ -107,9 +107,8 @@ class Product1:
 
     def list_parts(self):
         print(f'Product parts: {','.join(self.parts)}', end="")
-```
 
-```py
+
 class Director:
     # Responsible for executing the building steps in a particular sequence
     def __init__(self):
@@ -130,4 +129,13 @@ class Director:
         self.builder.produce_part_a()
         self.builder.produce_part_b()
         self.builder.produce_part_c()
+
+
+if __name__ == "__main__":
+    director = Director()
+    builder = ConcreteBuilder1()
+    director.builder = builder
+
+    director.build_minimal_product()
+    builder.product.list_parts()
 ```
