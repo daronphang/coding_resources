@@ -11,3 +11,7 @@ There are two recurring themes in these patterns. First, they all encapsulate kn
 Two common ways to parameterize a system by the classes of objects it creates. One way is to subclass the class that creates the objects using the Factory Method pattern. However, thsis requires creating a new subclass to change the class of the product and may also cascade. Other way relies more on object composition whereby we define the object that's responsible for knowing the class of the product objects and make it a parameter of the system.
 
 Factory Method makes a design more customizable and only a little more complicated. Other design patterns require new classes, whereas Factory Method requires a new operation. People often use Factory Method as the standard way to create objects, but it isn't necessary when the class that's instantiated never changes or when instantiation takes place in an operation that subclasses can easily override, such as an initialization operation.
+
+
+### Factory Comparison
+https://refactoring.guru/design-patterns/factory-comparison
