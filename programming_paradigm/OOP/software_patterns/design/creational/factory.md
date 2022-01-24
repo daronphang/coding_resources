@@ -6,6 +6,8 @@ Intent is to define an interface for creating an object, but let subclasses deci
 
 Frameworks use abstract classes to define and maintain relationships between objects. Framework is often responsible for creating these objects as well. However, some subclasses are application-specific. Instead of using complex if/elif/else conditional structure to determine the concrete implementation, the application delegates that decision to a separate component that creates the concrete object.
 
+Factory pattern enhances loose coupling through the creation of an abstract class that will be used to create different types of objects that share some common attributes and functionality. Increases flexibility as shared functionality will not be rewritten having been inherited from the same class.  
+
 ### Applicability
 
 - Use when a class can't anticipate the class of objects it must create.
