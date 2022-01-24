@@ -4,7 +4,7 @@ Intent is to define an interface for creating an object, but let subclasses deci
 
 ### Motivation
 
-Frameworks use abstract classes to define and maintain relationships between objects. Framework is often responsible for creating these objects as well. However, some subclasses are application-specific. Instead of using complex if/elif/else conditional structure (Simple Factory pattern having one creation method with large conditional) to determine the concrete implementation, the application delegates that decision to a separate component that creates the concrete object.
+Frameworks use abstract classes to define and maintain relationships between objects. Framework is often responsible for creating these objects as well. However, some subclasses are application-specific. Instead of using complex if/elif/else conditional structure (Simple Factory pattern having one creation method with large conditional) to determine the concrete implementation, the application delegates that decision to a separate component that creates the concrete object. For Simple Factory, over time the method may become too big and it would be easier to extract parts of the method to subclasses. Simple Factory is an intermediate step of introducing Factory Method or Abstract Factory.
 
 Factory pattern enhances loose coupling through the creation of an abstract class that will be used to create different types of objects that share some common attributes and functionality. Increases flexibility as shared functionality will not be rewritten having been inherited from the same class.  
 
@@ -45,7 +45,7 @@ Creating objects inside a class with a factory method is always more flexible th
 
 Parallel class hierarchies results when a class delegates some of its responsibilities to a separate class.
 
-### Example
+### Example (Factory Method)
 
 ```py
 from __future__ import annotations
@@ -132,7 +132,15 @@ if __name__ == "__main__":
 
     print("App: Launched with the ConcreteCreator2.")
     client_code(ConcreteCreator2())
+    
+    creator_matching = {
+        'creator1': ConcreteCreator1(),
+        'creator2': ConcreteCreator2(),
+    }
+    client_code(creator_matching['creator1'])
 ```
+
+### Example (Simple Factory)
 
 ```py
 class ShapeFactory:
