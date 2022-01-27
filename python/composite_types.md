@@ -18,6 +18,9 @@ sort()
 list = ['computer', 'monitor']
 list[1][0]    # m
 
+# find object 
+matched_obj = next((x for x in test_list if x.value == value), None)
+
 list.append(x)
 list.sort(reverse=True)     # same as sorted(list, reverse=True)
 list.sort(key=lambda x: x['some_key'])
