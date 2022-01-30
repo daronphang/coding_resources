@@ -18,7 +18,7 @@ sort()
 list = ['computer', 'monitor']
 list[1][0]    # m
 
-# find object 
+# find object
 matched_obj = next((x for x in test_list if x.value == value), None)
 
 list.append(x)
@@ -46,6 +46,9 @@ test_set = set(['AND', 'OR'])
 print(set(query_op.keys()).intersection(test_set))
 print(bool(set(query_op.keys()).intersection(test_set)))
 
+# Get unique values between two lists
+list(set(x).symmetric_difference(set(f)))
+
 # Retrieve an item in set
  all_ids = set(list(range(1, 5)))
 order_ids = set(
@@ -68,7 +71,7 @@ print(title)
 
 When converting Dictionaries to JSON, it doesn't respect order if use OrderedDict() and sorts key alphabetically. Best to use a list of dictionaries.
 
-```python
+```py
 ordered_dict = OrderedDict()
 
 fruit = {'pear': 'green', 'apple': 'red'}
@@ -103,4 +106,8 @@ x = car.items()   # dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year'
 # To test for keys
 if 'some_key' in dict:  # cannot use hasattr() method
     return
+
+
+# merge two dictionaries
+dict3 = {**dict1, **dict2}
 ```

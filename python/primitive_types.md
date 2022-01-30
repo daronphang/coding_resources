@@ -1,6 +1,6 @@
 ### Strings and Slices
 
-```python
+```py
 'this string\n has been\n split'
 tabbed\t strings
 """He said, "no, he's resting""""
@@ -23,11 +23,14 @@ len(string)
 'a,b,c'.split(',')      # returns a list
 ",".join(iterable)
 ",".join(x if x not in separators else " " for x in number)
+
+# find substrings in string
+any(substring in string for substring in substring_list)
 ```
 
 #### String Replacement
 
-```python
+```py
 txt = "one one was a race horse, two two was one too."
 x = txt.replace("one", "three", 2)
 

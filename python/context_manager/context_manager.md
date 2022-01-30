@@ -19,6 +19,8 @@ with open('example.txt', 'r') as f:
     json.load(f)        // read json file; json.loads() for reading json string
     json.dump(f)        // convert dict to json object
     print(f.read())     // f.write()
+    lines = file.readlines()
+    lines = [line.strip() for line in f]
 
 # f.closed      // true
 ```

@@ -1,12 +1,15 @@
 ### Celery
+
 Defacto standard Python asynchronous task queue that integrates itself with web frameworks including Django, Flask, Pyramid, Pylons, etc. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Has three core components:
-1) Celery Client: Used to issue background jobs (client runs with Flask application).
-2) Celery Workers: Processes that run background jobs, supports both local and remote workers.
-3) Message Broker: Client communicates with workers through message queue; commonly used brokers are RabbitMQ and Redis.
+
+1. Celery Client: Used to issue background jobs (client runs with Flask application).
+2. Celery Workers: Processes that run background jobs, supports both local and remote workers.
+3. Message Broker: Client communicates with workers through message queue; commonly used brokers are RabbitMQ and Redis.
 
 Brokers such as Redis is an in-memory data structure store used as a distributed, in-memory key-value database, cache and message broker.
 
 Can use it to execute tasks outside of context of application. Any resource consuming tasks that application may need to run can be offloaded to task queue, leaving application free to respond to client requests. Background tasks include:
+
 - Running ML models.
 - Sending confirmation emails.
 - Scraping and crawling.
@@ -14,17 +17,17 @@ Can use it to execute tasks outside of context of application. Any resource cons
 - Generating reports.
 
 ### Process Workflow
-1) Client talks to Flask application to place their request.
-2) App takes the request and puts it in database queue with PENDING status.
-3) Client receives a JobID and polls as response; flask app is then free to take-on next request.
-4) Celery worker takes on the request and runs the service.
-5) Once worker is done, it updates the job's status from PENDING to SUCCESS.
-6) Flask app signals this change and client gets updated on request status. 
 
+1. Client talks to Flask application to place their request.
+2. App takes the request and puts it in database queue with PENDING status.
+3. Client receives a JobID and polls as response; flask app is then free to take-on next request.
+4. Celery worker takes on the request and runs the service.
+5. Once worker is done, it updates the job's status from PENDING to SUCCESS.
+6. Flask app signals this change and client gets updated on request status.
 
 ```
 # methods
-delay()                 Call task, shortcut to more powerful apply_async() 
+delay()                 Call task, shortcut to more powerful apply_async()
 apply_async()
 ready()                 Returns boolean on whether the task has finished processing or not
 wait()
@@ -32,9 +35,11 @@ time.sleep()            Suspend execution of current thread for a given number o
 ```
 
 ### Storing into Database
+
 Celery stores results in database in binary using Pickle.
 
 ### Background Tasks with Status Updates
+
 ```py
 @celery.task(bind=True)     # bind=True instructs Celery to send self argument
 def long_task(self):
@@ -47,24 +52,24 @@ def long_task(self):
     return {'status': 'Task completed!'}
 ```
 
-### Exception Handling
-In Celery, simply raise an exception and let Celery configuration deal with it i.e. let Celery handle exception. If an exception is handled inside task, Celery will still overwrite custom meta data and return status as SUCCESS. To prevent this, raise an additional celery.exceptions.Ignore().
+### Best Practices
+
+#### Ignore results you don't want
+
+Storing results waste time and resources if it is not needed.
+
 ```py
-from celery import states
-from celery.exceptions import Ignore
+@app.task(ignore_result=True)
+def mytask():
+    something()
 
-
-class CeleryFailure(Exception):
-    pass
-    
-    
-@celery.task(bind=True)
-def task(self):
-    try:
-        raise CeleryFailure('hello world')
-    except Exception as e:
-        self.update_state(state=states.FAILURE, meta={'custom': 'hi'})
+# Ignore result globally
+result = mytask.apply_async(1, 2, ignore_result=True)
 ```
+
+#### Avoid launching synchronous subtasks
+
+Having a task wait for the result of another task is really inefficient, and may cause a deadlock if worker pool is exhausted.
 
 ### Example
 
@@ -87,19 +92,19 @@ celery.conf.update(app.config)   # additional configuration options for Celery
 def my_background_task(arg1, arg2, name='tasks.my_background_task', max_retries=3):
     # some long running task here
     return result
-    
-    
+
+
 @app.route('/tasks', methods=['POST', 'GET']
 def execute_task():
     payload = request.get_json()
-    task = my_background_task.delay(10, 20)                                
+    task = my_background_task.delay(10, 20)
     # task = my_background_task.apply_async(args=[10, 20], countdown=60)      # runs every 60s
-    
+
     # task_id = uuid.uuid1()
     # my_background_task.apply_async(args=[10, 20], task_id=task_id)
-    
+
     return jsonify({'task_id': task.id}), 202
-    
+
 
 @app.route('/tasks/<task_id>', methods=['GET']
 def execute_task(task_id):
@@ -113,6 +118,7 @@ def execute_task(task_id):
 ```
 
 ### Background Tasks with Status Updates Example
+
 ```python
 @celery.task(bind=True)     # bind=True instructs Celery to send a 'self' argument to function
 def long_task(self):
@@ -127,16 +133,17 @@ def long_task(self):
             message = '{0} {1} {2}...'.format(random.choice(verb),
                                               random.choice(adjective),
                                               random.choice(noun))
-        
+
         # How Celery receives task updates
         self.update_state(state='PROGRESS',   # other built-in states include STARTED, SUCCESS
                           meta={'current': i, 'total': total,
                                 'status': message})
-                                
+
         time.sleep(1)
     return {'current': 100, 'total': 100, 'status': 'Task completed!',
             'result': 42}
 ```
+
 ```python
 @app.route('/longtask', methods=['POST'])
 def longtask():
@@ -144,6 +151,7 @@ def longtask():
     return jsonify({}), 202, {'Location': url_for('taskstatus',
                                                   task_id=task.id)}
 ```
+
 ```python
 # Accessing task status from Flask app
 

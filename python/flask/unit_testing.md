@@ -63,13 +63,15 @@ class FlaskClientTestCase(unittest.TestCase):
 ```
 
 ### Asserts
+
 #### assertRaises
+
 ```py
 self.assertRaises(Exception, test_function, args)
-with self.assertRaises(Exception):
+with self.assertRaises(Exception) as exc:
     test_function()
+self.assertEqual(str(exc.exception.message), 'some message')
 ```
-
 
 ### Running Unittest
 
