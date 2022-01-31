@@ -129,7 +129,10 @@ print(callable(num))  # False
 
 ```python
 grocery = ['bread', 'milk', 'butter']
-egrocery = enumerate(grocery)   # [(0, 'bread'), (1, 'milk'), (2, 'butter')]
+egrocery = enumerate(grocery, start=0)   # [(0, 'bread'), (1, 'milk'), (2, 'butter')]
+
+for count, item in egrocery:
+    print(item)
 ```
 
 ### Nested Arguments
