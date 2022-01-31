@@ -33,6 +33,12 @@ vowels_iter = iter(vowels)
 print(next(vowels_iter))    # 'a'
 print(next(vowels_iter))    # 'e'
 
+# Check list in list
+main_list = [1, 2, 3]
+subset_list = [1, 2]
+all(x in main_list for x in subset_list) # True
+set(subset_list) <= set(main_list)
+set(subset_list).issubset(set(main_list))
 ```
 
 ### Sets
