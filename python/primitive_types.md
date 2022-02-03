@@ -7,6 +7,8 @@ tabbed\t strings
 
 parrot = "norwegian blue"
 parrot[3]       # 'w', strings are sequence types
+parrot[-4:]     # blue
+parrot[:-4]     # removes last 4 characters in string, prints 'norwegian '
 parrot[:6]      # ' norweg'
 parrot[:6:2]    # 'nre'
 parrot[5::-1]   # 'gewron'
