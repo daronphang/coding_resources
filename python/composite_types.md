@@ -85,6 +85,14 @@ print(title)
 
 When converting Dictionaries to JSON, it doesn't respect order if use OrderedDict() and sorts key alphabetically. Best to use a list of dictionaries.
 
+#### Destructuring
+```py
+from operator import itemgetter
+
+params = {'a': 1, 'b': 2}
+a, b = itemgetter('a', 'b')(params)
+```
+
 ```py
 ordered_dict = OrderedDict()
 
