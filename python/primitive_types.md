@@ -8,11 +8,11 @@ tabbed\t strings
 parrot = "norwegian blue"
 parrot[3]       # 'w', strings are sequence types
 parrot[-4:]     # blue
-parrot[:-4]     # removes last 4 characters in string, prints 'norwegian '
-parrot[:6]      # ' norweg'
-parrot[:6:2]    # 'nre'
-parrot[5::-1]   # 'gewron'
-parrot[:-5:-1]  # 'eulb'
+parrot[10:]     # blue
+parrot[:-4]     # 'norwegian ', removes last 4 characters in string
+parrot[:6:2]    # 'nre', extract at intervals of 2
+parrot[5::-1]   # 'gewron', starts at 5th index, ends at first character
+parrot[:-5:-1]  # 'eulb', ends at 5th last character, starts at last index
 parrot[::-1]    # prints entire string backwards
 
 str.casefold()          # convert to lowercase, same as islower()

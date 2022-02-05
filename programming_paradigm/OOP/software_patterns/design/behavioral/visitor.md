@@ -1,6 +1,6 @@
 ### Visitor
 
-Intent is to represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
+Intent is to represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates (touching the base class). Allows us to add new features to an existing class hierarchy dynamically without changing it. Visitor is effectively a separate class hierarchy to virtualize the operations performed upon the primary base class.
 
 ### Motivation
 
