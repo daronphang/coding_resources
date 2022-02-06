@@ -1,0 +1,20 @@
+.default {
+  border-radius: 20px;
+  height: 3em;
+  padding-left: 50px;
+  margin-left: -2em;
+}
+
+.search-container {
+  display: flex;
+  margin: 0 auto 0 auto;
+  width: 50%;
+}
+
+.search-icon {
+  font-size: 20px;
+  z-index: 2;
+  position: relative;
+  left: 0.5em;
+  top: 0.5em;
+}
