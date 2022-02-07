@@ -1,7 +1,7 @@
 ### Overview
 Threading can be used if program has alot of I/O or Network usage, or multiprocessing if it is CPU-bound. 
 
-https://cs.wellesley.edu/~cs304/lectures/threads/
+https://cs.wellesley.edu/~cs304/lectures/threads/  
 https://www.toptal.com/python/beginners-guide-to-concurrency-and-parallelism-in-python#:~:text=What's%20the%20difference%20between%20Python,child%20processes%20bypassing%20the%20GIL.
 
 
