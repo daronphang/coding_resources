@@ -1,6 +1,10 @@
 ### Overview
 Threading can be used if program has alot of I/O or Network usage, or multiprocessing if it is CPU-bound. 
 
+https://cs.wellesley.edu/~cs304/lectures/threads/
+https://www.toptal.com/python/beginners-guide-to-concurrency-and-parallelism-in-python#:~:text=What's%20the%20difference%20between%20Python,child%20processes%20bypassing%20the%20GIL.
+
+
 ### Threading
 Threading is one of the most well-known approaches to attaining Python concurrency and parallelism. Threading is a feature provided by OS. Threading's job is to enable applications to be more responsive to user input. Perfect for I/O operations such as web scraping as the processor is sitting idle waiting for data from a remote source. Hence, the processor can download from different data sources in parallel and combine them at the end.
 
