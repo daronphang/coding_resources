@@ -11,6 +11,19 @@ Blueprints in Flask are intended for these cases:
 - Register a blueprint multiple times on an application with different URL rules.
 - Provide resources including templates, static files, view functions, etc.
 
+### Application Factory
+For single-script applications, the application instance exists in global scope and routes can be easily defined using app.route decorator. However, when creating Flask through application factory (app = Flask()), the application instance is created at runtime and app.route decorators begin to exist only after create_app() is invoked, which is too late. 
+
+Resources defined in blueprint are in dormant state until the blueprint is registered with an application, at which point they become part of it. 
+
+Important to note that routes and error handlers associated with blueprint are imported at bottom to avoid errors due to circular dependencies i.e. errors and views modules are going to import the main blueprint object.
+```py
+from flask import Blueprint
+
+main = Blueprint('main', __name__)
+
+from . import views, errors
+```
 
 ### Nesting Blueprints
 ```py
