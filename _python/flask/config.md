@@ -32,7 +32,7 @@ flask run
 
 ### Configuring From Python Files
 
-Configuring from outside of application package.
+Configuration becomes more useful if you can store it in a separate file, outside of application package.
 
 ```py
 app = Flask(__name__)
