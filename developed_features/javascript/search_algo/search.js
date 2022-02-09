@@ -22,8 +22,9 @@
     },
   ];
 
- const handleSearch = (input, products) => {
+ const handleSearch = (input, searchValues, skippedKeys = []) => {
     // returns either an array of primitive values or objects
+    // skippedKeys are keys to skip when iterating an object
     const regEx = new RegExp(input, "i");
 
     if (!input) {
@@ -33,7 +34,7 @@
     // Filters original array based on user input
     const matchedValues = [];
 
-    products.forEach((item) => {
+    searchValues.forEach((item) => {
       if (!item) {
         // if null, to continue with next iteration
         return;
@@ -50,7 +51,7 @@
       } else {
         // item is an object
         Object.keys(item).some((key) => {
-          if (!item[key]) {
+          if (skippedKeys.includes(key) || !item[key]) {
             return false;
           }
           if (typeof item[key] !== "object") {
