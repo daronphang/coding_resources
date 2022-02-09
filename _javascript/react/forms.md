@@ -1,6 +1,6 @@
 ### Uncontrolled
 
-In browser, forms maintain their own internal state. For uncontrolled, DOM manages and stores data and input is pulled from it through refs.
+In browser, forms maintain their own internal state. For uncontrolled, DOM manages and stores data and input is pulled from it through refs. 
 
 ```js
 return <input type="text" name="name" ref={this.nameInput} />;
@@ -64,6 +64,20 @@ const SimpleInput = (props) => {
   )
 }
 
+```
+
+### Form Reset
+If uncontrolled, can use event.target.reset(). Else, need to setState.
+
+```html
+ <form onSubmit={handleSearch}>
+  <StyledInputBase
+    placeholder="Search something…"
+    onChange={handleOnChange}
+    value={searchValue}
+    inputProps={{ "aria-label": "search" }}
+  />
+</form>
 ```
 
 ### React-Hook-Form
