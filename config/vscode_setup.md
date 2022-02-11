@@ -19,6 +19,7 @@ Stable version: January 2021, version 1.53.2
 13. Debugger for Chrome
 14. ESLint
 15. Remote Development
+16. TODO Highlight
 
 ### JS Prettier and ESLint Setup
 
@@ -129,6 +130,31 @@ Need to install pylint in virtual environment; activation depends on autosave fu
   },
   "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
   "editor.formatOnSave": true,
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "todohighlight.isEnable": true,
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.php",
+    "**/*.css",
+    "**/*.scss",
+    "**/*.py"
+  ],
+  "todohighlight.exclude": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map",
+    "**/.next/**",
+    "**/venv/**"
+  ]
 }
 ```
