@@ -48,7 +48,7 @@ print(f'my name is {name}, age {age}')
 print(x,y, sep='\n')
 ```
 
-### Truthy vs Falsy
+### True False
 
 Use any() or all() to check for truth in lists.
 
@@ -61,4 +61,26 @@ False
 ''
 ()
 {}
+```
+
+#### Combining Boolean Operators
+
+```py
+
+user = "Ahmed"
+age = 30
+job = "data scientist"
+
+# bad practice
+
+if age > 30:
+    if user == "Ahmed":
+        if job == "data scientist":
+            access = True
+        else:
+            access = False
+
+# good practice
+
+access = age > 30 and user == "ahmed" and job == "data scientist"
 ```

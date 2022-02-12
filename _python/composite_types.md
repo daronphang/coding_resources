@@ -86,6 +86,7 @@ print(title)
 When converting Dictionaries to JSON, it doesn't respect order if use OrderedDict() and sorts key alphabetically. Best to use a list of dictionaries.
 
 #### Destructuring
+
 ```py
 from operator import itemgetter
 
@@ -128,6 +129,8 @@ x = car.items()   # dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year'
 # To test for keys
 if 'some_key' in dict:  # cannot use hasattr() method
     return
+
+user_id = user_ids.get('name', None)
 
 
 # merge two dictionaries
