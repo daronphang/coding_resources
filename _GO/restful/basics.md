@@ -2,6 +2,8 @@
 
 Gin simplifies many coding tasks associated with building web applications, including web services.
 
+https://gin-gonic.com/docs/examples/custom-http-config/
+
 #### Create Module for Dependencies
 ```console
 $ go mod init example/web-service-gin
@@ -35,7 +37,7 @@ var albums = []album{
 }
 
 func main() {
-    // initializing Gin router
+    // initializing Gin router, can be default or New() if need custom middleware
     router := gin.Default()
     router.GET("/albums", getAlbums)
     router.GET("/albums/:id", getAlbumByID)
