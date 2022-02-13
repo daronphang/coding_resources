@@ -43,6 +43,22 @@ const newArr = [1, 2, 3, ...arr]; // [1, 2, 3, 4, 5, 6]
 const [a, b, ...others] = [1, 2, 3, 4, 5]; // others = [3, 4, 5]
 ```
 
+### Comparing Arrays
+
+```js
+var a1 = ['a', 'b'];
+var a2 = ['a', 'b', 'c', 'd'];
+
+// intersection
+ let intersection = arr1.filter(x => arr2.includes(x));
+ 
+ // difference
+ let difference = arr1.filter(x => !arr2.includes(x));
+ 
+ // symmetric difference
+ let difference = arr1.filter(x => !arr2.includes(x)).concat(arr2.filter(x => !arr1.includes(x)));
+```
+
 ### Examples
 
 ```js
