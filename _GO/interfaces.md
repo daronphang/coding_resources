@@ -70,6 +70,28 @@ func shuffle(c Card) {
 }
 ```
 
+#### Compile Errors
+Arises when you try to assign/pass a concrete type to an interface type and the concrete type does not implement the interface, or if you are passing a pointer to the type.
+
+```go
+type Stringer interface {
+    String() string
+}
+
+type MyType struct {
+    value string
+}
+
+func (m *MyType) String() string { return m.value }
+
+func main() {
+    var s Stringer
+    m := MyType{value: "something"}
+    s = m   // error!
+    s= &m   // ok!
+}
+```
+
 ### Concrete Type
 Concrete type specifies the exact representation of its values and exposes the intrinsic operations of that representation i.e. arithmetic for numbers, indexing/append/range for slices.
 
