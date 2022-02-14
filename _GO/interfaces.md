@@ -7,34 +7,50 @@ When an interface contains zero methods, such types of interface is known as the
 
 ```go
 package main
-  
-import "fmt"
-  
-type tank interface {
-    Tarea() float64
-    Volume() float64
+
+import (
+    "fmt"
+    "math"
+)
+
+type geometry interface {
+    area() float64
+    perim() float64
 }
-  
-type myvalue struct {
+
+type rect struct {
+    width, height float64
+}
+type circle struct {
     radius float64
-    height float64
 }
-  
-// Implementing methods of the tank interface
-func (m myvalue) Tarea() float64 {
-    return 2*m.radius*m.height +
-        2*3.14*m.radius*m.radius
+
+func (r rect) area() float64 {
+    return r.width * r.height
 }
-  
-func (m myvalue) Volume() float64 {
-    return 3.14 * m.radius * m.radius * m.height
+func (r rect) perim() float64 {
+    return 2*r.width + 2*r.height
 }
-  
+
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perim() float64 {
+    return 2 * math.Pi * c.radius
+}
+
+func measure(g geometry) {
+    fmt.Println(g)
+    fmt.Println(g.area())
+    fmt.Println(g.perim())
+}
+
 func main() {
-    var t tank
-    t = myvalue{10, 14}
-    fmt.Println("Area of tank :", t.Tarea())
-    fmt.Println("Volume of tank:", t.Volume())
+    r := rect{width: 3, height: 4}
+    c := circle{radius: 5}
+
+    measure(r)
+    measure(c)
 }
 ```
 
