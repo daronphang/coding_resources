@@ -78,3 +78,40 @@ func main () {
 	return r.Run(address)
 }
 ```
+
+### Passing Arguments to Middlewares (Decorators)
+
+```go
+package middleware
+
+import (
+	"MyAssistant-Data-Extrator/src/MDE/models"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+func SchemaValidator (schemaType string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		schemas := map[string]models.Payload {
+			"heartbeat": &models.HeartbeatPayload{},
+		}
+	
+		if _, ok := schemas[schemaType]; !ok {
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+				"message": "invalid schema",
+				"error": "schema provided not found",
+			})
+		}
+	
+		if err := c.ShouldBindJSON(schemas[schemaType]); err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+				"message": "incorrect payload",
+				"error": err.Error(),
+			})
+		}
+		// payload is valid, passed to next middleware
+		c.Next()
+	}
+}
+```
