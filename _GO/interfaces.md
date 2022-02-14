@@ -1,6 +1,43 @@
 ### Interfaces
 Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types. Interfaces are able to take different sources of input and provide a common output i.e. Reader interface takes any type of data as input and outputs as []byte for anyone to work with.
 
+Interface is an abstract custom type that is used to specify a set of one or more method signatures i.e. collection of methods. Necessary to implement all the methods declared in the interface for implementing the interface. They are implemented implicitly. 
+
+When an interface contains zero methods, such types of interface is known as the empty interface i.e. all types implement the empty interface. Interface itself is a static type, but it does not have a static value and always points to dynamic values.
+
+```go
+package main
+  
+import "fmt"
+  
+type tank interface {
+    Tarea() float64
+    Volume() float64
+}
+  
+type myvalue struct {
+    radius float64
+    height float64
+}
+  
+// Implementing methods of the tank interface
+func (m myvalue) Tarea() float64 {
+    return 2*m.radius*m.height +
+        2*3.14*m.radius*m.radius
+}
+  
+func (m myvalue) Volume() float64 {
+    return 3.14 * m.radius * m.radius * m.height
+}
+  
+func main() {
+    var t tank
+    t = myvalue{10, 14}
+    fmt.Println("Area of tank :", t.Tarea())
+    fmt.Println("Volume of tank:", t.Volume())
+}
+```
+
 ```go
 // not ideal!
 func (d deck) shuffle() {}
