@@ -28,3 +28,11 @@ Bind checks the Content-Type to select a binding engine automatically; returns a
 ```go
 func (c *Context) ShouldBindWith(obj interface{}, b binding.Binding) error
 ```
+
+#### JSON
+IndentedJSON serializes given stuct as pretty JSON (indented + endlines) into the response body, and sets Content-Type as 'application/json'. Should only use this for development purposes as printing pretty JSON is more CPU and bandwidth consuming. Use Context.JSON() instead.
+
+```go
+func (c *Context) IndentedJSON(code int, obj interface{})
+func (c *Context) JSON(code int, obj interface{})
+```
