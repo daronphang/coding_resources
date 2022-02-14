@@ -1,5 +1,5 @@
 ### Function Declarations
-Functions that has result list MUST end with a return statement unless execution ends with infinite loop. 
+Functions that has result list MUST end with a return statement unless execution ends with infinite loop. To export functions, function name must start with capital letter.
 
 ```GO
 func name(parameter-list) (result-list) {
