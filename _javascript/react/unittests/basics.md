@@ -28,6 +28,9 @@ https://jestjs.io/docs/mock-function-api
 - shallow() for unittesting and mount/render() for integration testing.
 - Tests should test functionality of app, that mimic how it will be used by end users.
 - Leave 3rd party library tests to authors.
+- Should not test event handlers like handleClose, onSubmit, change as they can safely be expected to be called; instead, test the after-effect of them being called.
+- Functions defined in functional components are closed scope and hence, inaccessible; don't test if the method was called but rather if changes like useState are expected.
+- Testing MUI may be difficult as they are React components and cannot be represented by regular html elements.
 
 https://kentcdodds.com/blog/avoid-nesting-when-youre-testing
 
