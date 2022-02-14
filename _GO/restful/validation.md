@@ -1,5 +1,7 @@
 ### Custom Validation
 
+https://pkg.go.dev/github.com/go-playground/validator/v10#section-documentation
+
 https://medium.com/tunaiku-tech/go-validator-v10-c7a4f1be37df
 
 ```go
