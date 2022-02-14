@@ -1,7 +1,9 @@
 ### Declarations
 in GO, special names such as _this_ or _self_ for receiver but instead we choose receiver names. Common choice is the first letter of type name. In method call, receiver argument appears before method name. Selectors are used to select fields of struct type i.e. p.X and also select methods i.e. p.Distance; since both methods and fields inhabit the same name space, cannot declare as the same name.
 
-Methods can be declared on any named type defined in same package i.e. slice, struct, etc. 
+Methods can be declared on any named type defined in same package i.e. slice, struct, etc. Take note that methods on a type can only be defined in the **same package**.
+
+
 ```go
 package geometry
 
