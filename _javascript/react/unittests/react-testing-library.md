@@ -49,11 +49,13 @@ act(() => {
 // make assertions
 ```
 
-### Query
+### Get, Query, Find
 
 Recommended to query by actual text than using test IDs or other mechanisms. Else, have to do extra work to make sure translations are getting applied correctly. Benefit is that you get increased confidence.
 
 The 'name' option allows you to query elements by their 'Accessible Name' which is what screen readers will read for the element and works if element has its text split up by different elements.
+
+Use getBy for asserting if an element is present as it throws error if not found. Use queryBy for asserting an element is not present in DOM.
 
 https://testing-library.com/docs/queries/about/
 
