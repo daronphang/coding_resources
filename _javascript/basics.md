@@ -50,6 +50,19 @@ console.log(validate(schema, { first: "Bruce" })); // false
 console.log(validate(schema, { first: "Bruce", last: "Wayne" })); // true
 ```
 
+### Check Similar Conditions of Multiple Variables
+
+If want to check conditions of multiple variables that are similar, can perform arithmetic operations.
+
+```js
+const arr1 = []
+const arr2 = []
+
+if (arr1.concat(arr2).length === 0) {
+  // do something
+}
+```
+
 ### Immediately Invoked Function Expressions
 
 Executing a function without having to save it to memory.
