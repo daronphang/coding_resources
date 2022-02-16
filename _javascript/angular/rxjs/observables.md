@@ -35,6 +35,9 @@ ngOnDestroy() {
 
 ### Subjects
 Inherits operators and methods from Observable and implements Observer interface. An important distinction is that Observable is unicast while Subject is multicast i.e. Subject can cast values to multiple subscribers. Also have ReplaySubject for replaying last emitted event, and BehaviorSubject for setting initial value.
+
+**Subjects will only emit to current subscribers and won't hold the value.** To consider using ReplaySubject or BehaviorSubject instead.
+
 ```javascript
 const subject = new Subject()
 subject.next('This is an observable');
