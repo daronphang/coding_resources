@@ -113,3 +113,15 @@ P::after {
   display: block;
 }
 ```
+
+#### Focus
+
+For global, use form-control:focus.
+
+```css
+textarea:focus {
+  outline: none !important;
+  border-color: #5bc7ff;
+  box-shadow: 0 0 0 0.2rem rgb(0 144 218 / 25%);
+}
+```
