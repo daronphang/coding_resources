@@ -1,0 +1,44 @@
+   <div *ngFor="let field of dynamicFields">
+          <label style="font-weight: 600">{{ field.label }}</label>
+
+          <textarea
+            [formControlName]="field.formControlName"
+            [placeholder]="field.placeholder"
+            rows="5"
+            *ngIf="field.fieldType === 'TEXTAREA'"
+            [ngClass]="validationClass(dynamicFormArrayFormGroupControl(0, field.formControlName), 'TEXTAREA')"
+          ></textarea>
+
+          <ng-select
+            *ngIf="field.fieldType === 'OPTION'"
+            [ngClass]="validationClass(dynamicFormArrayFormGroupControl(0, field.formControlName), 'NGSELECT')"
+            [selectOnTab]="true"
+            [items]="isObservable(field.dropdownList) ? (field.dropdownList | async) : field.dropdownList"
+            [placeholder]="field.placeholder"
+            [formControlName]="field.formControlName"
+          >
+          </ng-select>
+
+          <input
+          *ngIf="field.fieldType === 'INPUT'"
+          [ngClass]="validationClass(dynamicFormArrayFormGroupControl(0, field.formControlName), 'INPUT')"
+            class="form-control"
+            [type]="field.inputType"
+            [placeholder]="field.placeholder"
+            [formControlName]="field.formControlName"
+          />
+
+          <span></span>
+          
+          <div style="font-weight: lighter; font-style: italic">
+            {{ field.comments }}
+          </div>
+
+          <div
+            *ngIf="!errorMsgValHandler(dynamicFormArrayFormGroupControl(0, field.formControlName))"
+            class="text-danger"
+          >
+            {{ field.errorMsg || dynamicFormArrayFormGroupControl(0, field.formControlName)?.errors[field.errMsgKey] }}
+          </div>
+          <div class="mt-3"></div>
+        </div>
