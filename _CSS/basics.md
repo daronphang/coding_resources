@@ -116,9 +116,13 @@ P::after {
 
 #### Focus
 
-For global, use form-control:focus.
+For global styling, use form-control:focus. Make sure custom CSS file is loaded after libraries' CSS i.e. Bootstrap.
 
 ```css
+.form-control:focus {
+  border-color: #5bc7ff;
+}
+
 textarea:focus {
   outline: none !important;
   border-color: #5bc7ff;
