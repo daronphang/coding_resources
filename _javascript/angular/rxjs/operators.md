@@ -9,6 +9,8 @@ obs.pipe(op1(), op2(), op3(), op4());
 
 ## Pipeable
 
+https://indepth.dev/reference/rxjs/operators
+
 ```
 catchError        Returns a new observable or throws an error.
 tap               For running side effects
@@ -17,6 +19,8 @@ debounceTime      Works with fromEvent()
 delay             Delay emitting value from Observable
 take              Specify number of Observables to subscribe to
 takeUntil         Argument is an Observable; takes until Observable emits a value
+takeWhile         Executes predicate fn and if true, passes down, else completes stream
+filter            Executes predicate fn and returns value if true; doesn't complete Observable
 ```
 
 https://blog.angular-university.io/rxjs-higher-order-mapping/

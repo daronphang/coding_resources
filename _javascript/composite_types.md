@@ -46,17 +46,19 @@ const [a, b, ...others] = [1, 2, 3, 4, 5]; // others = [3, 4, 5]
 ### Comparing Arrays
 
 ```js
-var a1 = ['a', 'b'];
-var a2 = ['a', 'b', 'c', 'd'];
+var a1 = ["a", "b"];
+var a2 = ["a", "b", "c", "d"];
 
 // intersection
- let intersection = arr1.filter(x => arr2.includes(x));
- 
- // difference
- let difference = arr1.filter(x => !arr2.includes(x));
- 
- // symmetric difference
- let difference = arr1.filter(x => !arr2.includes(x)).concat(arr2.filter(x => !arr1.includes(x)));
+let intersection = arr1.filter((x) => arr2.includes(x));
+
+// difference
+let difference = arr1.filter((x) => !arr2.includes(x));
+
+// symmetric difference
+let difference = arr1
+  .filter((x) => !arr2.includes(x))
+  .concat(arr2.filter((x) => !arr1.includes(x)));
 ```
 
 ### Examples
@@ -117,6 +119,14 @@ Simple types are numbers, strings, booleans, null and undefined. All other value
 const objectLiteral = {};
 
 objectLiteral.firstProp = "hello";
+
+// Copies all enumerable own properties and returns modified object
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+const modifiedTarget = Object.assign(target, source);
+
+console.log(target); // both the same; {a: 1, b: 4, c: 5}
+console.log(modifiedTarget);
 
 objectLiteral["nickname"] = undefined; // for performance boost but key still exists
 delete objectLiteral.nickname; // deleting property
