@@ -17,7 +17,7 @@ $npm install @reduxjs/toolkit
 
 ### Actions
 
-Dispatched to Reducer from Components. Actions reach out to all Reducers; need return DEFAULT case if no case found. Have two properties:
+Actions are triggers that can result in state changes. An object that contains a key called "type", and "payload" for optional extra data. Dispatched to Reducer from Components. Actions reach out to all Reducers; need return DEFAULT case if no case found. Have two properties:
 
 1. type: read only string describing what the action stand for.
 2. payload: the data sent to the Reducer (not all actions need a payload).
@@ -30,7 +30,7 @@ dispatch();
 
 ### Reducers
 
-Pure functions that reduce/transform input data. Accepts two arguments, previous State and Action. When an Action is dispatched, Redux goes through all reducers in the order the Reducers were created until it finds a case for that Action. Must always return a new state object (same input returns same output). NEVER MUTATE a state but ALWAYS OVERRIDE existing state as best practice.
+Pure functions that has no side effects, and its return value is determined only by its inputs. Functions that reduce/transform input data. Accepts two arguments, previous State and Action. When an Action is dispatched, Redux goes through all reducers in the order the Reducers were created until it finds a case for that Action. Must always return a new state object (same input returns same output). NEVER MUTATE a state but ALWAYS OVERRIDE existing state as best practice.
 
 ### Effects
 

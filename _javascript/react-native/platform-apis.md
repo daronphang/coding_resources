@@ -69,3 +69,70 @@ componentWillUnmount() {
 ### Working Around Limitations
 
 As geolocation is based on MDN specification, it leaves out more advanced location-based features such as Geofencing API, which allows your application to receive notifications when the user enters or leaves a designated geographical region. React Native does not expose this API. As workaround, need to port them yourself.
+
+### Accessing Images and Camera
+
+#### GetPhotoParams
+
+```
+first         Number of photos wanted in reverse order i.e. most recent
+after         String; cursor that matches page_info returned from a previous call
+groupTypes    Specifies which group to use to filter results i.e. Album, All, Event
+groupName     Specifies a filter on group names i.e. Recent Photos, Album Title
+assetType     Specifies a filter on asset type i.e. All, Photos, or Videos
+mimeTypes     Array of strings; filters based on mimetype i.e. image, jpeg
+```
+
+```js
+import { CameraRoll } from "react-native";
+
+CameraRoll.getPhotos(
+  { first: 1 },
+  (data) => {
+    console.log(data);
+    // rendering an image from camera roll
+    this.setState({
+      photoSource: {uri: data.edges[0].node.image.uri}
+    })},
+  },
+  (error) => {
+    console.warn(error);
+  }
+);
+
+<Image source={this.state.photoSource} />
+```
+
+#### Uploading Image to Server
+
+React Native ships with built-in image uploading functionality in XHR module (XMLHttpRequest).
+
+```js
+let xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://posttestserver.com/post.php');
+let formdata = new FormData();
+formdata.append('image',
+```
+
+### Persistent Storage with AsyncStorage
+
+React Native provides us with AsyncStorage, key-value store that is global to your application.
+
+```js
+// customary to use @AppName:key
+const STORAGE_KEY = "@SmarterWeather:zip";
+
+AsyncStorage.setItem(STORAGE_KEY, zip)
+  .then(() => console.log("Saved selection to disk: " + zip))
+  .catch((error) => console.log("AsyncStorage error: " + error.message))
+  .done();
+
+AsyncStorage.getItem(STORAGE_KEY)
+  .then((value) => {
+    if (value !== null) {
+      this._getForecastForZip(value);
+    }
+  })
+  .catch((error) => console.log("AsyncStorage error: " + error.message))
+  .done();
+```
