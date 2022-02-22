@@ -32,6 +32,8 @@ dispatch();
 
 Pure functions that has no side effects, and its return value is determined only by its inputs. Functions that reduce/transform input data. Accepts two arguments, previous State and Action. When an Action is dispatched, Redux goes through all reducers in the order the Reducers were created until it finds a case for that Action. Must always return a new state object (same input returns same output). NEVER MUTATE a state but ALWAYS OVERRIDE existing state as best practice.
 
+Should never mutate arguments in Reducer, perform side-effects like API calls, and call non-pure functions i.e. Date.now() or Math.random().
+
 ### Effects
 
 If an Effect gets triggered by dispatching an Action, this means side effects are going to happen before calling the Reducer i.e. http requests. Effects listen if any Action is dispatched and checks if it has a a case for Action type. After performing side effect, emits another Action referring to the result-state of side effect (success/error), and Reducer finally enters the scene. For Effects, it must always return a non-erronous Observable as the pipe operator cannot die; hence, use of().
