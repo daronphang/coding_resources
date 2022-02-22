@@ -14,6 +14,8 @@ https://indepth.dev/reference/rxjs/operators
 ```
 catchError        Returns a new observable or throws an error.
 tap               For running side effects
+from              Creates an Observable from an array-like/iterable object
+combineLatest     Combines values from all Observables passed in an Observable array; will not emit an initial value until each Obs emits at least once
 toArray           Collects all source emissions and emits them as an array when source completes
 debounceTime      Works with fromEvent()
 delay             Delay emitting value from Observable
