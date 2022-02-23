@@ -5,26 +5,28 @@ Storage devices must be partitioned and formatted before first use. Refers to sp
 OS continuously use various memory management techniques to ensure every process has enough memory space to run. Computer with multiple partitions allows you to install several OS and hence, can choose different OS to boot up with. Recovery and diagnostic utilities reside in dedicated partitions.
 
 #### Linux Partitions
-1) OS.
-2) User's files.
-3) Swap partition (works as RAM extension if it runs out of space).
 
+1. OS.
+2. User's files.
+3. Swap partition (works as RAM extension if it runs out of space).
 
 ### Partitioning Schemes
 
 Two partitioning schemes available for storage devices:
-1) Master Boot Record (MBR) Scheme
-2) GUID Partition Table (GPT) Scheme
+
+1. Master Boot Record (MBR) Scheme
+2. GUID Partition Table (GPT) Scheme
 
 ### System Firmware
 
 Firmware is a low-level software embedded into electronic devices to operate the device, or bootstrap another program to do it. Exists in computers and peripherals. In computers, firmware provides a standard interface for complex software like an OS to boot up and work with hardware components. Uses data structures to boot up OS on a partition. Firmware resides on non-volatile memory i.e. flash ROM attached to motherboard. Hardware manufacturers make firmware based on two specifications:
+
 - Basic Input/Output (BIOS)
 - Unified Extensible Firmware Interface (UEFI)
 
-Mission of firmware is to boot up computer, run OS, verify health of hardware components and memory, and pass it the control of the whole system. 
+Mission of firmware is to boot up computer, run OS, verify health of hardware components and memory, and pass it the control of the whole system.
 
-#### MBR Partitioning and BIOS 
+#### MBR Partitioning and BIOS
 
 BIOS firmware starts and loads boot loader program (contained in MBR) onto memory. Once the program is on the memory, CPU begins executing it. Having boot loader and partition table in predefined location like MBR enables BIOS to boot up the system without having to deal with any file.
 
@@ -32,24 +34,15 @@ MBR is simple and widely supported, but its data structure limits the number of 
 
 #### GPT Partitioning and UEFI
 
-Can have as many partitions as OS allows, and every partition can be the size of biggest storage device available in market. In this partitoning scheme, first sector of storage device (Protective MBR) is reserved for compatibility reasons with BIOS-based systems as some systems might use BIOS firmware but with GPT partitioned storage device. After first sector, GPT data structures are stored, including GPT header and partition entries which are backed up at end of storage device (Secondary GPT) in the event the primary files get corrupted. 
+Can have as many partitions as OS allows, and every partition can be the size of biggest storage device available in market. In this partitoning scheme, first sector of storage device (Protective MBR) is reserved for compatibility reasons with BIOS-based systems as some systems might use BIOS firmware but with GPT partitioned storage device. After first sector, GPT data structures are stored, including GPT header and partition entries which are backed up at end of storage device (Secondary GPT) in the event the primary files get corrupted.
 
 All booting services (boot loaders, boot managers, pre-os environments, shells) live in dedicated partition called EFI system Partition (ESP). Has its own file system which is a specific version of FAT.
 
 ```console
-cd /sys/firmware/efi
-sudo parted -l
+$ cd /sys/firmware/efi
+$ sudo parted -l
 ```
 
 ### Formatting Partitions
 
-When partitioning is done, partitions should be formatted. Formatting involves the creation of various data structures and metadata used to manage files within a partition. Most OS allows you to format a partition based on a set of file systems:
-- Windows: FAT32 (Windows 9x), NTFS (2000, XP, Vista, 7, 10), exFAT
-- Apple: HFS, APFS
-- Linux: ext/ext2/ext3/ext4 (default file system in many distributions of Linux)
-
-#### NTFS (New Technology File System)
-
-#### exFAT (Extended File Allocation Table)
-
-A lighter version of NTFS created by Microsoft in 2006. Designed for high-capacity removable devices such as external hard disks, USB drives, and memory cards. Has read and write support on Non-Windows environments including MacOS and Linux; hence, is the best cross-platform file system. 
+When partitioning is done, partitions should be formatted. Formatting involves the creation of various data structures and metadata used to manage files within a partition. Most OS allows you to format a partition based on a set of file systems including FAT32, NTFS, APFS, Ext4, and etc.
