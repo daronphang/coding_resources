@@ -40,9 +40,24 @@ console.log(gen.next(3)); // {value: 1003, done: false}
 console.log(gen.next()); // {value: undefined, done: true}
 ```
 
-### Yield is Two-Way Street
+### Passing Values in Generators
 
 Not only returns the result, but also can pass value inside the generator. Argument becomes result of yield.
+
+```js
+function* generatorFunction() {
+  console.log(yield)
+  console.log(yield)
+
+  return 'The end'
+}
+
+const generator = generatorFunction()
+
+generator.next()
+generator.next(100)   // 100
+generator.next(200)   // 200
+```
 
 ```js
 function* gen() {
@@ -60,4 +75,84 @@ alert(generator.next(9).done); // true
 
 ### return
 
+Can be used to terminate the generator at any point and ignore any other yield keywords. Useful in asynchronous programming when you need to make functions cancelable.
+
+```js
+function* generatorFunction() {
+  yield 'Neo'
+  yield 'Morpheus'
+  yield 'Trinity'
+}
+
+const generator = generatorFunction()
+generator.next()                            // {value: "Neo", done: false}
+generator.return('There is no spoon!')      // {value: "There is no spoon!", done: true}
+generator.next()                            // {value: undefined, done: true}
+
+```
+
 ### throw
+
+Used with try-catch.
+
+```js
+function* generatorFunction() {
+  try {
+    yield 'Neo'
+    yield 'Morpheus'
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const generator = generatorFunction()
+generator.next()
+generator.throw(new Error('Agent Smith!'))
+```
+
+### Nested Generators (Delegation)
+
+```js
+function* delegate() {
+  yield 3
+  yield 4
+}
+
+// Outer generator function
+function* begin() {
+  yield 1
+  yield 2
+  yield* delegate()
+}
+```
+
+### Async/Await with Generators
+
+```js
+const getUsers = asyncAlt(function*() {
+  const response = yield fetch('https://jsonplaceholder.typicode.com/users')
+  const json = yield response.json()
+
+  return json
+})
+
+getUsers().then(response => console.log(response))
+
+// Define a function named asyncAlt that takes a generator function as an argument
+function asyncAlt(generatorFunction) {
+  return function() {
+    const generator = generatorFunction()
+    function resolve(next) {
+      // If the generator is closed and there are no more values to yield, resolve the last value
+      if (next.done) {
+        return Promise.resolve(next.value)
+      }
+      // If there are still values to yield, they are promises andmust be resolved.
+      return Promise.resolve(next.value).then(response => {
+        return resolve(generator.next(response))
+      })
+    }
+    return resolve(generator.next())
+  }
+}
+```
