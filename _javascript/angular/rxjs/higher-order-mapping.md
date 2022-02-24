@@ -80,6 +80,8 @@ from(request1).pipe(
 
 Ignores every new Observable (temporary disable mapping) until the first Observable is finished; does not keep in memory.
 
+https://www.tektutorialshub.com/angular/using-exhaustmap-in-angular/
+
 ```js
 from(urls).pipe(exhaustMap()).subscribe();
 ```
