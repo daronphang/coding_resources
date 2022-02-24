@@ -22,3 +22,20 @@ export class YourComponent implements OnInit, OnDestroy {
    }
 }
 ```
+
+### Keep Subscription Alive on Error
+
+Need to catch error in inner Observable to not let source Observable die.
+
+```js
+this.outerObs$.pipe(
+   switchMap(() => {
+      return innerObs$.pipe(
+         catchError((err) => {
+            // do something...
+            return of(null);
+         })
+      )
+   })
+)
+```
