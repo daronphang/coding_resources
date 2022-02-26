@@ -12,7 +12,7 @@ Type of file system differs by OS and needs of OS. Each file system has its own 
 
 ### FAT
 
-Supported by Windows, FAT is considered simple and reliable, and is modeled after legacy file systems. However, cannot match with performance and scalability of modern file systems.
+Supported by Windows, FAT is considered simple and reliable, and is modeled after legacy file systems. However, cannot match with performance and scalability of modern file systems. FAT data structure is a table which stores information about which clusters are used, free or possibly unusable.
 
 #### exFAT
 
