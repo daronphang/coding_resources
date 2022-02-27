@@ -1,20 +1,6 @@
 ### Binary Trees
 
-A binary tree is either:
-
-- Empty tree EmptyTree, or
-- Consists of a node and two binary trees, left subtree and right subtree.
-
-### Complete Binary Trees
-
-Complete Binary Trees always have minimal height for size n (log2n), and are always perfectly balanced. Maximum height of binary tree with n nodes is (n-1). To create perfectly balanced trees, need to ensure previous level is full by filling nodes always from the left, before adding to next level. Any search has at most as many steps as the height of tree.
-
-```
-n       log2n
-2       1
-32      5
-1024    10
-```
+Consists of a node and at most two children, left subtree and right subtree. An empty tree is also a binary tree. Binary trees do not have simple relation between size n and height h. Maximum height with n nodes is (n-1), which happens when all non-leaf nodes have precisely one child.
 
 #### Selectors
 
@@ -44,8 +30,6 @@ root(left(left(t))) = 1
 root(left(left(left(t)))) = EmptyTree
 ```
 
-#### Size of Tree
-
 ```
 size(t) {
     if (isEmpty(t)) return 0
@@ -53,38 +37,28 @@ size(t) {
 }
 ```
 
-### Binary Search
+#### Full
 
-Can use binary search with divide and conquer strategy. Only works if list is sorted. Has time complexity of O(log2n) as compared to linear with O(n).
+Each node has exactly zero or two children (but never one). A full tree is not always complete and perfect.
 
-```js
-const list = [1, 3, 4, 5, 17, 18, 30];
-const n = list.length;
-const x = 17; // find index given x
+#### Complete
 
-let left = 0;
-let right = n - 1;
-let mid;
+Complete Binary Trees always have minimal height for size n (log2n). Complete tree may be full but not perfect. Maximum height of binary tree with n nodes is (n-1). To create perfectly balanced trees, need to ensure previous level is full by filling nodes always from the left, before adding to next level. Any search has at most as many steps as the height of tree.
 
-while (left < right) {
-  mid = (left + right) / 2;
-  if (x > list[mid]) {
-    left = mid + 1;
-  } else {
-    right = mid;
-  }
-}
-
-if (list[left] === x) {
-  return left;
-} else {
-  return -1;
-}
 ```
+n       log2n
+2       1
+32      5
+1024    10
+```
+
+#### Perfect
+
+All levels including the last level are full of nodes i.e. all nodes at last level do not have leaves. A perfect tree is always complete and full. Have precisely 2^k - 1 nodes, where k is last level of tree.
 
 ### Binary Search Trees
 
-Example above requires sorting overhead, or maintaining a sorted array if items are deleted/inserted. With binary trees, can speed up storing and search process without needing to maintain a sorted array.
+Binary search requires sorting overhead, or maintaining a sorted array if items are deleted/inserted. With binary search trees, can speed up storing and search process without needing to maintain a sorted array. Has time complexity of O(log2n) for searching.
 
 At each node, we want the value of that node to either tell us that we have found the required item, or tell us which of its two subtrees should search for it in. By definition, a binary search tree is one that is either empty or satifies the following conditions:
 
@@ -93,7 +67,7 @@ At each node, we want the value of that node to either tell us that we have foun
 - Left and right subtrees are themselves binary search trees.
 - There must be no duplicate nodes.
 
-#### Binary Trees vs Binary Search Trees
+### Binary Trees vs Binary Search Trees
 
 |            | Binary Tree                                                                                                                                                                | Binary Search Tree                                                                                                                                |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -102,7 +76,9 @@ At each node, we want the value of that node to either tell us that we have foun
 | Operations | The operations that can be performed are deletion, insertion and traversal as it is unordered.                                                                             | As these are sorted binary trees, they are used for fast and efficient binary search, insertion and deletion.                                     |
 | Types      | Complete Binary Tree, Full Binary Tree, Extended Binary Tree                                                                                                               | AVL Trees, Splay Trees, Tango Trees, T-Trees.                                                                                                     |
 
-#### Building Binary Search Trees
+### Building BST
+
+When building BST, one naturally starts with root and adds further new nodes as needed. For insertion:
 
 1. If given tree is empty, assign new value to root and leave left/right subtrees empty.
 2. If is non-empty, insert a node on left if is lesser, right if greater, error if equal.
@@ -119,9 +95,30 @@ insert(v,bst) {
 }
 ```
 
-For large database, it is more efficient to modify given tree, rather than to construct a whole new tree. Can be easily done using pointers. When searching, have to compare the item being looked for with the root, and then keep 'pushing' the comparison down into left or right subtree depending on the result of each root comparison, until a match is found or leaf is reached.
+For large database, it is more efficient to modify given tree, rather than to construct a whole new tree. Can be easily done using pointers.
 
-#### Deleting Nodes from Binary Search Tree
+### Searching BST
+
+When searching, have to compare the item being looked for with the root, and then keep 'pushing' the comparison down into left or right subtree depending on the result of each root comparison, until a match is found or leaf is reached:
+
+- If tree is empty, return false.
+- If value is equal to root, return true.
+- If value is smaller than root, search left sub-tree.
+- If value is greater than root, search right sub-tree.
+- Repeat until value is equal to current node.
+
+```
+isIn(value v, tree t) {
+  while ( (not isEmpty(t)) and (v != root(t)) )
+    if (v < root(t) )
+      t = left(t)
+    else
+      t = right(t)
+  return ( not isEmpty(t) )
+}
+```
+
+### Deleting Nodes from BST
 
 Algorithm as follows:
 
@@ -133,15 +130,56 @@ Last part works as left-most node in right sub-tree is guaranteed to be bigger t
 
 ![nodes](../../images/binary-search-trees.PNG)
 
-#### Checking Binary Tree is Binary Search Tree
+```
+smallestNode(tree t) {
+  // Precondition: t is a non-empty binary search tree
+  if ( isEmpty(left(t) )
+    return root(t)
+  else
+    return smallestNode(left(t));
+}
+
+removeSmallestNode(tree t) {
+  // Precondition: t is a non-empty binary search tree
+  if ( isEmpty(left(t) )
+    return right(t)
+  else
+    return MakeTree(root(t), removeSmallestNode(left(t)), right(t))
+}
+
+delete(value v, tree t) {
+  if ( isEmpty(t) )
+    error(`Error: given item is not in given tree')
+  else
+    if ( v < root(t) ) // delete from left sub-tree
+      return MakeTree(root(t), delete(v,left(t)), right(t));
+  else if ( v > root(t) ) // delete from right sub-tree
+    return MakeTree(root(t), left(t), delete(v,right(t)));
+  else // the item v to be deleted is root(t)
+    if ( isEmpty(left(t)) )
+      return right(t)
+  elseif ( isEmpty(right(t)) )
+    return left(t)
+  else // difficult case with both subtrees non-empty
+    return MakeTree(smallestNode(right(t)), left(t), removeSmallestNode(right(t))
+}
+```
+
+### Traversing BST
+
+There are different ways of traversing a binary tree, depending on the order that the nodes are are visited: in-order, pre-order, and post-order.
+
+#### In-Order Traversal
+
+### Checking Binary Tree is Binary Search Tree
 
 For checking binary trees, check if all nodes in left sub-tree are smaller than root and themselves form a binary search tree, and right sub-tree are bigger than root and themselves form a binary search tree.
 
-#### Balancing Binary Search Trees
+### Balancing Binary Search Trees
 
 In extreme cases where new items are being added in ascending order, the tree will be one with long branch off to the right, with height n >> log2n. Can rebalance binary trees from time to time using tree rotations. Typically, such rotations would need to be applied to many different sub-trees of a full tree to make it perfectly balanced.
 
-#### Self-Balancing AVL Trees
+### Self-Balancing AVL Trees
 
 Self-balancing binary search trees avoid the problem of unbalanced trees by automatically rebalancing tree throughout the insertion process to keep height close to log2n at each stage.
 
