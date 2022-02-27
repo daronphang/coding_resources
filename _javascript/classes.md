@@ -26,6 +26,21 @@ console.log(jonas.hasOwnProperty('firstName'));     // true
 console.log(jonas.hasOwnProperty('language'));      // false
 ```
 
+### Static Members
+
+Static keyword defines a static method or property for a class. Neither static methods/properties can be called on instances of class, but they are called on class itself.
+
+```js
+class Example {
+  static staticProperty = 'hello';
+  static staticMethod() {
+    return 'hello world';
+  }
+}
+
+console.log(Example.staticProperty);
+```
+
 ### Class Inheritance
 Use extends and super.
 ```javascript
