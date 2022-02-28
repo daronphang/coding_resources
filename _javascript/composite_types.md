@@ -222,12 +222,16 @@ Map object holds key-value pairs and remembers the original insertion order of k
 ### Common Operations
 
 ```
-.set(key, value)
+.set(key, value)    Correct way of setting property
 .has(key)
 .get(key)
 .delete(key)
 .clear()            Removes all elements from Map object
 .size               Returns current element count
+.keys()             Returns an array of keys
+.values()           Returns an array of values
+.entries()          Returns an array of [key, value]
+.forEach()
 ```
 
 ### Examples
@@ -291,9 +295,71 @@ mySet.delete(1);
 const myArr = Array.from(mySet);
 ```
 
+## Queues
+
+A queue is an ordered list of elements where an element is inserted at end of queue and is removed from the front of the queue. Models FIFO principle. Has two main operations:
+
+- Enqueue: inserts an element at end of queue (push).
+- Dequeue: Removes an element from front of queue (shift).
+- Peek: Gets element at front/back of queue.
+
+```js
+class Queue {
+  constructor() {
+    this.elements = [];
+  }
+
+  enqueue(value) {
+    this.elements.push(value);
+  }
+
+  dequeue(value) {
+    return this.elements.shift();
+  }
+
+  // Can get element from front or back
+  peek() {
+    return this.elements[this.elements.length - 1];
+  }
+
+  size() {
+    return this.elements.length;
+  }
+  clear() {
+    this.items = [];
+  }
+}
+```
+
+## Stacks
+
+```js
+class Stack {
+  constructor() {
+    this.elements = [];
+  }
+
+  add(value) {
+    this.elements.push(value);
+  }
+  pop() {
+    return this.elements.pop();
+  }
+  size() {
+    return this.elements.length;
+  }
+  isEmpty() {
+    return this.elements.length === 0 ? true : false;
+  }
+  clear() {
+    this.items = [];
+  }
+}
+```
+
 ## Heaps
 
-Tree-based data structure whcih is an almost complete tree that satisfies the heap property. A complete tree is one in which every level (except the last) is completely filled and all nodes are as far left as possible.
+Tree-based data structure which is an almost complete tree that satisfies the heap property. A complete tree is one in which every level (except the last) is completely filled and all nodes are as far left as possible.
 
 ## Destructuring Arrays/Objects
 
