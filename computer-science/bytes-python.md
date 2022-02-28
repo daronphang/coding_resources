@@ -1,4 +1,4 @@
-#### Unicode Encoding and Decoding
+### Unicode Encoding and Decoding
 
 ```
 encode('utf-8')     convert str into bytes

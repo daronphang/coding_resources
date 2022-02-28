@@ -33,8 +33,8 @@ As ASCII characters utilize 7 bits, there are still 127 more combinations to be 
 
 ```
 Dec	Hex	Binary    HTML	Char
-0   00  00000000  &#0   Null
-1   01  00000001  &#1   SOH
+00  00  00000000  &#0   Null
+01  01  00000001  &#1   SOH
 42  2A  00101010  &#42  *
 48	30	00110000  &#48;	0
 49	31	00110001  &#49;	1
