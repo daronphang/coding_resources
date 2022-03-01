@@ -1,3 +1,5 @@
+analytical thinking, conceptual thinking, cross-functional teamwork, CSS HTML, detail-oriented, docker, full stack development, golang (gin), Javascript (Angular, Omelek, React, NodeJS), problem analysis, problem solving, python (Flask), SQL (MongoDB, Mssql, Postgres, MySQL), teamwork, time management
+
 Executed designed experiments and performed post-data analysis involving statistical plots and wafer profiling while working closely with Vendors, Manufacturing and Process Integration for driving cost/yield/capacity improvement projects. 
 - Designed and qualified rework flows for 27/43NIT2 through collaboration with cross-module stakeholders (WET/CMP) translating into cost savings for high defect events (scrap potential eliminated).
 - Qualified MAXOUT for 27NIT with 17% RPT reduction, sendfab for existing/new technodes and merged Nitride WS resulting in capacity gain.
