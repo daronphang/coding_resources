@@ -6,7 +6,7 @@ For two particular vertices S and Z in a graph with non-negative numbers, the co
 
 We keep an array D of distances indexed by vertices. D[z] will hold the distance of shortest path from S to Z when the algorithm finishes. However, before the algorithm finishes, D[z] is the best overestimate we currently have of the distance from S to Z. Steps as follows:
 
-- Initially have D[s] = 0 and set D[z] = INFINITY for all nodes, where z is index for remaining nodes.
+- Initially have D[s] = 0 and set D[z] = INFINITY for all other vertices z.
 - Path length of neighbours are updated.
 - If path length of adjacent vertex is lesser than new path length, no update is performed.
 - Algorithm repeatedly decreases overestimates until it is no longer possible to decrease further.
@@ -15,3 +15,9 @@ We keep an array D of distances indexed by vertices. D[z] will hold the distance
 ### Improving Estimates
 
 General idea is to look systematically for shortcuts.
+
+```
+// given three vertices s, u, z where s is the starting point
+if (D[u] + weight[u][z] < D[z])
+    D[z] = D[u] + weight[u][z]
+```

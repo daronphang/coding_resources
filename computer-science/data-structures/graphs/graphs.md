@@ -13,7 +13,9 @@ Not all vertices have to be connected in the graph. Can have isolated nodes or s
 
 https://adrianmejia.com/data-structures-for-beginners-graphs-time-complexity-tutorial/#Depth-first-search-DFS-Graph-search
 
-![b-nodes](../../images/graphs.PNG)
+<p align="center">
+<img src="../../images/graphs.PNG">
+</p>
 
 #### Types of Graphs
 
