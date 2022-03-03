@@ -54,7 +54,11 @@ n       log2n
 
 #### Perfect
 
-All levels including the last level are full of nodes i.e. all nodes at last level do not have leaves. A perfect tree is always complete and full. Have precisely 2^k - 1 nodes, where k is last level of tree.
+All levels including the last level are full of nodes i.e. all levels on tree have maximum number of nodes. A perfect tree is always complete and full. Have precisely 2^k - 1 nodes, where k is last level of tree.
+
+#### Balanced
+
+A tree is balanced if the left subtree and right subtree heights differ by at most 1 for every node.
 
 ### Binary Search Trees
 
