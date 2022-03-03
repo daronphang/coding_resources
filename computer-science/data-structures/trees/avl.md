@@ -46,14 +46,10 @@ If tree becomes unbalanced when a node is inserted into left subtree of right su
 
 #### Rebalance (BF > 1)
 
-If balanceFactor of leftChild is >= 0, do right rotation.
-
-Else, do left-right rotation.
+If balanceFactor of leftChild is >= 0, do right rotation. Else, do left-right rotation.
 
 ![nodes](../../images/AVL-delete-rebalance.PNG)
 
 #### Rebalance (BF < -1)
 
-If balanceFactor of rightChild is <= 0, do left rotation.
-
-Else, do right-left rotation.
+If balanceFactor of rightChild is <= 0, do left rotation. Else, do right-left rotation.
