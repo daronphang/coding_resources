@@ -14,7 +14,7 @@ If tree becomes unbalanced when a node is inserted into the right subtree of the
 - Else assign y as the right child of p.
 - Finally, make x the left subtree of y.
 
-![nodes](../../images/AVL-left-rotation-with-ancestors.PNG)
+![nodes](../../images/AVL-left-rotation-ancestors.PNG)
 
 ### Right Rotation with Ancestors (Single, LEFT-LEFT Case)
 
@@ -26,7 +26,7 @@ If tree becomes unbalanced when a node is inserted into the left subtree of the 
 - Else assign y as the left child of p.
 - Finally, make x the right subtree of y.
 
-![nodes](../../images/AVL-right-rotation-with-ancestors.PNG)
+![nodes](../../images/AVL-right-rotation-ancestors.PNG)
 
 ### Left-Right Rotation (Double, RIGHT-LEFT Case)
 
