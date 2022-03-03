@@ -9,34 +9,49 @@ Most of BST operations (search, max, min, insert, delete) take O(h) but time com
 - Let z be first unbalanced node, and y be the child of z (coming from path of w).
 - Rebalance the tree by performing appropriate rotations on y. 
 
+![nodes](../../images/balanced-trees.PNG)
 
 ### Left Rotation (Single, RIGHT-RIGHT Case)
 
 If tree becomes unbalanced when a node is inserted into the right subtree of the right subtree.
 
+![nodes](../../images/AVL-left-rotation.PNG)
+
 ### Right Rotation (Single, LEFT-LEFT Case)
 
 If tree becomes unbalanced when a node is inserted into the left subtree of the left subtree.
+
+![nodes](../../images/AVL-right-rotation.PNG)
 
 ### Left-Right Rotation (Double, RIGHT-LEFT Case)
 
 If tree becomes unbalanced when a node is inserted into right subtree of left subtree. Left rotation is first performed on the inserted node by making it the parent node. Right rotation is then performed on the inserted node which will result in node having left and right subtree.
 
+![nodes](../../images/AVL-left-right-rotation.PNG)
+
 ### Right-Left Rotation (Double, LEFT RIGHT case)
 
 If tree becomes unbalanced when a node is inserted into left subtree of right subtree. Right rotation is first performed on the inserted node by making it the parent node. Left rotation is then performed on the inserted node which will result in node having left and right subtree.
+
+![nodes](../../images/AVL-right-left-rotation.PNG)
 
 ### Deleting Node
 
 #### Perform Delete BST operation
 
+![nodes](../../images/AVL-delete-BST.PNG)
+
 #### Update Balance Factor
+
+![nodes](../../images/AVL-delete-update-bf.PNG)
 
 #### Rebalance (BF > 1)
 
 If balanceFactor of leftChild is >= 0, do right rotation.
 
 Else, do left-right rotation.
+
+![nodes](../../images/AVL-delete-rebalance.PNG)
 
 #### Rebalance (BF < -1)
 
