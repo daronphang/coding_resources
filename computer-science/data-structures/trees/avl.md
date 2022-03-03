@@ -4,17 +4,29 @@ AVL tree is a self-balancing BST in which eac node maintains extra information c
 
 ![nodes](../../images/balanced-trees.PNG)
 
-### Left Rotation (Single, RIGHT-RIGHT Case)
+### Left Rotation with Ancestors (Single, RIGHT-RIGHT Case)
 
-If tree becomes unbalanced when a node is inserted into the right subtree of the right subtree.
+If tree becomes unbalanced when a node is inserted into the right subtree of the right subtree:
 
-![nodes](../../images/AVL-left-rotation.PNG)
+- If right subtree (y) of unbalanced node (x) has left subtree (z), assign z as right subtree of x.  
+- If parent of x is NULL, make y the root of tree.
+- Else if x is the left child of its parent (p), make y as the left child of p.
+- Else assign y as the right child of p.
+- Finally, make x the left subtree of y.
 
-### Right Rotation (Single, LEFT-LEFT Case)
+![nodes](../../images/AVL-left-rotation-with-ancestors.PNG)
 
-If tree becomes unbalanced when a node is inserted into the left subtree of the left subtree.
+### Right Rotation with Ancestors (Single, LEFT-LEFT Case)
 
-![nodes](../../images/AVL-right-rotation.PNG)
+If tree becomes unbalanced when a node is inserted into the left subtree of the left subtree:
+
+- If left subtree (y) of unbalanced node (x) has right subtree (z), assign z as left subtree of x.  
+- If parent of x is NULL, make y the root of tree.
+- Else if x is the right child of its parent (p), make y as the right child of p.
+- Else assign y as the left child of p.
+- Finally, make x the right subtree of y.
+
+![nodes](../../images/AVL-right-rotation-with-ancestors.PNG)
 
 ### Left-Right Rotation (Double, RIGHT-LEFT Case)
 
