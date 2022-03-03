@@ -1,16 +1,8 @@
 ### AVL Tree
 
-AVL tree is a self-balancing BST in which eac node maintains extra information called a balance factor whose value is either -1, 0 or +1. Balance factor is the difference between height of left subtree and right subtree of any node.
+AVL tree is a self-balancing BST in which eac node maintains extra information called a balance factor whose value is either -1, 0 or +1. Balance factor is the difference between height of left subtree and right subtree of any node. Most of BST operations (search, max, min, insert, delete) take O(h) but time complexity may increase to O(n) for a skewed BST. To have an unbalanced tree, need minimum height of 2.
 
 ![nodes](../../images/balanced-trees.PNG)
-
-
-Most of BST operations (search, max, min, insert, delete) take O(h) but time complexity may increase to O(n) for a skewed BST. To have an unbalanced tree, need minimum height of 2. Rotation operations are performed on child of the first unbalanced node. Only need to rebalance the subtree rooted with first unbalanced node:
-- Let newly inserted node be w.
-- Perform standard BST INSERT on w.
-- Starting from w, travel up and find the first unbalanced node.
-- Let z be first unbalanced node, and y be the child of z (coming from path of w).
-- Rebalance the tree by performing appropriate rotations on y. 
 
 ### Left Rotation (Single, RIGHT-RIGHT Case)
 
@@ -34,7 +26,18 @@ If tree becomes unbalanced when a node is inserted into right subtree of left su
 
 If tree becomes unbalanced when a node is inserted into left subtree of right subtree. Right rotation is first performed on the inserted node by making it the parent node. Left rotation is then performed on the inserted node which will result in node having left and right subtree.
 
+### Insertion
+
+ Rotation operations are performed on the unbalanced node. Only need to rebalance the subtree rooted with first unbalanced node:
+- Let newly inserted node be w.
+- Perform standard BST INSERT on w.
+- Starting from w, travel up and find the first unbalanced node.
+- Let z be first unbalanced node, and y be the child of z (coming from path of w).
+- Rebalance the tree by performing appropriate rotations on y. 
+
 ### Deleting Node
+
+Unlike insertion, after performing rotation on unbalanced node, may need to perform rotation of ancestors of the unbalanced node. 
 
 #### Perform Delete BST operation
 
