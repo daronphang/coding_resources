@@ -7,6 +7,8 @@ class TreeNode {
     this.descendants = [];
     this.parent = null;
     this.branch = null;
+    this.level = 0;
+    this.balanceFactor = 0;
   }
 
   get left() {
@@ -64,12 +66,32 @@ class BinarySearchTree {
     }
   };
 
+  updateBalanceFactor(node, branch, tranverseTree) {
+    let parentNode;
+    let parentBranch;
+    switch (branch) {
+      case LEFT:
+        node.balanceFactor++;
+        break;
+      case RIGHT:
+        node.balanceFactor--;
+        break;
+    }
+    // if a node is added to a parent with child, no need to traverse up the tree
+    // as tree height remains the same
+    if (tranverseTree) {
+      parentNode = node.parent;
+      parentBranch = node.branch;
+      if (parentNode) this.updateBalanceFactor(parentNode, parentBranch, true);
+    }
+  }
+
   insert(value) {
     const newNode = new TreeNode(value);
     if (!this.root) {
       this.size++;
       this.root = newNode;
-      return;
+      return newNode;
     }
     let currentNode = this.root;
 
@@ -88,6 +110,7 @@ class BinarySearchTree {
       if (value === currentNode.value) {
         break;
       }
+
       if (value < currentNode.value) {
         // add to LEFT if value < currentNode
         insertLeaf(currentNode.left, "left");
@@ -96,6 +119,16 @@ class BinarySearchTree {
         insertLeaf(currentNode.right, "right");
       }
     }
+
+    // if parentNode initially has no children, to update balance factor up the tree to root
+    if (newNode.parent.descendantsCount === 1) {
+      this.updateBalanceFactor(newNode.parent, newNode.branch, true);
+    } else {
+      // update balanceFactor for parentNode only since it does not add new level
+      this.updateBalanceFactor(newNode.parent, newNode.branch, false);
+    }
+
+    return newNode;
   }
 
   delete(value) {
@@ -132,6 +165,81 @@ class BinarySearchTree {
       leftMostNode.parent = nodeToDelete.parent;
       leftMostNode.descendants = nodeToDelete.descendants;
       nodeToDelete.parent.descendants[branch] = leftMostNode;
+    }
+
+    return nodeToDelete;
+  }
+}
+
+class AVLTree extends BinarySearchTree {
+  rotateLeft(unbalancedNode) {
+    let rightSubTree;
+    let leftDescendant;
+
+    rightSubTree = unbalancedNode.right;
+
+    // remove right subtree from unbalancedNode
+    unbalancedNode.descendants[1] = undefined;
+
+    // If right subtree has left subtree, assign it as right subtree of unbalancedNode
+    if (rightSubTree.left) {
+      // remove leftDescendant from left subtree
+      leftDescendant = rightSubTree.left;
+      rightSubTree.descendants[0] = undefined;
+
+      // add leftDescendant to right subtree of unbalanced node
+      unbalancedNode.right = leftDescendant;
+
+      // update balanceFactor
+      rightSubTree.balanceFactor--;
+      unbalancedNode.balanceFactor--;
+    }
+
+    // If unbalanced node is root, assign right subtree as root
+    if (!unbalancedNode.parent) {
+      this.root = rightSubTree;
+      rightSubTree.parent = null;
+      unbalancedNode.parent = rightSubTree;
+    } else {
+      // swap unbalancedNode position from its parent with right subtree
+      if (unbalancedNode.branch === LEFT) {
+        unbalancedNode.parent.left = rightSubTree;
+      } else {
+        unbalancedNode.parent.right = rightSubTree;
+      }
+    }
+    // Finally, make unbalancedNode as left subtree of rightSubTree
+    rightSubTree.left = unbalancedNode;
+    rightSubTree.balanceFactor++;
+  }
+
+  insert(value) {
+    const newNode = super.insert(value);
+    let rotationType = newNode.branch?.toString();
+
+    // Get node's grandparent and check if balancing is needed
+    // if newNode is root or balanced, to skip
+    const grandparent = newNode.parent?.parent;
+    if (
+      grandparent &&
+      (grandparent.balanceFactor > 1 || grandparent.balanceFactor < -1)
+    ) {
+      rotationType = `${newNode.parent.branch.toString()}${rotationType}`;
+      switch (rotationType) {
+        case "00":
+          // LEFT LEFT
+          break;
+        case "01":
+          // LEFT RIGHT
+          break;
+        case "10":
+          // RIGHT LEFT
+          break;
+        case "11":
+          // RIGHT RIGHT
+          this.rotateLeft(grandparent);
+          break;
+      }
     }
   }
 }
@@ -186,25 +294,15 @@ const printTree = (tree, treeNode) => {
     `Parent node ${treeNode.value} at level ${getTreeNodeLevel(
       treeNode,
       0
-    )} contains: ${children.join(" and ")}`
+    )} with balance factor of ${
+      treeNode.balanceFactor
+    } contains: ${children.join(" and ")}`
   );
 
   printTree(tree, treeNode.left);
   printTree(tree, treeNode.right);
 };
 
-const x = new BinarySearchTree();
-x.insert(10);
-x.insert(5);
-x.insert(3);
-x.insert(7);
-x.insert(6);
-x.insert(8);
-x.insert(1);
-x.insert(4);
-x.insert(20);
-x.insert(22);
-printTree(x, x.root);
-console.log();
-x.delete(5);
+const x = new AVLTree();
+[10, 15, 17].forEach((value) => x.insert(value));
 printTree(x, x.root);
