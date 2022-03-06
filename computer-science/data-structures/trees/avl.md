@@ -2,7 +2,8 @@
 
 AVL tree is a self-balancing BST in which eac node maintains extra information called a balance factor whose value is either -1, 0 or +1. Balance factor is the difference between height of left subtree and right subtree of any node. Most of BST operations (search, max, min, insert, delete) take O(h) but time complexity may increase to O(n) for a skewed BST. To have an unbalanced tree, need minimum height of 2.
 
-When performing rotations, ensure untouched subtree is handled. Pivot of rotations start from unbalanced node.
+When performing rotations, ensure subtree of subnode of unbalanced node that is being rotated is handled. Pivot of rotations start from unbalanced node i.e. LEFT RIGHT means going down LEFT followed by RIGHT, starting from unbalanced node. 
+
 
 ![nodes](../../images/balanced-trees.PNG)
 
