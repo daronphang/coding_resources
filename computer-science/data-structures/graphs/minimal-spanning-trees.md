@@ -65,6 +65,7 @@ From the above example:
 3. Adjacent vertices are 1 and 7 and key values are updated as 4 and 8 respectively. 
 4. Vertex with minimum key value (1) is picked and added to mstSet which becomes {0, 1}.
 5. Adjacent vertices are 7 and 8 which both have key values of 8; can pick either one.
-6. Repeat until mstSet contains all vertices of given graph.
+7. Repeat until mstSet contains all vertices of given graph.
+8. Final mstSet becomes {0, 1, 7, 6, 5, 2, 8, 3, 4}.
 
 ![b-nodes](../../images/prim-example.PNG)
