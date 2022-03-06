@@ -1,6 +1,8 @@
 ### Algorithms
 
-An algorithm for a particular task can be defined as a finite sequence of instructions, each of which has a clear meaning and can be performed with a finite amount of effort in a finite length of time.
+An algorithm is any well-defined computational procedure that takes some value/set of values as input, and produces some value/set of values as output. Hence, it can be defined as a finite sequence of instructions, each of which has a clear meaning and can be performed with a finite amount of effort in a finite length of time to transform input into the output.
+
+Algorithms should be considered as technology. They are at the core of most technologies used in contemporary computers i.e. GUI, compiler, OO systems, integrated web technologies, networking, computer architectures, etc.
 
 ### Fundamentals
 
@@ -11,6 +13,38 @@ Given an algorithm to solve a problem, the three key aspects are:
 3. Performance Analysis: How efficiently does it do it?
 
 For many problems, the ability to formulate an efficient algorithm depends on being able to organize data in an appropriate manner.
+
+### Loop Invariant
+
+A loop invariant is a property of a program loop that is true before and after each iteration. A tool used for proving statements about the properties of algorithms i.e. correctness. **Loop conditional**, on the other hand, is the condition that controls termination of the loop. Loop invariant is a statement about an algorithm's loop that must be true:
+
+- Before the loop starts.
+- Before each iteration of the loop.
+- After the loop terminates.
+- Can temporarily be false during body of loop.
+
+A good loop invariant should satisfy three properties:
+
+- **Initialization**: The loop invariant must be true before first execution.
+- **Maintenance**: If it's true before an iteration, it should be true after.
+- **Termination**: Invariant should give us a useful property that helps show the algorithm is correct.
+
+#### Example
+
+```
+data = [1, 5, 4, 6, 10]
+sumData = 0
+(for i, i < data.length; i++) {
+    sum = sum + data[i]
+}
+// loop invariant is that sumData = sum among first i elements in array
+
+
+int j = 9;
+for(int i=0; i<10; i++)
+  j--;
+// loop invariant is that for every iteration, i+j == 9
+```
 
 ### Efficiency and Complexity
 
@@ -28,9 +62,9 @@ To determine time complexity of an algorithm, need to count the number of times 
 
 ### Big O-Notation for Complexity Class
 
-Very often, we are not interested in actual function that describes time complexity but just its complexity class. This ignores any constant overloads and small constant factors, and tells us about the principal growth of complexity function.
+Very often, we are not interested in actual function that describes time complexity but just its complexity class. This ignores any constant overloads and small constant factors which are relatively insignificant for large values of n, and tells us about the principal growth of complexity function i.e. rate/order of growth.
 
-#### Complexity Classes
+### Complexity Classes
 
 ```
 O(1)            Constant complexity
