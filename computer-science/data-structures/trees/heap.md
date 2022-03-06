@@ -1,6 +1,9 @@
 ### Heap Trees
 
-Binary trees can be stored with the help of pointer-like structures, in which each item contains references to its children. For complete binary trees, there is a useful array based alternative.
+Binary trees can be stored with the help of pointer-like structures, in which each item contains references to its children. For complete binary trees, there is a useful array based alternative. A Heap is a special tree-based data structure in which the tree is a **complete binary tree**. Can be classified as two categories:
+- Max Heap: Key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
+- Min Heap: Key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
+
 
 #### Storing Binary Trees as Arrays
 
@@ -66,12 +69,15 @@ bubbleDown(int i, array heap, int n) {
 }
 ```
 
-#### Building Binary Heap Tree
+#### Building Binary Heap Tree (Heapify)
 
-Rearranging an array of items into a heap tree form can be done more efficiently using "bubble down". For n items in an array:
-
-- Items with index n/2 will be leaves.
-- All non-leaf items may be exchanged with their children i.e. bubbling down.
+Heapify is the process of creating a heap data structure from a binary tree. Can be used to create Min-Heap or Max-Heap. Rearranging an array of items into a heap tree form can be done more efficiently using "bubble down". Process as follows:
+1. Start from first index of non-leaf node whose index is given by (n/2).
+2. Set currentElement i as largest.
+3. Index of left child is given by (2i+1) and right child is given by (2i+2).
+4. If leftChild or rightChild is greater than currentElement, set it as largest.
+5. Swap largest with currentElement.
+6. Repeat steps until subtrees are heapified.
 
 ```
 heapify(array a, int n) {
