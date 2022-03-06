@@ -9,7 +9,7 @@ Task could be supplying each house (node) with some commodity (water, gas, elect
 ![b-nodes](../../images/MST.PNG)
 
 
-### Kruskal Algorithm
+### Kruskal Algorithm (Greedy)
 
 1. Sort all edges in increasing order of their weight.
 2. Pick the smallest edge. Check if it forms a cycle with the spanning tree.
@@ -49,4 +49,22 @@ Steps as follows:
 8. Pick edge 7-8: Since including this edge results in the cycle, discard it.
 9. Pick edge 0-7: No cycle is formed, include it. 
 10. Pick edge 1-2: Since including this edge results in the cycle, discard it.
-11. Pick edge 3-4: No cycle is formed, include it. 
+11. Pick edge 3-4: No cycle is formed, include it.
+
+### Prim's Algorithm (Greedy)
+
+Starts with an empty spanning tree that maintains two sets of vertices; first contains vertices included in MST, and the other not yet included. At every step, it considers all the edges that connect the two sets, and picks the minimum weight edge from these edges. After picking the edge, it moves the other endpoint of the edge to the set containing MST. Algorithm as follows:
+- Create a set mstSet that keeps track of vertices already in MST.
+- Assign a key value to all vertices in graph; initialize all as INFINITE and assign 0 to the first vertex.
+- Pick a vertex U not inside mstSet and has minimum key value, and update key value of all adjacent vertices. 
+- If weight of edge U-V < V, update key value as weight of U-V.
+
+From the above example:
+1. Keys assigned to vertices as {0, INF, INF, INF, INF, INF, INF, INF}.
+2. Vertex 0 is picked and included in mstSet. 
+3. Adjacent vertices are 1 and 7 and key values are updated as 4 and 8 respectively. 
+4. Vertex with minimum key value (1) is picked and added to mstSet which becomes {0, 1}.
+5. Adjacent vertices are 7 and 8 which both have key values of 8; can pick either one.
+6. Repeat until mstSet contains all vertices of given graph.
+
+![b-nodes](../../images/prim-example.PNG)
