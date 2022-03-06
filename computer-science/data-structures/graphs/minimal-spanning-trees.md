@@ -18,6 +18,7 @@ Task could be supplying each house (node) with some commodity (water, gas, elect
 
 #### Example
 
+![b-nodes](../../images/kruskal-example.PNG)
 
 ``` 
 Weight   Src    Dest
