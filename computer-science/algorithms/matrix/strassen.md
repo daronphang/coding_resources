@@ -13,6 +13,8 @@ Algorithm as follows:
 
 https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/
 
+### Example
+
 ![nodes](../../images/strassen.PNG)
 
 ```
