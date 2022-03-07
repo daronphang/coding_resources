@@ -1,27 +1,17 @@
-### Sorting Strategies (Comparison)
+### Sorting
 
-#### Enumeration
+A collection of data is called a record, whereby each record contains a key and remainder as satellite data. In practice, when a sorting algorithm permutes keys, it must permute satellite data as well. If each record includes large amount of satellite data, normally permute an array of pointers to the records.
 
-Considers all items. If there are N items which are smaller than the one we are currently considering, then its final position will be at number N + 1.
+When focusing on the problem of sorting, we assume that the input consists only of numbers.
 
-#### Exchange
+### Time Complexities Comparison
 
-If two items are found to be out of order, exchange them. Repeat till all items are in order.
-
-#### Selection
-
-Find smallest item, put in first position. Find the smallest of remaining items, and put in second position. Repeat till all items are in order.
-
-#### Insertion
-
-Take items one at a time and insert them into an initially empty data structure such that data structure continues to be sorted at each stage.
-
-#### Divide and Conquer
-
-Recursively split the problem into small sub-problems till you just have single items that are trivial to sort. Then put sorted parts together in a way that preserves the sorting.
-
-### Time Complexities
-
-For computing time complexities, there is no general upper bound as a stupid algorithm can compare the same two items indefinitely. More interested in lower bound. For comparison algorithms, lower bound must be at least n, since we need n steps to examine every element. Nonetheless, no algorithm can take fewer than O(nlog2n) comparisons. To determine average and worst number of comparisons, best is to use decision tree (binary tree). Height of tree is equivalent to number of comparisons needed in worst case.
-
-![b-nodes](../images/decision-tree.PNG)
+| Algorithm      | Worst-case Running Time | Average Case |
+| -------------- | ----------------------- | ------------ |
+| Insertion Sort | O(n^2)                  | O(n^2)       |
+| Merge Sort     | O(nlogn)                | O(nlogn)     |
+| Heapsort       | O(nlogn)                | -            |
+| Quicksort      | O(n^2)                  | O(nlogn)     |
+| Counting Sort  | O(k+n)                  | O(k+n)       |
+| Radix Sort     | O(d(n+k))               | O(d(n+k))    |
+| Bucket sort    | O(n^2)                  | O(n)         |

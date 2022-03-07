@@ -1,14 +1,67 @@
 ### Heap Trees
 
-Binary trees can be stored with the help of pointer-like structures, in which each item contains references to its children. For complete binary trees, there is a useful array based alternative. A Heap is a special tree-based data structure in which the tree is a **complete binary tree**. Can be classified as two categories:
+Binary trees can be stored with the help of pointer-like structures, in which each item contains references to its children. For complete binary trees, there is a useful array based alternative. A Heap is a special tree-based data structure in which the tree is a **complete binary tree**.
 
-#### Max Heap
+Can be classified as Max Heap or Min Heap. For **Max Heap**, key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees. For **Min Heap**, key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
 
-Key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
+```
+PARENT(i)       Returns i/2
+LEFT(i)         Returns 2i
+RIGHT(i)        Returns 2i+1
+```
 
-#### Min Heap
+#### Data Structure
 
-Key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
+<div style="text-align: center; padding: 15px">
+  <img src="../../../images/heap.PNG" />
+</div>
+
+### Maintaining Heap Property
+
+Heapify assumes that the binary trees rooted at LEFT and RIGHT are max-heaps, but that value A[i] might be smaller than its children and hence, violate max-heap property. Value will be floated down. Has time complexity of O(h).
+
+<div style="text-align: center; padding: 15px">
+  <img src="../../../images/heapify-example.PNG" />
+</div>
+
+```
+// i refers to index
+// at each step, the largest of elements A[i], A[LEFT(i)] and A[RIGHT(i)]
+// are determined
+// if A[i] is largest, then subtree rooted at node i is already a max-heap
+
+maxHeapify(A, i) {
+    l = LEFT(i)
+    r = RIGHT(i)
+
+    if (l <= A.heap-size && A(l) > A[i])
+        largest = l
+    else
+        largest = i
+
+    if (r <= A.heap-size && A[r] > A[largest])
+        largest = r
+
+    if largest !== i
+        // one of two children is largest
+        // largest element gets bubbled up to A[i]
+        // A[i] gets bubbled down and maxHeap is called recursively
+        exchange A[i] with A[largest]
+        maxHeapify(A, largest)
+}
+```
+
+### Building a Heap
+
+Can use maxHeapify in bottom-up manner to convert an array A[1..n] into max-heap.
+
+```
+buildMaxHeap(A) {
+    A.heapSize = A.length
+    for (i=A.length/2; i > 0; i--)
+        maxHeapify(A,i)
+}
+```
 
 #### Storing Binary Trees as Arrays
 
@@ -93,29 +146,6 @@ heapify(array a, int n) {
 ```
 
 Time complexity of heapify is O(n) as compared to inserting items one at a time which has O(nlog2n).
-
-### Binomial Heaps
-
-Similar to binary heap, but has advantage of more efficient procedures for insertion/merging. A binomial heap is implemented as a collection of binomial trees and defined recusrively as follows:
-
-- Binomial tree of order 0 is a single node.
-- Binomial tree of order k has a root node with children that are roots of binomial trees of orders k-1, k-2, ..., 2, 1, 0 (in that order).
-- Binomial tree of order k has height k, contains 2^k nodes.
-- There can only be zero or one binomial tree of each order.
-- Each constituent binomial tree must satisfy the priority ordering property.
-
-![nodes](../../images/binomial-heaps.PNG)
-
-Most important operation for binomial heaps is merge as it can be used as a sub-process for most other operations. Has O(log2n) time complexity which is better than O(n) complexity of merging binary heaps.
-
-### Fibonacci Heaps
-
-Structure is more flexible and efficient and hence, allows to have better time complexities but come at cost of more complexity:
-
-- Trees do not have fixed shape.
-- In worst case, every element in heap can be in a separate tree.
-- Roots of all trees are stored using a circular doubly linked list.
-- Efficiency is achieved by performing many operations in lazy manner.
 
 ### Time Complexities Comparison
 
