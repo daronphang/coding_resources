@@ -201,7 +201,7 @@ partition(array a, int left, int right) {
 
 ### Mergesort
 
-Follows DAC paradigm:
+Follows DAC paradigm. Has time complexity of O(nlog2n).
 - Divide array into two subsequences of n/2 elements each.
 - Conquer by sorting the two subsequences recusrively using mergesort.
 - Combine by merging the two sorted subsequences to produce sorted answer.
