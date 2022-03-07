@@ -7,6 +7,12 @@ Given a series of points, to find the maximum subarray i.e. contiguous subarray 
 
 Hence, to find the subarray that crosses midpoint, can split into two subproblems, find maximum subarrays for each subproblem and combine them. 
 
+### Example
+
+![nodes](../../images/max-subarray.PNG)
+
+### Operations
+
 ``` 
 findCrossingMaxSubArray(A, low, mid, high) {
   leftSum = -INFINITY
