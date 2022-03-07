@@ -62,7 +62,7 @@ To determine time complexity of an algorithm, need to count the number of times 
 
 ## Big O-Notation for Complexity Class
 
-Very often, we are not interested in actual function that describes time complexity but just its complexity class. This ignores any constant overloads and small constant factors which are relatively insignificant for large values of n, and tells us about the principal growth of complexity function i.e. rate/order of growth.
+Very often, we are not interested in actual function that describes time complexity but just its complexity class. This ignores any constant overloads and small constant factors which are relatively insignificant for large values of n, and tells us about the principal growth of complexity function i.e. rate/order of growth. O-notation is used to denote an asymptotic upper bound (worst-case running time).
 
 ## Complexity Classes
 
