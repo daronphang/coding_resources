@@ -5,6 +5,8 @@ For square n x n matrices, has triple nested for loops that runs exactly n itera
 - n should be a power of 2.
 - If not satisfied, pad the matrices with 0.
 
+![nodes](../../images/strassen.PNG)
+
 Algorithm as follows:
 1. Divide the input matrices A and B and output matrix C into n/2 * n/2 submatrices.
 2. Create 10 matrices S1, S2...S10 which is n/2 * n/2 and is the sum or difference of two matrices created in step 1.
