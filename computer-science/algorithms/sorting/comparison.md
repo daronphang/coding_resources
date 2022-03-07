@@ -1,12 +1,31 @@
+## Comparison Sorting Strategies
+#### Enumeration
+Considers all items. If there are N items which are smaller than the ones we are currently considering, then its final position will be at (N+1).
+
+#### Exchange
+If two items are found to be out of order, exchange them. Repeat till all items are in order.
+
+#### Selection
+Find smallest item, put in first position. Find the smallest of remaining items, and put in second position. Repeat till all items are in order.
+
+#### Insertion (Incremental Approach)
+Take items one at a time and insert them into an initially empty data structure such that data structure continues to be sorted at each stage.
+
+#### Divide and Conquer (DAC)
+Recursively split the problem into small sub-problems till you just have single items that are trivial to sort. Then put sorted parts together in a way that preserves the sorting. Algorithms that are recursive in nature follow DAC approach. Involves three steps at each level of recursion:
+1) **Divide** the problem into a number of subproblems that are smaller instances of the same problem.
+2) **Conquer** the subproblems by solving them recursively.
+3) **Combine** the solutions to subproblems into the solution for the original problem.
+
 ### Bubble Sort
 
-Follows exchange sort approach. Easy to implement but slow to run. Worst case and average case number of comparisons have time complexities of O(n^2). Given an array a with size n:
+Follows exchange sort approach. Easy to implement but slow to run. Worst case and average case number of comparisons have time complexities of O(n^2). 
 
-- Compares a[n-1] with a[n-2] and swaps if they are in wrong order.
-- Compares a[n-2] with a[n-3] and swaps if need to be.
-- Once it reaches a[0], smallest item will be in correct place.
-- Starts back again but leaves zeroth entry alone.
-- Keeps making passes over the array until it is sorted.
+1. Compares a[n-1] with a[n-2] and swaps if they are in wrong order.
+2. Compares a[n-2] with a[n-3] and swaps if need to be.
+3. Once it reaches a[0], smallest item will be in correct place.
+4. Starts back again but leaves zeroth entry alone.
+5. Keeps making passes over the array until it is sorted.
 
 ```
 for ( i = 1 ; i < n ; i++ )
@@ -116,10 +135,6 @@ heapSort(array a, int n) {
 }
 ```
 
-### Divide and Conquer
-
-Recursively splits the sorting problem into more manageable sub-problems. Idea is that it will usually be easier to sort many smaller collections of items than one big one.
-
 ### Quicksort
 
 Idea is to repeatedly split/partition given array such that all items in first sub-array are smaller than all items in second sub-array, and then concatenate all sub-arrays to give sorted full array. At each stage, need to choose an item in array as pivot item which is kept in between and separate from both sub-arrays. During each stage, need to tell algorithm which part of array is under consideration. Average time complexity of O(nlog2n) and worst-case of O(n^2).
@@ -183,7 +198,16 @@ partition(array a, int left, int right) {
 
 ### Mergesort
 
-Based on repeatedly splitting the array of items into two sub-arrays. As there is no reordering of items in sub-arrays, requires another procedure "merge" that merges two sorted sub-arrays into another sorted array.
+Follows DAC paradigm:
+- Divide array into two subsequences of n/2 elements each.
+- Conquer by sorting the two subsequences recusrively using mergesort.
+- Combine by merging the two sorted subsequences to produce sorted answer.
+
+Recursion bottoms out when sequence to be sorted has length of one. Key operation is merged two sorted sequences in "combine" step:
+- Since both sub-arrays are sorted, the smallest item overall must be either smallest item in first or second collection.
+- Second-smallest item is likewise in either first/second collection.
+- Work through both collections until one sub-array is finished.
+- Remainder of unfinished sub-array is copied.
 
 ```
 mergesort(array a, int left, int right) {
@@ -196,34 +220,37 @@ mergesort(array a, int left, int right) {
 }
 ```
 
-#### Merge Algorithm
-
-Principle is as follows:
-
-- Since both sub-arrays are sorted, the smallest item overall must be either smallest item in first or second collection.
-- Second-smallest item is likewise in either first/second collection.
-- Work through both collections until one sub-array is finished.
-- Remainder of unfinished sub-array is copied.
-
 ```
-merge(array a, int left, int mid, int right) {
-    create new array b of size right-left+1
-    bcount = 0
-    lcount = left
-    rcount = mid+1
-    while ( (lcount <= mid) and (rcount <= right) ) {
-        if ( a[lcount] <= a[rcount] )
-            b[bcount++] = a[lcount++]
-        else
-        b[bcount++] = a[rcount++]
+// MERGE(A, p, q, r) where p <= q < r
+// assumes subarrays A[p...q] and A[q+1...r] are in sorted order
+// takes O(n) where n = r-p+1
+
+merge(array a, p left, q mid, r right) {
+    n1 = q - p + 1
+    n2 = r - q
+    create L = [] and R = []
+ 
+    for (i=1; i <= n1; i++) {
+        L[i] = A[p+i-1]
+    }
+    
+    for (j=1; i <= n2; i++) {
+        R[i] = A[R+j]
+    }
+    
+    // sentinel card at bottom of each pile that cannot be smaller unless both piles are exposed
+    L[n1+1] = INFINITY
+    R[n2+1] = INFINITY
+    
+    let i = j = 1
+    for (k=p, k <= r, k++} {
+        if (L[i] <= R[j]) {
+            A[k] = L[i]
+            i++
+        } else {
+            A[k] = R[j]
+            j++
         }
-    if ( lcount > mid )
-        while ( rcount <= right )
-            b[bcount++] = a[rcount++]
-    else
-        while ( lcount <= mid )
-            b[bcount++] = a[lcount++]
-    for ( bcount = 0 ; bcount < right-left+1 ; bcount++ )
-        a[left+bcount] = b[bcount]
+    }
 }
 ```
