@@ -7,7 +7,11 @@ Has time complexity of O(k+n), where k is the largest number of the array. Featu
 - Modification to scheme required for elements with same value as they should not be placed in the same position.
 - Requires array B [1..n] which holds the sorted output, and array C[0...k] which provides temporary working storage.
 
+### Process Flow
+
 <img src="../../../images/counting-sort.PNG">
+
+### Procedure
 
 ```
 // k is the maximum number in array A
