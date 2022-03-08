@@ -6,15 +6,22 @@ Heapsort introduces an algorithm design technique using a data structure called 
 - Largest item in heap is always in a[1].
 - Largest item in sorted array is always in a[n].
 - Swaps both items and hence, will have item at right position of the array.
+- Perform maxHeapify as new root element might violate the max-heap property.
 - Second largest item will be in a[1], and its final position in sorted array is a[n-1].
-- Repeat using bubble down procedure.
+- Repeat using bubble down procedure down to heapSize of 2.
 
 ```
-heapSort(array a, int n) {
-    heapify(a,n)
-        for( j = n ; j > 1 ; j-- ) {
-            swap a[1] and a[j]
-            bubbleDown(1,a,j-1)
+heapSort(A) {
+    n = A.length
+    buildMaxHeap(A)
+    for( i = n ; i > 1 ; i-- ) {
+        swap A[1] and A[i]
+        A.heapSize = A.heapSize - 1
+        maxHeapify(A, 1)
     }
 }
 ```
+
+### Heapsort Operation
+
+<img src="../../../images/heapsort.PNG">
