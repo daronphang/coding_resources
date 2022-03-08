@@ -4,6 +4,14 @@ A collection of data is called a record, whereby each record contains a key and 
 
 When focusing on the problem of sorting, we assume that the input consists only of numbers.
 
+### Sorting Stability
+
+A sorting algorithm is stable if it can never swap identical items past each other i.e. members with the same value appear in the output array in the same order as they do in the input array. 
+
+- Bubble: Stable, items with identical keys will have their original order preserved.
+- Insertion: Stable, items with identical keys will have their original order preserved.
+- Selection: Unstable as nothing can stop an item from being swap past an identical item.
+
 ### Time Complexities Comparison
 
 | Algorithm      | Worst-case Running Time | Average Case |
