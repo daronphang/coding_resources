@@ -14,7 +14,14 @@ RIGHT(i)        Returns 2i+1
 
 ### Maintaining Heap Property
 
-Heapify assumes that the binary trees rooted at LEFT and RIGHT are max-heaps, but that value A[i] might be smaller than its children and hence, violate max-heap property. Value will be floated down. Has time complexity of O(h).
+Heapify is the process of creating a heap data structure from a binary tree. Can be used to create Min-Heap or Max-Heap. Rearranging an array of items into a heap tree form can be done more efficiently using "bubble down". Heapify assumes that the binary trees rooted at LEFT and RIGHT are max-heaps, but that value A[i] might be smaller than its children and hence, violate max-heap property. Value will be floated/bubbled down. Has time complexity of O(h). Process as follows:
+
+1. Start from index of non-leaf node (maximum is n/2).
+2. Set currentElement i as largest.
+3. Index of left child is given by (2i) and right child is given by (2i+1).
+4. If leftChild or rightChild is greater than currentElement, set it as largest.
+5. Swap largest with currentElement.
+6. Repeat steps for currentElement until subtrees are heapified.
 
 <img src="../../../images/heapify-example.PNG" />
 
@@ -47,7 +54,7 @@ maxHeapify(A, i) {
 
 ### Building a Heap
 
-Can use maxHeapify in bottom-up manner to convert an array A[1..n] into max-heap. All elements in subarray A[([n/2]+1)..n] are all leaves of the tree. Has time complexity of O(nlogn) whereby each call to maxHeapify is O(logn) and O(n) for buildMaxHeap.
+Can use maxHeapify in bottom-up manner to convert an array A[1..n] into max-heap. All elements in subarray A[([n/2]+1)..n] are all leaves of the tree. Has time complexity of O(n).
 
 <img src="../../../images/build-max-heap.PNG" />
 
@@ -125,26 +132,6 @@ bubbleDown(int i, array heap, int n) {
     }
 }
 ```
-
-#### Building Binary Heap Tree (Heapify)
-
-Heapify is the process of creating a heap data structure from a binary tree. Can be used to create Min-Heap or Max-Heap. Rearranging an array of items into a heap tree form can be done more efficiently using "bubble down". Process as follows:
-
-1. Start from first index of non-leaf node whose index is given by (n/2).
-2. Set currentElement i as largest.
-3. Index of left child is given by (2i+1) and right child is given by (2i+2).
-4. If leftChild or rightChild is greater than currentElement, set it as largest.
-5. Swap largest with currentElement.
-6. Repeat steps until subtrees are heapified.
-
-```
-heapify(array a, int n) {
-    for( i = n/2 ; i > 0 ; i-- )
-        bubbleDown(i,a,n)
-}
-```
-
-Time complexity of heapify is O(n) as compared to inserting items one at a time which has O(nlog2n).
 
 ### Time Complexities Comparison
 
