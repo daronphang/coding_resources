@@ -1,62 +1,62 @@
 ### Quicksort
 
-Idea is to repeatedly split/partition given array such that all items in first sub-array are smaller than all items in second sub-array, and then concatenate all sub-arrays to give sorted full array.
+Applies DAC paradigm to repeatedly split/partition given array such that all items in first sub-array are smaller than all items in second sub-array, sort the two subarrays by recursive calls to quicksort, and finally concatenate both sub-arrays to give sorted full array.
 
 At each stage, need to choose an item in array as pivot item which is kept in between and separate from both sub-arrays. During each stage, need to tell algorithm which part of array is under consideration. Average time complexity of O(nlog2n) and worst-case of O(n^2). Nonetheless, it generally outperforms heapsort in practice and is a popular algorithm for sorting large input arrays.
 
 ```
-quicksort(array a, int left, int right) {
+quicksort(A, left, right) {
     if ( left < right ) {
-        pivotindex = partition(a,left,right)
-        quicksort(a,left,pivotindex-1)
-        quicksort(a,pivotindex+1,right)
+        pivotindex = partition(A, left, right)
+        quicksort(A, left, pivotindex-1)
+        quicksort(A, pivotindex+1, right)
     }
 }
 ```
 
-#### Choosing Pivot
+### Choosing Pivot
 
 There is no quick guaranteed way of finding the optimal pivot. If keys are integers, finding the average value would require visiting all entries and adding considerable overhead to algorithm. Hence, some sensible heuristic pivot strategies are:
 
+- Pick FIRST or LAST element as pivot.
 - Use random number generator to produce an index k and then use a[k].
 - Take a key from the middle of the array i.e. a[(n-1)/2].
 - Take a small sample ( e.g., 3 to 5 items) and take the middle key of those.
 
-#### Partitioning
+### Partitioning
 
-Given an array [c, fortran, java, pascal, basic, haskell, ocaml] with pivot fortran:
+Key to the algorithm is the partition procedure, which rearranges the subarray in place. 
 
-- Swap pivot value with last value.
-- [|c, ocaml, java, pascal, basic, haskell| fortran]
-- Start from left, and if less than pivot, move left marker one step to right.
-- [c |ocaml, java, pascal, basic, haskell| fortran]
-- If next item is bigger than pivot, stop and start from right.
-- If bigger than pivot, move right marker to left by one step.
-- [c |ocaml, java, pascal, basic | haskell, fortran]
-- If next item on right is less than pivot, swap with left item that is also in wrong position.
-- Move both markers one step in opposite direction.
-- [|c, basic|, java, pascal| ocaml, haskell, fortran]
-- Proceed with left again until both left and right markers are in the same place.
-- [|c, basic | |java, pascal, ocaml, haskell, fortran]
-- Swap pivot from last position with item at beginning of right marker.
-- [|c, basic| |fortran, pascal, ocaml, haskell, java]
+<img src="../../images/quicksort.PNG" >
+
 
 ```
-partition(array a, int left, int right) {
-    pivotindex = choosePivot(a, left, right)
-    pivot = a[pivotindex]
-    swap a[pivotindex] and a[right]
-    leftmark = left
-    rightmark = right - 1
-    while (leftmark <= rightmark) {
-        while (leftmark <= rightmark and a[leftmark] <= pivot)
-            leftmark++
-    while (leftmark <= rightmark and a[rightmark] >= pivot)
-        rightmark--
-    if (leftmark < rightmark)
-        swap a[leftmark++] and a[rightmark--]
-    }
-    swap a[leftmark] and a[right]
-    return leftmark
+// function places pivot element at its correct position
+// places all smaller elements to LEFT and larger elements to RIGHT of pivot
+
+partition(A, left, right) {
+    // pivot element selected as A[right]
+    pivot = A[right]
+    
+    // swap pivot with last value 
+    swap A[pivotIndex] and A[right]
+    
+    leftMarker = left - 1
+    rightMarker = right - 1     // rightMarker excludes rightmost pivot element
+    
+    // if curElement is < pivot, move it to position of leftMarker
+    // else do nothing
+    for (i=leftMarker; i <= rightMarker; i++)
+        if (A[i] <= pivot)
+            leftMarker++
+            exchange A[leftMarker] with A[i]
+     
+     // put pivot element at the correct position
+     exchange A[leftMarker + 1] with A[rightMarker]
+     
+     return leftMarker
 }
 ```
+
+
+
