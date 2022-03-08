@@ -33,11 +33,3 @@ Recursively split the problem into small sub-problems till you just have single 
 | Bubble    | 54  | 221 | 881 | 3621 | 1284          | 5627           | 14497 |
 | Insertion | 15  | 69  | 276 | 1137 | 6             | 2200           | 4536  |
 | Selection | 12  | 45  | 164 | 634  | 643           | 833            | 2497  |
-
-### Sorting Stability
-
-A sorting algorithm is stable if it can never swap identical items past each other:
-
-- Bubble: Stable, items with identical keys will have their original order preserved.
-- Insertion: Stable, items with identical keys will have their original order preserved.
-- Selection: Unstable as nothing can stop an item from being swap past an identical item.
