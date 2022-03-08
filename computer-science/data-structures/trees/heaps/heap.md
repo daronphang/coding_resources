@@ -10,17 +10,13 @@ LEFT(i)         Returns 2i
 RIGHT(i)        Returns 2i+1
 ```
 
-<p align="center">
-  <img src="../../../images/heap.PNG" />
-</p>
+<img src="../../../images/heap.PNG" />
 
 ### Maintaining Heap Property
 
 Heapify assumes that the binary trees rooted at LEFT and RIGHT are max-heaps, but that value A[i] might be smaller than its children and hence, violate max-heap property. Value will be floated down. Has time complexity of O(h).
 
-<p align="center">
-  <img src="../../../images/heapify-example.PNG" />
-</p>
+<img src="../../../images/heapify-example.PNG" />
 
 ```
 // i refers to index
