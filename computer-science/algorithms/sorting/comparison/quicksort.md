@@ -58,7 +58,11 @@ partition(A, left, right) {
      
      return leftMarker
 }
+
+// randomized paritition
+randomizedPartition(A, left, right) {
+    i = random(left, right)
+    exchange A[right] with A[i]
+    return partition(A, left, right)
+}
 ```
-
-
-
