@@ -16,8 +16,6 @@ RIGHT(i)        Returns 2i+1
 
 Heapify assumes that the binary trees rooted at LEFT and RIGHT are max-heaps, but that value A[i] might be smaller than its children and hence, violate max-heap property. Value will be floated down. Has time complexity of O(h).
 
-<img src="../../../images/heapify-example.PNG" />
-
 ```
 // i refers to index
 // at each step, the largest of elements A[i], A[LEFT(i)] and A[RIGHT(i)]
@@ -45,9 +43,11 @@ maxHeapify(A, i) {
 }
 ```
 
+<img src="../../../images/heapify-example.PNG" />
+
 ### Building a Heap
 
-Can use maxHeapify in bottom-up manner to convert an array A[1..n] into max-heap.
+Can use maxHeapify in bottom-up manner to convert an array A[1..n] into max-heap. All elements in subarray A[([n/2]+1)..n] are all leaves of the tree. Has time complexity of O(nlogn) whereby each call to maxHeapify is O(logn) and O(n) for buildMaxHeap.
 
 ```
 buildMaxHeap(A) {
@@ -55,7 +55,11 @@ buildMaxHeap(A) {
     for (i=A.length/2; i > 0; i--)
         maxHeapify(A,i)
 }
+
+// loop invariant: at the start of each iteration, each node i+1, i+2, ..., n is the root of a max-heap
 ```
+
+<img src="../../../images/build-max-heap.PNG" />
 
 #### Storing Binary Trees as Arrays
 
