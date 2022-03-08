@@ -7,9 +7,11 @@ At each stage, need to choose an item in array as pivot item which is kept in be
 ```
 quicksort(A, left, right) {
     if ( left < right ) {
-        pivotindex = partition(A, left, right)
-        quicksort(A, left, pivotindex-1)
-        quicksort(A, pivotindex+1, right)
+        pivotIndex = partition(A, left, right)
+        // element in pivotIndex is in correct position
+        // sort elements on its left and right
+        quicksort(A, left, pivotIndex-1)
+        quicksort(A, pivotIndex+1, right)
     }
 }
 ```
