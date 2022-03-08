@@ -75,21 +75,6 @@ buildMaxHeap(A) {
 - Keep binary search tree balanced is difficult.
 - Node insertion and deletion requires shifting large portions of array.
 
-### Implementing Priority Queues using Binary Heap Trees
-
-While most queues in every-day life operate on first come, first served basis, it is sometimes important to be able to assign a priority to items in queue and serving highest priority first i.e. hopsital casualty department. Queues can be implemented efficiently by **binary heap trees**:
-
-- Node labels (previously search keys) become numbers representing priority of each item.
-- Insertion/deletion becomes efficient (one element) without having to keep whole tree sorted.
-- Highest priority item will always be found at root of tree.
-
-A binary heap tree is a complete binary tree that satisfies the following conditions:
-
-- Is an empty tree.
-- Priority of root is higher than/equal to that of its children.
-- Priority of every node is higher than/equal to that of all its descendants.
-- Left and right subtrees of root are heap trees.
-
 ### Binary Search Trees vs Binary Heap Trees
 
 - BST is an ordered data structure while Heap Trees are not.
