@@ -69,13 +69,13 @@ buildMaxHeap(A) {
 ```
 
 
-#### Storing Binary Trees as Arrays
+### Storing Binary Trees as Arrays
 
 - Not efficient if tree is not complete as it involves reserving space in array for every possible node in tree.
 - Keep binary search tree balanced is difficult.
 - Node insertion and deletion requires shifting large portions of array.
 
-#### Implementing Priority Queues using Binary Heap Trees
+### Implementing Priority Queues using Binary Heap Trees
 
 While most queues in every-day life operate on first come, first served basis, it is sometimes important to be able to assign a priority to items in queue and serving highest priority first i.e. hopsital casualty department. Queues can be implemented efficiently by **binary heap trees**:
 
@@ -90,13 +90,13 @@ A binary heap tree is a complete binary tree that satisfies the following condit
 - Priority of every node is higher than/equal to that of all its descendants.
 - Left and right subtrees of root are heap trees.
 
-#### Binary Search Trees vs Binary Heap Trees
+### Binary Search Trees vs Binary Heap Trees
 
 - BST is an ordered data structure while Heap Trees are not.
 - Biggest number occurs at root for Heap Trees rather than at right-most node.
 - Subtrees connected to a parent node play different roles and are interchangeable in Heap Trees.
 
-#### Operations
+### Operations
 
 In order to develop algorithms using an array representation, need to allocate memory to keep track of largest position that has been filled so far i.e. number of nodes. Inserting requires "bubbling up" the new element into a valid position by comparing its priority with that of its parent; if it has higher priority, it is exchanged with parent. Deleting requires "bubbling down" of parent node. Both insertion and deletion takes O(log2n) steps which is equivalent to height of tree.
 
