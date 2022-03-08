@@ -8,16 +8,16 @@ For square n x n matrices, has triple nested for loops that runs exactly n itera
 
 https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/
 
-<div style="text-align: center; padding: 15px">
-  <img src="../../images/strassen.PNG" />
-</div>
-
-### Algorithm Procedure
+### Algorithm Steps
 
 1. Divide the input matrices A and B and output matrix C into n/2 \* n/2 submatrices.
 2. Create 10 matrices S1, S2...S10 which is n/2 \* n/2 and is the sum or difference of two matrices created in step 1.
 3. Recursively compute seven matrix products P1, P2,... P7, with each as n/2 \* n/2.
 4. Compute the desired submatrices by adding/subtracting various combinations of Pi matrices.
+
+<p align="center">
+  <img src="../../images/strassen.PNG" />
+</p>
 
 ```
 // step 2
