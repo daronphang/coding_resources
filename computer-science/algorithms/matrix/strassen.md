@@ -10,9 +10,7 @@ https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/
 
 ### Matrix Multiplication
 
-<p align="center">
-  <img src="../../images/strassen.PNG" />
-</p>
+<img src="../../images/strassen.PNG" />
 
 ### Algorithm Steps
 
