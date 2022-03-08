@@ -6,6 +6,7 @@ Heapsort introduces an algorithm design technique using a data structure called 
 - Largest item in heap is always in a[1].
 - Largest item in sorted array is always in a[n].
 - Swaps both items and hence, will have item at right position of the array.
+- Discard largest node from heap by decrementing heapSize.
 - Perform maxHeapify as new root element might violate the max-heap property.
 - Second largest item will be in a[1], and its final position in sorted array is a[n-1].
 - Repeat using bubble down procedure down to heapSize of 2.
