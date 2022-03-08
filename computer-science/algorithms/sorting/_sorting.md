@@ -4,6 +4,17 @@ A collection of data is called a record, whereby each record contains a key and 
 
 When focusing on the problem of sorting, we assume that the input consists only of numbers.
 
+### Basic Sorting
+
+If given an array of sequential orders that are jumbled up, the simplest way is to put the items directly in the appropriate places:
+
+```
+for ( i = 0 ; i < n; i++ ) {
+    while ( a[i] != i )
+        swap a[a[i]] and a[i]
+}
+```
+
 ### Sorting Stability
 
 A sorting algorithm is stable if it can never swap identical items past each other i.e. members with the same value appear in the output array in the same order as they do in the input array. 
