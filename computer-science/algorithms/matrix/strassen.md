@@ -12,7 +12,7 @@ https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/
 
 <img src="../../images/strassen.PNG" />
 
-### Algorithm Steps
+### Procedure
 
 1. Divide the input matrices A and B and output matrix C into n/2 \* n/2 submatrices.
 2. Create 10 matrices S1, S2...S10 which is n/2 \* n/2 and is the sum or difference of two matrices created in step 1.

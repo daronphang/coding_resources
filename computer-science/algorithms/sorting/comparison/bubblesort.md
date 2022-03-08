@@ -8,6 +8,8 @@ Follows exchange sort approach. Easy to implement but slow to run. Worst case an
 4. Starts back again but leaves zeroth entry alone.
 5. Keeps making passes over the array until it is sorted.
 
+### Algorithm (Pseudo)
+
 ```
 for ( i = 1 ; i < n ; i++ )
     for ( j = n-1 ; j >= i ; j-- )

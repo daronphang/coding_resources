@@ -12,7 +12,7 @@ Hence, to find the subarray that crosses midpoint, can split into two subproblem
 
 ![image](../../images/max-subarray.PNG)
 
-### Operations
+### Algorithm (Pseudo)
 
 ```
 findCrossingMaxSubArray(A, low, mid, high) {

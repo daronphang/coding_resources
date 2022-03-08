@@ -13,6 +13,8 @@ Recursion bottoms out when sequence to be sorted has length of one. Key operatio
 - Work through both collections until one sub-array is finished.
 - Remainder of unfinished sub-array is copied.
 
+### Algorithm (Pseudo)
+
 ```
 mergesort(array a, int left, int right) {
     if ( left < right ) {

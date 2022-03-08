@@ -7,6 +7,8 @@ Worst case and average case number of comparisons have time complexities of O(n^
 3. If wrong order, remembers old a[1], moves a[0] up to a[1] slot, and move old a[1] to a[0].
 4. Repeats until whole array is sorted.
 
+### Algorithm (Pseudo)
+
 ```
 // i represents index of original array, starts from beginning
 // j represents index of sorted array; starts from end

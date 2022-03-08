@@ -2,7 +2,9 @@
 
 Can be used to sort records of information that are keyed by multiple fields i.e. day, month, year. Procedure assumes that each element in the array has d digits, where digit 1 is the lowest-order digit and digit d is the highest-order digit. Complexity class is O(n).
 
-For each phase, create an ordered set of queues corresponding to possible values, and concatenate them together. Repeat this process for each sorting criterion. Crucial detail is that queueing phases must be performed in the order of significance of each criteria, with least significant criteria first i.e. if data are two-digit integers, sort by last digit first, followed by first digit. Makes use of the fact that for each phase the items are from a strictly restricted set i.e. the items are of a particular form which is known as a priori. 
+For each phase, create an ordered set of queues corresponding to possible values, and concatenate them together. Repeat this process for each sorting criterion. Crucial detail is that queueing phases must be performed in the order of significance of each criteria, with least significant criteria first i.e. if data are two-digit integers, sort by last digit first, followed by first digit. Makes use of the fact that for each phase the items are from a strictly restricted set i.e. the items are of a particular form which is known as a priori.
+
+### Algorithm (Pseudo)
 
 ```
 radixSort(A, d) {
@@ -11,7 +13,7 @@ radixSort(A, d) {
 }
 ```
 
-### Radix Operation
+### Sequence of Events
 
 <img src="../../../images/radix-sort.PNG">
 

@@ -5,6 +5,8 @@ Worst case and average case number of comparisons have time complexities of O(n^
 - Finds the smallest item and swaps it with item in a[0].
 - Finds the second smallest item and swaps it with a[1].
 
+### Algorithm (Pseudo)
+
 ```
 for ( i = 0 ; i < n-1 ; i++ ) {
     k = i

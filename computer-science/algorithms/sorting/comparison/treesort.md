@@ -2,6 +2,8 @@
 
 Another way of implementing an insertion sorting algorithm using binary search tree.
 
+### Algorithm (Pseudo)
+
 ```
 treeSort(array a) {
     t = EmptyTree

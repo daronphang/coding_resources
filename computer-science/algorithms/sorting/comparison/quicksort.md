@@ -4,6 +4,8 @@ Applies DAC paradigm to repeatedly split/partition given array such that all ite
 
 At each stage, need to choose an item in array as pivot item which is kept in between and separate from both sub-arrays. During each stage, need to tell algorithm which part of array is under consideration. Average time complexity of O(nlog2n) and worst-case of O(n^2). Nonetheless, it generally outperforms heapsort in practice and is a popular algorithm for sorting large input arrays.
 
+### Algorithm (Pseudo)
+
 ```
 quicksort(A, left, right) {
     if ( left < right ) {
@@ -27,10 +29,7 @@ There is no quick guaranteed way of finding the optimal pivot. If keys are integ
 
 ### Partitioning
 
-Key to the algorithm is the partition procedure, which rearranges the subarray in place. 
-
-<img src="../../../images/quicksort.PNG" >
-
+Key to the algorithm is the partition procedure, which rearranges the subarray in place.
 
 ```
 // function places pivot element at its correct position
@@ -39,23 +38,23 @@ Key to the algorithm is the partition procedure, which rearranges the subarray i
 partition(A, left, right) {
     // pivot element selected as A[right]
     pivot = A[right]
-    
-    // swap pivot with last value 
+
+    // swap pivot with last value
     swap A[pivotIndex] and A[right]
-    
+
     leftMarker = left - 1
     rightMarker = right - 1     // rightMarker excludes rightmost pivot element
-    
+
     // if curElement is < pivot, move it to position of leftMarker
     // else do nothing
     for (i=leftMarker; i <= rightMarker; i++)
         if (A[i] <= pivot)
             leftMarker++
             exchange A[leftMarker] with A[i]
-     
+
      // put pivot element at the correct position
      exchange A[leftMarker + 1] with A[rightMarker]
-     
+
      return leftMarker
 }
 
@@ -66,3 +65,7 @@ randomizedPartition(A, left, right) {
     return partition(A, left, right)
 }
 ```
+
+### Sequence of Events
+
+<img src="../../../images/quicksort.PNG" >
