@@ -35,4 +35,4 @@ countingSort(A,B,k) {
 }
 ```
 
-<img src="../../../../counting-sort.PNG">
+<img src="../../../counting-sort.PNG">
