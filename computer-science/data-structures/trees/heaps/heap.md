@@ -10,11 +10,9 @@ LEFT(i)         Returns 2i
 RIGHT(i)        Returns 2i+1
 ```
 
-#### Data Structure
-
-<div style="text-align: center; padding: 15px">
+<p style="text-align: center; padding: 15px" align="center">
   <img src="../../../images/heap.PNG" />
-</div>
+</p>
 
 ### Maintaining Heap Property
 
