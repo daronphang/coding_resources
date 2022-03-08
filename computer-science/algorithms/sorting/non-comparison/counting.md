@@ -7,6 +7,8 @@ Has time complexity of O(k+n), where k is the largest number of the array. Featu
 - Modification to scheme required for elements with same value as they should not be placed in the same position.
 - Requires array B [1..n] which holds the sorted output, and array C[0...k] which provides temporary working storage.
 
+<img src="../../../images/counting-sort.PNG">
+
 ```
 // k is the maximum number in array A
 countingSort(A,B,k) {
@@ -35,4 +37,4 @@ countingSort(A,B,k) {
 }
 ```
 
-<img src="../../../images/counting-sort.PNG">
+
