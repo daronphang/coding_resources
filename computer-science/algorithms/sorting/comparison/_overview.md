@@ -1,5 +1,7 @@
 ### Comparison Sorting Strategies
 
+All sorting algorithms must make O(nlogn) comparisons in worst case to sort n elements. 
+
 #### Enumeration
 
 Considers all items. If there are N items which are smaller than the ones we are currently considering, then its final position will be at (N+1).
