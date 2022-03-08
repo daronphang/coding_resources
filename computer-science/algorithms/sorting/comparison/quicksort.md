@@ -27,7 +27,7 @@ There is no quick guaranteed way of finding the optimal pivot. If keys are integ
 
 Key to the algorithm is the partition procedure, which rearranges the subarray in place. 
 
-<img src="../../images/quicksort.PNG" >
+<img src="../../../images/quicksort.PNG" >
 
 
 ```
