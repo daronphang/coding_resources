@@ -64,34 +64,7 @@ last(1) {
 }
 ```
 
-### Stacks
 
-Equivalent to linked lists on an abstract level. Ideal structure to model First-In-Last-Out (FILO), or Last-In-First-Out (LIFO) strategy in search.
-
-#### Constructors
-
-```
-EmptyStack
-push(element,stack)     Takes an element and pushes it on top of an existing stack
-```
-
-#### Selectors
-
-```
-top(stack)
-pop(stack)      Gives back stack without top most element
-```
-
-### Queues
-
-A queue is a data structure used to model FIFO strategy. Taking the first element of queue or adding an element to the back of queue can both be done efficiently.
-
-#### Constructors
-
-```
-EmptyQueue
-push(element,queue)     Element is added to original queue at the end
-```
 
 ### Doubly Linked Lists
 
