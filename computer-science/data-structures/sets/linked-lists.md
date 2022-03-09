@@ -19,7 +19,7 @@ Doubly linked list is an object with an attribute key and two other pointer attr
 
 "Prev" pointer of the head of the list points to the tail, and the "next" pointer of the tail points to the head.
 
-### Operations
+#### Algorithm (Pseudo)
 
 ```
 // time complexity of O(n)
@@ -58,9 +58,11 @@ A sentinel is a dummy object that allows us to simplify boundary conditions. By 
 
 L.nil appears between head and tail i.e. L.head is no longer needed as we can access the head by L.nil.next. Similarly, we can access tail by L.nil.prev. 
 
-### Circular, Doubly-Linked List with Sentinel
+#### Circular, Doubly-Linked List with Sentinel
 
 <img src="../../images/linked-list-sentinel.PNG" >
+
+#### Algorithm (Pseudo)
 
 ```
 listSearch(L,k) {
