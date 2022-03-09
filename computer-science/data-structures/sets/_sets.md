@@ -15,3 +15,23 @@ MAXIMUM(S)
 SUCCESSOR(S,x)          Query that returns a pointer to next larger element of x in a totally ordered set S
 PREDECESSOR(S,x)        Query that returns a pointer to next smaller element of x in a totally ordered set S
 ```
+
+
+
+#### Selectors
+
+```
+top(stack)
+pop(stack)      Gives back stack without top most element
+```
+
+### Queues
+
+A queue is a data structure used to model FIFO strategy. Taking the first element of queue or adding an element to the back of queue can both be done efficiently.
+
+#### Constructors
+
+```
+EmptyQueue
+enqueue(element,queue)     Element is added to original queue at the end
+```
