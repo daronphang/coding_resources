@@ -58,14 +58,9 @@ A sentinel is a dummy object that allows us to simplify boundary conditions. By 
 
 L.nil appears between head and tail i.e. L.head is no longer needed as we can access the head by L.nil.next. Similarly, we can access tail by L.nil.prev. 
 
-```
-listDelete(L,x) {
-  x.prev.next = x.next
-  x.next.prev = x.prev
-}
-```
-
 ### Circular, Doubly-Linked List with Sentinel
+
+<img src="../../images/linked-list-sentinel.PNG" >
 
 ```
 listSearch(L,k) {
@@ -81,6 +76,11 @@ listInsert(L,x){
   L.nil.next = x
   x.prev = L.nil
 }
+
+listDelete(L,x) {
+  x.prev.next = x.next
+  x.next.prev = x.prev
+}
 ```
 
-<img src="../../images/linked-list-sentinel.PNG" >
+
