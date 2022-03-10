@@ -33,4 +33,28 @@ h(k) = m(kA mod 1)
 
 In universal hashing, the hash function is chosen randomly from a universal collection of hash functions that is independent of the keys that are actually going to be stored. 
 
-###
+### Open Addressing
+
+In open addressing, all elements occupy the hash table itself i.e. each table entry contains either an element or NIL and no elements are stored outside the table, unlike in chaining. For insertion, involves successively examining/probing the hash table until an empty slot is found. Easiest strategy for achieving this (linear probing) is to search for open locations by decreasing the index considered by one until an empty space is found. Better approach is to search for an empty location using secondary hash function; process is called double hashing.
+
+#### Linear Probing
+
+For a given key, the slot given by the auxiliary hash function is probed first; if it is filled, we move up the slot by one. For keys having same index, linear probing reduces index until an empty space is found. Else, starts again at the end i.e. if index 4 is filled, searches index 3, and etc.
+
+Though all keys can be inserted in a way that makes good use of space, we can no longer use same hash function to find a particular key. Deleting/inserting new keys also become complicated. Will also suffer from primary clustering whereby if multiple keys are hitting the same primary location, the blocks/clusters needed to be tested down the index grows larger each time.
+
+#### Double Hashing
+
+Offers one of the best methods available for open addressing as the permutations produced have many of the characteristics of randomly chosen permutations. Applies a secondary hash function to tell us how many slots to jump to look for an empty slot if a key's primary location has been filled already. 
+
+```
+h1(k) = k mod m
+h2(k) = 1 + (k mod m') 
+
+// Value of h2(k) must be relatively prime for the entire hash-table to be searched
+// result also cannot be a common divisor with the size of hash table
+// i.e. hash table of size 10, and h2(k) returns 2/5/4/6/8, then only half of locations will be checked
+// might result in failure (endless loop)
+// convenient way is to let m be a power of 2 and h2(k) to return an odd number
+// m' is chosen to be slightly less than m i.e. m - 1
+```
