@@ -58,3 +58,21 @@ h2(k) = 1 + (k mod m')
 // convenient way is to let m be a power of 2 and h2(k) to return an odd number
 // m' is chosen to be slightly less than m i.e. m - 1
 ```
+
+#### Figure
+
+<img src="../../images/hash-table-double-hashing.PNG">
+
+### Perfect Hashing
+
+Hashing can also provide excellent worse-case performance when the set of keys is static i.e. once keys are stored, they never change. Some applications include reserved words in programming language, set of file names on CD-ROM, etc. Has time complexity of O(1) in worst-case. 
+
+- Perfect hashing is implemented using two hash tables, one at each level.
+- Each of the table uses universal hashing.
+- First level is same as for hashing with chaining i.e. hashing n keys into m slots using universal hash function.
+- However, first level will produce some collisions.
+- Each bin is then rehashed at second level, squaring the number of keys hashing to slot j to avoid any collision.
+
+#### Figure
+
+<img src="../../images/hash-table-perfect-hashing.PNG">
