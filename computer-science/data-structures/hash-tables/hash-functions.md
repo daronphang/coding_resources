@@ -31,7 +31,16 @@ h(k) = m(kA mod 1)
 
 ### Universal Hashing
 
-In universal hashing, the hash function is chosen randomly from a universal collection of hash functions that is independent of the keys that are actually going to be stored. 
+In universal hashing, the hash function is chosen randomly from a universal collection of hash functions that is independent of the keys that are actually going to be stored:
+
+- Firstly, a prime number "p" is chosen whereby every possible key k is between 0 <= k <= p-1.
+- Constants "a" and "b" are chosen randomly from the range between 1 up to p-1.
+- With a hash function chosen randomly, chance of collision between distinct keys is no more than 1/m.
+
+```
+h(k) = ((ak + b) mod p) mod m
+```
+
 
 ### Open Addressing
 
@@ -65,13 +74,24 @@ h2(k) = 1 + (k mod m')
 
 ### Perfect Hashing
 
-Hashing can also provide excellent worse-case performance when the set of keys is static i.e. once keys are stored, they never change. Some applications include reserved words in programming language, set of file names on CD-ROM, etc. Has time complexity of O(1) in worst-case. 
-
+Hashing can also provide excellent worse-case performance when the set of keys is static i.e. once keys are stored, they never change, and there are no insertions/deletions. Some applications include reserved words in programming language, set of file names on CD-ROM, etc. Has time complexity of O(1) in worst-case. Implementation as follows:
 - Perfect hashing is implemented using two hash tables, one at each level.
 - Each of the table uses universal hashing.
 - First level is same as for hashing with chaining i.e. hashing n keys into m slots using universal hash function.
 - However, first level will produce some collisions.
 - Each bin is then rehashed at second level, squaring the number of keys hashing to slot j to avoid any collision.
+- Universal hashing functions are chosen based on "try out" principle.
+
+http://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf
+
+#### Choosing Universal Hash Functions (Example)
+
+1. Choose a universal hash function and work out h(k); keep a count for each cell of how many keys are hashed.
+2. Check if sum of all n^2 for each cell is > 2n (space required is too large); repeat process with new a,b for primary hash function.
+3. For secondary function hh(k), set m = n^2 and choosing a and b randomly.
+4. Check to make sure resulting function doesn't cause any collisions within the secondary table.  
+
+<img src="../../images/hash-table-perfect-hashing-example.PNG">
 
 #### Figure
 
