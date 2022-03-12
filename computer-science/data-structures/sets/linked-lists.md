@@ -1,6 +1,6 @@
 ### Linked Lists
 
-A data structure in which the objects are arranged in a linear order. Unlike an array in which the linear order is determined by the array indices, the order in a linked list is determined by a pointer in each object.
+A data structure in which the objects are arranged in a linear order. Unlike an array in which the linear order is determined by the array indices, the order in a linked list is determined by a pointer in each object. Applications include image viewer with previous/next images, accessing previous/next page in borwser, and playlists in music player.
 
 #### Single
 
@@ -114,3 +114,16 @@ freeObject(x) {
 #### Sequence of Events
 
 <img src="../../images/linked-list-free-object.PNG">
+
+### Linked Lists vs Arrays
+
+| Arrays                                                                                                         | Linked Lists                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| A collection of elements of similar data type.                                                                 | An ordered collection of elements of same type, connected to each other using pointers.                                                         |
+| Supports Random Access by indexing. Has time complexity of O(1).                                               | Supports Sequential Access and requires traversing the linked list. Has time complexity of O(n).                                                |
+| Elements are stored in contiguous memory location. Size needs to be declared and cannot be altered at runtime. | Data exist at scattered (non-contiguous) addresses which allows dynamic size at runtime. Address of memory location is stored in previous node. |
+| Elements are independent of each other.                                                                        | Elements are dependent on each other.                                                                                                           |
+| Insertion and deletion takes more time as memory locations are consecutive and fixed.                          | Insertion and deletion are fast and take constant time.                                                                                         |
+| Memory is allocated as soon it is declared at compile time i.e. Static Memory Allocation.                      | Memory is allocated at runtime i.e. Dynamic Memory Allocation.                                                                                  |
+| Array gets memory allocated in Stack.                                                                          | Linked list gets memory allocated in Heap.                                                                                                      |
+| Memory utilization is inefficient i.e. if size is 6 but consists of 3 elements.                                | Memory utilization is efficient as it can be allocated/deallocated at runtime.                                                                  |

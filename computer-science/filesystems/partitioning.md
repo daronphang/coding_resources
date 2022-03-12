@@ -17,20 +17,11 @@ Two partitioning schemes available for storage devices:
 1. Master Boot Record (MBR) Scheme
 2. GUID Partition Table (GPT) Scheme
 
-### System Firmware
-
-Firmware is a low-level software embedded into electronic devices to operate the device, or bootstrap another program to do it. Exists in computers and peripherals. In computers, firmware provides a standard interface for complex software like an OS to boot up and work with hardware components. Uses data structures to boot up OS on a partition. Firmware resides on non-volatile memory i.e. flash ROM attached to motherboard. Hardware manufacturers make firmware based on two specifications:
-
-- Basic Input/Output (BIOS)
-- Unified Extensible Firmware Interface (UEFI)
-
-Mission of firmware is to boot up computer, run OS, verify health of hardware components and memory, and pass it the control of the whole system.
-
 #### MBR Partitioning and BIOS
 
 BIOS firmware starts and loads boot loader program (contained in MBR) onto memory. Once the program is on the memory, CPU begins executing it. Having boot loader and partition table in predefined location like MBR enables BIOS to boot up the system without having to deal with any file.
 
-MBR is simple and widely supported, but its data structure limits the number of partitions to four primary partitions. Also, each partition can have maximum of 2 TiB, and content of MBR sector has no backup.
+MBR is simple and widely supported, but its data structure limits the number of partitions to four primary partitions. Also, each partition can have maximum of 2 TB, and content of MBR sector has no backup.
 
 #### GPT Partitioning and UEFI
 
