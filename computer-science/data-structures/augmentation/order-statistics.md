@@ -62,4 +62,8 @@ leftRotate(T,x) {
 }
 ```
 
+### Figure
+
+<img src="../../images/red-black-augment-maintain-size.PNG">
+
 
