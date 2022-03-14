@@ -32,7 +32,7 @@ R4 = max(
 
 ### Brute-Force Approach
 
-Algorithm is inefficient as it calls itself recursively with the same parameter values i.e. solves the same subproblems repeatedly. For n=4, it is computing the optimal solution for n=1 four times, and n=2 twice.
+Algorithm is inefficient as it calls itself recursively with the same parameter values i.e. solves the same subproblems repeatedly. For n=4, it is computing the optimal solution for n=1 four times, and n=2 twice. Has time complexity of n^n.
 
 <img src="../../images/dp-brute-force.PNG" >
 
@@ -52,7 +52,7 @@ cutRod(p,n) {
 
 ### Top-Down Memoization
 
-Tradeoff for DP is that it requires additional memory to save computation time. Nonetheless, it can transform an exponential-time solution into a polynomial-time solution.
+Tradeoff for DP is that it requires additional memory to save computation time. Nonetheless, it can transform an exponential-time solution into a polynomial-time solution. Has time complexity of n^2.
 
 ```
 // p is an array of prices
