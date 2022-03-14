@@ -1,6 +1,6 @@
 ### Rod Cutting
 
-Given a rod of length n inches and a table of prices Pi, determine the maximum revenue obtainable by cutting up the rod and selling the pieces. Can cut up a rod of length n in 2^(n-1) ways.
+Given a rod of length n inches and a table of prices Pi, determine the maximum revenue obtainable by cutting up the rod and selling the pieces. Can cut up a rod of length n in 2^(n-1) ways as there are n-1 places where we can choose to make cuts, and at each place, we either can make a cut or don't.
 
 ``` 
 Length  1   2   3   4   5   6   7   8   9   10
@@ -18,12 +18,22 @@ Rn = max(Pn, R1 + Rn-1, R2 + Rn-2, ..., Rn-1 + R1)
 
 R4 = max(
   P4,
-  R1 + R3,
-  R2 + R2,
-  R3 + R1, 
+  R1 + R3,  // R3 = P3, R1+R2, R2+R1
+  R2 + R2,  // R2 = P2, R1+R1
+  R3 + R1,  // R3 = P3, R1+R2, R2+R1
 )
+
+// P4, R1+P3, R1+R1+R2, R1+R2+R1, R2+R2, R1+R1+R1+R1, P3+R1, R2+R1+R1 
 ```
+
+### Brute-Force Approach
+
+Algorithm is inefficient as it calls itself recursively with the same parameter values i.e. solves the same subproblems repeatedly. For n=4, it is computing the optimal solution for n=1 four times, and n=2 twice.
+
+<img src="../../images/dp-brute-force.PNG" >
+
 ```
+// recursive top-down implementation
 cutRod(p,n) {
   if n == 0
     return 0
@@ -31,5 +41,52 @@ cutRod(p,n) {
   for i = 1 to n
     q = max(q, p[i], cutRod(p, n-i))
   return q
+}
+```
+
+### Top-Down Memoization
+
+Tradeoff for DP is that it requires additional memory to save computation time. Nonetheless, it can transform an exponential-time solution into a polynomial-time solution.
+
+```
+// p is an array of prices
+
+memoizedCutRod(p,n){
+  r = []
+  for i = 0 to n
+    r[i] = -INFINITY
+  return memoizedCutRodAux(p,n,r)
+}
+
+memoizedCutRodAux(p,n,r) {
+  if r[n] >= 0
+    return r[n]
+  
+  if n == 0
+    q = 0
+  else
+    q = -INFINITY
+    for i = 1 to n
+      q = max(q, p[i], memoizedCutRodAux(p, n-i, r))
+  r[n] = q
+  return q
+}
+```
+
+### Bottom-Up Method
+
+```
+bottomUpCutRod(p,n) {
+  r = []
+  r[0] = 0
+  for j = 1 to n
+    q = -INFINITY
+    
+    for i = 1 to j
+      q = max(q, p[i] + r[j-i])
+    
+    r[j] = q
+  
+  return r[n]      
 }
 ```
