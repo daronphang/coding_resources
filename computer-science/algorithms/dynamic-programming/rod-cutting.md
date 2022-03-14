@@ -2,6 +2,10 @@
 
 Given a rod of length n inches and a table of prices Pi, determine the maximum revenue obtainable by cutting up the rod and selling the pieces. Can cut up a rod of length n in 2^(n-1) ways as there are n-1 places where we can choose to make cuts, and at each place, we either can make a cut or don't.
 
+If you cut the rod into two, the possible solutions as follows:
+1. For each rod, recursively solve each one.
+2. One piece to sell whole, and the remainder to be recursively solved.
+
 ``` 
 Length  1   2   3   4   5   6   7   8   9   10
 Price   1   5   8   9   10  17  17  20  24  30
@@ -37,10 +41,12 @@ Algorithm is inefficient as it calls itself recursively with the same parameter 
 cutRod(p,n) {
   if n == 0
     return 0
-  q = -INFINITY
-  for i = 1 to n
-    q = max(q, p[i], cutRod(p, n-i))
-  return q
+  max = -INFINITY
+  for (i=1; i<=n; i++)
+    tmp = p[i] + cutRod(p, n-i)
+    if (tmp > max)
+      max = tmp
+  return max
 }
 ```
 
