@@ -17,6 +17,12 @@ Any problem has overlapping subproblems if finding its solution involves solving
 
 ```
 fib(n) = fib(n-1) + fib(n-2)
+
+n     Number of times fib() called
+2     1
+4     5
+10    109
+15    1219
 ```
 
 <img src="../../images/dp-fibonacci.PNG">
@@ -24,6 +30,20 @@ fib(n) = fib(n-1) + fib(n-2)
 ### Top-Down with Memoization
 
 In this approach, we solve the bigger problem by recursively finding the solution to smaller subproblems. When a subproblem is solved, the result is cached so that we don't end up solving it repeatedly if it's called multiple times.
+
+``` 
+fibMemoized(n) {
+  fibResult = [0, 1]
+  
+  if n <= 1
+    return 1
+  else
+    i = 2
+    while i <= n
+      fibResult[i] = fibResult[i-1] + fibResult[i-2];
+    return fibResult[n]
+}
+```
 
 ### Bottom-Up With Tabulation
 
