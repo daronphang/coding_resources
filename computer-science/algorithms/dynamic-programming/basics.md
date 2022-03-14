@@ -45,6 +45,6 @@ fibMemoized(n) {
 }
 ```
 
-### Bottom-Up With Tabulation
+### Bottom-Up Method
 
-Avoids recursion by solving all related subproblems first. This is typically done by filling up an n-dimensional table. Based on the results, the solution to the original problem is then computed.
+Avoids recursion by solving smaller subproblems first. When solving a particular subproblem, we would have already solved all smaller subproblems the solution depends on, and their solutions would have been saved. This approach often has much better constant factors, since it has less overhead for procedure calls.
