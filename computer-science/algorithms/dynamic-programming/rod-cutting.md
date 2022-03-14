@@ -89,7 +89,7 @@ bottomUpCutRod(p,n) {
     q = -INFINITY
     
     for i = 1 to j
-      q = max(q, p[i] + r[j-i])
+      q = max(q, p[i] + r[j-i])   // r[j-i] assumes subproblem is already solved
     
     r[j] = q
   
