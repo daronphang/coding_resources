@@ -79,20 +79,25 @@ memoizedCutRodAux(p,n,r) {
 }
 ```
 
-### Bottom-Up Method
+### Bottom-Up Method (Extended)
+
+Extended version includes the the choice leading to optimal value.
 
 ```
 bottomUpCutRod(p,n) {
   r = []
+  s = []
   r[0] = 0
   for j = 1 to n
     q = -INFINITY
     
     for i = 1 to j
-      q = max(q, p[i] + r[j-i])   // r[j-i] assumes subproblem is already solved
+      if q < p[i] + r[j-i]
+        q = p[i] + r[j-i]   // r[j-i] assumes subproblem is already solved
+        s[j] = i            // the optimal size of the first piece to cut off 
     
     r[j] = q
   
-  return r[n]      
+  return r, s     
 }
 ```
