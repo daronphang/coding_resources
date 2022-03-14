@@ -20,7 +20,16 @@ R4 = max(
   P4,
   R1 + R3,
   R2 + R2,
-  R3 + R1,
-  
+  R3 + R1, 
 )
+```
+```
+cutRod(p,n) {
+  if n == 0
+    return 0
+  q = -INFINITY
+  for i = 1 to n
+    q = max(q, p[i], cutRod(p, n-i))
+  return q
+}
 ```
