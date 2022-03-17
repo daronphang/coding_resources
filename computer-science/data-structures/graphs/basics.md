@@ -1,3 +1,16 @@
+### Graphs Representations
+
+Two standards ways to represent a directed/undirected graph G = (V,E) where V and E are vertex and edges respectively: a collection of adjacency lists or matrix. As the adjacency-list provides a compact way to represent sparse graphs i.e. |E| << |V^2|, it is usually the method of choice. For dense graphs i.e. |E| is close to |V^2|, matrix is perferred. 
+
+#### Figure
+
+<img src="../../images/graph-representations.PNG">
+
+#### Adjacency-List
+
+Consists of an array of |V| lists, one for each vertex in V. Size of array is equal to the number of vertices.
+
+
 ## Graphs
 
 A graph is a data structure where a node can have zero or more adjacent elements. Consists of series of nodes. Terminology as follows:
@@ -41,6 +54,7 @@ An acyclic undirected graph is also a tree. For directed graphs, notion of conne
 
 | Application      | Node/Vertex       | Edges                               | Weight                          |
 | ---------------- | ----------------- | ----------------------------------- | ------------------------------- |
+| Social Networks  | User              | Connection with other users         | Relationship                    |
 | Airline Traffic  | Airport           | Direct flights between two airports | Distance between two airports   |
 | GPS Navigation   | Road intersection | Road                                | Time taken between destinations |
 | Networks Routing | Server            | Data link                           | Connection speed                |
