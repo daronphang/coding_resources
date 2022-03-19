@@ -1,27 +1,3 @@
-### Graphs Representations
-
-Two standards ways to represent a directed/undirected graph G = (V,E) where V and E are arrays of vertex and edges respectively: a collection of adjacency lists or matrix. As the adjacency-list provides a compact way to represent sparse graphs i.e. |E| << |V^2|, it is usually the method of choice. For dense graphs i.e. |E| is close to |V^2|, matrix is perferred. 
-
-#### Figure
-
-<img src="../../images/graph-representations.PNG">
-
-#### Adjacency-List
-
-Consists of an array of |V| lists, one for each vertex in V. Size of array is equal to the number of vertices. Index of the array represents a vertex and hence, size of array is |V|. Saves space as we only need to store the values for the edges. However, finding whether an edge exist between vertexes u and v is not efficient as all the connected nodes must be first explored.
-
-For a directed graph, the sum of the lengths of all the adjacency lists is |E|. For an undirected graph, the sum of the lengths of all adjacency lists is 2|E|, since if (u,v) is an undirected edge, then u appears in v's adjacency list and vice versa. 
-
-Adjacency lists can be readily adapted to represent weighted graph, typically given by a weight function w. The weight w(u,v) of edge (u,v) is stored in u's adjacency list with vertex v (stored as a pair). The adjacency-list representation is quite robust in that we can modify it to support many other graph variants.
-
-#### Adjacency-Matrix
-
-Consists of |V| * |V| matrix whereby Aij = 1 if (i,j) are elements of E, else 0. Requires |V|^2 memory, independent of the number of edges. 
-
-For undirected graphs, has symmetry along the main diagonal as (u,v) and (v,u) represent the same edge i.e. A = A^T of its transpose. Hence, some applications would simply store the entries on and above the diagonal and cutting memory needed by half.
-
-For representing weighted graphs, the weight w (u,v) of edge (u,v) is stored as the entry in row u and column v. If edge does not exist, can store as 0 or -INFINITY.
-
 ## Graphs
 
 A graph is a data structure where a node can have zero or more adjacent elements. Consists of series of nodes. Terminology as follows:
@@ -39,9 +15,7 @@ https://adrianmejia.com/data-structures-for-beginners-graphs-time-complexity-tut
 
 ### Data Structure
 
-<div style="text-align: center; padding: 15px">
-  <img src="../../images/graphs.PNG" />
-</div>
+<img src="../../images/graphs.PNG" />
 
 ### Types of Graphs
 
@@ -56,10 +30,18 @@ https://adrianmejia.com/data-structures-for-beginners-graphs-time-complexity-tut
 - Dense: Many conenctions i.e. close to max number of links.
 - Complete: All nodes are connected to all other nodes i.e. each node has (#nodes-1) edges.
 
-An acyclic undirected graph is also a tree. For directed graphs, notion of connectedness has two versions:
+### Tree and Forest
+
+A tree is an undirected, connected and acyclic graph. Has n vertices with (n-1) edges. For directed graphs, notion of connectedness has two versions:
 
 - Weakly Connected: there is either a path from A to B or B to A.
 - Strongly Connected: there are paths leading both ways.
+
+A forest is an undirected, disconnected acyclic graph i.e. a disjoint collection of trees.
+
+#### Figure
+
+<img src="../../images/graphs-forest.PNG" />
 
 ### Weighted Graph Application
 
@@ -69,3 +51,29 @@ An acyclic undirected graph is also a tree. For directed graphs, notion of conne
 | Airline Traffic  | Airport           | Direct flights between two airports | Distance between two airports   |
 | GPS Navigation   | Road intersection | Road                                | Time taken between destinations |
 | Networks Routing | Server            | Data link                           | Connection speed                |
+
+### Relations Between Graphs
+
+Two graphs are said to be **isomorphic** if they contain the same number of vertices with same pattern of adjacency i.e. there is bijection between their vertices which perseves the adjacency relations.
+
+A **subgraph** of G is defined as any graph that has a vertex set which is a subet of G. A **supergraph** of G is defined as any graph which has G as a subgraph.
+
+If nodes U and V are connected by edge E, and U and W are connected by edge E1, and W and V are connected by edge E2, then both E1 and E2 are subdivions of E. **Smoothing** refers to a process of removing vertex (W) which leaves an edge connecting the remaining adjacent vertices.
+
+<div style="text-align: center; padding: 15px">
+  <img src="../../images/subdivision.PNG" />
+</div>
+
+A subdivision of graph G can be defined as a graph resulting from the subdivision of edges in G. Two graphs G and H can be defined as **homeomorphic** if there is a graph isomorphism from some subdivision of G to some subdivision of H.
+
+An **edge contraction** removes an edge from a graph and merges the two vertices previously connected by it. This can lead to multiple edges between a pair of vertices, or self-loops connecting a vertex to itself.
+
+### Planarity
+
+A planar graph is one that can be embedded in a plane i.e. can be drawn on a sheet of paper in such a way that no edges cross each other. This is important in applications such as printed circuit design. Though planar graphs can have edges that cross each other, they can be transformed by moving vertices or deforming the edges.
+
+<div style="text-align: center; padding: 15px">
+  <img src="../../images/planar.PNG" />
+</div>
+
+To prove a finite graph is planar, it must not contain a subgraph that is homeomorphic to, or a subdivision of K5 (fully connected graph with five vertices) or K3,3 (three vertices fully connected to three other vertices).

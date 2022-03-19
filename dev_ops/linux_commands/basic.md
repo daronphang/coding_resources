@@ -43,3 +43,55 @@ $echo [option] [string(s)]
 $echo "hello world!"
 $echo -e "hello \bworld"    e flag acts as an interpretor of escaped characters
 ```
+
+### Process Status
+
+Used to get more detailed information about a specific process/processes i.e. check if a process is running or not.
+
+"ps aux" is most frequently used command by Linux admin. Prints all running processes in system regardless from where they have been executed.
+
+```
+USER        User account under which this process is running
+PID         Process ID
+%CPU        CPU time used by this process
+%MEM        Physical memory used by this process
+VSZ         Virtual memory
+RSS         Resident set size i.e. non-swappable physical memory
+TTY         Terminal from which this process is started
+STAT        Process state
+START       Starting time
+TIME        Total CPU time used by this process
+```
+
+```
+ps -A       Prints all running processes (summarized)
+ps -AF      Prints full format
+
+```
+
+### Grep (Global Regular Expression Print)
+
+Grep utilities are a family that includes grep, egrep, and fgrep for searching files.
+
+```
+grep 'word' filename
+grep -i 'bar' file1         Perform case-insensitive search
+grep -R 'httpd'             Look for all files in current directory and subdirectories
+grep -c 'hello' file1       Search and display total number of times word appears
+grep 'word' *               Search all files in current directory
+
+-c          This prints only a count of the lines that match a pattern
+-h          Display the matched lines, but do not display the filenames.
+-i          Ignores, case for matching
+-l          Displays list of a filenames only.
+-n          Display the matched lines and their line numbers.
+-v          This prints out all the lines that do not matches the pattern
+-e exp      Specifies expression with this option. Can use multiple times.
+-f          file Takes patterns from file, one per line.
+-E          Treats pattern as an extended regular expression (ERE)
+-w          Match whole word
+-o          Print only the matched parts of a matching line
+-A n        Prints searched line and nlines after the result.
+-B n        Prints searched line and n line before the result.
+-C n        Prints searched line and n lines after before the result.
+```
