@@ -54,6 +54,10 @@ relax(u,v,w) {
 
 By relaxing the edges of a weighted DAG, according to a topological sort of its vertices, we can compute the shortest paths from a single source in O(V+E). 
 
+An interesting application of this algorithm arises in determining critical paths in PERT chart analysis (Program Evaluation and Review Technique). Edges represent jobs to be performed, and edge weights represent time required to perform them. A critical path is a longest path through DAG, corresponding to the longest time to perform a sequence of jobs. Hence, critical path can be found either:
+- Negating the edge weights and running DAGShortestPaths() or,
+- Running DAGShortestPaths() but replacing INFINITY with -INFINITY, and > with < in relax().
+
 ```
 DAGShortestPaths(G,w,s){
     sort vertices of G topologically
