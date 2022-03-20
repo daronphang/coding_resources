@@ -48,3 +48,22 @@ relax(u,v,w) {
 #### Figure
 
 <img src="../../../images/shortest-paths-relaxation.PNG">
+
+
+### Directed Acyclic Graphs (DAG)
+
+By relaxing the edges of a weighted DAG, according to a topological sort of its vertices, we can compute the shortest paths from a single source in O(V+E). 
+
+```
+DAGShortestPaths(G,w,s){
+    sort vertices of G topologically
+    initializeSingleSource(G,s)
+    for each vertex u, taken in topologically sorted order
+        for each vertex v E G.Adj[u]
+            relax(u,v,w)
+}
+```
+
+#### Figure
+
+<img src="../../../images/dag-shortest-paths.PNG">
