@@ -20,3 +20,19 @@ printAllPairsShortestPath(P, i, j) {
     print {j}
 }
 ```
+
+### Dynamic Programming Algorithm
+
+Can use Dynamic Programming to solve this problem. Each major loop of the dynamic program will invoke an operation that is very similar to matrix multiplication, so that the algorithm will look like repeated matrix multiplication. 
+
+```
+extendShortestPaths(L,W){
+  n = L.rows
+  let L' be a new n X n matrix
+  for i = 1 to n
+    for j = 1 to n 
+      L'ij = INFINITY
+      for k = 1 to n
+        L'ij = min(L'ij, Lik + wkj) 
+}
+```
