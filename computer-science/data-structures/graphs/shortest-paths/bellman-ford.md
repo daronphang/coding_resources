@@ -11,6 +11,8 @@ bellmanFord(G,w,s){
     initializeSingleSource(G,s)
     for i=1 to |G.V| - 1
         for each edge (u,v) E G.E
+            // G.E is a set of all the edges, iterates through each of them
+            // for each pass, each edge is relaxed once
             relax(u,v,w)
 
     // check if graph contains no negative-weight cycles
@@ -29,29 +31,86 @@ bellmanFord(G,w,s){
 
 #### First Iteration
 
-(s,t) = 6
-(s,y) = 7
-(t,x) = 6 + INFINITY = INFINITY
-(t,y) = INFINITY
-(t,z) = INFINITY
+```
+//before
+INF INF INF INF 0
+t   x   y   z   s
+
+(t,x) = INFINITY + 5 = INFINITY
+(t,y) = INFINITY + 8 = INFINITY
+(t,z) = INFINITY - 4 = INFINITY
+(x,t) = INFINITY
+(y,x) = INFINITY
 (y,z) = INfINITY
 (z,x) = INFINITY
-(x,t) = INFINITY
-(z,x) = INFINITY
-(y,x) = INFINITY
+(z,s) = INFINITY 
+(s,t) = 0 + 6 = 6 < INFINITY (t updated to 6)
+(s,y) = 0 + 7 = 7 < INFINITY (y updated to 7)
+
+//after
+6   INF 7   INF 0
+t   x   y   z   s
+```
 
 #### Second Iteration
 
-(s,t,x) = 11
-(s,t,z) = 2
-(s,t,y) = 6 + 8 = 14 > 7 (no change)
-(s,y,x) = 7 - 3 = 4 (updated)
-(s,y,z) = 7 + 9 = 16 > 2 (no change)
+```
+6   INF 7   INF 0
+t   x   y   z   s
+
+(t,x) = 6 + 5 = 11 < INFINITY (x updated to 11)
+(t,y) = 6 + 8 = 14 > 7 (no change) 
+(t,z) = 6 - 4 = 2 < INFINITY (z updated to 2)
+(x,t) = 11 - 2 = 9 > 6 (no change)
+(y,x) = 7 - 3 = 4 < 11 (x updated to 4)
+(y,z) = 7 + 9 = 16 > 2 (no change)
+(z,x) = 2 + 7 = 9 > 4 (no change)
+(z,s) = 2 + 2 = 4 > 0 (no change)
+(s,t) = 0 + 6 = 6 (no change)
+(s,y) = 0 + 7 = 7 (no change)
+
+6   4   7   2   0
+t   x   y   z   s
+```
 
 #### Third Iteration
 
-(s,y,x,t) = 4 - 2 = 2 (updated)
+```
+6   4   7   2   0
+t   x   y   z   s
+
+(t,x) = 6 + 5 = 11 > 4 (no change)
+(t,y) = 6 + 8 = 14 > 7 (no change) 
+(t,z) = 6 - 4 = 2 (no change)
+(x,t) = 4 - 2 = 2 < 6 (t updated to 2)
+(y,x) = 7 - 3 = 4 (no change)
+(y,z) = 7 + 9 = 16 > 2 (no change)
+(z,x) = 2 + 7 = 9 > 4 (no change)
+(z,s) = 2 + 2 = 4 > 0 (no change)
+(s,t) = 0 + 6 = 6 (no change)
+(s,y) = 0 + 7 = 7 (no change)
+
+2   4   7   2   0
+t   x   y   z   s
+```
 
 #### Fourth Iteration
 
-(s,y,x,t,z) = 2 - 4 = -2 (updated)
+```
+2   4   7   2   0
+t   x   y   z   s
+
+(t,x) = 2 + 5 = 7 > 4 (no change)
+(t,y) = 2 + 8 = 10 > 7 (no change) 
+(t,z) = 2 - 4 = -2 < 2 (z updated to -2)
+(x,t) = 4 - 2 = 2 (no change)
+(y,x) = 7 - 3 = 4 (no change)
+(y,z) = 7 + 9 = 16 > -2 (no change)
+(z,x) = -2 + 7 = 4 (no change)
+(z,s) = -2 + 2 = 0 (no change)
+(s,t) = 0 + 6 = 6 (no change)
+(s,y) = 0 + 7 = 7 (no change)
+
+2   4   7   -2  0
+t   x   y   z   s
+```
