@@ -7,7 +7,7 @@ Can solve all-pairs shortest paths problem by running a single-source shortest-p
 - Output: nXn matrix D = (Dij), where entry Dij contains the weight of a shortest path from vertex i to j.
 - Predecessor: Pij, where Pij = NIL if i=j, or if there is no path from vertex i to j. 
 
-<img src="../../../images/all-pairs-basics.PNG">
+<img src="../../../../images/all-pairs-basics.PNG">
 
 ```
 printAllPairsShortestPath(P, i, j) {
