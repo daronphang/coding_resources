@@ -13,6 +13,8 @@ dijkstra(G,w,s){
     u = extractMin(Q)
     S = S U {u}
     for each vertex v E G.Adj[u]
+      // updates estimates v.d and v.predecessor
+      // if shortest path to v can be improved by going through u
       relax(u,v,w)
 }
 ```
@@ -29,7 +31,7 @@ dijkstra(G,w,s){
 (s,t) = 10
 (s,y) = 5 (choose y)
 
-// shortest path weights are {y}
+// shortest path weights determined: {y}
 ```
 
 #### Second Iteration
@@ -41,7 +43,7 @@ dijkstra(G,w,s){
 (s,t) = 10
 
 // choose (y,z) as it has smallest weight of 2
-// shortest path weights are {y,z}
+// shortest path weights determined: {y,z}
 ```
 
 #### Third Iteration
@@ -54,7 +56,7 @@ dijkstra(G,w,s){
 (s,t) = 10
 
 // choose (y,t) as it has the smallest weight of 3
-// shortest path weights are {y,z,t}
+// shortest path weights determined: {y,z,t}
 ```
 
 #### Fourth Iteration
@@ -68,5 +70,5 @@ dijkstra(G,w,s){
 (s,t) = 10
 
 // choose (t,x) as it has the smallest weight of 1
-// shortest path weights are {y,z,t,x}
+// shortest path weights determined: {y,z,t,x}
 ```
