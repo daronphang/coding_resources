@@ -1,6 +1,16 @@
 ### Dijkstra
 
-Solves single-source shortest-paths problem on a weighted, directed graph for the case in which all edge weights are non-negative. Algorithm maintains a set S of vertices whose final shortest-path weights from source s have already been determined. A greedy strategy as it always chooses the "lightest" or "closest" vertex in V-S to add to set S. Has time complexity of O((V+E)lgV).
+Solves single-source shortest-paths problem on a weighted, directed graph for the case in which all edge weights are non-negative. Algorithm maintains a set S of vertices whose final shortest-path weights from source s have already been determined. A greedy strategy as it always chooses the "lightest" or "closest" vertex in V-S to add to set S. Has time complexity of O((V+E)lgV) with min-priority queue, and O(n^2) without.
+
+### Improving Estimates
+
+General idea is to look systematically for shortcuts.
+
+```
+// given three vertices s, u, z where s is the starting point
+if (D[u] + weight[u][z] < D[z])
+    D[z] = D[u] + weight[u][z]
+```
 
 ### Algorithm
 
@@ -16,6 +26,7 @@ dijkstra(G,w,s){
       // updates estimates v.d and v.predecessor
       // if shortest path to v can be improved by going through u
       relax(u,v,w)
+      // change priority of vertex v in queue
 }
 ```
 
@@ -51,7 +62,7 @@ dijkstra(G,w,s){
 ```
 (z,x) = 7 + 6 = 13 (update x)
 (z,s) = 7 + 7 = 14
-(y,t) = 5 + 3 = 8 
+(y,t) = 5 + 3 = 8
 (y,x) = 5 + 9 = 14
 (s,t) = 10
 
@@ -64,7 +75,7 @@ dijkstra(G,w,s){
 ```
 (t,x) = 8 + 1 = 9 (update x)
 (t,y) = 8 + 2 = 10
-(z,x) = 7 + 6 = 13 
+(z,x) = 7 + 6 = 13
 (z,s) = 7 + 7 = 14
 (y,x) = 5 + 9 = 14
 (s,t) = 10
