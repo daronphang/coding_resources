@@ -12,7 +12,7 @@ Element is positioned relative to the viewport or the browser window itself. Vie
 
 ### Absolute
 
-Position an element based on its closest positioned ancestor/parent position. **Does not take up space as elements are removed from the flow of elements on the page**. If there is no parent, it will position based on <html> element i.e. relative to the page itself. 
+Position an element based on its closest positioned ancestor/parent position. **Does not take up space as elements are removed from the flow of elements on the page**. If there is no parent, it will position based on <html> element i.e. relative to the page itself. **For children elements to have positioning of "absolute", parent is required to have position as either "relative" or "absolute"**. Take note that when an element has position relative/absolute, it will be placed on top of any element with "static" positioning.
 
   
 ### Example 
