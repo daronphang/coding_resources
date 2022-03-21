@@ -6,6 +6,10 @@ Position an element based on its current position in the flow. Top, right, botto
 
 Position an element based on its current position without changing layout around it. Takes up the original space and hence, leaves a gap where it would have been without additional positioning. Has ability to use z-index; even if it is not used, the element will appear on top of any other statically positioned element. 
 
+### Fixed
+
+Element is positioned relative to the viewport or the browser window itself. Viewport doesn't change when the window is scrolled and hence, it will stay right where it is.
+
 ### Absolute
 
 Position an element based on its closest positioned ancestor/parent position. **Does not take up space as elements are removed from the flow of elements on the page**. If there is no parent, it will position based on <html> element i.e. relative to the page itself. 
