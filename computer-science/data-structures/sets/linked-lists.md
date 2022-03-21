@@ -2,6 +2,8 @@
 
 A data structure in which the objects are arranged in a linear order. Unlike an array in which the linear order is determined by the array indices, the order in a linked list is determined by a pointer in each object. Applications include image viewer with previous/next images, accessing previous/next page in borwser, and playlists in music player.
 
+A linked list is represented by a pointer to the first node of the linked list called the head. If the linked list is empty, then the value of the head points to NULL.
+
 #### Single
 
 Contains pointer to next element only (no prev pointer attribute). Can virtually involve anything. Non-empty lists can be represented by two-cells; first cell contains pointer to a list element and second cell contains a pointer to either the empty list or another/next two-cell element.
