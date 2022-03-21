@@ -9,6 +9,9 @@ Position an element based on its current position without changing layout around
 ### Absolute
 
 Position an element based on its closest positioned ancestor/parent position. **Does not take up space as elements are removed from the flow of elements on the page**. If there is no parent, it will position based on <html> element i.e. relative to the page itself. 
+
+  
+### Example 
   
 ```html
 <div class=”parent”>
