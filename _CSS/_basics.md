@@ -26,19 +26,9 @@ vh      Relative to 1% of height of viewport
 %       Relative to parent element
 ```
 
-### Position
-
-Both absolute and fixed will not flow around the elements on page and do not take up space. For relative, takes up space but offets do not occupy space.
-
-```
-static
-absolute    Position anywhere on page, relative to next parent element with relative/absolute positioning
-fixed       Positioned relative to viewport/browser window i.e. for navbar
-relative    Relative to itself and able to use z-index
-sticky      Positioned based on user's scroll position
-```
-
 ### Display
+
+To style an element with a width an height, need to set display to "block".
 
 ```
 inline          Default like <span>
@@ -86,46 +76,5 @@ Method used for space distribution between items in an interface with powerful a
 
 .right {
   float: right;
-}
-```
-
-### Pseudo Elements
-
-Allows you to insert content on the page (style specific parts of an element) without writing HTML for it i.e. not an actual DOM element. Inline by default. Cannot use an image in pseudo elements. Used with :: as contrast with pseudo-classes (single :). Useful cases include icons, borders, arrows and quotes.
-
-Pseudo classes such as :before and :after WILL NOT WORK in html input element. To work, encapsulate the input element with a div container and adding css class to div.
-
-```css
-p::first-line {
-  color: #ff0000;
-  font-variant: small-caps;
-}
-
-P::before {
-  content: "";
-  background-color: red;
-  display: block;
-}
-
-P::after {
-  content: "";
-  background-color: red;
-  display: block;
-}
-```
-
-#### Focus
-
-For global styling, use form-control:focus. Make sure custom CSS file is loaded after libraries' CSS i.e. Bootstrap.
-
-```css
-.form-control:focus {
-  border-color: #5bc7ff;
-}
-
-textarea:focus {
-  outline: none !important;
-  border-color: #5bc7ff;
-  box-shadow: 0 0 0 0.2rem rgb(0 144 218 / 25%);
 }
 ```
