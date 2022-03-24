@@ -65,7 +65,7 @@ Applies when the user interacts with the document in some way.
 #### Structural
 
 ```
-:first-child          Targets the first child element
+:first-child          Targets the first child element among a group of sibling elements
 :nth-child(n)
 :nth-last-child(n)
 :nth-of-type(n)
@@ -87,6 +87,29 @@ Applies when the user interacts with the document in some way.
 :lang(language)
 ```
 
+#### Example
+
+```css
+p:first-child {
+  color: lime;
+  background-color: black;
+  padding: 5px;
+}  
+```
+```html
+<!-- first child -->
+<div>
+  <p>This text is selected!</p>
+  <p>This text isn't selected.</p>
+</div>
+
+<!-- this doesn't work as h2 is not a 'p'-->
+  
+<div>
+  <h2>This text isn't selected: it's not a `p`.</h2>
+  <p>This text isn't selected.</p>
+</div>
+```
 ### Combining Pseudo Classes and Elements
 
 For instance, you can make the first line of first paragraph bold by chaining :first-child and ::first-line selectors together.
