@@ -1,3 +1,3 @@
-### coding_resources
+### README
 
 Supplementary and consolidated coding resources for reference.
