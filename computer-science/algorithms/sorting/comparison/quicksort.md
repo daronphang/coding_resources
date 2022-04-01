@@ -1,6 +1,10 @@
 ### Quicksort
 
-Applies DAC paradigm to repeatedly split/partition given array such that all items in first sub-array are smaller than all items in second sub-array, sort the two subarrays by recursive calls to quicksort, and finally concatenate both sub-arrays to give sorted full array.
+Applies DAC paradigm as follows:
+
+- Divide: Split/partition given array such that all items in first sub-array are smaller than all items in second sub-array.
+- Conquer: Sort the two subarrays by recursive calls to quicksort.
+- Combine: As subarrays are already sorted, no work is needed to combine them; concatenate both sub-arrays to give sorted full array.
 
 At each stage, need to choose an item in array as pivot item which is kept in between and separate from both sub-arrays. During each stage, need to tell algorithm which part of array is under consideration. Average time complexity of O(nlog2n) and worst-case of O(n^2). Nonetheless, it generally outperforms heapsort in practice and is a popular algorithm for sorting large input arrays.
 
@@ -57,7 +61,9 @@ partition(A, left, right) {
 
      return leftMarker
 }
+```
 
+```
 // randomized paritition
 randomizedPartition(A, left, right) {
     i = random(left, right)
