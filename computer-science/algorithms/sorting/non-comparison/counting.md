@@ -1,6 +1,6 @@
 ### Counting Sort
 
-Has time complexity of O(k+n), where k is the largest number of the array. Features of counting sort:
+Sorting algorithm that sorts the elements by counting the number of occurrences of each unique element in the array. The count is stored in an auxiliary array and the sorting is done by mapping the count as an index of the auxiliary array. Has time complexity of O(k+n), where k is the largest number of the array. Features of counting sort:
 
 - Assumes that each of n input elements is an integer in the range from 0 to k.
 - For each input element x, determines the number of elements less than x.
