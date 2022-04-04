@@ -1,7 +1,7 @@
 ### Apache
-An open-source web server that is responsible for delivering web content through the internet i.e. processes requests and serves web assets and content via HTTP.
+An open-source industrial-strength web server that is responsible for delivering web content through the internet i.e. processes requests and serves web assets and content via HTTP.
 
-## Architecture
+### Architecture
 
 Apache functions as a way to communicate over networks from client to server using TCP/IP protocol. Can be used for a wide variety of protocols, but most common is HTTP/S. 
 
