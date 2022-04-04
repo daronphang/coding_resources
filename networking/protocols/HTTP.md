@@ -51,10 +51,11 @@ Content-Type: text/html
 ### Client
 
 Browser is always the entity initiating the request. The procedure for a browser to display a webpage is as follows:
-1. Browser sends an original request to fetch the HTML document that represents the page.
-2. Parses the file i.e. makes additional requests corresponding to execution scripts, layout information (CSS) to display, and sub-resources contained within the page (usually images and videos).
-3. Combines resources to present the complete document.
-4. Scripts executed by the browser can fetch additional resources in later phases and browser updates accordingly. 
+1. Browser translates URL into a request message according to HTTP.
+2. Browser sends an original request to fetch the HTML document that represents the page.
+3. Parses the file i.e. makes additional requests corresponding to execution scripts, layout information (CSS) to display, and sub-resources contained within the page (usually images and videos).
+4. Combines resources to present the complete document.
+5. Scripts executed by the browser can fetch additional resources in later phases and browser updates accordingly. 
 
 ### Web Page
 
