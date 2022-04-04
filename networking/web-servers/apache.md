@@ -3,7 +3,13 @@ An open-source industrial-strength web server that is responsible for delivering
 
 ### Architecture
 
-Apache functions as a way to communicate over networks from client to server using TCP/IP protocol. Can be used for a wide variety of protocols, but most common is HTTP/S. 
+Apache functions as a way to communicate over networks from client to server using TCP/IP protocol. Can be used for a wide variety of protocols, but most common is HTTP/S.
+
+Apache server is configured via config files in which modules are used to control its behavior. Listens to IP addresses configured in its config files by default.
+
+With the Listen directive, Apache can accept and route specific traffic to certain ports and domains. Allows for many different websites and domains to be hosted on a single server by bounding them to different ports i.e. domain1.com on port 80, domain2.com on port 8080.
+
+Once a message reaches its destination or recipient, it sends a notice or ACK message. If there is an error in receiving data, or packets were lost in transit, the destination host/client sends a Not Acknowledged (NAK) message, to inform the sender that the data needs to be retransmitted. 
 
 ### Pros
 
