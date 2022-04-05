@@ -9,7 +9,7 @@ For each phase, create an ordered set of queues corresponding to possible values
 ```
 radixSort(A, d) {
   for (i=1; i <d; i++)
-    use stable sort to sort array A on digit i
+    use counting sort as subroutine (or any stable sort) to sort array A on digit i
 }
 ```
 

@@ -30,3 +30,52 @@ heapSort(A) {
 ### Sequence of Events
 
 <img src="../../../images/heapsort.PNG">
+
+<img src="../../../images/heapsort-example-2.PNG">
+
+### Sample Code
+
+```js
+const maxHeapify = (nums, n, i) => {
+  // n is size of heap
+  let left = 2 * i + 1;
+  let right = 2 * i + 2;
+  let largest = i;
+
+  if (left < n && nums[left] > nums[largest]) largest = left;
+
+  if (right < n && nums[right] > nums[largest]) largest = right;
+
+  if (largest !== i) {
+    // one of two children is largest
+    // largest element gets bubbled up to A[i]
+    // swap i with largest
+    let temp = nums[i];
+    nums[i] = nums[largest];
+    nums[largest] = temp;
+
+    maxHeapify(nums, n, largest);
+  }
+};
+
+const heapSort = (nums) => {
+  const n = nums.length;
+  let temp;
+
+  // build max heap
+  for (let i = Math.floor((n - 1) / 2); i >= 0; i--) {
+    maxHeapify(nums, n, i);
+  }
+
+  // extract element from heap one by one
+  for (let i = n - 1; i > 0; i--) {
+    // swap largest at first element with last element
+    temp = nums[0];
+    nums[0] = nums[i];
+    nums[i] = temp;
+
+    // heapify to sort largest element to nums[0]
+    maxHeapify(nums, i, 0);
+  }
+};
+```
