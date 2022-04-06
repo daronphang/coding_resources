@@ -76,3 +76,14 @@ pd.merge(left, right, row, on='key')
 df.apply(function)
 
 ```
+
+### Hacks
+
+#### Reading Datetime
+
+Sometimes Pandas may swap month with day and datetime sorting would not be correct. To fix, do not parse datetime directly when reading from CSV or JSON.
+
+```py
+df = pd.read_json(fname, convert_dates=False)
+df['date'] = pd.to_datetime(df['date'], format='%d-%m-%Y')
+```
