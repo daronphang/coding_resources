@@ -1,3 +1,7 @@
+### Non-Deterministic Finite Automata
+
+A Finite Automata is said to be non-deterministic if there is more than one possible transition from one state on the same input.
+
 ### Deterministic Finite Automata
 
 DFA are finite state machines that accept or reject string of characters by parsing them through a sequence that is uniquely determined by each string. These machines are finite because there are a limited number of possible states which can be reached. In DFA:
