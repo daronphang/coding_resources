@@ -1,223 +1,144 @@
-var isMatch = function(s, p) {
-    let pIndex = 0;
-    let sIndex = 0;
-    let prevChar;
-    let prevPat;
-    let sameElCount = 0;
-    let result = true;
+var solveSudoku = function(board) {
+    // hashmap to store filled values of each subbox
+    let hashmap = {
+        '00': [],
+        '03': [],
+        '06': [],
+        '30': [],
+        '33': [],
+        '36': [],
+        '60': [],
+        '63': [],
+        '66': [],
+    }
     
-    // iterate both pattern and string together 
-    // stop iterating pattern if there is *
+    // missing numbers dont have storage as splice operation is exp
+    let missingNumbers = [];
     
-    while (sIndex < s.length || pIndex < p.length) {
-        if (p[pIndex] !== '*' && p[pIndex] !== '.') {
-            // for case whereby char is repeated
-            if (p[pIndex] === prevChar && sameElCount) {
-                sameElCount--;
-                pIndex++;
-                continue;
-            }
+    let row = 0;
+    let col = 0;
+    let i = 0;
+    let j = 0;
+    let k = 0;
+    let count = 0;
+    let temp = [];
+    let tempRow = [];
+    let tempCol = [];
+    let getInitial = false;
+    let reset = false;
+    
+    while (count > 0 || !getInitial) {
+        
+        missingNumbers = [];
+        
+        if (!getInitial) {
+            temp = [];
+            
+            // get filled numbers for each subbox first
+            for (i =row; i<row+3; i++) {
+                for (j=col; j<col+3; j++) {
+                    if (board[i][j] !== '.') temp.push(board[i][j]);
+                    else {
+                        // box is missing number
+                        count++;
 
-            // simple checking against english letters
-            if(p[pIndex] !== s[sIndex]) {
-                result = false;
-                break;
+                        // convert '.' to array containing possible values
+                        board[i][j] = [];
+                    }
+                }
             }
             
-            // reset count
-            sameElCount = 0;
-        }
-        else if (p[pIndex] === '*') {
-            // guaranteed to have preceding char to match
-            
-            if (prevPat === '.') {
-                // .* will match any character
-                sIndex++;
-                continue;
-            }
-            
-            
-            if (s[sIndex] === prevChar) {
-                pIndex--;
-                if (sameElCount) sameElCount++
-                else sameElCount += 2;
-            } else if (sameElCount) sIndex--;
+            temp.sort();
+        } else {
+            temp = hashmap[`${row}${col}`];
         }
         
-        prevChar = s[sIndex];
-        prevPat = p[pIndex];
-        sIndex++;
-        pIndex++;
-    }
-    return result;
-};
-
-var isMatch = function (s, p) {
-  const q = new StateMachine(p);
-
-  for (let i = 0; i < s.length && q.getState() !== q.state.qEnd; i++) {
-    q.transition(s[i], "STRING");
-  }
-  q.checkRemainingPattern();
-  return q.result;
-};
-
-class StateMachine {
-  constructor(p) {
-    this.p = p;
-    this.state = { q1: 1, q2: 2, qEnd: 3 };
-    this.currentState = this.state.q1;
-    this.pIndex = 0;
-    this.prevChar;
-    this.prevPattern = p[0];
-    this.curPattern;
-    this.dupCount = 0;
-    this.result = true;
-    this.skip = false;
-
-    // temp index is to hold index of '.*'
-    // serves as checkpoint
-    this.tempIndex;
-  }
-
-  /* total of 3 states:
-        1. Accepted; Increment pattern index
-        2. Accepted; stay with same pattern index for '*'
-        3. Rejected; return false
-    */
-
-  toStateQ1(char, type) {
-    if (type === "STRING") {
-      this.prevPattern = this.p[this.pIndex];
-      this.dupCount = 1;
-      this.prevChar = char;
-      this.pIndex++;
-    } else {
-      // type is PATTERN
-      this.dupCount--;
-    }
-    this.currentState = this.state.q1;
-  }
-
-  toStateQ2(char) {
-    // for checking remaining pattern, all cases of '.*' or '[a-z]*' will be considered as 0 element case
-    if (this.prevChar === char) this.dupCount++;
-    else this.dupCount = 1;
-    this.prevChar = char;
-    this.currentState = this.state.q2;
-  }
-
-  toStateEnd(isFalse) {
-    if (!isFalse) this.result = false;
-    this.pIndex = this.p.length;
-    this.currentState = this.state.qEnd;
-  }
-
-  checkDuplicate() {
-    while (this.curPattern === this.prevChar && this.dupCount) {
-      this.pIndex++;
-      this.curPattern = this.p[this.pIndex];
-      this.dupCount--;
-    }
-  }
-
-  checkRemainingPattern() {
-    // to return true, remaining patterns must be a duplicate of prevChar
-    // if prev pattern is *, pIndex will remain as is
-    // else, pIndex will be incremented by one
-
-    this.tempIndex = null;
-    if (!this.p[this.pIndex]) return;
-    else {
-      let start = this.pIndex + 1;
-      if (this.p[this.pIndex] !== "*") {
-        start = this.pIndex;
-        this.dupCount = 0;
-      }
-      for (
-        let i = start;
-        i < this.p.length && this.currentState !== this.state.qEnd;
-        i++
-      ) {
-        this.pIndex = i;
-        this.transition(this.prevChar, "PATTERN");
-      }
-
-      if (this.dupCount < 0) this.toStateEnd();
-    }
-  }
-
-  transition(char, type) {
-    if (this.skip) this.toStateQ2(char);
-
-    this.curPattern = this.p[this.pIndex];
-
-    if (this.curPattern === ".") this.toStateQ1(char, type);
-    else if (this.curPattern !== "*") {
-      // current pattern is an english letter
-
-      while (
-        this.curPattern !== "." &&
-        this.curPattern !== char &&
-        this.pIndex < this.p.length
-      ) {
-        // if next pattern is '*', can omit
-        // i.e. 'aab', 'c*a*b'; c* can omit
-
-        if (this.p[this.pIndex + 1] === "*") {
-          this.pIndex += 2;
-          this.curPattern = this.p[this.pIndex];
-        } else break;
-      }
-
-      if (type === "PATTERN" && this.pIndex >= this.p.length)
-        this.toStateEnd(true);
-      else if (this.curPattern !== "." && this.curPattern !== char) {
-        if (this.tempIndex) {
-          this.pIndex = this.tempIndex;
-          this.skip = true;
-          this.toStateQ2(char);
-        } else this.toStateEnd();
-      } else this.toStateQ1(char, type);
-    } else {
-      // current pattern is '*'
-      // guaranteed to have preceding char to match
-
-      // if pattern is '.*', will match anything
-      if (this.prevChar === char) this.toStateQ2(char);
-      else if (this.prevPattern === ".") {
-        this.tempIndex = this.pIndex;
-
-        // check if can match with previous 2 characters
-        if (
-          this.p[this.pIndex + 1] === this.prevChar &&
-          this.p[this.pIndex + 2] === char
-        ) {
-          this.pIndex += 2;
-          this.toStateQ1(char, type);
-        } else {
-          this.skip = true;
-          this.toStateQ2(char);
+        i = 1;
+        
+        // get missing numbers
+        while (i <= 9) {
+            if (temp[j] === `${i}`) j++;
+            else missingNumbers.push(`${i}`)
+            i++;
         }
-      } else {
-        this.pIndex++;
-        this.curPattern = this.p[this.pIndex];
-        this.checkDuplicate();
+        
+        // for each missing number, scan row and col
+        // update possible values in board[i][j]
+        
+        // scan row
+        for (i=row; i<row+3; i++) {
+            tempRow = [];
+            for (j=col; j<col+3; j++) {
+                if (typeof board[i][j] !== 'string') {
+                    if (tempRow.length === 0) {
+                        for (k=0; k<9; k++) {
+                            temp = [];
+                            if (k !== col && k !== col+1 && k !== col+2) temp.push(board[i][k]);
+                        }
+                        tempRow = missingNumbers.filter(num => !temp.includes(num));
+                    }
+                    board[i][j] = tempRow;
+                }
+            }
+        }
+        
+        // scan col
+        for (j=col; j<col+3; j++) {
+            tempCol = [];
+            for (i=row; i=row+3; i++) {
+                if (typeof board[i][j] !== 'string') {
+                    if (tempCol.length === 0) {
+                        temp = getColumn(board,row,j,temp);
+                        tempCol = missingNumbers.filter(num => !temp.includes(num));
+                    }
+                    board[i][j] = board[i][j].filter(num => tempCol.includes(num));
+                }
+            }
+        }
+        
+        // for each missing value, check if one index (i,j) exists
+        // if true, update board value
+        for (k=0; k<missingNumbers.length; i++) {
+            let indexes = [];
+            reset = false;
+            for (i=row; i<row+3; i++) {
+                if (reset) break;
+                
+                for (j=col; j<col+3; j++) {
+                    if (reset) break;
+                    
+                    if (board[i][j] !== 'string') {
+                        temp = board[i][j];
+                        if (temp.includes(missingNumbers[k])) {
+                            if (indexes.length === 0) indexes.push(i,j);
+                            else reset = true;
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (row === 6 && col === 6) {
+        col = 0;
+        row = 0;
+        continue;
+        }
+    
+        if (col === 6) {
+            col = 0;
+            row +=2;
+        } else col+=2;    
 
-        if (!this.curPattern) this.toStateEnd();
-        else if (this.curPattern === "*") {
-          // if curPattern is '*', prevPattern was accepted and hence, this is also accepted
-          this.toStateQ2(char);
-        } else if (this.curPattern !== "." && this.curPattern !== char)
-          this.toStateEnd();
-        // if curPattern is '.' or curPattern === char, state is accepted
-        else this.toStateQ1(char, type);
-      }
     }
-  }
+};
 
-  getState() {
-    return this.currentState;
-  }
+const getColumn = (board,row,col,temp) => {
+    temp = [];
+    for (let i=0; i<9; i++) {
+        if (typeof board[i][col] === 'string') {
+            if (i !== row && i !== row+1 && i !== row+2) temp.push(board[i][index]);
+        }
+    }
+    temp.sort();
+    return temp;
 }
-
