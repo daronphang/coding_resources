@@ -3,26 +3,25 @@
 Can use binary search with divide and conquer strategy. Only works if list is sorted. Has time complexity of O(log2n) as compared to linear with O(n).
 
 ```js
-const list = [1, 3, 4, 5, 17, 18, 30];
-const n = list.length;
-const x = 17; // find index given x
-
-let left = 0;
-let right = n - 1;
-let mid;
-
-while (left < right) {
-  mid = (left + right) / 2;
-  if (x > list[mid]) {
-    left = mid + 1;
-  } else {
-    right = mid;
-  }
-}
-
-if (list[left] === x) {
-  return left;
-} else {
-  return -1;
-}
+var binarySearch = function(nums, target) {
+    let start = 0;
+    let end = nums.length;
+    let mid = Math.floor(end / 2);
+    
+    while (start < end) {
+        if (nums[mid] === target) break;
+        
+        if (target < nums[mid]) {
+            end = mid - 1;
+            mid = start + Math.floor((end-start)/2);
+        }
+        else {
+            start = mid + 1;
+            mid = start + Math.ceil((end-start)/2);
+        }
+    }
+    
+    if (nums[mid] === target) return mid;
+    return false;
+};
 ```
