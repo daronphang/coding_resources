@@ -21,4 +21,4 @@ backtrack(s) {
 
 ### State-Space Tree
 
-<img src="../images/state-space-tree.PNG">
+<img src="../../images/state-space-tree.PNG">
