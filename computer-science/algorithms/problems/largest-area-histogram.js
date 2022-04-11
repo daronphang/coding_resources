@@ -1,4 +1,6 @@
 var largestRectangleArea = function (heights) {
+  // use concepts of stack and next smaller element
+  // find NSE for left and right marker for each bar
   const NSEL = Array(heights.length);
   const NSER = Array(heights.length);
   const stack = [];
