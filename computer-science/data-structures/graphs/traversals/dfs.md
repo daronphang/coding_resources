@@ -27,7 +27,7 @@ dfs(G) {
     for each vertex u E G.V
         if u.color == WHITE
             // explore edges (u,v)
-                dfsVisit(G,u)
+            dfsVisit(G,u)
 }
 ```
 
