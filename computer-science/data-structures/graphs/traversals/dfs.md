@@ -9,6 +9,8 @@ Strategy involves searching deeper into the graph whenever possible i.e. explore
 
 Results of DFS depends upon the order in which the vertices are examined.
 
+A standard DFS implementation puts each vertex of the graph into one of two categories: visited and not visited. The purpose of the algorithm is to mark each vertex as visited while avoiding cycles.
+
 #### Algorithm
 
 ```
