@@ -15,6 +15,7 @@ var maxProfit = function (k, prices) {
 
   // record length of max subarray for each iteration
   const dp = [];
+  let dpIndex;
 
   for (let i = 0; i < k; i++) {
     start = 0;
@@ -23,12 +24,14 @@ var maxProfit = function (k, prices) {
     curProfit = 0;
     tempStart = 0;
     j = 1;
+    dpIndex = i;
 
     while (j < prices.length) {
       if (prices[j] === -1) {
-        j += dp[i] + 2;
+        j += dp[dpIndex] + 2;
         start = j;
         curProfit = 0;
+        dpIndex++;
         continue;
       }
 
@@ -64,3 +67,7 @@ var maxProfit = function (k, prices) {
 
   return finalProfit;
 };
+
+console.log(
+  maxProfit(3, [3, 2, 6, 5, 0, 3, 10, 5, 4, 0, 2, 20, 11, 3, 5, 10, 7, 6])
+);
