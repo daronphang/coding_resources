@@ -1,37 +1,66 @@
-var maxEnvelopes = function (envelopes) {
-  // envelope is width * height
-  const dp = Array(envelopes.length);
+var maxProfit = function (k, prices) {
+  // kadane algorithm
+  // find first maximum subarray
+  // then find subsequent ones by removing till ith index of first
 
-  // sort by either width/height first
-  envelopes.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  if (prices.length < 2 || k === 0) return 0;
 
-  // for (let i = 0; i < envelopes.length; i++) {
-  //   dp[i] = Array(envelopes.length);
-  // }
+  let curProfit;
+  let maxCurProfit;
+  let finalProfit = 0;
+  let priceDiff;
+  let tempStart;
+  let start;
+  let end;
 
-  return getMaxCount(envelopes, dp, envelopes.length - 1) + 1;
-};
+  // record length of max subarray for each iteration
+  const dp = [];
 
-const getMaxCount = (envelopes, dp, end) => {
-  if (dp[end]) return dp[end];
-  if (end === 0) return 0;
+  for (let i = 0; i < k; i++) {
+    start = 0;
+    end = 0;
+    maxCurProfit = 0;
+    curProfit = 0;
+    tempStart = 0;
+    j = 1;
 
-  let result = 0;
-  let maxSize = 0;
-  for (let i = end; i >= 0; i--) {
-    for (let j = i - 1; j >= 0; j--) {
-      if (envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1]) {
-        if (dp[i]) maxSize = dp[i];
-        else maxSize = getMaxCount(envelopes, dp, j) + 1;
-
-        result = Math.max(maxSize, result);
-
-        if (dp[i]) {
-          if (dp[i] < maxSize) dp[i] = maxSize;
-        } else dp[i] = maxSize;
+    while (j < prices.length) {
+      if (prices[j] === -1) {
+        j += dp[i] + 2;
+        start = j;
+        curProfit = 0;
+        continue;
       }
+
+      priceDiff = prices[j] - prices[j - 1];
+
+      if (priceDiff > 0) {
+        curProfit += priceDiff;
+      } else {
+        if (prices[j] <= prices[start]) {
+          start = j;
+          curProfit = 0;
+        } else {
+          curProfit += priceDiff;
+        }
+      }
+
+      if (curProfit > maxCurProfit) {
+        maxCurProfit = curProfit;
+        end = j;
+        tempStart = start;
+      }
+
+      j++;
     }
+
+    // all trending down, no positive gain found
+    if (!maxCurProfit) return finalProfit;
+
+    finalProfit += maxCurProfit;
+    dp[i + 1] = end - tempStart;
+    for (let i = tempStart; i <= end; i++) prices[i] = -1;
   }
 
-  return result;
+  return finalProfit;
 };
