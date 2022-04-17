@@ -1,6 +1,16 @@
 ### OOP
 
-Programming paradigm that relies on concept of classes and objects, structuring reusuable pieces of code blueprints (classes) which are used to create individual instances of objects. Classes can share methods and attributes.
+Programming paradigm that relies on concept of classes and objects, structuring reusuable pieces of code blueprints (classes) which are used to create individual instances of objects. Classes can share methods and attributes. An object contains data (in the form of fields) and code (in the form of methods).
+
+A purely OOP language has everything inside the program as objects i.e. it doesn't support primitive data types. The seven qualities to be satisfied for an OOP language are:
+
+1. Abstraction
+2. Polymorphism
+3. Encapsulation
+4. Inheritance
+5. All predefined types must be objects
+6. All user-defined types must be objects
+7. Every operation on objects must be done with the help of methods
 
 ### Interfaces
 
