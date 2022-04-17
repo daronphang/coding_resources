@@ -44,7 +44,7 @@ var maxProfit = function (k, prices) {
       maxDiff = Math.max(dp[i - 1][j - 1] - prices[j - 1], maxDiff);
 
       // dp[i][j-1] means not to make any transaction
-      dp[i][j] = Math.max(dp[i][j - 1], prices[j] - maxDiff);
+      dp[i][j] = Math.max(dp[i][j - 1], prices[j] + maxDiff);
     }
   }
   return dp[k][prices.length - 1];
