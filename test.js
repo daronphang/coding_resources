@@ -1,73 +1,86 @@
-var maxProfit = function (k, prices) {
-  // kadane algorithm
-  // find first maximum subarray
-  // then find subsequent ones by removing till ith index of first
-
-  if (prices.length < 2 || k === 0) return 0;
-
-  let curProfit;
-  let maxCurProfit;
-  let finalProfit = 0;
-  let priceDiff;
-  let tempStart;
-  let start;
-  let end;
-
-  // record length of max subarray for each iteration
+var wordBreak = function (s, wordDict) {
   const dp = [];
-  let dpIndex;
+  const cutPos = [];
+  const results = [];
+  const firstWords = [];
+  const hashmap = {};
 
-  for (let i = 0; i < k; i++) {
-    start = 0;
-    end = 0;
-    maxCurProfit = 0;
-    curProfit = 0;
-    tempStart = 0;
-    j = 1;
-    dpIndex = i;
+  let start = 0;
+  let s2 = "";
 
-    while (j < prices.length) {
-      if (prices[j] === -1) {
-        j += dp[dpIndex] + 2;
-        start = j;
-        curProfit = 0;
-        dpIndex++;
+  for (let i = 0; i < wordDict.length; i++) {
+    s2 += wordDict[i] + " ";
+    hashmap[wordDict[i]] = true;
+  }
+
+  for (let i = 0; i <= s2.length; i++) {
+    if (i === 0) dp[i] = Array(s.length + 1).fill(true);
+    else {
+      dp[i] = Array(s.length + 1);
+      dp[i][0] = false;
+    }
+  }
+
+  for (let i = 1; i < s2.length; i++) {
+    for (let j = 1; j <= s.length; j++) {
+      if (s2[i - 1] === " ") {
+        dp[i] = Array(s.length + 1).fill(true);
         continue;
       }
 
-      priceDiff = prices[j] - prices[j - 1];
+      if (s2[i - 1] === s[j - 1] && dp[i - 1][j - 1]) {
+        dp[i][j] = true;
 
-      if (priceDiff > 0) {
-        curProfit += priceDiff;
-      } else {
-        if (prices[j] <= prices[start]) {
-          start = j;
-          curProfit = 0;
-        } else {
-          curProfit += priceDiff;
+        if (s2[i] === " ") {
+          if (j - (i - start) === 0) firstWords.push(j);
+          else cutPos.push(j);
+          start = i + 1;
         }
+      } else {
+        dp[i][j] = false;
       }
-
-      if (curProfit > maxCurProfit) {
-        maxCurProfit = curProfit;
-        end = j;
-        tempStart = start;
-      }
-
-      j++;
     }
-
-    // all trending down, no positive gain found
-    if (!maxCurProfit) return finalProfit;
-
-    finalProfit += maxCurProfit;
-    dp[i + 1] = end - tempStart;
-    for (let i = tempStart; i <= end; i++) prices[i] = -1;
   }
 
-  return finalProfit;
+  // no starting matching words found in string
+  if (firstWords.length === 0) return [];
+
+  let sentence = "";
+  let duplicates = [];
+  let end;
+  let word;
+  let spaceCount;
+
+  cutPos.sort((a, b) => a - b);
+
+  for (let i = 0; i < firstWords.length; i++) {
+    sentence = s.substring(0, firstWords[i]) + " ";
+    end = firstWords[i];
+    spaceCount = 1;
+
+    for (let j = 0; j < cutPos.length; j++) {
+      if (end === cutPos[j]) {
+        duplicates.push(end);
+        continue;
+      }
+      word = s.substring(end, cutPos[j]);
+      if (!hashmap[word]) break;
+      sentence += word + " ";
+      end = cutPos[j];
+      spaceCount++;
+
+      if (j === cutPos.length - 1) {
+        if (sentence.length - spaceCount !== s.length) break;
+        else {
+          sentence = sentence.substring(0, sentence.length - 1);
+          results.push(sentence);
+        }
+      }
+    }
+  }
+
+  console.log(results);
+  return results;
 };
 
-console.log(
-  maxProfit(3, [3, 2, 6, 5, 0, 3, 10, 5, 4, 0, 2, 20, 11, 3, 5, 10, 7, 6])
-);
+wordBreak("catsanddog", ["cat", "cats", "and", "sand", "dog"]);
