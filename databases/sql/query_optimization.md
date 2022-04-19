@@ -45,3 +45,17 @@ CREATE INDEX index_name ON table_name (col1, col2)
 - For tables that have frequent, large database UPDATES or INSERT operations.
 - Indexes should not be used on columns that have high number of NULL values.
 - Columns that are frequently manipulated should not be indexed.
+
+
+### Removing Duplicates
+
+```sql
+-- use self join
+
+SELECT a.ID, a.NAME, a.ADDRESS
+FROM someTable AS a
+INNER JOIN
+someTable AS b ON
+a.ID = b.ID AND
+a.NAME = b.NAME
+```
