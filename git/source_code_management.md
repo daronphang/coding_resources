@@ -46,7 +46,9 @@ $git checkout master               Switch branch without -b tag
 
 ### Git Pull
 
-Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. To pull other branches from remote repo, use git fetch followed by git pull origin <new_branch_name>.
+Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. If you don't want to integrate/merge changes directly, use git fetch instead as it will download the new changes only but leaves HEAD branch and working copy files untouched.
+
+To pull other branches from remote repo, use git fetch followed by git pull origin <new_branch_name>.
 
 ```
 $git pull <remote URL>
@@ -58,6 +60,20 @@ $git fetch <remote> <branch>
 
 $git pull origin <new_branch_name>
 $git pull <repo> <remotebranchname>:<localbranchname>
+```
+
+#### Viewing Changes
+
+```console
+$ git fetch
+$ git diff HEAD
+
+$ git pull origin master
+Updating 37b431a..b2615b4
+$ git diff 37b431a..b2615b4
+
+$ git reflog | grep -A1 pull | head -2
+$ git diff 37b431a..b2615b4
 ```
 
 ### Gitignore
