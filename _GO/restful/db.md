@@ -1,6 +1,12 @@
 ### Managing Database Connection
 
-For SQL DB, do not need to defer DB.close() but instead, keep DB connection pool established after first successful connection. Opening and closing DB for each API request is a waste of resources.
+For vast majority of programs, do not need to adjust sql.DB connection pool defaults. From Golang docs, DB handle is meant to be long-lived and shared between many goroutines.
+
+Hence, do not have to worry about closing the connection i.e. defer DB.Close(). Instead, keep DB connection pool established after first successful connection. Opening and closing DB for each API request is a waste of resources.
+
+For customization, can set connection pool properties such as number of open connections, idle connections, etc.
+
+https://go.dev/doc/database/manage-connections
 
 ```go
 func main() {
@@ -19,6 +25,7 @@ func main() {
 	log.Fatal(rest.RunApp("127.0.0.1:8082", appCfg, db))
 }
 ```
+
 ```go
 type DBConnection struct {
 	*sql.DB
@@ -47,6 +54,7 @@ func SFConn(conf configs.EnvConf) (*DBConnection, error) {
 	}, err
 }
 ```
+
 ```go
 func DatabaseConnector (db *dblayer.DBConnection) gin.HandlerFunc {
 	return func(c *gin.Context) {
