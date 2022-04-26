@@ -66,15 +66,24 @@ myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
 %T    type of value
 %%    literal % sign; consumes no value
 
-%b    base 2
+%t    true or false
 %c    character represented by corresponding Unicode code point
+%b    base 2
 %d    base 10
 %o    base 8
+%U    unicode format i.e. U+1234 which is same as U+%04X
+
+%f    decimal point but no exponent i.e. 123.456
+%e    for large exponents i.e. 1.23456e+78
+%x    hexadecimal notation -0x1.23abcp+20
+%X    uppercase hexadecimal notation
 
 %s    unintepreted bytes of string or slice
 %q    double-quoted string safely escaped with Go syntax
 %x    base 16, lower-case, two characters per byte
-%X    base 16, upper-case, two characters per byte   
+%X    base 16, upper-case, two characters per byte
+
+%p    for pointers, base 16 notation with leading 0x
 ```
 
 
