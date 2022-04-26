@@ -47,3 +47,19 @@ func SFConn(conf configs.EnvConf) (*DBConnection, error) {
 	}, err
 }
 ```
+```go
+func DatabaseConnector (db *dblayer.DBConnection) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// pinging DB connection before each request
+		if err := db.Ping(); err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+				"error": "database connection error",
+				"message": err.Error(),
+			})
+			return
+		}
+		c.Set("db", db)
+		c.Next()
+	}
+}
+```
