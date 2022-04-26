@@ -85,6 +85,7 @@ A reference to a hash table, an unordered collection of key/value pairs in which
 ```go
 map[K]V
 
+// initializing map with values
 ages := map[string]int{
   "alice": 31,
   "charlie": 34,
