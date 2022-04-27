@@ -12,13 +12,6 @@ func hypot(x, y float64) float64 {
 fmt.Println(hypot(3,4)) // 5
 ```
 
-### Init Functions
-
-Each variable declared at package level starts life with the value of its initializer expression. However, for some variables, it may not be the simplest way to set its initial value. Init function mechanism may be simpler for doing so. 
-
-Init functions cannot be called or referenced, cannot take arguments, and doesn't return any value. They are automatically executed when the program starts, in the order in which they are declared. 
-
-
 ### Recursive
 Recursive functions will call themselves, either directly or indirectly. 
 ```go
