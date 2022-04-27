@@ -16,6 +16,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ### Args/Kwargs
 
 Both allow to pass a varying number of positional arguments. Both asterisks refer to the unpacking operator. The iterable object returned using unpacking operator is a tuple and not a list.
+
 Kwargs refers to keyword arguments which accepts keyword i.e. unpacks into a dictionary.
 
 ```py
@@ -34,6 +35,7 @@ def concantenate(**kwargs):
     return result
 
 print(my_sum(1, 2, 3))
+print(concantenate(first=1, second=2, third=3))
 ```
 
 ### Copying

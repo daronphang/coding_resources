@@ -12,6 +12,6 @@ Two common ways to parameterize a system by the classes of objects it creates. O
 
 Factory Method makes a design more customizable and only a little more complicated. Other design patterns require new classes, whereas Factory Method requires a new operation. People often use Factory Method as the standard way to create objects, but it isn't necessary when the class that's instantiated never changes or when instantiation takes place in an operation that subclasses can easily override, such as an initialization operation.
 
-
 ### Factory Comparison
+
 https://refactoring.guru/design-patterns/factory-comparison
