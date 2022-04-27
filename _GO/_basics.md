@@ -86,18 +86,6 @@ myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
 %p    for pointers, base 16 notation with leading 0x
 ```
 
-### Package Initialization
-
-Package initialization begins by initializing package-level variables in the order in which they are declared, except that dependencies are resolved first.
-
-One package is initialized at a time, in the order of imports in the program, dependencies first i.e. if package P is importing package Q, package Q is initialized first. 
-
-```go
-var a = b + c     // initialized third
-var b = f()       // initialized second
-var c = 1         // initialized first
-```
-
 ### Command Line Arguments
 OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings. 
 
