@@ -38,6 +38,12 @@ time.sleep()            Suspend execution of current thread for a given number o
 
 Celery stores results in database in binary using Pickle.
 
+### Purge Pending Tasks
+
+```console
+$ celery purge
+```
+
 ### Background Tasks with Status Updates
 
 ```py
