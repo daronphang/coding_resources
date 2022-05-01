@@ -10,6 +10,24 @@ $flask run --host=0.0.0.0 --port 4200
 $set FLASK_APP=flasky.py
 ```
 
+### Routes
+
+```py
+@app.route('/')
+def index():
+  return 'hello world'
+ 
+@app.route('/user/<name>')
+def index(name):
+  return 'hello world'
+ 
+# by default, the dynamic components in routes are strings
+# flask supports string, int, float and path for routes
+@app.route('/user/<int:id>')
+def index(id):
+  return 'hello world'
+```
+
 ### Request Methods
 
 Flask auto attaches HEAD and OPTIONS.
