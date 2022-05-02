@@ -40,11 +40,7 @@ HTTP is supported in nearly every framework and langauge. gRPC, Avro and Shift a
 
 If you choose a protocol like gRPC, you may need a protocol translation layer between the public API and the backend. A gateway can perform that function. If you are using a service mesh, consider which protocols are compatible with the service mesh. 
 
-### Recommendation
-
-Baseline recommendation is to choose REST over HTTP unless you need the performance benefits of a binary protocol. REST over HTTP requires no special libraries and creates minimal coupling. There are also rich ecosystems of tools to support schema definitions, testing and monitoring of RESTful HTTP endpoints. 
-
-## Considerations
+### Others
 
 Watch out for APIs that leak internal implementation details or simply mirror an internal database schema. The API should model the domain and should only change when new functionality is added, not just because you refactored some code or normalized a database table.
 
@@ -53,3 +49,7 @@ Different types of client, such as mobile application and web browser, may requi
 For operations with side effects, consider making them idempotent and implementing them as PUT methods. This will enable safe retries and can improve resiliency. 
 
 HTTP methods can have asynchronous semantics, where the method returns a response immediately but the service carries out the operation asynchronously. In this case, the method should return HTTP 202 status code, which indicates the request was accepted for processing, but the processing itself is not completed.
+
+### Recommendation
+
+Baseline recommendation is to choose REST over HTTP unless you need the performance benefits of a binary protocol. REST over HTTP requires no special libraries and creates minimal coupling. There are also rich ecosystems of tools to support schema definitions, testing and monitoring of RESTful HTTP endpoints. 
