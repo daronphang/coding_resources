@@ -1,6 +1,6 @@
 ### Event-Driven 
 
-An event-driven architecture consists of event producers that generate a stream of events, and event consumers that listen for the events. 
+An event-driven architecture consists of event producers that generate a stream of events (publish), and event consumers that listen for the events (subscribe). 
 
 Events are delivered in near real-time, so consumers can respond immediately to events as they occur. Producers are decoupled from consumers i.e. it doesn't know which consumers are listening. Consumers are also decoupled from each other, and each consumer can see all of the events. 
 
