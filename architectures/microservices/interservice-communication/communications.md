@@ -1,10 +1,10 @@
 ### Synchronous
 
-Service calls an API that another service exposes, using a protocol such as HTTP or gRPC. This option is synchronous as the caller waits for a response from the receiver.
+Service calls an API that another service exposes, using a protocol such as HTTP or gRPC. This option is synchronous as the caller waits for a response from the receiver. Hence, client code block their thread, until the response reach from the server. 
 
 ### Asynchronous
 
-Service sends a message without waiting for a response, and one or more services process the message asynchronously.
+Service sends a message without waiting for a response, and one or more services process the message asynchronously. Most popular protocol is AMQP whereby the client sends the message to message broker systems like Kafka and RabbitMQ queue. Can be implemented in a one-to-one mode (queue) or one-to-many mode (topic). 
 
 It is important to distinguish between asynchronous I/O and asynchronous protocol. Asynchronous I/O means the calling thread is not blocked while the I/O completes (for performance reasons) which is an implementation detail. An asynchronous protocol means the sender doesn't wait for a response.
 
