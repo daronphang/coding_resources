@@ -1,3 +1,21 @@
+### URL
+
+A URL (Uniform Resource Locator) is used to uniquely identify a resource over the web. Has the following parts:
+
+1. Protocol: Application-level protocol used by client and server i.e. HTTP, FTP, telnet.
+2. Hostname: DNS domain name or IP address of the server.
+3. Port: TCP port number that the server is listening for incoming requests from clients (default is TCP 80 for HTTP).
+4. Path/File Names: Name and location of requested resource, under the server document base directory.
+
+```
+protocol://hostname:port/path-and-file-name
+
+http://www.testing.com/docs/index.html
+ftp://www.ftp.org/docs/test.txt
+mailto:user@test101.com
+telnet://www.testing.com/
+```
+
 ### Ports
 
 Number used to uniquely identify a transaction over a network. Default for TCP port HTTP is 80, and 25 for SMTP. Can be used to provide firewall security i.e. block outsiders from accessing intranet server at port 80. Within host, port refers to the address of the service within the system i.e. IP address + port defines the address of service on that system i.e. 192.0.0.0:8000.
