@@ -30,3 +30,25 @@ API gateways provide a centralized proxy server to manage rate limiting, bot det
 ### Cross Cutting Concerns
 
 Logging, caching, and other cross cutting concerns can be handled in a centralized application rahter than deployed to every microservice. 
+
+### Major Players in API Gateway Space
+
+#### Kong
+
+An open-source API gateway that is built on top of NGINX. 
+
+#### Tyk.io
+
+Open-source but less permissive than Kong's Apache 2.0 license that is built on top of Golang.
+
+#### AWS
+
+AWS provides an API gateway which is a cloud-only option.
+
+#### Azure
+
+Similar to AWS' offering.
+
+#### Express
+
+New entry build by LunchBadger. Completely open-source and based on Node.js Express framework. 
