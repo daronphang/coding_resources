@@ -41,4 +41,4 @@ There are two cases to consider:
 - **Transient failure** such as a network timeout which can be resolved simply by retrying the call. If operation still fails, it is considered a nontransient failure.
 - **Nontransient failure** is any failure that's unlikely to go away by itself such as invalid input. If this happens, the entire business transaction must be marked as a failure and may be necessary to undo other steps that already succeeded.
 
-After a nontransient failure, the current transaction might be in a partially failed state, where one or more steps already completed successfully. In this case, the application needs to undo the succeeded steps by using a Compensating Transaction pattern.
+After a nontransient failure, the current transaction might be in a partially failed state, where one or more steps already completed successfully. In this case, the application needs to undo the succeeded steps by using a **Compensating Transaction** pattern.
