@@ -1,4 +1,4 @@
-### Celery
+## Celery
 
 Defacto standard Python asynchronous task queue that integrates itself with web frameworks including Django, Flask, Pyramid, Pylons, etc. Framework that brings Flask app, database backend, workers and message queue together and allows workers to communicate with database backend. Has three core components:
 
@@ -18,7 +18,7 @@ Can use it to execute tasks outside of context of application. Any resource cons
 
 https://docs.celeryq.dev/en/latest/reference/celery.app.task.html
 
-### Process Workflow
+## Process Workflow
 
 1. Client talks to Flask application to place their request.
 2. App takes the request and puts it in database queue with PENDING status.
@@ -36,17 +36,32 @@ wait()
 time.sleep()            Suspend execution of current thread for a given number of seconds
 ```
 
-### Storing into Database
+## Storing into Database
 
 Celery stores results in database in binary using Pickle.
 
-### Purge Pending Tasks
+## Purge Pending Tasks
 
 ```console
 $ celery purge
 ```
 
-### Background Tasks with Status Updates
+## Get TaskID Before Task Execution
+
+```py
+from celery import uuid
+
+@api_v1.route('/task/<task_name>', methods=['POST'])
+def add_task_to_queue(task_name):
+    task_id = uuid()
+    task = getattr(tasks, 'automation_task')
+    
+    # instead of task.delay()
+    resp = task.apply_async(kwargs={'task_name': 'hello world'}, task_id=task_id)
+    return jsonify({'response': 'task sucessfully registered','task_id': task_id})
+```
+
+## Background Tasks with Status Updates
 
 ```py
 @celery.task(bind=True)     # bind=True instructs Celery to send self argument
@@ -60,9 +75,9 @@ def long_task(self):
     return {'status': 'Task completed!'}
 ```
 
-### Best Practices
+## Best Practices
 
-#### Ignore results you don't want
+### Ignore results you don't want
 
 Storing results waste time and resources if it is not needed.
 
@@ -75,11 +90,11 @@ def mytask():
 result = mytask.apply_async(1, 2, ignore_result=True)
 ```
 
-#### Avoid launching synchronous subtasks
+### Avoid launching synchronous subtasks
 
 Having a task wait for the result of another task is really inefficient, and may cause a deadlock if worker pool is exhausted.
 
-### Example
+## Example
 
 ```python
 from flask import Flask
@@ -125,7 +140,7 @@ def execute_task(task_id):
     return jsonify(result), 200
 ```
 
-### Background Tasks with Status Updates Example
+## Background Tasks with Status Updates Example
 
 ```python
 @celery.task(bind=True)     # bind=True instructs Celery to send a 'self' argument to function
