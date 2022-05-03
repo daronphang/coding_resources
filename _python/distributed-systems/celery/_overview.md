@@ -16,6 +16,8 @@ Can use it to execute tasks outside of context of application. Any resource cons
 - Analyzing data.
 - Generating reports.
 
+https://docs.celeryq.dev/en/latest/reference/celery.app.task.html
+
 ### Process Workflow
 
 1. Client talks to Flask application to place their request.
