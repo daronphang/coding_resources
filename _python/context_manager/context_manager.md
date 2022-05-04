@@ -37,6 +37,8 @@ class ContextManager:
         return self.file
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
+        # to handle errors during the execution of the with block 
+        # if errors occur during when creating class, need to handle try catch separately
         self.file.close()
 
 
