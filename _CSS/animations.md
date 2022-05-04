@@ -1,13 +1,15 @@
 ### Transitions
+
 Property defined in CSS classes. Alternative to animations. Cannot define display property.
 
 ```css
 .example {
-    transition: all 1s ease-out;    
+  transition: all 1s ease-out;
 }
 ```
 
 ### Animations
+
 Consists of two components, a style describing the CSS animation and a set of keyframes that indicate the start and end states. When specifying CSS styles inside @keyframes, animation will gradually change from current style to new style at certain times.
 
 ```css
@@ -38,23 +40,23 @@ animation-play-state                Pause/play animation; paused, running
 ```css
 /*need to use pseudo element to avoid applying animation to text*/
 .activeRouterClass::after {
-    border-bottom: 2px solid white;
-    display: block;
-    content: '';
-    animation-name: activeRouter;
-    animation-duration: 0.5s;
-  }
+  border-bottom: 2px solid white;
+  display: block;
+  content: "";
+  animation-name: activeRouter;
+  animation-duration: 0.5s;
+}
 
-  @keyframes activeRouter {
-      0% {
-          transform: scaleX(0);
-          border-bottom: 0px;
-        }
-      100% {
-          transform: scaleX(1);
-          border-bottom: 2px solid white;
-        }
+@keyframes activeRouter {
+  0% {
+    transform: scaleX(0);
+    border-bottom: 0px;
   }
+  100% {
+    transform: scaleX(1);
+    border-bottom: 2px solid white;
+  }
+}
 ```
 
 ```css

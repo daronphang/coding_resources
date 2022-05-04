@@ -1,7 +1,6 @@
 ### Python Shell
 
-Python is an intepreter language that executes code line by line. Python provides Python Shell, an environment that is used to execute
-a single Python command and display the result. To exit Shell, 'ctrl+z+enter'.
+Python is an intepreter language that executes code line by line. Python provides Python Shell, an environment that is used to execute a single Python command and display the result. To exit Shell, 'ctrl+z+enter'.
 
 ```
 (venv) C:\Users\daronphang\pee_training_repo\daronphang\flask_toy_project>python

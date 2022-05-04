@@ -79,6 +79,9 @@ grep -i 'bar' file1         Perform case-insensitive search
 grep -R 'httpd'             Look for all files in current directory and subdirectories
 grep -c 'hello' file1       Search and display total number of times word appears
 grep 'word' *               Search all files in current directory
+grep 'str1\|str2' file1
+
+tail -f /var/log/file.log | grep search_ter
 
 -c          This prints only a count of the lines that match a pattern
 -h          Display the matched lines, but do not display the filenames.

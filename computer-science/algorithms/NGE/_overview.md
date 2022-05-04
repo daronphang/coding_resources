@@ -12,6 +12,8 @@ Push element to stack if:
 If element is greater than top element, pop stack till the element is less than or eqaul to top element.
 
 ```js
+// [4, 5, 2, 25]
+//  NGE is 5,25,25,-1
 function NGE(arr, n) {
   const stack = [];
   const results = Array(arr.length);
