@@ -2,6 +2,8 @@
 
 Test client to replicate the environment (to certain extent) that exists when an app is running inside web server. Requests are received and routed to appropriate view functions, and response are generated and returned. After a view function executes, can test response passed to the test.
 
+If using and editing a global variable across tests in a single file, need to shallow/deep copy the object as unittests do not execute in order.
+
 ```python
 import unittest
 from app import create_app, db

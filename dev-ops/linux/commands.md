@@ -24,12 +24,16 @@ $chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
 $chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 ```
 
-### Superuser
+### Substitute User
+
+Elevate privileges assigned to the current user. Both su and sudo are used to run commands with root permissions. Root user is equivalent to administrator user on Windows.
+
+For su, it switches you to the root user account and prompts for the root account's password. On the other hand, sudo runs a single command with root privileges and prompts for current user's password before running command as the root user.
 
 ```
 $whoami
-$sudo                        Superuser do
-$su <user>                   ctrl+D to logout of su
+$sudo
+$su <user>                   ctrl+D to logout of su or type 'exit'
 $sudo apt update             Updates packages but does not install them
 $sudo apt upgrade
 ```
