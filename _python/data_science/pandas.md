@@ -79,6 +79,14 @@ df.apply(function)
 
 ### Hacks
 
+#### Printing DataFrame
+
+Iteration in Pandas is an anti-pattern and is something you should only do if you have exhausted all options. Should not use any function with "iter".
+
+```py
+df.to_string()
+```
+
 #### Reading Datetime
 
 Sometimes Pandas may swap month with day and datetime sorting would not be correct. To fix, do not parse datetime directly when reading from CSV or JSON.
