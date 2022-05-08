@@ -1,20 +1,4 @@
-### Pandas
-
-Library built on top of Numpy that allows for fast analysis and data cleaning. Has built in visualization features. Can work with data from variety of sources including strings, functions, and numbers. When performing operations, integers will be converted to float.
-
-```python
-import numpy as np
-import pandas as pd
-
-list = [1,2,3]
-dict = {'a': 1, 'b': 2, 'c':3}
-
-pd.series(list)
-pd.series(dict)           # takes key as index, value as data
-pd.series([1,2,3],['US','CH', 'SG'])
-```
-
-### Dataframes
+### Dataframe Methods
 
 ```python
 df = pd.DataFrame(data, index, columns, dtype, copy)
@@ -75,23 +59,47 @@ pd.merge(left, right, row, on='key')
 # applying functions
 df.apply(function)
 
-```
-
-### Hacks
-
-#### Printing DataFrame
-
-Iteration in Pandas is an anti-pattern and is something you should only do if you have exhausted all options. Should not use any function with "iter".
-
-```py
+# printing dataframe
 df.to_string()
+
 ```
 
-#### Reading Datetime
+## Iterating DataFrames
 
-Sometimes Pandas may swap month with day and datetime sorting would not be correct. To fix, do not parse datetime directly when reading from CSV or JSON.
+If you need to perform some processing on each row element, you will need to iterate over rows in the Dataframe. However, iteration in Pandas is an anti-pattern and is something you should only do if you have exhausted all options, if dataset is small, or if performance is not an issue. It can be avoided using a vectorized solution which can be performed using built-in methods or Numpy functions.
+
+### to_numpy()
 
 ```py
-df = pd.read_json(fname, convert_dates=False)
-df['date'] = pd.to_datetime(df['date'], format='%d-%m-%Y')
+for item in df.to_numpy():
+    print(item[0], item[1], item[2])
 ```
+
+### apply()
+
+```py
+df['species'] = df.apply(lambda row: species_labels[row['species']], axis=1)
+```
+
+### map()
+
+```py
+species_labels = {'setosa': 0, 'versicolor': 1, 'virginica': 2}
+
+df['species'] = df['species'].map(species_labels)
+```
+
+### itertuples() and iterrows()
+
+The iterrows() method does not preserve the datatype across the rows as each row is returned as a series, and data type is inferred differently. To preserve the data types, use itertuples() instead. Iterator returns a copy of the object and hence, performing modifications does not affect the original object.
+
+```py
+for idx, row in df.iterrows():
+    print(row, '\n')
+
+df.itertuples(index=True, name='Pandas')
+```
+
+### iloc() and loc()
+
+Acessing the row elements directly.

@@ -1,7 +1,3 @@
-### Numpy
-
-Linear Algebra library for Python.
-
 ### Arrays
 
 Come in either vectors (1-D) or matrices (2-D). Difference with Python list is that arrays have ability to broadcast.
