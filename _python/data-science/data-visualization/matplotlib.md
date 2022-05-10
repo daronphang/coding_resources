@@ -1,3 +1,24 @@
+### Plotting
+
+When creating subplots, it returns two variables fig (figure) and ax (axes) as tuple:
+
+- Fig can be considered as the frame of the plot
+- Fig can be resized and reshaped, but it cannot be drawn on.
+- Each fig can have multiple subplots, which is synonymous with axes.
+- Axes is the canvas that you can draw on and add axis.
+- An axes object can only belong to one figure.
+- Axes object can be decoupled as a tuple for multiple subplots.
+
+```py
+fig = plt.figure()
+ax = fig.add_subplot()
+
+# creates a subplot 111 implicitly
+
+fig, ax = plt.subplots()
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+```
+
 ### Color Regions
 
 ```py

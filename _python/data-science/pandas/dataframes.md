@@ -1,6 +1,8 @@
-### Dataframe Methods
+## Dataframe Methods
 
-```python
+### Basics
+
+```py
 df = pd.DataFrame(data, index, columns, dtype, copy)
 df.head()
 df.describe()
@@ -14,54 +16,83 @@ df.isnull()                   # checks for any null values, returns boolean
 df.pivot_table(values,index,column)
 df.query()
 df.stack()
+df = df.rename(columns={'B': 'Block'})
 
-# accessing columns/rows
+df.to_string()
+```
+
+### Dealing with Missing Values
+
+```py
+df.dropna(axis=0)       # drops any row with NaN, axis=1 for column
+df.fillna(value='some value')
+```
+
+### Resetting Index
+
+```py
+df.reset_index()
+df.set_index()
+df.index = np.arange(1, len(df) + 1)
+```
+
+### Accessing Rows/Columns
+
+Use iloc for index, and loc for column name.
+
+```py
 df['col_name1', 'col_name2']
 df.loc['row or col name']
 df.loc['row name', 'col name']
 df.iloc['index number']
-df.iloc[:3]                   # or df.iloc[0,2]
+df.iloc[:3]                         # or df.iloc[0,2], access by index
+```
 
-# removing rows/columns
+### Deleting Rows/Columns
+
+```py
 df.drop('col_name', axis=1)   # axis=0 for rows
+```
 
-# conditional selection
+### Filtering Rows/Columns
+
+```py
+# for OR, use pipe operator |
 df[df>0]
 df[df['col_name']>0][['row_name', 'col_name']]
-df[(df['col_name']>0) & (df['col_name1'])]        # pipe operator |
+df[(df['col_name']>0) & (df['col_name1'])]
+```
 
-# index
-df.reset_index()
-df.set_index()
-df.index = np.arange(1, len(df) + 1)
+### Mask
 
-# convert to numpy
-df.to_numpy()
-array = df.values
+Method is an application of the if-then idiom i.e. replaces values where the condition is True. Returns an object of the same shape as self.
 
-# missing values
-df.dropna(axis=0)       # drops any row with NaN, axis=1 for column
+```py
+s = pd.Series(range(5))
+s.where(s > 0)
+s.mask(s > 0)   # replaces all values with NaN
+s.mask(s > 0, 1)
+```
 
-# replacing missing values
-df.fillna(value='some value')
+### Tilde Operator (Bitwise Negation)
 
-# rename columns
-df = df.rename(columns={'B': 'Block'})
+Takes the binary number and flips all bits 0 to 1 and 1 to 0 to obtain the complement binary number. Negates the boolean value returned i.e. True to False and vice versa.
 
-# groupby
-df.groupby(['col name', 'col name 2']).sum().loc['col name']
-.getgroup[]
+```py
+# to access all rows where user doesn't contain A
+df = df[~df['User'].str.contains('A')]
+```
 
-# merging
-pd.concat([df1,df2])
-pd.merge(left, right, row, on='key')
+## Adding to DataFrames
 
-# applying functions
-df.apply(function)
+Instead of creating an empty DataFrame and filling it later, should accumulate the data in a list first followed by initializing a DataFrame once ready. Iteratively appending rows to a DataFrame can be more computationally expensive than a single concatenate. Lists also take up less memory and are a lighter data structure as compared to DataFrames.
 
-# printing dataframe
-df.to_string()
+```py
+data = []
+for row in some_function_that_yields_data():
+    data.append(row)
 
+df = pd.DataFrame(data)
 ```
 
 ## Iterating DataFrames
