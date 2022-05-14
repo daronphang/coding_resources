@@ -1,5 +1,7 @@
 ### Avoid Storing Delimited Lists
+
 Violates First Normal Form. Exception would be employing denormalization. If tables are normalized, to avoid storing entries in column as delimited lists for following reasons:
+
 - Can't ensure each value is right data type i.e. 1,2,3,banana,5.
 - Can't use FK to link values to lookup table and unable to enforce referential integrity.
 - Can't enforce uniqueness and consistency i.e. 1,3,3,5.

@@ -17,7 +17,9 @@ Examples of frameworks include Flask, Falcon and Django.
 
 ## Resources
 
-Concept of resources is core to the REST architectural style. A resource is an item of interest in the domain of the application i.e. users, blog posts, and comments are resources of blogging application.
+Concept of resources is core to the REST architectural style. A resource is an item of interest in the domain of the application i.e. users, blog posts, and comments are resources of blogging application. It is an object with a type, associated data, relationships to other resources, and a set of methods that operate on it (POST/GET/PUT/DELETE).
+
+A resource is usually something that can be stored on a computer and represented as a stream of bits i.e. a dcoument, text file, images, videos, row in database, or the result of running an algorithm.
 
 Each resource must have a unique identifier (URLs for HTTP), and one can request this resource by providing its URL.
 

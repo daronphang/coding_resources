@@ -1,6 +1,6 @@
 ## RPC (Remote Procedure Call)
 
-RPC is a powerful technique for constructing distributed, client-server based applications. It allows a program on one machine to call a procedure (subroutine/service) on another machine in a different address space than its own. The procedure may be on the same system or a different system connected on a network. Supports both XML and JSON-RPC.
+RPC is a powerful technique for constructing distributed, client-server based applications. RPC is an architectural style for distributed systems. It allows a program on one machine to call a procedure (subroutine/service) on another machine in a different address space than its own. The procedure may be on the same system or a different system connected on a network. Supports both XML-RPC and JSON-RPC.
 
 Idea behind RPC is that a program can call and execute a subroutine just like it would call a local subroutine, but the network communication details are hidden from the user. RPC calls are defined through routines contained in the RPC protocol. It is not a transport protocol but a method of using existing communication features in a transparent way.
 
@@ -29,7 +29,7 @@ As the application software does not contain any communication code, it is indep
 5. When the procedure completes, it returns to the server stub which mashalls the return values into a message and hands it to the transport layer.
 6. Client stub receives and demarshalls the return paramaters and execution returns to the caller.
 
-<img src="RPC.PNG">
+<img src="../../_snapshots/RPC.PNG">
 
 ## Terminologies
 
@@ -39,7 +39,7 @@ RPC run-time system is a library of subroutines and a set of services that handl
 
 ### Stub
 
-Function of the stub is to provide transparency to the application code.
+For RPCs, the stub converts the methods, request types and response types into the forms used by the RPC system i.e. a piece of code that is used to convert the parameters during a RPC. It is essentially a usability feature to provide the appearance the remote method is present locally. Function of the stub is to provide transparency to the application code.
 
 On the client slide, stub handles the interface between client's local procedure call and run-time system, marshalling and unmarshalling data, invoking the RPC run-time protocol, and carrying out binding steps.
 

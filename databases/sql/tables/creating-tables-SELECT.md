@@ -1,4 +1,5 @@
 ### Creating Tables Using SELECT
+
 ```sql
 -- For single row, multiple columns
  SELECT
@@ -13,8 +14,8 @@ SELECT * FROM (
 VALUES
 ('12345ABE', 'instacap', NULL),
 ('12345ABE', 'instacap', NULL)
-) AS 
-PLACEHOLDER 
+) AS
+PLACEHOLDER
 (req_id, req_type, req_completed)
 ```
 
@@ -24,8 +25,8 @@ PLACEHOLDER
 '12345ABE' AS req_id,
 'instacap' AS req_type,
 NULL AS req_completed
-UNION ALL 
+UNION ALL
 (SELECT '12345ABE', 'instacap', NULL)
-UNION ALL 
+UNION ALL
 (SELECT '12345ABE', 'instacap', NULL)
 ```
