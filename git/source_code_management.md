@@ -1,4 +1,4 @@
-### Pushing Files to New Repository
+## Pushing Files to New Repository
 
 To change master to main.
 
@@ -15,13 +15,20 @@ $git remote add origin <paste GIT URL>
 $git push -u origin master
 ```
 
-### Verification
+## Reset Commit
+
+```
+$git reset --hard HEAD
+$git reset --soft HEAD
+```
+
+## Verification
 
 ```
 $git log src/myassistant/app/api/v1/endpoint.py   # View all changes made to file
 ```
 
-### Editing Existing Files
+## Editing Existing Files
 
 ```
 $git branch                                  #check if branch is master
@@ -35,7 +42,7 @@ $git remote -v                               #to verify remote repository URL
 $git remote set-url origin <new repo URL>
 ```
 
-### Other Functions
+## Other Functions
 
 ```
 $cd /d C:\users\daronphang         Cloning repo
@@ -44,7 +51,7 @@ $git clone <repo URL>
 $git checkout master               Switch branch without -b tag
 ```
 
-### Git Pull
+## Git Pull
 
 Pull command is used to fetch and download content from remote repository and immediately update local repository to match that content i.e. combination of git.fetch and git.merge. If you don't want to integrate/merge changes directly, use git fetch instead as it will download the new changes only but leaves HEAD branch and working copy files untouched.
 
@@ -62,7 +69,7 @@ $git pull origin <new_branch_name>
 $git pull <repo> <remotebranchname>:<localbranchname>
 ```
 
-#### Viewing Changes
+### Viewing Changes
 
 ```console
 $ git fetch
@@ -76,7 +83,7 @@ $ git reflog | grep -A1 pull | head -2
 $ git diff 37b431a..b2615b4
 ```
 
-### Gitignore
+## Gitignore
 
 Text file that tells git which files to ignore. Local .gitignore
 file is usually placed in the root directory.
@@ -98,7 +105,7 @@ hello.*         #matches any file or folder beginning with hello
 !example!.txt
 ```
 
-### Clearing Cache for Gitignore
+## Clearing Cache for Gitignore
 
 ```
 # commit any outstanding code changes
