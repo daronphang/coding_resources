@@ -1,6 +1,6 @@
-### OAuth
+## OAuth
 
-An authentication protocol used to authenticate users in an application by using another service provider. Industry-standard protocol for authorization. OAuth2 benefits:
+Oauth is an authorization framework and not an authentication protocol. It is an open standard for authorization that grants secure delegated access to applications, devices, APIs and servers via access tokens. OAuth authorizes an application to access your data without giving it access to your credentials. Can be used with either SAML or OIDC.
 
 - Users don't need to remember their credentials (only need to authorize the app to access their info for selected OAuth provider).
 - Prevents security holes as user doesn't provide passwords for sign in/sign up.

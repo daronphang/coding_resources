@@ -43,3 +43,5 @@ Despite the disadvantages outlined, we should focus on a small number of core jo
 ## Consumer-Driven Tests
 
 When using intergration tests, we want to ensure that deploying a new service doesn't break consumers. One way to do this without requiring test against the real consumer is by using consumer-drivne contract (CDC).
+
+With CDCs, we are defining the expectations of a consumer on a service/producer. They should be run as part of CI build of the producer, ensuring that it never gets deployed if it breaks one of these contracts. Should only be run against a single producer in isolation so that it can be more reliable than E2E tests.
