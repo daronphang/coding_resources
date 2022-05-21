@@ -1,4 +1,4 @@
-### Apache vs Nginx
+## Apache vs Nginx
 
 |                           | Apache                                                                                    | Nginx                                                                            |
 | ------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -11,7 +11,7 @@
 | Flexibility               | Supports customization of web server through dynamic modules.                             | Not flexible enough to support dynamic modules and loading.                      |
 | Security                  | Great security.                                                                           | Better security with smaller codebase.                                           |
 
-### Architecture
+## Architecture
 
 ### Apache
 
@@ -27,26 +27,26 @@ In other words, Apache creates a new thread each time to handle a connection req
 
 Nginx employs an event-driven architecture and deals with requests asynchronously. It was designed to use a non-blocking event-driven connection handling algorithm. Hence, its process can handle thousands of connection requests within one processing thread.
 
-### Performance
+## Performance
 
-#### Apache
+### Apache
 
 Static content or files are stored on disk on the server computer suchas CSS, JS files and images. They are served using file-based method.
 
 Can process dynamic content within the web server itself without having to rely on any external components.
 
-#### Nginx
+### Nginx
 
 Serves static resources without PHP and performs 2.5x faster than Apache.
 
 All requests with dynamic webpage content are passed to an external process i.e. PHP-FPM for execution. Nginx waits for the final content to come back and delivers it back to the client.
 
-### Request Interpretation
+## Request Interpretation
 
-#### Apache
+### Apache
 
 Passes requests as file system locations
 
-#### Nginx
+### Nginx
 
 Doesn't provide a mechanism for specifying config. Passes requests as URI instead of file system locations; this allows Nginx to function easily as both Web and Reverse Proxy server.

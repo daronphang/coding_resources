@@ -121,6 +121,10 @@ SELECT SUM(sales) AS total_revenue FROM table HAVING SUM(sales) > 1000    # agg 
 
 ### IS NULL/NOT NULL
 
+```sql
+SELECT col1 FROM table1 WHERE col1 IS NULL
+```
+
 ### Sub Query
 
 Allows to construct complex queries, essentially performign a query on the results of another query. Involves two SELECT statements.

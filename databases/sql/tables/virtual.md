@@ -50,7 +50,7 @@ WHERE condition
 
 ### MATERIALIZED (SNAPSHOTS)
 
-Replicates the retrieved data physically i.e. data is stored on memory. Data can be resed without executing the VIEW again. Can reduce the processing time to regenerate t he whole data. Helps remote users to replicate the data locally and improve query performance. However, challenge is to synchronize the changes in MATERIALIZED views underlying tables.
+Replicates the retrieved data physically i.e. data is stored on memory. Data can be reused without executing the VIEW again. Can reduce the processing time to regenerate the whole data. Helps remote users to replicate the data locally and improve query performance. However, challenge is to synchronize the changes in MATERIALIZED views underlying tables.
 
 ```sql
 CREATE MATERIALIZED VIEW view_name AS

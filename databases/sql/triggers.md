@@ -1,7 +1,19 @@
-### Triggers
-A database object which fires when an event/change occurs in a database. Two types of triggers include DDL and DML.
+## Triggers
+
+A trigger is a stored procedure which automatically invokes whenever a special event/change in the database occurs. Difference between triggers and stored procedures is that the latter must be invoked directly. Two types of triggers include DDL and DML.
+
+```sql
+-- general syntax
+CREATE TRIGGER trigger_name
+ON table_name
+FOR|AFTER|INSTEAD OF
+INSERT, UPDATE, DELETE
+AS
+sql_statements
+```
 
 ### DDL (Data Definition Language)
+
 Fires in response to DDL command events including CREATE, ALTER and DROP.
 
 ```sql
@@ -15,14 +27,15 @@ ROLLBACK;
 ```
 
 ### DML (Data Manipulation Language)
-Fires in response to DDML command events including INSERT, UPDATE and DELETE. Two types are AFTER and INSTEAD.
+
+DML triggers run when a user tries to modify data through a DML event such as INSERT, UPDATE or DELETE statements on a table or view.
 
 ```sql
 CREATE TRIGGER insert_trigger
 ON emp
 AFTER INSERT
 AS
-begin
+BEGIN
 INSERT INTO empstatus VALUES('active')
 END
 ```

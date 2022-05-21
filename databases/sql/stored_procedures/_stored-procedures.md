@@ -1,5 +1,6 @@
 ### Overview
-Stored procedure is a batch of statements (separated by semicolons) that is stored in relational database management system as a group that can be reused. Can access/modify data in a database, but not tied to a specific database. Allows passing of dynamic parameters. 
+
+Stored procedure is a batch of statements (separated by semicolons) that is stored in relational database management system as a group that can be reused. Can access/modify data in a database, but not tied to a specific database. Allows passing of dynamic parameters.
 
 ```
 DELIMITER       SQL recognizes semicolons as statement delimiters; need to redefine if passing program to server
@@ -15,6 +16,7 @@ SET @Var2 = 2;
 ```
 
 ### Creating Temporary Table
+
 ```sql
 CREATE TEMPORARY TABLE credits(
     customerNumber INT PRIMARY KEY,
@@ -27,6 +29,7 @@ LIMIT 0;
 ```
 
 ### Getting Results from SELECT
+
 Each SELECT statement that does not insert into a table or variable will produce a result set.
 
 ```sql
@@ -50,9 +53,10 @@ for result in cursor.stored_results():
 ```
 
 ### Passing Parameters
+
 - MySQL uses IN and OUT, whereas SQL Server uses @ to declare input parameters.
 - Can only pass parameters to query statements and not tablename.
-- Avoid name collision between parameter names and name of columns. 
+- Avoid name collision between parameter names and name of columns.
 
 ```sql
 CREATE PROCEDURE `deletePortfolio`(IN user_id CHAR(36), IN portfolio_name VARCHAR(255))
@@ -60,16 +64,18 @@ BEGIN
 DELETE FROM user_portfolios WHERE userId = user_id AND portfolioName = portfolio_name;
 END
 ```
+
 ```sql
 CREATE PROCEDURE PRO
 @ID INT
 @NAME NVARCHAR
 AS BEGIN
-DECLARE @ADDRESS NVARCHAR 
+DECLARE @ADDRESS NVARCHAR
 END
 ```
 
 ### Dynamic SQL
+
 MySQL provides PREPARE, EXECUTE and DEALLOCATE PREPARE statements that can contain placeholder values. If using CONCAT, script is susceptible to SQL injection attacks.
 
 https://dev.mysql.com/doc/refman/8.0/en/sql-prepared-statements.html
@@ -102,7 +108,9 @@ END
 ```
 
 ### Execute Stored Procedures
+
 SQL Server uses EXEC or SP_EXECUTESQL for executing dynamic SQL.
+
 ```
 CALL stored_proc_name('some variable')      Inside mysql command interpreter
 cursor.callproc('proc_name', (args,))       Python
@@ -111,6 +119,7 @@ cursor.callproc('proc_name', (args,))       Python
 https://dev.mysql.com/doc/refman/8.0/en/cursors.html
 
 ### Example
+
 ```sql
 CREATE PROCEDURE curdemo()
 BEGIN
