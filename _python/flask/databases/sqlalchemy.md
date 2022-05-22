@@ -1,14 +1,17 @@
-## Retrieving Entries from Database:
+### Retrieving Entries from Database
+
 Can use Flask-SQLAlchemy, an extension that simplifies the use of SQLAlchemy inside Flask applications. A powerful relational database
 framework that supports several database backends, offers high-level ORM and low-level access to the database's native SQL functionality. Need to create
-Model class that has attributes matching the columns of a corresponding database table. 
+Model class that has attributes matching the columns of a corresponding database table.
 
-### Flask-SQLAlchemy Database URLs:
+### Flask-SQLAlchemy Database URLs
+
 - MySQL: mysql://username:password@hostname/database
 - Postgres: postgresql://username:password@hostname/database
 - SQLite: sqlite:///c/absolute/path/to/database
 
-### SQLAlchemy Column Types:
+### SQLAlchemy Column Types
+
 ```
 Integer
 SmallInteger
@@ -29,7 +32,8 @@ PickleType
 LargeBinary
 ```
 
-### SQLAlchemy Column Options:
+### SQLAlchemy Column Options
+
 ```
 primary_key
 unique          If set true, do not allow duplicates for this column
@@ -38,7 +42,8 @@ nullable
 default         Defines default value for column
 ```
 
-### Python Configuration:
+### Python Configuration
+
 ```python
 # In Application Script module (top-level directory):
 # To automatically add database instance and models in shell session i.e. no need 'from model import User, Role'
@@ -76,13 +81,16 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True)
     password_hash = db.Column(db.String(200))
-    
+
      def __repr__(self):
         return '<User {}>'.format(self.username)
 ```
-## Database Relationships:
-Relational databases establish connections between rows in different tables through the use of relationships. 
-Relationships are connected through foreign keys. Relationship types include one-to-many, one-to-one, many-to-many, many-to-one.  
+
+## Database Relationships
+
+Relational databases establish connections between rows in different tables through the use of relationships.
+Relationships are connected through foreign keys. Relationship types include one-to-many, one-to-one, many-to-many, many-to-one.
+
 ```python
 # In Model module:
 # one-to-many relationship i.e. one role can belong to many users, but each user can have only one role
@@ -91,20 +99,21 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     users = db.relationship('User', backref='role')
-    
+
     # users attribute will return the list of users associated with role (many side)
-    # role attribute is added when creating an instance of User model 
+    # role attribute is added when creating an instance of User model
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-````
-
-### Common SQLAlchemy Relationship Options:
 ```
-backref         Adds a back reference in the other model in the relationship. 
+
+### Common SQLAlchemy Relationship Options
+
+```
+backref         Adds a back reference in the other model in the relationship.
 primaryjoin     Specifies the join condition between two models explicitly, necessary for ambiguous relationships.
 lazy            Specifies how items are to be loaded. Possible values are select, immediate, joined, subquery, noload, dynamic.
 uselist         If set to False, use a scalar instead of a list i.e. 'many' side becomes 'one' side.
@@ -112,8 +121,10 @@ order_by        Specifies the ordering for the items in the relationship.
 secondary       Specifies the name of association table to use in many-to-many relationships.
 seondaryjoin    Specifies the secondary join condition for many-to-many relationships.
 ```
-## Database Operations:
-Best way to work with models is in Python shell. When using shell context processor, will auto import database instance and models each time a shell session is created. 
+
+## Database Operations
+
+Best way to work with models is in Python shell. When using shell context processor, will auto import database instance and models each time a shell session is created.
 
 ```python
 @app.shell_context_processor
@@ -121,13 +132,16 @@ def make_shell_context():
     return dict(db=db, User=User, Role=Role)
 ```
 
-### Creating Tables:
+### Creating Tables
+
 ```
 (venv) $ flask shell
 >>> from hello import db
 >>> db.create_all()     # will not re-create a table if it already exists
 ```
-### Inserting Rows:
+
+### Inserting Rows
+
 ```
 >>> from hello import Role, User
 >>> admin_role = Role(name='Admin')
@@ -154,19 +168,26 @@ def make_shell_context():
 
 >>> db.session.rollback()   # if previous session failed to commit
 ```
-### Modifying Rows:
+
+### Modifying Rows
+
 Use the add() method.
+
 ```
 >>> admin_role.name = 'Administrator'
 >>> db.session.add(admin_role)  # renames name from 'Admin' to 'Administrator'
 >>> db.session.commit()
 ```
-### Deleting Rows:
+
+### Deleting Rows
+
 ```
 >>> db.session.delete(mod_role)
 >>> db.session.commit()
 ```
-### Querying Rows:
+
+### Querying Rows
+
 ```
 >>> Role.query.all()
 [<Role 'Administrator'>, <Role 'User'>]
@@ -176,7 +197,9 @@ Use the add() method.
 >>> User.query.filter_by(role=user_role).all()
 [<User 'susan'>, <User 'david'>]
 ```
-### Common SQLAlchemy Query Filters and Executors:
+
+### Common SQLAlchemy Query Filters and Executors
+
 ```
 # Filters:
 filter()
@@ -195,5 +218,3 @@ get_or_404()
 count()
 paginate()        Returns a Pagination object that contains the specified range of results.
 ```
-
-

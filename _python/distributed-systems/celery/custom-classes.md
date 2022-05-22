@@ -1,4 +1,4 @@
-### Custom Classes
+## Custom Classes
 
 All tasks inherit from app.Task class.
 
@@ -35,7 +35,7 @@ def process_rows():
         process_row(row)
 ```
 
-#### App-wide usage
+### App-wide usage
 
 Argument should either be a string giving python path to Task class or class itself.
 
@@ -45,7 +45,7 @@ from celery import Celery
 app = Celery('tasks', task_cls='your.module.path:DatabaseTask')
 ```
 
-### Handlers
+## Handlers
 
 Celery has the following built-in handlers: before_start, after_return, on_failure, on_retry.
 

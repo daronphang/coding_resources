@@ -1,4 +1,5 @@
 ### Error Handling
+
 ```py
 from marshmallow import ValidationError
 from flask import current_app, jsonify
@@ -60,7 +61,9 @@ def internal_server_error(e):
 ```
 
 ### Blueprint
+
 If using @errorhandler, it will be invoked only for errors that originate in the routes defined by the blueprint. To install application-wide error handlers, use @app_errorhandler.
+
 ```py
 @main.app_errorhandler(404)
 def page_not_found(e):
@@ -70,6 +73,7 @@ def page_not_found(e):
 ```
 
 ### Werkzeug Abort
+
 Sometimes it is more convenient to just raise an exception by error code, without importing the exception.
 
 https://python.plainenglish.io/python-web-development-with-flask-error-handling-36349a7f82c
@@ -89,7 +93,9 @@ def application_bad_request(e):
 ```
 
 ### Error Classes
+
 Use inspect module to get class attributes.
+
 ```py
 import inspect
 from flask import abort
@@ -108,6 +114,7 @@ def schema_validation_error(e):
 ```
 
 ### Custom Exception Classes
+
 Flask recommends to create custom exception instead of using abort().
 
 https://flask.palletsprojects.com/en/0.12.x/patterns/apierrors/
@@ -129,7 +136,7 @@ class InvalidUsage(Exception):
         rv = dict(self.payload or ())
         rv['message'] = self.message
         return rv
-        
+
 @app.errorhandler(InvalidUsage)
 def handle_invalid_usage(error):
     response = jsonify(error.to_dict())

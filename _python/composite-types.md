@@ -1,4 +1,4 @@
-### Lists
+## Lists
 
 ```
 append()
@@ -45,11 +45,28 @@ final_list = []
 for x in subset_list:
   if x in main_list:
     final_list.append(True)
-
-
 ```
 
-### Sets
+### Working with Loops
+
+Use either break, continue or pass to perform additional tasks in for loops or while loops:
+
+- Break: provides opportunity to exit out of a loop if external condition is triggered
+- Continue: skips over the part of a loop where an external condition is triggered but goes to complete rest of loop.
+- Pass: tells program to disregard condition and conitnue to run program as usual.
+
+```py
+# break
+for number in range(10):
+    if number == 5:
+        break    # break here
+
+    print('Number is ' + str(number))
+
+# continue
+```
+
+## Sets
 
 Use sets to compare lists with lists or to output unique values only.
 
@@ -71,7 +88,7 @@ order_ids = set(
 del_id = next(iter(all_ids.difference(order_ids)))
 ```
 
-### Tuples
+## Tuples
 
 Same as lists but immutable. Can be destructured. Accessed by []. When function returns multiple values, the result is a tuple.
 
@@ -81,11 +98,11 @@ title, year, artist = metallica
 print(title)
 ```
 
-### Dictionaries
+## Dictionaries
 
 When converting Dictionaries to JSON, it doesn't respect order if use OrderedDict() and sorts key alphabetically. Best to use a list of dictionaries.
 
-#### Destructuring
+### Destructuring
 
 ```py
 from operator import itemgetter

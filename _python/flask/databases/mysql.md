@@ -1,4 +1,5 @@
-## Connection:
+### Connection
+
 Can either connect directly to mysql or using flask-mysql.
 
 https://flask-mysqldb.readthedocs.io/en/latest/
@@ -27,6 +28,7 @@ def users():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
+
 ```py
 # using mysql.connector
 import mysql.connector as mysql

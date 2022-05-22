@@ -1,4 +1,5 @@
 ### Logging Procedure (Commonly-used Classes)
+
 ```
 Logger        Provides primary interface that logs events from app
 Handler       Sends log messages to configured destinations
@@ -7,6 +8,7 @@ Filter        Used to filter log records based on some parameters other than log
 ```
 
 ### Configuration
+
 ```
 # Instance config
 level         Root logger set to specified severity level
@@ -30,7 +32,8 @@ logging.warning('This will get logged to a file')
 ```
 
 ### LogRecord
-Entry-level to logging system. Events recorded by Logger are called log records. Each record has a severity level. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID. 
+
+Entry-level to logging system. Events recorded by Logger are called log records. Each record has a severity level. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID.
 
 Logs are stored in files with .log extension. If want to display logs in console, remove the filename attribute in configuration.
 
@@ -40,7 +43,7 @@ https://docs.python.org/3/library/logging.html
 
 ```
 # LogRecord attributes
-asctime         %(asctime)s  
+asctime         %(asctime)s
 created         %(created)f
 exc_info
 filename        %(filename)s
@@ -61,6 +64,7 @@ WARNING     30
 ERROR       40
 CRITICAL    50
 ```
+
 ```py
 import logging
 
@@ -84,8 +88,8 @@ logfile_handler.setLevel(logging.INFO)
 app.logger.addHandler(logfile_handler)
 ```
 
-
 ### Logging Handlers
+
 ```
 StreamHandler   Logging to screen
 FileHandler     Logging to file
@@ -97,6 +101,7 @@ MemomryHandler
 HTTPHandler
 QueueHandler
 ```
+
 ```py
 import logging
 
@@ -119,9 +124,10 @@ slh.setFormatter(formatter)
 logger.addHandler(slh)
 ```
 
-
 ### Capturing Stack Traces
+
 Need set exc_info to True. Best is to call logging.exception() which logs a message with level ERROR.
+
 ```py
 import logging
 
@@ -135,8 +141,8 @@ except Exception as e:
   logging.exception('exception occurred')
 ```
 
-
 ### Example
+
 ```python
 import logging
 
@@ -168,5 +174,3 @@ logger.error('This is an error')
 # f_handler writes to specified file 'file.log' at logger.error()
 # 2018-08-03 16:12:21,723 - __main__ - ERROR - This is an error
 ```
-
-

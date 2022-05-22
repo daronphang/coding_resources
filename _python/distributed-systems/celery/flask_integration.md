@@ -1,4 +1,5 @@
 ### Starting Celery and Configurations
+
 Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker. To trigger celery worker, need to activate virtualenv first and ensure directory in which celery cli is called is one level higher.
 
 ```
@@ -7,7 +8,7 @@ celery -A myassistant.app.celery worker -l INFO
 celery -A myassistant.celery_worker.celery worker -l INFO --concurrency 1 -P solo
 ```
 
-``` py
+```py
 # separate module to create app in base directory where config file resides
 # celery_worker.py
 
@@ -16,13 +17,15 @@ from myassistant.app import celery, create_app
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 app.app_context().push()
-``` 
+```
 
 ### Integration with Flask
+
 When creating Flask using application factories, should create extensions and app factories so that the extension object does not initially get bound to the application:
-1) Write a function taking both extension and app instances to perform some desired initialization.
-2) Instantiate the extension in a separate file.
-3) Make an instance of celery app and import it in the factory module to call the initializing function implemented at first step.
+
+1. Write a function taking both extension and app instances to perform some desired initialization.
+2. Instantiate the extension in a separate file.
+3. Make an instance of celery app and import it in the factory module to call the initializing function implemented at first step.
 
 https://medium.com/@frassetto.stefano/flask-celery-howto-d106958a15fe
 

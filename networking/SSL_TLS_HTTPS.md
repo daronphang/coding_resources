@@ -6,7 +6,7 @@ Stands for Secure Sockets Layer, standard technology for keeping an internet con
 
 Encryption uses asymmetrical cryptography which requires public and private keys. Both keys are related to each other by complex mathematical formula that is difficult to reverse-engineer by brute force.
 
-### TLS
+### TLS (SSL Successor)
 
 Transport Layer Security. An updated, more secure version of SSL. Asymmetrical cryptography requires significant computing resources; encrpyting all information would be expensive. TLS gets around this by using it at beginning of communications session whereby the server and client agrees on single session key that will be used to encrypt packets from that point forward. Session/shared key is established using asymmetrical cryptography, and data is encrypted with shared key which uses symmetrical crpytography and is much less computationally intensive. Session keys are only used once.
 

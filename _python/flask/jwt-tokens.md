@@ -1,4 +1,4 @@
-### JWT Web Token
+## JWT Web Token
 
 JSON Web Token is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information
 between parties as a JSON object. Can be verified with digital signature using a secret key (HMAC algorithm) or public/private key (RSA/ECDSA).

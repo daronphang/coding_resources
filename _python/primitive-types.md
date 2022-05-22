@@ -1,4 +1,4 @@
-### Strings and Slices
+## Strings and Slices
 
 ```py
 'this string\n has been\n split'
@@ -30,7 +30,7 @@ len(string)
 any(substring in string for substring in substring_list)
 ```
 
-#### String Replacement
+### String Replacement
 
 ```py
 txt = "one one was a race horse, two two was one too."
@@ -48,7 +48,7 @@ print(f'my name is {name}, age {age}')
 print(x,y, sep='\n')
 ```
 
-### True False
+## True False
 
 Use any() or all() to check for truth in lists.
 
@@ -63,7 +63,7 @@ False
 {}
 ```
 
-#### Combining Boolean Operators
+### Combining Boolean Operators
 
 ```py
 
@@ -83,4 +83,14 @@ if age > 30:
 # good practice
 
 access = age > 30 and user == "ahmed" and job == "data scientist"
+```
+
+## Arithmetic Operations
+
+```python
+a/b     # float
+a//b    # integer
+a % b   # remainder after integer division
+
+sevens = range(7, 1000, 7)      // divisble by 7
 ```

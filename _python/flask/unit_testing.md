@@ -1,4 +1,4 @@
-### Flask Test Client
+## Flask Test Client
 
 Test client to replicate the environment (to certain extent) that exists when an app is running inside web server. Requests are received and routed to appropriate view functions, and response are generated and returned. After a view function executes, can test response passed to the test.
 
@@ -64,9 +64,9 @@ class FlaskClientTestCase(unittest.TestCase):
         self.assertEqual(json_response['body_html'],'<p>body of the <em>blog</em> post</p>')
 ```
 
-### Asserts
+## Asserts
 
-#### assertRaises
+### assertRaises
 
 ```py
 self.assertRaises(Exception, test_function, args)
@@ -75,7 +75,7 @@ with self.assertRaises(Exception) as exc:
 self.assertEqual(str(exc.exception.message), 'some message')
 ```
 
-### Running Unittest
+## Running Unittest
 
 ```python
 import os
@@ -100,7 +100,7 @@ def testing():      # function cannot be named as testing_api
     unittest.TextTestRunner(verbosity=2).run(tests)
 ```
 
-### Example
+## Example
 
 ```py
 class FlaskApiQueryTest(unittest.TestCase):

@@ -1,4 +1,4 @@
-### Running Flask App
+## Running Flask App
 
 ```
 # in Linux
@@ -10,17 +10,17 @@ $flask run --host=0.0.0.0 --port 4200
 $set FLASK_APP=flasky.py
 ```
 
-### Routes
+## Routes
 
 ```py
 @app.route('/')
 def index():
   return 'hello world'
- 
+
 @app.route('/user/<name>')
 def index(name):
   return 'hello world'
- 
+
 # by default, the dynamic components in routes are strings
 # flask supports string, int, float and path for routes
 @app.route('/user/<int:id>')
@@ -28,11 +28,11 @@ def index(id):
   return 'hello world'
 ```
 
-### Request Methods
+## Request Methods
 
 Flask auto attaches HEAD and OPTIONS.
 
-### Responses
+## Responses
 
 Can use make_response() to output multiple values in response object.
 
@@ -54,7 +54,7 @@ set_cookie()
 get_data()
 ```
 
-### Authentication
+## Authentication
 
 Password hashing function takes a password, adds a random component (salt) and applies several one-way cryptographic transformations to it. Werkzeug's security module conveniently implements secure password hashing.
 
@@ -63,7 +63,7 @@ generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
 check_password_hash(hash, password)
 ```
 
-### JSON Payload & Overhead
+## JSON Payload & Overhead
 
 JSON data consists of two essential parts: header/overhead identifier and actual information payload. Must have "" for JSON format.
 
@@ -80,7 +80,7 @@ Payload refers to an integral part of each unit of data being transmitted.
 }
 ```
 
-### Converting Data Types to JSON
+## Converting Data Types to JSON
 
 ```python
 import json

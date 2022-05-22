@@ -1,4 +1,5 @@
 ### Celery Logging
+
 Underlying Python logging system does not support all different concurrency configurations in Celery including eventlets, greenlets, prefork (subprocessing), and threads. Hence, Celery provides a special get_task_logger() that expoeses task_id and task_name parameters. Celery recommends as best practice to create common logger for all tasks.
 
 Celery provides after_setup_logger for customizing global logger (Worker, Main Process). Takes in logger object which can be conveniently add custom loggers to.
@@ -37,7 +38,7 @@ def setup_global_logger(logger, *args, **kwargs):
         '[%(asctime)s: global %(levelname)s in %(module)s] %(message)s'
     )
     setup_file_handler_logger(logger, formatter)
-    
+
 
 # For customizing celery task_logger
 @after_setup_task_logger.connect
@@ -65,7 +66,8 @@ def on_setup_logging(**kwargs):
 ```
 
 ### Getting Task_id With Standard Logger
-For lower-level code, should not pollute it with Celery-specific logger implementation. If a function is called from within a Celery task, can log it with Celery task_id through TaskFormatter; if it is called from within Flask, no task_id is returned. TaskFormatter retrieves task_name and task_id by calling celery.\_state.get\_current\_task. If it is executed outside Celery task, it returns None and prints ???.
+
+For lower-level code, should not pollute it with Celery-specific logger implementation. If a function is called from within a Celery task, can log it with Celery task_id through TaskFormatter; if it is called from within Flask, no task_id is returned. TaskFormatter retrieves task_name and task_id by calling celery.\_state.get_current_task. If it is executed outside Celery task, it returns None and prints ???.
 
 ```py
 import logging
