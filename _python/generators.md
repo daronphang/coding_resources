@@ -1,7 +1,8 @@
-### Generators
+## Generators
 
-Used to create lazy iterators that do not store contents in memory. common use of generators is to work with large files like CSV.  
-Uses yield instead of return.
+Used to create lazy iterators that do not store contents in memory. Common use of generators is to work with large files like CSV. A generator is a function that returns an object (iterator) which we can iterate over (one value at a time).
+
+Uses yield instead of return. Difference is that return statement terminates a function entirely while yield statement pauses the function by saving all its states and continues from there on successive calls.
 
 ```python
 def csv_reader(file_name):
