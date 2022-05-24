@@ -11,7 +11,7 @@ Properties of B-trees as follows:
 
 ### Figure
 
-<img src="../../images/B-trees.PNG">
+<img src="../../../images/B-trees.PNG">
 
 ## Data Structures on Secondary Storage
 
@@ -25,7 +25,7 @@ For a large B-tree stored on a disk, will often see branching factors between 50
 
 Branching Factor of 1001 and Height of 2 can store over one billion keys.
 
-<img src="../../images/B-trees-branching-factor.PNG">
+<img src="../../../images/B-trees-branching-factor.PNG">
 
 ## B-Trees
 

@@ -4,7 +4,7 @@ AVL tree is a self-balancing BST in which eac node maintains extra information c
 
 When performing rotations, ensure subtree of subnode of unbalanced node that is being rotated is handled. Pivot of rotations start from unbalanced node i.e. LEFT RIGHT means going down LEFT followed by RIGHT, starting from unbalanced node.
 
-![nodes](../../images/balanced-trees.PNG)
+![nodes](../../../images/balanced-trees.PNG)
 
 ### Left Rotation with Ancestors (Single, RIGHT-RIGHT Case)
 
@@ -16,7 +16,7 @@ Starting from imbalance node, if there is an imbalance in right subtree of its r
 - Else assign y as the right child of p.
 - Finally, make x the left subtree of y.
 
-![nodes](../../images/AVL-left-rotation-ancestors.PNG)
+![nodes](../../../images/AVL-left-rotation-ancestors.PNG)
 
 ### Right Rotation with Ancestors (Single, LEFT-LEFT Case)
 
@@ -28,13 +28,13 @@ If there is an imbalance in left subtree of left child.
 - Else assign y as the left child of p.
 - Finally, make x the right subtree of y.
 
-![nodes](../../images/AVL-right-rotation-ancestors.PNG)
+![nodes](../../../images/AVL-right-rotation-ancestors.PNG)
 
 ### Left-Right Rotation (Double, LEFT-RIGHT Case)
 
 If there is an imbalance in right subtree of the left child. If root is imbalanced, direction must be in the same path to added node when traversing down the tree.
 
-![nodes](../../images/AVL-left-right-rotation.PNG)
+![nodes](../../../images/AVL-left-right-rotation.PNG)
 
 ### Right-Left Rotation (Double, RIGHT-LEFT case)
 
@@ -56,17 +56,17 @@ Unlike insertion, after performing rotation on unbalanced node, may need to perf
 
 ### Perform Delete BST operation
 
-![nodes](../../images/AVL-delete-BST.PNG)
+![nodes](../../../images/AVL-delete-BST.PNG)
 
 ### Update Balance Factor
 
-![nodes](../../images/AVL-delete-update-bf.PNG)
+![nodes](../../../images/AVL-delete-update-bf.PNG)
 
 ### Rebalance (BF > 1)
 
 If balanceFactor of leftChild is >= 0, do right rotation. Else, do left-right rotation.
 
-![nodes](../../images/AVL-delete-rebalance.PNG)
+![nodes](../../../images/AVL-delete-rebalance.PNG)
 
 ### Rebalance (BF < -1)
 
