@@ -1,8 +1,8 @@
-### Binary Trees
+## Binary Trees
 
 Consists of a node and at most two children, left subtree and right subtree. An empty tree is also a binary tree. Binary trees do not have simple relation between size n and height h. Maximum height with n nodes is (n-1), which happens when all non-leaf nodes have precisely one child.
 
-#### Selectors
+### Selectors
 
 Breaking a non-empty tree into its constituent parts.
 
@@ -12,7 +12,7 @@ left(t)
 right(t)
 ```
 
-#### Operations
+### Operations
 
 ```
 EmptyTree           Returns an empty tree
@@ -37,11 +37,11 @@ size(t) {
 }
 ```
 
-#### Full
+### Full
 
 Each node has exactly zero or two children (but never one). A full tree is not always complete and perfect.
 
-#### Complete
+### Complete
 
 Complete Binary Trees always have minimal height for size n (log2n). Complete tree may be full but not perfect. Maximum height of binary tree with n nodes is (n-1). To create perfectly balanced trees, need to ensure previous level is full by filling nodes always from the left, before adding to next level. Any search has at most as many steps as the height of tree.
 
@@ -52,15 +52,15 @@ n       log2n
 1024    10
 ```
 
-#### Perfect
+### Perfect
 
 All levels including the last level are full of nodes i.e. all levels on tree have maximum number of nodes. A perfect tree is always complete and full. Have precisely 2^k - 1 nodes, where k is last level of tree.
 
-#### Balanced
+### Balanced
 
 A tree is balanced if the left subtree and right subtree heights differ by at most 1 for every node.
 
-### B-Trees
+## B-Trees
 
 Generalization of self-balancing binary search tree in which each node can hold more than one search key and have more than two children. Structure is designed to allow more efficient self-balancing, and offers advantages when node data needs to be kept in external storage such as disk drives. Defintion is:
 

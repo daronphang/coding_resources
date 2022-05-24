@@ -1,7 +1,6 @@
 ### Context Manager
 
-Usage of resources like file operations and database connections is very common but limited in supply; need to release/close them after usage. When creating context
-managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection.
+Usage of resources like file operations and database connections is very common but limited in supply; need to release/close them after usage. When creating context managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection.
 
 Both methods are built-in methods for 'with' statement in Python.
 
@@ -37,7 +36,7 @@ class ContextManager:
         return self.file
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
-        # to handle errors during the execution of the with block 
+        # to handle errors during the execution of the with block
         # if errors occur during when creating class, need to handle try catch separately
         self.file.close()
 

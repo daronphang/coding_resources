@@ -1,4 +1,4 @@
-### Trees
+## Trees
 
 In Computer Science, tree is a very general and powerful non-linear data structure that resembles a real tree. Consists of an ordered set of linked nodes in a connected graph, in which each node has at most one parent node, and zero or more children nodes which a specific order.
 
@@ -10,7 +10,7 @@ Like most data structures, need primitive operators (constructors, seleectors, c
 
 ![nodes](../../images/tree-structure.PNG)
 
-### Quad Trees
+## Quad Trees
 
 For a quadtree, each leaf-node is labelled by a value and each non-leaf mode has exactly four children. Used most often to partition two-dimensional space i.e. pixelated image by recursively dividing it into four quadrants. A quadtree by definition is either:
 
@@ -18,7 +18,7 @@ For a quadtree, each leaf-node is labelled by a value and each non-leaf mode has
 - Root node without a value and four quad tree children, lu, ll, ru, rl.
 - Can be tested with isValue(qt), which returns true if qt is single node.
 
-#### Selectors
+### Selectors
 
 ```
 lu      Returns left-upper quad-tree

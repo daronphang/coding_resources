@@ -1,4 +1,4 @@
-### Greedy Algorithms
+## Greedy Algorithms
 
 A greedy algorithm always makes the choice that looks best at the current moment i.e. makes a locally optimal choice in the hope that this choice will lead to a globally optimal solution. Though they do not always yield optimal solutions, for many problems they do. For many optimization problems, greedy algorithm is simpler and more efficient than dynamic programming. Typically have top-down design i.e. make a choice and then solve a subproblem, rather than bottom-up technique which involves solving subproblems before making a choice.
 

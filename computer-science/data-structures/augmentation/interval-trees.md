@@ -1,4 +1,4 @@
-### Intervals
+## Intervals
 
 Intervals are convenient for representing events that each occupy a continuous period of time. Three types of intervals:
 
@@ -11,11 +11,11 @@ a) i and i' overlap.
 b) i is to the left of i' i.e. i.high < i'.low.
 c) i is to the right of i' i.e. i'high < i.low.
 
-#### Figure
+### Figure
 
 <img src="../../images/interval-trichotomy.PNG">
 
-### Interval Trees
+## Interval Trees
 
 An interval tree is a red-black tree that maintains a dynamic set of elements, with each element x containing an interval x.int. Interval trees support the following operations:
 
@@ -50,6 +50,6 @@ intervalSearch(T,i) {
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../images/interval-tree-red-black.PNG">

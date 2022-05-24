@@ -1,4 +1,4 @@
-### Insertion Sort
+## Insertion Sort
 
 Worst case and average case number of comparisons have time complexities of O(n^2).
 

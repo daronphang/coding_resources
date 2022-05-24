@@ -1,6 +1,6 @@
-### Stacks
+## Stacks
 
-Equivalent to linked lists on an abstract level. Ideal structure to model First-In-Last-Out (FILO), or Last-In-First-Out (LIFO) strategy in search. 
+Equivalent to linked lists on an abstract level. Ideal structure to model First-In-Last-Out (FILO), or Last-In-First-Out (LIFO) strategy in search.
 
 ### Operations
 

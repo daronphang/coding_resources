@@ -1,4 +1,4 @@
-### Huffman Codes
+## Huffman Codes
 
 Huffman codes compress data very effectively. Given a sequence of characters as data, Huffman's greedy algorithm uses a table giving how often each character occurs i.e. frequency, to build up an optimal way of representing each character as a binary string.
 
@@ -13,7 +13,7 @@ variable-length = (45*1 + 13*3 + 12*3 + 16*3 + 9*4 + 5*4) * 1000
 
 <img src="../../images/huffman-code-example.PNG">
 
-### Prefix Codes
+## Prefix Codes
 
 Prefix codes are codes in which no codeword is also a prefix of some other codeword. A prefix code can always achieve the optimal data compression among any character code.
 
@@ -23,7 +23,7 @@ Prefix codes are desirable because they simplify decoding. Since no codeword is 
 
 The decoding process can be represented with a binary tree (not BST) whose leaves are the given characters. An optimal code is always represented by a full binary tree.
 
-### Constructing Huffman Code
+## Constructing Huffman Code
 
 ```
 // each character has "freq" attribute
@@ -50,10 +50,10 @@ return extractMin(Q)    // return root of the tree
 
 ```
 
-#### Figure
+### Figure
 
 <img src="../../images/huffman-code-trees.PNG">
 
-#### Algorithm Steps
+### Algorithm Steps
 
 <img src="../../images/huffman-code-sequence.PNG">

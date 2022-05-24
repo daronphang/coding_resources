@@ -1,4 +1,4 @@
-### Optimal BST
+## Optimal BST
 
 Suppose that we are designing a program to translate from English to French. For each occurrence of each English word in the text, we need to look up its French equivalent. This could be done using BST with French equivalents as satellite data. Nonetheless, as we are searching for each individual word throughout the tree, we want the total time spent searching (cost of search) to be as low as possible. Words with higher frequencies should be placed nearer towards the root, and vice versa.
 
@@ -19,11 +19,11 @@ searchCostKey = level of node * frequency/probability
 searchCostBST = summation of searchCostKey for each key
 ```
 
-#### Figure
+### Figure
 
 <img src="../../images/optimal-BST-example.PNG">
 
-### Recursive Solution for Optimal Substructure
+## Recursive Solution for Optimal Substructure
 
 - Subproblem domain as Ki, ... Kj where i >= 1, j <= n, j >= i-1.
 - When j = i-1, there are no actual keys but dummy key D(i-1).
@@ -44,7 +44,7 @@ findOptimalCost(p, q, left, right) {
 }
 ```
 
-#### Formula
+### Formula
 
 We try one by one all nodes as root (r varies from i to j). When rth node is made as root, the optimal cost from (i to r-1) and (r+1 to j) is recursively calculated. The sum of probabilities from i to j for both key nodes and dummies are also added as follows:
 
@@ -54,7 +54,7 @@ We try one by one all nodes as root (r varies from i to j). When rth node is mad
 
 <img src="../../images/optimal-BST-formula.PNG">
 
-### Final Solution
+## Final Solution
 
 ```
 // p and q are arrays containing probabilities of nodes and dummies respectively
@@ -93,7 +93,7 @@ optimalBST(p,q,n) {
 }
 ```
 
-#### Sample Procedure (n=3)
+### Sample Procedure (n=3)
 
 To compute the larger differences i.e. e[1,3], need compute the smaller differences first.
 
@@ -118,7 +118,7 @@ e[1,1], e[2,2], e[3,3]
 e[1,0], e[2,1], e[3,2], e[4,3]
 ```
 
-#### Sample
+### Sample
 
 ```
 // example calculation
@@ -147,7 +147,7 @@ t = e[1,2] = e[1,0] + e[2,2] + w[1,2] = 0.05 + 0.40 + 0.45 = 0.90
 t = e[1,1] + e[3,2] + w[1,2] = 0.45 + 0.05 + 0.45 = 0.90    // no change
 ```
 
-#### Figure
+### Figure
 
 <img src="../../images/dp-optimal-BST.PNG">
 

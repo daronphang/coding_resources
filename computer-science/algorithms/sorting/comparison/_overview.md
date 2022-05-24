@@ -1,24 +1,24 @@
-### Comparison Sorting Strategies
+## Comparison Sorting Strategies
 
-All sorting algorithms must make O(nlogn) comparisons in worst case to sort n elements. 
+All sorting algorithms must make O(nlogn) comparisons in worst case to sort n elements.
 
-#### Enumeration
+### Enumeration
 
 Considers all items. If there are N items which are smaller than the ones we are currently considering, then its final position will be at (N+1).
 
-#### Exchange
+### Exchange
 
 If two items are found to be out of order, exchange them. Repeat till all items are in order.
 
-#### Selection
+### Selection
 
 Find smallest item, put in first position. Find the smallest of remaining items, and put in second position. Repeat till all items are in order.
 
-#### Insertion (Incremental Approach)
+### Insertion (Incremental Approach)
 
 Take items one at a time and insert them into an initially empty data structure such that data structure continues to be sorted at each stage.
 
-#### Divide and Conquer (DAC)
+### Divide and Conquer (DAC)
 
 Recursively split the problem into small sub-problems till you just have single items that are trivial to sort. Then put sorted parts together in a way that preserves the sorting. Algorithms that are recursive in nature follow DAC approach. Involves three steps at each level of recursion:
 
@@ -26,7 +26,7 @@ Recursively split the problem into small sub-problems till you just have single 
 2. **Conquer** the subproblems by solving them recursively.
 3. **Combine** the solutions to subproblems into the solution for the original problem.
 
-### Sort Comparison
+## Sort Comparison
 
 | Algorithm | 128 | 256 | 512 | 1024 | 1024(ordered) | 1024(Reversed) | 2048  |
 | --------- | --- | --- | --- | ---- | ------------- | -------------- | ----- |

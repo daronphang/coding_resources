@@ -1,4 +1,4 @@
-### Bubble Sort
+## Bubble Sort
 
 Follows exchange sort approach. Easy to implement but slow to run. Worst case and average case number of comparisons have time complexities of O(n^2).
 

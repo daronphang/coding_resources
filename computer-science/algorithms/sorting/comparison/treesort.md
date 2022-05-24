@@ -1,4 +1,4 @@
-### Treesort
+## Treesort
 
 Another way of implementing an insertion sorting algorithm using binary search tree.
 

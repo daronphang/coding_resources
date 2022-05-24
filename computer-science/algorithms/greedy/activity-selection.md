@@ -1,4 +1,4 @@
-### Activity-Selection Problem
+## Activity-Selection Problem
 
 - Given a set S with activities = {a1, a2, ..., an}
 - Each activity has start and finish time i.e. Si, Fi
@@ -10,7 +10,7 @@ Assumption: activities are sorted in monotonically increasing order of finish ti
 
 <img src="../../images/greedy-algo-example.PNG">
 
-### Making the Greedy Choice (Choosing First Activity to Finish)
+## Making the Greedy Choice (Choosing First Activity to Finish)
 
 Intuition suggests that we should choose an activity that leaves the resource available for as many other activities as possible i.e. choosing the activity with earliest finish time. If more than one activity in S has the earliest finish time, then we can choose any.
 
@@ -40,37 +40,37 @@ recursiveActivitySelector(s,f,k,n) {
 }
 ```
 
-### Algorithm Operation
+## Algorithm Operation
 
-#### Step 1
+### Step 1
 
 recursiveActivitySelector(s,f,0,11) with fictious activity A0 with f[0] = 0. Function is called recursively.
 
 Activities selected: {A1}
 
-#### Step 2
+### Step 2
 
 recursiveActivitySelector(s,f,1,11). s[2] and s[3] have start times < f[1]. While loop ends with m = 4. Function is called recursively.
 
 Activities selected: {A1, A4}
 
-#### Step 3
+### Step 3
 
 recursiveActivitySelector(s,f,4,11). While loop ends with m = 8. Function is called recursively.
 
 Activities selected: {A1, A4, A8}
 
-#### Step 4
+### Step 4
 
 recursiveActivitySelector(s,f,8,11). While llop ends with m = 11. Function terminates.
 
 Activities selected: {A1, A4, A8, A11}
 
-#### Figure
+### Figure
 
 <img src="../../images/greedy-algo-operation.PNG">
 
-### Iterative Greedy Algorithm
+## Iterative Greedy Algorithm
 
 ```
 greedyActivitySelector(s,f){

@@ -1,4 +1,4 @@
-### Knapsack Problem (0-1 and Fractional)
+## Knapsack Problem (0-1 and Fractional)
 
 Knapsack problem shows that some problems can only be solved by greedy algorithms, while others require dynamic programming. Problem as follows:
 

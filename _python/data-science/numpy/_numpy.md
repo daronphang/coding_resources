@@ -53,7 +53,7 @@ Numpy provides us with a feature called Broadcasting, which defines how arithmet
 
 Rule for broadcasting is that the ranks of the array (dimension) must be equal or either one of them is one. For scalars, can reshape into an array that meets the criteria. In reality, no new array is actually created for broadcasted array.
 
-<img src="../images/numpy-broadcast.PNG">
+<img src="../_snapshots/numpy-broadcast.PNG">
 
 ```py
 arr_a = np.random.rand(3,4,6,2)     # random array of shape (3,4,6,2)

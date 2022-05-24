@@ -1,4 +1,4 @@
-### Prim's Algorithm (Greedy)
+## Prim's Algorithm (Greedy)
 
 Prim's algorithm has the property that the edges in set A always form a single tree. Tree starts from an arbitrary root and grows until the tree spans all the vertices. Qualifies as greedy since at each step, it adds to the tree an edge that contributes the minimum amount possible to tree's weight.
 
@@ -9,7 +9,7 @@ Starts with an empty spanning tree that maintains two sets of vertices; first co
 3.  Pick a vertex U not inside mstSet and has minimum key value, and update key value of all adjacent vertices.
 4.  If weight of edge U-V < V, update key value as weight of U-V.
 
-#### Algorithm
+### Algorithm
 
 ```
 // r is root
@@ -32,11 +32,11 @@ mstPrim(G,w,r) {
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../../images/graphs-MST-prim.PNG">
 
-#### Example
+### Example
 
 1. Keys assigned to vertices as {0, INF, INF, INF, INF, INF, INF, INF}.
 2. Vertex 0 is picked and included in mstSet.

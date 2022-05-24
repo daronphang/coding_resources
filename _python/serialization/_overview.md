@@ -1,9 +1,11 @@
-### Serialization and Deserialization
+### Serialization
 
-Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Serialization is the process of converting app-level objects (classes, dictionaries) into a format that allows us to store or transmit the data such as JSON, CSV, YAML, XML, Binary, HDF5, and etc (either text-based or binary-based). In other words, serialization is the process of converting a structured object into a sequence of bytes which can be stored in a file system or database, or sent through the network.
 
-Serialization is the process of converting app-level objects to primitive types such as dictionary, text, string, etc. Serialized objects can then be rendered to standard formats such as JSON for use in HTTP API. Often used in database management whereby custom objects are converted into dictionaries and then into texts before storing into database.
+### Deserialization
 
 Deserialization is the reverse process whereby data such as dictionaries or JSON objects are converted back into app-level objects. Often used in web development when backend receives input data from frontend or retrieving data from database, and then converting them back into custom objects.
+
+### Libraries
 
 Several Python libraries that support both deserialization and serialization such as pickle, json, cattrs, and marshmallow.

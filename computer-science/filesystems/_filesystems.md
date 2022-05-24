@@ -1,14 +1,12 @@
 ## Filesystems
 
-A file system defines how files are named, stored and retrieved from a storage device. Everytime a file is opened/downloaded/copied/edited/deleted, OS uses its file system internally to load it from storage device. File system handles space management, metadata, data encryption, file access control, and data integrity.
+A file system defines how files are named, stored and retrieved from a storage device. Everytime a file is opened, downloaded, copied, edited, or deleted, OS uses its file system internally to load it from storage device. File system handles space management, metadata, data encryption, file access control, and data integrity.
 
 ## Types of FileSystems
 
-Type of file system differs by OS and needs of OS. Each file system has its own logical structures and properties such as speed and size. Classification of filesystems as follows:
+Type of file system differs by OS and needs of OS. Each file system has its own logical structures and properties such as speed and size.
 
-- Windows: File Allocation Table 32 (FAT32 for Windows 9x), New Technology File System (NTFS for Windows 2000, XP, Vista, 7, 10), Extended File Allocation Table (exFAT).
-- Apple: Hierarchical File System (HFS), Apple File System (APFS).
-- Linux: ext Family (ext, ext2, ext3, ext4).
+## Windows
 
 ### FAT
 
@@ -18,13 +16,27 @@ Supported by Windows, FAT is considered simple and reliable, and is modeled afte
 
 A lighter version of NTFS created by Microsoft in 2006. Designed for high-capacity removable devices such as external hard disks, USB drives, and memory cards. Has read and write support on Non-Windows environments including MacOS and Linux; hence, is the best cross-platform file system.
 
+### NTFS
+
+Default file system for Windows products. Improvements from previous FAT include better metadata support, performance and use of disk space.
+
+## Linux (ext2, ext3, ext4, msdos, vfat, cramfs)
+
+Supports reading over 100 partition types to allow for compatibility and interoperability with other computer's filesystems.
+
 ### GFS (Global File System)
 
 File system for Linux and is a shared disk file system. Has the ability to make multiple computers to act as an integrated machine. When two computers are not able to send files directly with each other, GFS makes them capable of sharing a group of files directly. Maintained by Red Hat.
 
-### NTFS
+## Apple
 
-Default file system for Windows products. Improvements from previous FAT include better metadata support, performance and use of disk space.
+### HFS
+
+Hierachical file system.
+
+### APFS
+
+Apple File System.
 
 ## Architecture
 

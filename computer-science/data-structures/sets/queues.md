@@ -1,6 +1,6 @@
-### Queues
+## Queues
 
-Implements First-In-First-Out (FIFO) policy. Element to be deleted is always the one that has een in the set the longest time. Has a head and tail. 
+Implements First-In-First-Out (FIFO) policy. Element to be deleted is always the one that has een in the set the longest time. Has a head and tail.
 
 ### Operations
 

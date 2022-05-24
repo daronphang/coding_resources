@@ -30,7 +30,7 @@ https://adrianmejia.com/data-structures-for-beginners-graphs-time-complexity-tut
 - Dense: Many conenctions i.e. close to max number of links.
 - Complete: All nodes are connected to all other nodes i.e. each node has (#nodes-1) edges.
 
-### Tree and Forest
+## Tree and Forest
 
 A tree is an undirected, connected and acyclic graph. Has n vertices with (n-1) edges. For directed graphs, notion of connectedness has two versions:
 
@@ -39,11 +39,11 @@ A tree is an undirected, connected and acyclic graph. Has n vertices with (n-1) 
 
 A forest is an undirected, disconnected acyclic graph i.e. a disjoint collection of trees.
 
-#### Figure
+### Figure
 
 <img src="../../images/graphs-forest.PNG" />
 
-### Weighted Graph Application
+## Weighted Graph Application
 
 | Application      | Node/Vertex       | Edges                               | Weight                          |
 | ---------------- | ----------------- | ----------------------------------- | ------------------------------- |
@@ -52,7 +52,7 @@ A forest is an undirected, disconnected acyclic graph i.e. a disjoint collection
 | GPS Navigation   | Road intersection | Road                                | Time taken between destinations |
 | Networks Routing | Server            | Data link                           | Connection speed                |
 
-### Relations Between Graphs
+## Relations Between Graphs
 
 Two graphs are said to be **isomorphic** if they contain the same number of vertices with same pattern of adjacency i.e. there is bijection between their vertices which perseves the adjacency relations.
 
@@ -68,7 +68,7 @@ A subdivision of graph G can be defined as a graph resulting from the subdivisio
 
 An **edge contraction** removes an edge from a graph and merges the two vertices previously connected by it. This can lead to multiple edges between a pair of vertices, or self-loops connecting a vertex to itself.
 
-### Planarity
+## Planarity
 
 A planar graph is one that can be embedded in a plane i.e. can be drawn on a sheet of paper in such a way that no edges cross each other. This is important in applications such as printed circuit design. Though planar graphs can have edges that cross each other, they can be transformed by moving vertices or deforming the edges.
 

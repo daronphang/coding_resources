@@ -1,4 +1,4 @@
-### GroupBy (Split-Apply-Combine)
+## GroupBy (Split-Apply-Combine)
 
 Involves some combination of splitting the object, applying a function, and combining the results. This can be used to group large amounts of data and compute operations on these groups. Essentially splits the data into different groups depending on a column of your choice. **If grouping by multiple keys, it will result in a MultiIndex Dataframe** which may not be practical if data analysis is to be performed. This can be reset by calling reset_index() or setting as_index argument to False.
 
@@ -19,7 +19,7 @@ grp_df = df.groupby(['Area', 'Design Id', 'Chart Type'], as_index=False)
 subset.groupby(['Sex', 'Pclass'], dropna=False)
 ```
 
-### Aggregation
+## Aggregation
 
 ```py
 # performs aggregation across all columns
@@ -35,7 +35,7 @@ grp_df.get_group(('DIFFUSION', 'B47R', 'CSPL'), as_index=False).dropna()\
 df.groupby(['col1', 'col2'])['col3', 'col4'].apply(lambda x: x.astype(int).sum())
 ```
 
-#### Agg()
+### Agg()
 
 Allows you to specify multiple aggregation functions at once.
 
@@ -56,7 +56,7 @@ df.groupby('Sex').Age.agg(
 )
 ```
 
-### Transformation
+## Transformation
 
 A process in which group-specific computations are performed and return a like-indexed (same length) object of that being grouped. Methods transform() and apply() are most commonly used.
 
@@ -67,7 +67,7 @@ df.groupby('Sex').Age.transform(standardization)
 df.groupby('Sex').Age.apply(standardization)
 ```
 
-### Filtration
+## Filtration
 
 A process in which some groups are discarded based on group-wise computation that evaluates to boolean.
 
@@ -76,7 +76,7 @@ A process in which some groups are discarded based on group-wise computation tha
 df.groupby('Cabin').filter(lambda x: len(x) >= 4)
 ```
 
-### Methods
+## Methods
 
 ```python
 grouped_obj = df.groupby('col1')

@@ -1,4 +1,4 @@
-### Traversing BST
+## Traversing BST
 
 There are different ways of traversing a binary tree, depending on the order that the nodes are are visited: in-order, pre-order, and post-order.
 

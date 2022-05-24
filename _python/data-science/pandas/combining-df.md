@@ -1,4 +1,4 @@
-### Concatenate
+## Concatenate
 
 Used for combining DataFrames across rows or columns (Default is to operate on columns).
 
@@ -23,9 +23,9 @@ pd.concat([df1, df2], axis=1)
 res = pd.concat([df1, df2], keys=['Year 1','Year 2'])
 ```
 
-<img src="../images/pandas-concatenate.PNG">
+<img src="../_snapshots/pandas-concatenate.PNG">
 
-#### Appending Rows to a DataFrame
+### Appending Rows to a DataFrame
 
 Convert a series into a DataFrame and concat.
 
@@ -34,7 +34,7 @@ s2 = pd.Series(["X0", "X1", "X2", "X3"], index=["A", "B", "C", "D"])
 result = pd.concat([df1, s2.to_frame().T], ignore_index=True)
 ```
 
-### Merge
+## Merge
 
 Used for combining data on common columns or indices. Renames the common columns using the given suffix. Also provides three ways of flexible control over row-wise alignment.
 
@@ -51,7 +51,7 @@ pd.merge(left, right, row, on='key')
 # left_index=True and right_index=True
 ```
 
-### Join
+## Join
 
 An instance method that lives on your DataFrame. Used for combining data on a key column or an index. Allows the lowest level of control. Combines all the columns from the two tables, with the common columns renamed with the defined lsuffix and rsuffix. Performs a left join by default.
 
@@ -61,4 +61,4 @@ Under the hood, join() uses merge() but provides a more efficient way to join Da
 df.join(df2, lsuffix='df1_col_name', rsuffix='df2_col_name')
 ```
 
-<img src="../images/pandas-join.PNG">
+<img src="../_snapshots/pandas-join.PNG">

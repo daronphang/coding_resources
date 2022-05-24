@@ -1,4 +1,4 @@
-### Node
+## Node
 
 ```js
 class Node {
@@ -29,7 +29,7 @@ class Node {
 }
 ```
 
-### Graph
+## Graph
 
 ```js
 class Graph {
@@ -90,7 +90,7 @@ Graph.UNDIRECTED = Symbol("directed graph"); // two-ways edges
 Graph.DIRECTED = Symbol("undirected graph"); // one-way edges
 ```
 
-### Queue
+## Queue
 
 ```js
 class Queue {
@@ -123,7 +123,7 @@ class Queue {
 }
 ```
 
-### Stack
+## Stack
 
 ```js
 class Stack {
@@ -149,7 +149,7 @@ class Stack {
 }
 ```
 
-### Breadth-First Search
+## Breadth-First Search
 
 ```js
 function* bfs(first) {
@@ -170,7 +170,7 @@ function* bfs(first) {
 }
 ```
 
-### Depth-First Search
+## Depth-First Search
 
 ```js
 function* dfs(first) {

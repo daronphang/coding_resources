@@ -1,8 +1,8 @@
-### Priority Queues
+## Priority Queues
 
 A priority queue is a data structure for maintaining a set S of elements, each with an associated value called a **key**. Comes in two forms: max-priority and min-priority queues which are in turn based on max/min heaps. Examples of applications include scheduling of jobs (max) and event-driven simulator in order of time of occurrence (min).
 
-``` 
+```
 // MAX PRIORITY
 
 INSERT(S,x)             Inserts an element into set S
@@ -11,7 +11,7 @@ EXTRACT-MAX(S)          Removes and returns the element S with largest key
 INCREASE-KEY(S,x,k)     Increases value of element x's key to new value k whereby k >= x
 ```
 
-``` 
+```
 // MIN PRIORITY
 
 INSERT(S,x)             Inserts an element into set S
@@ -26,7 +26,6 @@ When a heap is used to implement priority-queue, often need to store a **handle*
 
 ### Operations (Max-Priority)
 
-
 <img src="../../images/priority-queue-increase-key.PNG" >
 
 ```
@@ -39,7 +38,7 @@ EXTRACT-MAX(A) {
     error "heap underflow"
   max = A[1]
   // swap last element with first element
-  A[1] = A[A.heapSize]  
+  A[1] = A[A.heapSize]
   A.heapSize = A.heapSize - 1
   maxHeapify(A, 1)
   return max

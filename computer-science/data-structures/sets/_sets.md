@@ -1,4 +1,4 @@
-### Dynamic Sets
+## Dynamic Sets
 
 Unlike mathematical sets which are unchanging, dynamic sets manipulated by algorithms can grow, shrink or change over time. A dictionary is a dynamic set that supports insertion, deletion and testing of membership. In a typical implementation of dynamic set, each element is represented by an object whose attributes can be examined and manipulated if we have a pointer to the object such as a key.
 

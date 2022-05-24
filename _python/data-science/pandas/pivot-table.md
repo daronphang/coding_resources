@@ -1,6 +1,6 @@
 ### Pivot Table
 
-A pivot table is used to summarize, sort, reorganize, gorup, count, total or average data stored in a table. Allows us to transform columns into rows and vice versa. Also allows grouping by any column, and using advanced calculations on them.
+A pivot table is used to summarize, sort, reorganize, group, count, total or average data stored in a table. Allows us to transform columns into rows and vice versa. Also allows grouping by any column, and using advanced calculations on them.
 
 Creates a spreadsheet-style pivot table as a Dataframe. When pivoting, automatically averages the data. To perform other aggregate functions, simply have to specify in "aggfunc" argument. Aggregration functions only apply to the columns specified in "values" argument.
 

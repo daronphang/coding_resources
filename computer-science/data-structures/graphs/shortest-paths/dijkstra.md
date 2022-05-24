@@ -1,8 +1,8 @@
-### Dijkstra
+## Dijkstra
 
 Solves single-source shortest-paths problem on a weighted, directed graph for the case in which all edge weights are non-negative. Algorithm maintains a set S of vertices whose final shortest-path weights from source s have already been determined. A greedy strategy as it always chooses the "lightest" or "closest" vertex in V-S to add to set S. Has time complexity of O((V+E)lgV) with min-priority queue, and O(n^2) without.
 
-### Improving Estimates
+## Improving Estimates
 
 General idea is to look systematically for shortcuts.
 
@@ -12,7 +12,7 @@ if (D[u] + weight[u][z] < D[z])
     D[z] = D[u] + weight[u][z]
 ```
 
-### Algorithm
+## Algorithm
 
 ```
 dijkstra(G,w,s){
@@ -30,13 +30,13 @@ dijkstra(G,w,s){
 }
 ```
 
-### Figure
+## Figure
 
 <img src="../../../images/shortest-paths-dijkstra.PNG">
 
-### Sequence
+## Sequence
 
-#### First Iteration
+### First Iteration
 
 ```
 (s,t) = 10
@@ -45,7 +45,7 @@ dijkstra(G,w,s){
 // shortest path weights determined: {y}
 ```
 
-#### Second Iteration
+### Second Iteration
 
 ```
 (y,t) = 5 + 3 = 8 (update t)
@@ -57,7 +57,7 @@ dijkstra(G,w,s){
 // shortest path weights determined: {y,z}
 ```
 
-#### Third Iteration
+### Third Iteration
 
 ```
 (z,x) = 7 + 6 = 13 (update x)
@@ -70,7 +70,7 @@ dijkstra(G,w,s){
 // shortest path weights determined: {y,z,t}
 ```
 
-#### Fourth Iteration
+### Fourth Iteration
 
 ```
 (t,x) = 8 + 1 = 9 (update x)

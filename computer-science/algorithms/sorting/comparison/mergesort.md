@@ -1,4 +1,4 @@
-### Mergesort
+## Mergesort
 
 Follows DAC paradigm. Has time complexity of O(nlog2n).
 

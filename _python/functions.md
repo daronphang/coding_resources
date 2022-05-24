@@ -1,4 +1,4 @@
-### Built-in Functions
+## Built-in Functions
 
 https://docs.python.org/3/library/functions.html
 
@@ -49,7 +49,7 @@ s = Shape()
 dir(s)  # ['area', 'location', 'perimeter']
 ```
 
-### Property:
+### Property
 
 ```py
 class C:

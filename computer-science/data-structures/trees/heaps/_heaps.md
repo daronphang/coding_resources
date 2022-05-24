@@ -1,4 +1,4 @@
-### Heap Trees
+## Heap Trees
 
 Binary trees can be stored with the help of pointer-like structures, in which each item contains references to its children. For complete binary trees, there is a useful array based alternative. A Heap is a special tree-based data structure in which the tree is a **complete binary tree**.
 
@@ -67,7 +67,6 @@ buildMaxHeap(A) {
 
 // loop invariant: at the start of each iteration, each node i+1, i+2, ..., n is the root of a max-heap
 ```
-
 
 ### Storing Binary Trees as Arrays
 

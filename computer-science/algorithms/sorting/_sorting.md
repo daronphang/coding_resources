@@ -1,10 +1,10 @@
-### Sorting
+## Sorting
 
 A collection of data is called a record, whereby each record contains a key and remainder as satellite data. In practice, when a sorting algorithm permutes keys, it must permute satellite data as well. If each record includes large amount of satellite data, normally permute an array of pointers to the records.
 
 When focusing on the problem of sorting, we assume that the input consists only of numbers.
 
-### Basic Sorting
+## Basic Sorting
 
 If given an array of sequential orders that are jumbled up, the simplest way is to put the items directly in the appropriate places:
 
@@ -23,7 +23,7 @@ A sorting algorithm is stable if it can never swap identical items past each oth
 - Insertion: Stable, items with identical keys will have their original order preserved.
 - Selection: Unstable as nothing can stop an item from being swap past an identical item.
 
-### Comparison of Sorting Algorithms
+## Comparison of Sorting Algorithms
 
 | Algorithm      | Worst-case Running Time | Average Case | Space Complexity |
 | -------------- | ----------------------- | ------------ | ---------------- |
@@ -37,7 +37,7 @@ A sorting algorithm is stable if it can never swap identical items past each oth
 | Radix Sort     | O(d(n+k))               | O(d(n+k))    | O(n+k)           |
 | Bucket sort    | O(n^2)                  | O(n)         | O(n)             |
 
-### Fastest Algorithm
+## Fastest Algorithm
 
 The fastest sorting algorithm is one that exploits the peculiarities of the input data, subjected to external constraints. Hence, industrial-strength sort systems keep a close eye on the size of input data and adjust/retune its algorithm. Hence, there is no fastest sorting algorithm for ALL cases.
 

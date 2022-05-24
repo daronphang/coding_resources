@@ -1,4 +1,4 @@
-### Swarm
+## Swarm
 
 Clustering service solution built inside Docker. Consists of Manager Node and Worker Node. Docker service replaces docker run. IP address of manager must be assigned to a network interface available to host OS; all nodes in swarm must connect to the manager at same IP. Services can be attached to multiple Docker networks, and network can have many containers. Managers can behave as Workers i.e. run containers themselves.
 
@@ -22,13 +22,13 @@ $docker swarm join <SSH key & IP>      Add to other worker nodes to join to swar
 $docker swarm join-token manager       Add response to other worker nodes to make them manager by default
 ```
 
-### RAFT Consensus Algorithm
+## RAFT Consensus Algorithm
 
 Consensus is a fundamental problem in fault-tolerant distributed systems involving multiple servers agreeing on values. Consensus algorithms make progress when any majority of servers is available i.e. cluster of 5 servers can operate with 2 failures. Tolerates up to (n-1)/2 failures.
 
 Manager nodes implement this algorithm to manage global cluster state to ensure all Managers are storing the same consistent state. Having same consistent state across cluster means in failure, any Manager node can pick up tasks and restore services to stable state.
 
-### Overlay Multi-Host Networking
+## Overlay Multi-Host Networking
 
 Default network driver for Swarm. Creates a Swarm-wide bridge network where containers across hosts on the same virtual network can access each other. For intra-swarm communication. All nodes will have access to virtual IP that is mapped to the DNS name of the service. Has built-in load balancer that will distribute incoming network connections evenly.
 
@@ -38,7 +38,7 @@ $docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypas
 $docker service create --name drupal --network mydrupal -p 8080:80 drupal
 ```
 
-### Routing Mesh
+## Routing Mesh
 
 Routes incoming packets for a service to proper Task. Spans all nodes in Swarm. Works in two ways:
 
@@ -47,7 +47,7 @@ Routes incoming packets for a service to proper Task. Spans all nodes in Swarm. 
 
 When deploying containers to Swarm, don't have to care which server it is on as it might change. Allows one service to be accessible from any nodes in the Swarm. Takes packets from server, routes over VIP to the container. If a service is run on host port:8080 on container port:80 nginx from node1, any node connected in swarm can visit the nginx page on port:8080.
 
-### Stacks
+## Stacks
 
 New layer of abstraction to Swarm. Stacks accept Compose files as their declarative definition for services, overlay networks and volumes. When using deploy in Compose file, cannot use build. Does not need docker-compose cli on the Swarm server.
 
@@ -77,7 +77,7 @@ $docker stack deploy -c docker-compose.yml mydb      Secrets defined in Compose 
 $docker-compose exec psql cat /run/secrets/psql_user
 ```
 
-### Service Updates
+## Service Updates
 
 Will replace containers for most changes. Includes rollback and healthcheck options.
 

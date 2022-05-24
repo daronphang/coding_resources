@@ -1,4 +1,4 @@
-### Quicksort
+## Quicksort
 
 Applies DAC paradigm as follows:
 

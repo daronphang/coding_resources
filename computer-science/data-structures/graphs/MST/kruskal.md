@@ -1,4 +1,4 @@
-### Kruskal Algorithm (Greedy)
+## Kruskal Algorithm (Greedy)
 
 Kruskal's algorithm finds a safe edge to add to the growing forest by finding, of all the edges that connect any two trees in the forest, an edge (u,v) of least weight. Qualifies as greedy since at each step, it adds to the forest an edge of least possible weight.
 
@@ -9,7 +9,7 @@ A greedy edge-based approach. Does not consider the vertices directly at all, bu
 3. If cycle is not formed, include this edge; else discard it.
 4. Repeat until there are V-1 edges in spanning tree.
 
-#### Algorithm
+### Algorithm
 
 ```
 mstKruskal(G,w) {
@@ -26,11 +26,11 @@ mstKruskal(G,w) {
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../../images/graphs-MST-kruskal.PNG">
 
-#### Example
+### Example
 
 <img src="../../../images/kruskal-example.PNG">
 

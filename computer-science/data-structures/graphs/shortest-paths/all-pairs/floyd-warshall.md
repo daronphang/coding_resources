@@ -1,4 +1,4 @@
-### Floyd Warshall
+## Floyd Warshall
 
 This algorithm considers all vertices as an intermediate vertex. For every vertex pair (i,j):
 

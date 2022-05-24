@@ -1,4 +1,4 @@
-### Kadane
+## Kadane
 
 Can be used to solve maximum subarray problem, whereby the task is to find the largest possible sum of a contiguous subarray, within a given one-dimensional array of numbers.
 

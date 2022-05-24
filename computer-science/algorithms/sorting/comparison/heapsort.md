@@ -1,4 +1,4 @@
-### Heapsort
+## Heapsort
 
 Heapsort introduces an algorithm design technique using a data structure called "heap". Heap makes it an efficient priority queue. Achieves the best average and worst-case complexities with both of O(nlog2n).
 

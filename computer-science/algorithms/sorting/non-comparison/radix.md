@@ -1,4 +1,4 @@
-### Two-Phase Radix Sorting
+## Two-Phase Radix Sorting
 
 Can be used to sort records of information that are keyed by multiple fields i.e. day, month, year. Procedure assumes that each element in the array has d digits, where digit 1 is the lowest-order digit and digit d is the highest-order digit. Complexity class is O(n).
 

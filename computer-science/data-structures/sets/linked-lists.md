@@ -1,22 +1,22 @@
-### Linked Lists
+## Linked Lists
 
 A data structure in which the objects are arranged in a linear order. Unlike an array in which the linear order is determined by the array indices, the order in a linked list is determined by a pointer in each object. Applications include image viewer with previous/next images, accessing previous/next page in borwser, and playlists in music player.
 
 A linked list is represented by a pointer to the first node of the linked list called the head. If the linked list is empty, then the value of the head points to NULL.
 
-#### Single
+### Single
 
 Contains pointer to next element only (no prev pointer attribute). Can virtually involve anything. Non-empty lists can be represented by two-cells; first cell contains pointer to a list element and second cell contains a pointer to either the empty list or another/next two-cell element.
 
-#### Doubly
+### Doubly
 
 Doubly linked list is an object with an attribute key and two other pointer attributes: next and prev. Object may also contain satellite data. If x.prev = NIL, element x has no predecessor and is therefore the first element or head, and vice versa for x.prev.
 
-#### Circular
+### Circular
 
 "Prev" pointer of the head of the list points to the tail, and the "next" pointer of the tail points to the head.
 
-#### Algorithm (Pseudo)
+### Algorithm (Pseudo)
 
 ```
 // time complexity of O(n)
@@ -49,17 +49,17 @@ listDelete(L,x) {
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../images/linked-list.PNG" >
 
-### Sentinels
+## Sentinels
 
 A sentinel is a dummy object that allows us to simplify boundary conditions. By providing a list with an object L.nil that represents NIL but has the attributes of the other objects in the list, whenever we have a reference to NIL in list code, we replace it by a reference to the sentinel L.nil. This converts a regular doubly-linked list into a **circular, doubly-linked list with sentinel**.
 
 L.nil appears between head and tail i.e. L.head is no longer needed as we can access the head by L.nil.next. Similarly, we can access tail by L.nil.prev.
 
-#### Algorithm (Pseudo)
+### Algorithm (Pseudo)
 
 ```
 listSearch(L,k) {
@@ -82,11 +82,11 @@ listDelete(L,x) {
 }
 ```
 
-#### Circular, Doubly-Linked List with Sentinel
+### Circular, Doubly-Linked List with Sentinel
 
 <img src="../../images/linked-list-sentinel.PNG" >
 
-### Allocating and Freeing Objects (Doubly-Linked List)
+## Allocating and Freeing Objects (Doubly-Linked List)
 
 Applies for doubly-linked lists. It is useful to manage the storage of objects not currently used in the linked-list representation so that one can be allocated. For instance, for objects stored in an array with size m, there may come a point whereby the dynamic set with size n contains n <= m elements. Since n objects represent the elements currently in dynamic set, the remaining m-n objects are considered free and and available to represent elements inserted into the dynamic set in the future. Features as follows:
 
@@ -96,7 +96,7 @@ Applies for doubly-linked lists. It is useful to manage the storage of objects n
 - Free list acts like a stack whereby the next object allocated is the last one freed.
 - Free list may be intertwined with doubly-linked list.
 
-#### Algorithm (Pseudo)
+### Algorithm (Pseudo)
 
 ```
 allocateObject() {
@@ -113,11 +113,11 @@ freeObject(x) {
 }
 ```
 
-#### Sequence of Events
+### Sequence of Events
 
 <img src="../../images/linked-list-free-object.PNG">
 
-### Linked Lists vs Arrays
+## Linked Lists vs Arrays
 
 | Arrays                                                                                                         | Linked Lists                                                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |

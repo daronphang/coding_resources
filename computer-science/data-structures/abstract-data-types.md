@@ -1,30 +1,30 @@
-### Arrays
+## Arrays
 
 Obvious way to store an ordered collection of items. Loops and iteration are used to sequentially process those items.
 
-### Invariants
+## Invariants
 
 An invariant is a condition that does not change during execution of a given program or algorithm. They are important as they enable correctness proofs and verification.
 
-### Linked Lists
+## Linked Lists
 
 A list can virtually involve anything. Non-empty lists can be represented by two-cells; first cell contains pointer to a list element and second cell contains a pointer to either the empty list or another/next two-cell element.
 
-#### Constructors
+### Constructors
 
 ```
 EmptyList
 MakeList(element,list)      Puts an element at the top of an existing list
 ```
 
-#### Selectors
+### Selectors
 
 ```
 first   Returns first element in list
 rest    Returns rest of elements other than first
 ```
 
-#### Extensible Markup Language (XML)
+### Extensible Markup Language (XML)
 
 XML has become the quasi-standard for communicating data structures between different computers and programming languages. There are many different ways to represent the same object in XML. It is flexible enough to represent and communicate very complicated structures in a uniform way.
 
@@ -47,7 +47,7 @@ XML has become the quasi-standard for communicating data structures between diff
 </cell>
 ```
 
-### Recursion
+## Recursion
 
 Can be used to iterate over lists. Idea is to formulate procedures which involve at least one step that invokes/calls the procedure itself. Two important derived procedures on lists: last and append.
 
@@ -64,8 +64,6 @@ last(1) {
 }
 ```
 
-
-
-### Doubly Linked Lists
+## Doubly Linked Lists
 
 Useful when working with a list of webpages, whereby each has a page containing a picture, a link to previous page, a link to next page. Doubly-linked list has an easy way to get previous and next element as compared to linked list. Can be represented by three-cells; first cell contains a pointer to previous three-cell/empty list, second cell contains a pointer to the list element and third cell contains a pointer to next three-cell/empty list.

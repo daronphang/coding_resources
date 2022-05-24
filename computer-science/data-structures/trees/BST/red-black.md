@@ -1,4 +1,4 @@
-### Red-Black Trees
+## Red-Black Trees
 
 A red-black tree is a BST with one extra bit of storage per node: its color, which can either be red or black. Ensures that no path is more than twice as long as any other, so that the tree is approximately balanced. Has height at most 2lg(n+1). A red-black tree satisfies the following properties:
 
@@ -10,26 +10,26 @@ A red-black tree is a BST with one extra bit of storage per node: its color, whi
 
 For convenience in dealing with boundary conditions, a single sentinel is used to represent NIL. T.nil is an object with same attributes as an ordinary node that is black. Hence, can treat NIL child of a node x as an ordinary node whose parent is x. One sentinel is used to represent all NILs i.e. all leaves and root's parent. Values of attributes parent, left, right, and key are immaterial.
 
-#### Figure
+### Figure
 
 <img src="../../../images/red-black-tree.PNG">
 
-### Rotations
+## Rotations
 
 During insertion or deletion, the result may violate red-black properties which requires changing of pointer structure through rotation.
 
-#### Left
+### Left
 
 When a left rotation is performed on node x, we assume its right child y is not T.nil and that the root's parent is T.nil. Left rotation "pivots" around the link from x to y resulting in:
 
 - Y is the new root of subtree.
 - X is Y's left child.
 
-#### Figure
+### Figure
 
 <img src="../../../images/red-black-rotation.PNG">
 
-#### Algorithm (Pseudo)
+### Algorithm (Pseudo)
 
 ```
 leftRotate(T,x) {
@@ -53,7 +53,7 @@ leftRotate(T,x) {
 }
 ```
 
-### Insert
+## Insert
 
 When a node is inserted, it will always be inserted as a RED node. This is because it does not violate the depth property 5. For balancing, recoloring is first performed. The color of the uncle is checked to decide the appropriate case. If properties are still violated after recoloring, rotation is performed. The main property that is violated is two consecutive reds.
 
@@ -102,7 +102,7 @@ redBlackInsertFixup(T,z){
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../../images/red-black-insertion.PNG">
 
@@ -110,7 +110,7 @@ redBlackInsertFixup(T,z){
 
 <img src="../../../images/red-black-insertion-3.PNG">
 
-### Deletion
+## Deletion
 
 The color of the sibling is checked to decide the appropriate case. The main property violated is change of black height in subtrees as deletion of black node may reduce height in one root to leaf path. If y is RED, red-black properties will still hold when y is removed or moved:
 
@@ -226,6 +226,6 @@ redBlackDeleteFixup(T,x){
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../../images/red-black-delete.PNG">

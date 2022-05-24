@@ -1,10 +1,10 @@
-### Bellman-Ford Algorithm
+## Bellman-Ford Algorithm
 
 Solves single-source shortest-paths problem in the general case in which edges can have negative weight. Is simple and has the further benefit of detecting whether a negative-weight cycle is reachable from the source by returning a boolean value. If there is such cycle, the algorithm indicates that no solution exists. Has time complexity of O(VE).
 
 Uses dynamic programming to solve the problem in bottom-up manner i.e. first calculcates the shortest distances which have at-most one edge in the path, then it calculcates the shortest path with at-most two edges, and etc.
 
-### Algorithm
+## Algorithm
 
 ```
 bellmanFord(G,w,s){
@@ -23,13 +23,13 @@ bellmanFord(G,w,s){
 }
 ```
 
-### Figure
+## Figure
 
 <img src="../../../images/shortest-paths-bellman-ford.PNG">
 
-### Sequence
+## Sequence
 
-#### First Iteration
+### First Iteration
 
 ```
 //before
@@ -43,7 +43,7 @@ t   x   y   z   s
 (y,x) = INFINITY
 (y,z) = INfINITY
 (z,x) = INFINITY
-(z,s) = INFINITY 
+(z,s) = INFINITY
 (s,t) = 0 + 6 = 6 < INFINITY (t updated to 6)
 (s,y) = 0 + 7 = 7 < INFINITY (y updated to 7)
 
@@ -52,14 +52,14 @@ t   x   y   z   s
 t   x   y   z   s
 ```
 
-#### Second Iteration
+### Second Iteration
 
 ```
 6   INF 7   INF 0
 t   x   y   z   s
 
 (t,x) = 6 + 5 = 11 < INFINITY (x updated to 11)
-(t,y) = 6 + 8 = 14 > 7 (no change) 
+(t,y) = 6 + 8 = 14 > 7 (no change)
 (t,z) = 6 - 4 = 2 < INFINITY (z updated to 2)
 (x,t) = 11 - 2 = 9 > 6 (no change)
 (y,x) = 7 - 3 = 4 < 11 (x updated to 4)
@@ -73,14 +73,14 @@ t   x   y   z   s
 t   x   y   z   s
 ```
 
-#### Third Iteration
+### Third Iteration
 
 ```
 6   4   7   2   0
 t   x   y   z   s
 
 (t,x) = 6 + 5 = 11 > 4 (no change)
-(t,y) = 6 + 8 = 14 > 7 (no change) 
+(t,y) = 6 + 8 = 14 > 7 (no change)
 (t,z) = 6 - 4 = 2 (no change)
 (x,t) = 4 - 2 = 2 < 6 (t updated to 2)
 (y,x) = 7 - 3 = 4 (no change)
@@ -94,14 +94,14 @@ t   x   y   z   s
 t   x   y   z   s
 ```
 
-#### Fourth Iteration
+### Fourth Iteration
 
 ```
 2   4   7   2   0
 t   x   y   z   s
 
 (t,x) = 2 + 5 = 7 > 4 (no change)
-(t,y) = 2 + 8 = 10 > 7 (no change) 
+(t,y) = 2 + 8 = 10 > 7 (no change)
 (t,z) = 2 - 4 = -2 < 2 (z updated to -2)
 (x,t) = 4 - 2 = 2 (no change)
 (y,x) = 7 - 3 = 4 (no change)

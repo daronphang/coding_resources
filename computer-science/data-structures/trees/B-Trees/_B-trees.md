@@ -1,4 +1,4 @@
-### Overview
+## Overview
 
 B-trees are balanced search trees designed to work well on disk or other direct-access secondary storage devices. Many database systems use B-trees or variants of it to store information. Similar to red-black trees but each node can have many children, from a few to thousands. Has height of O(lgn) and can implement many dynamic-set operations in O(lgn).
 
@@ -9,11 +9,11 @@ Properties of B-trees as follows:
 - When searching for a key, we make (x.n + 1)-way decision.
 - Structure of leaf nodes differ from that of internal nodes.
 
-#### Figure
+### Figure
 
 <img src="../../images/B-trees.PNG">
 
-### Data Structures on Secondary Storage
+## Data Structures on Secondary Storage
 
 The need for B-tree rises in the need for lesser time in accessing the physical storage media like a hard disk. Secondary storage devices are slower with a larger capacity.
 
@@ -21,13 +21,13 @@ In a typical B-tree application, the amount of data handled is so large that all
 
 For a large B-tree stored on a disk, will often see branching factors between 50-2000. A large branching factor dramatically reduces both the height of the tree and number of disk accesses required to find any key. As the number of keys is high, the data is read from disk in the form of blocks.
 
-#### Figure
+### Figure
 
 Branching Factor of 1001 and Height of 2 can store over one billion keys.
 
 <img src="../../images/B-trees-branching-factor.PNG">
 
-### B-Trees
+## B-Trees
 
 A B-tree is a self-balancing search tree. It is assumed that everything is in main memory. The node size is normally kept to the disk block size. Has the following properties:
 
@@ -51,7 +51,7 @@ For operations, we adopt two conventions:
 - Need to perform DISK-WRITE on root if root node is changed.
 - Any nodes that are passed as parameters must already have had DISK-READ performed.
 
-### Searching
+## Searching
 
 Instead of making a binary branching decision at each node, we make a multiway branching decision according to the number of node's children.
 
@@ -74,7 +74,7 @@ bTreeSearch(x,k) {
 }
 ```
 
-### Creating B-Tree
+## Creating B-Tree
 
 ```
 bTreeCreate(T) {

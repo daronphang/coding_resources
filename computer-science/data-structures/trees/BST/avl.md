@@ -1,9 +1,8 @@
-### AVL Tree
+## AVL Tree
 
 AVL tree is a self-balancing BST in which eac node maintains extra information called a balance factor whose value is either -1, 0 or +1. Balance factor is the difference between height of left subtree and right subtree of any node. Most of BST operations (search, max, min, insert, delete) take O(h) but time complexity may increase to O(n) for a skewed BST. To have an unbalanced tree, need minimum height of 2.
 
-When performing rotations, ensure subtree of subnode of unbalanced node that is being rotated is handled. Pivot of rotations start from unbalanced node i.e. LEFT RIGHT means going down LEFT followed by RIGHT, starting from unbalanced node. 
-
+When performing rotations, ensure subtree of subnode of unbalanced node that is being rotated is handled. Pivot of rotations start from unbalanced node i.e. LEFT RIGHT means going down LEFT followed by RIGHT, starting from unbalanced node.
 
 ![nodes](../../images/balanced-trees.PNG)
 
@@ -41,7 +40,7 @@ If there is an imbalance in right subtree of the left child. If root is imbalanc
 
 If there is an imbalance in left subtree of right child.
 
-### Insertion
+## Insertion
 
 Rotation operations are performed on the unbalanced node. Only need to rebalance the subtree rooted with first unbalanced node:
 
@@ -51,24 +50,24 @@ Rotation operations are performed on the unbalanced node. Only need to rebalance
 - Let z be first unbalanced node, and y be the child of z (coming from path of w).
 - Rebalance the tree by performing appropriate rotations on y.
 
-### Deleting Node
+## Deleting Node
 
 Unlike insertion, after performing rotation on unbalanced node, may need to perform rotation of ancestors of the unbalanced node.
 
-#### Perform Delete BST operation
+### Perform Delete BST operation
 
 ![nodes](../../images/AVL-delete-BST.PNG)
 
-#### Update Balance Factor
+### Update Balance Factor
 
 ![nodes](../../images/AVL-delete-update-bf.PNG)
 
-#### Rebalance (BF > 1)
+### Rebalance (BF > 1)
 
 If balanceFactor of leftChild is >= 0, do right rotation. Else, do left-right rotation.
 
 ![nodes](../../images/AVL-delete-rebalance.PNG)
 
-#### Rebalance (BF < -1)
+### Rebalance (BF < -1)
 
 If balanceFactor of rightChild is <= 0, do left rotation. Else, do right-left rotation.

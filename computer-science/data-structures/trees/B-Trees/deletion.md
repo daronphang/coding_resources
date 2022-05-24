@@ -1,14 +1,14 @@
-### Deletion
+## Deletion
 
 Need to ensure that a node doesn't get too small during deletion, except that the root is allowed to have fewer than t-1 keys.
 
-### Cases
+## Cases
 
-#### If key k is in node x and x is a leaf (1)
+### If key k is in node x and x is a leaf (1)
 
 If node x has at least t keys, delete k.
 
-#### key k is in node x and x is an internal node (2)
+### key k is in node x and x is an internal node (2)
 
 a) If left child of x.Ci has at least t keys, find its right-most leaf. Recursively delete right-most key (predecessor) and swap it with deleted key.
 
@@ -16,7 +16,7 @@ b) If left child has less than t keys (underflow), check right child of key in n
 
 c) Else, merge left (y) and right child (z) by deleting right pointer (z), pushing deleted key (k) to merged node, then recursively delete k.
 
-#### Key k is not present in internal node (3)
+### Key k is not present in internal node (3)
 
 This happens when we are performing recursion.
 
@@ -26,6 +26,6 @@ a) Find x.Ci's sibling in order from left to right. If sibling has at least t ke
 
 b) If siblings have t-1 keys, merge x.Ci with one sibling and move a key from x down into the new merged node to become the median key for that node. This will reduce height of tree.
 
-### Figure
+## Figure
 
   <img src="../../../images/b-trees-deletion.PNG">

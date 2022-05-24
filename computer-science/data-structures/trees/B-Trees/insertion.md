@@ -1,4 +1,4 @@
-### Insertion
+## Insertion
 
 Instead of creating a new leaf node and inserting it, we insert the new key into an existing leaf node. Since we cannot insert a key into a leaf node that is full, we require an operation as follows:
 
@@ -9,7 +9,7 @@ Instead of creating a new leaf node and inserting it, we insert the new key into
 
 To insert a key, we travel down from root and search for the position where the new key belongs, while splitting each full node until we reach the leaf.
 
-### Algorithm (Split)
+## Algorithm (Split)
 
 <img src="../../../images/b-trees-insertion.PNG">
 
@@ -59,7 +59,7 @@ bTreeSplitChild(x,i) {
 }
 ```
 
-### Algorithm (Insert)
+## Algorithm (Insert)
 
 <img src="../../../images/b-trees-insertion-root.PNG">
 

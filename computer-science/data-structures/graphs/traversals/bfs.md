@@ -1,8 +1,8 @@
-### Breadth-First Search (BFS)
+## Breadth-First Search (BFS)
 
 Systematically explores the edges of graph to discover every vertex that is reachable from souce node x. Algorithm first discovers all vertices at distance k from x before discovering any vertices at distance k+1. Prim's MST and Dijkstra's shortest path algorithms use ideas similar to BFS.
 
-#### Algorithm (Pseudo)
+### Algorithm (Pseudo)
 
 Algorithm as follows:
 
@@ -44,6 +44,6 @@ BFS(G,s) {
 }
 ```
 
-#### Figure
+### Figure
 
 <img src="../../../images/graphs-BFS.PNG">

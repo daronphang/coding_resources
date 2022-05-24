@@ -1,4 +1,4 @@
-### Matroids
+## Matroids
 
 This theory describes many situations in which the greedy method yields optimal solutions. A matroid is an ordered pair M = (S,I) satisfying the following conditions:
 

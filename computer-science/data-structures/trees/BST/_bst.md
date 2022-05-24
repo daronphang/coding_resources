@@ -1,4 +1,4 @@
-### Binary Search Trees
+## Binary Search Trees
 
 The search tree data structure supports many dynamic-set operations, including SEARCH, MINIMUM, MAXIMUM, PREDECSSOR, SUCCESSOR, INSERT and DELETE. BST can be used both as a dictionary and as a priority queue. Basic operations take time proportional to height of tree. Has time complexity of O(lgn).
 
@@ -12,15 +12,6 @@ At each node, we want the value of that node to either tell us that we have foun
 ### Balancing Binary Search Trees
 
 In extreme cases where new items are being added in ascending order, the tree will be one with long branch off to the right, with height n >> log2n. Can rebalance binary trees from time to time using tree rotations. Typically, such rotations would need to be applied to many different sub-trees of a full tree to make it perfectly balanced.
-
-### Binary Trees vs Binary Search Trees
-
-|            | Binary Tree                                                                                                                                                                | Binary Search Tree                                                                                                                                |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Definition | A Binary Tree is a non-linear data structure in which a node can have 0, 1 or 2 nodes. Individually, each node consists of a left pointer, right pointer and data element. | A Binary Search Tree is an organized binary tree with a structured organization of nodes. Each subtree must also be of that particular structure. |
-| Structure  | There is no required organization structure of the nodes in the tree.                                                                                                      | The values of left subtree of a particular node should be lesser than that node and the right subtree values should be greater.                   |
-| Operations | The operations that can be performed are deletion, insertion and traversal as it is unordered.                                                                             | As these are sorted binary trees, they are used for fast and efficient binary search, insertion and deletion.                                     |
-| Types      | Complete Binary Tree, Full Binary Tree, Extended Binary Tree                                                                                                               | AVL Trees, Splay Trees, Tango Trees, T-Trees.                                                                                                     |
 
 ### Insertion
 
@@ -145,7 +136,7 @@ treeDelete(T, z) {
 }
 ```
 
-#### Delete Cases
+### Delete Cases
 
 ![nodes](../../../images/BST-deletion.PNG)
 
@@ -180,6 +171,15 @@ treeSuccessor(x){
 }
 ```
 
-### Checking Binary Tree is Binary Search Tree
+## Binary Trees vs Binary Search Trees
+
+|            | Binary Tree                                                                                                                                                                | Binary Search Tree                                                                                                                                |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Definition | A Binary Tree is a non-linear data structure in which a node can have 0, 1 or 2 nodes. Individually, each node consists of a left pointer, right pointer and data element. | A Binary Search Tree is an organized binary tree with a structured organization of nodes. Each subtree must also be of that particular structure. |
+| Structure  | There is no required organization structure of the nodes in the tree.                                                                                                      | The values of left subtree of a particular node should be lesser than that node and the right subtree values should be greater.                   |
+| Operations | The operations that can be performed are deletion, insertion and traversal as it is unordered.                                                                             | As these are sorted binary trees, they are used for fast and efficient binary search, insertion and deletion.                                     |
+| Types      | Complete Binary Tree, Full Binary Tree, Extended Binary Tree                                                                                                               | AVL Trees, Splay Trees, Tango Trees, T-Trees.                                                                                                     |
+
+## Checking Binary Tree is Binary Search Tree
 
 For checking binary trees, check if all nodes in left sub-tree are smaller than root and themselves form a binary search tree, and right sub-tree are bigger than root and themselves form a binary search tree.

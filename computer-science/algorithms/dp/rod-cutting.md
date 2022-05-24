@@ -1,12 +1,13 @@
-### Rod Cutting
+## Rod Cutting
 
 Given a rod of length n inches and a table of prices Pi, determine the maximum revenue obtainable by cutting up the rod and selling the pieces. Can cut up a rod of length n in 2^(n-1) ways as there are n-1 places where we can choose to make cuts, and at each place, we either can make a cut or don't.
 
 If you cut the rod into two, the possible solutions as follows:
+
 1. For each rod, recursively solve each one.
 2. One piece to sell whole, and the remainder to be recursively solved.
 
-``` 
+```
 Length  1   2   3   4   5   6   7   8   9   10
 Price   1   5   8   9   10  17  17  20  24  30
 ```
@@ -27,7 +28,7 @@ R4 = max(
   R3 + R1,  // R3 = P3, R1+R2, R2+R1
 )
 
-// P4, R1+P3, R1+R1+R2, R1+R2+R1, R2+R2, R1+R1+R1+R1, P3+R1, R2+R1+R1 
+// P4, R1+P3, R1+R1+R2, R1+R2+R1, R2+R2, R1+R1+R1+R1, P3+R1, R2+R1+R1
 ```
 
 ### Brute-Force Approach
@@ -67,7 +68,7 @@ memoizedCutRod(p,n){
 memoizedCutRodAux(p,n,r) {
   if r[n] >= 0
     return r[n]
-  
+
   if n == 0
     q = 0
   else
@@ -90,14 +91,14 @@ bottomUpCutRod(p,n) {
   r[0] = 0
   for j = 1 to n
     q = -INFINITY
-    
+
     for i = 1 to j
       if q < p[i] + r[j-i]
         q = p[i] + r[j-i]   // r[j-i] assumes subproblem is already solved
-        s[j] = i            // the optimal size of the first piece to cut off 
-    
+        s[j] = i            // the optimal size of the first piece to cut off
+
     r[j] = q
-  
-  return r, s     
+
+  return r, s
 }
 ```
