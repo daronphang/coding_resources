@@ -2,7 +2,7 @@
 
 Binary trees can be stored with the help of pointer-like structures, in which each item contains references to its children. For complete binary trees, there is a useful array based alternative. A Heap is a special tree-based data structure in which the tree is a **complete binary tree**.
 
-Can be classified as Max Heap or Min Heap. For **Max Heap**, key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees. For **Min Heap**, key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
+Can be classified as Max Heap or Min Heap. For **Max Heap**, key present at root node must be maximum among all keys present in its children; same property must be recursively true for all sub-trees. For **Min Heap**, key present at root node must be minimum among all keys present in its children; same property must be recursively true for all sub-trees.
 
 ```
 PARENT(i)       Returns i/2
