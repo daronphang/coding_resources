@@ -39,6 +39,8 @@ df.groupby(['col1', 'col2'])['col3', 'col4'].apply(lambda x: x.astype(int).sum()
 
 Allows you to specify multiple aggregation functions at once.
 
+For agg(), returns a dataframe instead of groupby object. If you want to output the results, remember to use reset_index().
+
 ```py
 df.groupby('Sex').Age.agg(['max', 'mean', 'min', 'sum'])
 
@@ -54,6 +56,9 @@ df.groupby('Sex').Age.agg(['max', 'mean', categorize])
 df.groupby('Sex').Age.agg(
     ['max', 'mean', lambda x: True if x.mean() > 50 else False]
 )
+
+# agg returns dataframe
+ecap_agg_overall_df = ecap_df.groupby('date_by_day').instanceID.agg(count=('count')).reset_index()
 ```
 
 ## Transformation
