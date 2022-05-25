@@ -31,3 +31,11 @@ d_aware = timezone_d.localize(d)
 print(d_aware.tzinfo)
 
 ```
+
+### Converting to Datetime
+
+```py
+self.start_date = datetime.fromtimestamp(payload['start_date'] / 1000).strftime('%m/%d/%Y')
+self.end_date = datetime.fromtimestamp(payload['end_date'] / 1000).strftime('%m/%d/%Y')
+self.delta_days = (datetime.strptime(self.end_date, "%m/%d/%Y") - datetime.strptime(self.start_date, "%m/%d/%Y")).days
+```
