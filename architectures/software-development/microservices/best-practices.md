@@ -6,7 +6,7 @@ When services are fashioned around bounded contexts, they should own all logic a
 
 One thing we want to avoid is overly coupling a microservice and consumers such that any small change to the microservice itself can cause unnecessary changes to the consumer. Sometimes, the use of shared code can create this very coupling.
 
-General rule of thumb is don't violate DRY within a microservice, but be relaxed abotu violating DRY across all services.
+General rule of thumb is don't violate DRY within a microservice, but be relaxed about violating DRY across all services.
 
 ## Access by Reference
 
@@ -36,7 +36,7 @@ To limit impact of breaking changes, we can coexist both the new and old endpoin
 
 ## Data Retrieval via Service Calls
 
-For reporting systems that require data across databases and systems, multiple calls are required to aseemble the data which can become a slow operation with higher loading when large volumes of data are involved. For instance, pulling an entire list of customers, and making separate API calls for each customer.
+For reporting systems that require data across databases and systems, multiple calls are required to assemble the data which can become a slow operation with higher loading when large volumes of data are involved. For instance, pulling an entire list of customers, and making separate API calls for each customer.
 
 ### Data Pump
 

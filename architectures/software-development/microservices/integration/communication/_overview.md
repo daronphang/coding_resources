@@ -34,10 +34,10 @@ When considering between request/response and event-based, need to consider how 
 
 With orchestration style, you rely on a central brain to guide and drive the process through a series of request/response calls. Downside is that the orchestrator can become too much of a central governing authority.
 
-<img src="../../../_snapshots/orchestration.PNG">
+<img src="../../../../_snapshots/orchestration.PNG">
 
 ### Choreography
 
 With choreography, you inform each part of the system of its job, and let it work out the details. Downside is that the explicit view of the business process is only implicitly reflected in your system. This means additional work is needed to ensure that you can monitor and track that the right things have happened. This can be done by building a monitoring system that explictly matches the view of the business process, but then tracks what each of the services does as independent entities. Nonetheless, this approach is more loosely coupled, flexible and amenable to change.
 
-<img src="../../../_snapshots/choreography.PNG">
+<img src="../../../../_snapshots/choreography.PNG">

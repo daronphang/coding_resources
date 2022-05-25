@@ -8,3 +8,17 @@ A hook is a place/interface provided in packaged code/module that allows a progr
 2. Hook function helps to add new functionalities to applications.
 3. Ensures the inter-communication between other processes and messages of the system.
 4. Useful in situations in which a core developer wants to offer extensibility without exposing their code.
+
+## I/O vs CPU Bound
+
+CPU bound means the rate at which process progresses is limited by the speed of the CPU. A program that is CPU bound spends the majority of its time using the CPU i.e. doing calculations. This can be improved by upgrading CPU.
+
+I/O bound means the rate at which a process progresses is limited by the speed of I/O subsystem. Can be associated with disk read/write operations, or networking/communication i.e. web apps, copying files, downloading files. In I/O bound environments, we wait for the resources to be retrieved through I/O subsystems.
+
+## Implementation Detail
+
+Generally refers to the concrete implementation of a certain specification. Implementation details are left to be made by the developer, and is not specified at an earlier level i.e. documentation.
+
+Bad to rely on implementation as it is a behavior produced by code which may be relied on by consuming code. Other implementations of the same specification may not exhibit the same behavior and hence, will break consuming code.
+
+For instance, a specification of a List may say that it is able to hold duplicate values in preserving order while specifying an array sort. If a different sorting algorithm is used, or different type of List i.e. linked list is used, it may break code.

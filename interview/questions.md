@@ -1,8 +1,9 @@
 ## About Myself
 
-- Previously graduated from chemical engineering at NTU but decided to expose myself to Semiconductor industry that is more tech-focused.
-- 3 years working as a process engineer in Diffusion and rotated between different processes.
-- Drove cost, yield and capacity improvement projects by brainstorming ideas with vendors and equipment owners, performing SWR experiments, and analyzing the results through statistical plots and wafer profiling.
+- Previously graduated from chemical engineering at NTU but decided to expose myself to Semiconductor industry as it is more tech-focused.
+- 3 years forward, have been working as a process engineer in Diffusion and rotated between different processes.
+- Main job scope is to drive cost, yield and capacity improvement projects while troubleshooting adhoc manufacturing issues.
+- Ideas are brainstormed together with vendors and equipment owners, performing SWR experiments, and analyzing the results through statistical plots and wafer profiling.
 - ISSG reclaim wafers qualification, 27 nit dep coating recipe optimization and detection.
 - Started my coding journey as the RPA rep handling adhoc requests for my module that involved heavy-manual and repetitive touches.
 - Developed strong interest and pursued more in-depth knowledge about programming learning different languages, fundamentals, design patterns, architecture styles, and networking.
@@ -11,8 +12,10 @@
 
 ## Why Did You Apply?
 
-- Started my job as a process engineer, and enjoyed my role for the first 2 years as I always looked forward to learning new things, experimenting, and coming up with solutions that though may be small, but adding up everyone else's collectively would contribute significantly.
-- However, over time, I felt that my learning has plateaued and didnt find the current role as challenging as it was previously.
+- For the first 2 years, I enjoyed working as a process engineer.
+- Learning new things everyday, challenging projects, analyzing data and coming up with trends/correlations gave me satisfaction.
+- However, felt that my learning has plateaued and didnt find the current role as challenging as it was previously.
+- Moroever, one thing that limited my learning is maturity of process.
 - Then came the opportunities to do some coding work such as RPA and for MyAssistant.
 - Realized that coding is a field that not only is constantly challenging, but also strives you to think not just of solutions but optimized, looking at different interactions of components and how they come together as one, and the countless of things you could do with it.
 - On top of that, you can get all of the open-source resources online.
@@ -30,7 +33,8 @@
 
 ### Proactive and discplined
 
-- Taking initiative to enroll in courses to upgrade skills or acquire relevant knowledge.
+- If tasked with something new, I always take initiative to enroll in courses, read up and understand it before performing any work.
+- Also take initiative to upgrade skills or acquire relevant knowledge.
 - Software is a field that is constantly changing.
 - Go beyond than just accepting what something is but understanding it.
 - Taking one step at a time (focused).

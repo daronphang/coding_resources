@@ -14,7 +14,7 @@ Nonetheless, the danger with this approach is that it can take on logic it shoul
 
 Overall, there is no one-size-fits-all, and sometimes a hybrid approach works too. Key point is to retain cohesion of the underlying capabilities that we offer our users.
 
-<img src="../../_snapshots/backends-for-frontends.PNG">
+<img src="../../../_snapshots/backends-for-frontends.PNG">
 
 ## Why use an API gateway?
 
