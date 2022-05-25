@@ -39,3 +39,10 @@ self.start_date = datetime.fromtimestamp(payload['start_date'] / 1000).strftime(
 self.end_date = datetime.fromtimestamp(payload['end_date'] / 1000).strftime('%m/%d/%Y')
 self.delta_days = (datetime.strptime(self.end_date, "%m/%d/%Y") - datetime.strptime(self.start_date, "%m/%d/%Y")).days
 ```
+
+### Date Range
+
+```py
+import pandas
+self.date_range = pd.date_range(start=self.start_date, end=self.end_date).tolist()
+```
