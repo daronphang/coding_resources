@@ -44,5 +44,9 @@ self.delta_days = (datetime.strptime(self.end_date, "%m/%d/%Y") - datetime.strpt
 
 ```py
 import pandas
-self.date_range = pd.date_range(start=self.start_date, end=self.end_date).tolist()
+date_range_dtIndex = pd.date_range(start=self.start_date, end=self.end_date)  # returns datetime Index
+date_range = []
+
+for x in date_range_dtIndex:
+  date_range.append(x.strftime('%Y-%m-%d'))
 ```
