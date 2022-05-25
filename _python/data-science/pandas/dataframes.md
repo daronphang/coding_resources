@@ -28,6 +28,21 @@ df.dropna(axis=0)       # drops any row with NaN, axis=1 for column
 df.fillna(value='some value')
 ```
 
+### Converting to Python data structures
+
+```py
+df.to_dict('records')
+df.to_dict().values()
+```
+
+### Dealing with DateTime columns
+
+```py
+ecap_df = pd.DataFrame.from_dict(ecap_data)
+# converting datetime to different format
+ecap_df['date_by_day'] = pd.to_datetime(ecap_df['dateCreated']).dt.strftime('%m-%d-%Y')
+```
+
 ### Resetting Index
 
 ```py
