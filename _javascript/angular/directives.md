@@ -1,12 +1,12 @@
-### Directives
+## Directives
 
 Directives are classes that add additional behavior or styling to elements. Three types are Components, Structural and Attribute. They are markers on DOM element that tell Angular to attach a specified behavior to that element.
 
-### Components
+## Components
 
 Directives with template.
 
-### Inbuilt Attribute Directives
+## Inbuilt Attribute Directives
 
 Help to change appearance of DOM element/component conditionally. Basically a class with @Directive decorator. Can assign an object literal inline or by binding to a property.
 
@@ -72,7 +72,7 @@ export class AppComponent {
 }
 ```
 
-### Inbuilt Structural Directives
+## Inbuilt Structural Directives
 
 Responsible for HTML layout. Used for manipulating, modifying and removing elements inside a component template. \* character translate the attribute into a <ng-template> element.
 
@@ -114,7 +114,19 @@ Responsible for HTML layout. Used for manipulating, modifying and removing eleme
 <ng-template [ngIf]="isVisible"><p>This is visible</p></ng-template>
 ```
 
-### Building Attribute Directives
+### ngFor Objects
+
+```js
+// defined in component
+ObjectKeys = Object.keys;
+``` 
+```html
+<div *ngFor="let key of ObjectKeys(submittedRequestsService.requestDetails$ | async)">
+</div>
+```
+
+
+## Building Attribute Directives
 
 Can use either ElementRef, Renderer2 or HostBinding to access and modify DOM elements. Best practice is to use Renderer2 and HostListener. The initial @Input must match with selector name. Make sure the directive is imported and exported in shared module.
 
@@ -163,7 +175,7 @@ export class HighlightDirective implements OnInit {
 
 ```
 
-### Building Custom Structural Directives
+## Building Custom Structural Directives
 
 1. Use Directive decorator to define Custom Directive.
 2. Provide a selector which represents this Directive.
@@ -201,7 +213,7 @@ export class UnlessDirective {
 </div>
 ```
 
-### Local References
+## Local References
 
 Can only be used in HTML and not in TypeScript. Can add into any HTML tag.
 
