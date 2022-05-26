@@ -98,7 +98,18 @@ even_numbers_iterator = filter(check_even, numbers)
 def myfunc(n):
   return len(n)
 
-x = map(myfunc, ['apple', 'banana']
+x = map(myfunc, ['apple', 'banana'])
+```
+
+```py
+# mapping dict
+def highcharts_formatter(KVtuple):
+  return {
+      "name": KVtuple[0],
+      "data": KVtuple[1]
+  }
+ 
+partition_data = list(map(ToolHealthTask.highcharts_formatter, partitions_hash.items()))
 ```
 
 ### Zip
