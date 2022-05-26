@@ -18,6 +18,7 @@
 - Moroever, one thing that limited my learning is maturity of process.
 - Then came the opportunities to do some coding work such as RPA and for MyAssistant.
 - Realized that coding is a field that not only is constantly challenging, but also strives you to think not just of solutions but optimized, looking at different interactions of components and how they come together as one, and the countless of things you could do with it.
+- Limitless opportunities that you can explore and dive into.
 - On top of that, you can get all of the open-source resources online.
 - Since then, I have been deep diving into online courses, reading books, practicing, to prepare myself for the next embarkment in this role.
 
