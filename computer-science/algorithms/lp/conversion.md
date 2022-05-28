@@ -42,7 +42,7 @@ Subject to
 
 ### Step 3
 
-Convert equality constraints into inequality by replacing it with both greater-than and less-than
+Convert equality constraints into inequality by replacing it with both greater-than and less-than.
 
 ```
 Maximize
@@ -84,9 +84,18 @@ Maximize
     2x - 3y + 3z
 Subject to
     x4 = 7 - x - y + z
-    x5 = -7 - x - y + z
+    x5 = -7 + x + y - z
     x6 = 4 - x + 2y - 2z
     x, y, z, x4, x5, x6 >= 0
+```
+
+### Step 2 (slack form)
+
+```
+obj = 2x - 3y + 3z
+x4 = 7 - x - y + z
+x5 = -7 + x + y - z
+x6 = 4 - x + 2y - 2z
 ```
 
 ### Concise notation for slack form
@@ -103,6 +112,8 @@ B = set of indices of basic variables
 ```
 
 ```
+// a different example of slack form
+
 z = 28 - (1/6)x3 - (1/6)x5 - (2/3)x6
 x1 = 8 + (1/6)x3 + (1/6)x5 - (1/3)x6
 x2 = 4 - (8/3)x3 - (2/3)x5 + (1/3)x6
