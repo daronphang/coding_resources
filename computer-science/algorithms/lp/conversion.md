@@ -1,6 +1,6 @@
 ## Converting Linear Programs into Standard Form
 
-It is always possible to convert a lienar program into standard form. A linear program might not be in standard form for any of four possible reasons:
+It is always possible to convert a linear program into standard form. A linear program might not be in standard form for any of four possible reasons:
 
 1. The objective function might be a minimization rather than a maximization.
 2. There might be variables without non-negativity constraints.
@@ -9,7 +9,7 @@ It is always possible to convert a lienar program into standard form. A linear p
 
 When converting one linear program L into another linear program L', we would like the property that an optimal solution to L' yields an optimal solution to L.
 
-## Converting minimization linear program
+### Example
 
 ```
 Minimize
@@ -42,7 +42,7 @@ Subject to
 
 ### Step 3
 
-Convert equality constraints into inequality by replacing it with both greater-than and less-than Convert greater-than to less-than constraints by multiplying them by -1.
+Convert equality constraints into inequality by replacing it with both greater-than and less-than
 
 ```
 Maximize
@@ -50,6 +50,20 @@ Maximize
 Subject to
     x + y - z <= 7
     x + y - z >= -7
+    x - 2y + 2z <= 4
+    x, y, z >= 0
+```
+
+### Step 4
+
+Convert greater-than to less-than constraints by multiplying them by -1.
+
+```
+Maximize
+    2x - 3y + 3z
+Subject to
+    x + y - z <= 7
+    -x - y + z <= -7
     x - 2y + 2z <= 4
     x, y, z >= 0
 ```
