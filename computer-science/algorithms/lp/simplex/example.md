@@ -91,4 +91,6 @@ Objective solution is (8,4,0,18,0,0)
 Objective value is 3*8 + 1*4 + 2*0 = 28
 ```
 
-At this point, all coefficients in the objective function are negative. This situation occurs only when we have rewritten the linear program so that the basic solution is an optimal solution of 28.
+#### Solution
+
+At this point, all coefficients in the objective function are negative i.e. increasing any variable will decrease the basic solution. This situation occurs only when we have rewritten the linear program so that the basic solution is an optimal solution of 28.
