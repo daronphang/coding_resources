@@ -30,10 +30,6 @@ grp_obj = df.groupby(['Area', 'Design Id', 'Chart Type'])
 # need supply tuple for multiple keys
 grp_obj.get_group(('DIFFUSION', 'B47R', 'CSPL'), as_index=False).dropna()\
     [['Uploaded #Samples', 'Any Violation #OOC(1)']].sum().to_string()
-    
-# selecting specific columns and renaming agg functions
-# selecting instanceID col, and renaming count column to 'countCol'
-grouped_df = data_df.groupby('date_by_day').agg(countCol=('instanceID', 'count')).reset_index()
 
 # alternative if column is not of type int
 df.groupby(['col1', 'col2'])['col3', 'col4'].apply(lambda x: x.astype(int).sum())
@@ -50,6 +46,10 @@ df.groupby('Sex').Age.agg(['max', 'mean', 'min', 'sum'])
 
 # for custom column names
 df.groupby('Sex').Age.agg(sex_max=('max'), sex_min=('min'))
+
+# selecting specific columns and renaming agg functions
+# selecting instanceID col, and renaming count column to 'countCol'
+grouped_df = data_df.groupby('date_by_day').agg(countCol=('instanceID', 'count')).reset_index()
 
 # custom aggregation function
 def categorize(x):
