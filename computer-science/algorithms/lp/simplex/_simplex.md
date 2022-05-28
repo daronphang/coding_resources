@@ -1,6 +1,6 @@
 ## Simplex Algorithm
 
-Takes as input a linear program and returns an optimal solution. Starts at some vertex of the simplex and performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighbouring vertex whose objective value is no smaller than that of the current vertex. Terminates when it reaches a local maximum or minimum.
+Takes as input a linear program and returns an optimal solution. Starts at some vertex of the simplex and performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighbouring vertex whose objective value is no smaller than that of the current vertex. Terminates when it reaches a local maximum.
 
 ### Basic, Non-Basic, Pivot
 
