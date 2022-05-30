@@ -6,9 +6,17 @@ Model class that has attributes matching the columns of a corresponding database
 
 ### Flask-SQLAlchemy Database URLs
 
-- MySQL: mysql://username:password@hostname/database
-- Postgres: postgresql://username:password@hostname/database
-- SQLite: sqlite:///c/absolute/path/to/database
+When parsing special characters (i.e. $,%,^), need to encode it.
+
+https://www.w3schools.com/tags/ref_urlencode.asp
+
+```
+MySQL: mysql://username:password@hostname/database
+Postgres: postgresql://username:password@hostname/database
+SQLite: sqlite:///c/absolute/path/to/database
+
+MySQL: mysql://username:password%5E%5E@hostname/database
+```
 
 ### SQLAlchemy Column Types
 
