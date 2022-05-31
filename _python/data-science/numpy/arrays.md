@@ -66,6 +66,67 @@ x2[:, 0]        # first column of x2
 x2[0, :]        # first row of x2
 ```
 
+### Iterating
+
+```py
+A = np.arange(12)
+for cell in A:
+    print(cell, end=' ')
+```
+
+```py
+# multi-dimensional
+A = np.arange(12).reshape(4,3)
+for row in A:
+    print(row)
+
+# iterating over each element in the array
+# eliminates nested for loop
+for cell in A.flatten():
+    print(cell, end=' ')
+
+# multi-dimensional iterator object provided by numpy
+# treats elements as read-only i.e. cannot be modified
+for cell in np.nditer(A):
+    print(cell, end=' ')
+
+# to modify
+for cell in np.nditer(A, op_flags=['readwrite']):
+    cell[...] =cell*2
+```
+
+#### Enumerate
+
+```py
+arr = np.array([1, 2, 3])
+
+for idx, x in np.ndenumerate(arr):
+  print(idx, x)
+```
+
+#### Iterating two arrays simultaneously
+
+```py
+for a,s in np.nditer([A,S]):
+    print(a, s)
+```
+
+### Mapping
+
+Though numpy does provide vectorize(), it is provided primarily for convenience and not for performance.
+
+```py
+x = np.array([1, 2, 3, 4, 5])
+
+# Obtain array of square of each element in x
+squarer = lambda x: x ** 2
+squares = squarer(x)
+
+# vectorize()
+vfunc = np.vectorize(squarer)
+vfunc(x)
+```
+
 ### Creating copies of arrays
 
 ```py
@@ -76,6 +137,12 @@ x2_copy = x2[:2, :2].copy()
 
 ```py
 x = np.arange(1,10).reshape((3,3))  # [1,2,3], [4,5,6], [7,8,9]
+```
+
+### Adding
+
+```py
+out_arr = np.add(arr1, arr2)
 ```
 
 ### Concatenating arrays
