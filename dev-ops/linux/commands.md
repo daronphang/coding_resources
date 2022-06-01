@@ -102,3 +102,9 @@ tail -f /var/log/file.log | grep search_ter
 -B n        Prints searched line and n line before the result.
 -C n        Prints searched line and n lines after before the result.
 ```
+
+### CPU Load
+
+```
+cat /proc/stat
+```
