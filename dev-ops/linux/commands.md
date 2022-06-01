@@ -1,27 +1,52 @@
+## Important
+
+```
+~/      Refers to current user's home directory i.e. /home/daronphang or /root if root user
+```
+
+### Pipe Operator
+
+Lets you use two or more commands such that the output of one command serves as input to the next.
+
+```console
+$ cat filename | less
+$ cat sample | grep Apple
+```
+
 ## LS
 
 List files or directories (similarly to file explorer) from CLI.
 
-```
-$ls [flags] [directory]
-$ls         Current working directory
-$ls /       Root directory
-$ls *       Subdirectories
-$ls -R      Recursive i.e. list all files with corresponding subdirectories down to last file
-$ls -l      Table format (permissions, owner, size, last modified date, file name)
-$ls -lh     Table format with readable file sizes
-$ls -a      All files including hidden file (starts with .)
-$ls -a -lh
-$ls -S      Sort by
+```console
+$ ls [flags] [directory]
+$ ls            Current working directory
+$ ls /          Root directory
+$ ls *          Subdirectories
+$ ls -R          Recursive i.e. list all files with corresponding subdirectories down to last file
+$ ls -l         Table format (permissions, owner, size, last modified date, file name)
+$ ls -lh        Table format with readable file sizes
+$ ls -a         All files including hidden file (starts with .)
+$ ls -a -lh
+$ ls -S         Sort by
 ```
 
 ## Directories
 
+```console
+$ pwd        Present working directory
+$ mkdir -p test1/test2/test3              Creates parent directory 'test1' if doesn't exist
+$ chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
+$ chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 ```
-$pwd        Present working directory
-$mkdir -p test1/test2/test3              Creates parent directory 'test1' if doesn't exist
-$chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
-$chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
+
+## Files
+
+### Finding
+
+```console
+$ find . -name "*.log" 
+$ find /Path -name " file_name*"        Find all files in /Path with file_name*
+$ find /Path/bar* -name "file_name*"    Find all files with pattern in bar* subdirectory
 ```
 
 ## Substitute User
@@ -30,22 +55,22 @@ Elevate privileges assigned to the current user. Both su and sudo are used to ru
 
 For su, it switches you to the root user account and prompts for the root account's password. On the other hand, sudo runs a single command with root privileges and prompts for current user's password before running command as the root user.
 
-```
-$whoami
-$sudo
-$su <user>                   ctrl+D to logout of su or type 'exit'
-$sudo apt update             Updates packages but does not install them
-$sudo apt upgrade
+```console
+$ whoami
+$ sudo
+$ su <user>                   ctrl+D to logout of su or type 'exit'
+$ sudo apt update             Updates packages but does not install them
+$ sudo apt upgrade
 ```
 
 ## Echo
 
 Used to display line of text to screen/file. Typically used in scripting language and batch files.
 
-```
-$echo [option] [string(s)]
-$echo "hello world!"
-$echo -e "hello \bworld"    e flag acts as an interpretor of escaped characters
+```console
+$ echo [option] [string(s)]
+$ echo "hello world!"
+$ echo -e "hello \bworld"    e flag acts as an interpretor of escaped characters
 ```
 
 ## Process Status
@@ -67,48 +92,74 @@ START       Starting time
 TIME        Total CPU time used by this process
 ```
 
-```
-ps          Displays info about processes that are bound by the controlling terminal
-ps aux      Displays the most amount of info a user usually needs to understand current state
-ps -A       Prints all running processes (summarized)
-ps -AF      Prints full format
-ps x
-ps -He
+```console
+$ ps          Displays info about processes that are bound by the controlling terminal
+$ ps aux      Displays the most amount of info a user usually needs to understand current state
+$ ps -A       Prints all running processes (summarized)
+$ ps -AF      Prints full format
+$ ps x
+$ ps -He
 
+$ ps aux --sort -%mem
+$ ps aux --sort=-%mem
+$ ps aux | sort -nk +4 | tail -n 10      Sort by 4th field (%MEM), show last 10 lines
+$ ps aux --sort -rss | head
 ```
 
-### Grep (Global Regular Expression Print)
+## Grep (Global Regular Expression Print)
 
 Grep utilities are a family that includes grep, egrep, and fgrep for searching files.
 
+```console
+$ grep 'word' filename
+$ grep -i 'bar' file1         Perform case-insensitive search
+$ grep -R 'httpd'             Look for all files in current directory and subdirectories
+$ grep -c 'hello' file1       Search and display total number of times word appears
+$ grep 'word' *               Search all files in current directory
+$ grep 'str1\|str2' file1
+$ grep -nr word ~/            
+
+$ grep 'redeem reward' ~/*.txt      
+$ tail -f /var/log/file.log | grep search_ter
 ```
-grep 'word' filename
-grep -i 'bar' file1         Perform case-insensitive search
-grep -R 'httpd'             Look for all files in current directory and subdirectories
-grep -c 'hello' file1       Search and display total number of times word appears
-grep 'word' *               Search all files in current directory
-grep 'str1\|str2' file1
-
-tail -f /var/log/file.log | grep search_ter
-
+```
 -c          This prints only a count of the lines that match a pattern
--h          Display the matched lines, but do not display the filenames.
+-h          Display the matched lines, but do not display the filenames
 -i          Ignores, case for matching
--l          Displays list of a filenames only.
--n          Display the matched lines and their line numbers.
+-l          Displays list of a filenames only
+-n          Display the matched lines and their line numbers
 -v          This prints out all the lines that do not matches the pattern
--e exp      Specifies expression with this option. Can use multiple times.
--f          file Takes patterns from file, one per line.
+-e exp      Specifies expression with this option. Can use multiple times
+-f          file Takes patterns from file, one per line
 -E          Treats pattern as an extended regular expression (ERE)
 -w          Match whole word
 -o          Print only the matched parts of a matching line
--A n        Prints searched line and nlines after the result.
--B n        Prints searched line and n line before the result.
--C n        Prints searched line and n lines after before the result.
+-A n        Prints searched line and nlines after the result
+-B n        Prints searched line and n line before the result
+-C n        Prints searched line and n lines after before the result
+-r          Recursively search subdirectories listed
 ```
 
-### CPU Load
+## CPU Load
 
 ```
-cat /proc/stat
+$ cat /proc/stat
+```
+
+## Aliases
+
+Can create aliases for most used commands. Custom shortcuts used to represent a command or set of commands executed with or without custom options. Can create temporary (available for current terminal session) or permanent.
+
+```console
+$ alias BYCPU='ps aux --sort -%cpu' 
+```
+
+To keep aliases permanently, can save them in your user's shell configuration profile file.
+
+```
+~/.bashrc
+~/.zshrc
+~/.config/fish/config.fish
+
+$ source ~/.bashrc
 ```
