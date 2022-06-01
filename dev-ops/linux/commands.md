@@ -1,4 +1,4 @@
-### LS
+## LS
 
 List files or directories (similarly to file explorer) from CLI.
 
@@ -15,7 +15,7 @@ $ls -a -lh
 $ls -S      Sort by
 ```
 
-### Directories
+## Directories
 
 ```
 $pwd        Present working directory
@@ -24,7 +24,7 @@ $chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
 $chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 ```
 
-### Substitute User
+## Substitute User
 
 Elevate privileges assigned to the current user. Both su and sudo are used to run commands with root permissions. Root user is equivalent to administrator user on Windows.
 
@@ -38,7 +38,7 @@ $sudo apt update             Updates packages but does not install them
 $sudo apt upgrade
 ```
 
-### Echo
+## Echo
 
 Used to display line of text to screen/file. Typically used in scripting language and batch files.
 
@@ -48,11 +48,11 @@ $echo "hello world!"
 $echo -e "hello \bworld"    e flag acts as an interpretor of escaped characters
 ```
 
-### Process Status
+## Process Status
 
 Used to get more detailed information about a specific process/processes i.e. check if a process is running or not.
 
-"ps aux" is most frequently used command by Linux admin. Prints all running processes in system regardless from where they have been executed.
+"ps aux" is most frequently used command by Linux admin. Prints all running processes in system regardless from where they have been executed. A process is associated with any program running on your system, and is used to manage and monitor a program's memory usage, processor time, and I/O resources.
 
 ```
 USER        User account under which this process is running
@@ -68,8 +68,12 @@ TIME        Total CPU time used by this process
 ```
 
 ```
+ps          Displays info about processes that are bound by the controlling terminal
+ps aux      Displays the most amount of info a user usually needs to understand current state
 ps -A       Prints all running processes (summarized)
 ps -AF      Prints full format
+ps x
+ps -He
 
 ```
 
