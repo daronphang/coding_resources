@@ -70,3 +70,14 @@ SOURCE.req_message,
 SOURCE.req_completed
 );
 ```
+
+### LEAD, LAG
+
+LAG is used to access previous rows data as per defined offset value while LEAD is for subsequent rows. Useful function in comparing the current row value from the previous row value.
+
+```sql
+LAG (return_col, offset, default_value)
+OVER ([partition_by_clause] order_by_clause)
+
+LAG (col1, 1, 'this is default') OVER (ORDER BY col2 DESC) AS PREV_ROW_VALUE
+```
