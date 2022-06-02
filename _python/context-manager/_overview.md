@@ -1,4 +1,4 @@
-### Context Manager
+## Context Manager
 
 Usage of resources like file operations and database connections is very common but limited in supply; need to release/close them after usage. When creating context managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection.
 
@@ -101,4 +101,11 @@ def query(self, conn_payload: dict, as_dict: bool):
             return result
         else:
             return None
+```
+
+### Saving data as JSON
+
+```
+json.dump(data,file)    Write Python serialized object as JSON formatted data into a file, used as context manager
+json.dumps(data)        Converts a Python object into JSON string object, useful while feeding info to APIs 
 ```
