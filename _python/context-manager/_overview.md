@@ -2,7 +2,17 @@
 
 Usage of resources like file operations and database connections is very common but limited in supply; need to release/close them after usage. When creating context managers using classes, need to have enter() and exit() methods. Both methods allow you to implement objects which can be used easily with the 'with' statement. doesn't require try/finally block as 'with' statement automatically closes connection.
 
-Both methods are built-in methods for 'with' statement in Python.
+Both methods are built-in methods for 'with' statement in Python. Alternative is to use touch().
+
+```py
+from pathlib import Path
+
+fle = Path('data.py')
+fle.touch(exist_ok=True)
+f = open(fle)
+```
+
+To create a file if not exist, use open() context manager.
 
 ```
 r       Read mode
