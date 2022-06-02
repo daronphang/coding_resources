@@ -3,9 +3,10 @@
 ```sql
 EXTRACT()
 REPLACE()
-CAST()       -- ANSI standard and compatible with other databases; converts without specific format
-CONVERT()    -- SQL Server specific, allows more flexibility
-CHARINDEX()  -- Condition check for substring, returns 1 or -1
+CAST()        -- ANSI standard and compatible with other databases; converts without specific format
+CONVERT()     -- SQL Server specific, allows more flexibility
+CHARINDEX()   -- Condition check for substring, returns 1 or -1
+CONCAT()      -- Combine multiple columns into single string
 ```
 
 ### String Helpers
