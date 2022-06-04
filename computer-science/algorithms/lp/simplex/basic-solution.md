@@ -27,7 +27,7 @@ Subject to
 ### Step 2 (slack form)
 
 ```
-z = -x0
+z =                -x0
 x3 = 2 - 2x1 + x2 + x0
 x4 = -4 - x1 + 5x2 + x0
 ```
@@ -46,10 +46,11 @@ Basic solution is (4,0,0,6,0) which is feasible
 
 ### Step 4
 
-Call PIVOT() repeatedly until we obtain an optimal solution to Laux. In this case, one call to PIVOT() with x2 entering and x0 leaving.
+Call PIVOT() repeatedly until we obtain an optimal solution to auxiliary. In this case, one call to PIVOT() with x2 entering and x0 leaving.
 
 ```
 // slack form is final solution to auxiliary problem
+// x0 is not a basic variable and hence, it is set to 0
 z = - x0
 x2 = 4/5 - (1/5)x0 + (1/5)x1 + (1/5)x4
 x3 = 14/5 + (4/5)x0 - (9/5)x1 + (1/5)x4

@@ -1,4 +1,4 @@
-### Pseudo Elements
+## Pseudo Elements
 
 Used to style specific parts of an element without having to write HTML i.e. not an actual DOM element, and hence, **they cannot be found in a HTML file**. For example, it can b used to style the first letter/line of an element, or insert contents before/after. This introduces huge benefits for creating cool effects with minimal markup. **Cannot use an image in pseudo elements.**
 
@@ -18,7 +18,7 @@ https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pse
 ::cue             Style WebVTT cues
 ```
 
-#### Example
+### Example
 
 ```css
 p::before {
@@ -38,11 +38,11 @@ input::placeholder {
 }
 ```
 
-### Pseudo Classes
+## Pseudo Classes
 
 A pseudo-class is a selector that selects elements but under certain conditions i.e. in a certain state. They tend to act as if you had applied a class to some part of your document, often helping you cut down on excess classes in your markup and giving more flexible code.
 
-#### Dynamic/User-Action
+### Dynamic/User-Action
 
 Applies when the user interacts with the document in some way.
 
@@ -54,7 +54,7 @@ Applies when the user interacts with the document in some way.
 :focus
 ```
 
-#### UI Element States
+### UI Element States
 
 ```
 :enabled
@@ -62,7 +62,7 @@ Applies when the user interacts with the document in some way.
 :checked
 ```
 
-#### Structural
+### Structural
 
 ```
 :first-child          Targets the first child element among a group of sibling elements
@@ -79,7 +79,7 @@ Applies when the user interacts with the document in some way.
 :empty
 ```
 
-#### Others
+### Others
 
 ```
 :not(x)
@@ -87,7 +87,7 @@ Applies when the user interacts with the document in some way.
 :lang(language)
 ```
 
-#### Example
+### Example
 
 ```css
 p:first-child {
@@ -110,7 +110,7 @@ p:first-child {
   <p>This text isn't selected.</p>
 </div>
 ```
-### Combining Pseudo Classes and Elements
+## Combining Pseudo Classes and Elements
 
 For instance, you can make the first line of first paragraph bold by chaining :first-child and ::first-line selectors together.
 
@@ -121,6 +121,6 @@ article p:first-child::first-line {
 }
 ```
 
-### : vs ::
+## : vs ::
 
 Every browser that supports :: also supports : syntax; nonetheless; it is recommended to use single-colon for best browser support (IE8). :: is the newer format intended to distinguish between pseudo element and class.

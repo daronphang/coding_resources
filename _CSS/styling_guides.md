@@ -1,6 +1,6 @@
-### Useful CSS Styles
+## Useful CSS Styles
 
-#### Sizing
+### Sizing
 
 ```css
 min-width: 55em;
@@ -8,7 +8,7 @@ overflow: scroll|hidden|visible;
 resize: both|horizontal|vertical;
 ```
 
-#### Positioning
+### Positioning
 
 Spacing elements top, bottom, left, right are used together with position.
 
@@ -17,7 +17,7 @@ top: 50px;
 position: relative;
 ```
 
-#### Text Wrapping & Ellipsis
+### Text Wrapping & Ellipsis
 
 ```css
 overflow: hidden;
@@ -33,21 +33,21 @@ word-wrap: break-word;              Text wrapping
 writing-mode: vertical-rl;          Changing orientation
 ```
 
-#### Display
+### Display
 
 ```css
 z-index: 50;            Positive stacks in front, negative stacks behind changes transparency
 visibility: Hidden;     Not visible but takes up original space
 ```
 
-#### Scrolling
+### Scrolling
 
 ```css
 scroll-behavior: smooth;
 scroll-padding-top: 70px;   Offset for anchor tag if have fixed navbar
 ```
 
-#### Miscellaneous
+### Miscellaneous
 
 ```css
 

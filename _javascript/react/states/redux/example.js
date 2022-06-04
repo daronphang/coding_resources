@@ -1,4 +1,3 @@
-```javascript
 const redux = require('redux');
 
 // store
@@ -30,4 +29,3 @@ const counterSubscriber = () => {
 // actions
 store.dispatch({type: 'INCREMENT'});
 store.dispatch({type: 'DECREMENT'});
-```

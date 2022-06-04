@@ -64,6 +64,7 @@ x2[::-1, ::-1]      # reversing rows and columns
 ```py
 x2[:, 0]        # first column of x2
 x2[0, :]        # first row of x2
+x2[1, 2]
 ```
 
 ### Iterating

@@ -1,4 +1,4 @@
-### HTML Tags
+## HTML Tags
 
 Link Reference: <https://www.w3schools.com/tags/default.asp>
 
@@ -20,7 +20,7 @@ Link Reference: <https://www.w3schools.com/tags/default.asp>
 <ul>         unordered list
 ```
 
-### Example
+## Example
 
 ```html
 <label for="phone">Enter a phone number:</label><br /><br />

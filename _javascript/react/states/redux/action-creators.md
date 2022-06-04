@@ -1,6 +1,9 @@
-### Thunk
+## Thunks
 
-A function that delays an action until later; does not return the action itself but another function which eventually returns the action.
+All logic in Redux is synchronous; to contain asynchronous logic, can use thunks. A function that delays an action until later; does not return the action itself but another function which eventually returns the action. Thunks are written using two functions:
+- An inside Thunk function, which gets dispatch() and getState() as arguments.
+- Outside creator function, which creates and returns the thunk function.
+
 
 ```javascript
 export const sendCartData = (cart) => {
