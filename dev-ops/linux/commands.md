@@ -36,9 +36,25 @@ $ ls -S         Sort by
 ```console
 $ pwd        Present working directory
 $ mkdir -p test1/test2/test3              Creates parent directory 'test1' if doesn't exist
+```
+
+## Ownership
+
+For numeric IDs that exist as username, it should be prefixed with the + symbol. 
+
+- USER: If only user is specified, specified user will become the owner of files.
+- USER: User will become owner of files and file group ownership is changed to user.
+- USER:GROUP: user and group will be changed by specified users.
+- :GROUP: Only group ownership of files is changed.
+- : : if only colon is given, no change is made.
+
+```console
+$ ls -l filename.txt                      Find out who owns a file and what group it belongs to
+
 $ chown [OPTIONS] USER[:GROUP] FILE(s)    Changing onwership of file
 $ chown -R USER:GROUP DIRECTORY           Recursive, changes ownership of all files and subdirectories
 ```
+
 
 ## Files
 
