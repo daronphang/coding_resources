@@ -16,12 +16,13 @@ stderr_logfile    Location of log files; specified directories MUST exist
 
 ```console
 $ sudo nano /etc/supervisor/conf.d/idle.conf
+$ sudo tail /var/log/idle.out.log
+```
 
+```conf
 command=/home/ubuntu/idle.sh
 autostart=true
 autorestart=true
 stderr_logfile=/var/log/idle.err.log
 stdout_logfile=/var/log/idle.out.log
-
-$ sudo tail /var/log/idle.out.log
 ```

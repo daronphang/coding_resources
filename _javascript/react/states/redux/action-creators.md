@@ -14,7 +14,7 @@ export const sendCartData = (cart) => {
       const response = await fetch("http://example.com", {
         method: "PUT",
         body: JSON.stringify(cart),
-      });
+      }); 
 
       if (!response.ok) {
         throw new Error("failed");

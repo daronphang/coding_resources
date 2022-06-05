@@ -28,14 +28,14 @@ Kernel is at the nucleus of a computer. It makes the communication between hardw
 ```sh
 which bash  # find bash interpreter
 
-#!/bin/sh
+#! /bin/sh
 ls
 ```
 
 ### Shell Variables
 
 ```sh
-#!/bin/sh
+#! /bin/sh
 variable ="Hello"
 echo $variable
 
