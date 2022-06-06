@@ -5,6 +5,7 @@ Without CSS box-sizing property, the actual width and height of a box element of
 ```
 box-sizing: border-box;     Includes both padding and border in the width and height
 box-sizing: content-box;    Width and height are applied to content box only by default i.e. border/padding will increase the actual size 
+box-sizing: padding-box;
 
 box-sizing: inherit;
 box-sizing: initial;
@@ -13,4 +14,14 @@ box-sizing: revert-layer;
 box-sizing: unset;
 ```
 
+### Reset
+
+```css
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+```
 
