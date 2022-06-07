@@ -4,6 +4,13 @@
 $ ls -l filename
 ```
 
+## Folder Ownership
+
+```console
+$ls -la
+```
+
+
 ## File Ownership
 
 For numeric IDs that exist as username, it should be prefixed with the + symbol. 
@@ -30,7 +37,7 @@ $ ls -l filename
 # -rw-rw-rw- 1 cooluser cooluser 0 Jun 7 19:47 learningnotes.txt
 
 1   File type, '-' for regular, 'd' for directories, 'l' for symlinks
-2   Permissions, user-group-all users and groups
+2   Permissions, (user)-(group)-(all other users and groups)
 3   Number of links to the file
 4   User that owns the file
 5   Group that owns the file
@@ -39,12 +46,17 @@ $ ls -l filename
 8   Filename
 ```
 
-### chmod method 1
+### Absolute Mode
 
 ```
-1     Execute
-2     Write
-4     Read
+0       No permission
+1       Execute
+2       Write
+3       Execute + write
+4       Read
+5       Read + execute
+6       Read + write
+7       Read + write + execute
 ```
 
 ```
@@ -59,7 +71,13 @@ r-x       Read and execute
 rwx       Read, write and execute
 ```
 
-### chmod method 2
+```console
+$ chmod 400 learningnotes.txt       # user has read access
+$ chmod 600 learningnotes.txt       # user has read and write
+$ chmod 664 learningnotes.txt       # user and group has read+write, others have read-only
+```
+
+### Symbolic Method
 
 ```
 u     User that owns the file
@@ -77,10 +95,7 @@ x     Execute permission
 ### Example
 
 ```console
-$ chmod 400 learningnotes.txt       # user has read access
-$ chmod 600 learningnotes.txt       # user has read and write
-$ chmod 664 learningnotes.txt       # user and group has read+write, others have read-only
-
 $ chmod [uago][+-=][rwx] filename
 $ chmod o+w learningnotes.txt
+$ chmod go-rw myfile
 ```

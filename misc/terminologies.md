@@ -22,3 +22,9 @@ Generally refers to the concrete implementation of a certain specification. Impl
 Bad to rely on implementation as it is a behavior produced by code which may be relied on by consuming code. Other implementations of the same specification may not exhibit the same behavior and hence, will break consuming code.
 
 For instance, a specification of a List may say that it is able to hold duplicate values in preserving order while specifying an array sort. If a different sorting algorithm is used, or different type of List i.e. linked list is used, it may break code.
+
+## Web Crawler (Spider)
+
+Type of bot that is typically operated by search engines like Google and Bing. Their purpose is to index the content of websites all across the internet so that those websites can appear in search engine results.
+
+Can also be a generic term for any program that is used to automatically discover and scan websites by following links from one webpage to another.

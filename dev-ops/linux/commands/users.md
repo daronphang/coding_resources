@@ -9,7 +9,7 @@ $ umask         # default permission you have to create files and directories
 $ groups
 ```
 
-### Add Sudo User
+### Add User to Sudo/Group
 
 To create a new user with sudo access, need log into the system with a root user or an account with sudo privileges.
 

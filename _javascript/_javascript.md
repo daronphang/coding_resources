@@ -26,24 +26,24 @@ typeof obj === "string";
 // Shorthand for generic validation function that can be configured at runtime
 // object validation rules
 const schema = {
-  first: {
-    required: true,
-  },
-  last: {
-    required: true,
-  },
+    first: {
+        required: true,
+    },
+    last: {
+        required: true,
+    },
 };
 
 // universal validation function
 const validate = (schema, values) => {
-  for (field in schema) {
-    if (schema[field].required) {
-      if (!values[field]) {
-        return false;
-      }
+    for (field in schema) {
+        if (schema[field].required) {
+            if (!values[field]) {
+                return false;
+            }
+        }
     }
-  }
-  return true;
+    return true;
 };
 
 console.log(validate(schema, { first: "Bruce" })); // false
@@ -55,11 +55,11 @@ console.log(validate(schema, { first: "Bruce", last: "Wayne" })); // true
 If want to check conditions of multiple variables that are similar, can perform arithmetic operations.
 
 ```js
-const arr1 = []
-const arr2 = []
+const arr1 = [];
+const arr2 = [];
 
 if (arr1.concat(arr2).length === 0) {
-  // do something
+    // do something
 }
 ```
 
@@ -69,7 +69,7 @@ Executing a function without having to save it to memory.
 
 ```js
 (function () {
-  console.log("once");
+    console.log("once");
 })();
 
 (() => console.log("once"))();
@@ -85,33 +85,10 @@ console.log(0 && "Jonas"); // 0
 console.log(7 && "Jonas"); // Jonas
 ```
 
-### Nullish Coalescing Operator
-
-```javascript
-const x = 0 ?? 10; // checks for null or undefined, returns 0
-```
-
 ### Optional Chaining
 
 Returns undefined if a certain property does not exist i.e. null or undefined.
 
 ```javascript
 console.log(restaurant.openingHours?.monday?.open);
-```
-
-### Callback Function
-
-A function passed into another function as an argument which is then invoked inside the outer function. Is utilized to limit function from happening as it is not called until the previous line of code is executed. If callback returns a promise, to avoid callback hell, return callback function.
-
-```javascript
-function greeting(name) {
-  alert("Hello " + name);
-}
-
-function processUserInput(callback) {
-  var name = prompt("Please enter your name.");
-  callback(name);
-}
-
-processUserInput(greeting);
 ```

@@ -1,3 +1,9 @@
+## Distro Version
+
+```console
+$ lsb_release -a
+```
+
 ## Drivers
 
 ```console
@@ -21,10 +27,16 @@ $ xrandr --output DVI-D-0 --mode 1920x1080 --rate 60.00
 ```console
 sudo apt install speedtest-cli
 $ speedtest
-``` 
+```
 
 ## Creation
 
 ```console
 $ touch file1.txt
+```
+
+## Logs
+
+```console
+$ tail -f /var/log/syslog
 ```
