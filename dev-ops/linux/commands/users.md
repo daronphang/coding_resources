@@ -21,6 +21,15 @@ $ sudo usermod -aG sudo newuser
 $ groups newuser
 ```
 
+## Create Group
+
+```console
+$ groupadd mygroup
+$ groupadd -g 1010 mygroup
+
+$ groupadd -r mysystemgroup     # create system group
+```
+
 ## Root
 
 ### Enabling Root
@@ -33,7 +42,7 @@ $ whoami
 
 ### Disabling Root
 
-Before you block access to root account, need ensure you have created an administrative account capable of using 'sudo' command to gain root user privileges. 
+Before you block access to root account, need ensure you have created an administrative account capable of using 'sudo' command to gain root user privileges.
 
 The -m flag means create user's home directory and -c flag allows to specify a comment.
 
@@ -67,4 +76,3 @@ PermitRootLogin no
 StrictModes yes
 MaxAuthTries 6
 ```
-
