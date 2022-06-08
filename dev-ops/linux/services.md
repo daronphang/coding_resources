@@ -56,4 +56,6 @@ To create a service, you need to write .service file and store it in /etc/system
 
 ```console
 $ sudo systemctl <command> <service-name>
+
+$ sudo systemctl start nginx
 ```

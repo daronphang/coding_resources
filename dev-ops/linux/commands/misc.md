@@ -82,7 +82,7 @@ $ cat /proc/stat
 Can create aliases for most used commands. Custom shortcuts used to represent a command or set of commands executed with or without custom options. Can create temporary (available for current terminal session) or permanent.
 
 ```console
-$ alias BYCPU='ps aux --sort -%cpu' 
+$ alias BYCPU='ps aux --sort -%cpu'
 ```
 
 To keep aliases permanently, can save them in your user's shell configuration profile file.
@@ -93,4 +93,31 @@ To keep aliases permanently, can save them in your user's shell configuration pr
 ~/.config/fish/config.fish
 
 $ source ~/.bashrc
+```
+
+## Hard/Soft Links
+
+Link command creates a **'hard'** link named FILE2, which shares the same index node as existing file FILE1. Both share the same index node and hence, point to the same data on the disk. Modifying one is functionally the same as modifying the other.
+
+```console
+$ echo "This is a file." > FILE1.txt
+$ link FILE1.txt FILE2.txt
+$ cat FILE1.txt     # same as cat FILE2.txt
+```
+
+### Symlinks
+
+**'Soft'** symbolic linnks are different than 'hard' links; they link to another link instead of linking to the data of a file.
+
+'ln' by default creates a hard link, but has the option of creating symbolic links with -s. Symlinks can link to directories, cross file system boundaries, and are useful to make shortcuts to long, complicated filenames.
+
+Removing the file that a symlink points to breaks the link.
+
+```console
+$ ln FILE1.txt FILE2.txt
+$ ln -s FILE1.txt FILE2.txt
+
+$ ln -s documents/ dox-sym-link
+$ ls documents
+$ ls dox-sym-link
 ```
