@@ -27,7 +27,7 @@ $ mkdir -p test1/test2/test3              Creates parent directory 'test1' if do
 ### Finding Files
 
 ```console
-$ find . -name "*.log" 
+$ find . -name "*.log"
 $ find /Path -name " file_name*"        Find all files in /Path with file_name*
 $ find /Path/bar* -name "file_name*"    Find all files with pattern in bar* subdirectory
 ```
@@ -36,11 +36,10 @@ $ find /Path/bar* -name "file_name*"    Find all files with pattern in bar* subd
 
 'cat' allows us to create single or multiple files, view content of a file, concatenate files and redirect output in terminal or files.
 
-'more' displays a file in the terminal, one page at a time if the text passed is too large to fit on one screen. 'Enter' key scrolls through the file line by line, while 'space' key scrolls one full screen at a time. File is closed by pressing 'q' key. Can only scroll down but not up. 
+'more' displays a file in the terminal, one page at a time if the text passed is too large to fit on one screen. 'Enter' key scrolls through the file line by line, while 'space' key scrolls one full screen at a time. File is closed by pressing 'q' key. Can only scroll down but not up.
 
-However, after closing the file, its contents stay written in the terminal window. 'less' has the added benefit of not keeping the contents after the file is closed. 
+However, after closing the file, its contents stay written in the terminal window. 'less' has the added benefit of not keeping the contents after the file is closed.
 'less' also has support for different file formats including jar, war, zip, pdf, gif, png, etc i.e. reading metadata whereas 'more' would print binary data.
-
 
 ```console
 $ cat filename          # Displays complete contents without using inputs to scroll through it
@@ -61,8 +60,8 @@ $ tac filename | less
 ### Creating Files
 
 ```console
-$ cat > newfile
-$ cat copied-file > destination-file
+$ cat > newfile         # creates a new file called newfile
+$ cat copied-file > destination-file    # copying content
 
 $ touch /path/to/file filename.txt
 ```
