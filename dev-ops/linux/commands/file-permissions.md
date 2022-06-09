@@ -4,6 +4,7 @@
 $ ls -l filename
 
 $ ls -ld /data    # d flag for directory and not contents
+$ ls -ld /data | head
 ```
 
 ## Folder Ownership
