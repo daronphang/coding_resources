@@ -1,4 +1,5 @@
-### Basics
+## Basics
+
 Text editor used in CLI. 
 
 ```
@@ -28,14 +29,18 @@ shift+l           Move to bottom of screen
 :w            Save
 :wq           Save and exit
 :q            Exit
+
 d             Delete
 !             Force
 o             Insert text at beginning of following line
-v             Copy   
-y             Copy line
+
+v             Visual mode for copying, selects character   
+y             Copy/yank while visual mode is active, selects highlighted text rows
 p             Paste
+
 d             Cut
 dd            Cut line
+
 :x            Save file and exit
 :q!           Quit without saving file
 
@@ -43,7 +48,8 @@ dd            Cut line
 n, N          Next instance, previous instance
 ```
 
-### Buffer
+## Buffer
+
 An in-memory text of a file. Anytime an existing file is opened or created using Vim, a buffer will be allocated as the in-memory representation of said file. Any changes made will be tracked within the buffer. 
 ```
 :ls       View buffer
@@ -53,4 +59,17 @@ An in-memory text of a file. Anytime an existing file is opened or created using
 %       Corresponds to buffer in current window
 a       Active buffer that is loaded and visible
 line    Where the cursor is located at
+```
+
+## Viewports
+
+```
+ctrl+w  v       Open a new VIM window
+ctrl+w  l       Move to right window
+ctrl+w  h       Move to left window
+ctrl+w  q       Close window
+
+ctrl+w  +       Increase window height
+ctrl+w  -       Decrease window height
+ctrl+w  =       Reset window height
 ```
