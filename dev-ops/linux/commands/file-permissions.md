@@ -1,7 +1,9 @@
-## Check File Permissions
+## Check File/Folder Permissions
 
 ```console
 $ ls -l filename
+
+$ ls -ld /data    # d flag for directory and not contents
 ```
 
 ## Folder Ownership
