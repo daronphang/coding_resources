@@ -1,3 +1,29 @@
+### Setup
+
+Both logger and handlers have levels, need to set them to INFO. To configure logging across different modules, need to remove '__name__' in logger object as this will configure logger at module and not root.
+
+```py
+if __name__ == '__main__':
+    import logging
+    from logging.handlers import RotatingFileHandler
+
+    # both logger and handlers have levels
+    logger = logging.getLogger()    # omit __name__ for configuring root logger
+    logger.setLevel(logging.INFO)
+
+    logging.getLogger().handlers.clear()
+    fh = logging.FileHandler(os.path.join('PRODUCTION.log'))
+    fh.setLevel(logging.INFO)
+    formatter = logging.Formatter(
+        '[%(asctime)s]' '%(levelname)s in %(module)s: %(message)s'
+    )
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+    
+    logger.info('starting SPC comparison script...')
+    logger.info('script completed')
+```
+
 ### Logging Procedure (Commonly-used Classes)
 
 ```
