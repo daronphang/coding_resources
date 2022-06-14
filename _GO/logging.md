@@ -1,0 +1,30 @@
+## Standard Library
+
+Go standard library has a built-in log package that provides most basic logging features. Does not have log levels (INFO, DEBUG, WARNING, ERROR).
+
+```go
+package main
+
+import "log"
+
+func main() {
+    log.Println("Hello world!")
+
+    // logging to file
+    // If the file doesn't exist, create it or append to the file
+    file, err := os.OpenFile("logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    log.SetOutput(file)
+}
+```
+
+## Structured Loggers
+
+Zap, Zerolog, Logrus.
+
+## Zap
+
+Provides two separate loggers, 'Logger' for situations where performance is critical, and 'SugaredLogger', which prioritizes ergonomics and flexibility.

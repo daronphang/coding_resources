@@ -8,17 +8,19 @@ Different services may span across different servers, and it would be a daunting
 
 ### Logs should be queryable
 
-Use a correlation ID that is passed from one service to another if it is being called. 
+Use a correlation ID that is passed from one service to another if it is being called.
+
+If using HTTP for API calls, can pass correlation ID in headers as 'X-Request-ID' or 'X-Correlation-ID'.
 
 ### Provide informative application logs
 
 Logs should include the following information at bare minimum:
 
-- Service name
-- Username
-- IP address
-- Correlation ID
-- Message received time in UTC
-- Time taken
-- Method name
-- Call stack
+-   Service name
+-   Username
+-   IP address
+-   Correlation ID
+-   Message received time in UTC
+-   Time taken
+-   Method name
+-   Call stack
