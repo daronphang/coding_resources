@@ -1,4 +1,4 @@
-### Avoid Storing Delimited Lists
+## Avoid Storing Delimited Lists
 
 Violates First Normal Form. Exception would be employing denormalization. If tables are normalized, to avoid storing entries in column as delimited lists for following reasons:
 
@@ -12,3 +12,11 @@ Violates First Normal Form. Exception would be employing denormalization. If tab
 - Difficult to fetch list in sorted order.
 
 https://stackoverflow.com/questions/3653462/is-storing-a-delimited-list-in-a-database-column-really-that-bad
+
+## Updating Number Field
+
+Include subquery in SET clause for UPDATE.
+
+```sql
+UPDATE table1 SET quota = (SELECT quota - 2 FROM table1 WHERE id = 5) WHERE id = 5
+```
