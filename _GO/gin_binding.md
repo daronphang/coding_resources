@@ -1,7 +1,9 @@
 ### Gin Binding
+
 Serialization library that supports JSON, XML, query parameter, etc. and with built-in validation framework. Serializes input data to structs and maps.
 
 ### BindJSON
+
 Reads the body buffer and serializes it to a struct. Cannot be called on the same context twice as it flushes the body buffer. To serialize the body to different structs, use ShouldBindBodyWith().
 
 ```go
@@ -12,6 +14,7 @@ if err:=context.ShouldBindBodyWith(&body, binding.JSON); err!=nil {
 ```
 
 ### Validation
+
 Uses the validator package internally for validations. Validations are added to structs.
 
 ```go
@@ -32,6 +35,7 @@ type Comment struct {
 ```
 
 ### Custom Validations
+
 To create a new binding, need to register a validation with a function that performs the validation. Can access the validation engine using the 'binding' package and exporting Validator variable.
 
 ```go
@@ -52,7 +56,6 @@ if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
    })
 }
 ```
-
 
 ### Example
 

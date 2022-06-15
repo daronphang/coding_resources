@@ -25,6 +25,25 @@ func main() {
 
 Zap, Zerolog, Logrus.
 
-## Zap
+## Lumberjack
 
-Provides two separate loggers, 'Logger' for situations where performance is critical, and 'SugaredLogger', which prioritizes ergonomics and flexibility.
+Supports cutting archive log files.
+
+```console
+$ go get -u github.com/natefinch/lumberjack
+```
+
+### Adding to Zap
+
+```go
+func getLogWriter() zapcore.WriteSyncer {
+	lumberJackLogger := &lumberjack.Logger{
+		Filename:   "./test.log",
+		MaxSize:    10,
+		MaxBackups: 5,
+		MaxAge:     30,
+		Compress:   false,
+	}
+	return zapcore.AddSync(lumberJackLogger)
+}
+```

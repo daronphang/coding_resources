@@ -1,6 +1,6 @@
 ### Panic
 
-Should only be used in cases where the program cannot continue execution i.e. unrecoverable error. Any deferred f unctions are executed and then the control returns to its caller. 
+Should only be used in cases where the program cannot continue execution i.e. unrecoverable error. Any deferred f unctions are executed and then the control returns to its caller.
 
 ```go
 func panic(interface{})   // arg passed will be printed when the program terminates

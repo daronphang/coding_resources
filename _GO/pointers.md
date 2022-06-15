@@ -20,11 +20,11 @@ Turn value into address with &value
 
 Pointers are used for efficiency as everything in Golang is passed by value i.e. value passed to function is a copy and not the original object to avoid unintentionally changing data. However, there are times that the original object needs to be manipulated i.e. passing by reference instead of value.
 
-- Variables are names given to a memory location where the actual data is stored.
-- To access stored data, need address of memory location.
-- For human readability, data can be accessed through variables instead of hexadecimal format.
-- Pointers are used to pass a variable's memory location and then dereference it for manipulation as needed.
-- Instead of copying large amount of data everytime it is passed, programmers can pass its address.
+-   Variables are names given to a memory location where the actual data is stored.
+-   To access stored data, need address of memory location.
+-   For human readability, data can be accessed through variables instead of hexadecimal format.
+-   Pointers are used to pass a variable's memory location and then dereference it for manipulation as needed.
+-   Instead of copying large amount of data everytime it is passed, programmers can pass its address.
 
 ```go
 // Creating myPointer as Pointer to an int32 variable and initialize pointer with address of number1
@@ -54,8 +54,8 @@ func(pointerToPerson *person) updateName() {    // not an operator; arg must be 
 
 ### When to use Pointers
 
-- If the function needs to modify its receiver.
-- When passing large amounts of data.
+-   If the function needs to modify its receiver.
+-   When passing large amounts of data.
 
 ### Value vs Reference Types
 

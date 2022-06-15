@@ -1,7 +1,8 @@
 ### Interfaces
+
 Interface types express generalizations or abstractions about the behaviors of other types. GO's interfaces are distinctive from other OOP langauges is that they are satisfied implicitly i.e. no need to declare all interfaces that a given concrete type satisfies but simply possessing the necessary methods is enough. Interfaces are about helping you to reuse code i.e. form a contract between different functions and types. Interfaces are able to take different sources of input and provide a common output i.e. Reader interface takes any type of data as input and outputs as []byte for anyone to work with.
 
-Interface is an abstract custom type that is used to specify a set of one or more method signatures i.e. collection of methods. Necessary to implement all the methods declared in the interface for implementing the interface. They are implemented implicitly. 
+Interface is an abstract custom type that is used to specify a set of one or more method signatures i.e. collection of methods. Necessary to implement all the methods declared in the interface for implementing the interface. They are implemented implicitly.
 
 When an interface contains zero methods, such types of interface is known as the empty interface i.e. all types implement the empty interface. Interface itself is a static type, but it does not have a static value and always points to dynamic values.
 
@@ -71,6 +72,7 @@ func shuffle(c Card) {
 ```
 
 #### Compile Errors
+
 Arises when you try to assign/pass a concrete type to an interface type and the concrete type does not implement the interface, or if you are passing a pointer to the type.
 
 ```go
@@ -93,10 +95,13 @@ func main() {
 ```
 
 ### Concrete Type
+
 Concrete type specifies the exact representation of its values and exposes the intrinsic operations of that representation i.e. arithmetic for numbers, indexing/append/range for slices.
 
 ### Contracts Type
-Abstract interface that reveals only some of the methods. 
+
+Abstract interface that reveals only some of the methods.
+
 ```go
 package fmt
 
@@ -115,7 +120,8 @@ func Printf(format string, args ...interface{}) (int, error) {
 ```
 
 ### Interface Types
-The io.Writer type is one of the most widely used interface as it provides an abstraction of all the types to which bytes can be written, which includes files, memory buffers, network connections, HTTP clients, archivers, etc. The io package defines many other useful interfaces. 
+
+The io.Writer type is one of the most widely used interface as it provides an abstraction of all the types to which bytes can be written, which includes files, memory buffers, network connections, HTTP clients, archivers, etc. The io package defines many other useful interfaces.
 
 ```go
 package io
@@ -124,7 +130,7 @@ package io
 type Reader interface {
   // byte slice is passed as arg where Read() will push data into byte slice; original gets updated as it is a reference type
   // int is the number of bytes pushed to byte slice
-  Read(p []byte) (n int, err error) 
+  Read(p []byte) (n int, err error)
 }
 
 // Closer is any value that you can close such as a file or network connection
@@ -138,6 +144,7 @@ type ReadWriter interface {
   Writer
 }
 ```
+
 ```go
 type logWriter struct {}
 
@@ -153,7 +160,7 @@ func main() {
   fmt.Println(string(bs))
   */
   io.Copy(os.Stdout, resp.Body) // shortcut where os.Stdout implements Writer interface and resp.Body the Reader interface
-  
+
   lw := logWriter{}
   io.Copy(lw, resp.Body)  // works!
 }
@@ -166,7 +173,8 @@ func (logWriter) Write(bs []byte) (int, error) {
 ```
 
 ### Interface Satisfaction
-Only depends on the methods of the two types involved; hence, do not need to declare the relationship between concrete type and the interface it satisfies. Nonetheless, it is useful to document and assert the relatiosnhip when it is intended. 
+
+Only depends on the methods of the two types involved; hence, do not need to declare the relationship between concrete type and the interface it satisfies. Nonetheless, it is useful to document and assert the relatiosnhip when it is intended.
 
 ```go
 // declaration asserts at compile time that value of type *bytes.Buffer satisfies io.Writer
@@ -175,6 +183,7 @@ var _ io.Writer = (*bytes.Buffer)(nil)  // another way without allocating a new 
 ```
 
 ### Parsing Flags with flag.Value
+
 Standard interface flag.Value helps define new notations for command-line flags.
 
 ```go
@@ -187,6 +196,7 @@ func main() {
   fmt.Println()
 }
 ```
+
 ```
 ./sleep
 Sleeping for 1s...
@@ -194,6 +204,7 @@ Sleeping for 1s...
 ./sleep -period 2m30s
 Sleeping for 2m30s...
 ```
+
 ```go
 
 // defining new flag notations for own data types
@@ -227,6 +238,7 @@ func (f *celsiusFlag) Set(s string) error {
 ```
 
 ### Caveat: Interface Containing Nil Pointer is Non-Nil
+
 A nil interface value, which contains no value at all, is not the same as an interface value containing a pointer that happens to be nil.
 
 ```go
@@ -237,7 +249,7 @@ func main() {
   if debug {
     buf = new(bytes.Buffer)
   }
-  f(buf)  // subtly incorrect 
+  f(buf)  // subtly incorrect
   // if debug is false, compiler assigns a nil pointer of type *bytes.Buffer to buf which is nil
   // however, its dynamic type is *bytes.Buffer, which is a non-nil interface containing a nil pointer value
 }
@@ -250,10 +262,11 @@ func f(out io.Writer) {
 ```
 
 ### Sorting with sort.Interface
+
 In many languages, sorting algorithm is associated with sequence data type, while ordering function is associated with type of elements. GO's sort.Sort function assumes nothing about the representation of either sequence or its elements. Instead, it uses an interface, sort.Interface, to specify the contract between generic sort algorithm and each sequence type that may be sorted. Package sort provides StringSlice type and function called Strings() so the call can be simplified to sort.Strings().
 
 ```go
-package sort 
+package sort
 
 // sort algo requires length of sequence, means of comparing two elements, and way to swap two elements
 type Interface interface {
@@ -270,6 +283,7 @@ func(p StringSlice) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
 
 sort.Sort(StringSlice(names))
 ```
+
 ```go
 // more complicated sorting; better to use pointer than element directly as it will run faster
 type Track struct {
@@ -305,10 +319,11 @@ sort.Sort(sort.Reverse(byArtist(tracks)))
 ```
 
 For multi-tier ordering function, can define customSort.
+
 ```go
 type customSort struct {
   t []*Track
-  less func(x, y *Track) bool   // comparison function defines a new sort order 
+  less func(x, y *Track) bool   // comparison function defines a new sort order
 }
 
 func (x customSort) Len() int { return len(x.t) }
@@ -330,6 +345,7 @@ sort.Sort(customSort{tracks, func(x, y *Track) bool {
 ```
 
 ### Http.Handler Interface
+
 ```go
 package http
 
@@ -366,6 +382,7 @@ func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
   }
 }
 ```
+
 ```
 ./fetch http://localhost:8000/list
 shoes: $50.00
@@ -374,14 +391,14 @@ socks: $5.00
 no such item: "hat"
 ```
 
-The http package provides ServeMux, a request multiplexer, to simplify the association between URLs and handlers i.e. ServeMux aggregates a collection of http.Handlers into a single http.Handler. GO does not have canonical web framework analogous to Ruby's Rails or Python's Django; building blocks in GO's standard library are flexible enough that frameworks are not necessary. 
+The http package provides ServeMux, a request multiplexer, to simplify the association between URLs and handlers i.e. ServeMux aggregates a collection of http.Handlers into a single http.Handler. GO does not have canonical web framework analogous to Ruby's Rails or Python's Django; building blocks in GO's standard library are flexible enough that frameworks are not necessary.
 
 ```go
 func main() {
   db := database{"shoes": 50, "socks": 5}
   mux := http.NewServeMux()
-  mux.Handle("/list", http.HandlerFunc(db.list))      // db.list does not have any methods 
-  mux.Handle("/price", http.HandlerFunc(db.price))    // does not satisfy http.Handler interface alone and cant be passed directly 
+  mux.Handle("/list", http.HandlerFunc(db.list))      // db.list does not have any methods
+  mux.Handle("/price", http.HandlerFunc(db.price))    // does not satisfy http.Handler interface alone and cant be passed directly
   log.Fatal(http.ListenAndServe("localhost:5000", mux))
 }
 
@@ -413,6 +430,7 @@ func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request) {
 ```
 
 ### Error Interface
+
 ```go
 type error interface {
   Error() string  // error interface has 1 method that returns string
@@ -422,15 +440,16 @@ type error interface {
 package errors
 
 type errorString struct { text string }  // struct to protect its representation from inadvertent updates
-func New(text string) error { return &errorString{text} }   
+func New(text string) error { return &errorString{text} }
 
 // pointer satisfies error interface and ensure every call to New allocates a distinct error
-func(e *errorString) Error() string { return e.text }   
+func(e *errorString) Error() string { return e.text }
 
 errors.New('hello world') // returns a new error
 fmt.Println(errors.New("EOF") == errors.New("EOF"))   // false
-``` 
-``` go
+```
+
+```go
 package fmt
 import errors
 
@@ -438,9 +457,10 @@ import errors
 func Errorf(format string, args ...interface{}) error {
   return errors.New(Sprintf(format, args...))
 }
-``` 
+```
 
 ### Type Assertions
+
 An operation applied to an interface value.
 
 ```go
@@ -465,11 +485,13 @@ if f, ok := w.(*os.File); ok {
 ```
 
 ### Discriminating Errors with Type Assertions
+
 For I/O operations, more reliable approach for error handling is to represent structured error values with type.
+
 ```go
 package os
 
-// struct preserves underlying components of the error 
+// struct preserves underlying components of the error
 // clients can distinguish one kind of failure from another using type assertion to detect specific type of error
 type PathError struct {
   Op string
@@ -486,6 +508,7 @@ fmt.Printf("%#v\n", err)
 // Output:
 // &os.PathError{Op:"Open, Path:"/no/such/file", Err: 0x2}
 ```
+
 ```go
 package os
 import (
@@ -493,7 +516,7 @@ import (
   "syscall"
 )
 
-// provides 3 helper functions 
+// provides 3 helper functions
 func IsExist(err error) bool
 func IsNotExist(err error) bool
 func IsPermission(err error) bool
@@ -517,7 +540,9 @@ fmt.Println(os.IsNotExist(err))   // true
 ```
 
 ### Checking Behaviors with Interface Type Assertions
+
 Can use type assertion to test whether a dynamic type has a method by defining a new interface.
+
 ```go
 // example of writing HTTP headers to response with io.Writer
 // Write() requires byte slice but output value is a string and hence, requires []byte(...) conversion
@@ -548,6 +573,7 @@ func writeHeader(w io.Writer, contentType string) error {
 ```
 
 ### Type Switches
+
 ```go
 import "database/sql"
 
@@ -602,4 +628,5 @@ func sqlQuote(x interface{}) string {
 ```
 
 ### Advice
+
 Interfaces that has only a single implementation are unnecessary abstractions and have run-time cost. Interfaces are only needed when there are two or more concrete types that must be dealt with in a uniform way. An exception to this rule is when an interface is satisfied by a single concrete type but that type cannot live in the same package as interface because of its dependencies.

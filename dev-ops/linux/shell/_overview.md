@@ -1,6 +1,6 @@
 ## Shell Scripting
 
-Open-source computer program designed to be run by Unix shell. 
+Open-source computer program designed to be run by Unix shell.
 
 ## Shell vs Kernel
 
@@ -11,15 +11,16 @@ Kernel is at the nucleus of a computer. It makes the communication between hardw
 ## Shell Types
 
 ### Bourne Shell
-- Prompt is $.
-- POSIX/Korn shell is also known as sh.
-- Bourne Again SHell is known as BASH.
+
+-   Prompt is $.
+-   POSIX/Korn shell is also known as sh.
+-   Bourne Again SHell is known as BASH.
 
 ### C Shell
 
-- Prompt is %.
-- C Shel is also known as csh.
-- Tops C shell is also known as tcsh.
+-   Prompt is %.
+-   C Shel is also known as csh.
+-   Tops C shell is also known as tcsh.
 
 ## Writing Shell Scripts
 
@@ -45,6 +46,8 @@ echo $var
 
 ### Read User Input
 
+Can use silent flag '-s' to hide input characters from screen i.e. password.
+
 ```sh
 echo "what is your name?"
 read first
@@ -57,7 +60,7 @@ read -p "Enter your age" variable_name    # -p flag to prompt user with a custom
 
 ### Execution Rights
 
-'chmod' modifies the existing rights of a file for a particular user. 
+'chmod' modifies the existing rights of a file for a particular user.
 
 ```
 r       Read
@@ -118,7 +121,7 @@ do
     echo $i
 done
 
-for X in cyan magenta yellow  
+for X in cyan magenta yellow
 do
 	echo $X
 done

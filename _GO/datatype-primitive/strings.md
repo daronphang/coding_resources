@@ -1,53 +1,3 @@
-## Integers
-
-GO provides both signed and unsigned integer arithmetic.
-
-```
-int8 int16 int32 int64
-uint8 uint16 uint32 uint64
-
-RANGE OF VALUES
-signed integers     -2^(n-1) to 2^(n-1)-1     int8 has -128 to 127
-unsigned integers   0 to 2^n -1               int8 has 0 255, uses full range of bits for non-negative values
-```
-
-## Binary Operators
-
-```
-&     bitwise AND
-|     bitwise OR
-^     bitwise XOR
-&^    bit clear (AND NOT)
-<<    Left shift, number of bit positions
->>    Right shift
-```
-
-```GO
-var apples int32 = 1
-var oranges int16 = 2
-var compote int = apples + oranges // compile error
-
-var compote = int(apples) + int(oranges)
-```
-
-## Floating-Point Numbers
-
-GO provides float32 and float64.
-
-```
-float32   math.MaxFloat32 = 3.4e38    6 decimals
-float64   math.MaxFloat64 = 1.8e308   15 decimals   Preferred usage
-```
-
-```GO
-for x := 0; x < 8; x++ {
-  fmt.Printf("x = %d e A = %8.3f\n", x, math.Exp(float64(x)))
-}
-
-// x = 0 e^x = 1.000
-// x = 7 e^x = 1096.633
-```
-
 ## Strings
 
 Immutable sequence of bytes. Index operation retrieves the i-th byte of string which may not necessarily be the i-th character of string as UTF-8 encoding of a non-ASCII code requires two or more bytes.
@@ -74,37 +24,9 @@ Within a double-quoted string literal, escape sequences that begin with \ can be
 \\    backslash
 ```
 
-### Runes
-
-A rune is an alias to the int32 data type and represents a Unicode point. A unicode point is a numerical value that is usually used to represent a Unicode character. The int32 is large enough to represent the current volume of 140,000 unicode characters.
-
-```go
-import (
-    "fmt"
-    "reflect"
-)
-
-func main() {
-    // Creating a rune
-    rune1 := 'B'
-    rune2 := 'g'
-    rune3 := '\a'
-
-    // Displaying rune and its type
-    fmt.Printf("Rune 1: %c; Unicode: %U; Type: %s", rune1, rune1, reflect.TypeOf(rune1))
-    // Rune 1: B; Unicode: U+0042; Type: int32
-
-    fmt.Printf("\nRune 2: %c; Unicode: %U; Type: %s", rune2, rune2, reflect.TypeOf(rune2))
-    // Rune 2: g; Unicode: U+0067; Type: int32
-
-    fmt.Printf("\nRune 3: Unicode: %U; Type: %s", rune3, reflect.TypeOf(rune3))
-    // Rune 3: Unicode: U+0007; Type: int32
-}
-```
-
 ### Looping Strings (Decoding UTF-8)
 
-In Golang, string literal is represented as a sequence of bytes. If iterating through string, using len(str) isnot accurate as it prints the number of bytes.
+In Golang, string literal is represented as a sequence of bytes. If iterating through string, using len(str) is not accurate as it prints the number of bytes.
 
 A string may contain Unicode text encoded in UTF-8; nonetheless, Go source code encodes all strings as UTF-8.
 
@@ -183,27 +105,4 @@ y, err := strconv.ParseInt("123", 10, 64) // base 10, up to 64 bits
 ```go
 w := "hello world!"
 strings.Contains(w, "hello")
-```
-
-## Constants
-
-Can declare a sequence of constants as a group. Can also use constant generator iota which is used to create a sequence of related values. Value of iota begins at 0 and increments by 1 for each item in sequence i.e. enumerator.
-
-```go
-const (
-  a = 1
-  b
-  c = 2
-  d
-)
-
-fmt.Println(a, b, c, d)   // 1 1 2 2
-
-// iota generator
-type Weekday int
-const (
-  Sunday Weekday = iota // 0
-  Monday                // 1
-  Tuesday               // 2
-)
 ```

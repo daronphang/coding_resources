@@ -1,9 +1,11 @@
 ### Golang Basics
-A compiled language. Organized into packages (similar to libraries/modules). Has a cultural agenda of radical simplicity with garbage collection, pacakge system, first-class functions (treated like any other variable), lexical scope, system call interface and immutable strings encoded in UTF-8 (can process in all languages). Language is mature, stable and guarantees backwards compatibiity. Well suited for building infrastructure like netwroked servers, tools and systems for programmers. 
+
+A compiled language. Organized into packages (similar to libraries/modules). Has a cultural agenda of radical simplicity with garbage collection, pacakge system, first-class functions (treated like any other variable), lexical scope, system call interface and immutable strings encoded in UTF-8 (can process in all languages). Language is mature, stable and guarantees backwards compatibiity. Well suited for building infrastructure like netwroked servers, tools and systems for programmers.
 
 Static type language as compared to Python/Javascript (dynamic type). Dynamic means you can declare a variable as a string and later assign it as number.
 
 #### Hello World
+
 A package can have many related files ending with .go with requirement that every file must declare the package it belongs to. Two types of packages: executable (generates a file that can be run, package main) and reusable/dependency (code used as "helpers", good place to put reusable logic). For package main, it must have a function called "main".
 
 https://pkg.go.dev/std
@@ -19,6 +21,7 @@ func main() {
 ```
 
 ### GO CLI
+
 ```
 go build      Compiles code but does not execute
 go run        Compiles and execute one or two files
@@ -27,6 +30,7 @@ go install    Compiles and installs a package
 go get        Downloads raw source code of someone else's package
 go test       Runs any tests associated with current project
 ```
+
 ```
 $ go build test.go
 $ ls
@@ -35,13 +39,15 @@ $ rm test
 ```
 
 ### Garbage Collector
+
 GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
 
 ### Print Functions
+
 ```go
 fmt.Println()     // Takes a string, prints and adds a new line after string
 fmt.Print()       // same as Println() but does not add a new line after string
-fmt.Printf()      // formats string using custom specifier and writes output to stdout 
+fmt.Printf()      // formats string using custom specifier and writes output to stdout
 fmt.Sprint()      // uses default formats for its operands and returns resulting string
 fmt.Sprintf()      // formats and stores a series of characters and values in array pointed to by buffer
 fmt.Errorf()
@@ -60,6 +66,7 @@ fmt.Printf("%s is %d years old.\n", name, age)
 s := fmt.Sprint(name, " is ", age, " years old.\n")
 myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
 ```
+
 ```
 %v    value in default format
 %#v   Go-syntax representation of value
@@ -87,7 +94,8 @@ myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
 ```
 
 ### Command Line Arguments
-OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings. 
+
+OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings.
 
 ```GO
 // ECHO program in linux
@@ -98,8 +106,8 @@ import (
 )
 
 func main() {
-  var s, sep string     // explicit var declaration s and sep of type string 
-  
+  var s, sep string     // explicit var declaration s and sep of type string
+
   // := is a short variable declaraton, i++ is increment statement of 1
   for i := 1; i < len(os.Args); i++ {
     s += sep + os.Args[i]   // string concatenation
@@ -111,10 +119,10 @@ func main() {
 // ECHO program printing command-line args
 func main() {
   s, sep := "", ""
-  
+
   // range produces index (not needed) and element value pair, but requires to deal with both values
-  // GO does not permit unused local variables; solution is to use blank identifier 
-  for _, arg := range os.Args[1:] {   
+  // GO does not permit unused local variables; solution is to use blank identifier
+  for _, arg := range os.Args[1:] {
     s += sep + arg
     sep = " "
   }
@@ -123,7 +131,9 @@ func main() {
 ```
 
 ### Loop Statements
-For loop is only loop statement in GO. 
+
+For loop is only loop statement in GO.
+
 ```GO
 // traditional "while" loop
 for initialization; condition; post {
@@ -134,6 +144,7 @@ for {
   // break or return to terminate loop
 }
 ```
+
 ```GO
 // program prints duplicate lines
 package main
@@ -145,11 +156,11 @@ import (
 )
 
 func main() {
-  counts := make(map[string]int)    // map holds a set of key/value pairs, of type string/int 
+  counts := make(map[string]int)    // map holds a set of key/value pairs, of type string/int
   input := bufio.NewScanner(os.Stdin)
   for input.Scan() {
     line := input.Text()
-    counts[line] = counts[line] + 1   // shortcut is counts[input.Text()]++  
+    counts[line] = counts[line] + 1   // shortcut is counts[input.Text()]++
   }
   // NOTE: ignoring potential errors from input.Err()
   for line, n := range counts {
@@ -162,10 +173,9 @@ func main() {
 ```
 
 ### Variable Declarations
+
 ```GO
 s := "Hello world"    // colon syntax used for assigning NEW variables only
 var s string = "Hello world"
 s = "Awesome!"    // equal syntax for reassigning variables
 ```
-
-

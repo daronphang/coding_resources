@@ -1,5 +1,7 @@
 ## Names
+
 Keywords that cannot be used as names.
+
 ```
 break       case      chan      const         continue
 default     defer     else      fallthrough   for
@@ -9,6 +11,7 @@ interface   map       package   range         return
 ```
 
 Constants, types and functions.
+
 ```
 // CONSTANTS
 true false iota nil
@@ -19,15 +22,17 @@ uint uint8 uint16 uint32 uint64 uintptr
 float32 float64 complex128 complex64
 bool byte rune string error
 
-// FUNCTIONS 
+// FUNCTIONS
 make len cap new append copy close delete
 complex real ima
 ```
 
 ## Declarations
+
 ```
 var   const   type    func
 ```
+
 ```GO
 func main() {
   const freezingF, boilingF = 32.0, 212.0
@@ -40,7 +45,9 @@ func fToC(f float64) float64 {
 ```
 
 ## Variables
+
 Either type or =expression may be omitted, but not both. If expression is omitted, initial value is 0/false/nil/"".
+
 ```GO
 var [name] [type] = [expression]
 
@@ -49,16 +56,18 @@ var b, f, s = true, 2.3, "four"   // bool, float64, string
 var f, err = os.Open(name)        // os.Open() function returns a file and an error
 
 // short variable declarations for local variables where type is determined by expression
-// := is declaration whereas = is assignment 
+// := is declaration whereas = is assignment
 anim := gif.GIF{LoopCount: nframes}
 freq := rand.Float64() * 3.0
 t := 0.0
 ```
 
 ## Pointers
-A pointer value is the address of a variable to update the value indirectly without knowing the variable name. Each time the address of a variable is taken or copied, new aliases are created to identify the same variable. Pointer aliasing is useful as it allows access to a variable without using its name; however, to find all statements that access a variable, need to know all aliases. 
+
+A pointer value is the address of a variable to update the value indirectly without knowing the variable name. Each time the address of a variable is taken or copied, new aliases are created to identify the same variable. Pointer aliasing is useful as it allows access to a variable without using its name; however, to find all statements that access a variable, need to know all aliases.
 
 Pointers are key in flag package which uses a program's command-line arguments to set values of certain variables distributed throughout the program.
+
 ```GO
 x := 1
 p := &x           // p, of type *int, points to x (contains the address of x)
@@ -78,6 +87,7 @@ fmt.Println(incr(&v))   // "3" (and v is 3)
 ```
 
 ## Function New()
+
 ```GO
 p := new(int)     // p, of type *int, points to an unnamed int variable
 fmt.Println(*p)   // "0"
@@ -86,9 +96,11 @@ fmt.Println(*p)   // "2"
 ```
 
 ## Variable Lifetimes
+
 Lifetime of package-level variable is the entire execution of program. Local variables have dynamic lifetimes; new instance lives on until it becomes unreachable, at which point its storage may be recycled. Compiler may choose to allocate local variables on heap or stack depending on whether they are reachable after a function is called or not.
 
 ## Assignability
+
 Allows both implicit and explicit assignments.
 
 ```GO
@@ -96,6 +108,7 @@ mdeals := []string{"gold", "silver", "bronze"}
 ```
 
 ## Type Declarations
+
 ```go
 type [name] [underlying-type]
 
@@ -110,9 +123,11 @@ fmt.Println(c == f) // compile error: type mismatch
 ```
 
 ## Imports
-It is an error to import a package and then not refer to it. Best to use golang.org/x/tools/cmd/goimports tool which automatically inserts and removes packages from import declaration as necessary. 
+
+It is an error to import a package and then not refer to it. Best to use golang.org/x/tools/cmd/goimports tool which automatically inserts and removes packages from import declaration as necessary.
 
 ## Package Initialization
+
 If package has multiple .go files, the are initialized in the order the files are given to the compiler. For variables such as tables that are difficult to set initial value, can use init().
 
 ```go
@@ -122,7 +137,8 @@ var c = 1       // c initialized first to 1
 ```
 
 ## Scope
-Syntactic block is a sequence of statements enclosed in braces. The generic notion of blocks including declarations not surrounded by braces are called lexical blocks. A declaration's lexical block determines its scope. A program can contain multiple declarations of the same name so long as each declaration is in a different lexical block. At package level, oreder in which declarations appear has no effect on their scope. 
+
+Syntactic block is a sequence of statements enclosed in braces. The generic notion of blocks including declarations not surrounded by braces are called lexical blocks. A declaration's lexical block determines its scope. A program can contain multiple declarations of the same name so long as each declaration is in a different lexical block. At package level, oreder in which declarations appear has no effect on their scope.
 
 ```GO
 func f() {}
@@ -148,6 +164,7 @@ func main() {
 ```
 
 ### Variable Scoping
+
 ```go
 {
     err := thisCouldFail()
