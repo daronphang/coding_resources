@@ -35,6 +35,11 @@ Filter        Used to filter log records based on some parameters other than log
 
 ### Configuration
 
+Logging can be configured in three ways:
+1. Creating loggers, handlers and formatters explicitly in Python that calls the config methods.
+2. Creating a logging config file and reading it using fileConfig().
+3. Creating a dictionary of configuration information and passing it to dictConfig().
+
 ```
 # Instance config
 level         Root logger set to specified severity level
@@ -55,6 +60,36 @@ logging.warning('This will get logged to a file')
 
 # root - DEBUG - This will get logged to a file - 12345
 # root - ERROR - This will get logged to a file - 12356
+```
+
+```conf
+[loggers]
+keys=root,simpleExample
+
+[handlers]
+keys=consoleHandler
+
+[formatters]
+keys=simpleFormatter
+
+[logger_root]
+level=DEBUG
+handlers=consoleHandler
+
+[logger_simpleExample]
+level=DEBUG
+handlers=consoleHandler
+qualname=simpleExample
+propagate=0
+
+[handler_consoleHandler]
+class=StreamHandler
+level=DEBUG
+formatter=simpleFormatter
+args=(sys.stdout,)
+
+[formatter_simpleFormatter]
+format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
 ```
 
 ### LogRecord
