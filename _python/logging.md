@@ -92,6 +92,34 @@ args=(sys.stdout,)
 format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
 ```
 
+```py
+import logging
+from logging import config
+
+log_config = {
+    "version":1,
+    "root":{
+        "handlers" : ["console"],
+        "level": "DEBUG"
+    },
+    "handlers":{
+        "console":{
+            "formatter": "std_out",
+            "class": "logging.StreamHandler",
+            "level": "DEBUG"
+        }
+    },
+    "formatters":{
+        "std_out": {
+            "format": "%(asctime)s : %(levelname)s : %(module)s : %(funcName)s : %(lineno)d : (Process Details : (%(process)d, %(processName)s), Thread Details : (%(thread)d, %(threadName)s))\nLog : %(message)s",
+            "datefmt":"%d-%m-%Y %I:%M:%S"
+        }
+    },
+}
+
+config.dictConfig(log_config)
+```
+
 ### LogRecord
 
 Entry-level to logging system. Events recorded by Logger are called log records. Each record has a severity level. By default, only logs messages with severity of WARNING or above. For output format, there are basic elements included in LogRecord that can be easily added such as process ID.
