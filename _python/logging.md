@@ -35,6 +35,11 @@ Filter        Used to filter log records based on some parameters other than log
 
 ### Configuration
 
+Logging can be configured in three ways:
+1. Creating loggers, handlers and formatters explicitly in Python that calls the config methods.
+2. Creating a logging config file and reading it using fileConfig().
+3. Creating a dictionary of configuration information and passing it to dictConfig().
+
 ```
 # Instance config
 level         Root logger set to specified severity level
@@ -55,6 +60,100 @@ logging.warning('This will get logged to a file')
 
 # root - DEBUG - This will get logged to a file - 12345
 # root - ERROR - This will get logged to a file - 12356
+```
+
+```conf
+[loggers]
+keys=root,simpleExample
+
+[handlers]
+keys=consoleHandler
+
+[formatters]
+keys=simpleFormatter
+
+[logger_root]
+level=DEBUG
+handlers=consoleHandler
+
+[logger_simpleExample]
+level=DEBUG
+handlers=consoleHandler
+qualname=simpleExample
+propagate=0
+
+[handler_consoleHandler]
+class=StreamHandler
+level=DEBUG
+formatter=simpleFormatter
+args=(sys.stdout,)
+
+[formatter_simpleFormatter]
+format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
+```
+
+```py
+import logging
+from logging.config import dictConfig
+
+LOGGING_CONFIG = {
+    'version': 1,
+    'loggers': {
+        '': {  # root logger
+            'level': 'NOTSET',
+            'handlers': ['debug_console_handler', 'info_rotating_file_handler', 'error_file_handler', 'critical_mail_handler'],
+        },
+        'my.package': { 
+            'level': 'WARNING',
+            'propagate': False,
+            'handlers': ['info_rotating_file_handler', 'error_file_handler' ],
+        },
+    },
+    'handlers': {
+        'debug_console_handler': {
+            'level': 'DEBUG',
+            'formatter': 'info',
+            'class': 'logging.StreamHandler',
+            'stream': 'ext://sys.stdout',
+        },
+        'info_rotating_file_handler': {
+            'level': 'INFO',
+            'formatter': 'info',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'info.log',
+            'mode': 'a',
+            'maxBytes': 1048576,
+            'backupCount': 10
+        },
+        'error_file_handler': {
+            'level': 'WARNING',
+            'formatter': 'error',
+            'class': 'logging.FileHandler',
+            'filename': 'error.log',
+            'mode': 'a',
+        },
+        'critical_mail_handler': {
+            'level': 'CRITICAL',
+            'formatter': 'error',
+            'class': 'logging.handlers.SMTPHandler',
+            'mailhost' : 'localhost',
+            'fromaddr': 'monitoring@domain.com',
+            'toaddrs': ['dev@domain.com', 'qa@domain.com'],
+            'subject': 'Critical error with application name'
+        }
+    },
+    'formatters': {
+        'info': {
+            'format': '%(asctime)s-%(levelname)s-%(name)s::%(module)s|%(lineno)s:: %(message)s'
+        },
+        'error': {
+            'format': '%(asctime)s-%(levelname)s-%(name)s-%(process)d::%(module)s|%(lineno)s:: %(message)s'
+        },
+    },
+
+}
+
+dictConfig(LOGGING_CONFIG)
 ```
 
 ### LogRecord
