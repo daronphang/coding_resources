@@ -48,7 +48,7 @@ print(f'my name is {name}, age {age}')
 print(x,y, sep='\n')
 ```
 
-## True False
+## Truthy Falsey
 
 Use any() or all() to check for truth in lists.
 

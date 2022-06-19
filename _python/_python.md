@@ -1,83 +1,3 @@
-## Virtual Environment
-
-Developers often deal with Python projects where they have to use module/packages that are not part of Python standard library i.e. version is 3.6 but requires 2.6 for a particular application.
-
-Solution is to create venv, a self-contained folder that contains required executables to use packages without affecting the global Python intepreter installed in os. Useful to prevent package clutter and version conflicts. Codes executed in cmd.
-
-```console
-$cd /d C:\users\daronphang
-$virtualenv venv
-$venv\Scripts\activate
-$deactivate
-
-# Bash
-$source venv/Scripts/activate
-
-$cd venv/Scripts
-$. activate
-$deactivate
-```
-
-### Requirements.txt
-
-A text file containing the venv packages and versions required to run the Python program.
-
-```console
-$pip install -r requirements.txt
-$pip freeze > requirements.txt         Create txt file
-$pip freeze --all > requirements.txt
-$pip list
-```
-
-### Common Mistakes
-
-If need to rename directory folder, best is to create requirements.txt file and recreating virtualenv folder as the venv path will be broken.
-
-## Python Path
-
-```python
-import sys
-print(sys.executable)
-```
-
-```console
-$where python
-```
-
-### Retrieve Path of Root Project Structure
-
-```python
-import os
-
-basedir = os.path.abspath(os.path.dirname(__file__))    # __file__ must be in top level directory of the project
-print(basedir)
-```
-
-### Getting CWD
-
-```python
-import os
-
-os.chdir(b'H:\tech\SECURE\test')   # need convert to bytes
-print(os.getcwd())                  # prints absolute path 'H:/tech/SECURE/test'
-
-os.chdir(os.path.join(os.getcwd(), '\app')) # 'H:\tech\SECURE\test\app'
-```
-
-## Python Shell
-
-Python is an intepreter language that executes code line by line. Python provides Python Shell, an environment that is used to execute a single Python command and display the result. To exit Shell, 'ctrl+z+enter'.
-
-```
-(venv) C:\Users\daronphang\pee_training_repo\daronphang\flask_toy_project>python
-Python 3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
->>> ^Z
-
-
-(venv) C:\Users\daronphang\pee_training_repo\daronphang\flask_toy_project>
-```
-
 ## Args/Kwargs
 
 Both allow to pass a varying number of positional arguments. Both asterisks refer to the unpacking operator. The iterable object returned using unpacking operator is a tuple and not a list.
@@ -101,6 +21,73 @@ def concantenate(**kwargs):
 
 print(my_sum(1, 2, 3))
 print(concantenate(first=1, second=2, third=3))
+```
+
+## Memory Management
+
+Values of objects are stored in memory for quick access. In early programming languages, developers were responsible for managing memory in their programs i.e. to allocate memory for a variable before creating an object, and deallocating it to free that memory for other objects. However, this leads to memory leaks and freeing up of memory too soon.
+
+With automatic memory management, runtime handles this for programmers. Python uses two strategies for memory allocation: reference counting and garbage collection.
+
+### Reference Counting
+
+Reference counting works by counting the number of times an object is referenced by other objects. When the count becomes zero, it is unusable by program code and is deallocated.
+
+### Garbage Collection
+
+However, automatic memory management comes at a cost, whereby it requires to use additional memory and computation to track all of its references. Moreover, reference counting does not work for cyclic references i.e. a situation when an object refers to itself.
+
+As reference cycles take computational work to discover, garbage collection must be a scheduled activity. Python schedules garbage collection based upon a threshold of object allocations and deallocations. When the number of allocations is greater than the number of deallocations, garbage collector is executed.
+
+Can be invoked manually during the execution of a program. Never disable garbage collector unless you have a good reason to do so.
+
+```py
+import gc
+
+print("Garbage collection thresholds:", gc.get_threshold())
+
+# invoking manually
+collected = gc.collect()
+print "Garbage collector: collected %d objects." % (collected)
+```
+
+## Namespaces and Scope
+
+A namespace is a collection of currently defined names along with information about the object that each name references. It is a system that has a unique name for each and every object in Python. Python maintains a namespace in the form a Python dictionary in which keys are the object names and values are objects themselves.
+
+A lifetime of a namespace depends upon the scope of objects; if the scope of an object ends, the lifetime of that namespace ends. Not possible to access inner namespace's objects from an outer namespace.
+
+Python has four namespaces including Local, Enclosing, Global and Built-in (LEGB).
+
+### Built-In
+
+Contains the names of all Python's built-in objects i.e. AttributeError, callable, dict, dir,list, zip.
+
+```py
+print(dir(__builtins__))
+```
+
+### Global
+
+Contains any names defined at the level of the main program.
+
+```py
+print(type(globals()))
+print(globals())
+```
+
+### Enclosing and Local
+
+Interpreter creates a new namespace whenever a function executes. That namespace is local to the function and remains in existence until the function terminates.
+
+```py
+def f():
+    x = 'hi' # enclosing scope
+    def g():
+        x = 'hello' # local scope
+        print(x)
+    g()
+    return
 ```
 
 ## Copying
@@ -223,4 +210,35 @@ test = Test('hello', 'world')
 print(test.get_class_attr())
 print(getattr(test, 'name'))
 print(dir(test))
+```
+
+## Python Path
+
+```python
+import sys
+print(sys.executable)
+```
+
+```console
+$where python
+```
+
+### Retrieve Path of Root Project Structure
+
+```python
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))    # __file__ must be in top level directory of the project
+print(basedir)
+```
+
+### Getting CWD
+
+```python
+import os
+
+os.chdir(b'H:\tech\SECURE\test')   # need convert to bytes
+print(os.getcwd())                  # prints absolute path 'H:/tech/SECURE/test'
+
+os.chdir(os.path.join(os.getcwd(), '\app')) # 'H:\tech\SECURE\test\app'
 ```

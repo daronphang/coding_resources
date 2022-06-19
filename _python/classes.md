@@ -1,3 +1,5 @@
+## Attrinutes
+
 ### Get Attributes
 
 ```py
@@ -34,7 +36,7 @@ class ExampleClass(object):
     self.instance_attr = instance_attr
 ```
 
-### Class Functions with Decorators
+## Class Functions with Decorators
 
 If need to pass class/instance attribute to decorator that receives argument, declare the function in initialization.
 
@@ -67,7 +69,7 @@ class CrudOperations:
         }
 ```
 
-### Super Classes
+## Super Classes
 
 For multiple inheritance whereby both classes have same method name, Method Resolution Order (MRO) algorithm comes into play which decides where Python will look for a given method, and which method will be called when there's a conflict. Order is child class, followed by left to right.
 
@@ -110,12 +112,12 @@ cs.draw()
 
 ```
 
-### Mixin
+## Mixin
 
 A Mixin is a class that provides methods to other classes (a utility class) but not considered as a base class itself i.e. not instantiated by itself. Mixins provide a safe form of multiple inheritance as they enforce a new constraint on classes and can't fall prey to diamond inheritance problems. No limit on number of mixins that can be used to compose a new class. Subclasses that inherit from Mixin only inherit that feature and nothing else. Useful when:
 
-- Want to provide alot of optional features for a class.
-- Want to use one particular feature in alot of different classes.
+-   Want to provide alot of optional features for a class.
+-   Want to use one particular feature in alot of different classes.
 
 When inheriting multiple classes/Mixins, order is important. Recommended and logical way to structure order is to make highest to lowest from left to right.
 
@@ -152,13 +154,13 @@ class OrderView(SingleObjectMixin, View):
     model = Order
 ```
 
-### Instance, Class and Static Methods
+## Instance, Class and Static Methods
 
 Methods offered by Python to write object-oriented that communicates its intent more clearly and for easier maintenance. Help to communicate and enforce developer intent about class design:
 
-- Instance: Takes self parameter which points to an instance of Class object. Can freely access attributes and other methods on same object.
-- Class: Takes cls parameter that points to the class and not object instance. Can modify class state but not instance state.
-- Static: Can neither modify object state nor class state (restricted in what data they can access).
+-   Instance: Takes self parameter which points to an instance of Class object. Can freely access attributes and other methods on same object.
+-   Class: Takes cls parameter that points to the class and not object instance. Can modify class state but not instance state.
+-   Static: Can neither modify object state nor class state (restricted in what data they can access).
 
 ```python
 class ClassTest:
@@ -180,7 +182,7 @@ print(ClassTest.class_method())     # class method called
 print(ClassTest.static_method())    # static method called
 ```
 
-### Class Method Factories
+## Class Method Factories
 
 Class method is generally used to create factory methods. Factory methods return class object for different use cases.
 
@@ -211,7 +213,7 @@ print(hard_book)    # <Book Harry Potter, hardcover, 200>
 print(soft_book)    # <Book Lord of the Rings, paperback, 50>
 ```
 
-### Repr and Str Method
+## Repr and Str Method
 
 Special method used to represent class' objects as a string; Pythonic way to control how objects are converted to strings.
 
@@ -234,7 +236,7 @@ my_car = Car('red', 1000)
 print(my_car)   # a red car or <Car red, 100>
 ```
 
-### Abstract Classes
+## Abstract Classes
 
 A class is an Abstract class if it contains one or more abstract methods (declared but no implementation). A subclass that doesn't implement the abstract methods will throw an error.
 
@@ -255,7 +257,7 @@ class Animal(ABC):
         return 'hello world!'
 ```
 
-### Passing Class Parameters to Method Decorators
+## Passing Class Parameters to Method Decorators
 
 ```py
 class DatabaseDecorator:
