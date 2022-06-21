@@ -46,6 +46,11 @@ $ cat filename          # Displays complete contents without using inputs to scr
 $ cat file1 file2
 $ cat -n file           # view contents preceding with line numbers
 
+$ cat testfile testfile1        Outputs contents of both files
+$ cat /etc/file1
+$ $cat >test2                    Creates a file
+$ cat -n song.txt               Displays line numbers of file
+
 $ head filename
 $ tail filename
 $ tail filename -n3     # -n flag outputs the number of lines to display

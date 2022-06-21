@@ -1,24 +1,24 @@
-### ES6 Classes and Prototype
+## ES6 Classes and Prototype
 
 All objects inherit properties and methods from a prototype. Object.prototype is on top of the prototype inheritance chain. Prototype allows adding new properties or methods to objects constructors. Prototype property allows new properties to be added to object constructors. Classes are introduced in ES6.
 
 ```javascript
 // constructor function
 const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+    this.firstName = firstName;
+    this.birthYear = birthYear;
 };
 
 // ES6
 class Person {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  }
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
 }
 
 Person.prototype.calcAge = function () {
-  console.log(2021 - this.birthYear);
+    console.log(2021 - this.birthYear);
 };
 
 Person.prototype.language = "English";
@@ -34,10 +34,10 @@ Static keyword defines a static method or property for a class. Neither static m
 
 ```js
 class Example {
-  static staticProperty = "hello";
-  static staticMethod() {
-    return "hello world";
-  }
+    static staticProperty = "hello";
+    static staticMethod() {
+        return "hello world";
+    }
 }
 
 console.log(Example.staticProperty);
@@ -49,22 +49,22 @@ Use extends and super.
 
 ```javascript
 class Car {
-  constructor(brand) {
-    this.carname = brand;
-  }
-  present() {
-    return "I have a " + this.carname;
-  }
+    constructor(brand) {
+        this.carname = brand;
+    }
+    present() {
+        return "I have a " + this.carname;
+    }
 }
 
 class Model extends Car {
-  constructor(brand, mod) {
-    super(brand);
-    this.model = mod;
-  }
-  show() {
-    return this.present() + ", it is a " + this.model;
-  }
+    constructor(brand, mod) {
+        super(brand);
+        this.model = mod;
+    }
+    show() {
+        return this.present() + ", it is a " + this.model;
+    }
 }
 
 let myCar = new Model("Ford", "Mustang");
@@ -99,17 +99,17 @@ Creates a new function that has this keyword set to the provided value. Sets thi
 
 ```javascript
 var pokemon = {
-  firstname: "Pika",
-  lastname: "Chu ",
-  getPokeName: function () {
-    var fullname = this.firstname + " " + this.lastname;
-    return fullname;
-  },
+    firstname: "Pika",
+    lastname: "Chu ",
+    getPokeName: function () {
+        var fullname = this.firstname + " " + this.lastname;
+        return fullname;
+    },
 };
 
 var pokemonName = function (snack, hobby) {
-  console.log(this.getPokeName() + "I choose you!");
-  console.log(this.getPokeName() + " loves " + snack + " and " + hobby);
+    console.log(this.getPokeName() + "I choose you!");
+    console.log(this.getPokeName() + " loves " + snack + " and " + hobby);
 };
 
 var logPokemon = pokemonName.bind(pokemon); // creates new object and binds pokemon. 'this' of pokemon === pokemon now
@@ -123,16 +123,16 @@ Calls a function with a given this value and arguments provided individually i.e
 
 ```javascript
 var pokemon = {
-  firstname: "Pika",
-  lastname: "Chu ",
-  getPokeName: function () {
-    var fullname = this.firstname + " " + this.lastname;
-    return fullname;
-  },
+    firstname: "Pika",
+    lastname: "Chu ",
+    getPokeName: function () {
+        var fullname = this.firstname + " " + this.lastname;
+        return fullname;
+    },
 };
 
 var pokemonName = function (snack, hobby) {
-  console.log(this.getPokeName() + " loves " + snack + " and " + hobby);
+    console.log(this.getPokeName() + " loves " + snack + " and " + hobby);
 }; // pokemon.getPokeName()
 
 pokemonName.call(pokemon, "sushi", "algorithms"); // Pika Chu  loves sushi and algorithms
@@ -141,26 +141,24 @@ pokemonName.apply(pokemon, ["sushi", "algorithms"]); // Pika Chu  loves sushi an
 
 ```javascript
 var person = {
-  fullName: function (city, country) {
-    return this.firstName + " " + this.lastName + "," + city + "," + country;
-  },
+    fullName: function (city, country) {
+        return this.firstName + " " + this.lastName + "," + city + "," + country;
+    },
 };
 var person1 = {
-  firstName: "John",
-  lastName: "Doe",
+    firstName: "John",
+    lastName: "Doe",
 };
 person.fullName.call(person1, "Oslo", "Norway");
 
 // Another example
 const book = {
-  title: "Brave New World",
-  author: "Aldous Huxley",
+    title: "Brave New World",
+    author: "Aldous Huxley",
 };
 
 function summary(genre, year) {
-  console.log(
-    `${this.title} was written by ${this.author}. It is a ${genre} novel written in ${year}.`
-  );
+    console.log(`${this.title} was written by ${this.author}. It is a ${genre} novel written in ${year}.`);
 }
 
 const book1 = summary.apply(book, ["dystopian", 1932]);

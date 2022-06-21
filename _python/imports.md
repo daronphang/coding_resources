@@ -29,11 +29,11 @@ from ..module3 import class2
 
 ### Best Practices
 
-- Do not import a module that imports from another module as it may cause circular dependencies and lead to unexpected errors if imported module is changed i.e. module A importing module B, C, D but module C imports module B.
-- Do not cross-import from different folders.
+-   Do not import a module that imports from another module as it may cause circular dependencies and lead to unexpected errors if imported module is changed i.e. module A importing module B, C, D but module C imports module B.
+-   Do not cross-import from different folders.
 
 ### Import Errors
 
-- CD one directory higher than base directory and run python script.
-- Remove any unused imports (prevent circular imports).
-- Move run file into another folder.
+-   CD one directory higher than base directory and run python script.
+-   Remove any unused imports (prevent circular imports).
+-   Move run file into another folder.

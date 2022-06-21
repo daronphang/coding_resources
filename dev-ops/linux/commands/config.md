@@ -10,6 +10,8 @@ $ lsb_release -a
 $ sudo ubuntu-drivers autoinstall
 
 $ sudo lspci -v      View all drivers installed
+
+$sudo dkms status            Get drivers from dynamic kernel module support
 ```
 
 ## Display
@@ -25,6 +27,10 @@ $ xrandr --output DVI-D-0 --mode 1920x1080 --rate 60.00
 ## Network
 
 ```console
+$ ifconfig                    Show network interface such as IP address
+$ curl ifconfig.me
+$ ip address show
+
 sudo apt install speedtest-cli
 $ speedtest
 ```

@@ -33,6 +33,14 @@ which bash  # find bash interpreter
 ls
 ```
 
+### Running Scripts
+
+```console
+$ ./script-name.sh
+$ sh script-name.sh
+$ bash script-name.sh
+```
+
 ### Shell Variables
 
 ```sh

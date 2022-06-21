@@ -1,8 +1,8 @@
-### Javascript
+## Javascript
 
 Lightweight, asynchronous, prototyped-based, interpreted, OOP langauge with first-class functions. First-class functions are treated like other variables i.e. functions can be assigned to variable or passed as an argument or can be returned by another function.
 
-#### Strict Mode
+### Strict Mode
 
 Applies to entire scripts or to individual functions. Doesn't apply to block statements. Makes several changes to normal JS semantics:
 
@@ -10,47 +10,14 @@ Applies to entire scripts or to individual functions. Doesn't apply to block sta
 2. Fixes mistakes that make it difficult for JS engines to perform optimizations.
 3. Prohibits some syntax defined in future versions of ECMA.
 
-### Assigning to Multiple Variables
+## Assigning to Multiple Variables
 
 ```js
 x = y = 15;
 { a, b } = someObject
 ```
 
-### Checking Types
-
-```js
-Array.isArray(someObj);
-typeof obj === "string";
-
-// Shorthand for generic validation function that can be configured at runtime
-// object validation rules
-const schema = {
-    first: {
-        required: true,
-    },
-    last: {
-        required: true,
-    },
-};
-
-// universal validation function
-const validate = (schema, values) => {
-    for (field in schema) {
-        if (schema[field].required) {
-            if (!values[field]) {
-                return false;
-            }
-        }
-    }
-    return true;
-};
-
-console.log(validate(schema, { first: "Bruce" })); // false
-console.log(validate(schema, { first: "Bruce", last: "Wayne" })); // true
-```
-
-### Check Similar Conditions of Multiple Variables
+## Check Similar Conditions of Multiple Variables
 
 If want to check conditions of multiple variables that are similar, can perform arithmetic operations.
 
@@ -63,7 +30,7 @@ if (arr1.concat(arr2).length === 0) {
 }
 ```
 
-### Immediately Invoked Function Expressions
+## Immediately Invoked Function Expressions
 
 Executing a function without having to save it to memory.
 
@@ -75,7 +42,7 @@ Executing a function without having to save it to memory.
 (() => console.log("once"))();
 ```
 
-### Shortcircuiting
+## Shortcircuiting
 
 Returns first value if it's truthy value for || operator. For AND operator, returns falsy value if one of them is false, else the last value.
 
@@ -85,10 +52,59 @@ console.log(0 && "Jonas"); // 0
 console.log(7 && "Jonas"); // Jonas
 ```
 
-### Optional Chaining
+## Optional Chaining
 
 Returns undefined if a certain property does not exist i.e. null or undefined.
 
 ```javascript
 console.log(restaurant.openingHours?.monday?.open);
+```
+
+## Deep vs Shallow Copying
+
+Shallow copy is bit-wise copy of an object (copying reference address only) i.e. both variables have same address and hence point to same memory location. Deep copy (cloning) means all values of new variable are copied and disconnected from original variable (different addresses are allocated).
+
+When copying primitive data types (number, string, boolean, undefined, null), it will be deep copy.
+
+```js
+const a = 5;
+let b = a;
+b = 6;
+console.log(a); // 5
+```
+
+### Objects
+
+Assigning a new variable (shallow copy) just creates a pointer (reference) to that value.
+
+```js
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+};
+
+// shallow copy using spread operator
+let p1 = { ...person };
+
+// shallow copy using object.assign()
+let p2 = Object.assign({}, person);
+
+// deep copy using JSON
+let p3 = JSON.parse(JSON.stringify(person));
+```
+
+### Arrays
+
+Shallow copy of an array means only top-level elements containing primitive values (strings, integers) are copied, but nested objects or arrays inside the array will still be referenced.
+
+```js
+// shallow copy
+let shallowArr = [...fruits];
+
+shallowArr = fruits.slice();
+
+shallowArr = Array.from(fruits);
+
+// deep copy
+let deepCopyArr = JSON.parse(JSON.stringify(fruits));
 ```
