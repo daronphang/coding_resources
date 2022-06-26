@@ -21,6 +21,14 @@ $ sudo usermod -aG sudo newuser
 $ groups newuser
 ```
 
+### Remove User
+
+```console
+$ sudo killall -u username      # if user is logged in
+$ userdel -r username   # r flag force remove user's home directory and mail spool
+$ userdel -f username
+```
+
 ## Create Group
 
 ```console
@@ -66,6 +74,7 @@ Change PermitRootLogin from 'prohibit-password' (default setting) to 'no'.
 
 ```console
 $ sudo nano /etc/ssh/sshd_config
+$ systemctl restart sshd    # /etc/init.d/sshd restart for older linux
 ```
 
 ```config

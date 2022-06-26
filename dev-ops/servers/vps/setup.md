@@ -1,8 +1,7 @@
 ### Cloud Vendors
 
-AWS, GCP, Linode. 
+AWS, GCP, Linode.
 
 ### Setup
 
-Write shell script. Can use supervisor or etcd.
-
+Configure Nginx, Supervisor, SSH, Gunicorn, Hostname.

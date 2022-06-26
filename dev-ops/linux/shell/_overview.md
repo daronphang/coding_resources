@@ -43,16 +43,23 @@ $ bash script-name.sh
 
 ### Shell Variables
 
+As general rule, use quotes if the variable can either be empty or contain spaces.
+
 ```sh
 #! /bin/sh
 variable ="Hello"
+variable2 = 3
 echo $variable
+echo "$variable"
+echo `variable`     # all 3 forms work
 
 var=$((3+9))
 echo $var
 ```
 
 ### Read User Input
+
+Read command looks for space or tab separator in input text in order to split the text into multiple values.
 
 Can use silent flag '-s' to hide input characters from screen i.e. password.
 
@@ -64,6 +71,52 @@ read second
 echo "I am $second too!"
 
 read -p "Enter your age" variable_name    # -p flag to prompt user with a custom msg
+
+echo -n "Please state your name and your surname: "
+read name surname
+```
+
+```sh
+#!/bin/bash
+
+VAR1="Mihalis"  # assignment
+myVar="$(pwd)"  # output of external program
+
+echo -n "My name is ${VAR1}"  # -n prevents echo from printing a newline character
+echo " and I work from "
+echo $myVar
+
+myVar=`pwd` # equivalent to $(pwd)
+echo $myVar
+```
+
+### Using UNIX Environment Variables
+
+```sh
+#!/bin/bash
+
+# Read
+if [[ -z "${PATH}" ]]; then # -z flag tests whether a variable has length of 0
+    echo "PATH is empty!"
+else
+    echo "PATH: $PATH"
+fi
+
+# Change
+PATH=${PATH}:/tmp
+echo "PATH: $PATH"
+
+# Delete
+export PATH=""    # export creates an env variable i.e. global
+if [[ -z "${PATH}" ]]; then
+    echo "PATH is empty!"
+else
+    echo "PATH: $PATH"
+fi
+
+# Create
+MYPATH="/bin:/sbin:/usr/bin"
+echo "MYPATH: ${MYPATH}"
 ```
 
 ### Execution Rights
@@ -92,8 +145,10 @@ echo "scale=2;22/7" | bc    # 3.14
 
 ### Comparisons
 
+To use mathematical conditionl operators like ==, <, need use '/bin/bash'.
+
 ```
--eq     Equality
+-eq     Equality (==)
 -ge     Greater than or equal
 -gt     Greater than
 -le     Less than or equal
@@ -104,6 +159,8 @@ echo "scale=2;22/7" | bc    # 3.14
 ### Conditions
 
 Use '-a' and '-o' for AND and OR comparisons.
+
+In an if statement, grep returns exit 0 (true) if it found something, and otherwise exit 1 (false).
 
 ```sh
 read x
@@ -133,6 +190,10 @@ for X in cyan magenta yellow
 do
 	echo $X
 done
+
+$ words="foo bar baz"
+for word in $words; do
+  echo "$word"
 ```
 
 ### While Loop

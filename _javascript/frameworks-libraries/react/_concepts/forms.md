@@ -1,12 +1,16 @@
 ### Uncontrolled
 
-In browser, forms maintain their own internal state. For uncontrolled, DOM manages and stores data and input is pulled from it through refs. 
+In browser, forms maintain their own internal state. For uncontrolled, DOM manages and stores data and input is pulled from it through refs.
 
 ```js
 return <input type="text" name="name" ref={this.nameInput} />;
 ```
 
 ### Controlled
+
+It is convenient to have a JS function that handles the submission of the form and has access to the data that the user has entered. The standard way to achieve this is with a technique called "controlled components".
+
+In HTML, form elements like <input> maintain their own state, while React updates with setState(). Can combine the both by making React state the "single source of truth" i.e. input form element value is controlled by React.
 
 State is stored in the component that renders the input. Each input field accepts its current value as a prop and has callback function which is called when the state of input changes.
 
@@ -63,20 +67,16 @@ const SimpleInput = (props) => {
     </form?
   )
 }
-
 ```
 
 ### Form Reset
+
 If uncontrolled, can use event.target.reset(). Else, need to setState.
 
 ```html
- <form onSubmit={handleSearch}>
-  <StyledInputBase
-    placeholder="Search something…"
-    onChange={handleOnChange}
-    value={searchValue}
-    inputProps={{ "aria-label": "search" }}
-  />
+<form onSubmit="{handleSearch}">
+    <StyledInputBase placeholder="Search something…" onChange={handleOnChange} value={searchValue} inputProps={{
+    "aria-label": "search" }} />
 </form>
 ```
 

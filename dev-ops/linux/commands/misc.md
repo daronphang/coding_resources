@@ -1,11 +1,19 @@
-### References
+## References
 
 ```
 ~/        Refers to current user's home directory i.e. /home/daronphang or /root if root user
 ctrl+L    Clear terminal
 ```
 
-### Pipe Operator
+## Installing Packages
+
+```console
+# update fetches latest versions for packages installed on system
+# upgrade performs the updates
+$ sudo apt update && apt upgrade
+```
+
+## Pipe Operator
 
 Lets you use two or more commands such that the output of one command serves as input to the next.
 
@@ -120,4 +128,39 @@ $ ln -s FILE1.txt FILE2.txt
 $ ln -s documents/ dox-sym-link
 $ ls documents
 $ ls dox-sym-link
+```
+
+## Hostname
+
+Used to view and change a system's domain and hostname. Can be confiured to be descriptive or structured i.e. [purpose]-[number]-[environment].
+
+```
+-a      Display alias
+-A      Display every FQDN (Fully Qualified Domain Name) of the computer
+-b      Always set a hostname
+-d      Display DNS
+-f      Display the FQDN
+-F      Check a file to recover and display the hostname
+-i      Display IP address
+-I      Display all of the computer's network addresses
+-s      Display short version of the hostname
+-v      Verbose
+-y      Display NIS domain name
+```
+
+### Updating Hosts File
+
+Hosts file creates static associations between IP addresses and hostnames/domains which the system prioritizes before DNS for name resolution.
+
+```console
+$ vi /etc/hosts
+```
+
+```
+# example-hostname is the local hostname
+# hostname.example.com is the FQDN
+
+127.0.0.1 localhost.localdomain localhost
+203.0.113.10 example-hostname.example.com example-hostname
+2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname    # for IPv6
 ```

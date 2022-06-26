@@ -6,7 +6,7 @@ Provides a much more user-friendly framework for managing netfilter and a cli/GU
 
 ### Using IPv6
 
-If your VPS (Virtual Private Server) is configured for IPv6, ensure that UFw is configured to support IPv6 so that it configures both IPv4 and IPV6 firewall rules.
+If your VPS (Virtual Private Server) is configured for IPv6, ensure that UFW is configured to support IPv6 so that it configures both IPv4 and IPV6 firewall rules.
 
 Ensure IPV6 is set to 'yes'.
 
@@ -62,11 +62,13 @@ $ sudo ufw default allow outgoing
 
 ```console
 $ sudo ufw allow ssh
-$ sudo ufw allow 22/tcp
-$ sudo ufw allow 80/tcp
+$ sudo ufw allow 22/tcp     # ssh
+$ sudo ufw allow 80/tcp     # http
+$ sudo ufw allow 443/tcp    # https
 $ sudo ufw allow www
 
-$ sudo ufw allow ftp        # file transfer protocol
+# file transfer protocol
+$ sudo ufw allow ftp
 $ sudo ufw allow 21/tcp
 $ sudo ufw allow 20/tcp
 

@@ -1,6 +1,6 @@
 ## Basics
 
-Text editor used in CLI. 
+Text editor used in CLI.
 
 ```
 vim <filename>    Start in command mode i.e. cannot edit; need to insert
@@ -34,12 +34,12 @@ d             Delete
 !             Force
 o             Insert text at beginning of following line
 
-v             Visual mode for copying, selects character   
+v             Visual mode for copying, selects character
 y             Copy/yank while visual mode is active, selects highlighted text rows
 p             Paste
 
 d             Cut
-dd            Cut line
+dd            Cut/delete line
 
 :x            Save file and exit
 :q!           Quit without saving file
@@ -50,7 +50,8 @@ n, N          Next instance, previous instance
 
 ## Buffer
 
-An in-memory text of a file. Anytime an existing file is opened or created using Vim, a buffer will be allocated as the in-memory representation of said file. Any changes made will be tracked within the buffer. 
+An in-memory text of a file. Anytime an existing file is opened or created using Vim, a buffer will be allocated as the in-memory representation of said file. Any changes made will be tracked within the buffer.
+
 ```
 :ls       View buffer
 1 %a  "file.md"       line 1

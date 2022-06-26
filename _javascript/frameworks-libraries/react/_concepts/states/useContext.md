@@ -1,12 +1,12 @@
-## Basics
+## useContext
 
 State management library built into React to solve props drilling. Provides a way to pass data through component tree without having to pass props down manually at every level. Designed to share data that can be considered "global" for a tree of React components such as current authenticated user, theme, or preferred language. Allows you to broadcast such data and changes to it, to all components nested below. Need create context, consumer and provider.
 
 ### Limitations
 
-- Not optimized for high frequency changes i.e. many changes per second.
-- Should not be used to replace ALL communications via props.
-- Apply sparingly as it increases complexity for higher level components and unit-testing.
+-   Not optimized for high frequency changes i.e. many changes per second.
+-   Should not be used to replace ALL communications via props.
+-   Apply sparingly as it increases complexity for higher level components and unit-testing.
 
 ### IMPORTANT
 
@@ -16,18 +16,18 @@ When the state of Context Provider changes, it will cause all its consumers to r
 let errorMessage; // preserve state when component re-renders
 
 export default function ExampleComponent() {
-  const ctx = useContext(Test);
-  const [errMsg, setErrMsg] = useState(null);
+    const ctx = useContext(Test);
+    const [errMsg, setErrMsg] = useState(null);
 
-  useEffect(() => {
-    ctx.test("update state in context provider");
-    setErrMsg("hello world"); // this state will get lost when context provider re-renders consumers
-  }, []);
+    useEffect(() => {
+        ctx.test("update state in context provider");
+        setErrMsg("hello world"); // this state will get lost when context provider re-renders consumers
+    }, []);
 }
 
 useEffect(() => {
-  if (!errMsg) errorMessage = null;
-  else errorMessage = "hello world!"; // this state gets preserved upon re-render
+    if (!errMsg) errorMessage = null;
+    else errorMessage = "hello world!"; // this state gets preserved upon re-render
 }, [errMsg]);
 ```
 
@@ -41,9 +41,9 @@ To update context from a nested component, can pass a function down to allow con
 // UserContext.js
 // Returns a consumer and provider
 export const UserContext = React.createContext({
-  name: null,
-  age: null,
-  happyBirthday: () => {},
+    name: null,
+    age: null,
+    happyBirthday: () => {},
 });
 
 export default UserContext;
@@ -58,15 +58,11 @@ Allows consuming components to subscribe to context changes. All consumers that 
 import UserContext from "./context";
 
 export default function UserProvider({ children }) {
-  const [name, setName] = useState("John Doe");
-  const [age, setAge] = useState(1);
-  const happyBirthday = () => setAge(age + 1);
+    const [name, setName] = useState("John Doe");
+    const [age, setAge] = useState(1);
+    const happyBirthday = () => setAge(age + 1);
 
-  return (
-    <UserContext.Provider value={{ name, age, happyBirthday }}>
-      {children}
-    </UserContext.Provider>
-  );
+    return <UserContext.Provider value={{ name, age, happyBirthday }}>{children}</UserContext.Provider>;
 }
 ```
 
