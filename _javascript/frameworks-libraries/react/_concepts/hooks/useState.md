@@ -1,16 +1,16 @@
-### Basics
+## Basics
 
 Built-in React object used to manage data about the component. Needed if changes in data are reflected in UI. Key features:
 
-- Changes in state is triggered by user action through event handlers and re-renders/evaluates the component.
-- State object is initialized in constructor and can store multiple properties.
-- setState() is used to change value of state object.
-- State data can be modified by its own component but not from outside (private).
-- Can have multiple states in single component, and separated by per component basis.
-- For updating states that are dependent on previous states, pass a function into the state function.
-- React provides Hooks to give functional components access to states.
+-   Changes in state is triggered by user action through event handlers and re-renders/evaluates the component.
+-   State object is initialized in constructor and can store multiple properties.
+-   setState() is used to change value of state object.
+-   State data can be modified by its own component but not from outside (private).
+-   Can have multiple states in single component, and separated by per component basis.
+-   For updating states that are dependent on previous states, pass a function into the state function.
+-   React provides Hooks to give functional components access to states.
 
-### useState
+## useState
 
 Can set initial value and always returns an array with two elements:
 
