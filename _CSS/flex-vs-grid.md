@@ -157,6 +157,8 @@ Grid lines are essentially lines that represent the start of, or end of, or betw
 }
 ```
 
+<img src="./_snapshots/grid-lines.png">
+
 ### Positioning Shorthands
 
 Can omit the end value if the area spans only one track.
@@ -166,20 +168,18 @@ grid-row: 2;                Shortcut for start and end
 grid-column: 3 / 4;
 ```
 
-<img src="./_snapshots/grid-lines.png">
-
 ### Spanning Items Across Rows and Columns
 
 **Grid items span only one column and row by default**, but can span multiple row/column tracks using grid line numbers to position them.
 
 ```
-// first item takes up first row
+// item takes up entire row
 grid-column-start: 1;
 grid-column-end: 4;
 
-// first item takes up first column
+// item takes up entire column, assuming there are 4 items in total
 grid-row-start: 1;
-grid-row-end:   4;
+grid-row-end: 4;
 ```
 
 ### Box Alignment
