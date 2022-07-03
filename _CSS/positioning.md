@@ -1,6 +1,6 @@
 ## Overview
 
-Both absolute and fixed will not flow around the elements on page and do not take up space. For relative, takes up space but offets do not occupy space.
+Both absolute and fixed will not flow around the elements on page and do not take up space. For relative, takes up space but offsets do not occupy space.
 
 ```
 static
@@ -30,30 +30,30 @@ Position an element based on its closest positioned ancestor/parent position. **
 
 ```html
 <div class="”parent”">
-  <div class="”box”" id="”one”">One</div>
-  <div class="”box”" id="”two”">Two</div>
-  <div class="”box”" id="”three”">Three</div>
-  <div class="”box”" id="”four”">Four</div>
+    <div class="”box”" id="”one”">One</div>
+    <div class="”box”" id="”two”">Two</div>
+    <div class="”box”" id="”three”">Three</div>
+    <div class="”box”" id="”four”">Four</div>
 </div>
 ```
 
 ```css
 .parent {
-  border: 2px black dotted;
-  display: inline-block;
+    border: 2px black dotted;
+    display: inline-block;
 }
 
 .box {
-  display: inline-block;
-  background: red;
-  width: 100px;
-  height: 100px;
+    display: inline-block;
+    background: red;
+    width: 100px;
+    height: 100px;
 }
 
 #relative {
-  top: 20px;
-  left: 20px;
-  background: green;
-  position: relative;
+    top: 20px;
+    left: 20px;
+    background: green;
+    position: relative;
 }
 ```
