@@ -6,7 +6,7 @@ When adding a CSS file to component, need to explicitly declare in React. When d
 import "./ExpenseItem.css";
 
 function ExpenseItem() {
-  return <div className="expense-item"></div>;
+    return <div className="expense-item"></div>;
 }
 ```
 
@@ -16,18 +16,18 @@ Properties with two names must be written in camelcase as inline CSS is JS objec
 
 ```js
 export default function Component() {
-  const someStyle = {
-    color: "white",
-    padding: "10px",
-    textDecoration: "none",
-  };
+    const someStyle = {
+        color: "white",
+        padding: "10px",
+        textDecoration: "none",
+    };
 
-  return (
-    <div>
-      <h1 style={{ color: "red", backgroundColor: "blue" }}>Hello Style!</h1>
-      <h1 style={someStyle}>Hello Again</h1>
-    </div>
-  );
+    return (
+        <div>
+            <h1 style={{ color: "red", backgroundColor: "blue" }}>Hello Style!</h1>
+            <h1 style={someStyle}>Hello Again</h1>
+        </div>
+    );
 }
 ```
 
@@ -44,8 +44,8 @@ if(enteredValue,trim().length === 0) {
 }
 
 return (
-  <div className={`form-control ${!isValid ? 'invalid' : ''}`}  // .form-control.invalid is a CSS class
-  <label style={{ color: !isValid ? 'red' : 'black'}}   // setting inline styling by passing an object
+  <div className={`form-control ${!isValid ? 'invalid' : ''}`}>  // .form-control.invalid is a CSS class
+  <label style={{ color: !isValid ? 'red' : 'black'}}>   // setting inline styling by passing an object
 
 )
 ```

@@ -1,6 +1,15 @@
 ## Javascript
 
-Lightweight, asynchronous, prototyped-based, interpreted, OOP langauge with first-class functions. First-class functions are treated like other variables i.e. functions can be assigned to variable or passed as an argument or can be returned by another function.
+Lightweight, asynchronous, prototyped-based, interpreted language with first-class functions. First-class functions are treated like other variables i.e. functions can be assigned to variable or passed as an argument or can be returned by another function. Supports multi-paradigms including OO, procedural and FP.
+
+JS is a compiled langauge i.e. source code is parsed before executed, and we are informed of static errors before execution. The parsed code is then converted into a binary form, which is subsequently executed and does not switch back line-by-line execution.
+
+Flow for a JS source program:
+
+1. After a program leaves a developer's editor, it gets transpiled by Babel, then packed by Webpack (along with other build processes), and finally gets delivered in a different form to a JS engine.
+2. JS engine parses the code to an AST (Abstract Syntax Tree).
+3. The engine converts that AST to an optimized (binary) form, which is then refined/converted further by the optimizing JIT compiler.
+4. Finally, the JS VM executes the program.
 
 ### Strict Mode
 

@@ -1,8 +1,10 @@
 ## Custom Hooks
 
-Custom hooks are regular functions that help to share stateful logic between components without forcing you to add more components to the tree. Allows to extract components logic into a reusuable function. Starts with 'use' and may call other hooks and React states. Components that use the same hook do not share state as all state and effects inside are isolated.
+Custom hooks are regular functions that help to share stateful logic between components without forcing you to add more components to the tree. Allows to extract components logic into a reusuable function. Starts with 'use' and may call other hooks and React states. As hooks are functions, can pass information between them.
 
-when returning values, can either return as an object or array destructuring. Values returned can be variable, string, object, or function.
+**Components that use the same hook do not share state as all state and effects inside are isolated**. For each call to the custom hook, React's POV is that the component simply calls useState and useEffect, and both can be used many times in a component and are completely independent.
+
+When returning values, can either return as an object or array destructuring. Values returned can be variable, string, object, or function.
 
 ```js
 return { x, y, z }; // when calling custom hooks, need to use the SAME reference x, y, z
@@ -12,6 +14,27 @@ return [x, y, z]; // can name variables yourself in components calling custom ho
 ```
 
 https://alterclass.io/blog/5-react-custom-hooks-you-should-start-using-explained
+
+### Boolean Example
+
+```js
+const useBoolean = () => {
+    const [state, setState] = React.useState();
+
+    const handleTrue = () => setState(true);
+    const handleFalse = () => setState(false);
+    const handleToggle = () => setState(!state);
+
+    return [
+        state,
+        {
+            setTrue: handleTrue,
+            setFalse: handleFalse,
+            setToggle: handleToggle,
+        },
+    ];
+};
+```
 
 ### Fetch API Example
 

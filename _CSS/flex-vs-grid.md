@@ -95,13 +95,24 @@ When you wrap flex items, each new row/column is an independent flex line in the
 
 Two-dimensional grid-based layout system with rows and columns. Useful for creating more complex and organized layouts.
 
-The fr unit works to assign a proportion of available space in the grid container to our grid tracks. When combined with minmax(), it can give us a similar behavior to the flex properties in flexbox while still enabling the creation of a layout in two dimensions.
+The fr unit (fraction) works to assign a proportion of remaining space in the grid container to our grid tracks. When combined with minmax(), it can give us a similar behavior to the flex properties in flexbox while still enabling the creation of a layout in two dimensions.
+
+https://learncssgrid.com/
+
+<img src="./_snapshots/grid-eg.png">
+
+### Explicit Grid
 
 ```
-grid-column-start: 1;
-grid-column-end: 4;
-grid-row-start: 1;
-grid-row-end: 2;
+grid-template-rows: 50px 100px;              First row is 50px, second row is 100px, others are auto
+grid-template-columns: 90px 50px;
+
+grid-template-columns: 1fr 1 fr 2 fr;        Third item takes two units
+grid-template-columns: 3rem 25% 1fr 2fr;     fr is calc. based on remaining space
+
+grid-template-columns: minmax(auto, 50%) 1fr 3em;
+
+grid-template-rows: repeat(4, 100px);
 ```
 
 ```css
@@ -111,7 +122,65 @@ grid-row-end: 2;
 }
 ```
 
-<img src="./_snapshots/grid-eg.png">
+### Positioning Items by Grid Line Numbers
+
+Grid lines are essentially lines that represent the start of, or end of, or between column and row tracks. Each line is numbered incrementally starting from 1. For instance, two-row and three-column grid will have three row lines and four column lines.
+
+```html
+<div class="wrapper">
+    <div class="box1">One</div>
+    <div class="box2">Two</div>
+    <div class="box3">Three</div>
+    <div class="box4">Four</div>
+    <div class="box5">Five</div>
+</div>
+```
+
+```css
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 100px;
+}
+
+.box1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.box2 {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    grid-row-end: 5;
+}
+```
+
+### Positioning Shorthands
+
+Can omit the end value if the area spans only one track.
+
+```
+grid-row: 2;                Shortcut for start and end
+grid-column: 3 / 4;
+```
+
+<img src="./_snapshots/grid-lines.png">
+
+### Spanning Items Across Rows and Columns
+
+**Grid items span only one column and row by default**, but can span multiple row/column tracks using grid line numbers to position them.
+
+```
+// first item takes up first row
+grid-column-start: 1;
+grid-column-end: 4;
+
+// first item takes up first column
+grid-row-start: 1;
+grid-row-end:   4;
+```
 
 ### Box Alignment
 

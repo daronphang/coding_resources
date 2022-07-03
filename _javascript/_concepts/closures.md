@@ -1,6 +1,8 @@
 ## Closures
 
-Functions in Javascript form closures. Closure is the combination of a function and the lexical environment within which that function was declared (access to global variables). This environment consists of any local variables that were in-scope at the time the closure was created. When nested functions are created, the inner function has access to scope "above" it.
+Closure is when a function remembers and continues to access variables from outside its scope, even when the function is executed in a different scope. **Closures are not a snapshot but a direct link** and preservation of the variable itself i.e. able to update the variable defined.
+
+Functions in Javascript form closures, not objects. Closure is the combination of a function and the lexical environment within which that function was declared (access to global variables). This environment consists of any local variables that were in-scope at the time the closure was created. When nested functions are created, the inner function has access to scope "above" it.
 
 Closure is a feature where an inner function has access to outer (enclosing) function's variables. When a function renders a function, the rendered function has access to variables not defined in global scope. Closure makes a function remember all variables that existed at the function's birthplace (parent function) i.e. closure of a function remembers variables from the place where it was defined, regardless of where it is executed later. Closures are created every time a function is created. In some languages, local variables within a function exist for just the duration of that function's execution.
 
@@ -11,16 +13,29 @@ Every closure has three scopes:
 3. Global Scope.
 
 ```js
-function outerFunc() {
-    // the outer scope
-    let outerVar = "I am outside!";
-    function innerFunc() {
-        // the inner scope
-        console.log(outerVar); // => logs "I am outside!"
-    }
-    innerFunc();
+function greeting(msg) {
+    return function who(name) {
+        console.log(`${msg}, ${name}!`);
+    };
 }
-outerFunc();
+
+var hello = greeting("Hello");
+var howdy = greeting("Howdy");
+
+/* 
+When greeting() finishes, we expect all its variables to be garbage collected
+However, they don't because of closure as the inner function instances are still alive
+Their closures are still preserving the 'msg' variables from outer function 
+*/
+
+hello("Kyle");
+// Hello, Kyle!
+
+hello("Sarah");
+// Hello, Sarah!
+
+howdy("Grant");
+// Howdy, Grant!
 ```
 
 ## Lexical Scoping

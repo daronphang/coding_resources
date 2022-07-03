@@ -16,7 +16,8 @@ Components are responsible for listening to when an update takes place. As the d
 
 The vDOM is a light-weight abstraction of the DOM that has all the same properties as the real DOM, but doesn't have the ability to write to the screen. A new vDOM is created after every re-render.
 
-**Reconciliation** is a process to compare and keep in sync the two files (real and virtual DOMs). **Diffing algorithm** is a technique of reconciiliation which is used by React.
+-   **Reconciliation** is a process to compare and keep in sync the two files (real and virtual DOMs).
+-   **Diffing algorithm** is a technique of reconciiliation which is used by React.
 
 ## How Updates Work
 

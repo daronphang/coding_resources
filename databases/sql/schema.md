@@ -4,18 +4,22 @@ When constructing backend applications, need to consider how frontend communicat
 
 ### Schema
 
+A database schema defines how data is organized within a relational database, and is inclusive of logical constraints such as table names, fields, data types, and the relationships between these entities. Schemas commonly use visual representations to communicate the architecture of the database.
+
 Schema in SQL is a collection of database objects associated with a database including tables, fields, views, triggers, relationships, stored procedures, indexes, etc. It describes both the organization of data and relationships between tables in a database i.e. represents the framework and arrangement of the contents of an organization’s data. Essentially a blueprint of how the database is constructed.
 
 Schema always belongs to one database, whereas a database may have multiple schemas. The user that owns the schema is known as schema owner. Useful mechanism to segregate database objects for different applications, access rights, and managing the security administration of databases.
 
 Database schema includes:
 
-- All important or relevant data.
-- Consistent formatting for all data entries.
-- Unique keys for all entries and database objects.
-- Each column in a table has a name and data type.
+-   All important or relevant data.
+-   Consistent formatting for all data entries.
+-   Unique keys for all entries and database objects.
+-   Each column in a table has a name and data type.
 
 Schemas are important for designing database management systems (DBMS) or relational database management sysytems (RDBMS). Examples of DBMS include MySQL, Oracle, PostgreSQL, etc.
+
+<img src="db-schema.png">
 
 ### Built-in Schemas
 

@@ -10,9 +10,9 @@ Scope is the context in which a variable exists; can be local or global. Scioe c
 
 ```javascript
 (function () {
-  //IIFE
-  console.log(hero); //ReferenceError and not undefined as variable has to be declared first though hoisted
-  let hero = "Atom";
+    //IIFE
+    console.log(hero); //ReferenceError and not undefined as variable has to be declared first though hoisted
+    let hero = "Atom";
 })();
 ```
 
@@ -20,10 +20,10 @@ Scope is the context in which a variable exists; can be local or global. Scioe c
 var hero = "Batman";
 let antiHero = "Captain Cold";
 if (true) {
-  var hero = "The Flash"; //scope is global as this is declared in block and not function
-  let antiHero = "Reverse Flash"; //scope is (local) block-level
-  console.log(hero); //The Flash
-  console.log(antiHero); //Reverse Flash
+    var hero = "The Flash"; //scope is global as this is declared in block and not function
+    let antiHero = "Reverse Flash"; //scope is (local) block-level
+    console.log(hero); //The Flash
+    console.log(antiHero); //Reverse Flash
 }
 console.log(hero); //The Flash
 console.log(antiHero); //Captain Cold

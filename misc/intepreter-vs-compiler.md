@@ -1,6 +1,6 @@
 ### Compilers
 
-Compilers take a whole program of instructions and translate it to an executable binary code once. They give the developer more control over hardware aspects including memory management and CPU usage. Translation and execution are separated.
+Compilers take a whole program of instructions and translate it to an executable binary code once (parsing). They give the developer more control over hardware aspects including memory management and CPU usage. Translation and execution are separated.
 
 Compiled langauges require a "build" step i.e. need to be manually compiled first. If a change is made, the entire program needs to be rebuilt.
 
