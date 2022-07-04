@@ -50,33 +50,36 @@ alert(user.fullName);
 user.fullName = "Alice Cooper";
 ```
 
+## Bind, Call, Apply
+
+If 'this' keyword is used inside a function, it will always refer to the object that invokes (calls) the function. However, sometimes we lose this reference.
+
+Fortunately, we can use bind(), call() or apply() to couple a function with an object.
+
 ### Bind
 
 Creates a new function that has this keyword set to the provided value. Sets this value now and allows to execute function in future.
 
-```javascript
-var pokemon = {
-    firstname: "Pika",
-    lastname: "Chu ",
-    getPokeName: function () {
-        var fullname = this.firstname + " " + this.lastname;
-        return fullname;
-    },
-};
+```js
+var obj = { num: 2 };
 
-var pokemonName = function (snack, hobby) {
-    console.log(this.getPokeName() + "I choose you!");
-    console.log(this.getPokeName() + " loves " + snack + " and " + hobby);
-};
+function add(a, b) {
+    return this.num + a + b;
+}
 
-var logPokemon = pokemonName.bind(pokemon); // creates new object and binds pokemon. 'this' of pokemon === pokemon now
+const func = add.bind(obj, 3, 5);
 
-logPokemon("sushi", "algorithms"); // Pika Chu  loves sushi and algorithms
+const altFunc = add.bind(obj);
+altFunc(3, 5);
 ```
 
 ### Call and Apply
 
-Calls a function with a given this value and arguments provided individually i.e. explicitly specify what this should reference within the calling function. Difference between bind() is that call() can accept additional parameters, executes immediately and does not create a new function. Apply() is same as call() but expects an array of parameters. Call and apply are one-time use methods.
+Calls a function with a given this value and arguments provided individually i.e. explicitly specify what this should reference within the calling function.
+
+Difference between bind() and call() is that call() executes the function immediately and does not make a copy of the function it is being called on.
+
+Apply() is same as call() but expects an array of parameters. Call and apply are one-time use methods.
 
 ```javascript
 var pokemon = {

@@ -1,6 +1,6 @@
 ## DOM (Document Object Model)
 
-DOM is the data representation of HTML/XML documents in an object-oriented manner i.e. a programming interface for web documents. It is a way to represent the webpage in a structured hierarchical way so that it is easier for programmers to glide through the document.
+A programming interface that allows us to create, change or remove elements from the document. It is the data representation of HTML/XML documents in an object-oriented manner. It is a way to represent the webpage in a structured hierarchical way so that it is easier for programmers to glide through the document. Can also add events to these elements to make page more dynamic.
 
 When a webpage is loaded, browser creates a DOM of the page which is constructed as a tree of objects. With the DOM, JS has the access and power to create dynamic HTML by manipulating HTML/CSS structures, styles, attributes and content.
 

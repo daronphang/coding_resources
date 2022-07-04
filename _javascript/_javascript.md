@@ -19,6 +19,31 @@ Applies to entire scripts or to individual functions. Doesn't apply to block sta
 2. Fixes mistakes that make it difficult for JS engines to perform optimizations.
 3. Prohibits some syntax defined in future versions of ECMA.
 
+## Function Expressions/Declarations
+
+A declared function is "saved for later use" and will be executed later when invoked. A function expression can be stored in a variable which can be used as a function.
+
+Differences are as follows:
+
+-   Function declarations are hoisted while expressions are not.
+-   With function expressions, you can use it immediately after it is defined, but function declarations have to wait until the entire script has been parsed.
+-   Function expressions can be used as an argument to another function.
+-   Function expressions can be anonymous.
+
+```js
+// declaration
+function myFunction() {
+    // do something
+}
+
+// expression
+const getRectArea = function (width, height) {
+    return width * height;
+};
+
+console.log(getRectArea(3, 4));
+```
+
 ## Assigning to Multiple Variables
 
 ```js

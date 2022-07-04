@@ -51,7 +51,11 @@ me.printIntroduction();
 // Checking if property exists
 const hero = { name: "Batman" };
 
-hero.hasOwnProperty("name"); // does not look at prototype chain
+// does not look at prototype chain i.e. checks the direct object
+// ignores inherited properties
+// returns false for ES6 class getters and methods
+hero.hasOwnProperty("name");
+
 if ("name" in hero) {
     console.log("hello");
 }

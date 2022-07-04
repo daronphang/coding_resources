@@ -5,36 +5,34 @@ Contains both the producing code and calls to the consuming code.
 
 ```javascript
 const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log("Lottery draw is happening");
-  setTimeout(function () {
-    if (Math.random() >= 0.5) {
-      resolve("you win");
-    } else {
-      reject(new Error("you lost"));
-    }
-  }, 2000);
+    console.log("Lottery draw is happening");
+    setTimeout(function () {
+        if (Math.random() >= 0.5) {
+            resolve("you win");
+        } else {
+            reject(new Error("you lost"));
+        }
+    }, 2000);
 });
 
-lotteryPromise
-  .then((res) => console.log(res))
-  .catch((err) => console.error(err));
+lotteryPromise.then((res) => console.log(res)).catch((err) => console.error(err));
 ```
 
 ```javascript
 // Promisifying setTimeout, real world example
 // Similar to fetch method as it returns a promise
 const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000); // don't need to pass any value to resolve function
-  });
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000); // don't need to pass any value to resolve function
+    });
 };
 
 wait(2)
-  .then(() => {
-    console.log("2s waited");
-    return wait(1);
-  })
-  .then(() => console.log("1s waited"));
+    .then(() => {
+        console.log("2s waited");
+        return wait(1);
+    })
+    .then(() => console.log("1s waited"));
 ```
 
 ```javascript
@@ -87,45 +85,45 @@ const whereAmI = async function(country1, country2, country3) {
 const imgContainer = document.querySelector(".images");
 
 const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000);
+    });
 };
 
 const createImage = function (imgPath) {
-  return new Promise(function (resolve, reject) {
-    const img = document.createElement("img");
-    img.src = imgPath;
+    return new Promise(function (resolve, reject) {
+        const img = document.createElement("img");
+        img.src = imgPath;
 
-    img.addEventListener("load", function () {
-      imgContainer.append(img);
-      resolve(img);
-    });
+        img.addEventListener("load", function () {
+            imgContainer.append(img);
+            resolve(img);
+        });
 
-    img.addEventListener("error", function () {
-      reject(new Error("Image not found"));
+        img.addEventListener("error", function () {
+            reject(new Error("Image not found"));
+        });
     });
-  });
 };
 
 createImage("/img/img-1.jpg")
-  .then((img) => {
-    currentImg = img;
-    console.log("image 1 loaded");
-    return wait(2);
-  })
-  .then(() => {
-    currentImg.style.display = "none";
-    return createImage("/img/img-2.jpg");
-  })
-  .then((img) => {
-    currentImg = img;
-    console.log("image 2 loaded");
-    return wait(2);
-  })
-  .then(() => {
-    currentImg.style.display = "none";
-  });
+    .then((img) => {
+        currentImg = img;
+        console.log("image 1 loaded");
+        return wait(2);
+    })
+    .then(() => {
+        currentImg.style.display = "none";
+        return createImage("/img/img-2.jpg");
+    })
+    .then((img) => {
+        currentImg = img;
+        console.log("image 2 loaded");
+        return wait(2);
+    })
+    .then(() => {
+        currentImg.style.display = "none";
+    });
 ```
 
 ## Async/Await
@@ -145,34 +143,27 @@ const function myFunction() {
 
 Await keyword is used when calling a function that returns a promise (resolve or reject). Await blocks code execution (ensures the next line is executed when the promise resolves) and eliminates the use of callbacks in .then() and .catch() functions. There can be multiple await statements within a single async function. Try and catch are used to get rejection value of an async function.
 
-```javascript
-const whereAmI = async function (country) {
-  try {
-    const response = await fetch(`https://example.com/${country}`); // fetch() is async that returns a promsie
-    if (!response.ok) throw new Error("error fetching");
-    const data = await response.json(); // use .json() to read response body (async method)
-    console.log(data);
-    // same as:
-    // const res = fetch().then(res => {
-    // data = res.json();
-    // console.log(data))
-  } catch (err) {
-    console.error(err);
-    throw err; // reject promise returned from async function
-  } finally {
-    console.log("finished execution");
-  }
+```js
+const getFirstUserData = async () => {
+    const response = await fetch("/users.json"); // get users list
+    const users = await response.json(); // parse JSON
+    const user = users[0]; // pick first user
+    const userResponse = await fetch(`/users/${user.name}`); // get user data
+    const userData = await userResponse.json(); // parse JSON
+    return userData;
 };
+
+getFirstUserData();
 ```
 
 ### Async/Await vs Promises
 
-- Both async/await and promises are used to handle asynchronous result of an operation so others can continue to execute.
-- Async/await is syntatic sugar for promises.
-- Entire wrapper function for async/await is asynchronous, whereas for promises, only the promise chain itself is.
-- Await is used for calling an async function and waits for it to resolve or reject (blocks execution code).
-- If function2 depends on output of function1, use await.
-- Mutliple promises are handled with Promise.all().
+-   Both async/await and promises are used to handle asynchronous result of an operation so others can continue to execute.
+-   Async/await is syntatic sugar for promises.
+-   Entire wrapper function for async/await is asynchronous, whereas for promises, only the promise chain itself is.
+-   Await is used for calling an async function and waits for it to resolve or reject (blocks execution code).
+-   If function2 depends on output of function1, use await.
+-   Mutliple promises are handled with Promise.all().
 
 ### Examples of Await/Async and Promises
 

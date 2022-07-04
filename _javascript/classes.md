@@ -1,5 +1,7 @@
 ## ES6 Classes and Prototype
 
+Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes are built on prototypes.
+
 All objects inherit properties and methods from a prototype. Object.prototype is on top of the prototype inheritance chain. Prototype allows adding new properties or methods to objects constructors. Prototype property allows new properties to be added to object constructors. Classes are introduced in ES6.
 
 ```javascript
@@ -9,7 +11,7 @@ const Person = function (firstName, birthYear) {
     this.birthYear = birthYear;
 };
 
-// ES6
+// ES6 class declaration
 class Person {
     constructor(firstName, birthYear) {
         this.firstName = firstName;
@@ -27,6 +29,22 @@ const jonas = new Person("Jonas", 1993);
 console.log(jonas.hasOwnProperty("firstName")); // true
 console.log(jonas.hasOwnProperty("language")); // false
 ```
+
+### Hoisting
+
+Classes must be defined before they can be constructed which is different from function declarations.
+
+```js
+const p = new Rectangle(); // ReferenceError
+
+class Rectangle {}
+```
+
+### Constructor
+
+Special method for creating and initializing an object created with a class. There can only be one special method with the name "constructor" in a class. Can use the 'super' keyword to call the constructor of the super class. Method is called automatically when a class is initiated.
+
+Purpose is to create a new object and set values for any existing object properties i.e. constructor function runs after the object is created with predefined properties, and overwrites them.
 
 ### Static Members
 

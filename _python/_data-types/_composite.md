@@ -45,15 +45,19 @@ final_list = []
 for x in subset_list:
   if x in main_list:
     final_list.append(True)
+
+# swap elements in list
+eg = [23,65,19,90]
+eg[2], eg[3] = eg[3], eg[2]
 ```
 
 ### Working with Loops
 
 Use either break, continue or pass to perform additional tasks in for loops or while loops:
 
-- Break: provides opportunity to exit out of a loop if external condition is triggered
-- Continue: skips over the part of a loop where an external condition is triggered but goes to complete rest of loop.
-- Pass: tells program to disregard condition and conitnue to run program as usual.
+-   Break: provides opportunity to exit out of a loop if external condition is triggered
+-   Continue: skips over the part of a loop where an external condition is triggered but goes to complete rest of loop.
+-   Pass: tells program to disregard condition and conitnue to run program as usual.
 
 ```py
 # break
