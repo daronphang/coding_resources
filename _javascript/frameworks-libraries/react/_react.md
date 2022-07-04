@@ -28,7 +28,21 @@ class Welcome extends React.Component {
 
 ## Lifecycles
 
-It is important to free up resources taken by components when they are destroyed. This can be done by mounting and unmounting the components.
+It is important to free up resources taken by components when they are destroyed. Each React component has a lifecycle which consists of three phases:
+
+-   Mounting: putting elements into the DOM.
+-   Updating: involves methods for updating components in the DOM.
+-   Unmounting: removing a component from the DOM.
+
+```
+// class-based
+componentDidMount       Behavior before component is added to the DOM
+componentDidUpdate      Behavior when component receives new state/props
+componentWillUnmount
+
+// functional-based
+useEffect               Can be used as all three lifecycle methods
+```
 
 ```js
 class Clock extends React.Component {
@@ -65,6 +79,30 @@ class Clock extends React.Component {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Clock />);
+```
+
+```js
+import React, { useEffect } from "react";
+
+const Component = ({ foo }) => {
+    useEffect(() => {
+        console.log("Behavior before the component is added to the DOM");
+    }, []);
+
+    useEffect(() => {
+        console.log("Behavior when the value of 'foo' changes.");
+    }, [foo]);
+
+    useEffect(() => {
+        // if a function is returned from useEffect, that function is invoked only
+        // when the component is removed from the DOM
+        return () => {
+            console.log("Behavior right before the component is removed from the DOM.");
+        };
+    }, []);
+
+    return <h1>Hello World</h1>;
+};
 ```
 
 ## Handling Events
@@ -158,36 +196,6 @@ const productDescription = `
         `;
 
 return <div dangerouslySetInnerHTML={{ __html: productDescription }}></div>;
-```
-
-## React Portals
-
-Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
-
-When displaying modals/alert boxes, they are overlays to the entire page and in HTML, it should be above everything else instead of nested in some HTML code. Portals help to make HTML rendered semantically correct and provide a clean HTML structure persepective.
-
-```html
-<!--index.html-->
-<div id="backdrop-root"></div>
-<div id="overlay-root"></div>
-<!--instead of nesting in HTML code-->
-<div id="root"></div>
-```
-
-```javascript
-import ReactDOM from 'react-dom';
-
-const ModalOverlay = props => {
-  return <place HTML modal code here>
-}
-
-const ErrorModal = props => {
-  return (
-    <React.Fragment>
-      {ReactDOM.createPortal(<ModalOverlay onClick={props.onConfirm} />), document.getElementById('overlay-root'))}
-    </React.Fragment>
-  )
-}
 ```
 
 ## Uncontrolled/Stateless
