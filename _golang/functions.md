@@ -13,18 +13,18 @@ func hypot(x, y float64) float64 {
 fmt.Println(hypot(3,4)) // 5
 ```
 
-### Recursive
+### Function Values
 
-Recursive functions will call themselves, either directly or indirectly.
+Functions are first-class values in GO. Function values have types, and may be assigned to variables or passed to or returned from functions.
 
 ```go
-func fact(n int) int {
-  if n == 0 {
-      return 1
-  }
-  return n * fact(n-1)
-}
+func square(n int) int { return n * n }
+
+f := square
+fmt.Println(f(3)) // "9"
 ```
+
+## Examples
 
 ### Multiple Return Values
 
@@ -104,10 +104,6 @@ for {
   // use r...
 }
 ```
-
-## Function Values
-
-Functions are first-class values in GO. Function values have types, and may be assigned to variables or passed to or returned from functions.
 
 ## Anonymous Functions
 

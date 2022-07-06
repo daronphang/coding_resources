@@ -19,9 +19,11 @@ func panic(interface{})   // arg passed will be printed when the program termina
 
 ## Recover
 
-Recover is a built-in function that regains control of a panicking goroutine. Recover is only usedful inside deferred functions. During normal execution, a call to recover will return nil and has no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
+Recover is a built-in function that regains control of a panicking goroutine. Recover is only useful inside deferred functions. During normal execution, a call to recover will return nil and has no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
 
-If built-in function is called witin a deferred function and function containing the defer statement is panicking, recover ends the current state of panic and returns the panic value. The function panicking does not continue where it left off but returns normally. If recover is called at any other time, it has no effect and returns nil. For instance, web server encountering an unexpected problem could close the connection rather than leave client hanging, or update to data structure was not complete.
+If built-in function is called within a deferred function and function containing the defer statement is panicking, recover ends the current state of panic and returns the panic value. The function panicking does not continue where it left off but returns normally.
+
+If recover is called at any other time, it has no effect and returns nil. For instance, web server encountering an unexpected problem could close the connection rather than leave client hanging, or update to data structure was not complete.
 
 ```go
 func main() {

@@ -12,7 +12,7 @@ type Employee struct {
   ManagerID     int
 }
 var dilbert Employee  // dilbert is an instance of Employee
-dilbert.Name = 'John'
+dilbert.Name = "John"
 position := &dilbert.Position // taking address and accessing it through pointer
 *position = "Senior"
 

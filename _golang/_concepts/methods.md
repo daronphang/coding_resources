@@ -1,6 +1,8 @@
-## Declarations
+## Method Declarations
 
-in GO, special names such as _this_ or _self_ for receiver but instead we choose receiver names. Common choice is the first letter of type name. In method call, receiver argument appears before method name. Selectors are used to select fields of struct type i.e. p.X and also select methods i.e. p.Distance; since both methods and fields inhabit the same name space, cannot declare as the same name.
+A method is declared with a variant of the ordinary function declaration in which an extra parameter appears before the function name. The parameter attaches the function to the type of that parameter. The extra parameter is called the method's receiver.
+
+In GO, special names such as _this_ or _self_ are not used for the receiver but instead we choose receiver names. Common choice is the first letter of type name. In method call, receiver argument appears before method name. Selectors are used to select fields of struct type i.e. p.X and also select methods i.e. p.Distance; since both methods and fields inhabit the same name space, cannot declare as the same name.
 
 Methods can be declared on any named type defined in same package i.e. slice, struct, etc. Take note that methods on a type can only be defined in the **same package**.
 

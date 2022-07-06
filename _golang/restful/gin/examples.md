@@ -1,5 +1,6 @@
 ### Query String Parameters
 
+```go
 func main() {
 	router := gin.Default()
 
@@ -13,9 +14,11 @@ func main() {
 	})
 	router.Run(":8080")
 }
+```
 
 ### Set and Get Cookie
 
+```go
 import (
     "fmt"
 
@@ -40,3 +43,4 @@ func main() {
 
     router.Run()
 }
+```
