@@ -1,10 +1,10 @@
-### Golang Basics
+## Golang
 
 A compiled language. Organized into packages (similar to libraries/modules). Has a cultural agenda of radical simplicity with garbage collection, pacakge system, first-class functions (treated like any other variable), lexical scope, system call interface and immutable strings encoded in UTF-8 (can process in all languages). Language is mature, stable and guarantees backwards compatibiity. Well suited for building infrastructure like netwroked servers, tools and systems for programmers.
 
 Static type language as compared to Python/Javascript (dynamic type). Dynamic means you can declare a variable as a string and later assign it as number.
 
-#### Hello World
+### Hello World
 
 A package can have many related files ending with .go with requirement that every file must declare the package it belongs to. Two types of packages: executable (generates a file that can be run, package main) and reusable/dependency (code used as "helpers", good place to put reusable logic). For package main, it must have a function called "main".
 
@@ -20,7 +20,7 @@ func main() {
 }
 ```
 
-### GO CLI
+## GO CLI
 
 ```
 go build      Compiles code but does not execute
@@ -38,11 +38,11 @@ $ ./test
 $ rm test
 ```
 
-### Garbage Collector
+## Garbage Collector
 
 GO's garbage collector recycles unused memory but DO NOT assume it will release unused operating system resources like open files and network connections. **They should be closed explicitly**.
 
-### Print Functions
+## Print Functions
 
 ```go
 fmt.Println()     // Takes a string, prints and adds a new line after string
@@ -93,7 +93,7 @@ myString := fmt.Sprintf("Results: %s and more stuff: %s", results, more)
 %p    for pointers, base 16 notation with leading 0x
 ```
 
-### Command Line Arguments
+## Command Line Arguments
 
 OS package provides functions and other values for dealing with OS; command-line arguments are available to a program in a variable named Args which is a slice of strings.
 
@@ -130,7 +130,7 @@ func main() {
 }
 ```
 
-### Loop Statements
+## Loop Statements
 
 For loop is only loop statement in GO.
 
@@ -172,7 +172,7 @@ func main() {
 
 ```
 
-### Variable Declarations
+## Variable Declarations
 
 ```GO
 s := "Hello world"    // colon syntax used for assigning NEW variables only

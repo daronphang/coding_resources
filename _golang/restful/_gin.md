@@ -1,15 +1,16 @@
-### RESTful API with Go and Gin
+## RESTful API with Go and Gin
 
 Gin simplifies many coding tasks associated with building web applications, including web services.
 
 https://gin-gonic.com/docs/examples/custom-http-config/
 
-#### Create Module for Dependencies
+### Create Module for Dependencies
+
 ```console
 $ go mod init example/web-service-gin
 ```
 
-#### Creating Data
+### Creating Data
 
 In handler, gin.Context is the most important part of Gin. It carries request details, validates and serializes JSON, etc.
 
@@ -84,7 +85,7 @@ func getAlbumByID(c *gin.Context) {
 }
 ```
 
-#### Run Code
+### Run Code
 
 Need to add Gin module as a dependency for your module.
 

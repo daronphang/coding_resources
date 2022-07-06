@@ -1,4 +1,4 @@
-### Gin Middleware
+## Gin Middleware
 
 ```go
 func main() {
@@ -96,14 +96,14 @@ func SchemaValidator (schemaType string) gin.HandlerFunc {
 		schemas := map[string]models.Payload {
 			"heartbeat": &models.HeartbeatPayload{},
 		}
-	
+
 		if _, ok := schemas[schemaType]; !ok {
 			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 				"message": "invalid schema",
 				"error": "schema provided not found",
 			})
 		}
-	
+
 		if err := c.ShouldBindJSON(schemas[schemaType]); err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 				"message": "incorrect payload",

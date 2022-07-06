@@ -7,7 +7,7 @@
 /etc/nginx/sites-available      List of all websites configured through Nginx
 /etc/nginx/sites-enabled        List of sites actively served by Nginx
 /var/log/nginx/access.log
-/var/log/ngins/error.log
+/var/log/nginx/error.log
 ```
 
 ## Installation

@@ -1,4 +1,4 @@
-### Function Declarations
+## Function Declarations
 
 Functions that has result list MUST end with a return statement unless execution ends with infinite loop. To export functions, function name must start with capital letter.
 
@@ -47,7 +47,7 @@ func findLinks(url string) ([]string, error) {
 }
 ```
 
-### Errors and Error Handling
+## Errors and Error Handling
 
 Function for which failure is an expected behavior returns an additional result, conventionally the last one. If the failure has only one possible cause, the result is a boolean. GO's approach for error handling is different from many other languages; GO programs use ordinary control-flow mechanisms like if and return to respond to errors instead of exceptions consisting of stack trace and information that lack intelligible context about what went wrong. Hence, more attention needs to be paid for error-handling in GO.
 
@@ -84,7 +84,7 @@ if err := WaitForServer(url); err != nil {
 }
 ```
 
-#### End of File (EOF)
+### End of File (EOF)
 
 ```go
 package io
@@ -105,11 +105,11 @@ for {
 }
 ```
 
-### Function Values
+## Function Values
 
 Functions are first-class values in GO. Function values have types, and may be assigned to variables or passed to or returned from functions.
 
-### Anonymous Functions
+## Anonymous Functions
 
 Named functions can be declared only at package level, but can use function literal to denote a function value within any expression. Written without a name following func keyword, and its value is called an anonymous function. Anonymous functions have access to entire lexical environment and hence, inner function can refer to variables from enclosing function.
 
@@ -133,7 +133,7 @@ func main() {
 }
 ```
 
-### Lexical Scoping Caveat
+## Lexical Scoping Caveat
 
 For loop introduces a new lexical block in which variable dir is declared. However, values passed to function is the addressable storage location of shared variable and not its value at that particular moment. By the time cleanup functions are called, the dir variable holds the value from the final iteration and consequently all calls to os.RemoveAll will attempt to remove the same directory.
 
@@ -162,7 +162,7 @@ for _, dir := range tempDirs() {
 }
 ```
 
-### Variadic Functions
+## Variadic Functions
 
 One that can be called with varying numbers of arguments. Type of final parameter is preceded by an ellipsis. Often used for string formatting and has suffix f as widely followed naming convention that accepts Printf-style format string.
 
@@ -189,7 +189,7 @@ func errorf(linenum int, format string, args ...interface{}) {    // {}interface
 errorf(12, "undefined: %s", "count")  // "Line 12: undefined: count"
 ```
 
-### Deferred Function Calls
+## Deferred Function Calls
 
 Defer statement is an ordinary function or method call prefixed by keyword defer. Function and argument expressions are evaluated when statement is executed, but actual call is deferred until the function that contains defer statement has finished, whether normally by executing a return statement or falling off the end, or abnormally by panicking. Any number of calls may be deferred; they are executed in the reverse order in which they were deferred i.e. deferred last, called first.
 
@@ -302,64 +302,5 @@ func doFile(filename string) error {
   }
   defer f.Close()
   // code to process file
-}
-```
-
-### Panic
-
-During a typical panic, normal execution stops, all deferred function calls are executed, and the program crashes with log message. Can be called directly and accepts any value as an argument.
-
-```go
-switch s:= suit(drawCard()); s {
-  case "Spades": // ...
-  case "Hearts": // ...
-  default:
-    panic(fmt.Sprintf("invalid suit %q", s))
-}
-```
-
-### Recover
-
-If built-in function is called witin a deferred function and function containing the defer statement is panicking, recover ends the current state of panic and returns the panic value. The function panicking does not continue where it left off but returns normally. If recover is called at any other time, it has no effect and returns nil. For instance, web server encountering an unexpected problem could close the connection rather than leave client hanging, or update to data structure was not complete.
-
-```go
-func Parse(input string) (s *Syntax, err error) {
-  // deferred func recovers from panic and r eturns panic value
-  // deferred function then assigns to err result which is returned to caller
-  defer func() {
-    if p:= recover(); p != nil {
-      err = fmt.Errorf("internal error: %v", p) // runtime.Stack for fullstack trace
-    }
-  }()
-}
-```
-
-```go
-func soleTitle(doc *html.Node) (title string, err error) {
-  type bailout struct{}
-
-  defer func() {
-    switch p:= recover(); p {
-      case nil:
-        // no panic
-      case bailout{}:
-        err.fmt.Errorf("multiple title elements")
-      default:
-        panic(p)
-    }
-  }()
-
-  forEachNode(doc, func(n *html.Node) {
-    if n.Type == html.ElementNode && n.Data == "title" && n.FirstChild != nil {
-      if title != "" {
-        panic(bailout{})  // multiple title elements
-      }
-      title = n.Firstchild.Data
-    }
-  }, nil)
-  if title == "" {
-    return "", fmt.Errorf("no title element")
-  }
-  return title, nil
 }
 ```

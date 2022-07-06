@@ -1,4 +1,4 @@
-### Basics
+## Pointers
 
 A variable that is used to store the memory address of another variable (in hexadecimal format). Also termed as special variables. Pointers declared on types and variables are slightly different.
 
@@ -16,7 +16,7 @@ Turn address into value with *address
 Turn value into address with &value
 ```
 
-### Purpose
+## Purpose
 
 Pointers are used for efficiency as everything in Golang is passed by value i.e. value passed to function is a copy and not the original object to avoid unintentionally changing data. However, there are times that the original object needs to be manipulated i.e. passing by reference instead of value.
 
@@ -57,11 +57,11 @@ func(pointerToPerson *person) updateName() {    // not an operator; arg must be 
 -   If the function needs to modify its receiver.
 -   When passing large amounts of data.
 
-### Value vs Reference Types
+## Value vs Reference Types
 
 Reference types have a pointer pointing to the underlying value; any updates to the reference type will indirectly update the underlying value and hence, do not need to specifically reference a pointer. For value types, need to use pointers to change/update values.
 
-#### Value Types
+### Value Types
 
 ```
 int
@@ -71,7 +71,7 @@ bool
 structs
 ```
 
-#### Reference Types
+### Reference Types
 
 ```
 slices

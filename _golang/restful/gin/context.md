@@ -1,4 +1,4 @@
-### Gin Context
+## Gin Context
 
 Most important part of gin. It allows us to pass variables between middlewares, manage the flow, validate the JSON of a request and render a JSON response.
 
@@ -21,7 +21,7 @@ type Context struct {
 }
 ```
 
-#### Binding
+### Binding
 
 Bind checks the Content-Type to select a binding engine automatically; returns an error otherwise. If body has Content-Type as 'application/json', it decodes the JSON payload into the struct specified as a pointer.
 
@@ -29,7 +29,8 @@ Bind checks the Content-Type to select a binding engine automatically; returns a
 func (c *Context) ShouldBindWith(obj interface{}, b binding.Binding) error
 ```
 
-#### JSON
+### JSON
+
 IndentedJSON serializes given stuct as pretty JSON (indented + endlines) into the response body, and sets Content-Type as 'application/json'. Should only use this for development purposes as printing pretty JSON is more CPU and bandwidth consuming. Use Context.JSON() instead.
 
 ```go
