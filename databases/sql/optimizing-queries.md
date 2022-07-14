@@ -52,13 +52,50 @@ CREATE INDEX index_name ON table_name (col1, col2)
 
 ## Removing Duplicates
 
+### Using Self Join
+
+```
+emp_name   emp_address  sex  matial_status  
+uuuu       eee          m    s
+iiii       iii          f    s
+uuuu       eee          m    s
+```
+
 ```sql
 -- use self join
 
-SELECT a.ID, a.NAME, a.ADDRESS
-FROM someTable AS a
-INNER JOIN
-someTable AS b ON
-a.ID = b.ID AND
-a.NAME = b.NAME
+SELECT emp_name, emp_address, sex, marital_status
+FROM YourTable a
+WHERE NOT EXISTS (
+  SELECT 1 
+  FROM YourTable b
+  WHERE 
+  b.emp_name = a.emp_name AND
+  b.emp_address = a.emp_address AND
+  b.sex = a.sex AND
+  b.create_date >= a.create_date
+)
+```
+
+### Using LAG
+
+```sql
+SELECT
+    *,
+    LAG(unique_row,1) OVER (ORDER BY event_note_datetime ASC) AS next_unique_row 
+INTO #ETOSTATES2
+FROM 
+    #ETOSTATES
+
+SELECT
+    equip_id,
+    equip_state,
+    equip_semi_state,
+    event_code,
+    comments,
+    event_note_datetime
+FROM
+    #ETOSTATES2
+WHERE
+    unique_row != next_unique_row
 ```
