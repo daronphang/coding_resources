@@ -2,10 +2,13 @@
 
 Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker. To trigger celery worker, need to activate virtualenv first and ensure directory in which celery cli is called is one level higher.
 
-```
-docker run -d -p 6379:6379 celery
-celery -A myassistant.app.celery worker -l INFO
-celery -A myassistant.celery_worker.celery worker -l INFO --concurrency 1 -P solo
+```console
+$ docker run -d -p 6379:6379 celery
+$ celery -A myassistant.app.celery worker -l INFO
+$ celery -A myassistant.celery_worker.celery worker -l INFO --concurrency 1 -P solo
+
+// latest, need to explicitly point to the celery object 
+$ celery -A enter_app_name.celery_worker.celery worker --loglevel=info
 ```
 
 ```py
