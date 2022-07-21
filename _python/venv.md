@@ -24,7 +24,7 @@ A text file containing the venv packages and versions required to run the Python
 
 ```console
 $ pip install -r requirements.txt
-$ pip freeze > requirements.txt         Create txt file
+$ pip freeze > requirements.txt         // Create or update txt file
 $ pip freeze --all > requirements.txt
 $ pip list
 ```
