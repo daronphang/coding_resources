@@ -1,4 +1,4 @@
-### Starting Celery and Configurations
+## Starting Celery and Configurations
 
 Need two terminals, one to start Flask and other to start Celery worker. If running Redis locally, can use Docker. To trigger celery worker, need to activate virtualenv first and ensure directory in which celery cli is called is one level higher.
 
@@ -8,7 +8,8 @@ $ celery -A myassistant.app.celery worker -l INFO
 $ celery -A myassistant.celery_worker.celery worker -l INFO --concurrency 1 -P solo
 
 // latest, need to explicitly point to the celery object 
-$ celery -A enter_app_name.celery_worker.celery worker --loglevel=info
+// Celery 4x does not support Windows, need configure concurrency pool
+$ celery -A enter_app_name.celery_worker.celery worker --loglevel=info -P solo
 ```
 
 ```py
@@ -22,7 +23,20 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 app.app_context().push()
 ```
 
-### Integration with Flask
+### Running on Wndows
+
+Strategy to make Celery 4x run on Windows is to configure concurrency pool. the concurrency pool implementation determines how Celery worker executes tasks in parallel. Celery defaults to the prefork implementation which spawns processes.
+
+https://www.distributedpython.com/2018/08/21/celery-4-windows/
+
+```
+prefork
+eventlet
+gevent
+solo
+```
+
+## Integration with Flask
 
 When creating Flask using application factories, should create extensions and app factories so that the extension object does not initially get bound to the application:
 
