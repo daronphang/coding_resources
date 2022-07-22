@@ -1,4 +1,8 @@
-### Custom Validation
+## Baked-in Validations
+
+https://pkg.go.dev/github.com/go-playground/validator/v10@v10.11.0#section-readme
+
+## Custom Validation
 
 https://pkg.go.dev/github.com/go-playground/validator/v10#section-documentation
 
@@ -36,7 +40,7 @@ var bookableDate validator.Func = func(fl validator.FieldLevel) bool {
 
 func main() {
 	route := gin.Default()
-   
+
    // register function to validator
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		v.RegisterValidation("bookabledate", bookableDate)
