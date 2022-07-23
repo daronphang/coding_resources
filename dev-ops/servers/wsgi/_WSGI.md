@@ -1,4 +1,4 @@
-### WSGI
+## WSGI
 
 - WSGI stands for Web Server Gateway Interface.
 - Both specify interface and sit in between web server and Python web application/framework; allows to separate server code from application code where business logic is added.
@@ -12,7 +12,7 @@
 - HTTP/1.1 keeps all requests and responses in plain text format while HTTP/2 use binary framing layer to encapsulate all messages in binary format while still maintaining HTTP semantics such as verbs, methods and headers.
 - Cannot use async/await.
 
-### ASGI
+## ASGI
 
 - ASGI for Asynchronous Server Gateway Interface.
 - ASGI frameworks include Sanic, Blacksheep, Japronto, etc.

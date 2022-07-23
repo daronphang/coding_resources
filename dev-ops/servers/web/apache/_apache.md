@@ -1,4 +1,4 @@
-### Apache
+## Apache
 
 An open-source industrial-strength web server that is responsible for delivering web content through the internet i.e. processes requests and serves web assets and content via HTTP. Server is developed and maintained by an open-community of developers. Mostly run on Linux and powers around 46% of all websites around the world. It is the key component of LAMP stack (Linux, Apache, MySQL, PHP).
 

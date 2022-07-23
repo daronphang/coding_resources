@@ -1,4 +1,4 @@
-### Setting Up VSCode
+## VSCode
 
 Stable version: January 2021, version 1.53.2
 

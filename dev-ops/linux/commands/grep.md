@@ -1,4 +1,4 @@
-### Grep (Global Regular Expression Print)
+## Grep (Global Regular Expression Print)
 
 Grep utilities are a family that includes grep, egrep, and fgrep for searching files.
 

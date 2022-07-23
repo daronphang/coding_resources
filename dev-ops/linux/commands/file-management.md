@@ -39,6 +39,7 @@ $ find /Path/bar* -name "file_name*"    Find all files with pattern in bar* subd
 'more' displays a file in the terminal, one page at a time if the text passed is too large to fit on one screen. 'Enter' key scrolls through the file line by line, while 'space' key scrolls one full screen at a time. File is closed by pressing 'q' key. Can only scroll down but not up.
 
 However, after closing the file, its contents stay written in the terminal window. 'less' has the added benefit of not keeping the contents after the file is closed.
+
 'less' also has support for different file formats including jar, war, zip, pdf, gif, png, etc i.e. reading metadata whereas 'more' would print binary data.
 
 ```console
