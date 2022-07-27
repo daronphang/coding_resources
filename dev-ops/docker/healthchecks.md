@@ -1,4 +1,4 @@
-### Healthchecks
+## Healthchecks
 
 supported in Dockerfile, Compose YAML, docker run and Swarm Services. Docker engine will execute command in container. Expects exit 0 (OK) or exit 1(Error). Have three states: starting, healthy, and unhealthy. Docker run does nothing with healthchecks whereas Services will replace tasks if they failed.
 

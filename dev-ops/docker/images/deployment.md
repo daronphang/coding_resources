@@ -1,21 +1,18 @@
-### Running Flask App
+## Deployment
 
-Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser. Need to ensure VENV folder is not together with Dockerfile.
+1. Build image from dockerfile.
+2. Run docker container.
+3. Test port with curl.
 
-```python
-# need specify host and port (optional, default is 5000)
-# 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
-# localhost port inside docker container does not actually get exposed on host machine
-if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=5555)  # port defined is container port
+```console
+# cd to directory where dockerfile exists
+
+$ docker build -t your_image_name .
+$ docker run -d -p 80:80 your_image_name:v1
+$ curl localhost:80
 ```
 
-```
-docker build -t <image_name> .
-docker container run -p 8000:5555 -d <image_name>
-```
-
-### Python
+## Python
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -72,7 +69,24 @@ if os.environ['FAB7SERVER']:  # for ENV specified in Dockerfile
   print('hello')
 ```
 
-### NodeJS
+### Flask
+
+Example of Flask setup needed. Need exact map flask port to container port. To view page, enter localhost:8000 in browser. Need to ensure VENV folder is not together with Dockerfile.
+
+```python
+# need specify host and port (optional, default is 5000)
+# 0.0.0.0 is wildcard IP address that matches any possible incoming port on host machine
+# localhost port inside docker container does not actually get exposed on host machine
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port=5555)  # port defined is container port
+```
+
+```
+docker build -t <image_name> .
+docker container run -p 8000:5555 -d <image_name>
+```
+
+## NodeJS
 
 https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 

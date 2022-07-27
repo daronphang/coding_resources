@@ -1,3 +1,26 @@
+## Creating Errors
+
+```go
+// simple string-based error
+err1 := errors.New("math: square root of negative number")
+
+// with formatting
+err2 := fmt.Errorf("math: square root of negative number %g", x)
+```
+
+### Custom Errors
+
+```go
+type SyntaxError struct {
+    Line int
+    Col  int
+}
+
+func (e *SyntaxError) Error() string {
+    return fmt.Sprintf("%d:%d: syntax error", e.Line, e.Col)
+}
+```
+
 ## Panic
 
 During a typical panic, normal execution stops, all deferred function calls are executed, and the program crashes with log message. Can be called directly and accepts any value as an argument.

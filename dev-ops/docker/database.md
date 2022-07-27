@@ -1,4 +1,4 @@
-### Creating Database Containers
+## Creating Database Containers
 
 When running applications in Docker that require database connection, need to create separate container for database (MySQL as example):
 
@@ -25,11 +25,11 @@ services:
 
 ### Database connection in Docker
 
-```
-$docker container ls -a
-$docker exec -it <database_container_name> mysql -uroot -p
-$SHOW DATABASES;
-$UPDATE mysql.user SET host='%' WHERE user='root';
+```console
+$ docker container ls -a
+$ docker exec -it <database_container_name> mysql -uroot -p
+$ SHOW DATABASES;
+$ UPDATE mysql.user SET host='%' WHERE user='root';
 ```
 
 ### Connecting to Same Network
