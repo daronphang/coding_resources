@@ -51,3 +51,11 @@ RUN apt-get update && apt-get install -y \
   mercurial \
   subversion
 ```
+
+### Running Multiple CMD Commands
+
+Recommended is to use "sh" instead of "bash" as not all images provide bash shell.
+
+```dockerfile
+CMD ["sh", "-c", "cd src && python3 -m flask run"]
+```
