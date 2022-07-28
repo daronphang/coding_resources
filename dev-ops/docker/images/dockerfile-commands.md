@@ -2,6 +2,8 @@
 
 Need to create .dockerignore file also.
 
+For WORKDIR, can set as absolute (/path/to/workdir) or relative path (relative/path).
+
 ```
 FROM          Sets base/parent image (must start with FROM)
 COPY          Copies files from <src> to path <dest> of container, can be file or folder name
