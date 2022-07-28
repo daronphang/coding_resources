@@ -37,6 +37,35 @@ Break up generic packages i.e. packages named util, interfaces, common or misc p
 
 Organize packages by responsibility i.e. organizing types together in package models should be avoided. Instead, the individual types/structs should be declared in their respective packages.
 
+https://github.com/golang-standards/project-layout
+
+## Structure
+
+### Internal
+
+To prevent packages from being imported unnecessarily, can create an **internal/** package. It is a special directory name recognized by the go tool which will prevent one package from being imported by another unless both share a common ancestor.
+
+### Helpers/Util
+
+These functions should exist in packages that are used most often i.e. put near where they are used. Moroever, a little copying is better than a little dependency. 
+
+When deciding where to put helper/util functions, it will depend on the following:
+
+1. Do they rely on any of their own outside dependencies?
+2. Are they what is known as pure functions that just take inputs and return the same outputs?
+3. Do they reference other helper functions?
+4. Do they result in any side effects, such as saving data to the database?
+5. Do they have a general purpose that can be used throughout the whole application, or are they meant to do things relevant to handling incoming controller requests and formulating responses?
+
+Options are as follows:
+
+1. Traits
+2. Class inheritance
+3. General service class with dependency injection
+4. Simple helper functions file that gets autoloaded
+5. Simple newable value objects and maybe a factory to create them to aid in testing if needed
+6. Keeping them right where they are if there actually isn't much value to code re-use here (believe it or not, a little repetition is not a bad thing, but it's highly situational).
+
 ## GO CLI
 
 ```
