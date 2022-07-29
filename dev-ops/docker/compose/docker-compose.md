@@ -54,12 +54,91 @@ Network defines the communication rules between containers and the host. common 
 
 Port declarations allows us to run different containers exposing the same ports without collisions.
 
+When docker compose up, the following happens:
+
+1. A network called [app_directory]\_default is created.
+2. A container is created using the service's configuration. It joins the network under its name.
+
 ```yaml
 services:
   network-example-service:
     image: karthequian/helloworld:latest
     ports:
       - "8080:3000" # port 8080 is exposed by host, port 3000 exposed by container
+```
+
+### Connecting between Containers
+
+By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
+
+When making a request from one container to another, use service name instead of localhost:port i.e. axios.get('http://service1/api/status').
+
+### Load Balancer
+
+When having multiple services and using Docker to map unallocated ports for each service, we wouldn't know which port is being allocated for each container until all instances are up.
+
+```yaml
+services:
+  service1:
+    ports:
+      - "5000" # expose 5000 of container to an ephermeral unallocated port on host machine
+  service2:
+    ports:
+      - "5000"
+```
+
+```console
+# show all ports mapped
+$ docker ps
+```
+
+In order to access the services without knowing the specific ports, can use load balancer. The port specified will be resolved by Docker's embedded DNS server, which will use a round robin implementation to resolve the DNS requests based on the service name and distribute them to the Docker containers.
+
+```conf
+user  nginx;
+
+events {
+    worker_connections   1000;
+}
+http {
+        server {
+              listen 4000;
+              location / {
+                proxy_pass http://pspdfkit:5000;
+              }
+        }
+}
+```
+
+```yaml
+version: "3"
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: pspdfkit
+      POSTGRES_PASSWORD: password
+      # ... other environment variables
+  pspdfkit:
+    image: "pspdfkit/pspdfkit:latest"
+
+    environment:
+      PGUSER: pspdfkit
+      PGPASSWORD: password
+      # ... other environment variables
+    depends_on:
+      - db
+    expose:
+      - "5000"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - pspdfkit
+    ports:
+      - "4000:4000"
 ```
 
 ## ENV
