@@ -24,6 +24,11 @@ $ docker run -v mydockervolume:/data alpine ls /data
 
 ### Option Two
 
-```console
+Mount volume on running container directly.
 
+```console
+# dns flag might not be required
+$ docker run --dns 172.25.241.102 -v C:\Users\daronphang\Downloads:/data --privileged -it pee_df_adhoc_requests /bin/bash
+$ apt install cifs-utils  # if cannot, download directly from host and mount host folder to container
+$ mount //remote_ip_add /data -t cifs -o username=daronphang,password=somepassword,file_mode=0777,dir_mode=0777,uid=1000,gid=1000,cache=strict
 ```
