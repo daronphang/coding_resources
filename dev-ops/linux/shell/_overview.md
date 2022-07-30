@@ -12,15 +12,15 @@ Kernel is at the nucleus of a computer. It makes the communication between hardw
 
 ### Bourne Shell
 
--   Prompt is $.
--   POSIX/Korn shell is also known as sh.
--   Bourne Again SHell is known as BASH.
+- Prompt is $.
+- POSIX/Korn shell is also known as sh.
+- Bourne Again SHell is known as BASH.
 
 ### C Shell
 
--   Prompt is %.
--   C Shel is also known as csh.
--   Tops C shell is also known as tcsh.
+- Prompt is %.
+- C Shel is also known as csh.
+- Tops C shell is also known as tcsh.
 
 ## Writing Shell Scripts
 
@@ -55,6 +55,20 @@ echo `variable`     # all 3 forms work
 
 var=$((3+9))
 echo $var
+```
+
+### Passing Commands
+
+In Bash, there are reserved variables which we can use to recall user-defined arguments i.e. $1, $2, $3. $0 cannot be used as it references your Bash script itself.
+
+```console
+$ sh some_script.sh apple orange pear
+```
+
+```sh
+echo "The first fruit is: $1"
+echo "The second fruit is: $2"
+echo "The third fruit is: $3"
 ```
 
 ### Read User Input

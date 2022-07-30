@@ -1,7 +1,18 @@
-## Distro Version
+## Installing Files
 
 ```console
+$ sudo dpkg -i package_file.deb     # for ubuntu debian, to install dependencies automatically
+```
+
+## Distro Version/Architecture
+
+```console
+$ cat /etc/os-release
 $ lsb_release -a
+
+$ uname -m  # x86_64
+
+$ dpkg --print-architecture     # amd64
 ```
 
 ## Drivers
@@ -45,4 +56,11 @@ $ touch file1.txt
 
 ```console
 $ tail -f /var/log/syslog
+```
+
+## Checking Disk Space
+
+```console
+$ df -h /data     # h is short for human-readable
+$ df -h -total    # see total disk space available
 ```
