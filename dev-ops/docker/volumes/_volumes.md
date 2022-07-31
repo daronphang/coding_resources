@@ -18,7 +18,7 @@ $ docker volume prune    # removes all volumes not used by at least 1 container
 
 ## Bind Mounts
 
-a Docker bind mount is a high-performance connection from the container to a directory on the host machine i.e. uses the host file system. It allows the host to share its own file system with the container, which can be made read-only or read-write.
+A Docker bind mount is a high-performance connection from the container to a directory on the host machine i.e. uses the host file system. It allows the host to share its own file system with the container, which can be made read-only or read-write.
 
 ```console
 # pwd is the source on the host
